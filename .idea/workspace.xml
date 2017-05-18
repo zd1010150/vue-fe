@@ -1,0 +1,1435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b0938a1b-6c37-4373-9e21-c49e8f2cee40" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdAvatar/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdAvatar/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdAvatar/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdAvatar/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdBackdrop/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdBackdrop/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdBackdrop/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdBackdrop/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdBottomBar/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdBottomBar/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdBottomBar/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdBottomBar/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdButton/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdButton/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdButton/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdButton/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdButtonToggle/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdButtonToggle/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdButtonToggle/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdButtonToggle/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdCard/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdCard/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdCard/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdCard/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdCheckbox/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdCheckbox/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdCheckbox/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdCheckbox/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdChips/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdChips/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdChips/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdChips/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdCore/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdCore/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdCore/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdCore/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdDialog/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdDialog/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdDialog/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdDialog/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdDivider/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdDivider/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdDivider/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdDivider/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdFile/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdFile/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdFile/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdFile/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdIcon/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdIcon/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdIcon/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdIcon/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdImage/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdImage/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdImage/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdImage/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdInputContainer/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdInputContainer/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdInputContainer/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdInputContainer/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdLayout/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdLayout/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdLayout/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdLayout/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdList/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdList/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdList/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdList/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdMenu/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdMenu/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdMenu/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdMenu/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdProgress/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdProgress/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdProgress/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdProgress/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdRadio/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdRadio/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdRadio/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdRadio/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSelect/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSelect/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSelect/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSelect/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSidenav/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSidenav/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSidenav/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSidenav/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSnackbar/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSnackbar/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSnackbar/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSnackbar/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSpeedDial/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSpeedDial/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSpeedDial/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSpeedDial/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSpinner/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSpinner/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSpinner/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSpinner/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSubheader/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSubheader/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSubheader/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSubheader/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSwitch/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSwitch/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSwitch/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdSwitch/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdTable/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdTable/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdTable/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdTable/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdTabs/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdTabs/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdTabs/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdTabs/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdToolbar/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdToolbar/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdToolbar/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdToolbar/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdTooltip/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdTooltip/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdTooltip/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdTooltip/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdWhiteframe/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdWhiteframe/index.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdWhiteframe/index.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/components/mdWhiteframe/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/avatar-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/avatar.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/avatar.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/card-example.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/card-image-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/card-image-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/card-image-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/card-sky.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/card-weather.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/codepen.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/cover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/favicon/android-chrome-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/favicon/android-chrome-192x192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/favicon/android-chrome-256x256.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/favicon/android-chrome-36x36.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/favicon/android-chrome-384x384.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/favicon/android-chrome-48x48.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/favicon/android-chrome-512x512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/favicon/android-chrome-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/favicon/android-chrome-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/favicon/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/favicon/browserconfig.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/favicon/favicon-16x16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/favicon/favicon-194x194.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/favicon/favicon-32x32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/favicon/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/favicon/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/favicon/mstile-150x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/favicon/safari-pinned-tab.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/icon-github.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/icon-home.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/icon-menu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/joker-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/joker-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/joker-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/logo-vue-material-blue-grey.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/logo-vue-material-cyan.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/logo-vue-material-default.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/logo-vue-material-green.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/logo-vue-material-indigo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/logo-vue-material-orange.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/logo-vue-material-purple.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/logo-vue-material-red.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/marcosmoura.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/assets/vue-material-example.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/avatar.1c2ea266.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/base.468dbabb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/bottom-bar.d91c96eb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/button-toggle.c6150e67.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/buttons.b9a70faf.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/card.813a55b3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/changelog.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/checkbox.3d60ec17.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/chips.0dd4d690.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/dialog.d27bc67f.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/docs.5630affd.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/docs.ef570dcd.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/file.05ab386d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/icon.9c317d12.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/image-loader.6a229b14.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/ink-ripple.2e814707.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/input.76e80edc.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/list.93bce61c.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/manifest.1e83b2d7.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/menu.66f674a5.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/progress.dbae7eff.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/radio.0d3a1cf9.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/avatar-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/avatar.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/avatar.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/card-example.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/card-image-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/card-image-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/card-image-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/card-sky.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/card-weather.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/codepen.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/cover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/favicon/android-chrome-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/favicon/android-chrome-192x192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/favicon/android-chrome-256x256.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/favicon/android-chrome-36x36.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/favicon/android-chrome-384x384.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/favicon/android-chrome-48x48.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/favicon/android-chrome-512x512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/favicon/android-chrome-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/favicon/android-chrome-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/favicon/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/favicon/browserconfig.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/favicon/favicon-16x16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/favicon/favicon-194x194.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/favicon/favicon-32x32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/favicon/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/favicon/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/favicon/mstile-150x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/favicon/safari-pinned-tab.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/logo-vue-material-blue-grey.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/logo-vue-material-cyan.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/logo-vue-material-default.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/logo-vue-material-green.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/logo-vue-material-indigo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/logo-vue-material-orange.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/logo-vue-material-purple.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/logo-vue-material-red.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/marcosmoura.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/assets/vue-material-example.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/changelog.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/docs.656c9671.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/docs.93264ef9.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/manifest.d93d0eda.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/vendor.2044b105.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.1/versions.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/0.cf567cfa.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/1.aebda25a.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/10.d6e091c7.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/11.57baa516.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/12.412e420a.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/13.10c43d78.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/14.b700e246.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/15.0f0501f9.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/16.7eaf3c08.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/17.bef219a0.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/18.d5035c12.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/19.88ab05fd.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/2.b62f9e71.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/20.0980afec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/21.6999e85f.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/22.838a8032.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/23.91e06240.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/24.38594b9c.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/25.0a12003e.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/26.ce0a9d8d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/3.24b8259b.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/4.dda87c6e.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/5.4f97396d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/6.914fc411.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/7.43232ee9.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/8.19299e2b.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/9.7a6b4c90.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/avatar-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/avatar.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/avatar.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/card-example.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/card-image-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/card-image-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/card-image-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/card-sky.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/card-weather.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/codepen.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/cover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/favicon/android-chrome-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/favicon/android-chrome-192x192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/favicon/android-chrome-256x256.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/favicon/android-chrome-36x36.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/favicon/android-chrome-384x384.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/favicon/android-chrome-48x48.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/favicon/android-chrome-512x512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/favicon/android-chrome-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/favicon/android-chrome-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/favicon/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/favicon/browserconfig.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/favicon/favicon-16x16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/favicon/favicon-194x194.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/favicon/favicon-32x32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/favicon/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/favicon/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/favicon/mstile-150x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/favicon/safari-pinned-tab.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/logo-vue-material-blue-grey.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/logo-vue-material-cyan.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/logo-vue-material-default.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/logo-vue-material-green.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/logo-vue-material-indigo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/logo-vue-material-orange.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/logo-vue-material-purple.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/logo-vue-material-red.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/marcosmoura.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/assets/vue-material-example.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/changelog.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/docs.0b915d3f.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/docs.80bc43c9.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/manifest.013bc964.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/vendor.1366249b.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.5.2/versions.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/0.8985122d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/1.06ee0bed.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/10.c7e6c3e5.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/11.fd21e8e8.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/12.cb3c1a2d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/13.1cdad18e.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/14.fd41ec35.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/15.58889e3a.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/16.e2efe67b.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/17.0d923825.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/18.fa7c7df1.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/19.62eeb5ff.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/2.c10fbd04.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/20.861ee4ae.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/21.9fa5a6ef.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/22.5475b341.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/23.56fe1118.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/24.d3091d84.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/25.bb881f9f.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/26.6c68ad23.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/27.dac46d92.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/28.3b5484f8.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/29.cf5daabc.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/3.937606f3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/30.a9cd11af.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/31.111340a6.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/4.94654a0e.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/5.f8a38ce8.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/6.6d779ad8.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/7.fea19aba.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/8.4a1e48b3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/9.3f930309.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/avatar-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/avatar.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/avatar.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/card-example.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/card-image-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/card-image-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/card-image-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/card-sky.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/card-weather.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/codepen.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/cover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/favicon/android-chrome-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/favicon/android-chrome-192x192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/favicon/android-chrome-256x256.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/favicon/android-chrome-36x36.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/favicon/android-chrome-384x384.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/favicon/android-chrome-48x48.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/favicon/android-chrome-512x512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/favicon/android-chrome-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/favicon/android-chrome-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/favicon/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/favicon/browserconfig.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/favicon/favicon-16x16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/favicon/favicon-194x194.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/favicon/favicon-32x32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/favicon/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/favicon/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/favicon/mstile-150x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/favicon/safari-pinned-tab.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/icon-github.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/icon-home.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/icon-menu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/joker-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/joker-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/joker-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/logo-vue-material-blue-grey.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/logo-vue-material-cyan.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/logo-vue-material-default.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/logo-vue-material-green.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/logo-vue-material-indigo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/logo-vue-material-orange.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/logo-vue-material-purple.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/logo-vue-material-red.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/marcosmoura.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/assets/vue-material-example.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/changelog.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/docs.3e2ba22f.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/docs.77420282.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/manifest.5f563a9d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/vendor.ae4be299.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.0/versions.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/0.8985122d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/1.06ee0bed.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/10.c7e6c3e5.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/11.fd21e8e8.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/12.cb3c1a2d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/13.1cdad18e.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/14.fd41ec35.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/15.58889e3a.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/16.e2efe67b.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/17.0d923825.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/18.fa7c7df1.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/19.62eeb5ff.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/2.c10fbd04.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/20.861ee4ae.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/21.9fa5a6ef.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/22.5475b341.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/23.56fe1118.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/24.d3091d84.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/25.bb881f9f.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/26.6c68ad23.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/27.dac46d92.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/28.3b5484f8.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/29.cf5daabc.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/3.937606f3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/30.a9cd11af.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/31.111340a6.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/4.94654a0e.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/5.f8a38ce8.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/6.6d779ad8.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/7.fea19aba.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/8.4a1e48b3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/9.3f930309.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/avatar-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/avatar.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/avatar.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/card-example.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/card-image-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/card-image-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/card-image-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/card-sky.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/card-weather.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/codepen.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/cover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/favicon/android-chrome-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/favicon/android-chrome-192x192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/favicon/android-chrome-256x256.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/favicon/android-chrome-36x36.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/favicon/android-chrome-384x384.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/favicon/android-chrome-48x48.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/favicon/android-chrome-512x512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/favicon/android-chrome-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/favicon/android-chrome-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/favicon/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/favicon/browserconfig.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/favicon/favicon-16x16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/favicon/favicon-194x194.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/favicon/favicon-32x32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/favicon/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/favicon/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/favicon/mstile-150x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/favicon/safari-pinned-tab.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/icon-github.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/icon-home.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/icon-menu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/joker-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/joker-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/joker-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/logo-vue-material-blue-grey.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/logo-vue-material-cyan.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/logo-vue-material-default.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/logo-vue-material-green.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/logo-vue-material-indigo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/logo-vue-material-orange.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/logo-vue-material-purple.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/logo-vue-material-red.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/marcosmoura.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/assets/vue-material-example.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/changelog.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/docs.2897e9e6.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/docs.77420282.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/manifest.b7f52b44.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/vendor.ae4be299.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.1/versions.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/0.8985122d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/1.06ee0bed.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/10.c7e6c3e5.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/11.fd21e8e8.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/12.cb3c1a2d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/13.1cdad18e.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/14.fd41ec35.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/15.58889e3a.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/16.e2efe67b.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/17.0d923825.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/18.fa7c7df1.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/19.62eeb5ff.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/2.c10fbd04.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/20.861ee4ae.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/21.9fa5a6ef.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/22.5475b341.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/23.56fe1118.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/24.d3091d84.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/25.bb881f9f.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/26.6c68ad23.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/27.dac46d92.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/28.3b5484f8.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/29.cf5daabc.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/3.937606f3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/30.a9cd11af.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/31.111340a6.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/4.94654a0e.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/5.f8a38ce8.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/6.6d779ad8.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/7.fea19aba.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/8.4a1e48b3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/9.3f930309.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/avatar-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/avatar.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/avatar.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/card-example.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/card-image-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/card-image-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/card-image-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/card-sky.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/card-weather.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/codepen.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/cover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/favicon/android-chrome-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/favicon/android-chrome-192x192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/favicon/android-chrome-256x256.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/favicon/android-chrome-36x36.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/favicon/android-chrome-384x384.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/favicon/android-chrome-48x48.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/favicon/android-chrome-512x512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/favicon/android-chrome-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/favicon/android-chrome-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/favicon/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/favicon/browserconfig.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/favicon/favicon-16x16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/favicon/favicon-194x194.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/favicon/favicon-32x32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/favicon/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/favicon/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/favicon/mstile-150x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/favicon/safari-pinned-tab.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/icon-github.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/icon-home.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/icon-menu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/joker-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/joker-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/joker-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/logo-vue-material-blue-grey.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/logo-vue-material-cyan.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/logo-vue-material-default.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/logo-vue-material-green.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/logo-vue-material-indigo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/logo-vue-material-orange.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/logo-vue-material-purple.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/logo-vue-material-red.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/marcosmoura.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/assets/vue-material-example.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/changelog.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/docs.2897e9e6.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/docs.77420282.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/manifest.b7f52b44.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/vendor.ae4be299.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.2/versions.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/0.8985122d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/1.06ee0bed.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/10.c7e6c3e5.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/11.fd21e8e8.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/12.cb3c1a2d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/13.1cdad18e.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/14.fd41ec35.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/15.58889e3a.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/16.e2efe67b.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/17.0d923825.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/18.fa7c7df1.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/19.62eeb5ff.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/2.c10fbd04.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/20.861ee4ae.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/21.9fa5a6ef.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/22.5475b341.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/23.56fe1118.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/24.d3091d84.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/25.bb881f9f.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/26.6c68ad23.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/27.dac46d92.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/28.3b5484f8.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/29.cf5daabc.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/3.937606f3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/30.a9cd11af.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/31.111340a6.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/4.94654a0e.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/5.f8a38ce8.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/6.6d779ad8.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/7.fea19aba.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/8.4a1e48b3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/9.3f930309.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/avatar-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/avatar.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/avatar.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/card-example.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/card-image-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/card-image-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/card-image-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/card-sky.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/card-weather.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/codepen.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/cover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/favicon/android-chrome-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/favicon/android-chrome-192x192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/favicon/android-chrome-256x256.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/favicon/android-chrome-36x36.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/favicon/android-chrome-384x384.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/favicon/android-chrome-48x48.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/favicon/android-chrome-512x512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/favicon/android-chrome-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/favicon/android-chrome-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/favicon/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/favicon/browserconfig.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/favicon/favicon-16x16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/favicon/favicon-194x194.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/favicon/favicon-32x32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/favicon/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/favicon/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/favicon/mstile-150x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/favicon/safari-pinned-tab.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/icon-github.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/icon-home.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/icon-menu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/joker-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/joker-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/joker-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/logo-vue-material-blue-grey.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/logo-vue-material-cyan.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/logo-vue-material-default.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/logo-vue-material-green.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/logo-vue-material-indigo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/logo-vue-material-orange.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/logo-vue-material-purple.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/logo-vue-material-red.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/marcosmoura.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/assets/vue-material-example.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/changelog.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/docs.77420282.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/docs.abaf0d65.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/manifest.2b0afab6.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/vendor.ae4be299.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.6.3/versions.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/avatar-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/avatar.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/avatar.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/card-example.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/card-image-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/card-image-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/card-image-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/card-sky.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/card-weather.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/codepen.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/cover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/favicon/android-chrome-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/favicon/android-chrome-192x192.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/favicon/android-chrome-256x256.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/favicon/android-chrome-36x36.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/favicon/android-chrome-384x384.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/favicon/android-chrome-48x48.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/favicon/android-chrome-512x512.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/favicon/android-chrome-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/favicon/android-chrome-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/favicon/apple-touch-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/favicon/browserconfig.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/favicon/favicon-16x16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/favicon/favicon-194x194.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/favicon/favicon-32x32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/favicon/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/favicon/manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/favicon/mstile-150x150.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/favicon/safari-pinned-tab.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/icon-github.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/icon-home.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/icon-menu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/joker-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/joker-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/joker-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/logo-vue-material-blue-grey.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/logo-vue-material-cyan.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/logo-vue-material-default.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/logo-vue-material-green.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/logo-vue-material-indigo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/logo-vue-material-orange.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/logo-vue-material-purple.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/logo-vue-material-red.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/marcosmoura.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/assets/vue-material-example.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/avatar.a4498c8a.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/base.695f7a2d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/bottom-bar.e6f88ccc.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/button-toggle.5458c921.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/buttons.81edf435.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/card.37f54da4.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/changelog.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/checkbox.7603dc1d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/chips.996b2d4b.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/dialog.774bdbaf.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/docs.1e68547e.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/docs.478f64a5.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/file.e75792b4.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/icon.5330687d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/image-loader.2b5a107e.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/ink-ripple.c6c186b1.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/input.ecca7906.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/list.21d93484.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/manifest.09510f01.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/menu.212fadff.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/progress.2ff899d0.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/radio.da972ed8.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/select.bff7868d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/sidenav.5443196c.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/snackbar.00a46162.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/speed-dial.e07af350.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/spinner.ae9c0ffa.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/subheader.f0a1356a.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/switch.9aa0318e.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/table.295127fd.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/tabs.b3bab112.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/themes.cef94272.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/toolbar.44924cd1.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/tooltip.1eae832b.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/ui-elements.ac4dc67a.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/vendor.51aac3ed.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/versions.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/releases/v0.7.0/whiteframe.7fa045b4.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/select.a1466fb5.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/sidenav.fba2cd03.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/snackbar.f7ea4b33.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/speed-dial.dd03eb33.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/spinner.43051fb4.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/subheader.5d412f8e.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/switch.4548de27.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/table.0fb9c164.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/tabs.5e48770b.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/themes.614919f9.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/toolbar.caa5dc64.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/tooltip.0834711f.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/ui-elements.775ab723.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/vendor.a3c44323.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/versions.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/docs/whiteframe.65446ff4.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/vue-material.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/vue-material.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/vendor/font/italic-css.css" afterPath="$PROJECT_DIR$/src/assets/css/font/italic-css.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/vendor/font/material+icons.css" afterPath="$PROJECT_DIR$/src/assets/css/font/material+icons.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/vue-material.css" afterPath="$PROJECT_DIR$/src/assets/css/vue-material.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/vendor/vue-material/vue-material.css.map" afterPath="$PROJECT_DIR$/src/assets/css/vue-material.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.vue" afterPath="$PROJECT_DIR$/src/App.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="webpack.base.conf.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/build/webpack.base.conf.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/router/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="8" column="34" lean-forward="false" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dist/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="13" column="7" lean-forward="false" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" column="23" lean-forward="false" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="webpack.dev.conf.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build/webpack.dev.conf.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="18" column="41" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="webpack.prod.conf.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build/webpack.prod.conf.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="4" column="34" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="475">
+              <caret line="25" column="15" lean-forward="false" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/src/App.vue" />
+        <option value="$PROJECT_DIR$/dist/index.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource ProjectPane="true" />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="router" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-material.css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NestingTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-material" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-fe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+    <property name="FullScreen" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/css" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ApexTest" factoryName="Apex Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b0938a1b-6c37-4373-9e21-c49e8f2cee40" name="Default" comment="" />
+      <created>1495064080900</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1495064080900</updated>
+      <workItem from="1495064083280" duration="9150000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="9150000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
+    <editor active="false" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24381253" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Salesforce" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/build/vue-loader.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/test.env.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/prod.env.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/dev.env.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.babelrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/static/js/app.1c673f5160674806408c.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-57">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/logo.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/vue-material.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/vue-material.css.map">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="34" lean-forward="false" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="23" lean-forward="false" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/webpack.prod.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="34" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="25" column="15" lean-forward="false" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="7" lean-forward="false" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/webpack.dev.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="41" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/webpack.base.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

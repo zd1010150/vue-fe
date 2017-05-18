@@ -4,6 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import  VueMaterial from 'vue-material'
+import  "@/assets/css/font/italic-css.css"
+import  "@/assets/css/font/material+icons.css"
+import  "@/assets/css/vue-material.css"
+
+
 
 Vue.config.productionTip = false
 
