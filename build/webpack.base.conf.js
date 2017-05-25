@@ -1,3 +1,4 @@
+var webpack = require('webpack')
 var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
@@ -22,7 +23,10 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      'src': resolve('src'),
+      'assets': resolve('/src/assets'),
+      'components': resolve('/src/components'),
+      'views':resolve('/src/views')
     }
   },
   module: {
@@ -54,5 +58,11 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins:[
+    new webpack.ProvidePlugin({
+      _: "lodash"
+    })
+  ]
+
 }
