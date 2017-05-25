@@ -58,7 +58,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="css" scoped  >
 .phone-viewport{
   overflow: hidden;
 }
