@@ -13,6 +13,9 @@ var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = process.env.NODE_ENV === 'testing'
   ? require('./webpack.prod.conf')
   : require('./webpack.dev.conf')
+var utils = require("./utils"),
+    resolve = utils.resolve
+var mockConfig = require('../config/dev-mock.config');
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
@@ -50,6 +53,17 @@ Object.keys(proxyTable).forEach(function (context) {
   app.use(proxyMiddleware(options.filter || context, options))
 })
 
+// Mock server
+require(resolve(mockConfig.path).join('node-app')).listen(mockConfig.port);
+app.use('/api', proxy({
+  target: 'http://127.0.0.1:' + PORTS.MOCK_SERVER,
+  changeOrigin: true,
+  pathRewrite: {
+    // 重写 URL：[Dev Server]/api/xxx <=> [Mock Server]/xxx
+    '^/api': '/'
+  }
+}))
+
 // handle fallback for HTML5 history API
 app.use(require('connect-history-api-fallback')())
 
@@ -63,6 +77,9 @@ app.use(hotMiddleware)
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
+
+
+
 
 var uri = 'http://localhost:' + port
 

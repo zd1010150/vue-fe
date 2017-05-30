@@ -11,7 +11,7 @@ var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
-  : config.build.env
+  : config.build.env.NODE_ENV
 
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -28,9 +28,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
-    new webpack.DefinePlugin({
-      'process.env': env
-    }),
+    new webpack.DefinePlugin(config.build.env),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false

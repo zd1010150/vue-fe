@@ -1,7 +1,16 @@
+import Vue from 'vue'
+import Vuex from "vuex"
 
-import {DEFAULT_LANGUAGE} from "../config"
+import state from "./state"
+import getter from "./getters"
+import mutation from "./mutation"
+import action from "./action"
 
-const state={
-  userInfo:null,
-  localLanguage:DEFAULT_LANGUAGE
-};
+Vue.use(Vuex)
+
+export  default new Vuex.store({
+  state,
+  getter,
+  mutation,
+  action
+});

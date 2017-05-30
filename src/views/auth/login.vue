@@ -4,14 +4,14 @@
   <form>
     <div class="form-group">
       <label for="formGroupExampleInput">name:</label>
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input" v-model="username">
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">pwd</label>
-      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input" v-model="password">
     </div>
     <div class="form-group">
-      <button v-on:click="goToMain()">login</button>
+      <button v-on:click="login()">login</button>
     </div>
   </form>
 </div>
@@ -19,9 +19,19 @@
 <script type="text/javascript">
 export default {
   name: "login",
+  state: {
+    username:"",
+    password:""
+  },
   methods: {
-    goToMain (){
-      this.$router.push({name:"dashboard"});
+    login (){
+      this.$store.dispatch('login',this.state.username,this.state.password).then(() => {
+          this.$router.push({
+              path : ''
+          });
+      }).catch( (err) => {
+       this.$store.dispatch('')
+      });
     }
   }
 }
