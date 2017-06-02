@@ -44,19 +44,19 @@ compiler.plugin('compilation', function (compilation) {
   })
 })
 
-// proxy api requests
-Object.keys(proxyTable).forEach(function (context) {
-  var options = proxyTable[context]
-  if (typeof options === 'string') {
-    options = { target: options }
-  }
-  app.use(proxyMiddleware(options.filter || context, options))
-})
+// // proxy api requests
+// Object.keys(proxyTable).forEach(function (context) {
+//   var options = proxyTable[context]
+//   if (typeof options === 'string') {
+//     options = { target: options }
+//   }
+//   app.use(proxyMiddleware(options.filter || context, options))
+// })
 
-// Mock server
-require(resolve(mockConfig.path).join('node-app')).listen(mockConfig.port);
-app.use('/api', proxy({
-  target: 'http://127.0.0.1:' + PORTS.MOCK_SERVER,
+// Mock server start
+
+app.use('/api', proxyMiddleware({
+  target: 'http://127.0.0.1:' + mockConfig.port,
   changeOrigin: true,
   pathRewrite: {
     // 重写 URL：[Dev Server]/api/xxx <=> [Mock Server]/xxx

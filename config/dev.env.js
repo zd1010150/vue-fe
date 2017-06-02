@@ -6,7 +6,7 @@ var tempet = merge(prodEnv, {
   __DEV__:true,
   __PRO__:false
 });
-console.log("=====",tempet);
+
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
   __DEV__:true,

@@ -1,11 +1,16 @@
 
-import { getData } from  './network/getData'
+import   { fetchData }  from  './network/getData'
 import { apiUrl } from '../config/env.config.js'
+import { dataToForm } from '../utils/form'
 export default{
-  login(username,pwd){
-    return getData(apiUrl + "/auth/login")
+  async login(form){
+
+    return fetchData("POST",apiUrl + "/auth/login",form)
   },
-  checkLogin(){
-    return getData(apiUrl + "/auth/checkLogin")
+  async checkLogin({username,token}){
+    return fetchData("GET",apiUrl + "/auth/checkLogin",{username,token})
+  },
+  async logout(id){
+    return fetchData("DELETE",apiUrl + "/auth/logout",{id})
   }
 }

@@ -1,17 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import authRoter from './map/auth.js';
-import indexRoter from './map/index.js';
-import _ from "lodash";
-
+import authRoter from './map/auth'
+import indexRoter from './map/index'
+import _ from "lodash"
+import roterhook from './hooks/index'
 Vue.use(Router)
 
+let router = new Router({
+  suppressTransitionError:__PRO__
+});
 let root = {
   path:"/",
   redirect:{ name:"login" }
 };
 
-export default new Router({
-  routes : _.concat(authRoter,indexRoter,root)
+router.addRoutes(_.concat(authRoter,indexRoter,root));
 
-})
+roterhook(router);
+
+
+export default router;

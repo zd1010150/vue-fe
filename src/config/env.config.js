@@ -11,15 +11,14 @@
 
 let baseUrl = '/api'
 let apiUrl = ''
-const onlineUrl = "", localUrl = "http://localhost:8001" + baseUrl
-
+const onlineUrl = "", localUrl = ""
 if (__PRO__) {
 
   apiUrl = onlineUrl
 } else if (__DEV__) {
   apiUrl = localUrl
 }
-console.log(apiUrl)
+
 export {
   apiUrl,
   baseUrl

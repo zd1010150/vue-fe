@@ -1,8 +1,11 @@
 import {
   baseUrl
-} from './config/env.config.js'
+} from '../../config/env.config.js'
+import { formDataToJson } from '../../utils/form.js';
 
 export default async(type = 'GET', url = '', data = {}, method = 'fetch') => {
+  console.log("request:===",type,url,data,method);
+
   type = type.toUpperCase();
   url = baseUrl + url;
 
@@ -17,7 +20,9 @@ export default async(type = 'GET', url = '', data = {}, method = 'fetch') => {
       url = url + '?' + dataStr;
     }
   }
-
+  if(type == 'DELETE'){
+    url = url+"/"+data.id ;
+  }
   if (window.fetch && method == 'fetch') {
     let requestConfig = {
       credentials: 'include',
@@ -31,9 +36,16 @@ export default async(type = 'GET', url = '', data = {}, method = 'fetch') => {
     }
 
     if (type == 'POST') {
-      Object.defineProperty(requestConfig, 'body', {
-        value: JSON.stringify(data)
-      })
+      if(window.FormData && data instanceof FormData){
+        Object.defineProperty(requestConfig, 'body', {
+          value: formDataToJson(data)
+        })
+      }else {
+        Object.defineProperty(requestConfig, 'body', {
+          value: JSON.stringify(data)
+        })
+      }
+
     }
 
     try {
@@ -53,8 +65,13 @@ export default async(type = 'GET', url = '', data = {}, method = 'fetch') => {
       }
 
       let sendData = '';
-      if (type == 'POST') {
-        sendData = JSON.stringify(data);
+      if (type == 'POST' ) {
+        if(window.FormData && data instanceof FormData){
+           sendData = formDataToJson(data);
+        }else{
+          sendData = JSON.stringify(data);
+        }
+
       }
 
       requestObj.open(type, url, true);

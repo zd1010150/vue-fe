@@ -5,7 +5,7 @@ var msgCtrls = require('../controllers/msg'),
 /*
   GET     /msg              获取留言信息列表
   POST    /msg              新增一条留言信息
-    
+
   GET     /msg/authors      获取所有留言用户名
 
   GET     /msg/:msgId       获取指定 ID 的留言信息
@@ -54,7 +54,7 @@ module.exports = [{
   middlewares: [interceptor.FORBID_AUTHED],
   handler: authCtrls.login
 }, {
-  path: '/auth/logout',
+  path: '/auth/logout/:userid',
   method: 'DELETE',
   middlewares: [interceptor.NEED_AUTH],
   handler: authCtrls.logout

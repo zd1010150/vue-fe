@@ -1,12 +1,27 @@
 var db = require('../db/');
 
-function interceptorGen(loginStatus, errMsg) {
+function aUserIsLogin(token){
+  return !db.get('session').filter({token:token}).isEmpty().value();
+}
+
+function interceptorGen(isNeedLogin, errMsg) {
   return function (req, res, next) {
-    if(!db.get('session').isEmpty().value() === loginStatus) {
-      next();
-    } else {
-      res.ajaxReturn(false, { errMsg: errMsg });
+
+    var isLogin = aUserIsLogin(req.cookies.token)
+
+    console.log("interceptor:",isNeedLogin,isLogin);
+    if(isNeedLogin){
+      if(!isLogin){
+        res.ajaxReturn(false, { errMsg: errMsg });
+        return;
+      }
+    }else{
+      if(isLogin){
+        res.ajaxReturn(false, { errMsg: errMsg });
+        return;
+      }
     }
+    next();
   };
 }
 

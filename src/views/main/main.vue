@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-        <topbar></topbar>
+        <topbar :username="username"></topbar>
       </div>
     </div>
     <div class="row">
@@ -17,15 +17,29 @@
 </template>
 
 <script>
-import sidebar from "components/page/sidebar"
-import topbar from "components/page/topbar"
-export default {
-  name:"main",
-  components:{
-    sidebar:sidebar,
-    topbar:topbar
+  import sidebar from "components/page/sidebar"
+  import topbar from "components/page/topbar"
+
+  export default {
+    name: "main",
+    components: {
+      sidebar: sidebar,
+      topbar: topbar
+    },
+    data(){
+      return {}
+    },
+    computed: {
+      username (){
+        if (this.$store.state.userInfo) {
+          return this.$store.state.userInfo;
+        } else {
+          return ""
+        }
+        ;
+      }
+    }
   }
-}
 </script>
 
 <style lang="css">

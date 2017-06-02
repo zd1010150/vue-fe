@@ -3,7 +3,7 @@ import Logout from 'views/auth/logout'
 import ResetPwd from 'views/auth/Reset'
 
 export default [{
-  path:"/auth",
+  path:"/login",
   component:Login,
   name:"login",
   },{
@@ -11,7 +11,7 @@ export default [{
     component:Logout
 
   },{
-    path:"/Reset",
+    path:"/reset",
     comoponent:ResetPwd
   }
 ];

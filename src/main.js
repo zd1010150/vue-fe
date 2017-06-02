@@ -14,7 +14,9 @@ Vue.config.productionTip = false
 
 Vue.use(VueMaterial);
 /* eslint-disable no-new */
-new Vue({
+
+
+window.vm = new Vue({
   el: '#app',
   router,
   store,

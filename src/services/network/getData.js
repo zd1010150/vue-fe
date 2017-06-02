@@ -1,20 +1,24 @@
 
 
-import fetch from "./fetch.js";
+import fetch from "./fetch";
 /*统一处理*/
 let filterResoveResponse = (response) => {
-    console.log(response);//处理各种异常的信息
+    console.log("getData resolve",response);//处理各种异常的信息
 }
 let filterRejectResponse = (xhr) => {
-    console.log(xhr);//处理各种异常的信息
+    console.log("getdata reject",xhr);//处理各种异常的信息
 }
 
-export default {
-  getData(type = 'GET', url = '', data = {}, method = 'fetch'){
+let fetchData = async function(type = 'GET', url = '', data = {}, method = 'fetch'){
+    console.log("fetchdata",type,url,data,method);
     return fetch(type,url,data,method).then((response)=>{
         filterResoveResponse(response);
-    },(xhr)=>{
-        filterRejectResponse(xhr);
+        console.log("fetchdata response",response);
+        return response;
+    },(errorResponse)=>{
+        filterRejectResponse(errorResponse);
+        return errorResponse;
     });
   }
-}
+
+export { fetchData } ;
