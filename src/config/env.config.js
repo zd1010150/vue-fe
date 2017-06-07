@@ -9,17 +9,22 @@
  *
  */
 
-let baseUrl = '/api'
-let apiUrl = ''
-const onlineUrl = "", localUrl = ""
-if (__PRO__) {
 
-  apiUrl = onlineUrl
+//http://api.finlogixtest.com/v1/admin/login?email=steven.hu@zerologix.com&password=acy11111111&captcha=jh4hn
+//"http://api.cloudhubpanellocal.com/api/v1"
+
+let baseUrl = ''
+
+const devUrl = "http://api.cloudhubpanellocal.com/api/v1", onlineUrl = "https://api.cloudhubpanel.com/api/v1"
+
+if (__PRO__) {
+  baseUrl = onlineUrl
 } else if (__DEV__) {
-  apiUrl = localUrl
+  baseUrl = devUrl
 }
 
+
+
 export {
-  apiUrl,
   baseUrl
 }

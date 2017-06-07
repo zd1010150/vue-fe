@@ -56,11 +56,11 @@ compiler.plugin('compilation', function (compilation) {
 // Mock server start
 
 app.use('/api', proxyMiddleware({
-  target: 'http://127.0.0.1:' + mockConfig.port,
+  target: mockConfig.host +  mockConfig.port == 80 ? "" : mockConfig.port,
   changeOrigin: true,
   pathRewrite: {
     // 重写 URL：[Dev Server]/api/xxx <=> [Mock Server]/xxx
-    '^/api': '/'
+    '^/api': mockConfig.path
   }
 }))
 
@@ -81,7 +81,7 @@ app.use(staticPath, express.static('./static'))
 
 
 
-var uri = 'http://localhost:' + port
+var uri = config.dev.host + ":" + port
 
 var _resolve
 var readyPromise = new Promise(resolve => {
@@ -93,7 +93,7 @@ devMiddleware.waitUntilValid(() => {
   console.log('> Listening at ' + uri + '\n')
   // when env is testing, don't need open it
   if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
-    opn(uri)
+   // opn(uri)
   }
   _resolve()
 })

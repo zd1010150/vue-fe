@@ -7,7 +7,7 @@ function aUserIsLogin(token){
 function interceptorGen(isNeedLogin, errMsg) {
   return function (req, res, next) {
 
-    var isLogin = aUserIsLogin(req.cookies.token)
+    var isLogin = aUserIsLogin(req.cookies.token || '')
 
     console.log("interceptor:",isNeedLogin,isLogin);
     if(isNeedLogin){

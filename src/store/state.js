@@ -4,5 +4,5 @@ export default {
   userInfo:null,
   localLanguage:DEFAULT_LANGUAGE,
   systemError:[],
-  token:""
+  token:null
 }

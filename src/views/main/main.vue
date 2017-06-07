@@ -32,7 +32,7 @@
     computed: {
       username (){
         if (this.$store.state.userInfo) {
-          return this.$store.state.userInfo;
+          return this.$store.state.userInfo.username;
         } else {
           return ""
         }

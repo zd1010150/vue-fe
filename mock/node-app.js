@@ -8,7 +8,7 @@ var express = require('express'),
   resAjaxReturn = require('./middlewares/res.ajaxReturn');
 
 var app = express();
-app.use(cookieParser);
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(multer({dest:__dirname+"/file/uploads/"}).array());

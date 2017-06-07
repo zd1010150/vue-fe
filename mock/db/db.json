@@ -12,5 +12,38 @@
     }
   ],
   "msgs": [],
-  "session": []
+  "session": [
+    {
+      "userInfo": {
+        "username": "zd",
+        "password": "123456",
+        "id": 1
+      },
+      "token": "9d81ca10-4"
+    },
+    {
+      "userInfo": {
+        "username": "zd",
+        "password": "123456",
+        "id": 1
+      },
+      "token": "63631bf0-4"
+    },
+    {
+      "userInfo": {
+        "username": "zd",
+        "password": "123456",
+        "id": 1
+      },
+      "token": "52132a40-4"
+    },
+    {
+      "userInfo": {
+        "username": "zd",
+        "password": "123456",
+        "id": 1
+      },
+      "token": "d3ac6c80-4"
+    }
+  ]
 }

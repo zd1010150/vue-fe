@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    {{ username }}
+    usernameis :{{ username }}
     <button v-on:click = "logout">logout</button>
   </div>
 
