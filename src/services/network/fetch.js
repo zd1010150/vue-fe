@@ -1,11 +1,11 @@
 import {
   baseUrl
 } from '../../config/env.config.js'
-import store from "../../store"
+import store from "store"
 
 import {formDataToJson} from '../../utils/form.js';
 
-import 'isomorphic-fetch'
+
 
 
 

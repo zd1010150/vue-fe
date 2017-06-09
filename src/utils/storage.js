@@ -6,6 +6,7 @@ export const setStore = (name, content) => {
   if (typeof content !== 'string') {
     content = JSON.stringify(content);
   }
+  console.log("setstore",name,content);
   window.localStorage.setItem(name, content);
 }
 
@@ -23,4 +24,15 @@ export const getStore = name => {
 export const removeStore = name => {
   if (!name) return;
   window.localStorage.removeItem(name);
+}
+
+// 同步vuex的状态到localstorage里面
+export const syncVuexStateAndLocalStorage = (state) => {
+
+  for(let o in state){
+    let value = state[o];
+
+      setStore(o, typeof value == "object" ? JSON.stringify(value) : value);
+
+  }
 }

@@ -13,9 +13,9 @@ export default{
     });
   },
   async getUserInfo({ commit }){
-    return await userService.login(form).then(({data,success,message}) => {
-      if (success && data.userInfo) {
-        commit(type.SET_USERINFO, data.userInfo);
+    return await userService.getUserInfo().then(({data,success,message}) => {
+      if (success) {
+        commit(type.SET_USERINFO, data.user);
 
       }
       return { success };

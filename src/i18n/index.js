@@ -1,6 +1,6 @@
 import Vue from "vue"
 import VueI18n from 'vue-i18n'
-import { DEFAULT_LANGUAGE } from "../config/app.config"
+import Store from 'store'
 
 import en from "./en"
 import zh from "./zh"
@@ -12,6 +12,6 @@ let messages =  {
   zh
 }
 export default new VueI18n({
-  locale : DEFAULT_LANGUAGE,
+  locale : Store.state.language,
   messages
 });

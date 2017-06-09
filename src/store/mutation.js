@@ -1,26 +1,28 @@
-import {SET_USERINFO,ADD_ERROR_INFO,SET_TOKEN} from "./mutation-types";
-import * as Storage from "../utils/storage"
+import {SET_USERINFO,ADD_ERROR_INFO,SET_TOKEN,SET_LANGUAGE,SET_THEME,SET_PATH} from "./mutation-types";
 
-// 同步vuex的状态到localstorage里面
-let syncVuexStateAndLocalStorage = (key,value) => {
-  if(value){
-    Storage.setStore(key,JSON.stringify(userInfo));
-  }else{
-    Storage.removeStore(key);
-  }
-}
+
 
 export default{
   [SET_USERINFO](state,userInfo){
     state.userInfo= userInfo
-    syncVuexStateAndLocalStorage("userInfo",userInfo);
 
   },
   [ADD_ERROR_INFO](state,error){
-    state.systemError.push(error);
+    state.errors.push(error)
+    console.log("systemerror:",state.errors);
   },
   [SET_TOKEN](state,token){
-    state.token = token;
-    syncVuexStateAndLocalStorage("token",token);
+    state.token = token
+  },
+  [SET_LANGUAGE](state,language){
+    state.language = language
+  },
+  [SET_THEME](state,theme){
+    state.language = theme
+
+  },
+  [SET_PATH](state,path){
+    state.path = path
   }
+
 }

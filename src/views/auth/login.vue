@@ -39,8 +39,8 @@
     name: "login",
     data () {
       return {
-        email: "",
-        password: "",
+        email: "wei.bai0736@gmail.com",
+        password: "11111111",
         loginError:false,
         errorInfo : ""
       }
