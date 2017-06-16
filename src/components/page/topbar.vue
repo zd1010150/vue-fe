@@ -28,21 +28,19 @@ zh:
   <div>
     usernameis :{{ username }}
     <button v-on:click="logout">logout</button>
-    <md-input-container>
+
       <label for="language"> {{ $t("topbar.language") }}</label>
-      
-      <md-select name="movie" id="language" v-model="language">
-        <md-option value="en">{{ $t("topbar.languages.english") }}</md-option>
-        <md-option value="zh">{{ $t("topbar.languages.chinese") }}</md-option>
-      </md-select>
-    </md-input-container>
-    <md-input-container>
+
+      <select name="movie" id="language" v-model="language">
+        <option value="en">{{ $t("topbar.languages.english") }}</option>
+        <option value="zh">{{ $t("topbar.languages.chinese") }}</option>
+      </select>
+
       <label for="theme">{{ $t("topbar.theme")}}</label>
-      <md-select name="movie" id="theme" v-model="theme">
-        <md-option value="dark">{{ $t("topbar.themes.dark") }}</md-option>
-        <md-option value="">{{ $t("topbar.themes.light") }}</md-option>
-      </md-select>
-    </md-input-container>
+      <select name="movie" id="theme" v-model="theme">
+        <option value="dark">{{ $t("topbar.themes.dark") }}</option>
+        <option value="">{{ $t("topbar.themes.light") }}</option>
+      </select>
   </div>
 
 </template>

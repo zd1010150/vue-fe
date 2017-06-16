@@ -1,7 +1,9 @@
 <template lang="html">
   <div class="container">
     <div class="row">
-      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+      <div class="col-xl-12 col-lg-12 col-  12 col-sm-12">
+        <div>
+         </div>
         <topbar :username="username"></topbar>
       </div>
     </div>
@@ -9,7 +11,7 @@
       <div class="col-xl-3 col-lg-3">
         <sidebar></sidebar>
       </div>
-      <div class="col-xl-9 col-lg-9 col-md-12">
+      <div class="col-xl-9 col-lg-9 col-  12">
         <router-view></router-view>
       </div>
     </div>
@@ -27,7 +29,9 @@
       topbar: topbar
     },
     data(){
-      return {}
+      return {
+          radio1:"2"
+      }
     },
     computed: {
       username (){
