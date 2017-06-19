@@ -57,9 +57,11 @@ html.dark {
 	.form-control {
 		background-color: $dark-color-3;
 		border-color: $dark-color-3;
-		color: #EEE;
+		color: #EEE !important;
 	}
-
+  input.form-control:-webkit-autofill, textarea.form-control:-webkit-autofill, select.form-control:-webkit-autofill {
+    color: #EEE !important;
+  }
 	.form-control[disabled],
 	.form-control[readonly],
 	fieldset[disabled] .form-control {

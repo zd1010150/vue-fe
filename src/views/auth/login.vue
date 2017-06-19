@@ -14,36 +14,71 @@
 </i18n>
 <template>
   <div>
-   <logLayout >
-     <form class="login-form" v-on:submit="login" slot="content">
-       <div class="form-group">
-         <label for="formGroupExampleInput"> {{ $t("login.email") }} </label>
-         <input type="email" class="form-control" name="email"  placeholder="Example input"
-                v-model="email">
-       </div>
-       <div class="form-group">
-         <label for="formGroupExampleInput2">{{ $t("login.password") }} </label>
-         <input type="password" class="form-control" name="password"  placeholder="Another input"
-                v-model="password">
-       </div>
-       <div class="form-group">
-         <div v-if="loginError"> {{ errorInfo }}</div>
-         <chp-button classes='btn-lg btn-primary' type="submit">login</chp-button>
-       </div>
-     </form>
+   <chp-log-layout >
+     <chp-panel slot="content" :isHeaderTransparent="true" :canClose="false" :canCollapse="false" :titles="{mainTitle:'login'}" class="panel-sign">
 
-   </logLayout>
-    <chp-button classes='btn-xm btn-primary' @click="buttonClickHandler">login</chp-button>
+       <div slot="title" class="panel-title-sign mt-xl text-right">
+         <h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i> Sign In</h2>
+       </div>
+       <form class="login-form" v-on:submit="login" slot="body">
+
+         <div class="form-group mb-lg">
+           <div class="clearfix">
+             <label class="pull-left">Username</label>
+           </div>
+           <div class="input-group input-group-icon">
+             <input type="email" name="email"  placeholder="Example input" v-model="email" class="form-control input-lg">
+             <span class="input-group-addon">
+										<span class="icon icon-lg">
+											<i class="fa fa-user"></i>
+										</span>
+									</span>
+           </div>
+         </div>
+
+         <div class="form-group mb-lg">
+           <div class="clearfix">
+             <label class="pull-left">Password</label>
+             <a href="pages-recover-password.html" class="pull-right">Lost Password?</a>
+           </div>
+           <div class="input-group input-group-icon">
+             <input type="password" class="form-control input-lg" name="password"  placeholder="Another input" v-model="password">
+             <span class="input-group-addon">
+										<span class="icon icon-lg">
+											<i class="fa fa-lock"></i>
+										</span>
+									</span>
+           </div>
+         </div>
+
+
+         <div class="row">
+           <div class="col-sm-8">
+             <div class="checkbox-custom checkbox-default">
+               <input id="RememberMe" name="rememberme" type="checkbox">
+               <label for="RememberMe">Remember Me</label>
+             </div>
+           </div>
+           <div class="col-sm-4 text-right">
+             <button type="submit" class="btn btn-primary hidden-xs">Sign In</button>
+             <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign In</button>
+           </div>
+         </div>
+       </form>
+
+
+     </chp-panel>
+
+   </chp-log-layout>
+
   </div>
 </template>
 <script type="text/javascript">
-  import logLayout from 'components/layout/log'
+
+
   import userService from 'services/userService.js'
   export default {
     name: "login",
-    components:{
-        logLayout : logLayout
-    },
     data () {
       return {
 
@@ -83,3 +118,4 @@
   /*email: "wei.bai0736@gmail.com",
    password: "11111111",*/
 </script>
+

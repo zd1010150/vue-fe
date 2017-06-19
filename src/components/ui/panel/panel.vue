@@ -1,9 +1,22 @@
 <template>
   <section class="panel" :class="classes">
-    <chp-panel-header @close="closePanel" @collapse="collapsePanel" :isTransparent="isHeaderTransparent"
-                      :canCollapse="canCollapse" :canClose="canClose" :isOpen="isOpen"></chp-panel-header>
-    <div class="panel-body" ref="panelBody"></div>
-    <div class="panel-footer"></div>
+
+      <chp-panel-header @close="closePanel" @collapse="collapsePanel" :isTransparent="isHeaderTransparent"
+                    :canCollapse="canCollapse" :canClose="canClose">
+
+          <slot name="title"></slot>
+
+      </chp-panel-header>
+
+
+
+    <div class="panel-body" ref="panelBody">
+      <slot name="body"></slot>
+    </div>
+
+    <div class="panel-footer" v-if="hasFooter">
+      <slot name="footer"></slot>
+    </div>
   </section>
 </template>
 
@@ -13,16 +26,15 @@
   export default{
     name: 'chp-panel',
     data(){
-
+      return {};
     },
     computed: {
-
       isOpen (){
         return this.defaultStatus == "open" ? true : false
       },
       classes(){
           return {
-            'panel-collapsed' : !isOpen
+            'panel-collapsed' : !(this.isOpen)
           }
       }
     },
@@ -30,9 +42,25 @@
       chpPanelHeader: panelHeader
     },
     props: {
-      defaultStaus:{
+      defaultStatus:{
           type:String,
           default:"open"
+      },
+      canClose:{
+          type:Boolean,
+          default:true
+      },
+      canCollapse:{
+          type:Boolean,
+          default:true
+      },
+      isHeaderTransparent:{
+          type:Boolean,
+          default:false
+      },
+      hasFooter:{
+        type:Boolean,
+        default:false
       }
     },
     methods: {
@@ -42,16 +70,7 @@
       collapsePanel(){
         this.isOpen = !this.isOpen;
         this.$emit("collapsePanel",this.isOpen);
-      },
-      calculatePadding() {
-        window.requestAnimationFrame(() => {
-          this.height = -this.$el.scrollHeight + 'px';
-
-          window.setTimeout(() => {
-            this.transitionOff = false;
-          });
-        });
-      },
+      }
     }
   }
 

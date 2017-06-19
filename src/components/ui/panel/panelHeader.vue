@@ -1,15 +1,10 @@
 <template>
-    <header class="panel-heading" :class="{panel-heading-transparent : isTransparent}">
+    <header class="panel-heading" :class="classes">
       <div class="panel-actions">
         <a href="javascript:void(0)" class="panel-action panel-action-toggle" v-if="canCollapse" @click.stop = "collapseHandler"></a>
         <a href="javascript:void(0)" class="panel-action panel-action-dismiss" v-if="canClose"  @click.stop = "closeHandler"></a>
       </div>
-      <h2>
-        <slot name="title"></slot>
-      </h2>
-      <p class="panel-subtitle">
-        <slot name="subTitle"></slot>
-      </p>
+      <slot></slot>
       <chp-ink-ripple></chp-ink-ripple>
     </header>
 
@@ -17,7 +12,7 @@
 
 <script>
   export default{
-    name: 'chp-panel',
+    name: 'chp-panel-header',
     props:{
         isTransparent:{
           type:Boolean,
@@ -32,6 +27,13 @@
             default:true
         }
     },
+    computed:{
+      classes(){
+          return {
+              'panel-heading-transparent' : this.isTransparent
+          }
+      }
+    },
     methods:{
         closeHandler(){
             this.$emit("close");
@@ -39,9 +41,6 @@
         collapseHandler(){
             this.$emit("collapse");
         }
-    },
-    mounted:{
-
     }
   }
 

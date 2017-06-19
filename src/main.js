@@ -3,15 +3,21 @@
 
 
 import 'es6-shim'
+import './assets/index.scss'
+
 
 import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
 import i18n from './i18n'
-import './assets/index.scss'
-//global animation
+
+
 import uiComponent from 'components/ui'
+
+import pageComponent from 'components/page'
+
+import layoutComponent from 'components/layout'
 
 import { getStore,syncVuexStateAndLocalStorage } from "./utils/storage.js"
 import {  DEFAULT_LANGUAGE } from "./config/app.config"
@@ -20,8 +26,11 @@ import AuthenService from "services/authenService"
 import UserService from "services/userService"
 
 
+Vue.use(layoutComponent)
+Vue.use(uiComponent)
+Vue.use(pageComponent)
 
-Vue.use(uiComponent);
+
 
 window.vm = new Vue({
   el:"#app",
