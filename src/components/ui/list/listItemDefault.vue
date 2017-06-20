@@ -3,6 +3,7 @@
     <div class="chp-list-item-container">
       <slot></slot>
     </div>
+
   </li>
 </template>
 

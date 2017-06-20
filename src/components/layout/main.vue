@@ -4,9 +4,9 @@
       <chp-top-bar></chp-top-bar>
     </header>
     <div class="inner-wrapper">
-      <aside id="sidebar-left" class="sidebar-left">
+
         <chp-left-side-bar></chp-left-side-bar>
-      </aside>
+
       <section class="content-body">
         <header class="page-header">
           <chp-page-header></chp-page-header>

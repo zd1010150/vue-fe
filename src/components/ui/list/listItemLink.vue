@@ -4,7 +4,7 @@
       <slot />
     </a>
 
-    <chp-ink-ripple :disabled="disabled" />
+    <chp-ink-ripple :chp-disabled="disabled" />
   </li>
 </template>
 

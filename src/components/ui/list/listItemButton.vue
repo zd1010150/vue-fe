@@ -4,7 +4,9 @@
       <slot></slot>
     </div>
 
-    <chp-button type="button" class="chp-button-ghost" :disabled="disabled"></chp-button>
+    <chp-button type="button" class="chp-button-ghost" :disabled="disabled">
+      <chp-ink-ripple :chp-disabled = "disabled"/>
+    </chp-button>
   </li>
 </template>
 
