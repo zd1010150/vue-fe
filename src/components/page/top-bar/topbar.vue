@@ -1,9 +1,7 @@
 <template lang="html">
   <div>
     <div class="logo-container">
-      <a href="../" class="logo">
-        <img src="assets/images/logo-default.png" width="75" height="35" alt="Porto Admin">
-      </a>
+      <chp-button></chp-button>
       <div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html"
            data-fire-event="sidebar-left-opened">
         <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
