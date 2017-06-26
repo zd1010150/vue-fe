@@ -1,28 +1,28 @@
 <i18n>
-  en:
-    topbar:
-      theme: Theme
-      language: Language
-      changeLanguage: Change Language
-      changeTheme: Change Theme
+en:
+
+  theme: "Theme"
+  language: "Language"
+  changeLanguage: "Change Language"
+  changeTheme: "Change Theme"
+  languages:
+      english: "english"
+      chinese: "chinese"
+  themes:
+      dark: "dark"
+      light: "light"
+zh:
+  topbar:
+    theme: "主题"
+    language: "语言"
+    changeLanguage: "更改语言"
+    changeTheme: "更改主题"
     languages:
-      english: english
-      chinese: chinese
+      english: "英语"
+      chinese: "普通话"
     themes:
-      dark: dark
-      light: light
-  zh:
-    topbar:
-      theme: 主题
-      language: 语言
-      changeLanguage: 更改语言
-      changeTheme: 更改主题
-    languages:
-      english: 英语
-      chinese: 普通话
-    themes:
-      dark: 深色
-      light: 浅色
+      dark: "深色"
+      light: "浅色"
 </i18n>
 <template>
   <div class="header-right">
@@ -30,21 +30,24 @@
 
     <span class="separator"></span>
 
-    usernameis :{{ username }}
+
     <button v-on:click="logout">logout</button>
 
-    <label for="language"> {{ $t("topbar.language") }}</label>
 
-    <select class="form-control" name="movie" id="language" v-model="language">
-      <option value="en">{{ $t("topbar.languages.english") }}</option>
-      <option value="zh">{{ $t("topbar.languages.chinese") }}</option>
-    </select>
+      <label for="language"> {{ $t("language") }}</label>
 
-    <label for="theme">{{ $t("topbar.theme")}}</label>
-    <select name="movie" class="form-control" id="theme" v-model="theme">
-      <option value="dark">{{ $t("topbar.themes.dark") }}</option>
-      <option value="">{{ $t("topbar.themes.light") }}</option>
-    </select>
+    <mu-select-field v-model="language" id="language">
+      <mu-menu-item value="en">
+        <span slot="title"> {{ $t("languages.english") }}</span>
+      </mu-menu-item>
+      <mu-menu-item value="zh">
+        <span slot="title">{{ $t("languages.chinese") }}</span>
+      </mu-menu-item>
+
+    </mu-select-field>
+
+
+
     <ul class="notifications">
       <li>
         <a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown">
@@ -142,7 +145,7 @@
                   <figure class="image">
                     <img src="assets/images/!sample-user.jpg" alt="Joseph Junior" class="img-circle">
                   </figure>
-                  <span class="title">Joseph Junior</span>
+                  <span class="title">usernameis :{{ username }}</span>
                   <span class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet lacinia orci. Proin vestibulum eget risus non luctus. Nunc cursus lacinia lacinia. Nulla molestie malesuada est ac tincidunt. Quisque eget convallis diam.</span>
                 </a>
               </li>
@@ -212,6 +215,15 @@
     <span class="separator"></span>
 
     <div id="userbox" class="userbox">
+
+
+      <mu-list>
+        <mu-list-item title="title" subTitle="this is subtitle" toggleNested>
+          <mu-avatar slot="left" src="/static/images/xx.png"/>
+          
+        </mu-list-item>
+      </mu-list>
+
       <chp-menu chp-align-trigger>
         <chp-button chp-menu-trigger class="user-box-trigger-btn">
            <figure class="profile-picture">

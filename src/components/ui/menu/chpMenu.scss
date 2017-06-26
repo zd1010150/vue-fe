@@ -7,6 +7,7 @@ $menu-base-width: 56px;
 }
 
 .chp-menu-content {
+  background-color: $light-color;
   width: $menu-base-width * 3;
   min-width: $menu-base-width * 1.5;
   max-width: $menu-base-width * 7;
@@ -15,7 +16,7 @@ $menu-base-width: 56px;
   overflow-x: hidden;
   overflow-y: auto;
   position: absolute;
-  z-index: 131;
+  z-index: 9999;
   transform: scale(.9, .85) translateZ(0);
   border-radius: 2px;
   box-shadow: $material-shadow-2dp;
@@ -117,4 +118,10 @@ $menu-base-width: 56px;
 
 .chp-menu-backdrop {
   z-index: 130;
+}
+
+html.dark{
+  .chp-menu-content{
+    background-color: $dark-color;
+  }
 }

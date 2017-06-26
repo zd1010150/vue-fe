@@ -9,61 +9,140 @@
       </div>
     </div>
     <chp-scroll-bar wrapper="nav-main-wrapper" vBarInternal="vueScrollInternalBar" vBar="vueScrollBar">
-      <chp-list class="nav-main">
-        <chp-list-item >
-          <a>
-            <i class="fa fa-home" aria-hidden="true">
+      <!--<chp-list class="nav-main">-->
+        <!--<chp-list-item >-->
+          <!--<a>-->
+            <!--<i class="fa fa-home" aria-hidden="true">-->
 
-            </i>
-            <span>News</span>
-          </a>
+            <!--</i>-->
+            <!--<span>News</span>-->
+          <!--</a>-->
+        <!--<chp-list-expand>-->
+            <!--<chp-list>-->
+              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
+            <!--</chp-list>-->
+          <!--</chp-list-expand>-->
+        <!--</chp-list-item>-->
 
+        <!--<chp-list-item >-->
+          <!--<a>-->
+            <!--<i class="fa fa-columns" aria-hidden="true"></i>-->
+            <!--<span>Games</span>-->
+          <!--</a>-->
 
-          <chp-list-expand>
-            <chp-list>
-              <chp-list-item class="chp-inset" >World</chp-list-item>
+          <!--<chp-list-expand >-->
+            <!--<chp-list>-->
+              <!--<chp-list-item class="chp-inset">Console</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset">PC</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset">Phone</chp-list-item>-->
+            <!--</chp-list>-->
+          <!--</chp-list-expand>-->
+        <!--</chp-list-item>-->
 
-            </chp-list>
-          </chp-list-expand>
-        </chp-list-item>
+        <!--<chp-list-item >-->
+          <!--<a>-->
+            <!--<i class="fa fa-columns" aria-hidden="true"></i>-->
+            <!--<span>Video</span>-->
+          <!--</a>-->
+          <!--<chp-list-expand>-->
+            <!--<chp-list>-->
+              <!--<chp-list-item class="chp-inset">Humor</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset">Music</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset">Movies</chp-list-item>-->
+              <!--<chp-list-item class="chp-inset">TV Shows</chp-list-item>-->
+            <!--</chp-list>-->
+          <!--</chp-list-expand>-->
+        <!--</chp-list-item>-->
 
-        <chp-list-item >
-          <a>
-            <i class="fa fa-columns" aria-hidden="true"></i>
-            <span>Games</span>
-          </a>
-
-          <chp-list-expand >
-            <chp-list>
-              <chp-list-item class="chp-inset">Console</chp-list-item>
-              <chp-list-item class="chp-inset">PC</chp-list-item>
-              <chp-list-item class="chp-inset">Phone</chp-list-item>
-            </chp-list>
-          </chp-list-expand>
-        </chp-list-item>
-
-        <chp-list-item >
-          <a>
-            <i class="fa fa-columns" aria-hidden="true"></i>
-            <span>Video</span>
-          </a>
-          <chp-list-expand>
-            <chp-list>
-              <chp-list-item class="chp-inset">Humor</chp-list-item>
-              <chp-list-item class="chp-inset">Music</chp-list-item>
-              <chp-list-item class="chp-inset">Movies</chp-list-item>
-              <chp-list-item class="chp-inset">TV Shows</chp-list-item>
-            </chp-list>
-          </chp-list-expand>
-        </chp-list-item>
-
-        <chp-list-item href="javascript:void(0)">
-          <a>
-            <i class="fa fa-columns" aria-hidden="true"></i>
-            <span>Shop</span>
-          </a>
-        </chp-list-item>
-      </chp-list>
+        <!--<chp-list-item href="javascript:void(0)">-->
+          <!--<a>-->
+            <!--<i class="fa fa-columns" aria-hidden="true"></i>-->
+            <!--<span>Shop</span>-->
+          <!--</a>-->
+        <!--</chp-list-item>-->
+      <!--</chp-list>-->
+      <mu-list>
+        <mu-list-item title="Sent mail">
+          <mu-icon slot="left" value="send"/>
+        </mu-list-item>
+        <mu-list-item title="Drafts">
+          <mu-icon slot="left" value="drafts"/>
+        </mu-list-item>
+        <mu-list-item title="Inbox" toggleNested>
+          <mu-icon slot="left" value="inbox"/>
+          <mu-list-item slot="nested" title="Starred">
+            <mu-icon slot="left" value="grade"/>
+          </mu-list-item>
+          <mu-list-item slot="nested" disabled title="Sent mail" toggleNested>
+            <mu-icon slot="left" value="send"/>
+            <mu-list-item title="Drafts" slot="nested">
+              <mu-icon slot="left" value="drafts"/>
+            </mu-list-item>
+          </mu-list-item>
+          <mu-list-item slot="nested" title="Inbox" toggleNested>
+            <mu-icon slot="left" value="inbox"/>
+            <mu-list-item title="Drafts" slot="nested">
+              <mu-icon slot="left" value="drafts"/>
+            </mu-list-item>
+            <mu-list-item title="Drafts" slot="nested">
+              <mu-icon slot="left" value="drafts"/>
+            </mu-list-item>
+            <mu-list-item title="Drafts" slot="nested">
+              <mu-icon slot="left" value="drafts"/>
+            </mu-list-item>
+            <mu-list-item title="Drafts" slot="nested">
+              <mu-icon slot="left" value="drafts"/>
+              <mu-list-item title="Drafts" slot="nested">
+                <mu-icon slot="left" value="drafts"/>
+              </mu-list-item>
+              <mu-list-item title="Drafts" slot="nested">
+                <mu-icon slot="left" value="drafts"/>
+              </mu-list-item>
+              <mu-list-item title="Drafts" slot="nested">
+                <mu-icon slot="left" value="drafts"/>
+              </mu-list-item>
+              <mu-list-item title="Drafts" slot="nested">
+                <mu-icon slot="left" value="drafts"/>
+              </mu-list-item>
+              <mu-list-item title="Drafts" slot="nested">
+                <mu-icon slot="left" value="drafts"/>
+              </mu-list-item>
+              <mu-list-item title="Drafts" slot="nested">
+                <mu-icon slot="left" value="drafts"/>
+              </mu-list-item>
+              <mu-list-item title="Drafts" slot="nested">
+                <mu-icon slot="left" value="drafts"/>
+              </mu-list-item>
+              <mu-list-item title="Drafts" slot="nested">
+                <mu-icon slot="left" value="drafts"/>
+              </mu-list-item>
+              <mu-list-item title="Drafts" slot="nested">
+                <mu-icon slot="left" value="drafts"/>
+              </mu-list-item>
+              <mu-list-item title="Drafts" slot="nested">
+                <mu-icon slot="left" value="drafts"/>
+              </mu-list-item>
+            </mu-list-item>
+          </mu-list-item>
+        </mu-list-item>
+      </mu-list>
     </chp-scroll-bar>
   </aside>
 </template>
