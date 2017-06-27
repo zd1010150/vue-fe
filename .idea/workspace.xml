@@ -2,290 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3170c4d1-15d3-4e68-8984-850959a5b491" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/ui/core/stylesheets/page-variables.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/ui/muse-ui/customurise.less" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/ui/select/chpOption.vue" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/ui/select/chpSelect.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/ui/select/chpSelect.vue" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/ui/select/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdAvatar/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdAvatar/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdAvatar/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdAvatar/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdBackdrop/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdBackdrop/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdBackdrop/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdBackdrop/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdBottomBar/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdBottomBar/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdBottomBar/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdBottomBar/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdButton/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdButton/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdButton/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdButton/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdButtonToggle/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdButtonToggle/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdButtonToggle/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdButtonToggle/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdCard/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdCard/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdCard/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdCard/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdCheckbox/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdCheckbox/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdCheckbox/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdCheckbox/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdChips/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdChips/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdChips/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdChips/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdCore/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdCore/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdCore/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdCore/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdDialog/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdDialog/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdDialog/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdDialog/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdDivider/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdDivider/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdDivider/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdDivider/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdFile/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdFile/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdFile/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdFile/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdIcon/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdIcon/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdIcon/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdIcon/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdImage/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdImage/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdImage/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdImage/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdInputContainer/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdInputContainer/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdInputContainer/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdInputContainer/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdLayout/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdLayout/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdLayout/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdLayout/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdList/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdList/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdList/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdList/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdMenu/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdMenu/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdMenu/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdMenu/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdProgress/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdProgress/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdProgress/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdProgress/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdRadio/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdRadio/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdRadio/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdRadio/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdRatingBar/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdRatingBar/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdRatingBar/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdRatingBar/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSelect/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSelect/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSelect/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSelect/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSidenav/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSidenav/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSidenav/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSidenav/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSnackbar/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSnackbar/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSnackbar/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSnackbar/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSpeedDial/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSpeedDial/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSpeedDial/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSpeedDial/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSpinner/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSpinner/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSpinner/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSpinner/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSubheader/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSubheader/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSubheader/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSubheader/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSwitch/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSwitch/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSwitch/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdSwitch/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdTable/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdTable/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdTable/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdTable/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdTabs/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdTabs/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdTabs/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdTabs/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdToolbar/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdToolbar/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdToolbar/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdToolbar/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdTooltip/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdTooltip/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdTooltip/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdTooltip/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdWhiteframe/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdWhiteframe/index.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdWhiteframe/index.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/components/mdWhiteframe/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/avatar-2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/avatar.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/avatar.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/card-example.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/card-image-1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/card-image-2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/card-image-3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/card-sky.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/card-weather.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/codepen.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/cover.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/favicon/android-chrome-144x144.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/favicon/android-chrome-192x192.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/favicon/android-chrome-256x256.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/favicon/android-chrome-36x36.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/favicon/android-chrome-384x384.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/favicon/android-chrome-48x48.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/favicon/android-chrome-512x512.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/favicon/android-chrome-72x72.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/favicon/android-chrome-96x96.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/favicon/apple-touch-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/favicon/browserconfig.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/favicon/favicon-16x16.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/favicon/favicon-194x194.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/favicon/favicon-32x32.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/favicon/favicon.ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/favicon/manifest.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/favicon/mstile-150x150.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/favicon/safari-pinned-tab.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/icon-github.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/icon-home-back.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/icon-home-front.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/icon-home.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/icon-menu.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/joker-1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/joker-2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/joker-3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/logo-vue-material-blue-grey.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/logo-vue-material-cyan.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/logo-vue-material-default.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/logo-vue-material-green.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/logo-vue-material-indigo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/logo-vue-material-orange.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/logo-vue-material-purple.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/logo-vue-material-red.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/marcosmoura.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/assets/vue-material-example.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/avatar.1e395e4e.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/base.177a7215.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/bottom-bar.2d4d46e7.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/button-toggle.0142959d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/buttons.7310adbb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/card.09d47de3.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/changelog.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/checkbox.df0c3db6.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/chips.4f56631b.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/dialog.57400fc5.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/docs.46cbc8a3.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/docs.8676a77b.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/file.97313353.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/icon.97bdcb2b.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/image-loader.865d8318.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/ink-ripple.445cf2d1.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/input.54c6e558.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/list.5f4bc382.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/manifest.2bdafc64.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/menu.b088649a.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/progress.b89d8ec8.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/radio.4430ccf6.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/rating-bar.55c9b27a.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/select.6d00f1d5.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/sidenav.5f0b6633.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/snackbar.546d0bc5.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/speed-dial.2c327623.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/spinner.1ee17455.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/subheader.2fa7a7f6.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/switch.71a93979.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/table.7633c1e4.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/tabs.f36cc9b5.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/themes.39f86b3d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/toolbar.f240953f.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/tooltip.0f096931.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/ui-elements.8369bfa7.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/vendor.fe656e39.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/versions.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/docs/whiteframe.885a0ac4.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/vue-material.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/vue-material.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/vue-material.debug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/vendor/vue-material/vue-material.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/ajax/ajax-datatables-sample.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/ajax/ajax-loading-progress.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/ajax/ajax-treeview-children.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/ajax/ajax-treeview-nodes.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/ajax/ajax-treeview-roots.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/ajax/ui-elements-lightbox-ajax.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/ajax/ui-elements-modals-ajax.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/dashboard/examples.dashboard.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/dashboard/examples.landing.dashboard.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/extra/examples.ajax.made.easy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/forms/examples.advanced.form.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/forms/examples.validation.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/forms/examples.wizard.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/layouts/examples.header.menu.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/maps/examples.gmap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/maps/examples.map.builder.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/maps/examples.vector.maps.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/maps/snazzy.themes.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/pages/examples.calendar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/pages/examples.lockscreen.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/pages/examples.mediagallery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/pages/examples.session.timeout.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/pages/examples.timeline.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/tables/examples.datatables.ajax.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/tables/examples.datatables.default.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/tables/examples.datatables.editable.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/tables/examples.datatables.row.with.details.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/tables/examples.datatables.tabletools.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/theme.admin.extension.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/theme.custom.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/theme.init.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/theme.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/ui-elements/examples.charts.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/ui-elements/examples.lightbox.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/ui-elements/examples.loading.overlay.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/ui-elements/examples.loading.progress.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/ui-elements/examples.modals.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/ui-elements/examples.nestable.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/ui-elements/examples.notifications.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/ui-elements/examples.portlets.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/ui-elements/examples.treeview.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/vendor/assets/javascripts/ui-elements/examples.widgets.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/ui/muse-ui/mu-icon.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/ui/muse-ui/variable.less" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/page/top-bar/headerRight.vue" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/index.js" afterPath="$PROJECT_DIR$/config/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/stylesheets/sass/base/_skeleton.scss" afterPath="$PROJECT_DIR$/src/assets/css/stylesheets/sass/base/_skeleton.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/stylesheets/theme.css" afterPath="$PROJECT_DIR$/src/assets/css/stylesheets/theme.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/page/left-side-bar/leftSideBar.vue" afterPath="$PROJECT_DIR$/src/components/page/left-side-bar/leftSideBar.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/page/top-bar/headerRight.vue" afterPath="$PROJECT_DIR$/src/components/page/top-bar/headerRight.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ui/core/stylesheets/variables.scss" afterPath="$PROJECT_DIR$/src/components/ui/core/stylesheets/variables.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ui/index.js" afterPath="$PROJECT_DIR$/src/components/ui/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ui/menu/chpMenu.scss" afterPath="$PROJECT_DIR$/src/components/ui/menu/chpMenu.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router/map/index.js" afterPath="$PROJECT_DIR$/src/router/map/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/main/main.vue" afterPath="$PROJECT_DIR$/src/views/main/main.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/page/top-bar/topbar.vue" afterPath="$PROJECT_DIR$/src/components/page/top-bar/topbar.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ui/muse-ui/customurise.less" afterPath="$PROJECT_DIR$/src/components/ui/muse-ui/customurise.less" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -303,82 +26,32 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/ui/menu/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#36#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="customurise.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/ui/muse-ui/customurise.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="webpack.base.conf.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build/webpack.base.conf.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-745">
+            <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="utils.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build/utils.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-897">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-969">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1498459437000" expanded="true" signature="786:3064" ph="{&quot;@kazupon/vue-i18n-loader&quot;: &quot;^0.1.1&quot;...}" />
-                <marker date="1498459437000" expanded="true" signature="3079:3130" ph="{&quot;node&quot;: &quot;&gt;= 4.0.0&quot;...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/ui/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="24" column="36" lean-forward="false" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main.js">
+      <file leaf-file-name="variable.less" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/ui/muse-ui/variable.less">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#142#159#0" expanded="true" />
-              </folding>
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mu-icon.less" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/ui/muse-ui/mu-icon.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -386,28 +59,72 @@
       <file leaf-file-name="leftSideBar.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/page/left-side-bar/leftSideBar.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1010">
-              <caret line="119" column="29" lean-forward="false" selection-start-line="119" selection-start-column="29" selection-end-line="119" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="headerRight.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/page/top-bar/headerRight.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="222" column="10" lean-forward="false" selection-start-line="222" selection-start-column="10" selection-end-line="222" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/main/main.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-339">
+            <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="topbar.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/page/top-bar/topbar.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="542">
+              <caret line="274" column="0" lean-forward="true" selection-start-line="274" selection-start-column="0" selection-end-line="274" selection-end-column="0" />
+              <folding>
+                <element signature="n#ul#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_buttons.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/assets/css/stylesheets/sass/gui/_buttons.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-931">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="theme-custom.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/assets/css/stylesheets/sass/theme-custom.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2071">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="theme-admin-extension.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/assets/css/stylesheets/sass/theme-admin-extension.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/page/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#57#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -417,7 +134,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>chp-list-expand-indicator</find>
       <find>fonta</find>
       <find>font-size</find>
       <find>.nav-children</find>
@@ -447,6 +163,7 @@
       <find>sidebar-left</find>
       <find>select</find>
       <find>op</find>
+      <find>userbox</find>
     </findStrings>
     <replaceStrings>
       <replace>'</replace>
@@ -486,8 +203,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/ui/list/listItem.js" />
-        <option value="$PROJECT_DIR$/src/components/ui/list/index.js" />
         <option value="$PROJECT_DIR$/src/components/ui/list/listItemExpand.vue" />
         <option value="$PROJECT_DIR$/src/components/ui/list/list.scss" />
         <option value="$PROJECT_DIR$/src/assets/css/stylesheets/sass/base/_menu.scss" />
@@ -511,7 +226,6 @@
         <option value="$PROJECT_DIR$/src/components/ui/list/listItemDefault.vue" />
         <option value="$PROJECT_DIR$/src/components/ui/list/listItemButton.vue" />
         <option value="$PROJECT_DIR$/src/components/ui/chpInkRipple/chpInkRipple.scss" />
-        <option value="$PROJECT_DIR$/src/components/page/top-bar/topbar.vue" />
         <option value="$PROJECT_DIR$/config/index.js" />
         <option value="$PROJECT_DIR$/src/utils/form.js" />
         <option value="$PROJECT_DIR$/src/router/map/index.js" />
@@ -526,7 +240,6 @@
         <option value="$PROJECT_DIR$/src/components/ui/core/stylesheets/page-variables.scss" />
         <option value="$PROJECT_DIR$/src/components/ui/core/stylesheets/variables.scss" />
         <option value="$PROJECT_DIR$/src/components/ui/menu/chpMenu.scss" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/assets/css/stylesheets/sass/base/_sidebar_left_sizing.scss" />
         <option value="$PROJECT_DIR$/src/assets/css/stylesheets/sass/base/_skeleton.scss" />
         <option value="$PROJECT_DIR$/src/main.js" />
@@ -534,9 +247,13 @@
         <option value="$PROJECT_DIR$/src/views/main/main.vue" />
         <option value="$PROJECT_DIR$/src/components/ui/muse-ui/index.js" />
         <option value="$PROJECT_DIR$/src/components/ui/index.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/src/components/page/top-bar/headerRight.vue" />
         <option value="$PROJECT_DIR$/src/components/page/left-side-bar/leftSideBar.vue" />
         <option value="$PROJECT_DIR$/src/components/ui/muse-ui/customurise.less" />
-        <option value="$PROJECT_DIR$/src/components/page/top-bar/headerRight.vue" />
+        <option value="$PROJECT_DIR$/src/components/ui/muse-ui/variable.less" />
+        <option value="$PROJECT_DIR$/src/components/ui/muse-ui/mu-icon.less" />
+        <option value="$PROJECT_DIR$/src/components/page/top-bar/topbar.vue" />
       </list>
     </option>
   </component>
@@ -552,9 +269,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1867" />
-    <option name="height" value="1057" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectView">
     <navigator currentView="Scope" currentSubView="Project Files" proportions="" version="1">
@@ -574,6 +290,56 @@
       <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="External Dependencies">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="/">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Users">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="dan.zhang">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="kiwizhang">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="work">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="cloudhub">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="resources">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="assets">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="less">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="new-less">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
           <PATH>
             <PATH_ELEMENT USER_OBJECT="Root">
               <option name="myItemId" value="" />
@@ -832,6 +598,216 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="components">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="vue-fe">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="assets">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="vue-fe">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="assets">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="css">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="stylesheets">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="vue-fe">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="assets">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="css">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="stylesheets">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="sass">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="vue-fe">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="assets">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="css">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="stylesheets">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="sass">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="vendor">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="vue-fe">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="assets">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="css">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="stylesheets">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="sass">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="gui">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="vue-fe">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="assets">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="css">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="stylesheets">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="sass">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="config">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="vue-fe">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="assets">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="css">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="stylesheets">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="sass">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="base">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -1248,6 +1224,7 @@
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="editor.config.accepted" value="true" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/node_modules/mocha" />
+    <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -1362,12 +1339,12 @@
       <workItem from="1497507664763" duration="56841000" />
       <workItem from="1498096935024" duration="563000" />
       <workItem from="1498175808171" duration="1511000" />
-      <workItem from="1498437793295" duration="17256000" />
+      <workItem from="1498437793295" duration="25421000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="245866000" />
+    <option name="totallyTimeSpent" value="254031000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1379,7 +1356,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1867" height="1057" extended-state="0" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1390,8 +1367,8 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953367" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24052005" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30984455" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23380727" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2960396" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.07623763" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1432,30 +1409,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/ui/button.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ui/core/utils/autocomplete-common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-256">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ui/select/chpOption.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1215">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ui/inputContainer/autocomplete.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1618,24 +1571,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#57#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page/top-bar/topbar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/layout/main.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1679,22 +1614,6 @@
     <entry file="file://$PROJECT_DIR$/src/assets/css/stylesheets/sass/config/_variables.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4294">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/css/stylesheets/sass/theme-custom.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/css/stylesheets/sass/theme-admin-extension.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1748,14 +1667,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-969">
@@ -1772,8 +1683,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#142#159#0" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#142#159#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1783,7 +1694,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#36#0" expanded="true" />
+            <element signature="e#0#36#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1817,24 +1728,8 @@
         <state relative-caret-position="456">
           <caret line="24" column="36" lean-forward="false" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#25#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page/left-side-bar/leftSideBar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1010">
-          <caret line="119" column="29" lean-forward="false" selection-start-line="119" selection-start-column="29" selection-end-line="119" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ui/muse-ui/customurise.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1846,11 +1741,95 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/page/top-bar/headerRight.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="222" column="10" lean-forward="false" selection-start-line="222" selection-start-column="10" selection-end-line="222" selection-end-column="10" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page/left-side-bar/leftSideBar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/stylesheets/sass/gui/_buttons.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-931">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/stylesheets/sass/theme-admin-extension.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/stylesheets/sass/theme-custom.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2071">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ui/muse-ui/customurise.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ui/muse-ui/variable.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ui/muse-ui/mu-icon.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page/top-bar/topbar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="274" column="0" lean-forward="true" selection-start-line="274" selection-start-column="0" selection-end-line="274" selection-end-column="0" />
+          <folding>
+            <element signature="n#ul#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

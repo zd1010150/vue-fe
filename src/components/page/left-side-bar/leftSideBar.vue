@@ -149,7 +149,7 @@
 
 <script>
 export default {
-  name:"sidebar",
+  name:"topbar",
   methods: {
     toggleLeftSidenav() {
       this.$refs.leftSidenav.toggle();

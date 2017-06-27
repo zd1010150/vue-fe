@@ -1,11 +1,5 @@
-@dark-color: #171717;
-@dark-color-hover: #21262d;
 
-@dark-font-color : #abb4be;
-
-@blue-color: #0088CC;
-
-
+@import "variable.less";
 @import "~muse-ui/less/vars.less"; // 默认基础的变量
 
 
@@ -25,7 +19,7 @@
 @disabledColor: fade(@fullWhite, 30%);
 
 // background
-@backgroundColor: @dark-color;
+@backgroundColor: @dark-bg-color;
 @statusBarBackgroundColor: @fullBlack;
 @appbarBackgroundColor: @grey900;
 @dialogBackgroundColor: #424242; // dialogs or cards
@@ -33,6 +27,8 @@
 // icon
 @activeIconColor: fade(@fullWhite, 100%);
 @inActiveIconColor: fade(@fullWhite, 50%);
+@iconSize: 18px;
+
 
 @import "~muse-ui/less/theme-vars.less";  // 默认组件变量
 
@@ -51,3 +47,7 @@
 //修改下拉菜单的选中颜色
 
 @import "~muse-ui/less/theme.less"; // 主题相关的样式
+
+//一些自定义的muse-ui 的样式
+
+@import "mu-icon";
