@@ -18,7 +18,7 @@ export default{
     state.language = language
   },
   [SET_THEME](state,theme){
-    state.language = theme
+    state.theme = theme
 
   },
   [SET_PATH](state,path){

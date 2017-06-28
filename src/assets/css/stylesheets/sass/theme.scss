@@ -20,7 +20,6 @@
 @import "base/nanoscroll";
 @import "base/toolbar";
 @import "base/call_to_action";
-@import "base/vue_scroll_bar";
 
 // GUI
 // -----------------------------------------------------------------------------
@@ -28,7 +27,7 @@
 @import "gui/images";
 @import "gui/buttons";
 @import "gui/notifications";
-@import "gui/userbox";
+/**@import "gui/userbox";**/
 @import "gui/nav_pills";
 @import "gui/pagination";
 @import "gui/progress_bar";

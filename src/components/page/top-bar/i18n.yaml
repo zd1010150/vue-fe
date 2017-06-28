@@ -1,0 +1,22 @@
+en:
+  theme: "Theme"
+  language: "Translation"
+  changeLanguage: "Change Language"
+  changeTheme: "Change Theme"
+  languages:
+    english: "english"
+    chinese: "chinese"
+  themes:
+    dark: "dark"
+    light: "light"
+zh:
+  theme: "主题"
+  language: "多语言"
+  changeLanguage: "更改语言"
+  changeTheme: "更改主题"
+  languages:
+    english: "英语"
+    chinese: "普通话"
+  themes:
+    dark: "深色"
+    light: "浅色"

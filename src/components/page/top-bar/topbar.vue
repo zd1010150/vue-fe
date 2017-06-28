@@ -1,40 +1,25 @@
-<i18n>
-en:
-  theme: "Theme"
-  language: "Language"
-  changeLanguage: "Change Language"
-  changeTheme: "Change Theme"
-  languages:
-    english: "english"
-    chinese: "chinese"
-  themes:
-    dark: "dark"
-    light: "light"
-zh:
-  theme: "主题"
-  language: "语言"
-  changeLanguage: "更改语言"
-  changeTheme: "更改主题"
-  languages:
-    english: "英语"
-    chinese: "普通话"
-  themes:
-    dark: "深色"
-    light: "浅色"
-</i18n>
+<i18n src="./i18n.yaml"></i18n>
 <template>
   <div class="header-right">
-    <label for="language"> {{ $t("language") }}</label>
-
-    <mu-select-field v-model="language" id="language">
-      <mu-menu-item value="en">
-        <span slot="title"> {{ $t("languages.english") }}</span>
+    <mu-select-field @change="switchTheme" class="language-select" >
+      <mu-menu-item value="light">
+        <span slot="title"> {{ $t("themes.light") }}</span>
       </mu-menu-item>
-      <mu-menu-item value="zh">
-        <span slot="title">{{ $t("languages.chinese") }}</span>
+      <mu-menu-item value="dark">
+        <span slot="title">{{ $t("themes.dark") }}</span>
       </mu-menu-item>
-
     </mu-select-field>
+
+      <mu-select-field @change="switchLanguage" :helpText= "selectedLanguageLabel" class="language-select" >
+        <mu-menu-item value="en">
+          <span slot="title"> {{ $t("languages.english") }}</span>
+        </mu-menu-item>
+        <mu-menu-item value="zh">
+          <span slot="title">{{ $t("languages.chinese") }}</span>
+        </mu-menu-item>
+      </mu-select-field>
+
+
 
 
 
@@ -205,25 +190,28 @@ zh:
 
 
     <div id="userbox" class="userbox">
-      <mu-list class="userbox-setting">
-        <mu-list-item title="title" toggleNested>
-          <mu-avatar slot="left" src="/static/images/xx.png"/>
-          <mu-list-item title="My Photo" slot="nested">
-            <mu-icon slot="left" value="perm_media"/>
 
-          </mu-list-item>
-          <mu-list-item title="Setting" slot="nested">
-            <mu-icon slot="left" value="settings"/>
+        <mu-list class="userbox-setting">
+          <mu-list-item title="title" toggleNested nestedListClass="userbox-operation-list">
+            <mu-avatar slot="left" src="/static/images/xx.png"/>
+            <mu-list-item title="My Photo" slot="nested">
+              <mu-icon slot="left" value="perm_media"/>
+            </mu-list-item>
+            <mu-list-item title="Setting" slot="nested" >
+              <mu-icon slot="left" value="settings"/>
+            </mu-list-item>
 
+            <mu-list-item title="Logout" slot="nested" @click = "logout">
+              <mu-icon slot="left" value="power_settings_new"/>
+            </mu-list-item>
           </mu-list-item>
-          <mu-list-item title="Logout" slot="nested" @click = "logout">
-            <mu-icon slot="left" value="power_settings_new"/>
-          </mu-list-item>
-        </mu-list-item>
-      </mu-list>
+        </mu-list>
+
+
 
 
     </div>
+
   </div>
 </template>
 
@@ -233,10 +221,15 @@ zh:
     name: "chpTopBar",
     props: ["username"],
     data(){
-      return {}
+      return {
+
+      }
     },
 
     computed: {
+      selectedLanguageLabel(){
+        return this.$t("language");
+      },
       language: {
         set (newValue){
 
@@ -263,12 +256,50 @@ zh:
 //          this.$router.push("/");
 //        })
         alert("logout");
+      },
+      switchLanguage(language){
+          this.language = language;
+      },
+      switchTheme(theme){
+          this.theme = theme;
       }
     }
+
   }
 </script>
-<style>
-  .userbox-setting{
-    padding-left: 17px;
+<style lang="less">
+  .language-select{
+    width:110px;
+    margin-right: 20px;
+    .mu-text-field-help{
+      top:13px;
+    }
+
   }
+  .notifications{
+    margin:4px 0px 0px;
+  }
+  .userbox{
+    display:inline-block;
+    .mu-item-title{
+      font-size: 1.2rem;
+    }
+    .userbox-setting{
+        overflow:visible;
+        padding:0px;
+    }
+    .userbox-operation-list{
+      position:absolute;
+      overflow: visible;
+      padding:8px 0px 0px;
+      .mu-item-wrapper{
+        &>div{
+             margin-left:0px !important;
+          }
+        .show-left{
+          padding-left:60px;
+        }
+      }
+    }
+}
 </style>

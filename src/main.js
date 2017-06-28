@@ -20,8 +20,8 @@ import pageComponent from 'components/page'
 import layoutComponent from 'components/layout'
 
 import { getStore,syncVuexStateAndLocalStorage } from "./utils/storage.js"
-import {  DEFAULT_LANGUAGE } from "./config/app.config"
-import { SET_USERINFO,SET_TOKEN,SET_PATH } from "./store/mutation-types"
+import {  DEFAULT_LANGUAGE,DEFAULT_THEME } from "./config/app.config"
+import { SET_USERINFO,SET_TOKEN,SET_PATH,SET_LANGUAGE,SET_THEME } from "./store/mutation-types"
 import AuthenService from "services/authenService"
 import UserService from "services/userService"
 
@@ -41,7 +41,9 @@ window.vm = new Vue({
   components: { App },
   mounted(){
     console.log("vue mounted");
-    this.$store.state.language = getStore("language") || DEFAULT_LANGUAGE;
+
+    this.$store.commit(SET_LANGUAGE,getStore("language") || DEFAULT_LANGUAGE);
+    this.$store.commit(SET_THEME,getStore("theme") || DEFAULT_THEME);
     window.onbeforeunload = function () {
       vm.$store.commit(SET_PATH,vm.$router.currentRoute.fullPath)
       syncVuexStateAndLocalStorage(vm.$store.state)

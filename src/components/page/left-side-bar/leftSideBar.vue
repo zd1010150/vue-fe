@@ -9,76 +9,7 @@
       </div>
     </div>
     <chp-scroll-bar wrapper="nav-main-wrapper" vBarInternal="vueScrollInternalBar" vBar="vueScrollBar">
-      <!--<chp-list class="nav-main">-->
-        <!--<chp-list-item >-->
-          <!--<a>-->
-            <!--<i class="fa fa-home" aria-hidden="true">-->
-
-            <!--</i>-->
-            <!--<span>News</span>-->
-          <!--</a>-->
-        <!--<chp-list-expand>-->
-            <!--<chp-list>-->
-              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset" >World</chp-list-item>-->
-            <!--</chp-list>-->
-          <!--</chp-list-expand>-->
-        <!--</chp-list-item>-->
-
-        <!--<chp-list-item >-->
-          <!--<a>-->
-            <!--<i class="fa fa-columns" aria-hidden="true"></i>-->
-            <!--<span>Games</span>-->
-          <!--</a>-->
-
-          <!--<chp-list-expand >-->
-            <!--<chp-list>-->
-              <!--<chp-list-item class="chp-inset">Console</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset">PC</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset">Phone</chp-list-item>-->
-            <!--</chp-list>-->
-          <!--</chp-list-expand>-->
-        <!--</chp-list-item>-->
-
-        <!--<chp-list-item >-->
-          <!--<a>-->
-            <!--<i class="fa fa-columns" aria-hidden="true"></i>-->
-            <!--<span>Video</span>-->
-          <!--</a>-->
-          <!--<chp-list-expand>-->
-            <!--<chp-list>-->
-              <!--<chp-list-item class="chp-inset">Humor</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset">Music</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset">Movies</chp-list-item>-->
-              <!--<chp-list-item class="chp-inset">TV Shows</chp-list-item>-->
-            <!--</chp-list>-->
-          <!--</chp-list-expand>-->
-        <!--</chp-list-item>-->
-
-        <!--<chp-list-item href="javascript:void(0)">-->
-          <!--<a>-->
-            <!--<i class="fa fa-columns" aria-hidden="true"></i>-->
-            <!--<span>Shop</span>-->
-          <!--</a>-->
-        <!--</chp-list-item>-->
-      <!--</chp-list>-->
-      <mu-list>
+      <mu-list class="leftsidebar-menu-list">
         <mu-list-item title="Sent mail">
           <mu-icon slot="left" value="send"/>
         </mu-list-item>
@@ -171,36 +102,15 @@ export default {
 </script>
 
 <style lang="scss">
-.phone-viewport{
-  overflow: hidden;
-}
+
 .nav-main-wrapper{
   max-height:100%;
   overflow:hidden;
   width:300px;
   height:100%;
 }
-.nav-main{
-
-  .chp-list-item.chp-inset {
-    .chp-list-item-container{
-      padding-left: 1.6em;
-    }
-  }
-  .chp-list-expand-container{
-    padding:0px 16px;
-  }
+.leftsidebar-menu-list.mu-list{
+  padding-right: 26px !important;
 }
-html.dark{
-  .nav-main{
-    color: #abb4be;
 
-    i.chp-list-expand-indicator{
-      font-size:1.1rem;
-    }
-    .chp-list-expand-container{
-      background-color: #191c21;
-    }
-  }
-}
 </style>
