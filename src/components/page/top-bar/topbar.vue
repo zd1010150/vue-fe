@@ -1,14 +1,7 @@
 <i18n src="./i18n.yaml"></i18n>
 <template>
   <div class="header-right">
-    <mu-select-field @change="switchTheme" class="language-select" >
-      <mu-menu-item value="light">
-        <span slot="title"> {{ $t("themes.light") }}</span>
-      </mu-menu-item>
-      <mu-menu-item value="dark">
-        <span slot="title">{{ $t("themes.dark") }}</span>
-      </mu-menu-item>
-    </mu-select-field>
+
 
       <mu-select-field @change="switchLanguage" :helpText= "selectedLanguageLabel" class="language-select" >
         <mu-menu-item value="en">
@@ -20,8 +13,8 @@
       </mu-select-field>
 
 
-
-
+    <chp-top-bar-theme></chp-top-bar-theme>
+    <span class="separator"></span>
 
     <ul class="notifications">
       <li>
@@ -187,12 +180,12 @@
       </li>
     </ul>
 
-
+    <span class="separator"></span>
 
     <div id="userbox" class="userbox">
 
         <mu-list class="userbox-setting">
-          <mu-list-item title="title" toggleNested nestedListClass="userbox-operation-list">
+          <mu-list-item title="WEIBAI STEVEN DDDDSDDD" toggleNested nestedListClass="userbox-operation-list">
             <mu-avatar slot="left" src="/static/images/xx.png"/>
             <mu-list-item title="My Photo" slot="nested">
               <mu-icon slot="left" value="perm_media"/>
@@ -216,10 +209,12 @@
 </template>
 
 <script>
-  import {SET_THEME, SET_LANGUAGE} from "store/mutation-types.js"
+  import {SET_LANGUAGE} from "store/mutation-types.js"
+  import ChpTopBarTheme from './theme.vue'
   export default {
     name: "chpTopBar",
     props: ["username"],
+    components : {"chp-top-bar-theme":ChpTopBarTheme},
     data(){
       return {
 
@@ -240,14 +235,6 @@
           return this.$store.state.language;
         }
 
-      },
-      theme: {
-        set(newValue){
-          this.$store.commit(SET_THEME, newValue)
-        },
-        get(){
-          return this.$store.state.theme
-        }
       }
     },
     methods: {
@@ -259,9 +246,6 @@
       },
       switchLanguage(language){
           this.language = language;
-      },
-      switchTheme(theme){
-          this.theme = theme;
       }
     }
 

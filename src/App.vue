@@ -10,7 +10,6 @@
     name: 'app',
     created(){
         console.log("app created");
-
     },
     beforeDestroy(){
       console.log("app beforedestorey");
