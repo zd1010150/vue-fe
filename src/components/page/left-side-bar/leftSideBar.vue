@@ -21,7 +21,7 @@
           <mu-list-item slot="nested" title="Starred">
             <mu-icon slot="left" value="grade"/>
           </mu-list-item>
-          <mu-list-item slot="nested" disabled title="Sent mail" toggleNested>
+          <mu-list-item slot="nested" disabled title="Sent mail very longlong long long div" toggleNested>
             <mu-icon slot="left" value="send"/>
             <mu-list-item title="Drafts" slot="nested">
               <mu-icon slot="left" value="drafts"/>

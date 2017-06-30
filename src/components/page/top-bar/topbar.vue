@@ -3,17 +3,10 @@
   <div class="header-right">
 
 
-      <mu-select-field @change="switchLanguage" :helpText= "selectedLanguageLabel" class="language-select" >
-        <mu-menu-item value="en">
-          <span slot="title"> {{ $t("languages.english") }}</span>
-        </mu-menu-item>
-        <mu-menu-item value="zh">
-          <span slot="title">{{ $t("languages.chinese") }}</span>
-        </mu-menu-item>
-      </mu-select-field>
 
 
-    <chp-top-bar-theme></chp-top-bar-theme>
+   <chp-top-bar-language></chp-top-bar-language>
+    <!--<chp-top-bar-theme></chp-top-bar-theme>-->
     <span class="separator"></span>
 
     <ul class="notifications">
@@ -185,7 +178,7 @@
     <div id="userbox" class="userbox">
 
         <mu-list class="userbox-setting">
-          <mu-list-item title="WEIBAI STEVEN DDDDSDDD" toggleNested nestedListClass="userbox-operation-list">
+          <mu-list-item title="张丹丹丹" toggleNested :open="false" titleClass="username" nestedListClass="userbox-operation-list">
             <mu-avatar slot="left" src="/static/images/xx.png"/>
             <mu-list-item title="My Photo" slot="nested">
               <mu-icon slot="left" value="perm_media"/>
@@ -209,49 +202,34 @@
 </template>
 
 <script>
-  import {SET_LANGUAGE} from "store/mutation-types.js"
+
   import ChpTopBarTheme from './theme.vue'
+  import ChpTopBarLanguage from './language.vue'
+
   export default {
     name: "chpTopBar",
     props: ["username"],
-    components : {"chp-top-bar-theme":ChpTopBarTheme},
+    components : {"chp-top-bar-theme":ChpTopBarTheme,"chp-top-bar-language":ChpTopBarLanguage},
     data(){
       return {
 
       }
     },
 
-    computed: {
-      selectedLanguageLabel(){
-        return this.$t("language");
-      },
-      language: {
-        set (newValue){
 
-          this.$store.commit(SET_LANGUAGE, newValue)
-          this.$i18n.locale = newValue;
-        },
-        get(){
-          return this.$store.state.language;
-        }
-
-      }
-    },
     methods: {
       logout(){
 //        this.$store.dispatch("logout").then(() => {
 //          this.$router.push("/");
 //        })
         alert("logout");
-      },
-      switchLanguage(language){
-          this.language = language;
       }
     }
 
   }
 </script>
 <style lang="less">
+  @import "~lesshat/lesshat.less";
   .language-select{
     width:110px;
     margin-right: 20px;
@@ -265,17 +243,30 @@
   }
   .userbox{
     display:inline-block;
+    margin:0px 17px 0px;
     .mu-item-title{
       font-size: 1.2rem;
     }
     .userbox-setting{
-        overflow:visible;
-        padding:0px;
+      overflow: visible;
+      padding:0px;
+      .mu-item-content{
+        .flex(none);
+        width:63px;
+      }
+
     }
     .userbox-operation-list{
       position:absolute;
       overflow: visible;
       padding:8px 0px 0px;
+      .mu-item-content{
+        .flex(1);
+        width:auto;
+      }
+      .mu-item{
+        padding:16px 0px;
+      }
       .mu-item-wrapper{
         &>div{
              margin-left:0px !important;

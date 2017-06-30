@@ -1,11 +1,13 @@
 <template>
   <section class="body">
-    <header class="header">
-      <chp-top-bar></chp-top-bar>
-    </header>
+
+    <chp-left-side-bar></chp-left-side-bar>
+
     <div class="inner-wrapper">
 
-        <chp-left-side-bar></chp-left-side-bar>
+      <header class="header">
+        <chp-top-bar></chp-top-bar>
+      </header>
 
       <section class="content-body">
         <header class="page-header">
