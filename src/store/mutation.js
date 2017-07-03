@@ -1,3 +1,4 @@
+
 import {SET_USERINFO,ADD_ERROR_INFO,SET_TOKEN,SET_LANGUAGE,SET_THEME,SET_PATH} from "./mutation-types";
 
 
@@ -16,6 +17,7 @@ export default{
   },
   [SET_LANGUAGE](state,language){
     state.language = language
+
   },
   [SET_THEME](state,theme){
     state.theme = theme

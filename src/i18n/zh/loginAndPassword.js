@@ -5,5 +5,6 @@ export default {
     lostPassword : "忘记密码",
     emailAddress : "电子邮箱",
     passwordConfirm : "确认密码"
-  }
+  },
+  logout : "退出"
 }

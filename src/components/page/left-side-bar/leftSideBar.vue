@@ -1,6 +1,7 @@
 <template lang="html">
   <aside id="sidebar-left" class="sidebar-left">
     <div class="sidebar-header">
+      <div class="logo"> <strong>CloudHub Client</strong></div>
       <div class="sidebar-title">
         Navigation
       </div>
@@ -8,6 +9,7 @@
         <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
       </div>
     </div>
+    <chp-left-side-bar></chp-left-side-bar>
     <chp-scroll-bar wrapper="nav-main-wrapper" vBarInternal="vueScrollInternalBar" vBar="vueScrollBar">
       <mu-list class="leftsidebar-menu-list">
         <mu-list-item title="Sent mail">
@@ -79,8 +81,12 @@
 </template>
 
 <script>
+  import profile from "./profile.vue"
 export default {
   name:"topbar",
+  components : {
+    "chp-left-side-bar" : profile
+  },
   methods: {
     toggleLeftSidenav() {
       this.$refs.leftSidenav.toggle();

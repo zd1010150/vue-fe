@@ -7,8 +7,9 @@ en:
     english: "english"
     chinese: "chinese"
   themes:
-    dark: "dark"
-    light: "light"
+    dark: "Dark Theme"
+    light: "Light Theme"
+  logout: "Logout"
 zh:
   theme: "主题"
   language: "多语言"
@@ -18,5 +19,6 @@ zh:
     english: "英语"
     chinese: "普通话"
   themes:
-    dark: "深色"
-    light: "浅色"
+    dark: "深色主题"
+    light: "浅色主题"
+  logout: "退出"

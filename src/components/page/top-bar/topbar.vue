@@ -1,12 +1,11 @@
-<i18n src="./i18n.yaml"></i18n>
+<i18n src="./i18n.yaml">
+
+
+
+
+</i18n>
 <template>
   <div class="header-right">
-
-
-
-
-   <chp-top-bar-language></chp-top-bar-language>
-    <!--<chp-top-bar-theme></chp-top-bar-theme>-->
     <span class="separator"></span>
 
     <ul class="notifications">
@@ -120,161 +119,141 @@
           </div>
         </div>
       </li>
-      <li>
-        <a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown">
-          <i class="fa fa-bell"></i>
-          <span class="badge">3</span>
-        </a>
 
-        <div class="dropdown-menu notification-menu">
-          <div class="notification-title">
-            <span class="pull-right label label-default">3</span>
-            Alerts
-          </div>
-
-          <div class="content">
-            <ul>
-              <li>
-                <a href="#" class="clearfix">
-                  <div class="image">
-                    <i class="fa fa-thumbs-down bg-danger"></i>
-                  </div>
-                  <span class="title">Server is Down!</span>
-                  <span class="message">Just now</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="clearfix">
-                  <div class="image">
-                    <i class="fa fa-lock bg-warning"></i>
-                  </div>
-                  <span class="title">User Locked</span>
-                  <span class="message">15 minutes ago</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="clearfix">
-                  <div class="image">
-                    <i class="fa fa-signal bg-success"></i>
-                  </div>
-                  <span class="title">Connection Restaured</span>
-                  <span class="message">10/10/2016</span>
-                </a>
-              </li>
-            </ul>
-
-            <hr>
-
-            <div class="text-right">
-              <a href="#" class="view-more">View All</a>
-            </div>
-          </div>
-        </div>
-      </li>
     </ul>
 
     <span class="separator"></span>
-
+    <chp-top-bar-language></chp-top-bar-language>
+    <span class="separator"></span>
     <div id="userbox" class="userbox">
 
-        <mu-list class="userbox-setting">
-          <mu-list-item title="张丹丹丹" toggleNested :open="false" titleClass="username" nestedListClass="userbox-operation-list">
-            <mu-avatar slot="left" src="/static/images/xx.png"/>
-            <mu-list-item title="My Photo" slot="nested">
-              <mu-icon slot="left" value="perm_media"/>
-            </mu-list-item>
-            <mu-list-item title="Setting" slot="nested" >
-              <mu-icon slot="left" value="settings"/>
-            </mu-list-item>
-
-            <mu-list-item title="Logout" slot="nested" @click = "logout">
-              <mu-icon slot="left" value="power_settings_new"/>
-            </mu-list-item>
+      <mu-list class="userbox-setting">
+        <mu-list-item title="张丹丹丹" toggleNested :open="false" titleClass="username"
+                      nestedListClass="userbox-operation-list">
+          <mu-avatar slot="left" src="/static/images/xx.png"/>
+          <mu-list-item title="My Photo" slot="nested">
+            <mu-icon slot="left" value="perm_media"/>
           </mu-list-item>
-        </mu-list>
+          <mu-list-item title="Setting" slot="nested">
+            <mu-icon slot="left" value="settings"/>
+          </mu-list-item>
 
+          <mu-list-item :title="$t('logout')" slot="nested" @click="logout">
+            <mu-icon slot="left" value="power_settings_new"/>
+          </mu-list-item>
 
+          <mu-divider />
+          <mu-list-item disableRipple @click="changeTheme('dark')" :title="$t('themes.dark')" slot="nested">
+            <mu-radio  name="theme" nativeValue="dark" v-model="theme" slot="left" @change="changeTheme"/>
+          </mu-list-item>
+          <mu-list-item disableRipple @click="changeTheme('light')" :title="$t('themes.light')" slot="nested">
+            <mu-radio  name="theme" nativeValue="light" v-model="theme" slot="left" @change="changeTheme"/>
+          </mu-list-item>
 
-
+        </mu-list-item>
+      </mu-list>
     </div>
-
   </div>
 </template>
 
 <script>
 
-  import ChpTopBarTheme from './theme.vue'
+  import {SET_THEME} from 'store/mutation-types.js'
   import ChpTopBarLanguage from './language.vue'
+
+  import changeTheme  from 'utils/theme.js'
 
   export default {
     name: "chpTopBar",
     props: ["username"],
-    components : {"chp-top-bar-theme":ChpTopBarTheme,"chp-top-bar-language":ChpTopBarLanguage},
+    components: {"chp-top-bar-language": ChpTopBarLanguage},
     data(){
-      return {
-
-      }
+      return {}
     },
 
-
+    computed: {
+      theme: {
+        set(theme){
+          this.$store.commit(SET_THEME, theme)
+        },
+        get(){
+          return this.$store.state.theme
+        }
+      }
+    },
     methods: {
       logout(){
 //        this.$store.dispatch("logout").then(() => {
 //          this.$router.push("/");
 //        })
         alert("logout");
+      },
+      changeTheme (theme) {
+        this.theme = theme
+        changeTheme(theme)
       }
+    },
+    mounted(){
+
+
+
     }
 
   }
 </script>
 <style lang="less">
   @import "~lesshat/lesshat.less";
-  .language-select{
-    width:110px;
-    margin-right: 20px;
-    .mu-text-field-help{
-      top:13px;
-    }
 
+  .language-select {
+    width: 110px;
+    margin-right: 20px;
+    .mu-text-field-help {
+      top: 13px;
+    }
   }
-  .notifications{
-    margin:4px 0px 0px;
+  .notifications {
+    margin: 4px 0px 0px;
   }
-  .userbox{
-    display:inline-block;
-    margin:0px 17px 0px;
-    .mu-item-title{
+
+  .userbox {
+    display: inline-block;
+    margin: 0px 17px 0px;
+
+    .mu-item-title {
       font-size: 1.2rem;
     }
-    .userbox-setting{
+
+    .userbox-setting {
       overflow: visible;
-      padding:0px;
-      .mu-item-content{
+      padding: 0px;
+      .mu-item-content {
         .flex(none);
-        width:63px;
+        width: 63px;
       }
 
-    }
-    .userbox-operation-list{
-      position:absolute;
-      overflow: visible;
-      padding:8px 0px 0px;
-      .mu-item-content{
-        .flex(1);
-        width:auto;
-      }
-      .mu-item{
-        padding:16px 0px;
-      }
-      .mu-item-wrapper{
-        &>div{
-             margin-left:0px !important;
+      .userbox-operation-list {
+        position: absolute;
+        overflow: visible;
+        padding: 8px 0px 0px;
+        .mu-item-content {
+          .flex(1);
+          width: auto;
+        }
+        .mu-item {
+          padding: 16px 0px;
+        }
+        .mu-item-wrapper {
+
+          &>div{
+            margin-left: 0px !important;
           }
-        .show-left{
-          padding-left:60px;
+
+          .show-left {
+            padding-left: 60px;
+          }
+
         }
       }
     }
-}
+  }
 </style>

@@ -5,5 +5,6 @@ export default {
       lostPassword : "Lost Password",
       emailAddress : "E-mail Address",
       passwordConfirm : "Password Confirmation"
-  }
+  },
+  logout : "Logout"
 }
