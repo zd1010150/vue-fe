@@ -12,7 +12,7 @@
       <mu-avatar src="/static/images/cn.svg" v-else :size="30"/>
     </mu-icon-button>
 
-    <mu-popover :trigger="trigger" ref="languagePopover" :open="open" @close="" :anchorOrigin='{"vertical":"top","horizontal":"left"}' :targetOrigin='{"vertical":"top","horizontal":"left"}'>
+    <mu-popover :trigger="trigger" ref="languagePopover" :open="open" @close="handleClose" :anchorOrigin='{"vertical":"top","horizontal":"left"}' :targetOrigin='{"vertical":"top","horizontal":"left"}'>
       <mu-list  @change="switchLanguage" @itemClick="togglePopover" class="language-list">
         <mu-list-item value="en">
           <mu-avatar src="/static/images/gb.svg" slot="leftAvatar" :size="30"/>
@@ -64,6 +64,9 @@
       },
       switchLanguage(language){
           this.language = language;
+      },
+      handleClose(){
+          this.open = false;
       }
     }
   }

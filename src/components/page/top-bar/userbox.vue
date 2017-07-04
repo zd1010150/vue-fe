@@ -21,7 +21,8 @@
             </div>
             <i class="fa custom-caret"></i>
         </mu-flat-button>
-        <mu-popover :trigger="trigger" :open="open" @close="" popoverClass="userbox-dropdown-menu">
+      
+        <mu-popover :trigger="trigger" :open="open" @close="handleClose" popoverClass="userbox-dropdown-menu">
             <ul class="list-unstyled">
                 <li class="divider"></li>
                 <li>
@@ -36,19 +37,19 @@
                 <li class="divider"></li>
                 <li>
                 	<a href="javascript:void(0)" @click="changeTheme('dark')">
-                		<mu-radio name="theme" nativeValue="dark" v-model="theme" slot="left" @change="changeTheme" class="item-icon"/> 
+                		<mu-radio name="theme" nativeValue="dark" v-model="theme" slot="left" @change="changeTheme" class="item-icon"/>
 						<span style="vertical:middle" class="item-title">{{$t('themes.dark')}}</span>
                 	</a>
-                   
-                    
+
+
                 </li>
                 <li>
                 <a href="javascript:void(0)" @click="changeTheme('light')">
-                		<mu-radio name="theme" nativeValue="light" v-model="theme" slot="left" @change="changeTheme" class="item-icon"/> 
+                		<mu-radio name="theme" nativeValue="light" v-model="theme" slot="left" @change="changeTheme" class="item-icon"/>
 						<span style="vertical:middle" class="item-title">{{$t('themes.light')}}</span>
-                	</a> 
+                	</a>
 
-                
+
 
                 </li>
             </ul>
@@ -91,6 +92,9 @@ import changeTheme  from 'utils/theme.js'
       },
       toggleOperationPopover(){
       		this.open = !this.open
+      },
+      handleClose(){
+          this.open = false;
       }
     }
 	}
@@ -101,7 +105,7 @@ import changeTheme  from 'utils/theme.js'
 	display: none;
 }
 .userbox{
-	
+
 	i{
 		transition : @arrow-rotate-transition;
 	}
