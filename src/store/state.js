@@ -6,5 +6,6 @@ export default {
   theme:getStore("theme") || DEFAULT_THEME,
   errors:[],
   token:null,
-  path:""
+  path:"",
+  leftSideBarStatus:""
 }

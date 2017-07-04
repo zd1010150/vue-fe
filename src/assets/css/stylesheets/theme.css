@@ -4297,7 +4297,12 @@ html.inner-menu-opened .inner-menu-content {
 		left: 300px;
 	}
 }
-
+/**/
+@media only screen and(max-width:767px){
+	.visibel-hidden-xs{
+		visibility: hidden;
+	}
+}
 html.dark .inner-menu-toggle:after,
 html.dark .inner-menu .inner-menu-toggle-inside:after {
 	box-shadow: none;

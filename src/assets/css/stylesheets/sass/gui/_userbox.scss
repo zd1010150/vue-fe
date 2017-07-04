@@ -74,28 +74,23 @@
 // USERBOX OPENED
 // -----------------------------------------------------------------------------
 /* Userbox - Open */
-.userbox.open {
-	& > a {
-		position: relative;
-		z-index: 993;
 
-		.custom-caret:before {
-			content: "\f106";
-		}
-	}
-
-	.dropdown-menu {
+	
+	.userbox-dropdown-menu {
 		border: none;
 		box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.2);
 		@include box-sizing(content-box);
-		left: -11px;
-		padding: 45px 10px 0;
-		top: -10px;
-		width: 100%;
+		
+		padding: 10px 10px 0;
+		
+		width: 186px;
 		z-index: 992;
 
 		li {
 			margin-bottom: 5px;
+			.item-icon,.item-title{
+				vertical-align: middle;
+			}
 		}
 
 		a {
@@ -113,12 +108,12 @@
 		}
 
 		i {
-			@include font-size(17);
+			@include font-size(23);
 			margin-right: 3px;
 			vertical-align: middle;
 		}
 	}
-}
+
 
 // USERBOX MOBILE
 // -----------------------------------------------------------------------------
@@ -144,10 +139,12 @@
 			display: none;
 		}
 
-		&.open .dropdown-menu {
-			left: -5px;
-			padding: 43px 0 0 0;
-		}
+		
+	}
+	.userbox-dropdown-menu{
+		width:125px;
+		margin-left: -12px;
+		margin-top:9px;
 	}
 }
 
@@ -183,16 +180,15 @@ html.header-dark {
 			}
 		}
 
-		.dropdown-menu {
+		
+	}
+}
+.userbox-dropdown-menu {
 			background: lighten( $sidebar-background, 5% );
 
 			.divider {
 				background: $sidebar-background;
 			}
 
-			a {
-				color: $page-header-color;
-			}
+			
 		}
-	}
-}

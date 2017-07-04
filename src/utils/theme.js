@@ -15,7 +15,8 @@ let themes = {
   };
 export default (theme) => {
   let $html = document.querySelector("html");
-  $html.classList.toggle("dark", theme == "dark");
+  $html.classList.toggle("dark",theme == "dark");
+  $html.classList.toggle( "sidebar-light",theme != "dark");
   const styleEl = getThemeStyle()
   styleEl.innerHTML = themes[theme] || ''
 }

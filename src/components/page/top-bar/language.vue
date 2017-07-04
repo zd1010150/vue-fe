@@ -69,19 +69,14 @@
   }
 </script>
 <style lang="less">
-  .toggle-language {
-    display: inline-block;
-    height:48px;
-    vertical-align: middle;
-    .toggle-language-btn{
-      padding:0px 12px;
-      & > div{
-          height:30px;
-          }
-    }
-
-  }
   .language-list{
     width:65px;
+  }
+  .language-select {
+    width: 110px;
+    margin-right: 20px;
+    .mu-text-field-help {
+      top: 13px;
+    }
   }
 </style>

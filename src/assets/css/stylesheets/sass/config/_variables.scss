@@ -82,7 +82,7 @@ $color-quaternary-inverse: #FFF;
 $color-dark: #171717;
 $color-dark-inverse: #FFF;
 
-$body-color: #ecedf0;
+$body-color: #ffffff;
 $sidebar-color: #33363F;
 
 $color-black: #333;
@@ -127,6 +127,7 @@ $magnific-popup-z-index: 10000;
 // sizes
 $header-height: 60px;
 
+ 
 	// notification menu
 	// -----------------
 	// padding
@@ -224,6 +225,10 @@ $sidebar-toggle-width: $sidebar-left-collapsed-width;
 
 // toggle bottom radius
 $sidebar-toggle-bottom-radius: 5px;
+
+//sidebar logo
+
+$header-logo-width:135px;
 
 // =============================================================================
 // SIDEBAR RIGHT

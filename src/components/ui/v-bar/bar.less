@@ -2,6 +2,7 @@
   vue-v-bar 的样式
   https://github.com/luiguild/v-bar
  */
+@import "~assets/less/variable.less";
 html .body{
   .vueScrollInternalBar{
 
@@ -12,11 +13,17 @@ html .body{
     -o-transition: .2s;
     transition: .2s;
     opacity: 1;
-    background-color: #0088CC;
+    background-color: @blue-color;
+    margin-right: 0px;
+
+
   }
   .vueScrollBar{
+    margin-top: 0px;
     width: 4px;
     border-radius: 0;
+    margin-right: 0px;
+    background-color:none;
   }
 }
 

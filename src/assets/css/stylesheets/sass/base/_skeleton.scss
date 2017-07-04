@@ -223,7 +223,7 @@ a:active {
 		.header {
 			position: fixed;
 			z-index: $header-fixed-z-index;
-      left: $sidebar-left-full-width;
+      left: 0;
 		}
 	}
 
@@ -275,7 +275,7 @@ a:active {
 			left: 0;
 			padding-bottom: 50px;
 			position: fixed;
-			top: 0px;
+			top: $header-height;
 
 			.nano-content {
 				padding-bottom: 50px;

@@ -1,23 +1,24 @@
 .sidebar-left {
 	z-index: $sidebar-left-z-index;
-
+	
 	// SIDEBAR HEADER
 	// -----------------------------------------------------------------------------
 	.sidebar-header {
 		position: relative;
 		color: $color-default-inverse;
-		height: $sidebar-top-header-size;
-
+		
+		
 		.sidebar-title {
 			background: $sidebar-background;
 			color: #465162;
 			padding: 15px;
 			@include font-size(13);
+			height: $sidebar-top-header-size;
 		}
 
 		.sidebar-toggle {
 			position: absolute;
-			top: 0;
+			bottom:0;
 			right: 0;
 			width: $sidebar-toggle-width;
 			height: $sidebar-top-header-size;
@@ -40,6 +41,16 @@
 			}
 		}
 
+	}
+	.sidebar-body{
+		height:100%;
+		width:100%;
+		box-shadow: -5px 0 0 #2F3139 inset;
+		background: $sidebar-background;
+		box-shadow: -$sidebar-border-width+1px 0 0 $sidebar-border-color inset;
+		.sidebar-profile{
+			background-color: transparent;
+		}
 	}
 
 	hr.separator {
@@ -264,7 +275,7 @@ html.sidebar-light:not(.dark) {
 			}
 		}
 
-		.nano {
+		.sidebar-body {
 			box-shadow: -5px 0 0 #f6f6f6 inset;
 			background: #FFF;
 		}
