@@ -1,6 +1,6 @@
 
-import dark from 'components/ui/muse-ui/theme-dark.less'
-import light from 'components/ui/muse-ui/theme-light.less'
+import dark from '!!style-loader!raw-loader!less-loader!components/ui/muse-ui/theme-dark.less'
+import light from '!!style-loader!raw-loader!less-loader!components/ui/muse-ui/theme-light.less'
 
 /*import light from 'raw-loader!muse-ui/dist/theme-default.css'
 import dark from 'raw-loader!muse-ui/dist/theme-dark.css'*/
