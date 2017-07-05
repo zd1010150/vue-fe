@@ -1,17 +1,5 @@
-<i18n>
-  en:
-    login:
-      email: "Email"
-      password: "Password"
-      loginError: "Login Fail"
-      getUserInfoError: "Get User information Error"
-  zh:
-    login:
-      email: "电子邮件"
-      password: "密码"
-      loginError: "登录失败"
-      getUserInfoError: "获取用户信息失败"
-</i18n>
+<i18n src="./i18n.yaml"></i18n>
+
 <template>
   <div>
    <chp-log-layout >
@@ -27,7 +15,8 @@
              <label class="pull-left">Username</label>
            </div>
            <div class="input-group input-group-icon">
-             <input type="email" name="email"  placeholder="Example input" v-model="email" class="form-control input-lg">
+          <!--   <input type="email" name="email"  placeholder="Example input" v-model="email" class="form-control input-lg">-->
+             <mu-text-field :hintText="$t('login.placeholderEmail')" v-model="email" class="form-control input-lg" name="email" type="email"/>
              <span class="input-group-addon">
 										<span class="icon icon-lg">
 											<i class="fa fa-user"></i>
@@ -42,7 +31,9 @@
              <a href="pages-recover-password.html" class="pull-right">Lost Password?</a>
            </div>
            <div class="input-group input-group-icon">
-             <input type="password" class="form-control input-lg" name="password"  placeholder="Another input" v-model="password">
+             <mu-text-field :hintText="$t('login.placeholderPwd')" v-model="password" class="form-control input-lg" name="password" type="password"/>
+
+
              <span class="input-group-addon">
 										<span class="icon icon-lg">
 											<i class="fa fa-lock"></i>
@@ -54,13 +45,14 @@
 
          <div class="row">
            <div class="col-sm-8">
-             <div class="checkbox-custom checkbox-default">
-               <input id="RememberMe" name="rememberme" type="checkbox">
-               <label for="RememberMe">Remember Me</label>
+             <div class="">
+               <!--<input id="RememberMe" name="rememberme" type="checkbox">-->
+               <mu-checkbox label="Remember Me" class="demo-checkbox" id="RememberMe" name="rememberme"/>
+               <!--<label for="RememberMe">Remember Me</label>-->
              </div>
            </div>
            <div class="col-sm-4 text-right">
-             <button type="submit" class="btn btn-primary hidden-xs">Sign In</button>
+             <chp-button type="submit" class="btn btn-primary hidden-xs">Sign In</chp-button>
              <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign In</button>
            </div>
          </div>

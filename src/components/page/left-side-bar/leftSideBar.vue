@@ -1,8 +1,8 @@
 <template lang="html">
- 
+
     <aside id="sidebar-left" class="sidebar-left">
       <div class="sidebar-header">
-        
+
         <!-- <div class="sidebar-title">
           Navigation
         </div>
@@ -11,82 +11,20 @@
         </div> -->
       </div>
       <div class="sidebar-body">
-        <chp-left-side-bar></chp-left-side-bar>
-      <chp-scroll-bar wrapper="nav-main-wrapper" vBarInternal="vueScrollInternalBar" vBar="vueScrollBar">
-        <mu-list class="leftsidebar-menu-list">
-          <mu-list-item title="Sent mail">
-            <mu-icon slot="left" value="send"/>
-          </mu-list-item>
-          <mu-list-item title="Drafts">
-            <mu-icon slot="left" value="drafts"/>
-          </mu-list-item>
-          <mu-list-item title="Inbox" toggleNested>
-            <mu-icon slot="left" value="inbox"/>
-            <mu-list-item slot="nested" title="Starred">
-              <mu-icon slot="left" value="grade"/>
-            </mu-list-item>
-            <mu-list-item slot="nested" disabled title="Sent mail very longlong long long div" toggleNested>
-              <mu-icon slot="left" value="send"/>
-              <mu-list-item title="Drafts" slot="nested">
-                <mu-icon slot="left" value="drafts"/>
-              </mu-list-item>
-            </mu-list-item>
-            <mu-list-item slot="nested" title="Inbox" toggleNested>
-              <mu-icon slot="left" value="inbox"/>
-              <mu-list-item title="Drafts" slot="nested">
-                <mu-icon slot="left" value="drafts"/>
-              </mu-list-item>
-              <mu-list-item title="Drafts" slot="nested">
-                <mu-icon slot="left" value="drafts"/>
-              </mu-list-item>
-              <mu-list-item title="Drafts" slot="nested">
-                <mu-icon slot="left" value="drafts"/>
-              </mu-list-item>
-              <mu-list-item title="Drafts" slot="nested">
-                <mu-icon slot="left" value="drafts"/>
-                <mu-list-item title="Drafts" slot="nested">
-                  <mu-icon slot="left" value="drafts"/>
-                </mu-list-item>
-                <mu-list-item title="Drafts" slot="nested">
-                  <mu-icon slot="left" value="drafts"/>
-                </mu-list-item>
-                <mu-list-item title="Drafts" slot="nested">
-                  <mu-icon slot="left" value="drafts"/>
-                </mu-list-item>
-                <mu-list-item title="Drafts" slot="nested">
-                  <mu-icon slot="left" value="drafts"/>
-                </mu-list-item>
-                <mu-list-item title="Drafts" slot="nested">
-                  <mu-icon slot="left" value="drafts"/>
-                </mu-list-item>
-                <mu-list-item title="Drafts" slot="nested">
-                  <mu-icon slot="left" value="drafts"/>
-                </mu-list-item>
-                <mu-list-item title="Drafts" slot="nested">
-                  <mu-icon slot="left" value="drafts"/>
-                </mu-list-item>
-                <mu-list-item title="Drafts" slot="nested">
-                  <mu-icon slot="left" value="drafts"/>
-                </mu-list-item>
-                <mu-list-item title="Drafts" slot="nested">
-                  <mu-icon slot="left" value="drafts"/>
-                </mu-list-item>
-                <mu-list-item title="Drafts" slot="nested">
-                  <mu-icon slot="left" value="drafts"/>
-                </mu-list-item>
-              </mu-list-item>
-            </mu-list-item>
-          </mu-list-item>
-        </mu-list>
-      </chp-scroll-bar>
+        <chp-left-side-bar-profile></chp-left-side-bar-profile>
+        <chp-scroll-bar wrapper="nav-main-wrapper" vBarInternal="vueScrollInternalBar" vBar="vueScrollBar">
+          <chp-left-side-bar-menu></chp-left-side-bar-menu>
+          <chp-left-side-bar-contact></chp-left-side-bar-contact>
+        </chp-scroll-bar>
       </div>
-      
     </aside>
 
 </template>
 
 <script>
-  import profile from "./profile.vue"
+  import Profile from "./profile.vue"
+  import Menu from "./menu.vue"
+  import Contact from "./contact.vue"
 export default {
   name:"topbar",
   data(){
@@ -95,7 +33,9 @@ export default {
     }
   },
   components : {
-    "chp-left-side-bar" : profile
+    "chp-left-side-bar-profile" : Profile,
+    "chp-left-side-bar-menu" : Menu,
+    "chp-left-side-bar-contact" : Contact
   },
   methods: {
     toggleLeftSidenav() {
@@ -120,30 +60,39 @@ export default {
 <style lang="less">
 @import "~assets/less/variable.less";
 .nav-main-wrapper{
-  max-height:100%;
+
+  /*max-height:~"calc(100% - 168px)";*/
   overflow:hidden;
   width:300px;
-  height:100%;
-  
+  height:~"calc(100% - 168px)";
+
 }
 @media only screen and (max-width: 767px){
   .nav-main-wrapper{
-  
+
   width:100%;
-  
-  
+  height:~"calc(100% - 144px)";
+
   }
 }
 .leftsidebar-menu-list.mu-list{
   width:324px;
-  padding:0px 24px 0px 0px !important;
+  /*padding:10px 24px 0px 0px !important;*/
   &>div{
     border-right: 4px solid @sidebar-border-color;
   }
+    .mu-item{
+      &.show-left{
+        padding:12px 12px 12px 52px;
+       }
+       .mu-item-left{
+         left:20px;
+       }
+    }
 }
 html.sidebar-light{
   .leftsidebar-menu-list.mu-list >div{
-  
+
   border-right: none;
  }
 }

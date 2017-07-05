@@ -92,8 +92,7 @@ a:active {
 .page-header {
 	background: $page-header-background;
 	border-bottom: none;
-	border-left: $page-header-border-left-width solid $page-header-border-left-color;
-	box-shadow: 1px ($page-header-border-bottom-width - 1) 0 1px $page-header-border-bottom-color;
+  box-shadow: 1px ($page-header-border-bottom-width - 1) 0 1px $page-header-border-bottom-color;
 	height: $page-header-height;
 	margin: (-$content-body-padding) (-$content-body-padding) $content-body-padding (-$content-body-padding);
 	padding: 0;
@@ -273,7 +272,7 @@ a:active {
 		.sidebar-left {
 			bottom: 0;
 			left: 0;
-			padding-bottom: 50px;
+
 			position: fixed;
 			top: $header-height;
 
@@ -528,7 +527,7 @@ a:active {
 		min-width: 100%;
 		min-width: 100vw;
 		padding-top: $header-height;
-		padding-bottom: 50px;
+
 		position: fixed;
 		overflow: hidden;
 		top: 0;

@@ -1,6 +1,6 @@
-import light from 'components/ui/muse-ui/theme-light.less'
-import dark from 'components/ui/muse-ui/theme-dark.less'
 
+import dark from '../components/ui/muse-ui/theme-dark.less'
+import light from '../components/ui/muse-ui/theme-light.less'
 let themes = {
     light, dark
   },

@@ -2,7 +2,7 @@
   <div class="panel-body sidebar-profile">
     <div class="widget-summary widget-summary-xlg">
       <div class="widget-summary-col widget-summary-col-icon">
-        <mu-avatar src="static/images/xx.png" slot="avatar" :size="80" class="summary-icon bg-primary"/>
+        <mu-avatar src="static/images/xx.jpg" slot="avatar" :size="80" class="summary-icon bg-primary"/>
       </div>
       <div class="widget-summary-col">
         <div class="summary">
@@ -27,13 +27,13 @@
 @import "~assets/less/variable.less";
 
   .sidebar-profile.panel-body{
-    
+
     .widget-summary{
        .summary-footer{
-         
+
         border-top:1px solid @blue-color;
       }
     }
-   
+
   }
 </style>

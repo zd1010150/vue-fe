@@ -59,8 +59,8 @@ module.exports = {
         }
       },
       {
-        test: /components\/ui\/muse-ui\/\.less$/,
-        use: 'raw-loader'
+        test: /components\/ui\/muse-ui\/(.*)\.less$/,
+        loader: 'style!raw!less'
       }
     ]
   },

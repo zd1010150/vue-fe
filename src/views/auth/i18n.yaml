@@ -1,0 +1,16 @@
+en:
+  login:
+    email: "Email"
+    placeholderEmail: "Input Email"
+    placeholderPwd: "Input Password"
+    password: "Password"
+    loginError: "Login Fail"
+    getUserInfoError: "Get User information Error"
+zh:
+    login:
+      email: "电子邮件"
+      placeholderEmail: "请输入电子邮件地址"
+      placeholderPwd: "请输入密码"
+      password: "密码"
+      loginError: "登录失败"
+      getUserInfoError: "获取用户信息失败"
