@@ -1,6 +1,6 @@
 
-import dark from '!!style-loader!raw-loader!less-loader!components/ui/muse-ui/theme-dark.less'
-import light from '!!style-loader!raw-loader!less-loader!components/ui/muse-ui/theme-light.less'
+import dark from '!!raw-loader!less-loader!components/ui/muse-ui/theme-dark.less'
+import light from '!!raw-loader!less-loader!components/ui/muse-ui/theme-light.less'
 
 /*import light from 'raw-loader!muse-ui/dist/theme-default.css'
 import dark from 'raw-loader!muse-ui/dist/theme-dark.css'*/
@@ -8,6 +8,7 @@ import dark from 'raw-loader!muse-ui/dist/theme-dark.css'*/
 let themes = {
     light, dark
   },
+
   getThemeStyle = () => {
     const themeId = 'muse-theme'
     let styleEl = document.getElementById(themeId)
@@ -17,6 +18,7 @@ let themes = {
     document.body.appendChild(styleEl)
     return styleEl
   };
+console.log("themes",JSON.stringify(themes.light),JSON.stringify(themes.dark));
 export default (theme) => {
   let $html = document.querySelector("html");
   $html.classList.toggle("dark",theme == "dark");
