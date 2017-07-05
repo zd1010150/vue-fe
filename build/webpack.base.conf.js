@@ -57,10 +57,6 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      },
-      {
-        test: /components\/ui\/muse-ui\/(.*)\.less$/,
-        loader: 'style!raw!less'
       }
     ]
   },
