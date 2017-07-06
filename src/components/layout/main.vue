@@ -5,13 +5,13 @@
     <div class="inner-wrapper">
 
       <chp-left-side-bar></chp-left-side-bar>
-       <section class="content-body">
+       <section role="main" class="content-body">
         <header class="page-header">
           <chp-page-header></chp-page-header>
         </header>
-       
+
         <slot name="content-body"></slot>
-        
+
       </section>
     </div>
     <aside class="sidebar-right" id="sidebar-right">

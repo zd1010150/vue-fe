@@ -768,3 +768,11 @@ html.dark {
 		border-color: $dark-color-2;
 	}
 }
+
+//input-group-icon
+.input-group-icon .form-control:first-child,
+.input-group-icon .form-control:last-child,
+.input-search .form-control:first-child,
+.input-search .form-control:last-child {
+  border-radius: 4px;
+}

@@ -2,7 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import authRoter from './map/auth'
 import indexRoter from './map/index'
+import uiDemoRouter from './map/uiDemo'
 import _ from "lodash"
+
 import roterhook from './hooks/index'
 Vue.use(Router)
 
@@ -14,7 +16,7 @@ let root = {
   redirect:{ name:"login" }
 };
 
-router.addRoutes(_.concat(authRoter,indexRoter,root));
+router.addRoutes(_.concat(authRoter,indexRoter,root,uiDemoRouter));
 
 roterhook(router);
 

@@ -18,8 +18,9 @@ let themes = {
     document.body.appendChild(styleEl)
     return styleEl
   };
-console.log("themes",JSON.stringify(themes.light),JSON.stringify(themes.dark));
+
 export default (theme) => {
+  console.log(theme,"theme+++");
   let $html = document.querySelector("html");
   $html.classList.toggle("dark",theme == "dark");
   $html.classList.toggle( "sidebar-light",theme != "dark");

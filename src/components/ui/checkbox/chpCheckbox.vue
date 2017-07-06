@@ -1,5 +1,5 @@
 <template>
-  <div class="chp-checkbox" :class="[themeClass, classes]">
+  <div class="chp-checkbox" :class="[classes]">
     <div class="chp-checkbox-container" @click.stop="toggleCheck" tabindex="0">
       <input type="checkbox" :name="name" :id="id" :disabled="disabled" :value="value" :checked="checked" tabindex="-1">
       <chp-ink-ripple :chp-disabled="disabled" />

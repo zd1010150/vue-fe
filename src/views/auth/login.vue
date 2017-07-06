@@ -110,4 +110,9 @@
   /*email: "wei.bai0736@gmail.com",
    password: "11111111",*/
 </script>
+<style>
+  .mu-text-field{
+    font-size:1.2rem;
+  }
+</style>
 
