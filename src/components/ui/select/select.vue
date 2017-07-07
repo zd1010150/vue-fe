@@ -1,5 +1,5 @@
 <template>
-  <div class="chp-select" :class="{selectOpen}">
+  <div class="chp-select form-control" :class="{selectOpen}">
 
     <select-field :name="name" :label="label" :labelFloat="labelFloat" :labelClass="labelClass" :labelFocusClass="labelFocusClass" :disabled="disabled"
                   :hintText="hintText" :hintTextClass="hintTextClass" :helpText="helpText" :helpTextClass="helpTextClass"
@@ -37,6 +37,7 @@
     data(){
         return {
             selectOpen: false
+
         }
     },
     props: {
@@ -93,7 +94,7 @@
       },
       fullWidth: {
         type: Boolean,
-        default: false
+        default: true
       },
       underlineShow: {
         type: Boolean,
@@ -143,28 +144,43 @@
 .chp-select{
   display:inline-block;
   position:relative;
-  &.selectOpen{
-  .fa{
-    transform: rotate(180deg) translate3D(0,0,0);
-
+  padding:4px 0px 6px;
+  .mu-text-field{
+    bottom:3px;
+    padding:0px;
+    .mu-text-field-content{
+      div:nth-child(3){
+        margin-top: -2px;
+        .mu-text-field-line{
+          visibility: hidden;
+        }
+      }
+      .mu-dropDown-menu{
+        padding:0px 12px;
+      }
+    }
   }
-   }
   .fa{
-    font-size:16px;
+    font-size:14px;
     font-weight:bold;
-    
     color:#000011;
     transition : @arrow-rotate-transition;
+    position:absolute;
+    top:10px;
+    right:12px;
     &:before{
        content: "\f0dd";
+       position: relative;
+       bottom: 3px;
      }
-     position:absolute;
-    top:12px;
-right:4px;
-
+  }
+  &.selectOpen{
+    .fa{
+      transform: rotate(180deg) translate3D(0,0,0);
+    }
   }
   .mu-dropDown-menu-icon{
-    display: none;
+    visibility: hidden;
   }
 }
 html.dark .chp-select{

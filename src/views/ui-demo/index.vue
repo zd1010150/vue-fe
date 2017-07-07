@@ -3,94 +3,171 @@
     <div class="row" slot="content-body">
       <div class="col-lg-12">
 
-
-      <h2>Text Field</h2>
-      <form class="form-horizontal form-bordered">
-        <h4>input</h4>
-        <div class="form-group">
-          <label class="col-md-3 control-label">email:</label>
-          <div class="col-md-6">
-            <mu-text-field hintText="text email" class="form-control" name="email" type="email"/>
-          </div>
-        </div>
-        <h4>large input</h4>
-        <div class="form-group">
-          <label class="col-md-3 control-label">email:</label>
-          <div class="col-md-6">
-            <mu-text-field hintText="text email" class="form-control input-lg" name="email" type="email"/>
-          </div>
-        </div>
-        <h4>icon input</h4>
-        <div class="form-group">
-          <label class="control-label col-md-3">Email</label>
-          <div class="col-md-6">
-            <div class="input-group input-group-icon">
-              <mu-text-field hintText="text email" class="form-control" name="email" type="email"/>
-              <span class="input-group-addon">
+        <chp-panel>
+          <template slot="title">Text Field</template>
+          <template slot="subtitle"> input</template>
+          <form slot="body" class="form-horizontal form-bordered">
+            <h4>input</h4>
+            <div class="form-group">
+              <label class="col-md-3 control-label">email:</label>
+              <div class="col-md-6">
+                <mu-text-field hintText="text email" class="form-control" name="email" type="email"/>
+              </div>
+            </div>
+            <h4>large input</h4>
+            <div class="form-group">
+              <label class="col-md-3 control-label">email:</label>
+              <div class="col-md-6">
+                <mu-text-field hintText="text email" class="form-control input-lg" name="email" type="email"/>
+              </div>
+            </div>
+            <h4>icon input</h4>
+            <div class="form-group">
+              <label class="control-label col-md-3">Email</label>
+              <div class="col-md-6">
+                <div class="input-group input-group-icon">
+                  <mu-text-field hintText="text email" class="form-control" name="email" type="email"/>
+                  <span class="input-group-addon">
                 <span class="icon">
                   <i class="fa fa-user"></i>
                 </span>
-							</span>
+              </span>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <h4>large icon input</h4>
-        <div class="form-group">
-          <label class="control-label col-md-3">Email</label>
-          <div class="col-md-6">
-            <div class="input-group input-group-icon">
-              <mu-text-field hintText="text email" class="form-control input-lg" name="email" type="email"/>
-              <span class="input-group-addon">
+            <h4>large icon input</h4>
+            <div class="form-group">
+              <label class="control-label col-md-3">Email</label>
+              <div class="col-md-6">
+                <div class="input-group input-group-icon">
+                  <mu-text-field hintText="text email" class="form-control input-lg" name="email" type="email"/>
+                  <span class="input-group-addon">
                 <span class="icon icon-lg">
                   <i class="fa fa-user"></i>
                 </span>
-							</span>
+              </span>
+                </div>
+              </div>
             </div>
+          </form>
+        </chp-panel>
+        <chp-panel>
+          <template slot="title">Select</template>
+          <template slot="subtitle"> select,radio,check</template>
+          <form slot="body" class="form-horizontal form-bordered">
+            <h4>dropdown select</h4>
+            <div class="form-group">
+              <label class="control-label col-md-3">your faviorate game:</label>
+              <div class="col-md-6">
+                <chp-select v-model="game2">
+                  <mu-menu-item value="1" title="阴阳师"/>
+                  <mu-menu-item value="2" title="影之刃"/>
+                  <mu-menu-item value="3" title="天下HD"/>
+                  <mu-menu-item value="4" title="穿越火线"/>
+                  <mu-menu-item value="5" title="英雄联盟"/>
+                  <mu-menu-item value="6" title="王者荣耀"/>
+                </chp-select>
+              </div>
+            </div>
+            <h4>checkbox(MATERIAL-UI)</h4>
+            <div class="form-group">
+              <div class="col-md-12">
+                <chp-checkbox name="rememberme" v-model="isRememberMe">remeber me</chp-checkbox>
+                <chp-checkbox name="rememberme" v-model="isRememberMe2">remeber me 2</chp-checkbox>
+                <chp-checkbox name="rememberme" v-model="isRememberMe3" disabled>remeber me 2 disabled</chp-checkbox>
+              </div>
+            </div>
+            <h4>radio(MATERIAL-UI)</h4>
+            <div class="form-group">
+              <div class="col-md-12">
+                <chp-radio name="sex" v-model="sex" md-value="male">male</chp-radio>
+                <chp-radio name="sex" v-model="sex" md-value="female">female</chp-radio>
+                <chp-radio name="sex" v-model="sex" md-value="neutral" disabled>neutral</chp-radio>
+              </div>
+            </div>
+          </form>
+        </chp-panel>
+        <chp-panel>
+          <template slot="title">Tabs</template>
+          <template slot="subtitle"> default tabs,step tabs</template>
+          <div slot="body" class="col-md-12 col-lg-12 col-sm-12">
+            <h4>tabs (default)</h4>
+            <div>
+              <chp-tabs :value="activeTab"  :isJustified="true" :isPrimary="true" @change = "handleTabChange">
+                <template slot="header">
+                  <chp-tab-header href="tab1">我是第一个tab</chp-tab-header>
+                  <chp-tab-header href="tab2">我是第2个tab</chp-tab-header>
+                  <chp-tab-header href="tab3">我是第3tab</chp-tab-header>
+                </template>
+                <template slot="content">
+                  <chp-tab-content id="tab1">
+
+                    第一个tab的内容
+                  </chp-tab-content>
+                  <chp-tab-content id="tab2">
+
+                    第2个tab的内容
+                  </chp-tab-content>
+                  <chp-tab-content id="tab3">
+
+                    第3个tab的内容
+                  </chp-tab-content>
+
+                </template>
+
+              </chp-tabs>
+
+            </div>
+            <h4>step tabs</h4>
+            <div>
+              <chp-tabs :value="activeStepTab"  @change = "handleStepTabChange" type="wizard">
+                <template slot="header">
+                  <chp-tab-header href="tab1">我是第一个tab</chp-tab-header>
+                  <chp-tab-header href="tab2">我是第2个tab</chp-tab-header>
+                  <chp-tab-header href="tab3">我是第3tab</chp-tab-header>
+                </template>
+                <template slot="content">
+                  <chp-tab-content id="tab1">
+
+                    第一个tab的内容
+                  </chp-tab-content>
+                  <chp-tab-content id="tab2">
+
+                    第2个tab的内容
+                  </chp-tab-content>
+                  <chp-tab-content id="tab3">
+
+                    第3个tab的内容
+                  </chp-tab-content>
+
+                </template>
+
+              </chp-tabs>
+
+            </div>
+
           </div>
-        </div>
-      </form>
-      <h2>Select </h2>
-
-
-        <form class="form-horizontal form-bordered">
-          <h4>dropdown select</h4>
-          <div class="form-group">
-            <div class="col-md-12">
-              <chp-select v-model="game2">
-                <mu-menu-item value="1" title="阴阳师"/>
-                <mu-menu-item value="2" title="影之刃"/>
-                <mu-menu-item value="3" title="天下HD"/>
-                <mu-menu-item value="4" title="穿越火线"/>
-                <mu-menu-item value="5" title="英雄联盟"/>
-                <mu-menu-item value="6" title="王者荣耀"/>
+        </chp-panel>
+        <chp-panel>
+          <template slot="title">Pagination</template>
+          <template slot="subtitle"> pagination</template>
+          <div slot="body" class="form-horizontal form-bordered">
+            <h4>dropdown select</h4>
+            <div>
+              <chp-select v-model="pageSize" >
+                <mu-menu-item value="10" title="10"/>
+                <mu-menu-item value="20" title="20"/>
+                <mu-menu-item value="30" title="30"/>
+                <mu-menu-item value="40" title="40"/>
               </chp-select>
+              <mu-pagination :total="total" :current="current" @pageChange="handlePageClick" :pageSize = "pageSizeNumber" @pageSizeChange="pageSizeChange">
+              </mu-pagination>
             </div>
+
+
           </div>
-          <h4>checkbox(MATERIAL-UI)</h4>
-          <div class="form-group">
-            <div class="col-md-12">
-              <chp-checkbox name="rememberme" v-model="isRememberMe">remeber me</chp-checkbox>
-              <chp-checkbox name="rememberme" v-model="isRememberMe2">remeber me 2</chp-checkbox>
-              <chp-checkbox name="rememberme" v-model="isRememberMe3" disabled>remeber me 2 disabled</chp-checkbox>
-            </div>
-          </div>
-          <h4>radio(MATERIAL-UI)</h4>
-          <div class="form-group">
-            <div class="col-md-12">
-              <chp-radio name="sex" v-model="sex" md-value="male">male</chp-radio>
-              <chp-radio name="sex" v-model="sex" md-value="female">female</chp-radio>
-              <chp-radio name="sex" v-model="sex" md-value="neutral" disabled>neutral</chp-radio>
-            </div>
-          </div>
-
-
-        </form>
-
-
-
-
-    </div>
-    </div>
+        </chp-panel>
+      </div>
     </div>
   </chp-main-layout>
 
@@ -107,10 +184,23 @@
         isRememberMe: true,
         isRememberMe2: false,
         isRememberMe3: true,
-        sex:"neutral"
+        sex:"neutral",
+        activeTab:"tab1",
+        activeStepTab: "tab1",
+        total: 150,
+        current: 1,
+        pageSizeNumber : 10
       }
     },
     computed: {
+      pageSize:{
+          set(val){
+              this.pageSizeNumber = Number(val);
+          },
+        get(){
+              return this.pageSizeNumber;
+        }
+      } ,
       username (){
         if (this.$store.state.userInfo) {
           return this.$store.state.userInfo.name;
@@ -118,6 +208,20 @@
           return ""
         }
         ;
+      }
+    },
+    methods:{
+      handleTabChange (val) {
+        this.activeTab = val
+      },
+      handleStepTabChange(val) {
+        this.activeStepTab = val
+      },
+      handlePageClick (newIndex) {
+          console.log(newIndex);
+      },
+      pageSizeChange(newPageSize){
+          console.log(newPageSize);
       }
     }
   }

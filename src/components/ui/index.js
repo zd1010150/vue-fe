@@ -7,7 +7,7 @@ import Radio from './radio'
 import DropBack from './backdrop'
 import MuseUI from './muse-ui'
 import Select from './select'
-
+import Tabs from './tabs'
 
 export default function install(Vue) {
   Vue.component('chp-ink-ripple', chpInkRipple)
@@ -17,6 +17,7 @@ export default function install(Vue) {
   Vue.use(MuseUI);
   Vue.use(vBar);
   Vue.use(Select);
+  Vue.use(Tabs);
   Vue.component('chp-button',button)
   Vue.component('chp-panel',panel)
 }

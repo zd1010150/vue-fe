@@ -4,6 +4,7 @@
         <a href="javascript:void(0)" class="panel-action panel-action-toggle" v-if="canCollapse" @click.stop = "collapseHandler"></a>
         <a href="javascript:void(0)" class="panel-action panel-action-dismiss" v-if="canClose"  @click.stop = "closeHandler"></a>
       </div>
+
       <slot></slot>
       <chp-ink-ripple></chp-ink-ripple>
     </header>
