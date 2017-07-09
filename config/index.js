@@ -24,7 +24,7 @@ module.exports = {
   dev: {
     host:'fe.dan.com',
     env: require('./dev.env'),
-    port: 8081,
+    port: 8087,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',

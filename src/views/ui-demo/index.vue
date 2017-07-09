@@ -152,19 +152,31 @@
           <template slot="title">Pagination</template>
           <template slot="subtitle"> pagination</template>
           <div slot="body" class="form-horizontal form-bordered">
-            <h4>dropdown select</h4>
+            <h4>pagination</h4>
             <div>
+              <!--此处的pageSize 传给了pagination-->
               <chp-select v-model="pageSize" >
-                <mu-menu-item value="10" title="10"/>
-                <mu-menu-item value="20" title="20"/>
-                <mu-menu-item value="30" title="30"/>
-                <mu-menu-item value="40" title="40"/>
+                <mu-menu-item :value="10" title="10"/>
+                <mu-menu-item :value="20" title="20"/>
+                <mu-menu-item :value="30" title="30"/>
+                <mu-menu-item :value="40" title="40"/>
               </chp-select>
-              <mu-pagination :total="total" :current="current" @pageChange="handlePageClick" :pageSize = "pageSizeNumber" @pageSizeChange="pageSizeChange">
-              </mu-pagination>
+              <chp-pagination :total="total" :current="current" @pageChange="handlePageClick" :pageSize = "pageSize" @pageSizeChange="pageSizeChange">
+              </chp-pagination>
+
             </div>
 
 
+          </div>
+        </chp-panel>
+        <chp-panel>
+          <template slot="title">DatePicker</template>
+          <template slot="subtitle"></template>
+          <div class="form-horizontal form-hordered" slot="body">
+            <h4>DatePicker</h4>
+            <chp-date-picker container="inline" mode="landscape" hintText="内联横屏模式选择" inputClass="form-control"/>
+
+            <br/>
           </div>
         </chp-panel>
       </div>
@@ -197,7 +209,7 @@
           set(val){
               this.pageSizeNumber = Number(val);
           },
-        get(){
+          get(){
               return this.pageSizeNumber;
         }
       } ,
@@ -221,7 +233,7 @@
           console.log(newIndex);
       },
       pageSizeChange(newPageSize){
-          console.log(newPageSize);
+          console.log("pageSizeChanged:",newPageSize);
       }
     }
   }

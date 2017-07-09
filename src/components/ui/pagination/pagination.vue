@@ -19,18 +19,12 @@
       <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
     </svg>
   </page-item>
-  <select-field  v-if="showSizeChanger" v-model="actualPageSize" :style="{width: '100px'}">
-    <menu-item v-for="item in pageSizeOption" :key="'mt_' + item" :value="item" :title="item + pageSizeChangerText" :style="{width: '100px'}"/>
-  </select-field>
-  <!-- <text-field v-if="showQuickJumper" type="number" hintText="快速跳转" :style="{width: '70px'}" v-model="quickJumpPage" @keyup.native.enter="quickJump"/> -->
+
 </div>
 </template>
 
 <script>
-import pageItem from './pageItem'
-import selectField from '../selectField'
-import textField from '../textField'
-import menuItem from '../menu/menuItem'
+import pageItem from './item'
 export default{
   name: 'mu-pagination',
   props: {
@@ -48,31 +42,13 @@ export default{
     },
     pageSize: {
       type: Number
-    },
-    showSizeChanger: {
-      type: Boolean,
-      default: false
-    },
-    pageSizeOption: {
-      type: Array,
-      default: () => [10, 20, 30, 40]
-    },
-    pageSizeChangerText: {
-      type: String,
-      default: () => ' / 页'
     }
-
-    // showQuickJumper: {
-    //   type: Boolean,
-    //   default: false
-    // }
   },
   data () {
     return {
       leftDisabled: false,
       rightDisabled: false,
       actualCurrent: this.current,
-      actualPageSize: this.defaultPageSize,
       totalPageCount: 0,
       pageList: [],
       quickJumpPage: ''
@@ -84,13 +60,7 @@ export default{
     // 优先使用pageSizeOption,如果props配置了默认值，那么该props无论在父组件
     // 中是否配置该值都不会为undefined,所以需要使用showSizeChanger来做这个判断
     // 才对
-    if (this.showSizeChanger) {
-      this.actualPageSize = this.pageSizeOption[0]
-    } else if (this.pageSize) {
-      this.actualPageSize = this.pageSize
-    }
-
-    this.totalPageCount = Math.ceil(this.total / this.actualPageSize)
+    this.totalPageCount = Math.ceil(this.total / this.pageSize)
     this.pageList = this.calcPageList(this.actualCurrent)
   },
   methods: {
@@ -154,10 +124,7 @@ export default{
     // }
   },
   components: {
-    'page-item': pageItem,
-    'select-field': selectField,
-    'text-field': textField,
-    'menu-item': menuItem
+    'page-item': pageItem
   },
   watch: {
     actualCurrent: function (val) {
@@ -168,7 +135,7 @@ export default{
       this.$emit('pageChange', val)
       this.$emit('page-change', val)
     },
-    actualPageSize: function (val, oldVal) {
+    pageSize: function (val, oldVal) {
       // 如果页面条数改变的时候,对应的当前页也是需要重新计算的,
       // 计算规则是根据当前页的起始索引来计算该索引位于新的pageSize
       // 中的页码
@@ -176,7 +143,7 @@ export default{
       let oldCurrent = this.actualCurrent
       this.actualCurrent = Math.floor(itemIndex / val) + 1
       // 页码条数改变的时候当前页不一定改变,但是我们必须重新计算一些依赖的参数
-      this.totalPageCount = Math.ceil(this.total / this.actualPageSize)
+      this.totalPageCount = Math.ceil(this.total / val)
       if (oldCurrent === this.actualCurrent) {
         this.pageSizeAndTotalChange(oldCurrent)
       }
@@ -190,7 +157,7 @@ export default{
       // 总条数改变的时候当前页不一定改变,但是我们必须重新计算一些依赖的参数,
       // 比如total从10变为11(pageSize=10),那么current没变,不过右前进的按钮应该由
       // disable变为enable的
-      this.totalPageCount = Math.ceil(this.total / this.actualPageSize)
+      this.totalPageCount = Math.ceil(this.total / this.pageSize)
       if (oldCurrent === this.actualCurrent) {
         this.pageSizeAndTotalChange(oldCurrent)
       }
@@ -203,7 +170,7 @@ export default{
 </script>
 
 <style lang="less">
-@import "../styles/import.less";
+
 .mu-pagination{
   display: flex;
   justify-content: flex-start;
@@ -216,7 +183,7 @@ export default{
   height: 24px;
   fill: currentColor;
   user-select: none;
-  transition: all 450ms @easeOutFunction;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);;
 }
 
 </style>
