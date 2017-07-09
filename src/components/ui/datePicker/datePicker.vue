@@ -9,7 +9,7 @@
         :underlineShow="underlineShow" :underlineClass="underlineClass" :underlineFocusClass="underlineFocusClass"/>
       <span class="input-group-addon">
         <span class="icon">
-          <i class="fa fa-calender"></i>
+          <i class="fa fa-calendar"></i>
         </span>
       </span>
     </div>

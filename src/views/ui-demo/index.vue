@@ -174,7 +174,7 @@
           <template slot="subtitle"></template>
           <div class="form-horizontal form-hordered" slot="body">
             <h4>DatePicker</h4>
-            <chp-date-picker container="inline" mode="landscape" hintText="内联横屏模式选择" inputClass="form-control"/>
+            <chp-date-picker container="inline" mode="landscape" hintText="内联横屏模式选择" />
 
             <br/>
           </div>
