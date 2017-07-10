@@ -161,8 +161,7 @@
                 <mu-menu-item :value="30" title="30"/>
                 <mu-menu-item :value="40" title="40"/>
               </chp-select>
-              <chp-pagination :total="total" :current="current" @pageChange="handlePageClick" :pageSize = "pageSize" @pageSizeChange="pageSizeChange">
-              </chp-pagination>
+
 
             </div>
 
@@ -179,6 +178,8 @@
             <br/>
           </div>
         </chp-panel>
+        <ui-toolbar @pageSizeChanged = "pageSizeChanged"></ui-toolbar>
+        <ui-data-table :pageSize = "pageSize"></ui-data-table>
       </div>
     </div>
   </chp-main-layout>
@@ -187,8 +188,13 @@
 
 <script>
 
-
+  import uiToolbar from './toolbar.vue'
+  import dataTable from './datatable.vue'
   export default {
+      components:{
+        'ui-toolbar' : uiToolbar,
+        'ui-data-table' : dataTable
+      },
     data(){
       return {
         radio1: "2",
@@ -199,8 +205,7 @@
         sex:"neutral",
         activeTab:"tab1",
         activeStepTab: "tab1",
-        total: 150,
-        current: 1,
+
         pageSizeNumber : 10
       }
     },
@@ -229,11 +234,9 @@
       handleStepTabChange(val) {
         this.activeStepTab = val
       },
-      handlePageClick (newIndex) {
-          console.log(newIndex);
-      },
-      pageSizeChange(newPageSize){
-          console.log("pageSizeChanged:",newPageSize);
+
+      pageSizeChanged(val){
+          this.pageSizeNumber = Number(val);
       }
     }
   }

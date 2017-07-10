@@ -10,6 +10,9 @@ import Select from './select'
 import Tabs from './tabs'
 import Pagination from './pagination'
 import Datepicker from './datePicker'
+import Toolbar from './toolbar'
+import Tooltip from './tooltip'
+import DataTable from './dataTable'
 export default function install(Vue) {
   Vue.component('chp-ink-ripple', chpInkRipple)
   Vue.use(Checkbox)
@@ -21,6 +24,9 @@ export default function install(Vue) {
   Vue.use(Tabs)
   Vue.use(Pagination)
   Vue.use(Datepicker)
+  Vue.use(Toolbar)
+  Vue.use(Tooltip)
+  Vue.use(DataTable)
   Vue.component('chp-button',button)
   Vue.component('chp-panel',panel)
 }
