@@ -1,9 +1,8 @@
 
-import dark from '!!raw-loader!less-loader!components/ui/muse-ui/theme-dark.less'
-import light from '!!raw-loader!less-loader!components/ui/muse-ui/theme-light.less'
+import dark from '!!raw-loader!less-loader!components/ui/museUI/themeDark.less'
+import light from '!!raw-loader!less-loader!components/ui/museUI/themeLight.less'
 
-/*import light from 'raw-loader!muse-ui/dist/theme-default.css'
-import dark from 'raw-loader!muse-ui/dist/theme-dark.css'*/
+
 
 let themes = {
     light, dark

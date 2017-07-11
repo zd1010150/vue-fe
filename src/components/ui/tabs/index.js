@@ -1,6 +1,6 @@
 import Tabs from './tabs.vue';
-import TabContent from './tab-content.vue'
-import TabHeader from './tab-header.vue'
+import TabContent from './tabContent'
+import TabHeader from './tabHeader'
 
 
 export default function install(Vue) {

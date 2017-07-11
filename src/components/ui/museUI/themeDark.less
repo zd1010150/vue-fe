@@ -1,4 +1,5 @@
-/*light主题*/
+/*dark主题*/
+
 @import "~lesshat/lesshat.less";
 @import "~assets/less/variable.less";
 @import "~muse-ui/less/vars.less"; // 默认基础的变量
@@ -13,22 +14,23 @@
 @darkerAccentColor: @pinkA400;
 @lighterAccentColor: @pinkA100;
 
-@textColor: @light-font-color;
-@secondaryTextColor: fade(@fullBlack, 70%);
+@textColor: @dark-font-color;
+@secondaryTextColor: fade(@fullWhite, 70%);
 @alternateTextColor: #303030;
-@borderColor: fade(@fullWhite, 30%);
-@disabledColor: fade(@fullBlack, 30%);
+@borderColor: @dark-component-border-color;
+@disabledColor: fade(@fullWhite, 30%);
 
 // background
-@backgroundColor: @light-bg-color;
+@backgroundColor: @dark-bg-color;
 @statusBarBackgroundColor: @fullBlack;
 @appbarBackgroundColor: @grey900;
 @dialogBackgroundColor: #424242; // dialogs or cards
 
 // icon
-@activeIconColor: fade(@fullBlack, 100%);
-@inActiveIconColor: fade(@fullBlack, 50%);
+@activeIconColor: fade(@fullWhite, 100%);
+@inActiveIconColor: fade(@fullWhite, 50%);
 @iconSize: 18px;
+
 
 
 
@@ -36,9 +38,9 @@
 
 // 修改组件变量
 @avatarBackgroundColor: lighten(@alternateTextColor, 26%);
-@datePickerHeaderColor: fade(@fullBlack, 12%);
-@timePickerHeaderColor: fade(@fullBlack, 12%);
-@timePickerClockCircleColor: fade(@fullBlack, 12%);
+@datePickerHeaderColor: fade(@fullWhite, 12%);
+@timePickerHeaderColor: fade(@fullWhite, 12%);
+@timePickerClockCircleColor: fade(@fullWhite, 12%);
 @avatarBackgroundColor: lighten(@alternateTextColor, 26%);
 @chipColor: lighten(@alternateTextColor, 12%);
 @floatButtonDisabledColor: lighten(@alternateTextColor, 12%);
@@ -48,7 +50,5 @@
 
 @import "~muse-ui/less/theme.less"; // 主题相关的样式
 
-@import "component-index.less";
 
-
-
+@import "componentIndex.less";

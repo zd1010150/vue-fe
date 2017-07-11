@@ -10,7 +10,7 @@
   export default {
     name: 'chp-table-cell',
     props: {
-      mdNumeric: Boolean
+      chpNumeric: Boolean
     },
     data: () => ({
       hasAction: false
@@ -18,7 +18,7 @@
     computed: {
       classes() {
         return {
-          'chp-numeric': this.mdNumeric,
+          'chp-numeric': this.chpNumeric,
           'chp-has-action': this.hasAction
         };
       }

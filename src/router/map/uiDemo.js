@@ -1,4 +1,4 @@
-import uiDemo from 'views/ui-demo/index'
+import uiDemo from 'views/uiDemo/index'
 
 
 export default [{

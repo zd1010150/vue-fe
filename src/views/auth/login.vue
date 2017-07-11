@@ -114,5 +114,8 @@
   .mu-text-field{
     font-size:1.2rem;
   }
+  .panel-sign .panel-heading{
+    top:7px;
+  }
 </style>
 

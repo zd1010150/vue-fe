@@ -180,6 +180,7 @@
         </chp-panel>
         <ui-toolbar @pageSizeChanged = "pageSizeChanged"></ui-toolbar>
         <ui-data-table :pageSize = "pageSize"></ui-data-table>
+        <ui-dialog></ui-dialog>
       </div>
     </div>
   </chp-main-layout>
@@ -190,10 +191,13 @@
 
   import uiToolbar from './toolbar.vue'
   import dataTable from './datatable.vue'
+  import uiDialog from './dialog.vue'
+
   export default {
       components:{
         'ui-toolbar' : uiToolbar,
-        'ui-data-table' : dataTable
+        'ui-data-table' : dataTable,
+        'ui-dialog' : uiDialog
       },
     data(){
       return {

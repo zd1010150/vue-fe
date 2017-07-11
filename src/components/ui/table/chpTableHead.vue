@@ -2,7 +2,7 @@
   <th class="chp-table-head" :class="classes" @click="changeSort">
     <div class="chp-table-head-container">
       <div class="chp-table-head-text chp-test">
-        <i class="fa fa-arrow-up chp-sortable-icon" aria-hidden="true"></i>
+        <i class="fa fa-arrow-up chp-sortable-icon" aria-hidden="true" v-if="chpSortBy"></i>
 
         <slot></slot>
 

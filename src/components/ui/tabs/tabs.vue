@@ -1,6 +1,6 @@
 <template>
 
-    <div :class="classes">
+    <div :class="classes" class="mu-paper-1">
       <ul  :class="headerClasses">
         <slot name="header"></slot>
       </ul>

@@ -149,8 +149,8 @@
     bottom:3px;
     padding:0px;
     .mu-text-field-content{
-      div:nth-child(3){
-        margin-top: -2px;
+      .mu-dropDown-menu + div{
+        margin-top: -1px;
         .mu-text-field-line{
           visibility: hidden;
         }

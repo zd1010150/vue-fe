@@ -1,18 +1,19 @@
-import vBar from './v-bar';
-import chpInkRipple from './chpInkRipple/chpInkRipple.vue';
-import button from './button.vue';
-import panel from './panel/panel.vue'
+import vBar from './vBar';
+import chpInkRipple from './chpInkRipple/chpInkRipple';
+import button from './button';
+import panel from './panel/panel'
 import Checkbox from './checkbox'
 import Radio from './radio'
 import DropBack from './backdrop'
-import MuseUI from './muse-ui'
+import MuseUI from './museUI'
 import Select from './select'
 import Tabs from './tabs'
 import Pagination from './pagination'
 import Datepicker from './datePicker'
 import Toolbar from './toolbar'
 import Tooltip from './tooltip'
-import DataTable from './dataTable'
+import Table from './table'
+import Dialog from './dialog'
 export default function install(Vue) {
   Vue.component('chp-ink-ripple', chpInkRipple)
   Vue.use(Checkbox)
@@ -26,7 +27,8 @@ export default function install(Vue) {
   Vue.use(Datepicker)
   Vue.use(Toolbar)
   Vue.use(Tooltip)
-  Vue.use(DataTable)
+  Vue.use(Table)
+  Vue.use(Dialog)
   Vue.component('chp-button',button)
   Vue.component('chp-panel',panel)
 }
