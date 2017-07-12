@@ -1,90 +1,152 @@
 <template>
+  <chp-table-card>
 
-      <chp-table-card>
-        <chp-toolbar v-show="!isDisplayFilter">
-          <h1 class="chp-title">Nutrition</h1>
-          <mu-icon-button @click="displayFilter">
+    <!--Table header toolbar begin-->
+    <chp-toolbar v-show="!isDisplayFilterToolbar">
+      <div class="search-row">
+        <div class="col-md-4 col-xs-6 text-left">
+          <chp-select v-model="innerPageSize" class="pageSelect">
+            <mu-menu-item v-for=" (option,index) in pageOptions" :key="index" :value="option" :title="String(option)"></mu-menu-item>
+          </chp-select>
+          <span class="visible-lg"> records per page</span>
+        </div>
+        <div class="col-md-8 col-xs-6 text-right">
+          <mu-icon-button @click="displayFilter" v-if="canFilter">
             <i class="fa fa-filter" aria-hidden="true"></i>
           </mu-icon-button>
+          <template v-if="canAdd">
+            <mu-icon-button @click="openAddDialog"  id="openAddDialogBtn" >
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </mu-icon-button>
+            <chp-dialog chp-open-from="#openAddDialogBtn" chp-close-to="#openAddDialogBtn" ref="addDialog">
+              <slot name="addDialogSlot"></slot>
+              <chp-dialog-actions >
+                <chp-button class="btn btn-primary" @click="createNewObject">Create</chp-button>
+                <chp-button class="btn btn-default " @click="closeDialog('addDialog')">Cancel</chp-button>
+              </chp-dialog-actions>
+            </chp-dialog>
+          </template>
+        </div>
+      </div>
+    </chp-toolbar>
+    <!--Table header toolbar end-->
 
-          <mu-icon-button @click="add">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-          </mu-icon-button>
-        </chp-toolbar>
+    <!--Filter toolbar begin-->
+    <chp-toolbar v-show="isDisplayFilterToolbar">
+      <slot name="filterToolbar"></slot>
+    </chp-toolbar>
+    <!--Filter toolbar end-->
 
-        <chp-toolbar v-show="isDisplayFilter">
-          <slot name="filterToolbar"></slot>
-        </chp-toolbar>
+    <!--Multi operation toolbar begin-->
+    <chp-table-alternate-header chp-selected-label="selected">
+      <slot name="multOperToolbar"></slot>
+    </chp-table-alternate-header>
+    <!--Multi operation toolbar end-->
 
-        <chp-table-alternate-header chp-selected-label="selected">
+    <!--Table begin-->
+    <slot name="table"></slot>
+    <!--Table end-->
 
-          <slot name="multOperToolbar">
+    <!--Pagination begin-->
+    <!--<chp-table-pagination
+      :chp-size="pageSize"
+      :chp-total="rowsTotal"
+      chp-page="1"
+      chp-label="Rows"
+      chp-separator="of"
+      :chp-page-options="pageOptions"
+      @pagination="pagination"
+      @size="pageSizeChange"
+      @page="pageNumberChange"
+      >
+    </chp-table-pagination>-->
+    <chp-pagination
+      class="pagination-bar "
+      :total="rowsTotal"
+      :current="currentPage"
+      :defaultMaxCount = "3"
+      :pageSize="innerPageSize"
+      @pageSizeChange="pageSizeChange"
+      @pageChange="pageNumberChange"
+    ></chp-pagination>
+    <!--Pagination end-->
 
-          </slot>
-        </chp-table-alternate-header>
-        <slot name="table">
-
-        </slot>
-
-        <chp-table-pagination
-          chp-size="5"
-          chp-total="10"
-          chp-page="1"
-          chp-label="Rows"
-          chp-separator="of"
-          :chp-page-options="[5, 10, 25, 50]"
-          @pagination="onPagination"></chp-table-pagination>
-
-      </chp-table-card>
-
-
+  </chp-table-card>
 </template>
 <script>
 
   export default {
     name:"chp-data-table",
+    data(){
+        return {
+          innerPageSize :  this.pageSize
+        };
+    },
     props:{
       pageSize : {
         type: Number,
         default:10
       },
-      isDisplayFilter :{
-          type:Boolean,
-          default: false
+      rowsTotal:{
+        type:Number
       },
-      chpSelection :{
+      currentPage:{
+        type:Number,
+        default:1
+      },
+      pageOptions:{
+          type:Array
+      },
+      canAdd:{
+          type:Boolean,
+          default: true
+      },
+      //是否展示filter按钮
+      canFilter:{
+          type:Boolean,
+          default: true
+      },
+      //是否展示filter tool bar
+      isDisplayFilterToolbar:{
           type:Boolean,
           default: false
       }
     },
-    data: () => ({
-      total: 150,
-      current: 1
-    }),
     methods:{
-      handlePageClick (newIndex) {
-        console.log(newIndex);
+      pageNumberChange (newIndex) {
+        this.$emit("pageNumberChange",newIndex)
       },
       pageSizeChange(newPageSize){
-        console.log("pageSizeChanged:",newPageSize);
+        this.$emit("pageSizeChange",newPageSize)
       },
-      onPagination(){
-
+      pagination(val){
+        this.$emit("pagination",val);
       },
       displayFilter(){
-          this.$emit("displayFilter",true);
+          this.$emit("toggleDisplayFilterToolbar",true);
       },
       selectRow(){
-          this.$emit("displayFilter",false);
-          console.log("selectroww");
+          this.$emit("toggleDisplayFilterToolbar",false);
       },
-      add(){
-          this.$emit("add");
+      openAddDialog(){
+          this.openDialog('addDialog');
+          this.$emit("openAddDialog");
+      },
+      openDialog(ref) {
+        this.$refs[ref].open();
+      },
+      closeDialog(ref) {
+        this.$refs[ref].close();
+      },
+      createNewObject(){
+        this.closeDialog('addDialog')
+        this.$emit("createNewObject");
       }
     }
   }
 </script>
 <style lang="less">
+  @import "~assets/less/variable.less";
   table th, table td{
   /*text-align: center !important;*/
   &:last-child{
@@ -93,5 +155,27 @@
   }
   .edit-icon{
     font-size: 10px !important;
+  }
+  .pageSelect{
+    width:70px;
+    margin:7px 0px;
+    display: inline-block;
+    vertical-align:middle;
+    &+span.visible-lg{
+      display: inline-block !important;
+      vertical-align: middle;
+      }
+  }
+  .search-row{
+    width:100%;
+    &>div{
+        padding:0px;
+        &:nth-child(2){
+          padding:13px 0px;
+         }
+      }
+  }
+  .pagination-bar{
+    height:56px;
   }
 </style>

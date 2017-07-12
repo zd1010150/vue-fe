@@ -1,10 +1,10 @@
 <template>
-  <div class="chp-dialog-container" :class="[ classes]" @keyup.esc.stop="closeOnEsc" tabindex="0">
+  <div class="chp-dialog-container panel" :class="[ classes]" @keyup.esc.stop="closeOnEsc" tabindex="0">
     <div class="chp-dialog" ref="dialog" :style="styles" :class="dialogClasses">
       <slot></slot>
     </div>
 
-    <chp-backdrop class="chp-dialog-backdrop" :class="classes" v-if="mdBackdrop" ref="backdrop" @close="mdClickOutsideToClose && close()"></chp-backdrop>
+    <chp-backdrop class="chp-dialog-backdrop" :class="classes" v-if="chpBackdrop" ref="backdrop" @close="chpClickOutsideToClose && close()"></chp-backdrop>
   </div>
 </template>
 
@@ -17,21 +17,21 @@
   export default {
     name: 'chp-dialog',
     props: {
-      mdClickOutsideToClose: {
+      chpClickOutsideToClose: {
         type: Boolean,
         default: true
       },
-      mdEscToClose: {
+      chpEscToClose: {
         type: Boolean,
         default: true
       },
-      mdBackdrop: {
+      chpBackdrop: {
         type: Boolean,
         default: true
       },
-      mdOpenFrom: String,
-      mdCloseTo: String,
-      mdFullscreen: {
+      chpOpenFrom: String,
+      chpCloseTo: String,
+      chpFullscreen: {
         type: Boolean,
         default: false
       }
@@ -49,9 +49,9 @@
       },
       dialogClasses() {
         return {
-          'chp-fullscreen': this.mdFullscreen,
+          'chp-fullscreen': this.chpFullscreen,
           'chp-transition-off': this.transitionOff,
-          'chp-reference': this.mdOpenFrom || this.mdCloseTo
+          'chp-reference': this.chpOpenFrom || this.chpCloseTo
         };
       },
       styles() {
@@ -93,7 +93,7 @@
       open() {
         document.body.appendChild(this.dialogElement);
         this.transitionOff = true;
-        this.calculateDialogPos(this.mdOpenFrom);
+        this.calculateDialogPos(this.chpOpenFrom);
 
         window.setTimeout(() => {
           this.dialogElement.focus();
@@ -104,7 +104,7 @@
         this.$emit('open');
       },
       closeOnEsc() {
-        if (this.mdEscToClose) {
+        if (this.chpEscToClose) {
           this.close();
         }
       },
@@ -125,7 +125,7 @@
 
             this.transitionOff = true;
             this.dialogTransform = '';
-            this.calculateDialogPos(this.mdCloseTo);
+            this.calculateDialogPos(this.chpCloseTo);
 
             window.setTimeout(() => {
               this.transitionOff = false;

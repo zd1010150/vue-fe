@@ -1,6 +1,11 @@
 <template>
-  <div class="chp-dialog-actions">
-    <slot></slot>
+  <div class="panel-footer">
+    <div class="row">
+      <div class="col-md-12 text-right">
+        <slot></slot>
+      </div>
+    </div>
+
   </div>
 </template>
 

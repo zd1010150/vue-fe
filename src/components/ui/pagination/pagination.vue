@@ -6,11 +6,11 @@
     </svg>
   </page-item>
   <page-item :index="1" @click="handleClick" :isActive="actualCurrent === 1"/>
-  <page-item v-if="totalPageCount > 5 && actualCurrent - 1 >= 4" identifier="backs" @click="handleClick" title="前5页">
+  <page-item v-if="totalPageCount > defaultMaxCount && actualCurrent - 1 >= defaultMaxCount-1" identifier="backs" @click="handleClick" title="前5页">
     <span>...</span>
   </page-item>
   <page-item v-for="item in pageList" :key="item" :index="item" @click="handleClick" :isActive="actualCurrent === item"/>
-  <page-item v-if="totalPageCount > 5 && totalPageCount - actualCurrent >= 4" identifier="forwards" @click="handleClick" title="后5页">
+  <page-item v-if="totalPageCount > defaultMaxCount && totalPageCount - actualCurrent >= defaultMaxCount-1" identifier="forwards" @click="handleClick" title="后5页">
     <span>...</span>
   </page-item>
   <page-item :index="totalPageCount" @click="handleClick" :isActive="actualCurrent === totalPageCount" v-if="totalPageCount !== 1"></page-item>
@@ -26,7 +26,7 @@
 <script>
 import pageItem from './item'
 export default{
-  name: 'mu-pagination',
+
   props: {
     total: {
       type: Number,
@@ -42,6 +42,10 @@ export default{
     },
     pageSize: {
       type: Number
+    },
+    defaultMaxCount: {
+      type:Number,
+      default:5
     }
   },
   data () {
@@ -91,9 +95,9 @@ export default{
 
     calcPageList (current) {
       let pageList = []
-      if (this.totalPageCount > 5) {
-        let left = Math.max(2, current - 2)
-        let right = Math.min(current + 2, this.totalPageCount - 1)
+      if (this.totalPageCount > this.defaultMaxCount) {
+        let left = Math.max(2, current - 1)
+        let right = Math.min(current + 1, this.totalPageCount - 1)
         if (current - 1 < 2) {
           right = 4
         }
@@ -170,11 +174,26 @@ export default{
 </script>
 
 <style lang="less">
+@import "~assets/less/variable.less";
+@media(max-width:@screen-sm-min ){
+  .mu-pagination{
+  padding:0px 15px;
+  .mu-pagination-item{
+    padding:8px 0px;
+    margin:8px 0px;
+    .flex(1);
+    min-width:auto;
+    font-size: inherit;
+    }
+  }
 
+}
 .mu-pagination{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  .display(flex);
+  .justify-content(flex-end);
+  .align-items(center);
+
+
 }
 
 .mu-pagination-svg-icon{

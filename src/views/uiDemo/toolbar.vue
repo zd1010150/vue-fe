@@ -2,7 +2,7 @@
   <chp-panel>
     <template slot="title">Toolbar</template>
     <template slot="subtitle"></template>
-    <div class="form-horizontal form-hordered" slot="body">
+    <div class="form-horizontal form-bordered" slot="body">
       <h4>Toolbar</h4>
       <chp-toolbar>
         <div class="chp-toolbar-container row">

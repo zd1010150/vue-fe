@@ -2,15 +2,26 @@
   <chp-panel>
     <template slot="title">DataTable</template>
     <template slot="subtitle"></template>
-    <div class="form-horizontal form-hordered" slot="body">
+    <div class="form-horizontal form-bordered" slot="body">
       <h4>DatePicker8</h4>
-      <chp-data-table :isDisplayFilter="isDisplayFilter"
-                      @displayFilter="displayFilter"
-                      :chpSelection="chpSelection"
-                      @add="addNewNutrition"
-
+      <chp-data-table :isDisplayFilterToolbar="isDisplayFilterToolbar"
+                      :pageSize = "pageSize"
+                      :rowsTotal = "rowsTotal"
+                      :pageOptions = "pageOptions"
+                      @toggleDisplayFilterToolbar="toggleDisplayFilterToolbar"
+                      @createNewObject="createNewObject"
+                      @pageSizeChange="pageSizeChange"
+                      @pageNumberChange="pageNumberChange"
+                      @pagination = "pagination"
       >
+        <!--新增的dialog begin-->
+        <template slot="addDialogSlot">
+          <chp-dialog-title>Create new Object</chp-dialog-title>
+          <chp-dialog-content>add new</chp-dialog-content>
+        </template>
+        <!--新增的dialog end-->
 
+        <!--过滤的toolbar begin-->
         <div slot="filterToolbar">
           <chp-date-picker container="inline" mode="landscape" hintText="内联横屏模式选择" />
           <chp-date-picker container="inline" mode="landscape" hintText="内联横屏模式选择" />
@@ -24,11 +35,12 @@
           <chp-date-picker container="inline" mode="landscape" hintText="内联横屏模式选择" />
 
           <mu-icon-button @click="closeFilter">
-            <i class="fa fa-times">
-
-            </i>
+            <i class="fa fa-times"></i>
           </mu-icon-button>
         </div>
+        <!--过滤操作的toolbar begin-->
+
+        <!--批量操作的toolbar begin-->
         <div slot="multOperToolbar">
           <mu-icon-button @click="deleteRows">
            <i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -38,7 +50,9 @@
             <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
           </mu-icon-button>
         </div>
-        <chp-table slot="table" chp-sort="calories" chp-sort-type="desc" @select="selectRow">
+        <!--批量操作的toolbar end-->
+
+        <chp-table slot="table" chp-sort="calories" chp-sort-type="desc" @sort="sortRow" @select="selectRow">
           <chp-table-header>
             <chp-table-row>
               <chp-table-head chp-sort-by="dessert">Dessert (100g serving)</chp-table-head>
@@ -72,6 +86,7 @@
                             v-model="nutrition[rowIndex].type"
                             v-if="columnIndex === 'type'"
                             :fullWidth="true"
+                            @change="updateType(rowIndex)"
                 >
 
                   <mu-menu-item value="ice_cream" title="Ice Cream"></mu-menu-item>
@@ -91,11 +106,16 @@
 
 </template>
 <script >
+  import dataTableService from 'services/dataTableService'
   export default{
     data () {
         return{
-          isDisplayFilter : false,
-          chpSelection: true,
+          isDisplayFilterToolbar : false,
+          chpSelection: true, //每一行是否可选
+          selectedRows: [],
+          pageSize:5,
+          rowsTotal:100,
+          pageOptions:[5,20,30],
           nutrition: [
             {
               dessert: 'Frozen yogurt',
@@ -136,23 +156,54 @@
         }
      } ,
     methods : {
+
       closeFilter()
       {
-        this.isDisplayFilter = false;
+        this.isDisplayFilterToolbar = false
       },
-      displayFilter(val){
+      toggleDisplayFilterToolbar(val){
 
-          this.isDisplayFilter = val;
+          this.isDisplayFilterToolbar = val
       },
-      addNewNutrition(){
-
+      createNewObject(){
+          console.log("createNew");
       },
       deleteRows(){
-
+        console.log("delete these rows",this.selectedRows)
       },
-      selectRow(){
-          this.isDisplayFilter = false;
+      selectRow(val){
+          this.isDisplayFilter = false
+          this.selectedRows = val
+      },
+      sortRow({name,type}){
+          console.log("sort",name,type);
+      },
+      getData(){
+        dataTableService.paginQuery();
+      },
+      pageSizeChange(newSize){
+        console.log(newSize);
+      },
+      pageNumberChange(newIndex){
+        console.log(newIndex);
+      },
+      pagination(val){
+          console.log("pagination",val);
+      },
+      updateType(rowIndex){
+        //dataTableService.update();
+        console.log("before",this.nutrition[rowIndex].type);
+        this.$nextTick(()=>{
+          console.log("after",this.nutrition[rowIndex]);
+          var obj = this.nutrition[rowIndex];
+          //dataTableService.update();
+
+        });
       }
+
+    },
+    mounted(){
+
     }
   }
 </script>

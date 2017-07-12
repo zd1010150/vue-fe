@@ -1,7 +1,12 @@
 <template>
-  <div class="chp-dialog-content">
-    <slot></slot>
-  </div>
+
+    <div class="panel-body">
+      <div class="modal-wrapper">
+        <slot></slot>
+      </div>
+
+    </div>
+
 </template>
 
 <script>

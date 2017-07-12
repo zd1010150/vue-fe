@@ -2,7 +2,7 @@
   <chp-panel>
     <template slot="title">Dialog</template>
     <template slot="subtitle">custom,scroll,alert,confirm,prompt</template>
-    <div class="form-horizontal form-hordered" slot="body">
+    <div class="form-horizontal form-bordered" slot="body">
       <h4>Toolbar</h4>
       <chp-dialog-prompt
         :chp-title="prompt.title"
@@ -25,14 +25,14 @@
         </chp-dialog-content>
 
         <chp-dialog-actions>
-          <chp-button class="btn btn-primary " @click="closeDialog('dialog2')">Cancel</chp-button>
+          <chp-button class="btn btn-default " @click="closeDialog('dialog2')">Cancel</chp-button>
           <chp-button class="btn btn-primary" @click="closeDialog('dialog2')">Create</chp-button>
         </chp-dialog-actions>
       </chp-dialog>
 
-      <md-icon-button id="fab" @click="openDialog('dialog2')">
+      <mu-icon-button id="fab" @click="openDialog('dialog2')">
           <i class="fa fa-plus"></i>
-      </md-icon-button>
+      </mu-icon-button>
     </div>
 
   </chp-panel>

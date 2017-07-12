@@ -55,7 +55,7 @@
     },
     data() {
       return {
-        totalItems: 0,
+        totalItems: isNaN(this.chpTotal) ? Number.MAX_SAFE_INTEGER : parseInt(this.chpTotal, 10),
         currentPage: 1,
         currentSize: parseInt(this.chpSize, 10)
       };

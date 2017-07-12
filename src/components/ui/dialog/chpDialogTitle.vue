@@ -1,6 +1,8 @@
 <template>
-  <div class="chp-dialog-title chp-title">
-    <slot></slot>
+  <div class=" panel-heading">
+    <h2 class="panel-title">
+      <slot></slot>
+    </h2>
   </div>
 </template>
 
