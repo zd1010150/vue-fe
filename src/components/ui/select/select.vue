@@ -28,7 +28,7 @@
 
 <script>
   import selectField from 'muse-ui/src/selectField'
-
+  import './select.less'
   export default {
     name: 'chp-select',
     components: {
@@ -139,57 +139,5 @@
   }
 </script>
 
-<style lang="less">
-  @import "~assets/less/transition.less";
-.chp-select{
-  display:inline-block;
-  position:relative;
-  padding:4px 0px 6px;
-  .mu-text-field{
-    bottom:3px;
-    padding:0px;
-    .mu-text-field-content{
-      .mu-dropDown-menu + div{
-        margin-top: -1px;
-        .mu-text-field-line{
-          visibility: hidden;
-        }
-      }
-      .mu-dropDown-menu{
-        padding:0px 12px;
-      }
-    }
-  }
-  .fa{
-    font-size:14px;
-    font-weight:bold;
-    color:#000011;
-    transition : @arrow-rotate-transition;
-    position:absolute;
-    top:10px;
-    right:12px;
-    &:before{
-       content: "\f0dd";
-       position: relative;
-       bottom: 3px;
-     }
-  }
-  &.selectOpen{
-    .fa{
-      transform: rotate(180deg) translate3D(0,0,0);
-    }
-  }
-  .mu-dropDown-menu-icon{
-    visibility: hidden;
-  }
-}
-html.dark .chp-select{
-  .fa{
-    color:#c3c3c3;
-  }
-}
 
-
-
-</style>
 

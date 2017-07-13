@@ -309,3 +309,10 @@ html.fixed {
 .img-thumbnail {
 	width: auto \9;
 }
+
+/* fix control-label*/
+@media (min-width: 768px) {
+  .form-horizontal .control-label {
+    padding-top: 16px;
+  }
+}

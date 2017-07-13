@@ -1,10 +1,21 @@
+@import "~assets/less/variable.less";
 .mu-text-field{
   font-size: 14px;
   height:34px;
   min-height: 34px;
   padding:0px 12px;
+  margin-top: 8px;
   .mu-text-field-content{
     padding:0px;
+  }
+  &.form-control{
+    margin-bottom: 8px !important;
+  }
+  &.form-control.multi-line{
+    height:auto;
+    .mu-text-field-hint,textarea{
+      padding:6px 12px 6px 0px;
+    }
   }
 
 }
@@ -23,4 +34,10 @@
 
   }
 }
-
+.has-error{
+  .mu-text-field{
+    .mu-text-field-line,.mu-text-field-focus-line{
+      background-color: @red-error-color;
+    }
+  }
+}

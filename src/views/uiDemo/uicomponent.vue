@@ -20,6 +20,7 @@
                 <mu-text-field hintText="text email" class="form-control input-lg" name="email" type="email"/>
               </div>
             </div>
+
             <h4>icon input</h4>
             <div class="form-group">
               <label class="control-label col-md-3">Email</label>
@@ -27,13 +28,22 @@
                 <div class="input-group input-group-icon">
                   <mu-text-field hintText="text email" class="form-control" name="email" type="email"/>
                   <span class="input-group-addon">
-                <span class="icon">
-                  <i class="fa fa-user"></i>
-                </span>
-              </span>
+                    <span class="icon">
+                      <i class="fa fa-user"></i>
+                    </span>
+                  </span>
                 </div>
               </div>
             </div>
+            <h4>mutil input</h4>
+            <div class="form-group">
+              <label class="control-label col-md-3">Comment</label>
+              <div class="col-md-6">
+                <mu-text-field hintText="多行文本输入，默认 3行，最大6行" multiLine :rows="3" :rowsMax="6" class="form-control"/>
+              </div>
+            </div>
+
+
             <h4>large icon input</h4>
             <div class="form-group">
               <label class="control-label col-md-3">Email</label>
