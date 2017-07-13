@@ -16,7 +16,6 @@
           </div>
 
          <div class="col-md-10 operaters">
-
            <mu-icon-button >
              <i class="fa fa-search" aria-hidden="true"></i>
            </mu-icon-button>
