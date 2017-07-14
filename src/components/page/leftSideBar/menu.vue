@@ -53,34 +53,33 @@
 </div>
 </template>
 <script>
-export default {
-  data() {
-    return {
-      defaultState: [false, false, false, false, false, false],
-      isItemOpen: [false, false, false, false, false, false],
-      isItemOpenTest: true,
-      open: false
-    }
-  },
-  methods: {
-    menuItemClick(item) {},
-    itemClick(index) {
-
-      var oldIndex = this.isItemOpen.indexOf(true);
-      if(index-1 == oldIndex ){
-        this.isItemOpen.splice(index - 1, 1, false);
-        return;
-      }else{
-        if (oldIndex > -1) {
-          this.isItemOpen.splice(oldIndex, 1, false);
+  export default{
+      data(){
+        return{
+          defaultState:[false,false,false,false,false,false],
+          isItemOpen:[true,false,false,false,false,false],
+          isItemOpenTest:true,
+          open:false,
+          index: 0,
         }
-        console.log(index, oldIndex);
-        this.isItemOpen.splice(index - 1, 1, true);
-        console.log(this.isItemOpen);
-      }
-
-    },
-    openNestedMenuTest() {
+      },
+    methods:{
+      menuItemClick(item){
+      },
+      itemClick(index){
+        // isItemOpen 必须与当前Item状态保持一致才有效
+        // 原来的代码逻辑是不一致的，在点击同一个的时候不管怎样都是false
+        // isItemOpen的值发生变化时才会导致内部状态变化
+        // 内部状态在点击的时候本身就会变化
+        if (index === this.index) {
+          this.isItemOpen.splice(index, 1, !this.isItemOpen[index]);
+        } else {
+          this.isItemOpen.splice(this.index, 1, false);
+          this.index = index;
+          this.isItemOpen.splice(this.index, 1, true);
+        }
+      },
+      openNestedMenuTest(){
 
       this.open = !this.open;
     }
