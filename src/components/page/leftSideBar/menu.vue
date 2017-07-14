@@ -72,14 +72,11 @@
           var oldIndex = this.isItemOpen.indexOf(true);
           if(oldIndex >-1){
             this.isItemOpen.splice(oldIndex,1,false);
-
-            this.$set(this.isItemOpen,oldIndex,false);
           }
           console.log(index,oldIndex);
 
 
            this.isItemOpen.splice(index-1,1,true);
-           this.$set(this.isItemOpen,index-1,true);
            console.log(this.isItemOpen);
 
 
