@@ -9,9 +9,9 @@
 	}
 	z-index: $header-z-index;
 
-	
+
 	.logo-container{
-			
+
 			.logo{
 				    float: left;
    					 margin: 17px 0 0 15px;
@@ -35,19 +35,8 @@
 		display: inline-block;
 		vertical-align: middle;
 	}
-	.toggle-language {
-    display: inline-block;
-    height:48px;
-    vertical-align: middle;
-    .toggle-language-btn{
-      padding:0px 12px;
-      & > div{
-          height:30px;
-          }
-    }
 
-  }
-  
+
 
 	.toggle-sidebar-left {
 		background: $color-primary;
@@ -95,11 +84,6 @@ html.has-left-sidebar-half {
 					width:$header-logo-width;
 				}
 			}
-		}
-		.toggle-language{
-			float:right;
-			margin-right: 5px;
-			margin-top:8px;
 		}
 		.search,
 		.separator {
@@ -178,7 +162,7 @@ html.header-dark {
 // HEADER NAV MENU
 // -----------------------------------------------------------------------------
 /* Header Nav Menu */
-.header {	
+.header {
 	&.header-nav-menu {
 		@media only screen and (min-width: 768px) {
 			.logo {
@@ -291,7 +275,7 @@ html.header-dark {
 				box-shadow: none;
 			}
 		}
-		
+
 		@media (min-width: 992px) {
 			// Header Nav Stripe
 			&.header-nav-stripe {
@@ -401,7 +385,7 @@ html.header-dark {
 			    margin: 0px 14px 0;
 			}
 		}
-		
+
 		// Search Form
 		@media only screen and (min-width: 768px) and (max-width: 1199px) {
 			.search {
@@ -431,7 +415,7 @@ html.header-dark {
 		@media only screen and (min-width: 992px) {
 			.header-right {
 				position: relative;
-			}	
+			}
 		}
 
 		// Header Right get position absolute only on Tablet resolution
@@ -440,7 +424,7 @@ html.header-dark {
 				position: absolute;
 				top: 0;
     			right: 60px;
-			}	
+			}
 		}
 	}
 }
@@ -501,7 +485,7 @@ html.header-dark {
 
 			/* Header Nav Stripe & Header Nav Top Line */
 			@media (min-width: 992px) {
-				&.header-nav-stripe, 
+				&.header-nav-stripe,
 				&.header-nav-top-line {
 					.header-nav-main {
 						nav {

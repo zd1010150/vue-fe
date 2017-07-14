@@ -18,7 +18,7 @@
             <div class="col-md-6">
               <mu-text-field @input="inputHandler" @focus="inputHandler" @blur="inputHandler" @change="inputHandler" hintText="text email" class="form-control" name="email" type="email" required v-model.lazy="model.email"/>
               <field-messages name="email" show="$touched || $submitted">
-                
+
                 <div slot="required" class="error">email is a required field</div>
               </field-messages>
             </div>
@@ -32,6 +32,8 @@
               <chp-checkbox name="rememberme" v-model="isRememberMe3" disabled>乒乓球</chp-checkbox>
             </div>
           </div>
+
+
           <div class="form-group">
             <label  class="col-md-3 control-label">选择爱好:</label>
             <div class="col-md-6">

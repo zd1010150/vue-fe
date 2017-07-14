@@ -1,29 +1,23 @@
-<i18n>
-"zh":
-  "hello": "你好 component"
-"en":
-  "hello": "Hello component"
-</i18n>
-<template>
 
-  <div class="toggle-language">
+<template>
+ <div class="toggle-language">
     <mu-icon-button ref="toggleLanguage" @click="togglePopover" class="toggle-language-btn">
       <mu-avatar src="/static/images/gb.svg" v-if ="language == 'en'" :size="30"/>
       <mu-avatar src="/static/images/cn.svg" v-else :size="30"/>
     </mu-icon-button>
 
-    <mu-popover :trigger="trigger" ref="languagePopover" :open="open" @close="handleClose" :anchorOrigin='{"vertical":"top","horizontal":"left"}' :targetOrigin='{"vertical":"top","horizontal":"left"}'>
-      <mu-list  @change="switchLanguage" @itemClick="togglePopover" class="language-list">
-        <mu-list-item value="en">
-          <mu-avatar src="/static/images/gb.svg" slot="leftAvatar" :size="30"/>
-        </mu-list-item>
-        <mu-list-item value="zh">
-          <mu-avatar src="/static/images/cn.svg" slot="leftAvatar" :size="30"/>
-        </mu-list-item>
-      </mu-list>
+    <mu-popover popoverClass="language-list-wrapper" :trigger="trigger" ref="languagePopover" :open="open" @close="handleClose" :anchorOrigin='{"vertical":"top","horizontal":"middle"}' :targetOrigin='{"vertical":"top","horizontal":"middle"}'>
+      <mu-paper  :zDepth="1" class="paper-wrapper">
+        <mu-list  @change="switchLanguage" @itemClick="togglePopover" class="language-list" :value="language">
+          <mu-list-item value="en">
+            <mu-avatar src="/static/images/gb.svg" slot="leftAvatar" :size="30"/>
+          </mu-list-item>
+          <mu-list-item value="zh" >
+            <mu-avatar src="/static/images/cn.svg" slot="leftAvatar" :size="30"/>
+          </mu-list-item>
+        </mu-list>
+      </mu-paper>
     </mu-popover>
-
-
   </div>
 </template>
 <script>
@@ -72,14 +66,42 @@
   }
 </script>
 <style lang="less">
-  .language-list{
-    width:65px;
-  }
-  .language-select {
-    width: 110px;
-    margin-right: 20px;
-    .mu-text-field-help {
-      top: 13px;
+  @import "~assets/less/variable.less";
+  .toggle-language {
+    display: inline-block;
+    height:30px;
+    line-height: 30px;
+    vertical-align: middle;
+    .toggle-language-btn{
+      width:30px;
+      height:30px;
+      display:inline-block;
     }
   }
+  .mu-popover.language-list-wrapper{
+    background-color: transparent;
+    box-shadow: none;
+    .paper-wrapper{
+      position:relative;
+      top:-12px;
+      left:1px;
+    }
+  }
+  .language-list{
+    width:65px;
+    padding:0px;
+    .mu-item.selected{
+      background-color: @blue-color;
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    .header{
+      .toggle-language{
+        float:right;
+        margin-right: 20px;
+        margin-top:17px;
+      }
+    }
+  }
+
 </style>

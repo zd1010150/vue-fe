@@ -83,7 +83,7 @@ export default {
   }
     .mu-item{
       &.show-left{
-        padding:12px 12px 12px 52px;
+        padding:12px 25px 12px 25px;
        }
        .mu-item-left{
          left:20px;

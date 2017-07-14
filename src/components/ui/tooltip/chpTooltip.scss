@@ -6,7 +6,7 @@ $tooltip-height: 20px;
   height: $tooltip-height;
   padding: 0 8px;
   position: fixed;
-  z-index: 200;
+  z-index: 10000;
   pointer-events: none;
   background-color: rgba(#616161, .87);
   border-radius: 2px;

@@ -1,25 +1,17 @@
 <i18n src="./i18n.yaml"></i18n>
 <template>
     <div id="userbox" class="userbox" :class="{opened:open}">
-    	<!-- <a href="javascript:void(0)" @click="toggleOperationPopover" >
-            <figure class="profile-picture">
-                <img src="/static/images/xx.png" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg">
-            </figure>
-            <div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
-                <span class="name">John Doe Junior</span>
-                <span class="role">administrator</span>
-            </div>
-            <i class="fa custom-caret"></i>
-        </a> -->
-        <mu-flat-button label=""  href="javascript:void(0)" @click="toggleOperationPopover"  ref="toggleBtn" :rippleOpacity="0">
+    	<mu-flat-button class="userbox-toggle-btn" tag="div"  href="javascript:void(0)" @click="toggleOperationPopover"  ref="toggleBtn" >
         	<figure class="profile-picture">
                 <img src="/static/images/xx.jpg" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg">
             </figure>
             <div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
-                <span class="name">John Doe Junior</span>
-                <span class="role">administrator</span>
+                <span class="name word-wrap" >George Calton errrerrrrr</span>
+                <span class="role"> 普通用户</span>
+
             </div>
             <i class="fa custom-caret"></i>
+        <chp-tooltip chp-direction="bottom">George Calton</chp-tooltip>
         </mu-flat-button>
 
         <mu-popover :trigger="trigger" :open="open" @close="handleClose" popoverClass="userbox-dropdown-menu">
@@ -32,25 +24,20 @@
                     <a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i class="fa fa-lock"></i> Lock Screen</a>
                 </li>
                 <li>
-                    <a role="menuitem" tabindex="-1" href="pages-signin.html"><i class="fa fa-power-off"></i> Logout</a>
+                    <a role="menuitem" tabindex="-1" href="pages-signin.html" class="logout-item"><i class="fa fa-power-off"></i> Logout</a>
                 </li>
                 <li class="divider"></li>
                 <li>
-                	<a href="javascript:void(0)" @click="changeTheme('dark')">
+                	<a href="javascript:void(0)" @click="changeTheme('dark')" class="color-item">
                 		<mu-radio name="theme" nativeValue="dark" v-model="theme" slot="left" @change="changeTheme" class="item-icon"/>
-						<span style="vertical:middle" class="item-title">{{$t('themes.dark')}}</span>
+					        	<span class="item-title">{{$t('themes.dark')}}</span>
                 	</a>
-
-
                 </li>
                 <li>
-                <a href="javascript:void(0)" @click="changeTheme('light')">
-                		<mu-radio name="theme" nativeValue="light" v-model="theme" slot="left" @change="changeTheme" class="item-icon"/>
-						<span style="vertical:middle" class="item-title">{{$t('themes.light')}}</span>
-                	</a>
-
-
-
+                  <a href="javascript:void(0)" @click="changeTheme('light')" class="color-item">
+                      <mu-radio name="theme" nativeValue="light" v-model="theme" slot="left" @change="changeTheme" class="item-icon"/>
+                      <span class="item-title">{{$t('themes.light')}}</span>
+                  </a>
                 </li>
             </ul>
         </mu-popover>
@@ -100,28 +87,104 @@ import changeTheme  from 'utils/theme.js'
 	}
 </script>
 <style lang="less">
+@import "~assets/less/variable.less";
 @import "~assets/less/transition.less";
+
 .hidden{
 	display: none;
 }
 .userbox{
-
-	i{
+  width:180px;
+  i{
 		transition : @arrow-rotate-transition;
 	}
-	&.opened{
-
-		i{
-			transform: rotate(180deg) translate3D(0,0,0);
-
-			}
-	}
-
-  .profile-picture{
-    margin:0;
+	&.opened i{
+     transform: rotate(180deg) translate3D(0,0,0);
   }
-  &>a.hover{
-  	background-color: transparent;
+   .mu-flat-button-wrapper{
+     width:100%;
+     .display(flex);
+     .justify-content(space-around);
+   }
+  .profile-picture{
+    width: 35px;
+    margin:0px 10px 0px;
+
+  }
+  .profile-info{
+    .flex(1);
+    margin:0px;
+    .name{
+      .text-line-no-wrap(1,1.3rem,85px);
+    }
+  }
+  .fa{
+    width:10px;
+    margin:0px 0px 0px 10px;
+  }
+  & > a.hover{
+      bakground-color: transparent;
+    }
+
+  .userbox-toggle-btn{
+    height:57px;
+    padding-left:10px;
+    padding-right: 10px;
+    width:100%;
+  }
+ }
+.mu-popover.userbox-dropdown-menu{
+  padding:10px;
+  .item-icon{
+    margin-right:13px;
+    margin-bottom: 0px;
+  }
+  .color-item{
+    padding: 5px 15px ;
+  }
+  .logout-item{
+    padding-left: 18px;
+  }
+  a:hover{
+    background-color: @blue-color;
+    color:@light-reverse-font-color;
+    text-decoration: none;
+  }
+  a:not(.color-item){
+    i{
+      padding:2px 0px;
+    }
+  }
+}
+@media only screen and (max-width: 767px) {
+  .userbox{
+    width:121px;
+    .userbox-toggle-btn{
+      height:37px;
+      padding-left: 0px;
+    }
+
+  }
+  .mu-popover.userbox-dropdown-menu{
+    a{
+      padding:5px 10px;
+    }
+
+    .logout-item{
+      padding:5px 8px;
+    }
+    .color-item{
+      padding:5px 5px;
+    }
+
+    padding-right:20px;
+    i {
+      margin-right: 3px;
+    }
+    .item-icon{
+      margin-right:0px;
+      margin-bottom: 0px;
+    }
   }
 }
 </style>

@@ -158,6 +158,45 @@
           </div>
         </chp-panel>
         <chp-panel>
+          <template slot="title">Tooltip</template>
+          <template slot="subtitle">tooltip</template>
+          <div slot="body" class="col-md-12 col-lg-12 col-sm-12">
+            <h4>tooptip</h4>
+            <div>
+              <span><chp-tooltip>this is very longlong long long tooltip</chp-tooltip>this it tooltip test span</span>
+
+            </div>
+            <h4>step tabs</h4>
+            <div>
+              <chp-tabs :value="activeStepTab"  @change = "handleStepTabChange" type="wizard">
+                <template slot="header">
+                  <chp-tab-header href="tab1">我是第一个tab</chp-tab-header>
+                  <chp-tab-header href="tab2">我是第2个tab</chp-tab-header>
+                  <chp-tab-header href="tab3">我是第3tab</chp-tab-header>
+                </template>
+                <template slot="content">
+                  <chp-tab-content id="tab1">
+
+                    第一个tab的内容
+                  </chp-tab-content>
+                  <chp-tab-content id="tab2">
+
+                    第2个tab的内容
+                  </chp-tab-content>
+                  <chp-tab-content id="tab3">
+
+                    第3个tab的内容
+                  </chp-tab-content>
+
+                </template>
+
+              </chp-tabs>
+
+            </div>
+
+          </div>
+        </chp-panel>
+        <chp-panel>
           <template slot="title">Pagination</template>
           <template slot="subtitle"> pagination</template>
           <div slot="body" class="form-horizontal form-bordered">

@@ -58,7 +58,7 @@
               <chp-table-head chp-sort-by="dessert">Dessert (100g serving)</chp-table-head>
               <chp-table-head chp-sort-by="type" width="100px">Type</chp-table-head>
               <chp-table-head chp-sort-by="calories" chp-numeric chp-tooltip="The total amount of food energy and the given serving size">Calories (g)</chp-table-head>
-              <chp-table-head chp-sort-by="fat" chp-numeric>Fat (g)</chp-table-head>
+              <chp-table-head chp-sort-by="fat" chp-numeric chp-tooltip="fat tip is very longlong long long">Fat (g)</chp-table-head>
               <chp-table-head>
 
                 <span>Comments</span>

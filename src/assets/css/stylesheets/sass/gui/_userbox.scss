@@ -3,7 +3,8 @@
 /* Userbox */
 .userbox {
 	display: inline-block;
-	margin: 3px 17px 0 0;
+	margin: 0px 0px 0 0;
+
 	position: relative;
 	vertical-align: middle;
 
@@ -44,7 +45,7 @@
 
 	.role {
 		color: #ACACAC;
-		@include font-size(11);
+		@include font-size(10);
 		line-height: 1.2em;
 	}
 
@@ -75,15 +76,15 @@
 // -----------------------------------------------------------------------------
 /* Userbox - Open */
 
-	
+
 	.userbox-dropdown-menu {
 		border: none;
 		box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.2);
 		@include box-sizing(content-box);
-		
+
 		padding: 10px 10px 0;
-		
-		width: 186px;
+    width: 160px;
+
 		z-index: 992;
 
 		li {
@@ -99,8 +100,8 @@
 			display: block;
 			@include font-size(12);
 			@include line-height(15);
-			padding: 5px 10px;
-
+			padding: 5px 20px;
+      @include font-size(10);
 			&:hover {
 				background: $color-primary;
 				color: $color-primary-inverse;
@@ -108,8 +109,8 @@
 		}
 
 		i {
-			@include font-size(23);
-			margin-right: 3px;
+			@include font-size(20);
+			margin-right: 18px;
 			vertical-align: middle;
 		}
 	}
@@ -139,7 +140,7 @@
 			display: none;
 		}
 
-		
+
 	}
 	.userbox-dropdown-menu{
 		width:125px;
@@ -180,7 +181,7 @@ html.header-dark {
 			}
 		}
 
-		
+
 	}
 }
 .userbox-dropdown-menu {
@@ -190,5 +191,5 @@ html.header-dark {
 				background: $sidebar-background;
 			}
 
-			
+
 		}

@@ -12,11 +12,11 @@
   export default {
     name: 'chp-tooltip',
     props: {
-      mdDirection: {
+      chpDirection: {
         type: String,
         default: 'bottom'
       },
-      mdDelay: {
+      chpDelay: {
         type: String,
         default: '0'
       }
@@ -33,10 +33,10 @@
         const cssClasses = {
           'chp-active': this.active,
           'chp-transition-off': this.transitionOff,
-          'chp-tooltip-top': this.mdDirection === 'top',
-          'chp-tooltip-right': this.mdDirection === 'right',
-          'chp-tooltip-bottom': this.mdDirection === 'bottom',
-          'chp-tooltip-left': this.mdDirection === 'left'
+          'chp-tooltip-top': this.chpDirection === 'top',
+          'chp-tooltip-right': this.chpDirection === 'right',
+          'chp-tooltip-bottom': this.chpDirection === 'bottom',
+          'chp-tooltip-left': this.chpDirection === 'left'
         };
 
         if (this.parentClass) {
@@ -47,14 +47,14 @@
       },
       style() {
         return {
-          'transition-delay': this.mdDelay + 'ms',
+          'transition-delay': this.chpDelay + 'ms',
           top: this.topPosition + 'px',
           left: this.leftPosition + 'px'
         };
       }
     },
     watch: {
-      mdDirection() {
+      chpDirection() {
         this.calculateTooltipPosition();
       }
     },
@@ -69,7 +69,7 @@
         let position = this.parentElement.getBoundingClientRect();
         let cssPosition = {};
 
-        switch (this.mdDirection) {
+        switch (this.chpDirection) {
           case 'top':
             cssPosition.top = position.top - this.$el.offsetHeight;
             cssPosition.left = position.left + position.width / 2;
@@ -95,7 +95,7 @@
             break;
 
           default:
-            console.warn(`Invalid ${this.mdDirection} option to chp-direction option`);
+            console.warn(`Invalid ${this.chpDirection} option to chp-direction option`);
         }
 
         this.topPosition = cssPosition.top;
@@ -114,7 +114,6 @@
       },
       open() {
         this.removeTooltips();
-
         this.$nextTick(() => {
           document.body.appendChild(this.tooltipElement);
           getComputedStyle(this.tooltipElement).top;
@@ -136,15 +135,17 @@
     },
     mounted() {
       this.$nextTick(() => {
+
         this.tooltipElement = this.$el;
         this.parentElement = this.tooltipElement.parentNode;
+        if(this.$el && this.parentElement){
+          this.parentElement.removeChild(this.$el);
+          this.parentElement.addEventListener('mouseenter', this.open);
+          this.parentElement.addEventListener('focus', this.open);
+          this.parentElement.addEventListener('mouseleave', this.close);
+          this.parentElement.addEventListener('blur', this.close);
+        }
 
-        this.$el.parentNode.removeChild(this.$el);
-
-        this.parentElement.addEventListener('mouseenter', this.open);
-        this.parentElement.addEventListener('focus', this.open);
-        this.parentElement.addEventListener('mouseleave', this.close);
-        this.parentElement.addEventListener('blur', this.close);
       });
     },
     beforeDestroy() {

@@ -1,0 +1,15 @@
+/*helper less*/
+.text-line-no-wrap(@lineNumber,@fontSize,@componentWidth){
+  height:@lineNumber * @fontSize;
+  max-height: @lineNumber * @fontSize;
+  text-overflow: ellipsis;
+  text-transform: none;
+  word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  width: @componentWidth;
+  max-width: @componentWidth;
+
+}

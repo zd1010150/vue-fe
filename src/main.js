@@ -4,7 +4,7 @@
 
 import 'es6-shim'
 import './assets/index.scss'
-
+import './assets/less/index.less'
 
 import Vue from 'vue'
 import App from './App'

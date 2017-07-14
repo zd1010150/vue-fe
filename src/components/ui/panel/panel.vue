@@ -3,7 +3,6 @@
 
       <chp-panel-header @close="closePanel" @collapse="collapsePanel" :isTransparent="isHeaderTransparent"
                     :canCollapse="canCollapse" :canClose="canClose">
-
           <h2 class="panel-title">
             <slot name="title"></slot>
           </h2>
@@ -13,11 +12,11 @@
       </chp-panel-header>
 
 
-    <expand-transition>
-      <div class="panel-body" ref="panelBody" v-if="isOpen">
-        <slot name="body"></slot>
-      </div>
-    </expand-transition>
+      <expand-transition>
+        <div class="panel-body" ref="panelBody" v-if="isOpen">
+          <slot name="body"></slot>
+        </div>
+      </expand-transition>
     <div class="panel-footer" v-if="hasFooter">
       <slot name="footer"></slot>
     </div>
