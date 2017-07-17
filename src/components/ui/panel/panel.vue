@@ -71,6 +71,7 @@
     methods: {
       closePanel(){
         console.log("panel colse");
+        this.isOpen=false;
         this.$emit("closePanel");
       },
       collapsePanel(){

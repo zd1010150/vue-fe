@@ -6,14 +6,15 @@
         <h6>Contact Us</h6>
       </div>
       <div class="widget-content">
-        <a type="button" class="mb-xs mt-xs mr-xs btn btn-default btn-block">
+        <chp-button class="mb-xs mt-xs mr-xs btn btn-default btn-block">
           <i class="fa fa-qq"></i>
           QQ Online
-        </a>
-        <a type="button" class="mb-xs mt-xs mr-xs btn btn-default btn-block">
+        </chp-button>
+
+        <chp-button class="mb-xs mt-xs mr-xs btn btn-default btn-block">
           <i class="fa fa-comments-o"></i>
           Live Chat
-        </a>
+        </chp-button>
       </div>
     </div>
 

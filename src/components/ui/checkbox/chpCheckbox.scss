@@ -116,19 +116,34 @@ $checkbox-touch-size: 48px;
   &.chp-disabled {
     &.chp-checked {
       .chp-checkbox-container {
-        background-color: rgba(#000, .26);
+        background-color: $light-component-disabled-color;
         border-color: transparent;
       }
     }
 
     &:not(.chp-checked) {
       .chp-checkbox-container {
-        border-color: rgba(#000, .26);
+        border-color: $light-component-disabled-color;
       }
     }
   }
 }
 html.dark{
+  .chp-checkbox{
+    &.chp-disabled {
+      &.chp-checked {
+        .chp-checkbox-container {
+          background-color: $dark-component-disable-color;
 
+        }
+      }
+
+      &:not(.chp-checked) {
+        .chp-checkbox-container {
+          border-color: $dark-component-disable-color;
+        }
+      }
+    }
+  }
 }
 

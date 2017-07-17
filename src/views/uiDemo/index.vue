@@ -1,14 +1,7 @@
 <template>
   <chp-main-layout>
     <div class="row" slot="content-body">
-      <ul>
-        <li>
-          <router-link to="/uiDemo/ui-component" >ui-component</router-link>
-        </li>
-        <li>
-          <router-link to="/uiDemo/form-validate" >form-validate</router-link>
-        </li>
-      </ul>
+
         <transition name="slide-fade" mode="out-in">
           <router-view></router-view>
         </transition>

@@ -1,7 +1,7 @@
 /*theme color*/
 
 $dark-color : #282d36;
-$light-color : #fffff;
+$light-color : #ffffff;
 
 $blue-color: #0088CC;
 
@@ -15,6 +15,8 @@ $dark-bg-color: #1D2127;
 $dark-hover-color: #272c34;
 $dark-component-bg-color: #1D2127; //组件的背景颜色
 $dark-component-border-color:#282d36; // 组件的边框颜色
+$dark-component-disable-color:rgba(#fff,.26);
+$dark-component-accent-bg-color:rgb(25, 28, 33);
 
 $dark-font-color : #808697;
 $dark-font-bright-color: #fff;
@@ -23,9 +25,16 @@ $dark-font-dim-color: #465162;
 
 
 
-$light-bg-color: #ffffff;
-$light-hover-color:  #ecedf0;
+$light-bg-color: #ecedf0;
+$light-hover-color:  #fafafa;
+
+$light-component-bg-color: #ffffff;
+$light-component-disabled-color:rgba(#000, .26);
+$light-component-accent-bg-color:#f6f6f6;//菜单展开的背景色
+
 $light-font-color: #777;
-$light-component-bg-color: #fdfdfd;
+$light-font-bright-color:#333;
+$light-font-dim-color:#ccc;
+$light-reverse-font-color: #ffffff;
 
 $sidebar-border-color: #2F3139;

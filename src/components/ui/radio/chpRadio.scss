@@ -143,16 +143,36 @@ $radio-touch-size: 48px;
 
   &.chp-disabled {
     .chp-radio-container {
-      border-color: rgba(#000, .26);
+      border-color: $light-component-disabled-color;
 
       &:after {
-        background-color: rgba(#000, .26);
+        background-color: $light-component-disabled-color;
       }
     }
 
     &.chp-checked {
       .chp-radio-container {
-        border-color: rgba(#000, .26);
+        border-color: $light-component-disabled-color;
+      }
+    }
+  }
+}
+html.dark{
+
+  .chp-radio {
+    &.chp-disabled {
+      .chp-radio-container {
+        border-color: $dark-component-disable-color;
+
+        &:after {
+          background-color: $dark-component-disable-color;
+        }
+      }
+
+      &.chp-checked {
+        .chp-radio-container {
+          border-color: $dark-component-disable-color;
+        }
       }
     }
   }
