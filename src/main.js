@@ -11,13 +11,9 @@ import App from './App'
 import router from './router'
 import store from './store'
 import i18n from './i18n'
+import Components from "./components"
 
 
-import uiComponent from 'components/ui'
-
-import pageComponent from 'components/page'
-
-import layoutComponent from 'components/layout'
 
 import { getStore,syncVuexStateAndLocalStorage } from "./utils/storage.js"
 
@@ -27,10 +23,8 @@ import { SET_USERINFO,SET_TOKEN,SET_PATH,SET_LANGUAGE,SET_THEME } from "./store/
 import AuthenService from "services/authenService"
 import UserService from "services/userService"
 
+Vue.use(Components);
 
-Vue.use(layoutComponent)
-Vue.use(uiComponent)
-Vue.use(pageComponent)
 
 
 

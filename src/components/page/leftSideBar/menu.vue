@@ -35,10 +35,18 @@
           <span>Fund Management</span>
           <chp-list-expand>
             <chp-list>
-              <chp-list-item class="chp-inset" href="#my-trading-account/deposite-funds">Deposit Funds</chp-list-item>
-              <chp-list-item class="chp-inset" href="#my-trading-account/withdrawal">Withdrawal</chp-list-item>
-              <chp-list-item class="chp-inset" href="#my-trading-account/internal-transfer">Internal Transfer</chp-list-item>
-              <chp-list-item class="chp-inset" href="#my-trading-account/bank-account">Bank Account</chp-list-item>
+              <chp-list-item class="chp-inset">
+                <router-link to="/my-trading-account/deposite-funds" exact >Deposit Funds</router-link>
+              </chp-list-item>
+              <chp-list-item class="chp-inset" >
+                <router-link to="/my-trading-account/withdrawal" exact >Withdrawal</router-link>
+              </chp-list-item>
+              <chp-list-item class="chp-inset" >
+                <router-link to="/my-trading-account/internal-transfer" exact >Internal Transfer</router-link>
+              </chp-list-item>
+              <chp-list-item class="chp-inset" >
+                <router-link to="/my-trading-account/bank-account" exact >Bank Account</router-link>
+              </chp-list-item>
             </chp-list>
           </chp-list-expand>
         </chp-list-item>
