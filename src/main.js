@@ -27,34 +27,37 @@ Vue.use(Components);
 
 
 
-window.vm = new Vue({
-  store,
-  router,
-  i18n,
-  template: '<App/>',
-  components: { App },
-  mounted(){
-    changeTheme(this.$store.state.theme);
-    window.onbeforeunload = function () {
-      vm.$store.commit(SET_PATH,vm.$router.currentRoute.fullPath)
-      syncVuexStateAndLocalStorage(vm.$store.state)
-      return 'Do you want to leave?';
+let initVue = () =>{
+  window.vm = new Vue({
+    store,
+    router,
+    i18n,
+    el:"#app",
+    template: '<App/>',
+    components: { App },
+    mounted(){
+      changeTheme(this.$store.state.theme);
+      window.onbeforeunload = function () {
+        vm.$store.commit(SET_PATH,vm.$router.currentRoute.fullPath)
+        syncVuexStateAndLocalStorage(vm.$store.state)
+        return 'Do you want to leave?';
+      }
+    },
+    methods:{
+      leaving(e){
+       // alert( "Are you sure you want to close the window?");
+        this.$store.commit(SET_PATH,this.$router.currentRoute.fullPath)
+        syncVuexStateAndLocalStorage(this.$store.state)
+        e.returnValue = "Are you sure you want to close the window?";
+        return "Are you sure you want to close the window?";
+      }
+    },
+    beforeDestroy(){
+      console.log("vue beforedestorey");
     }
-  },
-  methods:{
-    leaving(e){
-     // alert( "Are you sure you want to close the window?");
-      this.$store.commit(SET_PATH,this.$router.currentRoute.fullPath)
-      syncVuexStateAndLocalStorage(this.$store.state)
-      e.returnValue = "Are you sure you want to close the window?";
-      return "Are you sure you want to close the window?";
-    }
-  },
-  beforeDestroy(){
-    console.log("vue beforedestorey");
-  }
-})
-Vue.config.productionTip = false
+  })
+  Vue.config.productionTip = false
+};
 
 
 //应该直接从localstrorage里面读取token，然后向后端查询，是否是合法登录，如果有合法登录，那么就查询一次用户信息，然后返回到
@@ -96,8 +99,8 @@ AuthenService.checkLogin().then(({success,message})=>{
   }
 }).catch((error)=>{
     console.log("error:",getStore("path") || "/");
-    router.addRoutes(routers);
-    vm.$mount("#app");
+    router.addRoutes(routers);//必须放在
+    initVue();
     vm.$router.push(getStore("path") || "/");
     // vm.$store.commit("ADD_ERROR_INFO",{ msg : error.message,type: "system"});
     // vm.$router.push("/login");
