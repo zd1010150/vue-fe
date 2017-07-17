@@ -371,6 +371,9 @@
   }
 
   .chp-list-item {
+    a{
+      color:$light-font-color;
+    }
     .router-link-active {
       color: $blue-color;
 

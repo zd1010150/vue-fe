@@ -1,11 +1,10 @@
 <template>
   <chp-main-layout>
     <div class="row" slot="content-body">
-
-      <transition name="slide-fade" mode="out-in">
-        <router-view></router-view>
-      </transition>
-    </div>
+        <transition name="slide-fade" mode="out-in">
+          <router-view></router-view>
+        </transition>
+   </div>
   </chp-main-layout>
 </template>
 <script>
@@ -13,16 +12,8 @@
 
 
   export default{
-    data(){
-      return {
-        transitionName:"slide"
-      }
-    },
-    watch: {
-      '$route' (to, from) {
-        console.log(to.path,from.path);
-      }
-    }
+
+    
   }
 </script>
 <style lang="less">

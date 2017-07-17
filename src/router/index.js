@@ -1,10 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import authRoter from './map/auth'
-import indexRoter from './map/index'
-import uiDemoRouter from './map/uiDemo'
+import errorRouter from './map/error'
 import myTrandingAccountRouter from './map/myTradingAccount'
-import _ from "lodash"
+
 
 import roterhook from './hooks/index'
 Vue.use(Router)
@@ -14,10 +13,10 @@ let router = new Router({
 });
 let root = {
   path:"/",
-  redirect:{ name:"login" }
+  redirect:{ name:"login"}
 };
 
-router.addRoutes(_.concat(authRoter,indexRoter,root,uiDemoRouter,myTrandingAccountRouter));
+router.addRoutes(_.concat(authRoter,errorRouter));
 
 roterhook(router);
 

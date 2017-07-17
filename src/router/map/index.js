@@ -1,16 +1,12 @@
+import _ from "lodash"
+import Index from 'views/index'
 
-import Main from 'views/main/main'
-import Dashboard from 'views/main/dashboard'
+import Dashboard from './dashboard'
+import myTradingAccount from './myTradingAccount'
+import uiDemo from './uiDemo'
 
 export default [{
-  path: "/main",
-  component: Main,
-  children: [{
-    path: "",
-    component: Dashboard,
-    name:"dashboard",
-    meta:{
-      requiresAuth : false
-    }
-  }]
+  path: "/",
+  component: Index,
+  children: _.concat(Dashboard,myTradingAccount,uiDemo)
 }];

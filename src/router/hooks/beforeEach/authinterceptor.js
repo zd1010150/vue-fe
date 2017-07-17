@@ -5,11 +5,10 @@ import AuthenService from "services/authenService"
 
 const authInterceptor = (router) => (to, from, next) => {
   let userInfo = store.state.userInfo;
-
+console.log("intercepter:",to.path,to.matched,from.path);
   const {meta:{requiresAuth,forbidAuthen}} = to;
   if(to.matched.length < 1){
-    alert("404 我们没找到");
-    next(false);
+    next({path : "/404"});
   }
   if (!userInfo && requiresAuth) {
       next({path : "/login"});
