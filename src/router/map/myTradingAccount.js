@@ -1,3 +1,4 @@
+import index from 'views/myTradingAccount/index'
 import bankAccount from 'views/myTradingAccount/bankAccount'
 import depositeFunds from 'views/myTradingAccount/depositeFunds'
 import internalTransfer from 'views/myTradingAccount/internalTransfer'
@@ -6,6 +7,7 @@ import withdrawal from 'views/myTradingAccount/withdrawal'
 
 export default [{
   path: "/my-trading-account",
+  component: index,
   children: [{
     path: "bank-account",
 
@@ -15,7 +17,7 @@ export default [{
     }
   }, {
     path: "deposite-funds",
-
+    alias:"",
     component: depositeFunds,
     meta: {
       requiresAuth: false
