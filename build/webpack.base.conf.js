@@ -27,7 +27,8 @@ module.exports = {
       'views':resolve('/src/views'),
       'services':resolve('/src/services'),
       'store' : resolve('src/store'),
-      'utils' : resolve('src/utils')
+      'utils' : resolve('src/utils'),
+      'mixins' : resolve('src/mixins')
     }
   },
   module: {

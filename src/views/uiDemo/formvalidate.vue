@@ -1,6 +1,6 @@
 <template>
  <div class="col-lg-12">
-   <vue-form   class="form-horizontal" :state="formstate" v-model="formstate" @submit.prevent="onSubmit">
+   <vue-form   class="form-horizontal" :state="formstate"  @submit.prevent="onSubmit">
     <chp-panel :hasFooter="true">
       <template slot="title">Form Validate</template>
 
@@ -87,13 +87,9 @@
  </div>
 </template>
 <script>
-  import VueForm from 'vue-form';
+  import VueForm from 'mixins/vueForm'; 
   export default{
-      mixins:[new VueForm({
-        inputClasses: {
-          valid: 'form-control-success'
-        }
-      })],
+      mixins:[VueForm],
       data(){
           return {
             formstate: {},

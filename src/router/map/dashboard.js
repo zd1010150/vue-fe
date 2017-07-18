@@ -5,6 +5,6 @@ export default {
     component: Dashboard,
     name:"dashboard",
     meta:{
-      requiresAuth : false
+      requiresAuth : true
     }
   };

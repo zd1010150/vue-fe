@@ -1,5 +1,5 @@
 <template>
-  <li class="chp-list-item chp-list-item-expand" :class="classes">
+  <li class="chp-list-item chp-list-item-expand" :class="classes" >
     <div class="chp-list-item-container chp-button">
       <slot></slot>
 
@@ -22,7 +22,8 @@
     name: 'chp-list-item',
     props: {
       disabled: Boolean,
-      chpExpandMultiple: Boolean
+      chpExpandMultiple: Boolean,
+      open:Boolean
     },
     data() {
       return {
@@ -104,6 +105,11 @@
       }
 
       window.removeEventListener('resize', this.recalculateAfterChange);
+    },
+    watch:{
+      open (val,oldVal){
+          this.active = val
+      }
     }
   };
 </script>

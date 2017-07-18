@@ -8,24 +8,24 @@ export default [{
   path: "my-trading-account/deposite-funds",
   component: depositeFunds,
   meta: {
-    requiresAuth: false
+    requiresAuth: true
   }
 }, {
   path: "my-trading-account/bank-account",
   component: bankAccount,
   meta: {
-    requiresAuth: false
+    requiresAuth: true
   }
 }, {
   path: "my-trading-account/withdrawal",
   component: withdrawal,
   meta: {
-    requiresAuth: false
+    requiresAuth: true
   }
 }, {
   path: "my-trading-account/internal-transfer",
   component: internalTransfer,
   meta: {
-    requiresAuth: false
+    requiresAuth: true
   }
 }];

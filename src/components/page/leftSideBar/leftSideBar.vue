@@ -23,7 +23,7 @@
 
 <script>
   import Profile from "./profile.vue"
-  import Menu from "./menu.vue"
+  import Menu from "./menu.js"
   import Contact from "./contact.vue"
 export default {
   name:"topbar",

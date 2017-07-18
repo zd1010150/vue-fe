@@ -60,29 +60,30 @@ let initVue = () =>{
 };
 
 
-//应该直接从localstrorage里面读取token，然后向后端查询，是否是合法登录，如果有合法登录，那么就查询一次用户信息，然后返回到
+//token存在应该直接从localstrorage里面读取token，然后向后端查询，是否是合法登录，如果有合法登录，那么就查询一次用户信息，然后返回到
 //用户之前的页面，否则，就进入登录页面
-// AuthenService.checkLogin().then(({success,message})=>{
-//   if(!success){
-//     throw new Error(message);
-//   }else{
-//     return UserService.getUserInfo();
-//   }
-// }).then(({data:{user},success,message})=>{
-//
-//   if(success){
-//     vm.$store.commit(SET_USERINFO,user);
-//   //  vm.$router.addRoutes(routers);
-//     vm.$router.push(getStore("path") || "/main");
-//   }else{
-//     throw new Error(message);
-//   }
-// }).catch((error)=>{
-//     console.log("error:",error);
-//     vm.$store.commit("ADD_ERROR_INFO",{ msg : error.message,type: "system"});
-//     vm.$router.push("/login");
-// });
-AuthenService.checkLogin().then(({success,message})=>{
+  AuthenService.checkLogin().then(({success,message})=>{
+    if(!success){
+      throw new Error(message);
+    }else{
+      return UserService.getUserInfo();
+    }
+  }).then(({data:{user},success,message})=>{
+
+    if(success){
+      vm.$store.commit(SET_USERINFO,user);
+      router.addRoutes(routers);//必须放在intVue之前
+      initVue();
+      vm.$router.push(getStore("path") || "/main");
+    }else{
+      throw new Error(message);
+    }
+  }).catch((error)=>{
+      initVue();
+      vm.$store.commit("ADD_ERROR_INFO",{ msg : error.message,type: "system"});
+      vm.$router.push("/login");
+  });
+/*AuthenService.checkLogin().then(({success,message})=>{
   if(!success){
     throw new Error(message);
   }else{
@@ -104,7 +105,7 @@ AuthenService.checkLogin().then(({success,message})=>{
     vm.$router.push(getStore("path") || "/");
     // vm.$store.commit("ADD_ERROR_INFO",{ msg : error.message,type: "system"});
     // vm.$router.push("/login");
-});
+});*/
 
 // AuthenService.checkLogin().then(({data:{userInfo,token}}) =>{
 //   if(userInfo){
