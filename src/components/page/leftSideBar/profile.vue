@@ -1,3 +1,4 @@
+<i18n src="./i18n.yaml"></i18n>
 <template>
   <div class="panel-body sidebar-profile">
     <div class="widget-summary widget-summary-xlg">
@@ -6,13 +7,13 @@
       </div>
       <div class="widget-summary-col">
         <div class="summary">
-          <h4 class="title">Hello</h4>
+          <h4 class="title">{{ $t('hello')}}</h4>
           <div class="info">
-            <strong class="username">中国名字有多</strong>
+            <strong class="username">{{$store.state.userInfo.name}}</strong>
           </div>
         </div>
         <div class="summary-footer">
-          <a class="text-muted">(view profile)</a>
+          <router-link to="" class="text-muted">{{ $t('viewProfile') }}</router-link>
         </div>
       </div>
     </div>

@@ -22,7 +22,7 @@ module.exports = {
     bundleAnalyzerReport: process.env.npm_config_report
   },
   dev: {
-    host:'fe.dan.com',
+    host:'fe.cloudhubpanellocal.com',
     env: require('./dev.env'),
     port: 8081,
     autoOpenBrowser: true,

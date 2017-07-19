@@ -11,27 +11,30 @@ import App from './App'
 import router from './router'
 import store from './store'
 import i18n from './i18n'
+import miniToastr from 'mini-toastr'
 import Components from "./components"
 import routers from './router/map/index'
-
+import Validate from './validate'
 
 import { getStore,syncVuexStateAndLocalStorage } from "./utils/storage.js"
 import  changeTheme  from 'utils/theme.js'
-import { SET_USERINFO,SET_TOKEN,SET_PATH,SET_LANGUAGE,SET_THEME } from "./store/mutation-types"
+import { SET_USERINFO,SET_PATH } from "./store/mutation-types"
 
 import AuthenService from "services/authenService"
 import UserService from "services/userService"
 
 Vue.use(Components);
+Vue.use(Validate);
 
-
-
+miniToastr.init();
+Vue.prototype.toastr = miniToastr;
 
 let initVue = () =>{
   window.vm = new Vue({
     store,
     router,
     i18n,
+    miniToastr,
     el:"#app",
     template: '<App/>',
     components: { App },
@@ -62,6 +65,7 @@ let initVue = () =>{
 
 //token存在应该直接从localstrorage里面读取token，然后向后端查询，是否是合法登录，如果有合法登录，那么就查询一次用户信息，然后返回到
 //用户之前的页面，否则，就进入登录页面
+
   AuthenService.checkLogin().then(({success,message})=>{
     if(!success){
       throw new Error(message);
@@ -71,10 +75,12 @@ let initVue = () =>{
   }).then(({data:{user},success,message})=>{
 
     if(success){
-      vm.$store.commit(SET_USERINFO,user);
+
       router.addRoutes(routers);//必须放在intVue之前
       initVue();
-      vm.$router.push(getStore("path") || "/main");
+      vm.$store.commit(SET_USERINFO,user);
+      let path = getStore("path") == "/login" ? "/main" : getStore("path");
+      vm.$router.push(path);
     }else{
       throw new Error(message);
     }

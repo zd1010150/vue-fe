@@ -15,7 +15,6 @@ import Tooltip from './tooltip'
 import Table from './table'
 import Dialog from './dialog'
 import List from './list'
-import './vueForm/vueForm.less'
 
 export default function install(Vue) {
   Vue.component('chp-ink-ripple', chpInkRipple)

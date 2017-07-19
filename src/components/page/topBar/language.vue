@@ -9,10 +9,10 @@
     <mu-popover popoverClass="language-list-wrapper" :trigger="trigger" ref="languagePopover" :open="open" @close="handleClose" :anchorOrigin='{"vertical":"top","horizontal":"middle"}' :targetOrigin='{"vertical":"top","horizontal":"middle"}'>
       <mu-paper  :zDepth="1" class="paper-wrapper">
         <mu-list  @change="switchLanguage" @itemClick="togglePopover" class="language-list" :value="language">
-          <mu-list-item value="en">
+          <mu-list-item value="en" title="">
             <mu-avatar src="/static/images/gb.svg" slot="leftAvatar" :size="30"/>
           </mu-list-item>
-          <mu-list-item value="zh" >
+          <mu-list-item value="zh" title="">
             <mu-avatar src="/static/images/cn.svg" slot="leftAvatar" :size="30"/>
           </mu-list-item>
         </mu-list>
@@ -23,6 +23,7 @@
 <script>
   import {SET_LANGUAGE} from "store/mutation-types.js";
   import i18n from "src/i18n"
+  import {Validator} from 'vee-validate'
   export default{
     data(){
       return {
@@ -43,6 +44,7 @@
 
           this.$store.commit(SET_LANGUAGE, newValue)
           i18n.locale = newValue;
+          Validator.setLocale(newValue);
           /*console.log("newValue",this.$i18n.getLocaleMessage(newValue));
           this.$i18n.setLocaleMessage(newValue,this.$i18n.getLocaleMessage(newValue));*/
         },

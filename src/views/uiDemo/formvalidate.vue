@@ -87,9 +87,8 @@
  </div>
 </template>
 <script>
-  import VueForm from 'mixins/vueForm'; 
+
   export default{
-      mixins:[VueForm],
       data(){
           return {
             formstate: {},

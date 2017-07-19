@@ -316,3 +316,9 @@ html.fixed {
     padding-top: 16px;
   }
 }
+
+.has-error .input-group-addon {
+  color: #a94442 !important;
+  background-color: #f2dede !important;
+  border-color: #a94442 !important;
+}

@@ -64,6 +64,8 @@ export default {
   /*max-height:~"calc(100% - 168px)";*/
   overflow:hidden;
   width:300px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   height:~"calc(100% - 168px)";
 
 }

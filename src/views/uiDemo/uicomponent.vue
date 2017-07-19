@@ -229,6 +229,18 @@
         <ui-toolbar @pageSizeChanged = "pageSizeChanged"></ui-toolbar>
         <ui-data-table :pageSize = "pageSize"></ui-data-table>
         <ui-dialog></ui-dialog>
+        <chp-panel>
+          <template slot="title">Toster</template>
+          <template slot="subtitle"></template>
+          <div class="form-horizontal form-hordered" slot="body">
+
+            <chp-button @click="showToster('error')">show error toastr</chp-button>
+            <chp-button @click="showToster('success')">show success toastr</chp-button>
+            <chp-button @click="showToster('warn')">show warn toastr</chp-button>
+            <chp-button @click="showToster('info')">show info toastr</chp-button>
+            <br/>
+          </div>
+        </chp-panel>
       </div>
   </transition>
 
@@ -288,6 +300,9 @@
 
       pageSizeChanged(val){
         this.pageSizeNumber = Number(val);
+      },
+      showToster(type){
+       console.log(this.toastr[type](type + " info"));
       }
     }
   }

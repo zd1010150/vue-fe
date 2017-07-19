@@ -9,26 +9,20 @@
         <div slot="title" class="panel-title-sign mt-xl text-right">
           <h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i> Sign In</h2>
         </div>
-        <vue-form slot="body"  class="login-form" :state="formstate"  @submit.prevent="login">
 
-          <validate class="form-group mb-lg required-field" :class="fieldClassName(formstate.email)">
+          <form slot="body"  class="login-form" @submit.prevent="login">
+          <div class="form-group mb-lg required-field " :class="errorClass('email')">
+              <label class="control-label">Username</label>
+              <div class="input-group input-group-icon">
+                <mu-text-field v-validate="'required|email'" data-vv-value-path="model.email" data-vv-name="email" :hintText="$t('login.placeholderEmail')"  class="form-control input-lg" name="email" type="email" required v-model="model.email"/>
+                <span class="input-group-addon">
+                      <span class="icon icon-lg"> <i class="fa fa-user"></i></span>
+                </span>
+              </div>
 
-              <label >Username</label>
-
-            <div class="input-group input-group-icon">
-              <mu-text-field :hintText="$t('login.placeholderEmail')"  class="form-control input-lg" name="email" type="email" required v-model.lazy="model.email"/>
-              <span class="input-group-addon">
-                    <span class="icon icon-lg">
-                      <i class="fa fa-user"></i>
-                    </span>
-                  </span>
-                  </div>
-              <field-messages name="email" show="$touched || $submitted">
-                <div slot="required" class="error">email is a required field</div>
-                <div slot="email" class="error">Email is not valid</div>
-              </field-messages>
-
-          </validate>
+                <span slot="required" class="error" v-if="errors.has('email:required')">{{ errors.first('email:required')}}</span>
+                <span slot="email" class="error" v-if="errors.has('email:email')">{{ errors.first('email:email')}}</span>
+              </div>
 
           <!-- <div class="form-group mb-lg">
             <div class="clearfix">
@@ -46,25 +40,25 @@
             </div>
           </div> -->
 
-          <validate class="form-group mb-lg">
+          <div class="form-group mb-lg required-field" :class="errorClass('password')">
             <div class="clearfix">
-              <label class="pull-left">Password</label>
+              <label class="pull-left control-label">Password</label>
               <a href="pages-recover-password.html" class="pull-right">Lost Password?</a>
             </div>
             <div class="input-group input-group-icon">
-              <mu-text-field :hintText="$t('login.placeholderPwd')" class="form-control input-lg"
-                             name="password" type="password" v-model.lazy="model.password" password-strength/>
+              <mu-text-field v-validate="'required|min:8'" data-vv-value-path="model.password" data-vv-name="password" :hintText="$t('login.placeholderPwd')" class="form-control input-lg"
+                             name="password" type="password" v-model.lazy="model.password" required/>
               <span class="input-group-addon">
                   <span class="icon icon-lg">
                     <i class="fa fa-lock"></i>
                   </span>
 							</span>
             </div>
-            <field-messages name="password" show="$touched || $submitted">
-              <div slot="required" class="error">password is a required field</div>
-              <div slot="password" class="error">password at least 8 letters</div>
-            </field-messages>
-          </validate>
+
+              <span slot="required" class="error" v-if="errors.has('password:required')">{{errors.first('password:required')}}</span>
+              <span slot="password" class="error" v-if="errors.has('password:min')">{{errors.first('password:min')}}</span>
+
+          </div>
 
 
           <div class="row">
@@ -74,7 +68,7 @@
               <chp-button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign In</chp-button>
             </div>
           </div>
-        </vue-form>
+          </form>
 
 
       </chp-panel>
@@ -85,14 +79,13 @@
 </template>
 <script type="text/javascript">
 
-  import formMixin from 'mixins/vueForm'
   import userService from 'services/userService.js'
+  import validateMixin from 'mixins/validatemix.js'
   export default {
     name: "login",
-    mixins:[formMixin],
+    mixins : [validateMixin],
     data () {
       return {
-        formstate:{},
         model:{
           email: "",
           password: ""
@@ -103,26 +96,39 @@
     },
     methods: {
       login (e){
-        e.preventDefault();
+        this.$validator.validateAll().then(result => {
+            if(result){
+              this.$store.dispatch('login', new FormData(document.querySelector(".login-form"))).then(({success}) => {
+                if (success) {
+                  this.$store.dispatch('getUserInfo').then(({success}) => {
+                    if (success) {
+                      this.$router.push("/main");
+                    } else {
+                      this.loginError = true;
+                      this.errorInfo = this.$t("login.getUserInfoError")
+                    }
 
-        this.$store.dispatch('login', new FormData(document.querySelector(".login-form"))).then(({success}) => {
-          if (success) {
-            this.$store.dispatch('getUserInfo').then(({success}) => {
-              if (success) {
-                this.$router.push("/main");
-              } else {
-                this.loginError = true;
-                this.errorInfo = this.$t("login.getUserInfoError")
-              }
+                  });
 
-            });
-
-          } else {
-            this.loginError = true;
-            this.errorInfo = this.$t("login.loginError")
-          }
+                } else {
+                  this.loginError = true;
+                  this.errorInfo = this.$t("login.loginError")
+                }
+              });
+            }
         });
+
+
       }
+
+    },
+    watch:{
+        errors(val,oldVal){
+            console.log("errors",val);
+        },
+        model(val){
+            console.log("model",val);
+        }
     }
   }
   /*email: "wei.bai0736@gmail.com",

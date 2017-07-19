@@ -2,11 +2,18 @@
 
 .chp-list {
   margin: 0;
-  padding: 8px 0;
+  padding: 0px 0 0 0px;
   display: flex;
   flex-flow: column nowrap;
   position: relative;
   list-style: none;
+  .chp-list-item-container{
+    border-right:5px solid #f6f6f6;
+    padding:12px 25px;
+    .fa{
+      font-size: 1.8rem;
+    }
+  }
   a{
     text-decoration: none;
   }
@@ -179,7 +186,6 @@
   .chp-list-item-container {
     min-height: 48px;
     margin: 0;
-    padding: 0 16px;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -196,7 +202,7 @@
     }
 
     > .fa:first-child {
-      margin-right: 32px;
+      margin-right: 9px;
     }
 
     .chp-avatar,
@@ -421,9 +427,13 @@
 html.dark{
   .chp-list {
     background-color: $dark-component-bg-color;
-    color: $dark-font-color;
-    .fa{
-      color:$dark-font-color;
+
+    .chp-list-item-container{
+      border-right: 4px solid #2F3139;
+      color:$dark-font-color-2;
+      .fa{
+        color:$dark-font-color-2;
+      }
     }
     &.chp-transparent {
       background-color: transparent;
