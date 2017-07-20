@@ -10,43 +10,30 @@
           <h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i> Sign In</h2>
         </div>
 
-          <form slot="body"  class="login-form" @submit.prevent="login">
+        <form slot="body" class="login-form" @submit.prevent="login">
           <div class="form-group mb-lg required-field " :class="errorClass('email')">
-              <label class="control-label">Username</label>
-              <div class="input-group input-group-icon">
-                <mu-text-field v-validate="'required|email'" data-vv-value-path="model.email" data-vv-name="email" :hintText="$t('login.placeholderEmail')"  class="form-control input-lg" name="email" type="email" required v-model="model.email"/>
-                <span class="input-group-addon">
+            <label class="control-label">Username</label>
+            <div class="input-group input-group-icon">
+              <mu-text-field v-validate="'required|email'" data-vv-value-path="model.email" data-vv-name="email"
+                             :hintText="$t('login.placeholderEmail')" class="form-control input-lg" name="email"
+                             type="email" required v-model="model.email"/>
+              <span class="input-group-addon">
                       <span class="icon icon-lg"> <i class="fa fa-user"></i></span>
                 </span>
-              </div>
-
-                <span slot="required" class="error" v-if="errors.has('email:required')">{{ errors.first('email:required')}}</span>
-                <span slot="email" class="error" v-if="errors.has('email:email')">{{ errors.first('email:email')}}</span>
-              </div>
-
-          <!-- <div class="form-group mb-lg">
-            <div class="clearfix">
-              <label class="pull-left">Username</label>
             </div>
-            <div class="input-group input-group-icon">
 
-              <mu-text-field :hintText="$t('login.placeholderEmail')" v-model="email" class="form-control input-lg"
-                             name="email" type="email"/>
-              <span class="input-group-addon">
-										<span class="icon icon-lg">
-											<i class="fa fa-user"></i>
-										</span>
-									</span>
-            </div>
-          </div> -->
-
+            <span slot="required" class="error"
+                  v-if="errors.has('email:required')">{{ errors.first('email:required')}}</span>
+            <span slot="email" class="error" v-if="errors.has('email:email')">{{ errors.first('email:email')}}</span>
+          </div>
           <div class="form-group mb-lg required-field" :class="errorClass('password')">
             <div class="clearfix">
               <label class="pull-left control-label">Password</label>
               <a href="pages-recover-password.html" class="pull-right">Lost Password?</a>
             </div>
             <div class="input-group input-group-icon">
-              <mu-text-field v-validate="'required|min:8'" data-vv-value-path="model.password" data-vv-name="password" :hintText="$t('login.placeholderPwd')" class="form-control input-lg"
+              <mu-text-field v-validate="'required|min:8'" data-vv-value-path="model.password" data-vv-name="password"
+                             :hintText="$t('login.placeholderPwd')" class="form-control input-lg"
                              name="password" type="password" v-model.lazy="model.password" required/>
               <span class="input-group-addon">
                   <span class="icon icon-lg">
@@ -55,38 +42,35 @@
 							</span>
             </div>
 
-              <span slot="required" class="error" v-if="errors.has('password:required')">{{errors.first('password:required')}}</span>
-              <span slot="password" class="error" v-if="errors.has('password:min')">{{errors.first('password:min')}}</span>
+            <span slot="required" class="error" v-if="errors.has('password:required')">{{errors.first('password:required')}}</span>
+            <span slot="password" class="error"
+                  v-if="errors.has('password:min')">{{errors.first('password:min')}}</span>
 
           </div>
 
 
           <div class="row">
-
             <div class="col-sm-12 text-right">
               <chp-button type="submit" class="btn btn-primary hidden-xs">Sign In</chp-button>
               <chp-button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign In</chp-button>
             </div>
           </div>
-          </form>
-
-
+        </form>
       </chp-panel>
-
     </chp-log-layout>
-
   </div>
 </template>
 <script type="text/javascript">
 
   import userService from 'services/userService.js'
   import validateMixin from 'mixins/validatemix.js'
+  import routers from '../../router/map/index'
   export default {
     name: "login",
-    mixins : [validateMixin],
+    mixins: [validateMixin],
     data () {
       return {
-        model:{
+        model: {
           email: "",
           password: ""
         },
@@ -97,38 +81,36 @@
     methods: {
       login (e){
         this.$validator.validateAll().then(result => {
-            if(result){
-              this.$store.dispatch('login', new FormData(document.querySelector(".login-form"))).then(({success}) => {
-                if (success) {
-                  this.$store.dispatch('getUserInfo').then(({success}) => {
-                    if (success) {
-                      this.$router.push("/main");
-                    } else {
-                      this.loginError = true;
-                      this.errorInfo = this.$t("login.getUserInfoError")
-                    }
+          if (result) {
+            this.$store.dispatch('login', new FormData(document.querySelector(".login-form"))).then(({success}) => {
+              if (success) {
+                this.$store.dispatch('getUserInfo').then(({success}) => {
+                  if (success) {
+                    this.$router.addRoutes(routers);
+                    this.$router.push("/main");
+                  } else {
+                    this.loginError = true;
+                    this.errorInfo = this.$t("login.getUserInfoError")
+                  }
 
-                  });
+                });
 
-                } else {
-                  this.loginError = true;
-                  this.errorInfo = this.$t("login.loginError")
-                }
-              });
-            }
+              } else {
+                this.loginError = true;
+                this.errorInfo = this.$t("login.loginError")
+              }
+            });
+          }
         });
-
-
       }
-
     },
-    watch:{
-        errors(val,oldVal){
-            console.log("errors",val);
-        },
-        model(val){
-            console.log("model",val);
-        }
+    watch: {
+      errors(val, oldVal){
+        console.log("errors", val);
+      },
+      model(val){
+        console.log("model", val);
+      }
     }
   }
   /*email: "wei.bai0736@gmail.com",

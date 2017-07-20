@@ -6,7 +6,7 @@
                 <img src="/static/images/xx.jpg" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg">
             </figure>
             <div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
-                <span class="name word-wrap" >George Calton errrerrrrr</span>
+                <span class="name word-wrap" >{{ $store.state.userInfo.name}}</span>
                 <span class="role"> 普通用户</span>
 
             </div>
@@ -21,7 +21,7 @@
                     <a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i class="fa fa-user"></i> My Profile</a>
                 </li>
                 <li>
-                    <a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i class="fa fa-lock"></i> Lock Screen</a>
+                    <router-link role="menuitem" tabindex="-1" to="/changePassword" data-lock-screen="true"><i class="fa fa-lock"></i> Change Password </router-link>
                 </li>
                 <li>
                     <a role="menuitem" tabindex="-1" href="pages-signin.html" class="logout-item"><i class="fa fa-power-off"></i> Logout</a>
@@ -64,7 +64,8 @@ import changeTheme  from 'utils/theme.js'
       }
     },
     mounted(){
-    	this.trigger = this.$refs.toggleBtn.$el
+    	this.trigger = this.$refs.toggleBtn.$el;
+      console.log("this is topbar mounted",this.$store.state.userInfo.name);
     },
     methods:{
     	logout(){

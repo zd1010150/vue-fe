@@ -73,11 +73,9 @@ let initVue = () =>{
       return UserService.getUserInfo();
     }
   }).then(({data:{user},success,message})=>{
-
     if(success){
-
-      router.addRoutes(routers);//必须放在intVue之前
       initVue();
+      router.addRoutes(routers);
       vm.$store.commit(SET_USERINFO,user);
       let path = getStore("path") == "/login" ? "/main" : getStore("path");
       vm.$router.push(path);

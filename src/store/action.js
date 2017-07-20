@@ -1,6 +1,6 @@
 import * as type from "./mutation-types"
 import userService from "../services/userService"
-
+import pwdService from "../services/pwdService"
 export default{
 
   async login({ commit }, form){
@@ -31,5 +31,15 @@ export default{
   },
   async addSystemError({commit}, error){
     commit(type.ADD_ERROR_INFO, error)
+  },
+  async changePassword({commit},{old_password,password}){
+    return await pwdService.changePassword({old_password,password}).then(({data,success,message})=>{
+      if(success){
+        commit(type.SET_USERINFO,null)
+        commit(type.SET_TOKEN,"")
+      }
+      return {data,success,message}
+    })
+
   }
 }

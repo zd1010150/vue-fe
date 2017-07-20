@@ -1,6 +1,6 @@
 import Login from 'views/auth/login'
 import Logout from 'views/auth/logout'
-import ResetPwd from 'views/auth/Reset'
+import changePassword from 'views/auth/changePassword'
 
 export default [{
   path: "/login",
@@ -14,6 +14,9 @@ export default [{
   component: Logout
 
 }, {
-  path: "/reset",
-  comoponent: ResetPwd
+  path:"/changePassword",
+  component: changePassword,
+  meta: {
+    requiresAuth: true
+  }
 }];

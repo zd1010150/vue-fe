@@ -18,7 +18,7 @@ let fetchData = async function(type = 'GET', url = '', data = {}){
     return fetch(type,url,data).then((response)=>{
         filterResoveResponse(response);
         var success = response.status_code == 0 ? true : false
-      console.log("resolve callback");
+        console.log("resolve callback");
         return {
           data:response.data,
           success:success,
@@ -30,7 +30,7 @@ let fetchData = async function(type = 'GET', url = '', data = {}){
         console.log("reject callback");
         let errorMsg = errorResponse.message ? errorResponse.message : "";
         Store.state.commit(ADD_ERROR_INFO,{msg:"errorResponse",level:"system"});
-        Store.commit()
+
         throw errorResponse;
     });
   }

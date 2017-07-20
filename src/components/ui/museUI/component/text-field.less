@@ -17,7 +17,20 @@
       padding:6px 12px 6px 0px;
     }
   }
+  .mu-text-field-line.disabled{
+    border-bottom: none;
+  }
+  &.disabled{
+    background-color: @light-component-disabled-color;
+  }
 
+}
+html.dark{
+  .mu-text-field{
+    &.disabled{
+      background-color: @dark-component-disable-color;
+    }
+  }
 }
 .mu-text-field.input-lg{
   height:45px;

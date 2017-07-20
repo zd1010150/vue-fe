@@ -4,6 +4,8 @@ export default {
     close : "Close",
     add : "Add",
     singIn : "Sign In",
-    singUp: "Sign Up"
+    singUp: "Sign Up",
+    cancel: "Cancel",
+    reset: "Reset"
   }
 }
