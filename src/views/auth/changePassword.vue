@@ -75,12 +75,13 @@
     methods:{
       validatePwd(){
           console.log("blur is trigger");
+          //需要调用验证密码接口
          this.passwordIsValid = false;
       },
       cancel(){
         this.$router.push("/main");
       },
-      changePassword(){
+      async changePassword(){
         try{
             let validateResult = await this.$validator.validateAll();
             if(validateResult){
@@ -92,19 +93,8 @@
               }
             }
         }catch(error){
-          this.toastr.error(error.message);
+          this.toastr.error(this.$t("info."+error.message));
         }
-         this.$validator.validateAll().then(result => {
-          if (result) {
-            this.$store.dispatch('changePassword', model).then(({success}) => {
-              if (success) {
-                this.$router.push("/login");
-              } else {
-               this.toastr.error(type + " info");
-              }
-            });
-          }
-        });
       }
     }
   }

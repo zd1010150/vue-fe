@@ -3,6 +3,8 @@
 
 
 import 'es6-shim'
+require('es6-promise').polyfill()
+require('isomorphic-fetch')
 import './assets/index.scss'
 import './assets/less/index.less'
 

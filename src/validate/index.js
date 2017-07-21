@@ -18,9 +18,9 @@ export default function install(Vue){
   };
   console.log(dictionary);
   const config = {
-    events: 'input|blur',
-    //locale:Store.state.language,
-    locale:'zh',
+    events: 'blur',
+    locale:Store.state.language,
+    //locale:'zh',
     dictionary:dictionary
   };
 

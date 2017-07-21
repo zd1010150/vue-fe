@@ -44,25 +44,25 @@ export default{
               title: "Deposite Funds",
               open: false,
               routerLink: true,
-              to: "/my-trading-account/deposite-funds"
+              to: "/fund-manager/deposite-funds"
             },
             {
               title: "withdrawal",
               open: false,
               routerLink: true,
-              to: "/my-trading-account/withdrawal"
+              to: "/fund-manager/withdrawal"
             },
             {
               title: "Internal Transfer",
               open: false,
               routerLink: true,
-              to: "/my-trading-account/internal-transfer"
+              to: "/fund-manager/internal-transfer"
             },
             {
               title: "bankAccount",
               open: false,
               routerLink: true,
-              to: "/my-trading-account/bank-account"
+              to: "/fund-manager/bank-account"
             }
           ]
         },

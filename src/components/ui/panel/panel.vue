@@ -25,7 +25,7 @@
 
 <script>
   import panelHeader from './panelHeader.vue'
-  import expandTransition from 'muse-ui/src/internal/expandTransition'
+  import expandTransition from '../core/expandTransition.vue'
   export default{
     name: 'chp-panel',
     data(){

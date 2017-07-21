@@ -4,14 +4,14 @@ import {
 import { MAX_FETCH_TIMEOUT } from '../../config/app.config.js'
 import store from "store"
 
-import {formDataToJson} from '../../utils/form.js';
+
+
+//需要添加对formData的支持
 
 
 
-
-
-export default async(type = 'GET', url = '', data = {}) => {
-
+export default async(type = 'GET', url = '', data = {},uploadFile = false) => {
+  console.log("fetch,",url);
   type = type.toUpperCase();
   url = baseUrl + url;
 
@@ -45,22 +45,13 @@ export default async(type = 'GET', url = '', data = {}) => {
   if(store.state.token){
     requestConfig.headers["Authorization"] = store.state.token;
   }
-
-  if (type == 'POST') {
-    if (window.FormData && data instanceof FormData) {
-      Object.defineProperty(requestConfig, 'body', {
-        value: formDataToJson(data)
-      })
-    } else {
-      Object.defineProperty(requestConfig, 'body', {
+  console.log("FormData");
+  if (type == 'POST' ) {
+     Object.defineProperty(requestConfig, 'body', {
         value: JSON.stringify(data)
       })
-    }
-
   }
-
-
-    function _fetch(fetch_promise, timeout) {
+ function _fetch(fetch_promise, timeout) {
       var abort_fn = null;
 
       //这是一个可以被reject的promise
@@ -82,13 +73,15 @@ export default async(type = 'GET', url = '', data = {}) => {
 
       return abortable_promise;
     }
-
+   let response,resoponseJson;   
    try{
-      let response = await _fetch(fetch(url,requestConfig),MAX_FETCH_TIMEOUT);
-      let resoponseJson = await response.json();
+      response = await _fetch(fetch(url,requestConfig),MAX_FETCH_TIMEOUT);
+      resoponseJson = await response.json();
    }catch(error){
+    console.log("Error",error);
       throw new Error(error);
    }
+   console.log("result from server:",resoponseJson);
    return resoponseJson;
    
 }

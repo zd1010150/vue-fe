@@ -9,7 +9,7 @@ import MuseUI from './museUI'
 import Select from './select'
 import Tabs from './tabs'
 import Pagination from './pagination'
-import Datepicker from './datePicker'
+//import Datepicker from './datePicker'
 import Toolbar from './toolbar'
 import Tooltip from './tooltip'
 import Table from './table'
@@ -29,7 +29,7 @@ export default function install(Vue) {
   Vue.use(Select)
   Vue.use(Tabs)
   Vue.use(Pagination)
-  Vue.use(Datepicker)
+  //Vue.use(Datepicker)
   Vue.use(Toolbar)
   Vue.use(Tooltip)
   Vue.use(Table)

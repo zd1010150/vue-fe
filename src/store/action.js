@@ -33,13 +33,11 @@ export default{
     commit(type.ADD_ERROR_INFO, error)
   },
   async changePassword({commit},{old_password,password}){
-    return await pwdService.changePassword({old_password,password}).then(({data,success,message})=>{
-      if(success){
-        commit(type.SET_USERINFO,null)
-        commit(type.SET_TOKEN,"")
-      }
-      return {data,success,message}
-    })
-
-  }
+    let {data,success,message} = await pwdService.changePwd({old_password,password});
+    if(success){
+      commit(type.SET_USERINFO,null)
+      commit(type.SET_TOKEN,"")
+    }
+    return {data,success,message};
+   }
 }

@@ -4,8 +4,6 @@ en:
     placeholderEmail: "Input Email"
     placeholderPwd: "Input Password"
     password: "Password"
-    loginError: "Login Fail"
-    getUserInfoError: "Get User information Error"
   pwd:
     placeHolderCurrentPwd: "Input Current Password"
     placeHolderNewPwd: "Input New Password"
@@ -16,8 +14,6 @@ zh:
       placeholderEmail: "请输入电子邮件地址"
       placeholderPwd: "请输入密码"
       password: "密码"
-      loginError: "登录失败"
-      getUserInfoError: "获取用户信息失败"
     pwd:
       placeHolderCurrentPwd: "请输入当前密码"
       placeHolderNewPwd: "请输入新密码"

@@ -1,7 +1,7 @@
 <template>
   <div class="chp-select form-control" :class="{selectOpen}">
 
-    <select-field :name="name" :label="label" :labelFloat="labelFloat" :labelClass="labelClass" :labelFocusClass="labelFocusClass" :disabled="disabled"
+    <mu-select-field :name="name" :label="label" :labelFloat="labelFloat" :labelClass="labelClass" :labelFocusClass="labelFocusClass" :disabled="disabled"
                   :hintText="hintText" :hintTextClass="hintTextClass" :helpText="helpText" :helpTextClass="helpTextClass"
                   :errorText="errorText" :errorColor="errorColor" :icon="icon" :iconClass="iconClass" :maxHeight="maxHeight"
                   :autoWidth="autoWidth" :fullWidth="fullWidth" :underlineShow ="underlineShow"
@@ -20,20 +20,17 @@
     >
 
       <slot></slot>
-    </select-field>
+    </mu-select-field>
     <i class="fa custom-caret"></i>
   </div>
 
 </template>
 
 <script>
-  import selectField from 'muse-ui/src/selectField'
+  
   import './select.less'
   export default {
     name: 'chp-select',
-    components: {
-      'select-field': selectField
-    },
     data(){
         return {
             selectOpen: false

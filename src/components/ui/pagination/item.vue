@@ -1,16 +1,13 @@
 <template>
-  <mu-page-item :icon="icon" :index="index" :isCircle="isCircle" :disabled="disabled" :isActive="isActive"
-  :identifier="identifier" @click="handleClick" @hoverExit="handleHoverExit" @hover="handleHover"
-  >
-    <slot></slot>
-  </mu-page-item>
+  
+  <chp-button  class="mu-pagination-item" :class="{'circle': isCircle, 'active': isActive}":centerRipple="false" :disabled="disabled"
+  @click="handleClick"  @hover="handleHover" @hoverExit="handleHoverExit" containerElement="div">
+  <span v-if="index">{{index}}</span>
+  <slot></slot>
+</chp-button>
 </template>
 <script>
-import muPageItem from "muse-ui/src/pagination/pageItem"
-  export default{
-    components :{
-      'mu-page-item' : muPageItem
-    },
+export default{
     props: {
       icon: {
         type: String

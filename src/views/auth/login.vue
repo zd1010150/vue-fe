@@ -12,11 +12,11 @@
 
         <form slot="body" class="login-form" @submit.prevent="login">
           <div class="form-group mb-lg required-field " :class="errorClass('email')">
-            <label class="control-label">Username</label>
+            <label class="control-label">Email</label>
             <div class="input-group input-group-icon">
               <mu-text-field v-validate="'required|email'" data-vv-value-path="model.email" data-vv-name="email"
                              :hintText="$t('login.placeholderEmail')" class="form-control input-lg" name="email"
-                             type="email" required v-model="model.email"/>
+                             type="email" required v-model="model.email"  id="email"/>
               <span class="input-group-addon">
                       <span class="icon icon-lg"> <i class="fa fa-user"></i></span>
                 </span>
@@ -34,7 +34,7 @@
             <div class="input-group input-group-icon">
               <mu-text-field v-validate="'required|min:8'" data-vv-value-path="model.password" data-vv-name="password"
                              :hintText="$t('login.placeholderPwd')" class="form-control input-lg"
-                             name="password" type="password" v-model.lazy="model.password" required/>
+                             name="password" type="password" v-model="model.password" required id="password"/>
               <span class="input-group-addon">
                   <span class="icon icon-lg">
                     <i class="fa fa-lock"></i>
@@ -73,36 +73,43 @@
         model: {
           email: "",
           password: ""
-        },
-        loginError: false,
-        errorInfo: ""
+        }
       }
     },
     methods: {
-      login (e){
-        this.$validator.validateAll().then(result => {
-          if (result) {
-            this.$store.dispatch('login', new FormData(document.querySelector(".login-form"))).then(({success}) => {
-              if (success) {
-                this.$store.dispatch('getUserInfo').then(({success}) => {
-                  if (success) {
-                    this.$router.addRoutes(routers);
-                    this.$router.push("/main");
-                  } else {
-                    this.loginError = true;
-                    this.errorInfo = this.$t("login.getUserInfoError")
-                  }
-
-                });
-
-              } else {
-                this.loginError = true;
-                this.errorInfo = this.$t("login.loginError")
+      async login (e){
+        try{
+          let validateResult = await this.$validator.validateAll();
+          if(validateResult){
+            let {data,message,success} = await this.$store.dispatch('login', this.model);
+            if(success){
+              let {data,message,success} = await this.$store.dispatch('getUserInfo');
+              if(success){
+                this.$router.addRoutes(routers);
+                this.$router.push("/main");
+              }else{
+                throw new Error(message);
               }
-            });
-          }
-        });
+            }else{
+              throw new Error(message);
+            }
+          }  
+        }catch(error){
+            console.log(error.message);
+            this.toastr.error(this.$t("info."+error.message));
+        }
       }
+    },
+    mounted(){
+       let self = this;
+        setTimeout(()=>{
+          let $pwd = document.querySelector("input[name=password]"),
+              $email = document.querySelector("input[name=email]"); 
+          if($pwd && $email &&( $pwd.value || $email.value )){
+            document.querySelector("#password .mu-text-field-hint").classList.remove('show');
+            
+          }
+        },500);
     },
     watch: {
       errors(val, oldVal){

@@ -23,16 +23,7 @@
 
         <!--过滤的toolbar begin-->
         <div slot="filterToolbar">
-          <chp-date-picker container="inline" mode="landscape" hintText="内联横屏模式选择" />
-          <chp-date-picker container="inline" mode="landscape" hintText="内联横屏模式选择" />
-          <chp-date-picker container="inline" mode="landscape" hintText="内联横屏模式选择" />
-          <chp-date-picker container="inline" mode="landscape" hintText="内联横屏模式选择" />
-          <chp-date-picker container="inline" mode="landscape" hintText="内联横屏模式选择" />
-          <chp-date-picker container="inline" mode="landscape" hintText="内联横屏模式选择" />
-          <chp-date-picker container="inline" mode="landscape" hintText="内联横屏模式选择" />
-          <chp-date-picker container="inline" mode="landscape" hintText="内联横屏模式选择" />
-          <chp-date-picker container="inline" mode="landscape" hintText="内联横屏模式选择" />
-          <chp-date-picker container="inline" mode="landscape" hintText="内联横屏模式选择" />
+          
 
           <mu-icon-button @click="closeFilter">
             <i class="fa fa-times"></i>
