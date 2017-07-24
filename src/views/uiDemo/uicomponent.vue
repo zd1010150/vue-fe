@@ -241,6 +241,18 @@
             <br/>
           </div>
         </chp-panel>
+
+         <chp-panel>
+          <template slot="title">FileUpload</template>
+          <div class="form-horizontal form-hordered" slot="body">
+            <h4>FileUpload</h4>
+            <ui-file-upload></ui-file-upload>
+
+            <br/>
+          </div>
+        </chp-panel>
+        
+       
       </div>
   </transition>
 
@@ -251,12 +263,13 @@
   import uiToolbar from './toolbar.vue'
   import dataTable from './datatable.vue'
   import uiDialog from './dialog.vue'
-
+  import fileUpload from './fileUpload.vue'
   export default {
     components:{
       'ui-toolbar' : uiToolbar,
       'ui-data-table' : dataTable,
-      'ui-dialog' : uiDialog
+      'ui-dialog' : uiDialog,
+      'ui-file-upload' : fileUpload
     },
     data(){
       return {

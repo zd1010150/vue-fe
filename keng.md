@@ -12,3 +12,8 @@ change the prop.
 2. Change the DOM but cann`t reflect the variation to  the corresponding of VUE data immediately.So you can use the
 [this.$nextTick](https://cn.vuejs.org/v2/guide/reactivity.html#异步更新队列) to mannually update the
 VUE data.
+
+
+#### 
+1. 页面的状态都存储在vuex中，会在页面重新load的时候存入到localstorage中，所以除了页面初始化的时候，其余时候，都要去vuex中拿状态，包括用户信息，token都在vuex中
+

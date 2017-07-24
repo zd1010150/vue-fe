@@ -1,4 +1,4 @@
-
+import "classlist-polyfill"
 import dark from '!!raw-loader!less-loader!components/ui/museUI/themeDark.less'
 import light from '!!raw-loader!less-loader!components/ui/museUI/themeLight.less'
 

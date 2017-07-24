@@ -45,7 +45,6 @@ export default async(type = 'GET', url = '', data = {},uploadFile = false) => {
   if(store.state.token){
     requestConfig.headers["Authorization"] = store.state.token;
   }
-  console.log("FormData");
   if (type == 'POST' ) {
      Object.defineProperty(requestConfig, 'body', {
         value: JSON.stringify(data)
