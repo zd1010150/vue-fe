@@ -9,7 +9,7 @@ const chalk = require('chalk');
 const sass = require('node-sass');
 
 const config = {
-  src: './src/assets/css/stylesheets/sass/*.scss', // glob files
+  src: './src/assets/css/stylesheets/sass/theme-*.scss', // glob files
   dest: './static', // directory
 };
 
@@ -42,7 +42,7 @@ function compile(src, dest) {
 function makeTheme(src, dest) {
   const paths = glob.sync(src);
   const compileQueue = paths.map((srcPath) => {
-    const filename = path.basename(srcPath);
+    const filename = path.basename(srcPath, '.scss') + '.css';
     const destPath = path.resolve(dest, filename);
     return compile(srcPath, destPath);
   });
