@@ -69,12 +69,18 @@ export default {
   height:~"calc(100% - 168px)";
 
 }
+.chp-list{
+  width:307px;
+}
 @media only screen and (max-width: 767px){
   .nav-main-wrapper{
 
   width:100%;
   height:~"calc(100% - 144px)";
 
+  }
+  .chp-list{
+    width:100%;
   }
 }
 .leftsidebar-menu-list.mu-list{

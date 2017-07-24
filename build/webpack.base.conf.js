@@ -5,10 +5,16 @@ var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
 var resolve = utils.resolve;
 
+var themePath = "./src/assets/css/stylesheets/sass";
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    app: './src/main.js',
+    themeBasic:themePath+"/theme-basic.scss",
+    themeGui:themePath+"/theme-gui.scss",
+    themeModule1:themePath+"/theme-module1.scss",
+    themeModule2:themePath+"/theme-module2.scss",
+    themeOther:themePath+"/theme-other.scss"
   },
   output: {
     path: config.build.assetsRoot,

@@ -7,9 +7,9 @@
   flex-flow: column nowrap;
   position: relative;
   list-style: none;
+  box-shadow:-11px 0 0 #2f3139 inset;
   .chp-list-item-container{
-    border-right:5px solid #f6f6f6;
-    padding:12px 25px;
+    padding:12px 5px 12px 25px;
     .fa{
       font-size: 1.8rem;
     }
@@ -429,7 +429,6 @@ html.dark{
     background-color: $dark-component-bg-color;
 
     .chp-list-item-container{
-      border-right: 4px solid #2F3139;
       color:$dark-font-color-2;
       .fa{
         color:$dark-font-color-2;

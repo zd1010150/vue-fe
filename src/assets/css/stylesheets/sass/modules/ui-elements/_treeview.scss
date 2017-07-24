@@ -2,7 +2,7 @@
 // -----------------------------------------------------------------------------
 .jstree-default {
 	.jstree-checkbox {
-		background-image: url(./images/jstree.png);
+		background-image: url(../../../images/jstree.png);
 	}
 	.jstree-icon {
 		color: #333;
@@ -41,7 +41,7 @@
 html.dark body {
 	.jstree-default {
 		.jstree-checkbox {
-			background-image: url(./images/jstree-dark.png);
+			background-image: url(../../../images/jstree-dark.png);
 		}
 		.jstree-hovered {
 			background-color: $dark-color-2 !important;
