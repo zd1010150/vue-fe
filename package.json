@@ -16,6 +16,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "classlist-polyfill": "^1.2.0",
+    "element-datepicker": "^1.2.0",
     "es6-promise": "^4.1.0",
     "es6-shim": "^0.35.3",
     "isomorphic-fetch": "^2.2.1",
