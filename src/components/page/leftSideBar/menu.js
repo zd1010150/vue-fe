@@ -138,8 +138,7 @@ export default{
               title: "Online Training",
               open: false,
               routerLink: true,
-              to: "/training/online-training",
-              notice: 12
+              to: "/training/online-training"
             },
             {
               title: "Books and Magazines",
@@ -149,13 +148,11 @@ export default{
                 title: 'Money Theory',
                 to: '/training/books-magazines/money-theory',
                 open: false,
-                notice: 13,
                 routerLink: true
               }, {
                 title: "Educational Books",
                 to: '/training/books-magazines/educational-books',
                 open: false,
-                notice: 13,
                 routerLink: true
               }]
             },
@@ -167,20 +164,17 @@ export default{
                 title: '股市情报局',
                 to: '/training/videos/stock',
                 open: false,
-                notice: 13,
                 routerLink: true
               }, {
                 title: "视频分析",
                 to: '/training/videos/analyse',
                 open: false,
-                notice: 13,
                 routerLink: true
               },
                 {
                   title: "教学视频",
                   to: '/training/videos/teaching',
                   open: false,
-                  notice: 13,
                   routerLink: true
                 }]
             },
@@ -295,8 +289,16 @@ export default{
         ;
         return _pathIndex;
       }
+      console.log(getPathIndex(path)+"" ,"pathindex");
+      let _path = getPathIndex(path)+"";
+      console.log("dddddd1:",_path);
+      if(_path.indexOf("-") > -1){
+        console.log("dddddd2:",_path);
+        parentIds = _path.split("-");
+      }else{
+        parentIds = new Array(_path);
+      }
 
-      parentIds = getPathIndex(path) ? getPathIndex(path).split("-") : [];
       const setAllparents = () => {
         if (!parentIds) {
           return;
@@ -317,9 +319,6 @@ export default{
           this.$set(this.items[index1].subs, index2, Object.assign(this.items[index1].subs[index2], {open: true}));
           this.$set(this.items[index1].subs[index2].subs, index3, Object.assign(this.items[index1].subs[index2].subs[index3], {open: true}));
         }
-        for (let i = 1, len = parentIds.length; i < len; i++) {
-
-        }
       }
 
 
@@ -330,7 +329,7 @@ export default{
   },
   watch: {
     $route(val, oldVal){
-      console.log("refresh router", val);
+      console.log("refresh router",val.fullPath);
     }
   }
 }

@@ -14,8 +14,11 @@
 //"http://api.cloudhubpanellocal.com/api/v1"
 
 let baseUrl = ''
-
-const devUrl = "http://api.cloudhubpanellocal.com/v1", onlineUrl = "https://api.cloudhubpanel.com/v1"
+/*
+const devUrl = "http://api.cloudhubpanellocal.com/v1",
+  onlineUrl = "https://api.cloudhubpanel.com/v1"*/
+const devUrl = "/api",
+  onlineUrl = "/api"
 
 if (__PRO__) {
   baseUrl = onlineUrl

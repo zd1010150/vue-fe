@@ -5,6 +5,7 @@ const authInterceptor = (router) => (to, from, next) => {
   console.log("intercepter:", to.path, to.matched, from.path);
 
   const {meta:{requiresAuth, forbidAuthen}} = to;
+
   if (to.matched.length < 1) {
     next({path: "/404"});
   }
@@ -14,6 +15,7 @@ const authInterceptor = (router) => (to, from, next) => {
     alert("你已经登录，不能再次访问登录页面");
     next(false);
   } else {
+    console.log("I am in next");
     next();
   }
 

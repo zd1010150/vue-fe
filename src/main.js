@@ -4,7 +4,9 @@
 
 import 'es6-shim'
 require('es6-promise').polyfill()
-require('isomorphic-fetch')
+require('isomorphic-fetch') //polyfill fetch
+require('./utils/requestanimationFrame.js' ) //polyfill requestAnimationFrame
+require('mutationobserver-shim') // polyfill mutationobserver
 import './assets/index.scss'
 import './assets/less/index.less'
 
@@ -20,7 +22,7 @@ import Validate from './validate'
 
 import { getStore,syncVuexStateAndLocalStorage } from "./utils/storage.js"
 import  changeTheme  from 'utils/theme.js'
-import { SET_USERINFO,SET_PATH,SET_TOKEN } from "./store/mutation-types"
+import { SET_USERINFO,SET_PATH} from "./store/mutation-types"
 
 import AuthenService from "services/authenService"
 import UserService from "services/userService"
@@ -65,21 +67,21 @@ let initVue = () =>{
 };
 
 
-//token存在应该直接从localstrorage里面读取token，然后向后端查询，是否是合法登录，如果有合法登录，那么就查询一次用户信息，然后返回到
-//用户之前的页面，否则，就进入登录页面
-
+// 首先从 cookie里面直接发送给服务器验证，是否正确，如果正确了，就获取用户信息，如果用户信息获取成功，就进入之前的页面，否则就进入登录页面
+  let token;
   AuthenService.checkLogin().then(({success,message,data})=>{
     if(!success){
       throw new Error(message);
     }else{
-      this.$store.commit(SET_TOKEN,data.token?data.token:null);
       return UserService.getUserInfo();
     }
   }).then(({data:{user},success,message})=>{
+
     if(success){
       initVue();
       router.addRoutes(routers);
       vm.$store.commit(SET_USERINFO,user);
+
       let path = getStore("path") == "/login" ? "/main" : getStore("path");
       vm.$router.push(path);
     }else{

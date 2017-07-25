@@ -22,13 +22,21 @@ module.exports = {
     bundleAnalyzerReport: process.env.npm_config_report
   },
   dev: {
-    host:'fe.cloudhubpanellocal.com',
+    host: 'fe.cloudhubpanellocal.com',
     env: require('./dev.env'),
     port: 8081,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/api': {
+        target: "http://api.cloudhubpanellocal.com/v1",
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api' :''
+        }
+      }
+    },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)

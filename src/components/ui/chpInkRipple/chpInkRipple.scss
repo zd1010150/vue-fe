@@ -8,6 +8,7 @@
   right: 0;
   bottom: 0;
   left: 0;
+  z-index:-1;
   -webkit-mask-image: radial-gradient(circle, white 100%, black 100%);
   transition: $swift-ease-in;
 }
@@ -20,7 +21,7 @@
   transform: scale(0) translateZ(0);
   transition: none;
   will-change: background-color, opacity, transform, width, height, top, left;
-
+  z-index:-1;
   &.chp-active {
     animation: ripple 1s $swift-ease-out-timing-function forwards;
 

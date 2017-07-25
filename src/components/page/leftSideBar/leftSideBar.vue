@@ -81,7 +81,11 @@ export default {
   }
   .chp-list{
     width:100%;
+    .chp-inset .chp-list-item-container{
+      padding-right: 5px;
+    }
   }
+
 }
 .leftsidebar-menu-list.mu-list{
   width:324px;

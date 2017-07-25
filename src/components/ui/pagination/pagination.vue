@@ -10,7 +10,8 @@
     <span>...</span>
   </page-item>
   <page-item v-for="item in pageList" :key="item" :index="item" @click="handleClick" :isActive="actualCurrent === item"/>
-  <page-item v-if="totalPageCount > defaultMaxCount && totalPageCount - actualCurrent >= defaultMaxCount-1" identifier="forwards" @click="handleClick" title="后5页">
+
+  <page-item v-if="totalPageCount > defaultMaxCount && totalPageCount - actualCurrent > defaultMaxCount-1" identifier="forwards" @click="handleClick" title="后5页">
     <span>...</span>
   </page-item>
   <page-item :index="totalPageCount" @click="handleClick" :isActive="actualCurrent === totalPageCount" v-if="totalPageCount !== 1"></page-item>
@@ -153,6 +154,7 @@ export default{
       }
       this.$emit('pageSizeChange', val)
       this.$emit('page-size-change', val)
+      console.log("sizechanged totalPageCOunt:",this.totalPageCount);
     },
     total: function (val) {
       // 如果条目总数改变的时候当前页也需要重新计算

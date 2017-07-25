@@ -1,6 +1,6 @@
 <template>
-  
-  <chp-button  class="mu-pagination-item" :class="{'circle': isCircle, 'active': isActive}":centerRipple="false" :disabled="disabled"
+
+  <chp-button  class="mu-pagination-item btn " :class="{'circle': isCircle, 'active': isActive}":centerRipple="false" :disabled="disabled"
   @click="handleClick"  @hover="handleHover" @hoverExit="handleHoverExit" containerElement="div">
   <span v-if="index">{{index}}</span>
   <slot></slot>
@@ -38,9 +38,34 @@ export default{
       handleHoverExit (event) {
           this.$emit('hoverExit', event)
       },
-      handleClick(index){
-        this.$emit("click",index);
+      handleClick(){
+        if (this.index) {
+          this.$emit('click', this.index)
+        } else {
+          this.$emit('click', this.identifier)
+        }
       }
     }
   }
 </script>
+<style lang="less">
+  .mu-pagination-item{
+
+    background-color: transparent;
+
+    > span{
+        display: block;
+        position:absolute;
+        top:0px;
+        padding:0px 0px 5px 0px;
+      }
+
+  }
+html.dark{
+  .mu-pagination-item{
+    &:hover{
+      color:#fff;
+     }
+  }
+}
+</style>

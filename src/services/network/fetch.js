@@ -45,12 +45,15 @@ export default async(type = 'GET', url = '', data = {},uploadFile = false) => {
   if(store.state.token){
     requestConfig.headers["Authorization"] = store.state.token;
   }
+  console.log("define before");
   if (type == 'POST' ) {
      Object.defineProperty(requestConfig, 'body', {
         value: JSON.stringify(data)
       })
   }
+  console.log("define after");
  function _fetch(fetch_promise, timeout) {
+
       var abort_fn = null;
 
       //这是一个可以被reject的promise
@@ -72,7 +75,7 @@ export default async(type = 'GET', url = '', data = {},uploadFile = false) => {
 
       return abortable_promise;
     }
-   let response,resoponseJson;   
+   let response,resoponseJson;
    try{
       response = await _fetch(fetch(url,requestConfig),MAX_FETCH_TIMEOUT);
       resoponseJson = await response.json();
@@ -82,5 +85,5 @@ export default async(type = 'GET', url = '', data = {},uploadFile = false) => {
    }
    console.log("result from server:",resoponseJson);
    return resoponseJson;
-   
+
 }

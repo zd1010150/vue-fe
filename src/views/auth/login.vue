@@ -81,9 +81,10 @@
         try{
           let validateResult = await this.$validator.validateAll();
           if(validateResult){
-            let {data,message,success} = await this.$store.dispatch('login', this.model);
-            if(success){
-              let {data,message,success} = await this.$store.dispatch('getUserInfo');
+            let {message,success} = await this.$store.dispatch('login', this.model);
+             if(success){
+
+              let {message,success} = await this.$store.dispatch('getUserInfo');
               if(success){
                 this.$router.addRoutes(routers);
                 this.$router.push("/main");
@@ -93,7 +94,7 @@
             }else{
               throw new Error(message);
             }
-          }  
+          }
         }catch(error){
             console.log(error.message);
             this.toastr.error(this.$t("info."+error.message));
@@ -104,10 +105,10 @@
        let self = this;
         setTimeout(()=>{
           let $pwd = document.querySelector("input[name=password]"),
-              $email = document.querySelector("input[name=email]"); 
+              $email = document.querySelector("input[name=email]");
           if($pwd && $email &&( $pwd.value || $email.value )){
             document.querySelector("#password .mu-text-field-hint").classList.remove('show');
-            
+
           }
         },500);
     },

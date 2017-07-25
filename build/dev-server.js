@@ -45,24 +45,25 @@ compiler.plugin('compilation', function (compilation) {
 })
 
 // // proxy api requests
-// Object.keys(proxyTable).forEach(function (context) {
-//   var options = proxyTable[context]
-//   if (typeof options === 'string') {
-//     options = { target: options }
-//   }
-//   app.use(proxyMiddleware(options.filter || context, options))
-// })
+ Object.keys(proxyTable).forEach(function (context) {
+   var options = proxyTable[context]
+   if (typeof options === 'string') {
+     options = { target: options }
+   }
+   console.log(options,context);
+   app.use(proxyMiddleware(options.filter || context, options))
+ })
 
 // Mock server start
 
-app.use('/api', proxyMiddleware({
+/*app.use('/api', proxyMiddleware({
   target: mockConfig.host +  mockConfig.port == 80 ? "" : mockConfig.port,
   changeOrigin: true,
   pathRewrite: {
     // 重写 URL：[Dev Server]/api/xxx <=> [Mock Server]/xxx
     '^/api': mockConfig.path
   }
-}))
+}))*/
 
 // handle fallback for HTML5 history API
 app.use(require('connect-history-api-fallback')())

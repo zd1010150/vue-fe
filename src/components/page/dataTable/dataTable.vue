@@ -64,7 +64,6 @@
       class="pagination-bar "
       :total="rowsTotal"
       :current="currentPage"
-      :defaultMaxCount = "3"
       :pageSize="innerPageSize"
       @pageSizeChange="pageSizeChange"
       @pageChange="pageNumberChange"

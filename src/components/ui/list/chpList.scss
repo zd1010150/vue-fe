@@ -8,132 +8,10 @@
   position: relative;
   list-style: none;
   box-shadow:-11px 0 0 #2f3139 inset;
-  .chp-list-item-container{
-    padding:12px 5px 12px 25px;
-    .fa{
-      font-size: 1.8rem;
-    }
-  }
+
   a{
     text-decoration: none;
   }
-  &.chp-dense {
-    padding: 4px 0;
-
-    .chp-list-item {
-      &.chp-inset .chp-list-item-container {
-        padding-left: 72px;
-      }
-
-      .chp-list-item-container {
-        min-height: 40px;
-        font-size: 13px;
-
-        .chp-avatar,
-        .chp-list-action {
-          &:first-child {
-            margin-right: 24px;
-          }
-        }
-      }
-    }
-
-    .chp-avatar {
-      width: 32px;
-      min-width: 32px;
-      height: 32px;
-      min-height: 32px;
-    }
-
-    .chp-list-item-expand {
-      min-height: 40px;
-    }
-  }
-
-  &.chp-double-line {
-    &.chp-dense {
-      .chp-list-item {
-        .chp-list-item-container {
-          min-height: 60px;
-        }
-
-        .chp-avatar {
-          width: 36px;
-          min-width: 36px;
-          height: 36px;
-          min-height: 36px;
-
-          .chp-avatar,
-          .chp-list-action {
-            &:first-child {
-              margin-right: 20px;
-            }
-          }
-        }
-      }
-
-      .chp-list-text-container {
-        > :nth-child(1) {
-          font-size: 13px;
-        }
-
-        > :nth-child(2) {
-          font-size: 13px;
-        }
-      }
-    }
-
-    .chp-list-item {
-      .chp-list-item-container {
-        min-height: 72px;
-      }
-    }
-  }
-
-  &.chp-triple-line {
-    &.chp-dense {
-      .chp-list-item {
-        .chp-list-item-container {
-          min-height: 76px;
-        }
-
-        .chp-avatar {
-          width: 36px;
-          min-width: 36px;
-          height: 36px;
-          min-height: 36px;
-
-          .chp-avatar,
-          .chp-list-action {
-            &:first-child {
-              margin-right: 20px;
-            }
-          }
-        }
-      }
-
-      .chp-list-text-container {
-        > :nth-child(1) {
-          font-size: 13px;
-        }
-
-        > :nth-child(2) {
-          font-size: 13px;
-        }
-      }
-    }
-
-    .chp-list-item {
-      .chp-list-item-container {
-        min-height: 88px;
-      }
-    }
-
-    .chp-avatar {
-      margin: 0;
-    }
-  }
-
   .chp-subheader {
     &.chp-inset {
       padding-left: 72px;
@@ -148,8 +26,7 @@
 .chp-list-item {
   height: auto;
   position: relative;
-  z-index: 2;
-
+  z-index:5;
   &.chp-disabled {
     cursor: default;
     pointer-events: none;
@@ -157,7 +34,8 @@
 
   &.chp-inset {
     .chp-list-item-container {
-      padding-left: 72px;
+      padding-left: 51px;
+      padding-right: 30px;
     }
   }
 
@@ -169,7 +47,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1;
+    z-index: 7;
     border-radius: 0;
     background-color: transparent;
   }
@@ -182,15 +60,15 @@
       position: relative;
     }
   }
-
+  .chp-ink-ripple{
+    z-index:1;
+  }
   .chp-list-item-container {
     min-height: 48px;
+    padding:12px 5px 12px 25px;
     margin: 0;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: space-between;
-    flex: 1;
+    z-index:4;
+    display: block;
     position: relative;
     font-size: 1.3rem;
     font-weight: 400;
@@ -200,9 +78,26 @@
     &:hover {
       text-decoration: none;
     }
-
+    .fa{
+      font-size: 1.8rem;
+    }
     > .fa:first-child {
       margin-right: 9px;
+      width:1.1em;
+      text-align: center;
+      vertical-align: middle;
+      float:left;
+    }
+    > .fa:last-child{
+      margin-right: 9px;
+      width:1.1em;
+      text-align: center;
+      vertical-align: middle;
+      float:right;
+    }
+    > span{
+      display: inline-block;
+      margin:0 1.1em;
     }
 
     .chp-avatar,
@@ -318,7 +213,7 @@
 
   .chp-list-expand {
     position: relative;
-    z-index: 1;
+    z-index: 8;
     transform: translate3D(0, 0, 0);
     will-change: margin-bottom;
     transition: $swift-ease-in-out;
