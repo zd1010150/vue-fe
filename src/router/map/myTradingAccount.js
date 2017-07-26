@@ -5,6 +5,7 @@ export default [{
   path: "my-trading-account",
   component: myTradingAccount,
   meta: {
-    requiresAuth: true
+    requiresAuth: true,
+    pageTitle: "myTradingAccount"
   }
 }];

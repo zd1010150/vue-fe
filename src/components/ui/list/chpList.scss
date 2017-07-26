@@ -7,7 +7,7 @@
   flex-flow: column nowrap;
   position: relative;
   list-style: none;
-  box-shadow:-11px 0 0 #2f3139 inset;
+  box-shadow:-11px 0 0 rgba(0,0,0,0.05) inset;
 
   a{
     text-decoration: none;
@@ -322,7 +322,7 @@
 html.dark{
   .chp-list {
     background-color: $dark-component-bg-color;
-
+    box-shadow:-11px 0 0 #2f3139 inset;
     .chp-list-item-container{
       color:$dark-font-color-2;
       .fa{

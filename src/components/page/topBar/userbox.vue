@@ -21,7 +21,7 @@
                     <a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i class="fa fa-user"></i> My Profile</a>
                 </li>
                 <li>
-                    <router-link role="menuitem" tabindex="-1" to="/changePassword" data-lock-screen="true"><i class="fa fa-lock"></i> Change Password </router-link>
+                    <router-link role="menuitem" tabindex="-1" to="/changePassword" data-lock-screen="true"><i class="fa fa-lock"></i>Modify Password</router-link>
                 </li>
                 <li>
                     <a role="menuitem" tabindex="-1" href="pages-signin.html" class="logout-item"><i class="fa fa-power-off"></i> Logout</a>
@@ -95,7 +95,7 @@ import changeTheme  from 'utils/theme.js'
 	display: none;
 }
 .userbox{
-  width:180px;
+  width:200px;
   i{
 		transition : @arrow-rotate-transition;
 	}
@@ -136,6 +136,7 @@ import changeTheme  from 'utils/theme.js'
  }
 .mu-popover.userbox-dropdown-menu{
   padding:10px;
+  width:180px;
   .item-icon{
     margin-right:13px;
     margin-bottom: 0px;
@@ -159,14 +160,16 @@ import changeTheme  from 'utils/theme.js'
 }
 @media only screen and (max-width: 767px) {
   .userbox{
-    width:121px;
+    width:140px;
     .userbox-toggle-btn{
       height:37px;
       padding-left: 0px;
+      padding-right: 0px;
     }
 
   }
   .mu-popover.userbox-dropdown-menu{
+    width:140px;
     a{
       padding:5px 10px;
     }

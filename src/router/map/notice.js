@@ -7,6 +7,7 @@ export default [{
   path: "/notice",
   component: Notice,
   meta: {
-    requiresAuth: true
+    requiresAuth: true,
+    pageTitle: "notice"
   }
 }];

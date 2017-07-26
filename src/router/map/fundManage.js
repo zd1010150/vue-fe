@@ -8,24 +8,28 @@ export default [{
   path: "fund-manager/deposite-funds",
   component: depositeFunds,
   meta: {
-    requiresAuth: true
+    requiresAuth: true,
+    pageTitle: "depositeFunds"
   }
 }, {
   path: "fund-manager/bank-account",
   component: bankAccount,
   meta: {
-    requiresAuth: true
+    requiresAuth: true,
+    pageTitle: "bankAccount"
   }
 }, {
   path: "fund-manager/withdrawal",
   component: withdrawal,
   meta: {
-    requiresAuth: true
+    requiresAuth: true,
+    pageTitle: "withdrawal"
   }
 }, {
   path: "fund-manager/internal-transfer",
   component: internalTransfer,
   meta: {
-    requiresAuth: true
+    requiresAuth: true,
+    pageTitle: "internalTransfer"
   }
 }];

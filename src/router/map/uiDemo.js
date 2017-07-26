@@ -6,12 +6,14 @@ export default [{
     path: "/uiDemo/ui-component",
     component: uicomponent,
     meta: {
-      requiresAuth: false
+      requiresAuth: false,
+      pageTitle: "uicomponent"
     },
   } ,{
     path: "/uiDemo/form-validate",
     component: formvalidate,
     meta: {
-      requiresAuth: false
+      requiresAuth: false,
+      pageTitle: "formvalidate"
     }
   }];

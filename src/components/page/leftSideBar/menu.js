@@ -329,7 +329,8 @@ export default{
   },
   watch: {
     $route(val, oldVal){
-      console.log("refresh router",val.fullPath);
+      let $html = document.querySelector("html");
+      $html.classList.toggle("sidebar-left-opened");
     }
   }
 }

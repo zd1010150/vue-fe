@@ -22,14 +22,17 @@
     border-bottom: none;
   }
   &.disabled {
-    background-color: @light-component-disabled-color;
+    background-color: #eee;
+    input{
+      background-color: transparent;
+    }
   }
 }
 
 html.dark {
   .mu-text-field {
     &.disabled {
-      background-color: @dark-component-disable-bootstrap-color;
+      background-color: @dark-component-disable-color;
       color:@dark-font-disable-color;
     }
   }

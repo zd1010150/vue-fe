@@ -6,11 +6,8 @@
 
       <chp-left-side-bar></chp-left-side-bar>
        <section role="main" class="content-body">
-        <header class="page-header">
-          <chp-page-header></chp-page-header>
-        </header>
-
-        <slot name="content-body"></slot>
+       <chp-page-header></chp-page-header>
+       <slot name="content-body"></slot>
 
       </section>
     </div>

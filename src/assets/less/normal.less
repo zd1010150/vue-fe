@@ -4,5 +4,16 @@
   overflow-wrap: break-word;
   word-break: break-all;
 }
+.flex-container{
+  display: table-cell;
+  vertical-align:middle;
+  text-align: center;
+  .display(flex);
+
+  &.content-center{
+    .align-content(center);
+    .justify-content(center);
+  }
+}
 
 

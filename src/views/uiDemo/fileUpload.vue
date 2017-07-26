@@ -16,6 +16,9 @@ import { getStore } from "utils/storage.js"
 	 			}
 	 		}
 	 	},
+	 	mounted(){
+	 		console.log("file upload:",this.$store.state.token);
+	 	},
 	 	methods:{
 	 		inputFunction(files){
 	 			console.log(JSON.stringify(files),this.$refs.upload.active);

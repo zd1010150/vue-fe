@@ -1,44 +1,61 @@
+<i18n src="./i18n.yaml"></i18n>
 <template>
-	<div class="col-lg-12">
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-			
-			<div class="method">
-				<div class="method-bg">
-					<img src="/static/images/Union-pay-icon.png" alt="" class="">
-				</div>
-				<span class="method-title">Wire Transfers</span>
-			</div>
-		</div>
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-			doku
-		</div>
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-			fasa
-		</div>
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-			union pay
-		</div>
-	</div>
+  <div>
+    <template v-for="(value,key) in methods">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 flex-container content-center">
+      
+        <payment-method :value="key" :bgUrl="value.bgUrl" :title="value.title"
+                        :isActive="value.isActive" @chosePaymentMethod="chosePaymentMethod"></payment-method>
+      
+      </div>
+    </template>
+
+  </div>
 </template>
 <script>
-	export default{}
+  import method from "./method.vue"
+  export default{
+    data(){
+      return {
+        previousMethod:"",
+        methods: {
+          unionPay: {
+            title: this.$t('payMentMethod.unionPay'),
+            bgUrl: "/static/images/Union-pay-icon.png",
+            isActive: false
+          },
+          wireTransfer: {
+            title: this.$t('payMentMethod.wireTransfer'),
+            bgUrl: "/static/images/wticon.png",
+            isActive: false
+          },
+          fasaPay: {
+            title: this.$t('payMentMethod.fasapay'),
+            bgUrl: "/static/images/fasapay_logo.png",
+            isActive: false
+          }, doku: {
+            title: this.$t('payMentMethod.doku'),
+            bgUrl: "/static/images/doku.png",
+            isActive: false
+          }
+        }
+      }
+    },
+    components: {
+      'payment-method': method
+    },
+    computed: {},
+    mounted(){
+      this.previousMethod = "unionPay";
+    },
+    methods: {
+      chosePaymentMethod(method){
+        this.methods[this.previousMethod].isActive=false;
+        this.methods[method].isActive=true;
+        this.previousMethod = method;
+        this.$emit('chosePaymentMethod', method);
+      }
+    }
+  }
 </script>
-<style lang="less">
-@import "~assets/less/variable.less";
-	.method{
-		.method-bg{
-			width:114px;
-			height:114px;
-			border-radius: 50%;
-			position:relative;
-			background-color: @dark-component-border-color;
-			display: table-cell;
-			vertical-align: middle;
-			text-align: center;
-			img{
-				vertical-align: middle;
-		
-			}
-		}
-	}
-</style>
+

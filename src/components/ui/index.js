@@ -31,7 +31,7 @@ export default function install(Vue) {
   Vue.use(Tabs)
   Vue.use(Pagination)
   Vue.use(Datepicker)
-  
+
   Vue.use(Toolbar)
   Vue.use(Tooltip)
   Vue.use(Table)

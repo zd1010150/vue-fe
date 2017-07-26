@@ -22,7 +22,7 @@ import Validate from './validate'
 
 import { getStore,syncVuexStateAndLocalStorage } from "./utils/storage.js"
 import  changeTheme  from 'utils/theme.js'
-import { SET_USERINFO,SET_PATH} from "./store/mutation-types"
+import { SET_USERINFO,SET_PATH,SET_TOKEN} from "./store/mutation-types"
 
 import AuthenService from "services/authenService"
 import UserService from "services/userService"
@@ -73,6 +73,7 @@ let initVue = () =>{
     if(!success){
       throw new Error(message);
     }else{
+      
       return UserService.getUserInfo();
     }
   }).then(({data:{user},success,message})=>{
@@ -81,7 +82,8 @@ let initVue = () =>{
       initVue();
       router.addRoutes(routers);
       vm.$store.commit(SET_USERINFO,user);
-
+      //如果用户已登录，然后刷新页面，此时cookie依然有效，但是vuex中的token已经没有值了，所以此时需要把token重新设置到vuex中去
+      vm.$store.commit(SET_TOKEN,getStore("token"))
       let path = getStore("path") == "/login" ? "/main" : getStore("path");
       vm.$router.push(path);
     }else{

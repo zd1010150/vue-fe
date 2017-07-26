@@ -11,7 +11,7 @@
         <chp-top-bar-notification></chp-top-bar-notification>
         <span class="separator"></span>
         <chp-top-bar-language></chp-top-bar-language>
-        <span class="separator"></span>
+        <span class="separator no-right-margin"></span>
         <chp-top-bar-userbox></chp-top-bar-userbox>
       </div>
   </div>
@@ -31,7 +31,7 @@
       "chp-top-bar-notification":ChpTopBarNotificateion,
       "chp-top-bar-userbox":ChpTopBarUserbox
     },
-    
+
     methods: {
       toggleSidebarOpen(){
         let $html = document.querySelector("html");
@@ -43,51 +43,11 @@
 </script>
 <style lang="less">
   @import "~lesshat/lesshat.less";
-
-  
-  .notifications {
-    /*margin: 4px 0px 0px;*/
+  .header-right{
+    .separator.no-right-margin{
+      margin-right: 0px;
+    }
   }
 
-  /*.userbox {
-    display: inline-block;
-    margin: 0px 10px 0px;
 
-    .mu-item-title {
-      font-size: 1.2rem;
-    }
-
-    .userbox-setting {
-      overflow: visible;
-      padding: 0px;
-      .mu-item-content {
-        .flex(none);
-        width: 63px;
-      }
-
-      .userbox-operation-list {
-        position: absolute;
-        overflow: visible;
-        padding: 8px 0px 0px;
-        .mu-item-content {
-          .flex(1);
-          width: auto;
-        }
-        .mu-item {
-          padding: 16px 0px;
-        }
-        .mu-item-wrapper {
-
-          &>div{
-            margin-left: 0px !important;
-          }
-
-          .show-left {
-            padding-left: 60px;
-          }
-
-        }
-      }
-    }
-  }*/
 </style>

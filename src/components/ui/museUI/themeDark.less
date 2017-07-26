@@ -24,7 +24,7 @@
 @backgroundColor: @dark-bg-color;
 @statusBarBackgroundColor: @fullBlack;
 @appbarBackgroundColor: @grey900;
-@dialogBackgroundColor: #424242; // dialogs or cards
+@dialogBackgroundColor: @dark-component-bg-color; // dialogs or cards
 
 // icon
 @activeIconColor: fade(@fullWhite, 100%);
@@ -38,8 +38,9 @@
 
 // 修改组件变量
 @avatarBackgroundColor: lighten(@alternateTextColor, 26%);
-@datePickerHeaderColor: fade(@fullWhite, 12%);
-@timePickerHeaderColor: fade(@fullWhite, 12%);
+@datePickerHeaderColor: @dark-component-bg-color;
+@datePickerTextColor: @dark-font-color;
+@timePickerHeaderColor: @dark-component-bg-color;
 @timePickerClockCircleColor: fade(@fullWhite, 12%);
 @avatarBackgroundColor: lighten(@alternateTextColor, 26%);
 @chipColor: lighten(@alternateTextColor, 12%);
