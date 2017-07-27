@@ -48,18 +48,7 @@
     <!--Table end-->
 
     <!--Pagination begin-->
-    <!--<chp-table-pagination
-      :chp-size="pageSize"
-      :chp-total="rowsTotal"
-      chp-page="1"
-      chp-label="Rows"
-      chp-separator="of"
-      :chp-page-options="pageOptions"
-      @pagination="pagination"
-      @size="pageSizeChange"
-      @page="pageNumberChange"
-      >
-    </chp-table-pagination>-->
+    
     <chp-pagination
       class="pagination-bar "
       :total="rowsTotal"

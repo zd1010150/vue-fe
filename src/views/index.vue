@@ -1,6 +1,6 @@
 <template>
   <chp-main-layout>
-    <div class="row" slot="content-body">
+    <div slot="content-body">
         <transition name="slide-fade" mode="out-in">
           <router-view></router-view>
         </transition>

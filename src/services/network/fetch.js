@@ -3,13 +3,7 @@ import {
 } from '../../config/env.config.js'
 import { MAX_FETCH_TIMEOUT } from '../../config/app.config.js'
 import store from "store"
-
-
-
 //需要添加对formData的支持
-
-
-
 export default async(type = 'GET', url = '', data = {},uploadFile = false) => {
   console.log("fetch,",url);
   type = type.toUpperCase();

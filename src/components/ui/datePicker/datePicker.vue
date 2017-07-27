@@ -1,7 +1,7 @@
 <template>
 
  <div class="date-picker-wrapper form-control">
-    <mu-date-picker :hintText="hintText" class="date-picker" :fullWidth="fullWidth"/>
+    <mu-date-picker :hintText="hintText" class="date-picker" :fullWidth="fullWidth" :minDate="minDate" @input="input" @change = "change"/>
     <span class="icon icon-lg icon-calendar">
       <i class="fa fa-calendar"></i>
     </span>
@@ -16,7 +16,21 @@
        },
        hintText:{
            type: String
+       },
+       value:{
+        type:String
+       },
+       minDate:{
+
        }
+     },
+     methods:{
+      input(value){
+        this.$emit("input",value);
+      },
+      change(value){
+        this.$emit("change",value);
+      }
      }
  }
 </script>

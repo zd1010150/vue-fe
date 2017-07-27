@@ -1,5 +1,5 @@
 <template>
-	<chp-panel>
+	<chp-panel :canCollapse="false" :canClose="false">
           <template slot="title">Doku</template>
           <form slot="body" class="form-horizontal form-bordered">
             <div class="form-group">
@@ -13,6 +13,6 @@
 </template>
 <script>
 	export default{
-		
+
 	}
 </script>

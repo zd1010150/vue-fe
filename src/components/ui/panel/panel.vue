@@ -17,7 +17,7 @@
           <slot name="body"></slot>
         </div>
       </expand-transition>
-    <div class="panel-footer" v-if="hasFooter">
+    <div class="panel-footer" v-if="hasfooter">
       <slot name="footer"></slot>
     </div>
   </section>
@@ -30,18 +30,20 @@
     name: 'chp-panel',
     data(){
       return {
-          isOpen : this.defaultStatus == "open" ? true : false
+        hasfooter: false,
+        isOpen : this.defaultStatus == "open" ? true : false
       };
     },
     computed: {
-
       classes(){
           return {
             'panel-collapsed' : !(this.isOpen)
           }
       }
     },
-
+    mounted(){
+      this.hasfooter = this.$slots.footer && this.$slots.footer.length>0;
+    },
     components: {
       chpPanelHeader: panelHeader,
       'expand-transition': expandTransition
@@ -85,26 +87,5 @@
 
 </script>
 <style lang="less">
-  /*panel style*/
   @import "~assets/less/transition.less";
-  /*.panel{
-    .panel-body{
-      opacity: 1;
-      transform: scale(1) translateZ(0);
-      transition: @panel-open-transition;
-      height:auto;
-      will-change: transform,opacity,height;
-      transform-origin: top left;
-    }
-
-    &.panel-collapsed{
-      .panel-body{
-        opacity:0;
-        height:0;
-        transform: scale(.9,.85) translateZ(0);
-        transition:@panel-close-transition
-      }
-
-    }
-  }*/
 </style>

@@ -22,11 +22,15 @@
           },
           title:{
               type:String
+          },
+          methodCode:{
+            type:String,
+            required:true
           }
       },
       methods:{
         chosePaymentMethods(){
-          this.$emit('chosePaymentMethod',this.value);
+          this.$emit('chosePaymentMethod',this.value,this.methodCode);
         }
       }
   }

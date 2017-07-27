@@ -1,9 +1,9 @@
 <template>
-	<div>
-		<form-doku v-if="method == doku"></form-doku>
-		<form-fasa-pay v-if="method == fasaPay"></form-fasa-pay>
-		<form-union-pay v-if="method == unionPay"></form-union-pay>
-		<form-wire-transfer v-if="method == wireTransfer"></form-wire-transfer>
+	<div class="col-lg-12 col-md-12">
+		<form-doku v-if="method == 'doku'"></form-doku>
+		<form-fasa-pay v-if="method == 'fasaPay'"></form-fasa-pay>
+		<form-union-pay v-if="method.indexOf('unionPay') > -1" :methodCode="method"></form-union-pay>
+		<form-wire-transfer v-if="method == 'wireTransfer'"></form-wire-transfer>
 
 	</div>
 </template>
@@ -15,6 +15,10 @@ import wireTransfer from "./forms/wireTransfer"
 	export default{
 		props:{
 			method:{
+				type:String,
+				required: true
+			},
+			methodCode:{
 				type:String,
 				required: true
 			}

@@ -1,9 +1,15 @@
 <template>
- <div class="col-lg-12">
-	<deposite-funds-methods @chosePaymentMethod="methodChange"></deposite-funds-methods>
-	<deposite-funds-form ></deposite-funds-form>
-	<deposite-funds-table></deposite-funds-table>
- </div>
+ <div class="container-fluid" >
+    <div class="row">
+    	<deposite-funds-methods @chosePaymentMethod="methodChange"></deposite-funds-methods>
+    </div>
+    <div class="row">
+    	<deposite-funds-form :method="method" :methodCode="methodCode"></deposite-funds-form>
+    </div>
+    <div class="row">
+    	<deposite-funds-table ></deposite-funds-table>
+    </div>
+</div>
 </template>
 <script>
 	import form from './form'
@@ -12,7 +18,8 @@
 	export default{
 		data(){
 			return {
-				method:"unionPay"
+				method:"unionPay",
+        methodCode:""
 			}
 		},
 		components :{
@@ -21,8 +28,10 @@
 			'deposite-funds-table' : table
 		},
     methods:{
-      methodChange:function(method){
+      methodChange:function(method,methodCode){
       	console.log(method+" is selected");
+      	this.method = method;
+      	this.methodCode = methodCode;
       }
     }
 	}
