@@ -15,7 +15,6 @@ const authInterceptor = (router) => (to, from, next) => {
     alert("你已经登录，不能再次访问登录页面");
     next(false);
   } else {
-    console.log("I am in next");
     next();
   }
 

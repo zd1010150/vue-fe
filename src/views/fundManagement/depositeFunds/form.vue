@@ -1,9 +1,12 @@
 <template>
 	<div class="col-lg-12 col-md-12">
+	
 		<form-doku v-if="method == 'doku'"></form-doku>
-		<form-fasa-pay v-if="method == 'fasaPay'"></form-fasa-pay>
-		<form-union-pay v-if="method.indexOf('unionPay') > -1" :methodCode="method"></form-union-pay>
-		<form-wire-transfer v-if="method == 'wireTransfer'"></form-wire-transfer>
+		<form-fasa-pay v-else-if="method == 'fasaPay'"></form-fasa-pay>
+		<template v-else-if="method.indexOf('unionPay') > -1">
+			<form-union-pay :methodCode="methodCode"></form-union-pay>
+		</template>
+		<form-wire-transfer v-else-if="method == 'wireTransfer'"></form-wire-transfer>
 
 	</div>
 </template>
@@ -28,6 +31,9 @@ import wireTransfer from "./forms/wireTransfer"
 			'form-fasa-pay' : fasaPay,
 			'form-union-pay' : unionPay,
 			'form-wire-transfer': wireTransfer
+		},
+		created(){
+			console.log("form created",this.method);
 		}
 	}
 </script>

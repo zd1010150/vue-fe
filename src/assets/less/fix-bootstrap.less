@@ -1,7 +1,16 @@
+@import "./variable.less";
 .form-bordered {
   .form-group {
     padding-bottom: 5px;
   }
+}
+
+html.dark{
+	.has-error{
+		.form-control{
+			border-color:@red-error-color !important;
+		}
+	}
 }
 
 @media (min-width: 768px) {

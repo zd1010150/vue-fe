@@ -65,7 +65,6 @@ import changeTheme  from 'utils/theme.js'
     },
     mounted(){
     	this.trigger = this.$refs.toggleBtn.$el;
-      console.log("this is topbar mounted",this.$store.state.userInfo.name);
     },
     methods:{
     	logout(){

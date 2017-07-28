@@ -1,3 +1,6 @@
+/**
+ * reference API:http://vuematerial.io/#/components/table
+ */
 import chpTable from './chpTable.vue';
 import chpTableRow from './chpTableRow.vue';
 import chpTableHead from './chpTableHead.vue';

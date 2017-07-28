@@ -289,11 +289,9 @@ export default{
         ;
         return _pathIndex;
       }
-      console.log(getPathIndex(path)+"" ,"pathindex");
+      
       let _path = getPathIndex(path)+"";
-      console.log("dddddd1:",_path);
       if(_path.indexOf("-") > -1){
-        console.log("dddddd2:",_path);
         parentIds = _path.split("-");
       }else{
         parentIds = new Array(_path);
@@ -321,8 +319,6 @@ export default{
         }
       }
 
-
-      console.log("router changed:", parentIds);
       setAllparents();
     }
 

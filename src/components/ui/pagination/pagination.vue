@@ -97,8 +97,8 @@ export default{
     calcPageList (current) {
       let pageList = []
       if (this.totalPageCount > this.defaultMaxCount) {
-        let left = Math.max(2, current - 1)
-        let right = Math.min(current + 1, this.totalPageCount - 1)
+        let left = Math.max(2, current - 2)
+        let right = Math.min(current + 2, this.totalPageCount - 1)
         if (current - 1 < 2) {
           right = 4
         }

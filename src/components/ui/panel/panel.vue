@@ -13,7 +13,7 @@
 
 
       <expand-transition>
-        <div class="panel-body" ref="panelBody" v-if="isOpen">
+        <div class="panel-body" ref="panelBody" v-show="isOpen">
           <slot name="body"></slot>
         </div>
       </expand-transition>
@@ -72,15 +72,18 @@
     },
     methods: {
       closePanel(){
-        console.log("panel colse");
         this.isOpen=false;
         this.$emit("closePanel");
       },
       collapsePanel(){
-
         this.isOpen = !(this.isOpen);
-        console.log("panel collapse",this.isOpen);
         this.$emit("collapsePanel",this.isOpen);
+      }
+    },
+    watch:{
+      defaultStatus(val){
+        console.log("panel val:",val);
+        this.isOpen = val=="open"?true:false;
       }
     }
   }

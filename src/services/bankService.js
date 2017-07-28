@@ -7,8 +7,8 @@ export default{
   /**
    * 向后端查询是否已经登录
    */
-  async getBank(){
-    return fetchData('GET',"/bank-card")
+  async getBank(gateway){
+    return fetchData('GET',"/deposit/bank-list/"+gateway)
   }
   
 }

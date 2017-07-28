@@ -7,14 +7,14 @@ export default{
   /**
    * 存入资金
    */
-  async depositeFunds({mt4_id, order_amount,bank_code="",fasa_account=""}){
-    return fetchData('POST',"/deposit",{mt4_id, order_amount,bank_code,fasa_account});
+  async depositeFunds({mt4_id, order_amount,bank_code="",fasa_account="",gateWayCode=""}){
+    return fetchData('POST',"/deposit/"+gateWayCode,{mt4_id, order_amount,bank_code,fasa_account});
   },
   /**
    * 根据语言，获取支付方式
    */
   async getDepositeMethod(language){
-  	return fetchData('GET',"/"+"/"+language)
+  	return fetchData('GET',"/deposit/method/"+language)
   }
 
 }

@@ -4,7 +4,7 @@
     	<deposite-funds-methods @chosePaymentMethod="methodChange"></deposite-funds-methods>
     </div>
     <div class="row">
-    	<deposite-funds-form :method="method" :methodCode="methodCode"></deposite-funds-form>
+    	<deposite-funds-form :method="method" :methodCode="methodCode" ></deposite-funds-form>
     </div>
     <div class="row">
     	<deposite-funds-table ></deposite-funds-table>
@@ -15,12 +15,12 @@
 	import form from './form'
 	import methods from './methods'
 	import table from './table'
-	export default{
+  export default{
 		data(){
 			return {
 				method:"unionPay",
         methodCode:""
-			}
+      }
 		},
 		components :{
 			'deposite-funds-form' : form,

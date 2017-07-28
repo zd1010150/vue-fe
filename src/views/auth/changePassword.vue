@@ -76,37 +76,25 @@
       async validatePwd(){
           console.log("blur is trigger");
           //需要调用验证密码接口
-         try{
           let {success,message} = await pwdService.validatePwd({old_password:this.model.old_password});
           if(success){
               this.$nextTick(()=>{
                 this.passwordIsValid = false;
               });
 
-          }else{
-              throw new Error(message);
           }
-         }catch(error){
-           this.toastr.error(this.$t("info."+error.message));
-         }
       },
       cancel(){
         this.$router.push("/main");
       },
       async changePassword(){
-        try{
-            let validateResult = await this.$validator.validateAll();
-            if(validateResult){
-              let {data,success,message} = await this.$store.dispatch('changePassword',this.model);
-              if(success){
-                this.toastr.info(this.$t("info.SUCCESS"));
-                this.$router.push("/login");
-              }else{
-                throw new Error(message);
-              }
-            }
-        }catch(error){
-          this.toastr.error(this.$t("info."+error.message));
+        let validateResult = await this.$validator.validateAll();
+        if(validateResult){
+          let {data,success,message} = await this.$store.dispatch('changePassword',this.model);
+          if(success){
+            this.toastr.info(this.$t("info.SUCCESS"));
+            this.$router.push("/login");
+          }
         }
       }
     }

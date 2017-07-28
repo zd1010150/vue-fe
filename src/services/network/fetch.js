@@ -5,7 +5,6 @@ import { MAX_FETCH_TIMEOUT } from '../../config/app.config.js'
 import store from "store"
 //需要添加对formData的支持
 export default async(type = 'GET', url = '', data = {},uploadFile = false) => {
-  console.log("fetch,",url);
   type = type.toUpperCase();
   url = baseUrl + url;
 
@@ -39,13 +38,11 @@ export default async(type = 'GET', url = '', data = {},uploadFile = false) => {
   if(store.state.token){
     requestConfig.headers["Authorization"] = store.state.token;
   }
-  console.log("define before");
   if (type == 'POST' ) {
      Object.defineProperty(requestConfig, 'body', {
         value: JSON.stringify(data)
       })
   }
-  console.log("define after");
  function _fetch(fetch_promise, timeout) {
 
       var abort_fn = null;
@@ -74,10 +71,9 @@ export default async(type = 'GET', url = '', data = {},uploadFile = false) => {
       response = await _fetch(fetch(url,requestConfig),MAX_FETCH_TIMEOUT);
       resoponseJson = await response.json();
    }catch(error){
-    console.log("Error",error);
+      console.log("Error",error);
       throw new Error(error);
    }
-   console.log("result from server:",resoponseJson);
    return resoponseJson;
 
 }

@@ -32,9 +32,11 @@
     <!--Table header toolbar end-->
 
     <!--Filter toolbar begin-->
-    <chp-toolbar v-show="isDisplayFilterToolbar">
-      <slot name="filterToolbar"></slot>
-    </chp-toolbar>
+    
+      <chp-toolbar v-show="isDisplayFilterToolbar" class="filter-toolbar">
+        <slot name="filterToolbar"></slot>
+      </chp-toolbar>
+    
     <!--Filter toolbar end-->
 
     <!--Multi operation toolbar begin-->
@@ -165,5 +167,8 @@
   }
   .pagination-bar{
     height:56px;
+  }
+  .filter-toolbar{
+   
   }
 </style>
