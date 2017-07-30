@@ -29,9 +29,16 @@
           <tr>
             <td class="field text-primary">Account Name</td>
             <td class="field-value">ACY Capital Australia Limited</td>
-            <td class="print-btn-td">
-              <chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn" @click="print">
-               <i class="fa fa-print hidden-sm hidden-xs"></i> {{ $t('ui.button.print') }}
+            <td class="print-btn-td ">
+              <chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn hidden-md hidden-sm hidden-xs" @click="print">
+               <i class="fa fa-print"></i> {{ $t('ui.button.print') }}
+              </chp-button>
+            </td>
+          </tr>
+          <tr class="visible-md visible-sm visible-xs ">
+            <td colspan="3" class="padding-10">
+              <chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn pull-right" @click="print">
+               <i class="fa fa-print"></i> {{ $t('ui.button.print') }}
               </chp-button>
             </td>
           </tr>
@@ -71,6 +78,15 @@ import {printDiv} from "utils/print.js";
       text-align: right !important;
     }
   }
+  }
+  @media(max-width:@screen-sm-min){
+    .bank-detail{
+      table{
+        .field{
+          padding-right: 5px;
+        }
+      }
+    }
   }
   
   

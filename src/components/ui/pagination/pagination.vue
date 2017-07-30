@@ -179,7 +179,7 @@ export default{
 @import "~assets/less/variable.less";
 @media(max-width:@screen-sm-min ){
   .mu-pagination{
-  padding:0px 15px;
+  padding:0px 0px;
   .mu-pagination-item{
     padding:8px 0px;
     margin:8px 0px;

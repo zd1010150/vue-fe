@@ -6,7 +6,7 @@
     <div class="row">
     	<deposite-funds-form :method="method" :methodCode="methodCode" ></deposite-funds-form>
     </div>
-    <div class="row">
+    <div class="row funds-table">
     	<deposite-funds-table ></deposite-funds-table>
     </div>
 </div>

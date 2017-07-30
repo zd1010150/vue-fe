@@ -8,7 +8,7 @@
           <chp-select v-model="innerPageSize" class="pageSelect">
             <mu-menu-item v-for=" (option,index) in pageOptions" :key="index" :value="option" :title="String(option)"></mu-menu-item>
           </chp-select>
-          <span class="visible-lg"> records per page</span>
+          <span class="hidden-sm hidden-xs"> records per page</span>
         </div>
         <div class="col-md-8 col-xs-6 text-right">
           <mu-icon-button @click="displayFilter" v-if="canFilter">
@@ -169,6 +169,6 @@
     height:56px;
   }
   .filter-toolbar{
-   
+
   }
 </style>
