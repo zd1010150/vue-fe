@@ -3,6 +3,10 @@
 1. popover component should input close event handler.otherwise the popover will not disappear when you click the outside context.
 
 
+#### vee-validate
+
+1. 注意一定要使用***v-model.lazy*** 去绑定自定义控件的value值，不能使用 `:value` 否则vee-validate会获取不到控件的值，导致验证失败[https://github.com/baianat/vee-validate/issues/118](https://github.com/baianat/vee-validate/issues/118)
+
 
 #### VUE
 
