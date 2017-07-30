@@ -9,5 +9,6 @@ export default {
   LOGIN_ERROR : "Email or Password is invalid",
   FORM_VALIDATION_ERROR: "The old password field is required",
   PASSWORD_ERROR: "Old password is wrong",
-  Unauthenticated:"Unauthenticated,Session is out"
+  Unauthenticated:"Unauthenticated,Session is out",
+  TOO_MANY_REQUEST:"Too many requests,server is busy."
 }

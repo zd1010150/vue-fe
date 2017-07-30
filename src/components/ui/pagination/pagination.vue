@@ -1,11 +1,13 @@
 <template>
 <div class="mu-pagination" v-if="total">
-  <page-item identifier="singleBack" @click="handleClick" :disabled="leftDisabled">
-    <svg viewBox="0 0 24 24" class="mu-pagination-svg-icon">
-      <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-    </svg>
+  <page-item :index="1" @click="handleClick" class="first-page visible-sm visible-xs" :showIndex="false">
+    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
   </page-item>
-  <page-item :index="1" @click="handleClick" :isActive="actualCurrent === 1"/>
+  <page-item identifier="singleBack" @click="handleClick" :disabled="leftDisabled" class="previous-btn">
+   <i class="fa fa-angle-left" aria-hidden="true"></i>
+  </page-item>
+  <page-item :index="1" @click="handleClick" :isActive="actualCurrent === 1" class=""/>
+  
   <page-item v-if="totalPageCount > defaultMaxCount && actualCurrent - 1 >= defaultMaxCount-1" identifier="backs" @click="handleClick" title="前5页">
     <span>...</span>
   </page-item>
@@ -15,10 +17,11 @@
     <span>...</span>
   </page-item>
   <page-item :index="totalPageCount" @click="handleClick" :isActive="actualCurrent === totalPageCount" v-if="totalPageCount !== 1"></page-item>
-  <page-item identifier="singleForward" @click="handleClick" :disabled="rightDisabled">
-    <svg viewBox="0 0 24 24" class="mu-pagination-svg-icon">
-      <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-    </svg>
+  <page-item identifier="singleForward" @click="handleClick" :disabled="rightDisabled" class="next-btn">
+   <i class="fa fa-angle-right" aria-hidden="true"></i>
+  </page-item>
+  <page-item :index="totalPageCount" @click="handleClick" class="last-page visible-sm visible-xs" :showIndex="false">
+    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
   </page-item>
 
 </div>
@@ -179,23 +182,30 @@ export default{
 @import "~assets/less/variable.less";
 @media(max-width:@screen-sm-min ){
   .mu-pagination{
-  padding:0px 0px;
-  .mu-pagination-item{
-    padding:8px 0px;
-    margin:8px 0px;
-    .flex(1);
-    min-width:auto;
-    font-size: inherit;
+    padding:0px 0px;
+    .mu-pagination-item{
+      padding:8px 0px;
+      margin:8px 0px;
+      .flex(1);
+      min-width:auto;
+      font-size: inherit;
+      }
+  }
+  .mu-pagination{
+    .mu-pagination-item{
+      display:none;
+      &.previous-btn,&.active,&.next-btn,&.first-page{
+        display: block;
+      }
     }
   }
-
 }
 .mu-pagination{
   .display(flex);
   .justify-content(flex-end);
   .align-items(center);
-
-
+  font-size: 1.6rem;
+  font-weight: bold;
 }
 
 .mu-pagination-svg-icon{

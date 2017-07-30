@@ -1,7 +1,7 @@
 <template>
 
  <div class="date-picker-wrapper form-control">
-    <mu-date-picker :hintText="hintText" class="date-picker" :fullWidth="fullWidth" :minDate="minDate" @input="input" @change = "change"/>
+    <mu-date-picker :hintText="hintText" class="date-picker" :fullWidth="fullWidth" :minDate="minDate" :maxDate="maxDate" @input="input" @change = "change" :required='required'/>
     <span class="icon icon-lg icon-calendar">
       <i class="fa fa-calendar"></i>
     </span>
@@ -22,6 +22,13 @@
        },
        minDate:{
 
+       },
+       maxDate:{
+
+       },
+       required:{
+        type:Boolean,
+        default:false
        }
      },
      methods:{

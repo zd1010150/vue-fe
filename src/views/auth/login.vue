@@ -51,8 +51,8 @@
 
           <div class="row">
             <div class="col-sm-12 text-right">
-              <chp-button type="submit" class="btn btn-primary hidden-xs">Sign In</chp-button>
-              <chp-button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign In</chp-button>
+              <chp-button type="submit" class="btn btn-primary hidden-xs" :disabled="loading">Sign In</chp-button>
+              <chp-button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg" :disabled="loading">Sign In</chp-button>
             </div>
           </div>
         </form>
@@ -70,6 +70,7 @@
     mixins: [validateMixin],
     data () {
       return {
+        loading:false,
         model: {
           email: "",
           password: ""
@@ -81,7 +82,9 @@
         try{
           let validateResult = await this.$validator.validateAll();
           if(validateResult){
+            this.loading = true;
             let {message,success} = await this.$store.dispatch('login', this.model);
+            this.loading = false;
              if(success){
 
               let {message,success} = await this.$store.dispatch('getUserInfo');

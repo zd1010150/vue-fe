@@ -13,8 +13,15 @@
 
 
       <expand-transition>
-        <div class="panel-body" ref="panelBody" v-show="isOpen">
+        <div class="panel-body" :class=" {'loading-overlay-showing':isLoading } " ref="panelBody" v-show="isOpen" >
           <slot name="body"></slot>
+          <div class="loading-overlay" style="border-radius: 0px 0px 5px 5px;">
+            <div class="bounce-loader">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+            </div>
+          </div>
         </div>
       </expand-transition>
     <div class="panel-footer" v-if="hasfooter">
@@ -68,6 +75,10 @@
       hasFooter:{
         type:Boolean,
         default:false
+      },
+      isLoading:{
+        type:Boolean,
+        default:false
       }
     },
     methods: {
@@ -84,11 +95,20 @@
       defaultStatus(val){
         console.log("panel val:",val);
         this.isOpen = val=="open"?true:false;
+      },
+      isLoading(val){
+        console.log("isLoading:",val);
       }
+     }
     }
-  }
+  
 
 </script>
 <style lang="less">
   @import "~assets/less/transition.less";
+  .panel{
+    .panel-body{
+      position: relative;
+    }
+  }
 </style>

@@ -44,5 +44,13 @@
     transform: translateX(10px);
     opacity: 0;
   }
-
+/*loading*/
+.loading-overlay{
+  background-color: @light-component-bg-color;
+}
+html.dark{
+  .loading-overlay{
+    background-color: @dark-component-bg-color;
+  }
+}
 

@@ -6,5 +6,6 @@ export default {
   LOGIN_ERROR : "邮件地址或者密码不对",
   FORM_VALIDATION_ERROR: "密码字段为必填",
   PASSWORD_ERROR: "旧密码不对",
-  Unauthenticated:"未授权,会话过期"
+  Unauthenticated:"未授权,会话过期,请重新登录",
+  TOO_MANY_REQUEST:"请求太频繁，请稍后再试"
 }

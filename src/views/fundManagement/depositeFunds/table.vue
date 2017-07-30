@@ -1,6 +1,6 @@
 <template>
 	<div class="col-lg-12 col-md-12">
-		<chp-panel :canCollapse="false" :canClose="false">
+		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
 	      <template slot="title">Payment History</template>
 	      	<chp-data-table slot="body" :isDisplayFilterToolbar="isDisplayFilterToolbar"
                       :pageSize = "pageSize"
@@ -18,19 +18,19 @@
           
             <div class="row" >
               <div class="col-sm-12 visible-sm visible-xs">
-                <mu-icon-button @closePanel="toggleDisplayFilterToolbar(false)" class="pull-right">
+                <mu-icon-button @click="toggleDisplayFilterToolbar(false)" class="pull-right">
                   <i class="fa fa-close "></i>
                </mu-icon-button>
               </div>
               <div class="col-md-10 col-sm-12">
                  <form class="form-inline">
                     <div class="form-group" :class="errorClass('startDate')">
-                      <chp-date-picker :hintText="$t('ui.datePicker.startDate')" :value="model.startDay" @input="changeStartday" v-validate="'required'" data-vv-value-path="model.startDay" data-vv-name="startDate" :fullWidth="true"/>
+                      <chp-date-picker :hintText="$t('ui.datePicker.startDate')" v-model.lazy="model.startDay" @input="changeStartday" :fullWidth="true" :required="true"  v-validate="'required'" data-vv-value-path="model.startDay" data-vv-name="startDate" data-vv-validate-on="change" :maxDate="maxStartDate"/>
                        <span slot="password" class="error"
                       v-if="errors.has('startDate:required')">{{errors.first('startDate:required')}}</span>
                     </div>
                     <div class="form-group " :class="errorClass('endDate')">
-                      <chp-date-picker :hintText="$t('ui.datePicker.endDate')" @input="changeEndday" :minDate = "minEndDate" :value="model.endDay" v-validate="'required'" data-vv-value-path="model.endDay" data-vv-name="endDate" :fullWidth="true"/>
+                      <chp-date-picker :hintText="$t('ui.datePicker.endDate')" @input="changeEndday" :minDate = "minEndDate" v-model.lazy="model.endDay"  v-validate="'required'" data-vv-value-path="model.endDay" data-vv-name="endDate" :fullWidth="true" :required="true" data-vv-validate-on="change"/>
                        <span slot="password" class="error"
                       v-if="errors.has('endDate:required')">{{errors.first('endDate:required')}}</span>
                     </div>
@@ -40,7 +40,7 @@
                   </form>
               </div>
               <div class="col-md-2 hidden-sm hidden-xs">
-                <mu-icon-button @closePanel="toggleDisplayFilterToolbar(false)" class="pull-right">
+                <mu-icon-button @click="toggleDisplayFilterToolbar(false)" class="pull-right">
                   <i class="fa fa-close "></i>
                </mu-icon-button>
               </div>
@@ -75,8 +75,10 @@
 <script>
     import dataTableService from 'services/dataTableService'
     import validateMixin from 'mixins/validatemix.js'
+    import loadingMix from 'mixins/loading'
+    import {Validator} from 'vee-validate'
 	export default{
-		mixins: [validateMixin],
+		mixins: [validateMixin,loadingMix],
 		data () {
         return{
           isDisplayFilterToolbar : false,
@@ -91,13 +93,17 @@
           	endDay:""
           },
           minEndDate:"",
+          maxStartDate:"",
           filterPanelOpen:"open"
         }
-     } ,
+     },
     watch:{
     	'model.startDay' : function(val){
     		this.minEndDate = val;
     	},
+      'model.endDay':function(val){
+        this.maxStartDate = val;
+      },
       pageSize:function(val){
         this.fetchDepositeData({
         pageIndex:this.pageIndex,
@@ -128,9 +134,11 @@
     methods : {
       changeEndday(val){
       	this.model.endDay = val;
+        console.log(this.errors);
       }	,
       changeStartday(val){
       	this.model.startDay = val;
+         console.log(this.errors);
       },
       filterFields(originData){
       	if(originData && originData.length > 0){
@@ -145,13 +153,25 @@
       				trade_status: row.trade_status
 				    }
       		});
-      	}
+      	}else{
+          this.histories = [];
+        }
       },
       async fetchDepositeData(params){
+        console.log(params);
+        this.loadingStatus = true;
       	let {data,message,success} = await dataTableService.pagingQuery(Object.assign({
       			url:'/deposit'
-      		},params));
-      		if(success){
+      		},{
+              pageIndex:this.pageIndex,
+              pageSize:this.pageSize,
+           },{queryParameter:this.model},params));
+        this.loadingStatus = false;
+        this.$nextTick(function(){
+          console.log(this.loadingStatus);
+        });
+          if(success){
+            
       			this.filterFields(data.data);
       			this.pageIndex = data.current_page;
       			this.rowsTotal = data.total;
@@ -159,13 +179,19 @@
       		}
       },
       async research(){
-        let validateResult = await this.$validator.validateAll();
-          if(validateResult){
-            this.fetchDepositeData(Object.assign({
-              pageIndex:this.pageIndex,
-              pageSize:this.pageSize,
-           },this.model));
-          }
+        console.log(this.errors);
+        try{
+            let validateResult = await this.$validator.validateAll();
+            console.log(this.model,JSON.stringify(this.errors),validateResult,"====");
+            if(validateResult){
+              console.log("validate success");
+              this.fetchDepositeData();
+            }
+        }catch(err){
+          console.log(err);
+        }
+        
+          //console.log(this.$validator.validate('startDate'));
       },
       toggleDisplayFilterToolbar(val){
         console.log("it is toggle",val);
@@ -173,9 +199,7 @@
       },
       sortRow({name,type}){
           console.log("sort",name,type);
-          this.fetchDepositeData({
-
-          });
+          this.fetchDepositeData();
       },
       pageSizeChange(newSize){
         this.pageSize = newSize;

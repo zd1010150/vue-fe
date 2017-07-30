@@ -5,6 +5,7 @@ export default{
    * 分页带条件查询
    */
   async pagingQuery({url,pageIndex="1",pageSize="5",sort="",queryParameter={}}){
+    console.log(queryParameter);
     return fetchData('GET',url,_.assign({
       page:pageIndex,
       pageSize:pageSize,

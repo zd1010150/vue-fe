@@ -8,11 +8,11 @@
         <h2 class="user-name text-dark m-none">{{ $store.state.userInfo.name }}</h2>
         <p class="user-email m-none">{{ $store.state.userInfo.email }}</p>
       </div>
-      <div class="form-group">
-        <div class="input-group col-md-12 input-group-icon" :class="errorClass('old_password')">
+      
+        <div class="form-group col-md-12 input-group-icon" :class="errorClass('old_password')">
           <mu-text-field v-validate="'required|min:8'" data-vv-value-path="model.old_password"
                          :hintText="$t('pwd.placeHolderCurrentPwd')" class="form-control " name="old_password"
-                         type="password" required v-model="model.old_password" @blur="validatePwd"/>
+                         type="password" required v-model="model.old_password" @blur="validatePwd" :full-width="true"/>
 
         </div>
         <span slot="required" class="error" v-if="errors.has('old_password:required')">{{errors.first('old_password:required')}}</span>
@@ -20,29 +20,26 @@
               v-if="errors.has('old_password:min')">{{errors.first('old_password:min')}}
               </span>
 
-        <div class="input-group col-md-12 input-group-icon" :class="errorClass('password')">
+        <div class="form-group col-md-12 input-group-icon" :class="errorClass('password')">
           <mu-text-field v-validate="'required|password'" data-vv-value-path="model.password" data-vv-name="password"
                          :hintText="$t('pwd.placeHolderNewPwd')" class="form-control " name="password"
-                         type="password" v-model.lazy="model.password" required :disabled="passwordIsValid"/>
+                         type="password" v-model.lazy="model.password" required :disabled="passwordIsValid" :full-width="true"/>
 
         </div>
         <span slot="required" class="error" v-if="errors.has('password:required')">{{errors.first('password:required')}}</span>
         <span slot="password" class="error"
               v-if="errors.has('password:password')">{{errors.first('password:password')}}</span>
 
-        <div class="input-group col-md-12 input-group-icon" :class="errorClass('confirm_password')">
+        <div class="form-group col-md-12 input-group-icon" :class="errorClass('confirm_password')">
           <mu-text-field v-validate="'confirmed:password'" data-vv-value-path="confirmPwd" data-vv-name="confirm_password"
                          :hintText="$t('pwd.placeHolderConfirmPwd')" class="form-control "
-                         type="password" required v-model="confirmPwd" :disabled="passwordIsValid"/>
+                         type="password" required v-model="confirmPwd" :disabled="passwordIsValid" :full-width="true"/>
         </div>
         <!-- <span slot="required" class="error" v-if="errors.has('confirm_password:required')">{{errors.first('confirm_password:required')}}</span>
         <span slot="password" class="error"
               v-if="errors.has('confirm_password:password')">{{errors.first('confirm_password:password')}}</span> -->
         <span slot="password" class="error"
               v-if="errors.has('confirm_password:confirmed')">{{errors.first('confirm_password:confirmed')}}</span>
-      </div>
-
-      <div class="row">
         <div class="col-xs-6">
 
             <chp-button type="button" class="mb-xs mt-xs mr-xs btn btn-default"  @click="cancel"><i class="fa fa-angle-left"></i> {{ $t('ui.button.cancel')}}</chp-button>
@@ -51,7 +48,7 @@
         <div class="col-xs-6 text-right">
           <chp-button type="submit" class="mb-xs mt-xs mr-xs btn btn-primary" :disabled="passwordIsValid"><i class="fa fa-cog"></i> {{ $t('ui.button.reset') }}</chp-button>
         </div>
-      </div>
+      
     </form>
   </chp-pwd-layout>
 </template>

@@ -2,7 +2,7 @@
 
   <chp-button  class="mu-pagination-item btn " :class="{'circle': isCircle, 'active': isActive}":centerRipple="false" :disabled="disabled"
   @click="handleClick"  @hover="handleHover" @hoverExit="handleHoverExit" containerElement="div">
-  <span v-if="index">{{index}}</span>
+  <span v-if="index && showIndex">{{index}}</span>
   <slot></slot>
 </chp-button>
 </template>
@@ -29,6 +29,10 @@ export default{
       },
       identifier: {
         type: String
+      },
+      showIndex:{
+        type:Boolean,
+        default:true
       }
     },
     methods:{
@@ -50,15 +54,12 @@ export default{
 </script>
 <style lang="less">
   .mu-pagination-item{
-
     background-color: transparent;
+    line-height: 14px;
+    span{
 
-    > span{
-        display: block;
-        position:absolute;
-        top:0px;
-        padding:0px 0px 5px 0px;
-      }
+    }
+    
 
   }
 html.dark{
