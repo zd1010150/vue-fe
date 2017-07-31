@@ -8,7 +8,10 @@ export default {
     cancel: "取消",
     reset: "重置",
 	  print: "打印",
-    confirm: "确认"
+    confirm: "确认",
+    previous: "上一步",
+    next:"下一步",
+    submit:"确认"
   },
   datePicker:{
     startDate:"选择开始时间",

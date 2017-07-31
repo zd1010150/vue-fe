@@ -1,7 +1,7 @@
 import bankAccount from 'views/fundManagement/bankAccount'
 import depositeFunds from 'views/fundManagement/depositeFunds/index'
 import internalTransfer from 'views/fundManagement/internalTransfer'
-import withdrawal from 'views/fundManagement/withdrawal'
+import withdrawal from 'views/fundManagement/withdrawal/index'
 
 
 export default [{

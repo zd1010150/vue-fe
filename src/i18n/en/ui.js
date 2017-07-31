@@ -8,7 +8,10 @@ export default {
     cancel: "Cancel",
     reset: "Reset",
     print: "Print",
-    confirm: "OK"
+    confirm: "OK",
+    previous: "Previous",
+    next:"Next",
+    submit:"Submit"
   },
   datePicker:{
     startDate:"Select Start Date",

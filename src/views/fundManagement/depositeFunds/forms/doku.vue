@@ -14,14 +14,14 @@
              <span slot="required" class="error" v-if="errors.has('MT4:required')">{{errors.first('MT4:required')}}</span>
           </div>
         </div>
-        <div class="form-group" :class="errorClass('withdraw_pay_doku')">
+        <div class="form-group" :class="errorClass('deposit_pay')">
           <label class="control-label col-md-3">Amount({{baseCurrency}})</label>
           <div class="col-md-6">
-            <mu-text-field v-model="model.order_amount"  v-validate="'required|positiveFloatMoney|moneyRange:withdraw_pay_doku'" data-vv-value-path="model.order_amount" data-vv-name="withdraw_pay_doku" data-vv-validate-on="blur" class="form-control"   :fullWidth="true" name="order_amount" />
+            <mu-text-field v-model="model.order_amount"  v-validate="'required|positiveFloatMoney|moneyRange:deposit_pay'" data-vv-value-path="model.order_amount" data-vv-name="deposit_pay" data-vv-validate-on="blur" class="form-control"   :fullWidth="true" name="order_amount" />
             
-            <span slot="required" class="error" v-if="errors.has('withdraw_pay_doku:required')">{{errors.first('withdraw_pay_doku:required')}}</span>
-            <span slot="required" class="error" v-if="errors.has('withdraw_pay_doku:positiveFloatMoney')">{{errors.first('withdraw_pay_doku:positiveFloatMoney')}}</span>
-            <span slot="required" class="error" v-if="errors.has('withdraw_pay_doku:moneyRange')">{{errors.first('withdraw_pay_doku:moneyRange')}}</span>
+            <span slot="required" class="error" v-if="errors.has('deposit_pay:required')">{{errors.first('deposit_pay:required')}}</span>
+            <span slot="required" class="error" v-if="errors.has('deposit_pay:positiveFloatMoney')">{{errors.first('deposit_pay:positiveFloatMoney')}}</span>
+            <span slot="required" class="error" v-if="errors.has('deposit_pay:moneyRange')">{{errors.first('deposit_pay:moneyRange')}}</span>
           </div>
         </div>
       </form> 
@@ -43,7 +43,6 @@
   import validateMixin from 'mixins/validatemix'
   import payingDialog from './payingDialog'
   import loadingMix from 'mixins/loading'
-  import {Validator} from 'vee-validate'
   export default{
     components:{
       'paying-dialog' : payingDialog
