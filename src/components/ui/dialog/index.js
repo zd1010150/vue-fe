@@ -1,3 +1,6 @@
+/**
+ * reference:http://vuematerial.io/#/components/dialog
+ */
 import chpDialog from './chpDialog.vue';
 import chpDialogTitle from './chpDialogTitle.vue';
 import chpDialogContent from './chpDialogContent.vue';

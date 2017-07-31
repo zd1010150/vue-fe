@@ -16,11 +16,10 @@ export default function install(Vue){
       message:message.zh
     }
   };
-  console.log(dictionary);
+  
   const config = {
     events: 'blur',
     locale:Store.state.language,
-    //locale:'zh',
     dictionary:dictionary
   };
 

@@ -39,5 +39,6 @@ export default{
       commit(type.SET_TOKEN,"")
     }
     return {data,success,message};
-   }
+   },
+   
 }

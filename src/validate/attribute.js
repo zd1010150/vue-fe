@@ -7,7 +7,10 @@ export default {
     positiveFloatMoney : "金额",
     bank : "银行账户",
     startDate : "开始时间",
-    endDate : "结束时间"
+    endDate : "结束时间",
+    withdraw_pay : "入金",
+    withdraw_pay_doku : "Doku 入金",
+    withdraw_pay_fasa : "Fasa 入金"
   },
   en:{
     email : "test email address",
@@ -17,6 +20,9 @@ export default {
     positiveFloatMoney : "Currency",
     bank : "Bank Account",
     startDate : "Start Date",
-    endDate : "End Date"
+    endDate : "End Date",
+    withdraw_pay : "Deposite amount",
+    withdraw_pay_doku:"Doku deposite",
+    withdraw_pay_fasa : "Fasa deposite"
   }
 }

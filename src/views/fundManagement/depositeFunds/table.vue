@@ -94,7 +94,7 @@
           },
           minEndDate:"",
           maxStartDate:"",
-          filterPanelOpen:"open"
+          sort:""
         }
      },
     watch:{
@@ -115,13 +115,6 @@
         pageIndex:val,
         pageSize:this.pageSize
       });
-      },
-      isDisplayFilterToolbar:function(val){
-        if(val){
-          this.filterPanelOpen = "open"
-        }else{
-          this.filterPanelOpen = "false"
-        }
       }
     },
     created(){
@@ -158,13 +151,14 @@
         }
       },
       async fetchDepositeData(params){
-        console.log(params);
+        
         this.loadingStatus = true;
       	let {data,message,success} = await dataTableService.pagingQuery(Object.assign({
       			url:'/deposit'
       		},{
               pageIndex:this.pageIndex,
               pageSize:this.pageSize,
+              sort:this.sort
            },{queryParameter:this.model},params));
         this.loadingStatus = false;
         this.$nextTick(function(){
@@ -198,7 +192,7 @@
         this.isDisplayFilterToolbar = val
       },
       sortRow({name,type}){
-          console.log("sort",name,type);
+          this.sort = (type=="desc" ?"-":"" )+ name;
           this.fetchDepositeData();
       },
       pageSizeChange(newSize){

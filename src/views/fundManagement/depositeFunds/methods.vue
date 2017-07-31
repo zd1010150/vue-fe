@@ -69,14 +69,15 @@
             isActive: false
           }
         },
-        gateWays:{
+        defaultGateWays:{
           wireTransfer: {
             title: this.$t("payMentMethod.wireTransfer"),
             bgUrl: "/static/images/wticon.png",
             isActive: true,
             code:""
           }
-        }
+        },
+        gateWays:{}
       }
     },
     components: {
@@ -97,8 +98,9 @@
       async fetchPaymentMethods(){
           let {data,success,message} = await fundsService.getDepositeMethod(this.$store.state.language);
             if(success){
+              this.gateWays = Object.assign({},this.defaultGateWays);
               for(let method in data){
-                this.$set(this.gateWays,method,Object.assign(this.allGateWays[method],data[method]));
+                this.$set(this.gateWays,method,Object.assign({},this.allGateWays[method],data[method]));
               }
            }
         }
@@ -107,7 +109,11 @@
       this.fetchPaymentMethods();
     },
     watch:{
-
+      '$store.state.language' : function(val,oldVal){
+          if(val !==oldVal){
+            this.fetchPaymentMethods();
+          }
+      }
     }
   }
 </script>

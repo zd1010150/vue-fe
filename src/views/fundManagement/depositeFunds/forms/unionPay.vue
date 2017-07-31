@@ -1,11 +1,12 @@
 <template>
-	<chp-panel :canCollapse="false" :canClose="false">
+	<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
     <template slot="title">unionPay</template>
-     <form slot="body" class="form-horizontal form-bordered">
+     <form slot="body" class="form-horizontal form-bordered " method="POST" name="unionPay" target="_blank" ref="unionPayForm">
+        <paying-dialog ref="dialog" @close="handlerDialogClose"></paying-dialog>
         <div class="form-group" :class="errorClass('MT4')">
           <label class="control-label col-md-3">MT4 | Balance</label>
           <div class="col-md-6" >
-            <chp-select v-model="model.mt4_id" v-validate="'required'" data-vv-value-path="model.mt4_id" name="MT4" >
+            <chp-select v-model="model.mt4_id" v-validate="'required'" data-vv-value-path="model.mt4_id" name="mt4_id" >
               <template v-for="mt4 in MT4">
                 <mu-menu-item :value="mt4.id" :title="mt4.text" key="mt4.id"/>
               </template>
@@ -13,19 +14,20 @@
              <span slot="required" class="error" v-if="errors.has('MT4:required')">{{errors.first('MT4:required')}}</span>
           </div>
         </div>
-        <div class="form-group" :class="errorClass('positiveFloatMoney')">
+        <div class="form-group" :class="errorClass('withdraw_pay')">
           <label class="control-label col-md-3">Amount({{baseCurrency}})</label>
           <div class="col-md-6">
-            <mu-text-field v-model="model.order_amount"  v-validate="'required|positiveFloatMoney'" data-vv-value-path="model.order_amount" data-vv-name="positiveFloatMoney" data-vv-validate-on="input|blur" class="form-control"   :fullWidth="true"  />
+            <mu-text-field v-model="model.order_amount"  v-validate="'required|positiveFloatMoney|moneyRange:withdraw_pay'" data-vv-value-path="model.order_amount" data-vv-name="withdraw_pay" data-vv-validate-on="blur" class="form-control"   :fullWidth="true" name="order_amount" />
             
-            <span slot="required" class="error" v-if="errors.has('positiveFloatMoney:required')">{{errors.first('positiveFloatMoney:required')}}</span>
-            <span slot="required" class="error" v-if="errors.has('positiveFloatMoney:positiveFloatMoney')">{{errors.first('positiveFloatMoney:positiveFloatMoney')}}</span>
+            <span slot="required" class="error" v-if="errors.has('withdraw_pay:required')">{{errors.first('withdraw_pay:required')}}</span>
+            <span slot="required" class="error" v-if="errors.has('withdraw_pay:positiveFloatMoney')">{{errors.first('withdraw_pay:positiveFloatMoney')}}</span>
+            <span slot="required" class="error" v-if="errors.has('withdraw_pay:moneyRange')">{{errors.first('withdraw_pay:moneyRange')}}</span>
           </div>
         </div>
         <div class="form-group" :class="errorClass('bank')">
           <label class="control-label col-md-3">Bank</label>
           <div class="col-md-6">
-            <chp-select v-model="model.bank_code" v-validate="'required'" data-vv-value-path="model.bank_code" data-vv-name="bank">
+            <chp-select v-model="model.bank_code" v-validate="'required'" data-vv-value-path="model.bank_code" data-vv-name="bank" name="bank_code">
               <template v-for="(value,key) in banks">
                 <mu-menu-item :value="key" :title="value" key="key"/>
               </template>
@@ -44,15 +46,21 @@
           </chp-button>
       </div>
     </div>
-  </chp-panel>
+   
+    </chp-panel>
 </template>
 <script>
   import mt4Service from "services/mt4Service"
   import bankService from "services/bankService"
-  import fundsService from "services/fundsService"
-  import validateMixin from 'mixins/validatemix.js'
+  import validateMixin from 'mixins/validatemix'
+  import payingDialog from './payingDialog'
+  import loadingMix from 'mixins/loading'
+  import {Validator} from 'vee-validate'
 	export default{
-    mixins:[validateMixin],
+    components:{
+      'paying-dialog' : payingDialog
+    },
+    mixins:[validateMixin,loadingMix],
 		data(){
       return {
         MT4 : null,
@@ -75,15 +83,16 @@
       async submit(){
         let validateResult = await this.$validator.validateAll();
           if(validateResult){
-            let {data,success,message} = await fundsService.depositeFunds(this.model);
-            if(success){
-              this.toastr.info(this.$t("info.SUCCESS"));
-            }
+            this.$refs.dialog.open();
+            let $form = this.$refs.unionPayForm;
+            $form.action = "/api/deposit/"+this.model.gateWayCode;
+            $form.submit();
+            
           }
         
       },
       cancel(){
-        this.model.order_amount = "";
+        this.$set(this.model,"order_amount","");
       },
       async fetchMT4(){
          let {success,data,message} = await mt4Service.getMT4Account();
@@ -97,6 +106,7 @@
               });
               this.$set(this.model,"mt4_id",this.MT4[0].id)
             }
+            return {success,data,message};
       },
       async fetchBank(){
         let {success,data,message} = await bankService.getBank(this.methodCode);
@@ -111,13 +121,20 @@
              }
               this.$set(this.model,"bank_code",firstKey)
             }
+            return {success,data,message};
+        },
+        handlerDialogClose(){
+          this.$set(this.model,"order_amount","");
         }
-    },
+      },
     created(){
       if(this.methodCode){//需要加入条件判断，
-          this.fetchMT4();
-          this.fetchBank(); 
-      }
+          this.loadingStatus = true;
+          let self =this;
+          Promise.all([this.fetchMT4(),this.fetchBank()]).then(function(){
+            self.loadingStatus = false;
+          });
+     }
     },
     watch:{
       'model.mt4_id' : function(val,oldVal){

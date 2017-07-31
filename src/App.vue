@@ -1,7 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" >
 
     <router-view></router-view>
+   
   </div>
 </template>
 
@@ -15,9 +16,13 @@
     beforeDestroy(){
       
     }
+
   }
 </script>
 
-<style scoped>
+<style lang="less">
+ #app{
+  position:relative;
+ }
 
 </style>

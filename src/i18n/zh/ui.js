@@ -7,7 +7,8 @@ export default {
     singUp: "注册",
     cancel: "取消",
     reset: "重置",
-	   print: "打印"
+	  print: "打印",
+    confirm: "确认"
   },
   datePicker:{
     startDate:"选择开始时间",
