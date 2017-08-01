@@ -20,12 +20,8 @@ let fetchData = async function(type = 'GET', url = '', data = {}){
     return fetch(type,url,data).then((response)=>{
         filterResoveResponse(response);
         let success = response.status_code == 0 ? true : false
-        if(response.status_code == 500){
-          //此处如果发现是未授权，应该进行跳转到登录页面
-          console.log("fetch data error:",response.message);
-          vm.toastr.error(vm.$t("info.Unauthenticated"));
-        }else if(response.status_code == 429){
-          vm.toastr.error(vm.$t("info.TOO_MANY_REQUEST"));
+        if(!success){
+          vm.toastr.error(vm.$t("info."+response.message));
         }
         return {
           data:response.data,

@@ -13,12 +13,6 @@
 	import form from './forms'
 	import table from './table'
   export default{
-		data(){
-			return {
-				method:"unionPay",
-        methodCode:""
-      }
-		},
 		components :{
 			'withdrawal-forms' : form,
 			'withdrawal-table' : table

@@ -24,7 +24,7 @@
                     <router-link role="menuitem" tabindex="-1" to="/changePassword" data-lock-screen="true"><i class="fa fa-lock"></i>Modify Password</router-link>
                 </li>
                 <li>
-                    <a role="menuitem" tabindex="-1" href="pages-signin.html" class="logout-item"><i class="fa fa-power-off"></i> Logout</a>
+                    <a role="menuitem" tabindex="-1" href="javascript:void(0)" class="logout-item" @click="logout"><i class="fa fa-power-off"></i> Logout</a>
                 </li>
                 <li class="divider"></li>
                 <li>
@@ -41,6 +41,13 @@
                 </li>
             </ul>
         </mu-popover>
+        <chp-dialog-confirm
+          :chp-content-html="$t('confirmDialog.contentHtml')"
+          :chp-ok-text="$t('ui.button.confirm')"
+          :chp-cancel-text="$t('ui.button.cancel')"
+          @open="confirmLogout"
+          ref="confirmLogoutDialog">
+        </chp-dialog-confirm>
     </div>
 </template>
 <script>
@@ -67,11 +74,14 @@ import changeTheme  from 'utils/theme.js'
     	this.trigger = this.$refs.toggleBtn.$el;
     },
     methods:{
+      confirmLogout(){
+        
+        this.$store.dispatch("logout").then(() => {
+         this.$router.push("/login");
+       })
+      },
     	logout(){
-//        this.$store.dispatch("logout").then(() => {
-//          this.$router.push("/");
-//        })
-        alert("logout");
+        this.$refs.confirmLogoutDialog.open();
       },
       changeTheme (theme) {
         this.theme = theme

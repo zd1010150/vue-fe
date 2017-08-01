@@ -22,7 +22,7 @@
       name: String,
       id: String,
       value: [String, Boolean, Number],
-      mdValue: {
+      chpValue: {
         type: [String, Boolean, Number],
         required: true
       },
@@ -31,7 +31,7 @@
     computed: {
       classes() {
         return {
-          'chp-checked': typeof this.value !== 'undefined' && this.value !== null && this.mdValue.toString() === this.value.toString(),
+          'chp-checked': typeof this.value !== 'undefined' && this.value !== null && this.chpValue.toString() === this.value.toString(),
           'chp-disabled': this.disabled
         };
       }
@@ -39,8 +39,8 @@
     methods: {
       toggleCheck($event) {
         if (!this.disabled) {
-          this.$emit('change', this.mdValue, $event);
-          this.$emit('input', this.mdValue, $event);
+          this.$emit('change', this.chpValue, $event);
+          this.$emit('input', this.chpValue, $event);
         }
       }
     }

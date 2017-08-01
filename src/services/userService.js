@@ -11,7 +11,7 @@ export default{
     return fetchData("GET", "/checkLogin")
   },
   async logout(id){
-    return fetchData("DELETE","/logout",{id})
+    return fetchData("POST","/logout")
   },
   async getUserInfo(){
     return fetchData("GET","/user/me")

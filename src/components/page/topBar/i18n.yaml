@@ -22,3 +22,5 @@ zh:
     dark: "深色主题"
     light: "浅色主题"
   logout: "退出"
+  logoutDialog:
+    

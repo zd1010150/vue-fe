@@ -1,7 +1,7 @@
 <template>
   <div class="chp-checkbox" :class="[classes]">
     <div class="chp-checkbox-container" @click.stop="toggleCheck" tabindex="0">
-      <input type="checkbox" :name="name" :id="id" :disabled="disabled" :value="value" :checked="checked" tabindex="-1">
+      <input type="checkbox" :disabled="disabled" :name="name" value="nativeValue" :checked="checked">
       <chp-ink-ripple :chp-disabled="disabled" />
     </div>
 
@@ -19,15 +19,12 @@
   export default {
     props: {
       name: String,
-      value: [String, Boolean],
+      value: {},
       id: String,
-      disabled: Boolean
+      disabled: Boolean,
+      nativeValue: String
     },
-    data() {
-      return {
-        checked: this.value
-      };
-    },
+    
     computed: {
       classes() {
         return {
@@ -36,17 +33,31 @@
         };
       }
     },
-    watch: {
-      value() {
-        this.checked = !!this.value;
+    data () {
+      return {
+        inputValue: this.value,
+        checked: this.value.indexOf(this.nativeValue) > -1
       }
     },
+    watch: {
+      value (val) {
+        this.checked = val.indexOf(this.nativeValue) > -1
+        this.inputValue = val;
+      }
+    },    
     methods: {
-      toggleCheck($event) {
+      toggleCheck() {
         if (!this.disabled) {
-          this.checked = !this.checked;
-          this.$emit('change', this.checked, $event);
-          this.$emit('input', this.checked, $event);
+          this.checked =  !this.checked;
+         
+          if(this.checked){
+             this.inputValue.push(this.nativeValue);
+          }else{
+             let index = this.value.indexOf(this.nativeValue);
+             this.inputValue.splice(index,1);
+          }
+          this.$emit('input',this.inputValue);
+          this.$emit('change',this.inputValue);
         }
       }
     }

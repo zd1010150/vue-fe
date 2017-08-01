@@ -34,7 +34,7 @@
       return {
         parentTable: {},
         headRow: false,
-        checkbox: false,
+        checkbox: [],
         index: 0,
         uuid: `chprow_uuid_${uniqueId()}`
       };

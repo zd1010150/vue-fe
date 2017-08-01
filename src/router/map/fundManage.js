@@ -1,6 +1,6 @@
-import bankAccount from 'views/fundManagement/bankAccount'
+import bankAccount from 'views/fundManagement/bankAccount/index'
 import depositeFunds from 'views/fundManagement/depositeFunds/index'
-import internalTransfer from 'views/fundManagement/internalTransfer'
+import internalTransfer from 'views/fundManagement/internalTransfer/index'
 import withdrawal from 'views/fundManagement/withdrawal/index'
 
 

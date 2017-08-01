@@ -82,17 +82,17 @@
               <h4>checkbox(MATERIAL-UI)</h4>
               <div class="form-group">
                 <div class="col-md-12">
-                  <chp-checkbox name="rememberme" v-model="isRememberMe">remeber me</chp-checkbox>
-                  <chp-checkbox name="rememberme" v-model="isRememberMe2">remeber me 2</chp-checkbox>
-                  <chp-checkbox name="rememberme" v-model="isRememberMe3" disabled>remeber me 2 disabled</chp-checkbox>
+                  <chp-checkbox name="rememberme" v-model="isRememberMe" nativeValue="remerber1">remeber me</chp-checkbox>
+                  <chp-checkbox name="rememberme" v-model="isRememberMe" nativeValue="remerber2">remeber me 2</chp-checkbox>
+                  <chp-checkbox name="rememberme" v-model="isRememberMe" nativeValue="remerber3" disabled>remeber me 2 disabled</chp-checkbox>
                 </div>
               </div>
               <h4>radio(MATERIAL-UI)</h4>
               <div class="form-group">
                 <div class="col-md-12">
-                  <chp-radio name="sex" v-model="sex" md-value="male">male</chp-radio>
-                  <chp-radio name="sex" v-model="sex" md-value="female">female</chp-radio>
-                  <chp-radio name="sex" v-model="sex" md-value="neutral" disabled>neutral</chp-radio>
+                  <chp-radio name="sex" v-model="sex" chp-value="male">male</chp-radio>
+                  <chp-radio name="sex" v-model="sex" chp-value="female">female</chp-radio>
+                  <chp-radio name="sex" v-model="sex" chp-value="neutral" disabled>neutral</chp-radio>
                 </div>
               </div>
             </form>
@@ -279,9 +279,7 @@
       return {
         radio1: "2",
         game2: "1",
-        isRememberMe: true,
-        isRememberMe2: false,
-        isRememberMe3: true,
+        isRememberMe: [],
         sex:"neutral",
         activeTab:"tab1",
         activeStepTab: "tab1",

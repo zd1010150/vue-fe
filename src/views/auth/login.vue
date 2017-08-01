@@ -79,30 +79,22 @@
     },
     methods: {
       async login (e){
-        try{
+        
           let validateResult = await this.$validator.validateAll();
           if(validateResult){
             this.loading = true;
             let {message,success} = await this.$store.dispatch('login', this.model);
             this.loading = false;
              if(success){
-
               let {message,success} = await this.$store.dispatch('getUserInfo');
               if(success){
                 this.$router.addRoutes(routers);
                 this.$router.push("/main");
-              }else{
-                throw new Error(message);
               }
-            }else{
-              throw new Error(message);
             }
           }
-        }catch(error){
-            console.log(error.message);
-            this.toastr.error(this.$t("info."+error.message));
         }
-      }
+      
     },
     mounted(){
        let self = this;
@@ -124,8 +116,6 @@
       }
     }
   }
-  /*email: "wei.bai0736@gmail.com",
-   password: "11111111",*/
 </script>
 <style>
   .mu-text-field {

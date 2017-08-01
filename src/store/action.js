@@ -15,7 +15,7 @@ export default{
   async getUserInfo({ commit }){
     return await userService.getUserInfo().then(({data,success,message}) => {
       if (success) {
-        commit(type.SET_USERINFO, data.user);
+        commit(type.SET_USERINFO, data);
 
       }
       return { success };
@@ -24,8 +24,9 @@ export default{
   async logout({commit, state}){
     console.log("logout state", state, state.userInfo);
     if (state && state.userInfo) {
-      return await userService.logout(state.userInfo.id).then(() => {
+      return await userService.logout().then(() => {
         commit(type.SET_USERINFO, null)
+        commit(typs.SET_TOKEN,null)
       });
     }
   },

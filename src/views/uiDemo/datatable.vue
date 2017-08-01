@@ -165,6 +165,7 @@
       selectRow(val){
           this.isDisplayFilter = false
           this.selectedRows = val
+          console.log(val,"*****");
       },
       sortRow({name,type}){
           console.log("sort",name,type);

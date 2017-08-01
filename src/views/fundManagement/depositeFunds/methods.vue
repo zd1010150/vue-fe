@@ -1,17 +1,14 @@
-<i18n src="./i18n.yaml"></i18n>
+<i18n src="../i18n.yaml"></i18n>
 <template>
   <div class="col-lg-12 deposite-methods">
-  <!--此处一定更要加入v-if="gateWays",否则有可能会造成数据从后端取回来之后，页面的方式不刷新的问题-->
- <template  v-for="(value,key) in gateWays">
+  <template  v-for="(value,key) in gateWays">
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 flex-container content-center">
       
         <payment-method :value="key" :bgUrl="value.bgUrl" :title="value.title"
                         :isActive="value.isActive" :methodCode="value.code " @chosePaymentMethod="chosePaymentMethod">
         </payment-method>
-      
       </div>
     </template>
-
   </div>
 </template>
 <script>

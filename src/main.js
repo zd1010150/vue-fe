@@ -76,12 +76,12 @@ let initVue = () =>{
       
       return UserService.getUserInfo();
     }
-  }).then(({data:{user},success,message})=>{
+  }).then(({data,success,message})=>{
 
     if(success){
       initVue();
       router.addRoutes(routers);
-      vm.$store.commit(SET_USERINFO,user);
+      vm.$store.commit(SET_USERINFO,data);
       //如果用户已登录，然后刷新页面，此时cookie依然有效，但是vuex中的token已经没有值了，所以此时需要把token重新设置到vuex中去
       vm.$store.commit(SET_TOKEN,getStore("token"))
       let path = getStore("path") == "/login" ? "/main" : getStore("path");

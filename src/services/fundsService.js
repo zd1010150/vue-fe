@@ -5,10 +5,10 @@ import   { fetchData }  from  './network/getData'
 
 export default{
   /**
-   * 存入资金
+   * 内转
    */
-  async depositeFunds({mt4_id, order_amount,bank_code="",fasa_account="",gateWayCode=""}){
-    return fetchData('POST',"/deposit/"+gateWayCode,{mt4_id, order_amount,bank_code,fasa_account});
+  async internalTransferDeposite({origin_login,target_login,money}){
+    return fetchData('POST',"/internal-transfer",{origin_login,target_login,money});
   },
   /**
    * 根据语言，获取支付方式

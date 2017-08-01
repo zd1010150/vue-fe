@@ -11,7 +11,7 @@
       <template slot="content">
         <chp-tab-content id="tab1">
 
-          <withdrawal-account></withdrawal-account>
+          <withdrawal-account @loading="loadingData"></withdrawal-account>
         </chp-tab-content>
         <chp-tab-content id="tab2">
 
@@ -88,6 +88,9 @@ import confirm from "./forms/confirm"
 			},
 			next(){
 				this.activeStepTab = "tab"+(this.tabIndex+1)
+			},
+			loadingData(loading){
+				this.loadingStatus = loading;
 			}
 		}
 	}

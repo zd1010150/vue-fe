@@ -11,7 +11,11 @@ export default {
     withdraw_pay : "出金",
     withdraw_pay_doku : "Doku 出金",
     withdraw_pay_fasa : "Fasa 出金",
-    deposit_pay:"入金"
+    deposit_pay:"入金",
+    origin_login:"转出资金账户",
+    target_login:"转入资金账户",
+    money:"金额",
+    terms:"条款"
   },
   en:{
     email : "test email address",
@@ -25,6 +29,10 @@ export default {
     withdraw_pay : "Withdraw amount",
     withdraw_pay_doku:"Doku withdraw",
     withdraw_pay_fasa : "Fasa withdraw",
-    deposit_pay:"Deposite amount"
+    deposit_pay:"Deposite amount",
+    origin_login:"Origin account",
+    target_login:"Target account",
+    money:"Currency",
+    terms : "Terms"
   }
 }
