@@ -15,11 +15,10 @@ import Tooltip from './tooltip'
 import Table from './table'
 import Dialog from './dialog'
 import List from './list'
-import FileUpload from 'vue-upload-component'
+import FileUpload from './fileupload'
 
 export default function install(Vue) {
   Vue.component('chp-ink-ripple', chpInkRipple)
-  Vue.component('chp-file-upload',FileUpload);
   Vue.component('chp-button',button)
   Vue.component('chp-panel',panel)
   Vue.use(Checkbox)
@@ -31,7 +30,7 @@ export default function install(Vue) {
   Vue.use(Tabs)
   Vue.use(Pagination)
   Vue.use(Datepicker)
-
+  Vue.use(FileUpload)
   Vue.use(Toolbar)
   Vue.use(Tooltip)
   Vue.use(Table)

@@ -3,7 +3,10 @@
   <div class="panel-body sidebar-profile">
     <div class="widget-summary widget-summary-xlg">
       <div class="widget-summary-col widget-summary-col-icon">
-        <mu-avatar src="static/images/xx.jpg" slot="avatar" :size="80" class="summary-icon bg-primary"/>
+      
+         <chp-file-upload name="document" :extensions="['png','bmp','jpg','jpeg']"  :post-action="postAction" @input="inputFunction" >
+          <mu-avatar :src="$store.state.userInfo.avatar"  :size="80" class="summary-icon bg-primary"/>
+        </chp-file-upload>
       </div>
       <div class="widget-summary-col">
         <div class="summary">
@@ -20,15 +23,35 @@
   </div>
 </template>
 <script>
+  import { UPLOAD_DOCUMENT_URL } from "src/config/url.config.js"
   export default{
-      name :"leftSideBarProfile"
+      name :"leftSideBarProfile",
+      data(){
+        return {
+          postAction : UPLOAD_DOCUMENT_URL+"/avatar"
+        }
+      },
+      methods:{
+        inputFunction(response,success,errors){
+          console.log(response);
+          let {status_code,message,data} = response[0].response;
+          if(status_code != 0){
+            this.toastr.error(this.$t("info."+message));
+          }else{
+            this.$store.state.userInfo.avatar = data.url;
+          }
+          
+        },
+        changeAvatar(){
+
+        }
+    }
   }
 </script>
 <style lang="less">
 @import "~assets/less/variable.less";
 
   .sidebar-profile.panel-body{
-
     .widget-summary{
        .summary-footer{
 

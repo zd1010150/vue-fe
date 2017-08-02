@@ -53,4 +53,21 @@ html.dark{
     background-color: @dark-component-bg-color;
   }
 }
+/*progress mask*/
+.chp-progress-mask{
+  position:fixed;
+  left:0px;
+  right:0px;
+  top:0px;
+  bottom:0px;
+  
+  &.loading-overlay-showing{
+    visibility: visible;
+    opacity: .8;
+    z-index:999999;
+    .display(flex);
+    .justify-content(center);
+    .align-items(center);
+  }
+}
 

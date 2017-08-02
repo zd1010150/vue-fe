@@ -10,6 +10,7 @@ en:
     dark: "Dark Theme"
     light: "Light Theme"
   logout: "Logout"
+  logoutDialogHtml : "Confirm logout？"
 zh:
   theme: "主题"
   language: "多语言"
@@ -22,5 +23,5 @@ zh:
     dark: "深色主题"
     light: "浅色主题"
   logout: "退出"
-  logoutDialog:
+  logoutDialogHtml : "确认退出？"
     

@@ -1,0 +1,21 @@
+en:
+  internalTransfer:
+    note : "Note: Accounts that has open positions cannot submit inter-transfers, affiliate accounts required to meet minimum requirement before activate inter-transfers."
+    errors:
+      onlyOneAccount : "Only one account,can't internal transfer"
+    payMentMethod:
+      unionPay: "Union Pay"
+      doku: "Doku"
+      fasapay: "Fasa Pay"
+      wireTransfer: "Wire Transfers"
+      
+zh:
+  internalTransfer:
+    note : "注意：有仓位的账户无法进行转出资金，代理账户需激活后才能进行内转"
+    errors:
+      onlyOneAccount : "只有一个账户，不能实现内转"
+  payMentMethod:
+    unionPay: "银联"
+    doku: "Doku"
+    fasapay: "Fasa Pay"
+    wireTransfer: "银行转账"  

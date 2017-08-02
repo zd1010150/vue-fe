@@ -4,13 +4,13 @@
     <!--Table header toolbar begin-->
     <chp-toolbar v-show="!isDisplayFilterToolbar">
       <div class="search-row">
-        <div class="col-md-4 col-xs-6 text-left">
+        <div class="col-md-4 col-xs-6 text-left" v-if="canPaging">
           <chp-select v-model="innerPageSize" class="pageSelect">
             <mu-menu-item v-for=" (option,index) in pageOptions" :key="index" :value="option" :title="String(option)"></mu-menu-item>
           </chp-select>
           <span class="hidden-sm hidden-xs"> records per page</span>
         </div>
-        <div class="col-md-8 col-xs-6 text-right">
+        <div class="col-md-8 col-xs-6 text-right" :class="{'col-md-offset-4':!canPaging,'col-xs-offset-6':!canPaging}">
           <mu-icon-button @click="displayFilter" v-if="canFilter">
             <i class="fa fa-filter" aria-hidden="true"></i>
           </mu-icon-button>
@@ -51,7 +51,7 @@
 
     <!--Pagination begin-->
     
-    <chp-pagination
+    <chp-pagination v-if="canPaging"
       class="pagination-bar "
       :total="rowsTotal"
       :current="currentPage"
@@ -90,6 +90,10 @@
       canAdd:{
           type:Boolean,
           default: true
+      },
+      canPaging:{
+        type:Boolean,
+        default:true
       },
       //是否展示filter按钮
       canFilter:{

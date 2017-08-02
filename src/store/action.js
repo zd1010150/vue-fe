@@ -24,10 +24,7 @@ export default{
   async logout({commit, state}){
     console.log("logout state", state, state.userInfo);
     if (state && state.userInfo) {
-      return await userService.logout().then(() => {
-        commit(type.SET_USERINFO, null)
-        commit(typs.SET_TOKEN,null)
-      });
+      return await userService.logout();
     }
   },
   async addSystemError({commit}, error){

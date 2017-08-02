@@ -3,7 +3,8 @@
     <div id="userbox" class="userbox" :class="{opened:open}">
     	<mu-flat-button class="userbox-toggle-btn" tag="div"  href="javascript:void(0)" @click="toggleOperationPopover"  ref="toggleBtn" >
         	<figure class="profile-picture">
-                <img src="/static/images/xx.jpg" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg">
+                <!-- <img v-bind:src="$store.state.userInfo.avatar" alt="Joseph Doe" class="img-circle"> -->
+                <mu-avatar :src="$store.state.userInfo.avatar" slot="avatar" :size="35" class="summary-icon bg-primary "/>
             </figure>
             <div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
                 <span class="name word-wrap" >{{ $store.state.userInfo.name}}</span>
@@ -42,17 +43,17 @@
             </ul>
         </mu-popover>
         <chp-dialog-confirm
-          :chp-content-html="$t('confirmDialog.contentHtml')"
+          :chp-content-html="$t('logoutDialogHtml')"
           :chp-ok-text="$t('ui.button.confirm')"
           :chp-cancel-text="$t('ui.button.cancel')"
-          @open="confirmLogout"
+          @close="confirmLogout"
           ref="confirmLogoutDialog">
         </chp-dialog-confirm>
     </div>
 </template>
 <script>
 import changeTheme  from 'utils/theme.js'
-  import {SET_THEME} from 'store/mutation-types.js'
+  import {SET_THEME,SET_TOKEN,SET_USERINFO} from 'store/mutation-types.js'
 	export default{
 		data(){
 			return {
@@ -74,11 +75,14 @@ import changeTheme  from 'utils/theme.js'
     	this.trigger = this.$refs.toggleBtn.$el;
     },
     methods:{
-      confirmLogout(){
-        
-        this.$store.dispatch("logout").then(() => {
-         this.$router.push("/login");
-       })
+      confirmLogout(val){
+        if(val == "ok"){
+          this.$store.dispatch("logout").then(() => {
+            this.$store.commit(SET_USERINFO, null)
+            this.$store.commit(SET_TOKEN,null)
+            this.$router.push("/login");
+          })
+         }
       },
     	logout(){
         this.$refs.confirmLogoutDialog.open();
@@ -117,7 +121,7 @@ import changeTheme  from 'utils/theme.js'
      .justify-content(space-around);
    }
   .profile-picture{
-    width: 35px;
+    .display(flex);
     margin:0px 10px 0px;
 
   }

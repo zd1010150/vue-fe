@@ -12,6 +12,6 @@ export default [{
   component: Index,
   meta: {
     requiresAuth: true
-  },
+  }, 
   children: _.concat(Dashboard,myTradingAccount,uiDemo,training,FundManage,notice)
 }];

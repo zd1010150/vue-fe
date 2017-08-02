@@ -12,7 +12,7 @@
         pageHeader: "",
       }
     },
-    mounted(){
+    beforeMount(){//before mount会在render之前调用
       this.pageHeader = this.$route.meta.pageTitle;
     },
     watch: {

@@ -2,8 +2,9 @@
  * 页面标题
  */
 export default {
+	dashboard:"首页",
   depositeFunds:"存入资金",
-  bankAccount:"银行账户",
+  bankAccount:"银行账户管理",
   withdrawal:"提取资金",
   internalTransfer: "内部转账",
   notice:"通知",

@@ -2,6 +2,7 @@
  * 页面标题
  */
 export default {
+	dashboard:"Doshboard",
   depositeFunds:"Deposite Funds",
   bankAccount:"Bank Account",
   withdrawal:"Withdrawal",
