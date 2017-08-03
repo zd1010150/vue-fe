@@ -16,8 +16,8 @@
           </mu-icon-button>
           <template v-if="canAdd">
            
-            <chp-button class="btn btn-primary" @click="openAddDialog" id="openAddDialogBtn">
-             <i class="fa fa-plus"></i><slot name="addBtnText">{{ $t('ui.button.add')}}</slot>
+            <chp-button class=" btn btn-primary mr-xs" @click="openAddDialog" id="openAddDialogBtn">
+             <i class="fa fa-plus mr-xs"></i><slot name="addBtnText">{{ $t('ui.button.add')}}</slot>
             </chp-button>
             <chp-dialog chp-open-from="#openAddDialogBtn" chp-close-to="#openAddDialogBtn" ref="addDialog">
               <slot name="addDialogSlot"></slot>

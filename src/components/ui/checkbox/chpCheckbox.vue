@@ -22,7 +22,7 @@
       value: {},
       id: String,
       disabled: Boolean,
-      nativeValue: String
+      nativeValue: {}
     },
     
     computed: {

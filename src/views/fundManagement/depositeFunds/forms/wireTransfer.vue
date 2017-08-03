@@ -47,7 +47,7 @@
         
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12 padding-20">
-        <p><small>Please input your MT4 account number and account name in the comment area when you fill in Wire Transfers </small></p>
+        <p>Please input your MT4 account number and account name in the comment area when you fill in Wire Transfers </p>
         <p>To ensure Wire Transfer credit to your account as soon as possible, please send your receipt to <a herf="mailto:accounts@acyfx.com">accounts@acyfx.com</a></p>
       </div>
     </div>

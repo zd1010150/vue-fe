@@ -16,6 +16,7 @@ import Table from './table'
 import Dialog from './dialog'
 import List from './list'
 import FileUpload from './fileupload'
+import ImagePreview from './imagePreview'
 
 export default function install(Vue) {
   Vue.component('chp-ink-ripple', chpInkRipple)
@@ -36,4 +37,5 @@ export default function install(Vue) {
   Vue.use(Table)
   Vue.use(Dialog)
   Vue.use(List)
+  Vue.use(ImagePreview)
 }

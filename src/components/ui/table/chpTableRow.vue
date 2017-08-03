@@ -8,7 +8,7 @@
       v-if="hasSelection"
       class="chp-table-selection">
 
-      <chp-checkbox  v-model="checkbox" :disabled="isDisabled" @change="select" @change.native="select"></chp-checkbox>
+      <table-checkbox  v-model="checkbox" :nativeValue="chpItem" :disabled="isDisabled" @change="select" @change.native="select"></table-checkbox>
 
 
     </chp-table-cell>
@@ -20,10 +20,13 @@
 <script>
   import getClosestVueParent from '../core/utils/getClosestVueParent';
   import uniqueId from '../core/utils/uniqueId';
-
+  import checkBox from './chpTableCheckbox'
   const transitionClass = 'chp-transition-off';
 
   export default {
+    components :{
+      'table-checkbox' : checkBox
+    },
     name: 'chp-table-row',
     props: {
       chpAutoSelect: Boolean,
@@ -34,7 +37,7 @@
       return {
         parentTable: {},
         headRow: false,
-        checkbox: [],
+        checkbox: false,
         index: 0,
         uuid: `chprow_uuid_${uniqueId()}`
       };

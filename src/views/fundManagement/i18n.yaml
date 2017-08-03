@@ -10,6 +10,20 @@ en:
       wireTransfer: "Wire Transfers"
     bankcard:
       newBtnText : "Add Bank Account"
+      method : "Method"
+      bank_name : "Bank Name"
+      account : "Account"
+      swift : "Swift"
+      province : "Province"
+      city : "City"
+      branchName : "BranchName"
+      attachment : "Attachment"
+      status : "Status"
+      Action : "Action"
+      bankStatus :
+        0 : "Pending"
+        1 : "Approve"
+        2 : "Reject"
       
 zh:
   internalTransfer:
@@ -22,4 +36,18 @@ zh:
     fasapay: "Fasa Pay"
     wireTransfer: "银行转账"
   bankcard:
-    newBtnText : "新增银行卡"  
+    newBtnText : "新增银行卡"
+    method : "方式"
+    bank_name : "银行名称"
+    account : "账号"
+    swift : "Swift国际代码"
+    province : "省份"
+    city : "城市"
+    branchName : "支行名称"
+    attachment : "账单附件"
+    status : "状态"
+    Action : "操作"  
+    bankStatus :
+      0 : "待处理"
+      1 : "已认证"
+      2 : "拒绝"

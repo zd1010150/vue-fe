@@ -9,6 +9,9 @@ export default{
    */
   async getBankCard(){
     return fetchData('GET',"/bank-card")
+  },
+  async deleteBankCard(id){
+  	return fetchData('DELETE',"/bank-card/"+id)
   }
   
 }

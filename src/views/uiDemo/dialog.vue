@@ -1,9 +1,9 @@
 <template>
   <chp-panel>
     <template slot="title">Dialog</template>
-    <template slot="subtitle">custom,scroll,alert,confirm,prompt</template>
+    <template slot="subtitle">custom,scroll,alert,confirm,prompt,imagePreview</template>
     <div class="form-horizontal form-bordered" slot="body">
-      <h4>Toolbar</h4>
+      <h4>Dialog</h4>
       <chp-dialog-prompt
         :chp-title="prompt.title"
         :chp-ok-text="prompt.ok"
@@ -33,6 +33,13 @@
       <mu-icon-button id="fab" @click="openDialog('dialog2')">
           <i class="fa fa-plus"></i>
       </mu-icon-button>
+       <chp-button @click="preview" id="preview">
+          preview image
+      </chp-button>
+      <!-- <mu-dialog :open="previewOpen" scrollable @close="previewOpen=false">
+        <img src="static/images/1.jpg" class="img-responsive">
+      </mu-dialog>  -->
+      <chp-image-preview :src="src" :open="previewOpen"></chp-image-preview> 
     </div>
 
   </chp-panel>
@@ -43,6 +50,8 @@
   export default{
       data() {
         return{
+          src : "static/images/1.jpg",
+          previewOpen:false,
           prompt: {
            title: 'What\'s your name?',
               ok:'Done',
@@ -70,6 +79,9 @@
       },
       onClose(type) {
         console.log('Closed', type);
+      },
+      preview(){
+        this.previewOpen = !this.previewOpen;
       }
     },
     watch: {

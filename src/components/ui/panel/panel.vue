@@ -3,7 +3,7 @@
 
       <chp-panel-header @close="closePanel" @collapse="collapsePanel" :isTransparent="isHeaderTransparent"
                     :canCollapse="canCollapse" :canClose="canClose">
-          <h2 class="panel-title">
+          <h2 class="panel-title" v-if="hasTitle">
             <slot name="title"></slot>
           </h2>
           <p class="panel-subtitle">
@@ -38,6 +38,7 @@
     data(){
       return {
         hasfooter: false,
+        hasTitle:false,
         isOpen : this.defaultStatus == "open" ? true : false
       };
     },
@@ -50,6 +51,7 @@
     },
     mounted(){
       this.hasfooter = this.$slots.footer && this.$slots.footer.length>0;
+      this.hasTitle = this.$slots.title || this.$slots.subtitle ;
     },
     components: {
       chpPanelHeader: panelHeader,
