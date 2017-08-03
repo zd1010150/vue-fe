@@ -1,11 +1,12 @@
+<i18n src="../i18n.yaml"></i18n>
 <template>
 	<div class="col-lg-12 col-md-12">
 		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-	      <template slot="title">Withdrawal History</template>
+	      <template slot="title">银行卡管理</template>
 	      	<chp-data-table slot="body" :isDisplayFilterToolbar="false" :canFilter = "false" :canPaging="false"
                       
       >
-        
+      <template slot="addBtnText">{{ $t('bankcard.newBtnText')}}</template> 
       <chp-table slot="table" chp-sort="calories" chp-sort-type="desc" >
           <chp-table-header>
             <chp-table-row>
@@ -31,7 +32,7 @@
 	</div>
 </template>
 <script>
-    import dataTableService from 'services/dataTableService'
+    import bankCardService from 'services/bankCardService'
     import validateMixin from 'mixins/validatemix.js'
     import loadingMix from 'mixins/loading'
     import {Validator} from 'vee-validate'
@@ -41,7 +42,8 @@
         return{
           chpSelection: false, //每一行是否可选
           histories: null,
-          prompting:""
+          prompting:"",
+          bankCards:null,
           
         }
      },
@@ -50,17 +52,14 @@
     },
     created(){
       
-    	this.fetchDepositeData({
-    		pageIndex:this.pageIndex,
-    		pageSize:this.pageSize
-    	});
+    	this.fetchBankcardData();
     },
     methods : {
       
       filterFields(originData){
       	if(originData && originData.length > 0){
           
-      	this.histories = originData.map(function(row,index) {
+      	this.bankCards = originData.map(function(row,index) {
             return {
       				order_time : row.order_time,
       				mt4_id : row.mt4_id,
@@ -74,10 +73,12 @@
           this.histories = [];
         }
       },
-      async fetchDepositeData(params){
-        
-        this.loadingStatus = false;
-      	
+      async fetchBankcardData(){
+        let {success,data} = await bankCardService.getBankCard();
+        if(success && data){
+         this.filterFields(data);
+        }
+      	return {data};
       },
       async fetchPromptingMessage(){
 

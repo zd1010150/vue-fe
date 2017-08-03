@@ -15,9 +15,10 @@
             <i class="fa fa-filter" aria-hidden="true"></i>
           </mu-icon-button>
           <template v-if="canAdd">
-            <mu-icon-button @click="openAddDialog"  id="openAddDialogBtn" >
-              <i class="fa fa-plus" aria-hidden="true"></i>
-            </mu-icon-button>
+           
+            <chp-button class="btn btn-primary" @click="openAddDialog" id="openAddDialogBtn">
+             <i class="fa fa-plus"></i><slot name="addBtnText">{{ $t('ui.button.add')}}</slot>
+            </chp-button>
             <chp-dialog chp-open-from="#openAddDialogBtn" chp-close-to="#openAddDialogBtn" ref="addDialog">
               <slot name="addDialogSlot"></slot>
               <chp-dialog-actions >

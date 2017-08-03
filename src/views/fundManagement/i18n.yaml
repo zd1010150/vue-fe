@@ -8,6 +8,8 @@ en:
       doku: "Doku"
       fasapay: "Fasa Pay"
       wireTransfer: "Wire Transfers"
+    bankcard:
+      newBtnText : "Add Bank Account"
       
 zh:
   internalTransfer:
@@ -18,4 +20,6 @@ zh:
     unionPay: "银联"
     doku: "Doku"
     fasapay: "Fasa Pay"
-    wireTransfer: "银行转账"  
+    wireTransfer: "银行转账"
+  bankcard:
+    newBtnText : "新增银行卡"  
