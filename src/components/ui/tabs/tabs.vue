@@ -4,9 +4,14 @@
       <ul  :class="headerClasses">
         <slot name="header"></slot>
       </ul>
+      <transition>
       <div class="tab-content">
-        <slot name="content"></slot>
+        
+          <slot name="content"></slot>
+        
       </div>
+      </transition>
+      
     </div>
 
 
@@ -56,7 +61,5 @@
   }
 </script>
 
-<style lang="less">
 
 
-</style>

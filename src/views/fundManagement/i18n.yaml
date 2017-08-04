@@ -3,28 +3,33 @@ en:
     note : "Note: Accounts that has open positions cannot submit inter-transfers, affiliate accounts required to meet minimum requirement before activate inter-transfers."
     errors:
       onlyOneAccount : "Only one account,can't internal transfer"
-    payMentMethod:
-      unionPay: "Union Pay"
-      doku: "Doku"
-      fasapay: "Fasa Pay"
-      wireTransfer: "Wire Transfers"
-    bankcard:
-      newBtnText : "Add Bank Account"
-      method : "Method"
-      bank_name : "Bank Name"
-      account : "Account"
-      swift : "Swift"
-      province : "Province"
-      city : "City"
-      branchName : "BranchName"
-      attachment : "Attachment"
-      status : "Status"
-      Action : "Action"
-      bankStatus :
-        0 : "Pending"
-        1 : "Approve"
-        2 : "Reject"
-      
+  payMentMethod:
+    unionPay: "Union Pay"
+    doku: "Doku"
+    fasapay: "Fasa Pay"
+    wireTransfer: "Wire Transfers"
+  bankcard:
+    newBtnText : "Add Bank Account"
+    method : "Method"
+    bank_name : "Bank Name"
+    account : "Account"
+    swift : "Swift"
+    province : "Province"
+    city : "City"
+    branchName : "BranchName"
+    attachment : "Attachment"
+    status : "Status"
+    Action : "Action"
+    bankStatus :
+      0 : "Pending"
+      1 : "Approve"
+      2 : "Reject"
+    deleteDialogText : " Are you sure delete this record?"
+    methodType :
+      cup : "Bank bill"
+      doku : "Doku"
+      fasa : "Fasa"
+
 zh:
   internalTransfer:
     note : "注意：有仓位的账户无法进行转出资金，代理账户需激活后才能进行内转"
@@ -51,3 +56,8 @@ zh:
       0 : "待处理"
       1 : "已认证"
       2 : "拒绝"
+    deleteDialogText: "你确定删除该条记录?"
+    methodType :
+      cup : "Bank bill"
+      doku : "Doku"
+      fasa : "Fasa"

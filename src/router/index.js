@@ -11,10 +11,6 @@ Vue.use(Router)
 let router = new Router({
   suppressTransitionError:__PRO__
 });
-let root = {
-  path:"/",
-  redirect:{ name:"login"}
-};
 
 router.addRoutes(_.concat(authRoter,errorRouter));
 

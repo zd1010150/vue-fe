@@ -12,7 +12,7 @@
       </chp-panel-header>
 
 
-      <expand-transition>
+      <chp-expand-transition>
         <div class="panel-body" :class=" {'loading-overlay-showing':isLoading } " ref="panelBody" v-show="isOpen" >
           <slot name="body"></slot>
           <div class="loading-overlay" style="border-radius: 0px 0px 5px 5px;">
@@ -23,7 +23,7 @@
             </div>
           </div>
         </div>
-      </expand-transition>
+      </chp-expand-transition>
     <div class="panel-footer" v-if="hasfooter">
       <slot name="footer"></slot>
     </div>
@@ -32,7 +32,7 @@
 
 <script>
   import panelHeader from './panelHeader.vue'
-  import expandTransition from '../core/expandTransition.vue'
+  
   export default{
     name: 'chp-panel',
     data(){
@@ -54,8 +54,7 @@
       this.hasTitle = this.$slots.title || this.$slots.subtitle ;
     },
     components: {
-      chpPanelHeader: panelHeader,
-      'expand-transition': expandTransition
+      chpPanelHeader: panelHeader
     },
     props: {
       defaultStatus:{

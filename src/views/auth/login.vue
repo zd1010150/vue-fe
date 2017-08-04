@@ -89,7 +89,7 @@
               let {message,success} = await this.$store.dispatch('getUserInfo');
               if(success){
                 this.$router.addRoutes(routers);
-                this.$router.push("/main");
+                this.$router.replace("/main");
               }
             }
           }

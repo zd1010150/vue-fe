@@ -31,7 +31,7 @@
 }
 
 
-  /* 可以设置不同的进入和离开动画 */
+  /* 可以设置不同的进入和离开动画 transition 动画*/
   /* 设置持续时间和动画函数 */
   .slide-fade-enter-active {
     transition:  @swift-ease-in;
@@ -44,6 +44,14 @@
     transform: translateX(10px);
     opacity: 0;
   }
+  .fade-enter-active, .fade-leave-active {
+    
+    transition:@material-leave;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+    opacity: 0;
+    transition:@material-enter;
+  } 
 /*loading*/
 .loading-overlay{
   background-color: @light-component-bg-color;

@@ -1,5 +1,5 @@
 <template>
-  <transition name="mu-expand"
+  <transition name="chp-expand"
     @before-enter="beforeEnter"
     @enter="enter"
     @after-enter="afterEnter"
@@ -73,8 +73,8 @@ export default {
 
 <style lang="less">
 @import "~assets/less/transition.less";
-.mu-expand-enter-active,
-.mu-expand-leave-active {
+.chp-expand-enter-active,
+.chp-expand-leave-active {
   transition: height .45s @easeOutFunction, padding .45s @easeOutFunction;
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0);

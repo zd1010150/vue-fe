@@ -21,7 +21,12 @@ let fetchData = async function(type = 'GET', url = '', data = {}){
         filterResoveResponse(response);
         let success = response.status_code == 0 ? true : false
         if(!success){
-          vm.toastr.error(vm.$t("info."+response.message));
+          if(response.status_code == 500){
+            vm.toastr.error(vm.$t("info.Unauthenticated"));
+          }else{
+            vm.toastr.error(vm.$t("info."+response.message));
+          }
+          
         }
         return {
           data:response.data,

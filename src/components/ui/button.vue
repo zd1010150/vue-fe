@@ -40,6 +40,7 @@
     },
     methods:{
       clickHandler(){
+        console.log("button is click");
           this.$emit("click");
       }
     }

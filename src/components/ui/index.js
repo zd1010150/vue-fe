@@ -17,6 +17,7 @@ import Dialog from './dialog'
 import List from './list'
 import FileUpload from './fileupload'
 import ImagePreview from './imagePreview'
+import ExpandTransition from './expandTransition'
 
 export default function install(Vue) {
   Vue.component('chp-ink-ripple', chpInkRipple)
@@ -38,4 +39,5 @@ export default function install(Vue) {
   Vue.use(Dialog)
   Vue.use(List)
   Vue.use(ImagePreview)
+  Vue.use(ExpandTransition)
 }

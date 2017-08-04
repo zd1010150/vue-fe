@@ -16,5 +16,10 @@ export default {
   datePicker:{
     startDate:"选择开始时间",
     endDate:"选择结束时间"
+  },
+  dialog:{
+    confirm : {
+      title : "确认"
+    }
   }
 }

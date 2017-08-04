@@ -15,7 +15,15 @@ export default {
     origin_login:"转出资金账户",
     target_login:"转入资金账户",
     money:"金额",
-    terms:"条款"
+    terms:"条款",
+    bankName : "银行名称",
+    bankAccount : "银行账号",
+    bankProvince : "银行省份",
+    bankCity : "银行城市",
+    branchName : "支行名称",
+    swift : "Swift号",
+    bankDocument : "账单"
+
   },
   en:{
     email : "test email address",
@@ -33,6 +41,13 @@ export default {
     origin_login:"Origin account",
     target_login:"Target account",
     money:"Currency",
-    terms : "Terms"
+    terms : "Terms",
+    bankName : "Bank Name",
+    bankAccount : "Account number",
+    bankProvince : "Bank Province",
+    bankCity : "Bank ",
+    branchName : "Bank branch name",
+    swift : "Swift code",
+    bankDocument : "Bank document"
   }
 }

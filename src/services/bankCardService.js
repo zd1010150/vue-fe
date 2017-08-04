@@ -11,7 +11,7 @@ export default{
     return fetchData('GET',"/bank-card")
   },
   async deleteBankCard(id){
-  	return fetchData('DELETE',"/bank-card/"+id)
+  	return fetchData('DELETE',"/bank-card",{id:id})
   }
   
 }

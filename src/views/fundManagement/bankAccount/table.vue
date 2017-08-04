@@ -4,8 +4,11 @@
 		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
 	      <template slot="title">银行卡管理</template>
       	<chp-data-table slot="body" :isDisplayFilterToolbar="false" :canFilter = "false" :canPaging="false">
-          <template slot="addBtnText">{{ $t('bankcard.newBtnText')}}</template> 
-          
+        <template slot="addToolbar">
+          <chp-button class=" btn btn-primary mr-xs" @click="showForm">
+            <i class="fa fa-plus mr-xs"></i>{{ $t('bankcard.newBtnText')}}
+          </chp-button>
+        </template>
           <chp-table slot="table" chp-sort="calories" chp-sort-type="desc">
               <chp-table-header>
                 <chp-table-row>
@@ -28,11 +31,11 @@
                       {{$t('bankcard.bankStatus.'+column)}}
                     </template>
                     <template v-else-if="columnIndex =='id'">
-                       <mu-icon-button  @click="edit(column)" v-if="row.status == 2">
-                        <i aria-hidden="true" class="fa fa-pencil"></i> 
-                       </mu-icon-button>
                        <mu-icon-button  @click="deleteRow(column)">
                         <i aria-hidden="true" class="fa fa-trash-o"></i> 
+                       </mu-icon-button>
+                       <mu-icon-button  @click="edit(column)" v-if="row.status == 2">
+                        <i aria-hidden="true" class="fa fa-pencil"></i> 
                        </mu-icon-button>
                     </template>
                     <template v-else>
@@ -45,6 +48,14 @@
         </chp-data-table>
       </chp-panel>
     <chp-image-preview :src="documentSrc" :open="documentOpen" @close="closePreview"></chp-image-preview>
+    <chp-dialog-confirm
+  :chp-title="$t('ui.dialog.confirm.title')"
+  :chp-content-html="$t('bankcard.deleteDialogText')"
+  :chp-ok-text="$t('ui.button.confirm')"
+  :chp-cancel-text="$t('ui.button.cancel')"
+  @close="closeConfirmDialog"
+  ref="confirmDeleteDailog">
+</chp-dialog-confirm>
 	</div>
 </template>
 <script>
@@ -52,16 +63,18 @@
     import validateMixin from 'mixins/validatemix.js'
     import loadingMix from 'mixins/loading'
     import {Validator} from 'vee-validate'
+   
 	export default{
 		mixins: [validateMixin,loadingMix],
-		data () {
+    data () {
         return{
           originData: null,
           prompting:"",
           bankCards:null,
           documentSrc : "",
           documentOpen : false,
-          selected : null
+          selected : null,
+          editId : null
         }
      },
     watch:{
@@ -72,7 +85,9 @@
     	this.fetchBankcardData();
     },
     methods : {
-      
+      showForm(){
+        this.$emit('show')
+      },
       filterFields(originData){
       	if(originData && originData.length > 0){
         this.originData = originData;  
@@ -99,9 +114,6 @@
         }
       	return {data};
       },
-      async fetchPromptingMessage(){
-
-      },
       previewImage(src){
         console.log("===",src,this.documentSrc)
         this.documentSrc = src
@@ -110,22 +122,25 @@
       closePreview(){
         this.documentOpen = false
       },
-      async editfunction(id){
+      async deleteData(id){
         let {success} = await bankCardService.deleteBankCard(id)
         if(success){
-          this.toastr.info(this.$t("info.success"))
+          this.toastr.info(this.$t("info.SUCCESS"))
         }
         this.fetchBankcardData()
       },
-      deleteRow:function(){
-
+      deleteRow(id){
+        this.editId = id;
+        this.$refs.confirmDeleteDailog.open();
+      },
+      closeConfirmDialog(status){
+        if(status == 'ok'){
+          this.deleteData(this.editId);
+        }else{
+          this.editId = null;
+        }
       }
 
-    },
-    watch:{
-      '$store.state.language':function(val,oldVal){
-        this.prompting = this.fetchPromptingMessage(val)
-      }
     }
 }
 </script>
