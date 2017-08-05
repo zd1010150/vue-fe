@@ -10,10 +10,7 @@
             <slot name="subtitle"></slot>
           </p>
       </chp-panel-header>
-
-
-      <chp-expand-transition>
-        <div class="panel-body" :class=" {'loading-overlay-showing':isLoading } " ref="panelBody" v-show="isOpen" >
+      <div class="panel-body" :class=" {'loading-overlay-showing':isLoading } " ref="panelBody" v-if="isOpen" >
           <slot name="body"></slot>
           <div class="loading-overlay" style="border-radius: 0px 0px 5px 5px;">
             <div class="bounce-loader">
@@ -23,10 +20,9 @@
             </div>
           </div>
         </div>
-      </chp-expand-transition>
-    <div class="panel-footer" v-if="hasfooter">
-      <slot name="footer"></slot>
-    </div>
+      <div class="panel-footer" v-if="hasfooter">
+        <slot name="footer"></slot>
+      </div>
   </section>
 </template>
 
@@ -37,8 +33,8 @@
     name: 'chp-panel',
     data(){
       return {
-        hasfooter: false,
-        hasTitle:false,
+        hasfooter: true,
+        hasTitle:true,
         isOpen : this.defaultStatus == "open" ? true : false
       };
     },
@@ -110,6 +106,7 @@
   .panel{
     .panel-body{
       position: relative;
+      visibility: visible;
     }
   }
 </style>

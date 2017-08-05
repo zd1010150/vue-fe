@@ -1,11 +1,10 @@
 <template>
-  <transition name="fade" mode="out-in">
-    <div class="tab-pane" :class = "classes" v-if="isActive">
-    
+  
+    <div class="tab-pane active">
+     
       <slot></slot>
     
     </div>
-  </transition>
   
 </template>
 <script>
@@ -49,6 +48,7 @@
 .tab-pane{
       // transition: opacity .4s cubic-bezier(.25, .8, .25, 1);
       // opacity: 0;
+      // display: block;
       // &.active{
       //   opacity: 1;
       // }

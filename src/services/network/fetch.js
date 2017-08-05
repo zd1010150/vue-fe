@@ -38,7 +38,7 @@ export default async(type = 'GET', url = '', data = {},uploadFile = false) => {
   if(store.state.token){
     requestConfig.headers["Authorization"] = store.state.token;
   }
-  if (type == 'POST' ) {
+  if (type == 'POST' || type=='PUT' ) {
      Object.defineProperty(requestConfig, 'body', {
         value: JSON.stringify(data)
       })

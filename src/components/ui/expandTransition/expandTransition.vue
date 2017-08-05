@@ -5,13 +5,14 @@
     @after-enter="afterEnter"
     @before-leave="beforeLeave"
     @leave="leave"
-    @after-leave="afterLeave">
+    @after-leave="afterLeave" mode="out-in" >
     <slot></slot>
   </transition>
 </template>
 
 <script>
 export default {
+  
   methods: {
     beforeEnter (el) {
       el.dataset.oldPaddingTop = el.style.paddingTop
@@ -39,12 +40,11 @@ export default {
       el.style.overflow = el.dataset.oldOverflow
       el.style.paddingTop = el.dataset.oldPaddingTop
       el.style.paddingBottom = el.dataset.oldPaddingBottom
-    },
+  },
     beforeLeave (el) {
       el.dataset.oldPaddingTop = el.style.paddingTop
       el.dataset.oldPaddingBottom = el.style.paddingBottom
       el.dataset.oldOverflow = el.style.overflow
-
       el.style.display = 'block'
       if (el.scrollHeight !== 0) {
         el.style.height = el.scrollHeight + 'px'
@@ -75,8 +75,14 @@ export default {
 @import "~assets/less/transition.less";
 .chp-expand-enter-active,
 .chp-expand-leave-active {
-  transition: height .45s @easeOutFunction, padding .45s @easeOutFunction;
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
+ // transition:@swift-ease-in-out
+}
+.chp-expand-enter-active{
+  transition:@swift-ease-in;
+}
+.chp-expand-leave-active{
+  transition:@swift-ease-out;
 }
 </style>

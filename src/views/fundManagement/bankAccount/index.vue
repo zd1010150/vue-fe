@@ -2,11 +2,11 @@
  <div class="container-fluid" >
     <chp-expand-transition>
         <div class="row" v-if="showForm">
-        	<bank-account-form @close="close"></bank-account-form>
+        	<bank-account-form @close="close" :editId="editId"></bank-account-form>
         </div> 
     </chp-expand-transition>
     <div class="row funds-table">
-    	<bank-account-table @show = "show"></bank-account-table>
+    	<bank-account-table @add = "add" @edit="edit"></bank-account-table>
     </div>
 </div>
 </template>
@@ -17,6 +17,7 @@ import table from './table'
   export default{
         data(){
             return {
+                editId:null,
                 showForm : false
             }
         },
@@ -25,11 +26,16 @@ import table from './table'
 			'bank-account-table' : table
 		},
         methods:{
-            show (){
+            add (){
                 this.showForm = true;
+                this.editId="";
             },
             close(){
                 this.showForm = false;
+            },
+            edit(id){
+                this.showForm = true;
+                this.editId = id;
             }
         }
 	}

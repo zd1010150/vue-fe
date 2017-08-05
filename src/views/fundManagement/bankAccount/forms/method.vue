@@ -1,8 +1,9 @@
+<i18n src="../../i18n.yaml"></i18n>
 <template lang="html">
 	<div class="form-group">
       <label class="control-label col-md-3">Method</label>
       <div class="col-md-6" >
-        <chp-select v-model="method" @input="methodChange">
+        <chp-select v-model="innerMethod" @input="methodChange" :disabled="editObj!=null">
 			<template v-for="m in methods">
 				<mu-menu-item :value="m.method" :title="m.title" />
 			</template>
@@ -15,7 +16,7 @@
 export default {
    data(){
    	return {
-   		method :"CUP",
+   		innerMethod :null,
 	   	originMethods :[{
 	   		title:this.$t('bankcard.methodType.cup'),
 	   		type:["en","zh"],
@@ -23,7 +24,7 @@ export default {
 	   	},{
 	   		title:this.$t('bankcard.methodType.doku'),
 	   		type:["en"],
-	   		method:"CUP"
+	   		method:"DOKU"
 	   	},{
 	   		title:this.$t('bankcard.methodType.fasa'),
 	   		type:["en"],
@@ -32,20 +33,48 @@ export default {
    		methods:[]
    	}
    },
+   props:{
+      editMethod:String,
+      editObj:Object
+   },
    watch:{
    	"$store.state.language":function(val,oldVal){
-   		this.methods = this.originMethods.filter((method)=>{
-   			return method.type.indexOf(val) > -1
-   		});
-   	}
+         this.filterMethodsByLanguage(val);
+   	},
+      editObj:function(val){
+         this.isEdit = val !=null;
+         this.initMethods();
+      },
+      editMethod:function(val){
+         this.initMethods();
+      }
    },
    methods:{
    	methodChange(){
-   		this.$emit("methodChange",this.method);
-   	}
+         console.log(this.innerMethod);
+   		this.$emit("methodChange",this.innerMethod);
+   	},
+      filterMethodsByLanguage(val){
+         this.methods = this.originMethods.filter((method)=>{
+            return method.type.indexOf(val) > -1
+         });
+         this.innerMethod = this.methods[0].method;
+         this.$emit("methodChange",this.innerMethod);
+      },
+      initMethods(){
+         let isEdit = this.editObj !=null;
+          if(!isEdit){
+            this.filterMethodsByLanguage(this.$store.state.language);
+         }else{
+            this.methods = this.originMethods.filter((m)=>{
+               return m.method == this.editMethod
+            });
+            this.innerMethod = this.editMethod;
+         }
+      }
    },
    mounted(){
-   	this.$emit("methodChange",this.method);
+      this.initMethods();
    }
   }
 </script>

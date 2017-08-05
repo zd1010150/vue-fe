@@ -5,7 +5,7 @@
 	      <template slot="title">银行卡管理</template>
       	<chp-data-table slot="body" :isDisplayFilterToolbar="false" :canFilter = "false" :canPaging="false">
         <template slot="addToolbar">
-          <chp-button class=" btn btn-primary mr-xs" @click="showForm">
+          <chp-button class=" btn btn-primary mr-xs" @click="add">
             <i class="fa fa-plus mr-xs"></i>{{ $t('bankcard.newBtnText')}}
           </chp-button>
         </template>
@@ -34,7 +34,7 @@
                        <mu-icon-button  @click="deleteRow(column)">
                         <i aria-hidden="true" class="fa fa-trash-o"></i> 
                        </mu-icon-button>
-                       <mu-icon-button  @click="edit(column)" v-if="row.status == 2">
+                       <mu-icon-button  @click="editRow(column)" v-if="row.status == 2">
                         <i aria-hidden="true" class="fa fa-pencil"></i> 
                        </mu-icon-button>
                     </template>
@@ -63,7 +63,7 @@
     import validateMixin from 'mixins/validatemix.js'
     import loadingMix from 'mixins/loading'
     import {Validator} from 'vee-validate'
-   
+   import  { TABLES  } from "src/config/app.config.js"
 	export default{
 		mixins: [validateMixin,loadingMix],
     data () {
@@ -78,15 +78,20 @@
         }
      },
     watch:{
-    	
+    	"$store.state.refreshTable":function(val){
+        console.log("isok");
+        if(val == TABLES["BANK_CARD_TABLE"]){
+          this.fetchBankcardData();
+        }
+      }
     },
     created(){
       
     	this.fetchBankcardData();
     },
     methods : {
-      showForm(){
-        this.$emit('show')
+      add(){
+        this.$emit('add')
       },
       filterFields(originData){
       	if(originData && originData.length > 0){
@@ -139,6 +144,9 @@
         }else{
           this.editId = null;
         }
+      },
+      editRow(id){
+          this.$emit("edit",id);
       }
 
     }

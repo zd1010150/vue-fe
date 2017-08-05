@@ -6,3 +6,13 @@ export const DEFAULT_PAY_GATEWAY = { key :"wireTransfer",code: ""} //默认支�
 
 export const MAX_FETCH_TIMEOUT = 100*1000;//网络请求最大超时时间
 
+export const UPLOAD_CONFIG = {
+	bill:{
+		extentions:['png', 'jpg','jpeg','bmp','pdf'],
+		size:10*Math.pow(2,20)
+	}
+}
+export const TABLES = {
+	BANK_CARD_TABLE : "BANK_CARD_TABLE"
+}
+

@@ -1,23 +1,26 @@
+<i18n src="../i18n.yaml"></i18n>
 <template>
 	<div class="col-lg-12 col-md-12">
 	 <chp-panel :canCollapse="false" :canClose="true" :isLoading="loadingStatus" @closePanel="closePanel">
-	 <template slot="title">Withdrawal</template>
+	 <template slot="title">{{ editObj? $t('bankcard.editBtnText') : $t('bankcard.newBtnText')}}</template>
      <chp-tabs :value="activeStepTab"  @change = "handleStepTabChange" type="wizard" slot="body">
       <template slot="header">
         <chp-tab-header href="tab1">Account</chp-tab-header>
         <chp-tab-header href="tab2">Profile</chp-tab-header>
       </template>
       <template slot="content">
-        <chp-tab-content id="tab1">
-
-          <bank-account-method @methodChange="methodChange"></bank-account-method>	
-        </chp-tab-content>
-        <chp-tab-content id="tab2">
-
-          <bank-account :method="method"></bank-account>
-        </chp-tab-content>
-       
-      </template>
+		<!-- <chp-tab-content id="tab1">
+			<bank-account-method @methodChange="methodChange"></bank-account-method>	
+	    </chp-tab-content> -->
+        
+			<!-- <bank-account :method="method"></bank-account> -->
+        	<chp-expand-transition name="chp-fade" >
+        		<keep-alive>
+		         <component v-bind:is="currentView" @methodChange="methodChange" :method="method" :editMethod="editMethod" ref="accountView" :editObj="editObj" @close="closePanel"></component>
+		        </keep-alive>
+	        </chp-expand-transition>
+        
+	  </template>
 
     </chp-tabs>
     <div class="row" slot="footer">
@@ -41,20 +44,27 @@
     </div>
    
     </chp-panel>
-
-	</div>
+</div>
+	
 </template>
 <script>
 import account from "./forms/account"
 import method from "./forms/method"
+ import bankCardService from 'services/bankCardService'
 	export default{
 		data(){
 			return{
 				method:"",
 				loadingStatus:false,
 				activeStepTab:"tab1",
-				
+				currentView:null,
+				editObj:null,
+				innerEditId:this.editId,
+				editMethod:null
 			}
+		},
+		props:{
+			editId:[Number,String]
 		},
 		computed:{
 			tabIndex (){
@@ -65,16 +75,35 @@ import method from "./forms/method"
 			"bank-account":account,
 			"bank-account-method":method
 		},
-		created(){
-			console.log("form created",this.method);
+		mounted(){
+			this.initTab(this.innerEditId);
+		},
+		watch:{
+			activeStepTab(val){
+				if (val ==  "tab1"){
+					this.currentView ="bank-account-method"
+				}else{
+					this.currentView = "bank-account"
+				}
+			},
+			editId:function(val,oldVal){
+				if(val==oldVal){
+					return
+				}else{
+					this.innerEditId = val
+				}
+			},
+			innerEditId:function(val){
+				this.initTab(val);
+			}
 		},
 		methods:{
 			handleStepTabChange(id){
 				console.log("tabs ",id," is clicked");
-				this.activeStepTab = id;
+				this.activeStepTab = id
 			},
 			methodChange(val){
-				this.method = val;
+				this.method = val
 			},
 			previous(){
 				this.activeStepTab= "tab"+(this.tabIndex-1)
@@ -86,8 +115,33 @@ import method from "./forms/method"
 				this.loadingStatus = loading;
 			},
 			closePanel(){
-				this.$emit('close');
+				this.$emit('close')
 			},submit(){
+				this.$refs.accountView.submit()
+			},refresh(){
+				this.$emit("refreshTable")
+			},
+			async fetchSingleBankCardInfo(id){
+				this.loadingStatus=true
+				let {success,data}= await bankCardService.getBankCardById(id);
+				console.log("it is fetch ",data);
+				if(success && data){
+
+					this.editObj = data
+					this.editMethod = data.method
+				}
+				this.loadingStatus=false
+			},
+			initTab(id){
+				if(!!id){
+					this.fetchSingleBankCardInfo(id);
+					this.currentView = "bank-account"
+					this.activeStepTab = "tab2";
+				}else{
+					this.editObj = null;
+					this.currentView = "bank-account-method";
+					this.activeStepTab = "tab1";
+				}
 				
 			}
 		}

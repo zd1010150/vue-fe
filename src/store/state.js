@@ -7,5 +7,6 @@ export default {
   errors:[],
   token:null,
   path:"",
-  leftSideBarStatus:""
+  leftSideBarStatus:"",
+  refreshTable:"",
 }

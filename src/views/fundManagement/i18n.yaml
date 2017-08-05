@@ -9,6 +9,7 @@ en:
     fasapay: "Fasa Pay"
     wireTransfer: "Wire Transfers"
   bankcard:
+    editBtnText : "Edit Bank Account"
     newBtnText : "Add Bank Account"
     method : "Method"
     bank_name : "Bank Name"
@@ -41,7 +42,8 @@ zh:
     fasapay: "Fasa Pay"
     wireTransfer: "银行转账"
   bankcard:
-    newBtnText : "新增银行卡"
+    editBtnText : "编辑账号信息"
+    newBtnText : "新增账号"
     method : "方式"
     bank_name : "银行名称"
     account : "账号"

@@ -106,8 +106,9 @@
         }
       },
       startTableRow() {
-        this.parentTable = getClosestVueParent(this.$parent, 'chp-table');
 
+        this.parentTable = getClosestVueParent(this.$parent, 'chp-table');
+        console.log("parent start: ",this.parentTable);
         if (this.$el.parentNode.tagName.toLowerCase() === 'thead') {
           this.headRow = true;
         } else {
@@ -123,6 +124,7 @@
       }
     },
     destroyed() {
+       console.log("parent destroyed: ",this.parentTable);
       this.parentTable.removeRow(this.chpItem);
     },
     mounted() {

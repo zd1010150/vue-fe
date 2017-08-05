@@ -38,5 +38,10 @@ export default {
   ILLEGAL_OPERATION_ERROR: "非法操作",
   UNDEFINE_ERROR: "未知错误",
   DEFAULT_ERROR: "默认错误",
-  MT_CONNECT_ERROR: "链接错误"
+  MT_CONNECT_ERROR: "链接错误",
+  UPLOAD_ERROR:{
+    size:"文件太大了",
+    extension : "文件类型不对",
+    denied : "文件类型或大小不对"
+  }
 }

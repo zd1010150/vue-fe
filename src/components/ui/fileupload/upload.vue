@@ -56,8 +56,10 @@
 		watch:{
 			active:function(val,oldVal){
 				if(val !== oldVal && val){
+					console.log("show mask");
 					this.showProgressMask();
 				}else if(val !== oldVal && !val){
+					console.log("hide mask");
 					this.hideProgressMask();
 				}
 			}
@@ -147,7 +149,7 @@
 		methods:{
 			input:function(files){
 				console.log("=====",this.active,JSON.stringify(files));
-				if(files.length < 1){ return}
+				if(files.length < 1){ this.active = false; return;}
 				this.$refs.upload.active = true;
 				let errors = [],
 					isAllSuccess = true;
@@ -172,26 +174,24 @@
 				this.$emit('input-file',file,old);
 			},
 			showProgressMask:function(){
+				this.progressMaskEl = this.$refs.progressMask;
+				document.body.appendChild(this.progressMaskEl);
 				
-				this.$nextTick(()=>{
-					this.progressMaskEl = this.$refs.progressMask;
-					document.body.appendChild(this.progressMaskEl);
-				});
 			},
 			hideProgressMask:function(){
-				if(this.progressMaskEl){
-					let self = this;
-					setTimeout(()=>{
+				let self = this;
+				setTimeout(()=>{
+					if(self.progressMaskEl && self.$refs.upload && document.body.contains( self.progressMaskEl ) ){
+						console.log("it is realy remove");
 						self.$refs.upload.clear();//必须要清空控件的文件
-						document.body.removeChild(self.progressMaskEl);
-					},2000);
-				   
-				}
-				
+						document.body.removeChild(self.progressMaskEl);	
+					}
+					
+				},500);
 			}
 		},
 		mounted(){
-			console.log("*****",this.innerHeaders.Authorization);
+			
 		}
 	}
 </script>

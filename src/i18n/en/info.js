@@ -41,5 +41,10 @@ export default {
   ILLEGAL_OPERATION_ERROR: "Illegal operation",
   UNDEFINE_ERROR: "Unknown error",
   DEFAULT_ERROR: "Default error",
-  MT_CONNECT_ERROR: "Fail to connect MT4"
+  MT_CONNECT_ERROR: "Fail to connect MT4",
+  UPLOAD_ERROR:{
+    size:"Too large file size",
+    extension : "Invalid file type",
+    denied : "Type or size of file is invalid"
+  }
 }

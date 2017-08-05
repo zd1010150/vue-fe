@@ -7,28 +7,30 @@
 <style lang="scss" src="./chpInkRipple.scss"></style>
 
 <script>
-  const hasTouch = 'ontouchstart' in document;
-  const getEventName = (type) => {
-    if (type === 'start') {
-      return hasTouch ? 'touchstart' : 'mousedown';
-    }
 
-    return hasTouch ? 'touchend' : 'mouseup';
-  };
   const addEvent = (target, type, handler) => {
-    target.addEventListener(getEventName(type), handler);
+    if (type === 'start') {
+      target.addEventListener('mousedown', handler);
+      target.addEventListener('touchstart', handler);
+    } else {
+      target.addEventListener('mouseup', handler);
+      target.addEventListener('touchend', handler);
+    }
   };
   const removeEvent = (target, type, handler) => {
-    target.removeEventListener(getEventName(type), handler);
+    if (type === 'start') {
+      target.removeEventListener('mousedown', handler);
+      target.removeEventListener('touchstart', handler);
+    } else {
+      target.removeEventListener('mouseup', handler);
+      target.removeEventListener('touchend', handler);
+    }
   };
 
   export default {
-    name:"chpInkRipple",
+    name: 'chp-ink-ripple',
     props: {
-      chpDisabled:{
-          type:Boolean,
-          default: false
-      }
+      mdDisabled: Boolean
     },
     data: () => ({
       mounted: false,
@@ -61,7 +63,7 @@
         };
       },
       disabled() {
-        return this.chpDisabled ;
+        return this.mdDisabled;
       }
     },
     watch: {
@@ -76,10 +78,12 @@
     methods: {
       checkAvailablePositions(element) {
         const availablePositions = ['relative', 'absolute', 'fixed'];
+
         return availablePositions.indexOf(getComputedStyle(element).position) > -1;
       },
       getClosestPositionedParent(element) {
         const parent = element && element.parentNode;
+
         if (!parent || parent.tagName.toLowerCase() === 'body') {
           return false;
         }
@@ -105,7 +109,7 @@
             top = event.changedTouches[0].pageY;
             left = event.changedTouches[0].pageX;
           }
-
+          console.log(document.body.scrollTop);
           return {
             top: top - rect.top - this.$refs.ripple.offsetHeight / 2 - document.body.scrollTop + 'px',
             left: left - rect.left - this.$refs.ripple.offsetWidth / 2 - document.body.scrollLeft + 'px'
@@ -137,6 +141,18 @@
         removeEvent(document.body, 'end', this.endRipple);
       },
       startRipple(event) {
+        if (event.type === 'touchstart') {
+          this.previous.push('touch');
+        } else {
+          this.previous.push('mouse');
+        }
+
+        this.previous = this.previous.splice(this.previous.length - 2, this.previous.length);
+
+        if (this.previous.length >= 2 && this.previous[1] === 'touch' && this.previous[0] === 'mouse') {
+          return;
+        }
+
         this.clearState();
         this.awaitingComplete = window.setTimeout(() => {
           this.hasCompleted = true;
@@ -171,13 +187,20 @@
       init() {
         this.rippleElement = this.$el;
         this.parentElement = this.getClosestPositionedParent(this.$el.parentNode);
-        if (!this.parentElement) {
-          this.$destroy();
-        } else {
+        this.previous = ['mouse'];
+
+        if (this.parentElement) {
           this.rippleElement.parentNode.removeChild(this.rippleElement);
-          this.parentElement.appendChild(this.rippleElement);
-          this.registerTriggerEvent();
-          this.setDimensions();
+
+          if (this.parentElement.querySelectorAll('.chp-ink-ripple').length > 0) {
+            this.$destroy();
+          } else {
+            this.parentElement.appendChild(this.rippleElement);
+            this.registerTriggerEvent();
+            this.setDimensions();
+          }
+        } else {
+          this.$destroy();
         }
       },
       destroy() {

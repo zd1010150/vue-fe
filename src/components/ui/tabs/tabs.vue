@@ -1,22 +1,12 @@
 <template>
-
-    <div :class="classes" >
+  <div :class="classes" >
       <ul  :class="headerClasses">
         <slot name="header"></slot>
       </ul>
-      <transition>
-      <div class="tab-content">
-        
-          <slot name="content"></slot>
-        
+     <div class="tab-content">
+        <slot name="content"></slot>
       </div>
-      </transition>
-      
-    </div>
-
-
-
-
+   </div>
 </template>
 
 <script>
