@@ -6,6 +6,7 @@
                       :pageSize = "pageSize"
                       :rowsTotal = "rowsTotal"
                       :pageOptions = "pageOptions"
+                      :canAdd = "false"
                       @toggleDisplayFilterToolbar="toggleDisplayFilterToolbar"
                       @pageSizeChange="pageSizeChange"
                       @pageNumberChange="pageNumberChange"
@@ -77,6 +78,7 @@
     import validateMixin from 'mixins/validatemix.js'
     import loadingMix from 'mixins/loading'
     import {Validator} from 'vee-validate'
+    import  { TABLES  } from "src/config/app.config.js"
 	export default{
 		mixins: [validateMixin,loadingMix],
 		data () {
@@ -115,14 +117,17 @@
         pageIndex:val,
         pageSize:this.pageSize
       });
+      },
+      '$store.state.refreshTable':function(val){
+        console.log("isok");
+        if(val == TABLES.WITHDRAWAL_TABLE){
+          this.fetchDepositeData();
+        }
       }
     },
     created(){
       
-    	this.fetchDepositeData({
-    		pageIndex:this.pageIndex,
-    		pageSize:this.pageSize
-    	});
+    	this.fetchDepositeData();
     },
     methods : {
       changeEndday(val){

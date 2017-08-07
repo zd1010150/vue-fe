@@ -22,8 +22,8 @@ export default {
     bankCity : "银行城市",
     branchName : "支行名称",
     swift : "Swift号",
-    bankDocument : "账单"
-
+    bankDocument : "账单",
+    withdrawMethod:"出金方式"
   },
   en:{
     email : "test email address",
@@ -48,6 +48,7 @@ export default {
     bankCity : "Bank ",
     branchName : "Bank branch name",
     swift : "Swift code",
-    bankDocument : "Bank document"
+    bankDocument : "Bank document",
+    withdrawMethod : "Withdraw method"
   }
 }

@@ -31,10 +31,18 @@ export default{
 
         {
           icon: 'trademark',
-          title: 'My Trading Account',
-          open: false,
-          routerLink: true,
-          to: "/my-trading-account"
+          title: 'Account Management',
+          subs:[{
+              title: "My Trading Acoount",
+              open: false,
+              routerLink: true,
+              to: "/account-management/my-trading-account"
+            },{
+              title: "Application Subaccount",
+              open: false,
+              routerLink: true,
+              to: "/account-management/application-sub-account"
+            }]
         },
         {
           icon: 'money',

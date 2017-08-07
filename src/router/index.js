@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import authRoter from './map/auth'
 import errorRouter from './map/error'
-import myTrandingAccountRouter from './map/myTradingAccount'
+
 
 
 import roterhook from './hooks/index'

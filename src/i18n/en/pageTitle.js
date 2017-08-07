@@ -9,5 +9,7 @@ export default {
   internalTransfer: "Internal Transfer",
   notice:"Notice",
   uicomponent:"UI Component",
-  formvalidate:"Form Validate"
+  formvalidate:"Form Validate",
+  myTradingAccount:"My Trading Account",
+  applicationSubAccount:"Application Subaccount"
 }

@@ -1,3 +1,6 @@
+/**
+ * reference:
+ */
 <template>
   <div class="chp-select form-control" :class="{selectOpen}">
 

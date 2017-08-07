@@ -6,7 +6,7 @@ en:
   payMentMethod:
     unionPay: "Union Pay"
     doku: "Doku"
-    fasapay: "Fasa Pay"
+    fasaPay: "Fasa Pay"
     wireTransfer: "Wire Transfers"
   bankcard:
     editBtnText : "Edit Bank Account"
@@ -30,6 +30,9 @@ en:
       cup : "Bank bill"
       doku : "Doku"
       fasa : "Fasa"
+  withdrawal :
+    note : "I agree to the terms of service"
+    nullAccount : "Please add account in account admin"
 
 zh:
   internalTransfer:
@@ -39,7 +42,7 @@ zh:
   payMentMethod:
     unionPay: "银联"
     doku: "Doku"
-    fasapay: "Fasa Pay"
+    fasaPay: "Fasa Pay"
     wireTransfer: "银行转账"
   bankcard:
     editBtnText : "编辑账号信息"
@@ -63,3 +66,6 @@ zh:
       cup : "Bank bill"
       doku : "Doku"
       fasa : "Fasa"
+  withdrawal :
+    note : "我同意该条款"
+    nullAccount : "请添加账号"

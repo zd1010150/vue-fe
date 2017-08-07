@@ -1,4 +1,4 @@
-<template>
+   <template>
   <li :class="classes">
     <a class="text-center" aria-expanded="false" @click="tabClick">
       <slot></slot>

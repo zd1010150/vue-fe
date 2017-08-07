@@ -19,6 +19,7 @@ const positiveFloatMoneyValidator = {
     	zh: message.zh.positiveFloatMoney
 	},
 	validate(value){
+    console.log("float:",value);
 		return reg.positiveFloatMoney.test(value)
 	}
 };
