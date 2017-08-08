@@ -107,13 +107,14 @@
 		},
 		methods:{
 			async submit(){
+				this.disableSubmit = true;
 				console.log("checkbox",JSON.stringify(this.checkedIterms));
 				let validateResult = await this.$validator.validateAll()
 		          if(validateResult){
-		            this.disableSubmit = true;
 		            let {message,success,data} = await fundsService.internalTransferDeposite(this.model)
-		            this.disableSubmit = false;
+		            this.toastr.info(this.$t("info.SUCCESS"));
 		          }
+		        this.disableSubmit = false;
 			},
 			cancel(){
 

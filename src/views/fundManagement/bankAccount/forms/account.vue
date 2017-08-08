@@ -106,7 +106,7 @@
 
 import validateMixin from 'mixins/validatemix'
 import configService from 'services/configService' 
- import bankCardService from 'services/bankCardService'
+import bankCardService from 'services/bankCardService'
 import { UPLOAD_DOCUMENT_URL } from "src/config/url.config.js"  
 import { UPLOAD_CONFIG,TABLES } from "src/config/app.config.js"
 import {SET_REFRESH_TABLE} from "store/mutation-types"

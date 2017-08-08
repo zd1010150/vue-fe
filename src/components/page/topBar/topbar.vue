@@ -23,6 +23,7 @@
   import ChpTopBarLanguage from './language.vue'
   import ChpTopBarNotificateion from './notification'
   import ChpTopBarUserbox from "./userbox"
+  import { SET_LEFT_SIDE_BAR_STATUS } from "store/mutation-types"
   export default {
     name: "chpTopBar",
     props: ["username"],
@@ -36,6 +37,7 @@
       toggleSidebarOpen(){
         let $html = document.querySelector("html");
         $html.classList.toggle("sidebar-left-opened");
+        this.$store.commit(SET_LEFT_SIDE_BAR_STATUS,!this.$store.state.leftSideBarStatus);
       }
     }
 

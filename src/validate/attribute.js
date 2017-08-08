@@ -23,7 +23,11 @@ export default {
     branchName : "支行名称",
     swift : "Swift号",
     bankDocument : "账单",
-    withdrawMethod:"出金方式"
+    withdrawMethod:"出金方式",
+    accountType : "账户类型",
+    platForm : "交易平台",
+    lever : "杠杆",
+    baseCurrency : "基本货币",
   },
   en:{
     email : "test email address",
@@ -49,6 +53,10 @@ export default {
     branchName : "Bank branch name",
     swift : "Swift code",
     bankDocument : "Bank document",
-    withdrawMethod : "Withdraw method"
+    withdrawMethod : "Withdraw method",
+    accountType : "Account type",
+    platForm : "Platform",
+    lever : "Leverage",
+    baseCurrency : "Base currency",
   }
 }

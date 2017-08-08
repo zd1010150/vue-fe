@@ -1,35 +1,42 @@
 <template lang="html">
 
-    <aside id="sidebar-left" class="sidebar-left">
-      <div class="sidebar-header">
-
-        <!-- <div class="sidebar-title">
-          Navigation
+<mu-drawer  :docked="true" class="sidebar-left" id="sidebar-left"  :open="showSideBar">
+      
+        <div class="sidebar-header">
+          <div class="sidebar-title hidden-xs">
+            Navigation
+          </div>
+          <div class="sidebar-toggle hidden-xs" @click="closeLeftSidenav" >
+            <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+          </div> 
         </div>
-        <div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
-          <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
-        </div> -->
-      </div>
-      <div class="sidebar-body">
-        <chp-left-side-bar-profile></chp-left-side-bar-profile>
-        <chp-scroll-bar wrapper="nav-main-wrapper" vBarInternal="vueScrollInternalBar" vBar="vueScrollBar">
-          <chp-left-side-bar-menu></chp-left-side-bar-menu>
-          <chp-left-side-bar-contact></chp-left-side-bar-contact>
-        </chp-scroll-bar>
-      </div>
-    </aside>
-
+        
+          <div class="sidebar-body">
+            <chp-left-side-bar-profile></chp-left-side-bar-profile>
+            <chp-scroll-bar wrapper="nav-main-wrapper" vBarInternal="vueScrollInternalBar" vBar="vueScrollBar">
+              <chp-left-side-bar-menu></chp-left-side-bar-menu>
+              <chp-left-side-bar-contact></chp-left-side-bar-contact>
+            </chp-scroll-bar>
+          </div>
+      
+</mu-drawer>
+      
+        
+     
+       
+    
 </template>
 
 <script>
   import Profile from "./profile.vue"
   import Menu from "./menu.js"
   import Contact from "./contact.vue"
+  import { SET_LEFT_SIDE_BAR_STATUS } from "store/mutation-types"
 export default {
   name:"topbar",
   data(){
     return {
-
+      showSideBar:true
     }
   },
   components : {
@@ -38,8 +45,13 @@ export default {
     "chp-left-side-bar-contact" : Contact
   },
   methods: {
-    toggleLeftSidenav() {
-      this.$refs.leftSidenav.toggle();
+    closeLeftSidenav() {
+      this.showSideBar=!this.showSideBar;
+      this.$nextTick(()=>{
+        let $html = document.querySelector("html");
+        $html.classList.toggle("sidebar-left-hidden");
+      });
+      this.$store.commit(SET_LEFT_SIDE_BAR_STATUS,false);
     },
     toggleRightSidenav() {
       this.$refs.rightSidenav.toggle();
@@ -53,12 +65,18 @@ export default {
     close(ref) {
       console.log('Closed: ' + ref);
     }
+  },
+  watch:{
+    "$store.state.leftSideBarStatus" : function(val){
+      this.showSideBar = val;
+    }
   }
 }
 </script>
 
 <style lang="less">
 @import "~assets/less/variable.less";
+@import "~assets/less/transition.less";
 .nav-main-wrapper{
 
   /*max-height:~"calc(100% - 168px)";*/
@@ -113,4 +131,9 @@ html.sidebar-light{
   width:100%;
   }
 }
+.mu-drawer{
+  width:300px;
+}
+
+
 </style>
