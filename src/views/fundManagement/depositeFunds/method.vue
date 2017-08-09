@@ -1,4 +1,4 @@
-<template>
+                   <template>
   <div class="method  center-block" :class="{active:isActive}">
     <div class="method-bg" @click="chosePaymentMethods">
       <img :src="bgUrl" alt="" class="">

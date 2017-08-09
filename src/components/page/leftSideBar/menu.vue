@@ -1,21 +1,23 @@
-export default{
+<i18n src="./i18n.yaml"></i18n>
+<script>
+  export default{
   data(){
     return {
       routerArr: [],
       items: [
         {
           icon: 'home',
-          title: 'Dashboard',
+          title: 'dashboard',
           open: false,
           routerLink: true,
           to: "/main"
         },
         {
           icon: 'money',
-          title: 'ui Demo',
+          title: 'uiDemo',
           subs: [
             {
-              title: "ui component",
+              title: "uiComponent",
               open: false,
               routerLink: true,
               to: "/uiDemo/ui-component"
@@ -25,20 +27,26 @@ export default{
               open: false,
               routerLink: true,
               to: "/uiDemo/form-validate"
+            },
+            {
+              title: "echarts",
+              open: false,
+              routerLink: true,
+              to: "/uiDemo/echarts"
             }
           ]
         },
 
         {
           icon: 'trademark',
-          title: 'Account Management',
+          title: 'accountManagement',
           subs:[{
-              title: "My Trading Acoount",
+              title: "myTradingAcoount",
               open: false,
               routerLink: true,
               to: "/account-management/my-trading-account"
             },{
-              title: "Application Subaccount",
+              title: "applicationSubaccount",
               open: false,
               routerLink: true,
               to: "/account-management/application-sub-account"
@@ -46,10 +54,10 @@ export default{
         },
         {
           icon: 'money',
-          title: 'Fund Management',
+          title: 'fundManagement',
           subs: [
             {
-              title: "Deposite Funds",
+              title: "depositeFunds",
               open: false,
               routerLink: true,
               to: "/fund-manager/deposite-funds"
@@ -61,7 +69,7 @@ export default{
               to: "/fund-manager/withdrawal"
             },
             {
-              title: "Internal Transfer",
+              title: "internalTransfer",
               open: false,
               routerLink: true,
               to: "/fund-manager/internal-transfer"
@@ -76,22 +84,28 @@ export default{
         },
         {
           icon: 'line-chart',
-          title: 'Agent Center',
+          title: 'agentCenter',
           subs: [
             {
-              title: "Statistics",
+              title: 'agentActivity',
               open: false,
               routerLink: true,
-              to: "/agent-center/deposite-funds"
+              to: "/agent-center/agent-activity"
             },
             {
-              title: "Client List",
+              title: "statistics",
+              open: false,
+              routerLink: true,
+              to: "/agent-center/statistics"
+            },
+            {
+              title: "clientList",
               open: false,
               routerLink: true,
               to: "/agent-center/client-list"
             },
             {
-              title: " Marketing Materials",
+              title: " marketingMaterials",
               open: false,
               routerLink: true,
               to: "/agent-center/marketing-materials"
@@ -101,37 +115,37 @@ export default{
 
         {
           icon: 'download',
-          title: 'Download Center',
+          title: 'downloadCenter',
           open: false,
           routerLink: true,
           to: "/download-center"
         },
         {
           icon: 'bell-o',
-          title: 'Notice',
+          title: 'notice',
           open: false,
           routerLink: true,
           to: "/notice"
         },
         {
           icon: 'gift',
-          title: 'Event',
+          title: 'event',
           open: false,
           routerLink: true,
           to: "/event"
         },
         {
           icon: 'tags',
-          title: 'Ticket',
+          title: 'ticket',
           subs: [
             {
-              title: "New Ticket",
+              title: "newTicket",
               open: false,
               routerLink: true,
               to: "/ticket/new-ticket"
             },
             {
-              title: "Ticket List",
+              title: "ticketList",
               open: false,
               routerLink: true,
               to: "/ticket/ticket-list"
@@ -140,47 +154,47 @@ export default{
         },
         {
           icon: 'graduation-cap',
-          title: 'Training',
+          title: 'training',
           subs: [
             {
-              title: "Online Training",
+              title: "onlineTraining",
               open: false,
               routerLink: true,
               to: "/training/online-training"
             },
             {
-              title: "Books and Magazines",
+              title: "booksandMagazines",
               open: false,
               routerLink: false,
               subs: [{
-                title: 'Money Theory',
+                title: 'moneyTheory',
                 to: '/training/books-magazines/money-theory',
                 open: false,
                 routerLink: true
               }, {
-                title: "Educational Books",
+                title: "educationalBooks",
                 to: '/training/books-magazines/educational-books',
                 open: false,
                 routerLink: true
               }]
             },
             {
-              title: "Videos",
+              title: "videos",
               open: false,
               routerLink: false,
               subs: [{
-                title: '股市情报局',
+                title: 'stock',
                 to: '/training/videos/stock',
                 open: false,
                 routerLink: true
               }, {
-                title: "视频分析",
+                title: "analyse",
                 to: '/training/videos/analyse',
                 open: false,
                 routerLink: true
               },
                 {
-                  title: "教学视频",
+                  title: "teaching",
                   to: '/training/videos/teaching',
                   open: false,
                   routerLink: true
@@ -202,7 +216,7 @@ export default{
           'class': ['fa', 'fa-' + node.icon]
         }));
       }
-      children.push(createElement("span", node.title));
+      children.push(createElement("span", this.$t("menu."+node.title)));
       if (node.notice) {
         children.push(createElement("mu-badge", {
           props: {
@@ -338,3 +352,6 @@ export default{
     }
   }
 }
+
+</script>
+

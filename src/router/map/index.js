@@ -7,11 +7,12 @@ import FundManage from './fundManage'
 import uiDemo from './uiDemo'
 import training from './training'
 import notice from './notice'
+import downloadCenter from './downloadCenter'
 export default [{
   path: "/",
   component: Index,
   meta: {
     requiresAuth: true
   }, 
-  children: _.concat(Dashboard,tradingAccountManagement,uiDemo,training,FundManage,notice)
+  children: _.concat(Dashboard,tradingAccountManagement,uiDemo,training,FundManage,notice,downloadCenter)
 }];

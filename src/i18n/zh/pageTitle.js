@@ -11,5 +11,10 @@ export default {
   uicomponent:"UI 组件",
   formvalidate:"表单验证",
   myTradingAccount:"我的交易账户",
-  applicationSubAccount:"申请新的交易账户"
+  applicationSubAccount:"申请新的交易账户",
+  downloadCenter:"下载中心",
+  agentActivity:"代理活动",
+  statistics:"统计信息",
+  clientList:"代理客户列表",
+  marketingMaterials:"代理营销材料"
 }

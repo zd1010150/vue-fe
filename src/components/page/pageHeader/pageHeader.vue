@@ -1,6 +1,6 @@
 <template>
   <header class="page-header">
-    <span class="sidebar-toggle" @click="openLeftSidenav" v-if="isShowToggle">
+    <span class="sidebar-toggle hidden-xs" @click="openLeftSidenav" v-if="isShowToggle">
       <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
     </span>
     <h2>{{ $t("pageTitle."+pageHeader)}}</h2>
@@ -35,7 +35,7 @@
         }
       },
       "$store.state.leftSideBarStatus" : function(val){
-        console.log("top header:",val)
+      
         this.isShowToggle = !val
       }
     }
@@ -52,5 +52,10 @@
     line-height: 50px;
     font-size: 1.7rem;
     text-align: center;
+  }
+  html.dark{
+    .sidebar-toggle{
+      background-color: @dark-component-accent-bg-color;
+    }
   }
 </style>

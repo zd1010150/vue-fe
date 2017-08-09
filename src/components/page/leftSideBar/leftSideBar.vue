@@ -1,8 +1,7 @@
 <template lang="html">
 
 <mu-drawer  :docked="true" class="sidebar-left" id="sidebar-left"  :open="showSideBar">
-      
-        <div class="sidebar-header">
+      <div class="sidebar-header">
           <div class="sidebar-title hidden-xs">
             Navigation
           </div>
@@ -29,7 +28,7 @@
 
 <script>
   import Profile from "./profile.vue"
-  import Menu from "./menu.js"
+  import Menu from "./menu.vue"
   import Contact from "./contact.vue"
   import { SET_LEFT_SIDE_BAR_STATUS } from "store/mutation-types"
 export default {
@@ -46,11 +45,6 @@ export default {
   },
   methods: {
     closeLeftSidenav() {
-      this.showSideBar=!this.showSideBar;
-      this.$nextTick(()=>{
-        let $html = document.querySelector("html");
-        $html.classList.toggle("sidebar-left-hidden");
-      });
       this.$store.commit(SET_LEFT_SIDE_BAR_STATUS,false);
     },
     toggleRightSidenav() {
@@ -64,11 +58,17 @@ export default {
     },
     close(ref) {
       console.log('Closed: ' + ref);
+    },
+    toggleSidebarStatus(show){
+      let $html = document.querySelector("html");
+      $html.classList.toggle("sidebar-left-hidden",!show);
     }
   },
   watch:{
     "$store.state.leftSideBarStatus" : function(val){
       this.showSideBar = val;
+      this.toggleSidebarStatus(val);
+      console.log("leftsidebar",val);
     }
   }
 }

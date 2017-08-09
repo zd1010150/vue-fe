@@ -11,5 +11,10 @@ export default {
   uicomponent:"UI Component",
   formvalidate:"Form Validate",
   myTradingAccount:"My Trading Account",
-  applicationSubAccount:"Application Subaccount"
+  applicationSubAccount:"Application Subaccount",
+  downloadCenter:"Download Center",
+  agentActivity:"Agent Activity",
+  statistics:"Statistics",
+  clientList:"Client List",
+  marketingMaterials:"Marketing Materials"
 }
