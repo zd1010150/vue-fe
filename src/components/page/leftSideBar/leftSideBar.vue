@@ -35,7 +35,7 @@ export default {
   name:"topbar",
   data(){
     return {
-      showSideBar:true
+      showSideBar:this.$store.state.leftSideBarStatus
     }
   },
   components : {
@@ -68,7 +68,6 @@ export default {
     "$store.state.leftSideBarStatus" : function(val){
       this.showSideBar = val;
       this.toggleSidebarStatus(val);
-      console.log("leftsidebar",val);
     }
   }
 }

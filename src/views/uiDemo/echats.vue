@@ -2,24 +2,18 @@
 	<div class="container-fluid" >
 	   <h3>META Trader 4</h3>
 	    <div class="row">
-	    	<div class="col-lg-12 col-md-12">
-	    		<div id="statistics" class="statistics"></div>
+    		<div class="col-lg-12 col-md-12">
+	    		<chp-echart	:option="defaultOption" ></chp-echart>
+	    		<chp-echart	:option="circleOption" ></chp-echart>
 	    	</div>
 	    </div>
 	</div>
 </template>
 <script>
-import  echarts from 'echarts'
-
 
 	export default{
 		data(){
 			return {
-				option:{
-					textStyle : {
-						color:'#000'
-					}
-				},
 				defaultOption:{
 				    tooltip: {
 				        trigger: 'axis'
@@ -79,30 +73,49 @@ import  echarts from 'echarts'
 				        }
 				    ]
 				},
-				myChart:null
-			}
-		},
-		methods:{
-			draw(){
-				// 基于准备好的dom，初始化echarts实例
-				this.myChart = echarts.init(document.getElementById('statistics'));
-				this.option = Object.assign({},this.option,this.defaultOption);
-				// 绘制图表
-				this.myChart.setOption(this.option);
-			}
-		},
-		mounted(){
-			this.draw();
-		},
-		watch:{
-			'$store.state.theme' : function(val){
-
-				this.$set(this.option.textStyle,"color",val == "dark" ? '#fff' : '#000');
-				console.log("theme",this.option.textStyle.color);
-			},
-			'option.textStyle.color' : function(val){
-
-				this.myChart.setOption(this.option);
+				circleOption:{
+					 tooltip: {
+				        trigger: 'item',
+				        formatter: "{a} <br/>{b}: {c} ({d}%)"
+				    },
+				    legend: {
+				        orient: 'vertical',
+				        x: 'left',
+				        data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+				    },
+				    series: [
+				        {
+				            name:'访问来源',
+				            type:'pie',
+				            radius: ['50%', '70%'],
+				            avoidLabelOverlap: false,
+				            label: {
+				                normal: {
+				                    show: false,
+				                    position: 'center'
+				                },
+				                emphasis: {
+				                    show: true,
+				                    textStyle: {
+				                        fontSize: '30',
+				                        fontWeight: 'bold'
+				                    }
+				                }
+				            },
+				            labelLine: {
+				                normal: {
+				                    show: false
+				                }
+				            },
+				            data:[
+				                {value:9000, name:'已完成手数'},
+				                {value:1000, name:'剩余手树',itemStyle:{ normal:{
+				                	color:'#ccc'
+				                }}}
+				            ]
+				        }
+				    ]
+				}
 			}
 		}
 	}

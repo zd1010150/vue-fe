@@ -5,8 +5,8 @@ import   { fetchData }  from  './network/getData'
 
 export default{
   
-  async getMT4Account(){
-    return fetchData('GET','/account')
+  async getMT4Account(id="",{type}={}){
+    return fetchData('GET','/account/'+id,{type})
   },
   /**
    * 申请mt4账号
