@@ -76,6 +76,9 @@ export default {
 <style lang="less">
 @import "~assets/less/variable.less";
 @import "~assets/less/transition.less";
+.sidebar-left{
+  overflow: hidden;
+}
 .nav-main-wrapper{
 
   /*max-height:~"calc(100% - 168px)";*/

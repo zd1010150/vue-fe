@@ -8,6 +8,6 @@ export default {
   errors:[],
   token:null,
   path:"",
-  leftSideBarStatus:window.innerWidth>768,
+  leftSideBarStatus:window.innerWidth>=768,
   refreshTable:"",
 }

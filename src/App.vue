@@ -9,14 +9,7 @@
 <script>
 
   export default {
-    name: 'app',
-    created(){
-        
-    },
-    beforeDestroy(){
-      
-    }
-
+    name: 'app'
   }
 </script>
 

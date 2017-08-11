@@ -3,8 +3,12 @@
 	   <h3>META Trader 4</h3>
 	    <div class="row">
     		<div class="col-lg-12 col-md-12">
-	    		<chp-echart	:option="defaultOption" ></chp-echart>
-	    		<chp-echart	:option="circleOption" ></chp-echart>
+    		    <h4>line chart</h4>
+	    		<chp-echart	:externalOption="defaultOption" ></chp-echart>
+	    		<h4>circle pie chart</h4>
+	    		<chp-circle-chart ></chp-circle-chart>
+	    		<h4>liquid fill pie chart</h4>
+	    		<chp-liquid-fill :percentage="20" ></chp-liquid-fill>
 	    	</div>
 	    </div>
 	</div>
@@ -74,32 +78,53 @@
 				    ]
 				},
 				circleOption:{
+					grid:{
+						width:140,
+						height:140
+					},
 					 tooltip: {
 				        trigger: 'item',
-				        formatter: "{a} <br/>{b}: {c} ({d}%)"
+				        formatter: "{b}: {c} ({d}%)"
 				    },
 				    legend: {
 				        orient: 'vertical',
 				        x: 'left',
 				        data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
 				    },
+				    graphic:[{
+			           	type:'group',
+				    	left:'center',
+				    	top:'50%',
+				    	children:[
+				    		{
+				    			type:'text',
+				    			id:'level',
+				    			z:100,
+				    			style:{
+				    				text:'等级10\n\n10000/999999',
+				    				fill:'#ccc',
+				    				lineHeight:16,
+				    				font: 'bold 14px Microsoft YaHei',
+				    				textAlign: 'center'
+				    			}
+
+				    		}
+				    	]
+				    }],
 				    series: [
 				        {
-				            name:'访问来源',
+				            
 				            type:'pie',
-				            radius: ['50%', '70%'],
+				            radius: ['55%', '62%'],
 				            avoidLabelOverlap: false,
+				            startAngle:360,
 				            label: {
 				                normal: {
 				                    show: false,
 				                    position: 'center'
 				                },
 				                emphasis: {
-				                    show: true,
-				                    textStyle: {
-				                        fontSize: '30',
-				                        fontWeight: 'bold'
-				                    }
+				                    show: false
 				                }
 				            },
 				            labelLine: {

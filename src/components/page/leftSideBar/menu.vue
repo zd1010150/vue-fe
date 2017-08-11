@@ -1,5 +1,6 @@
 <i18n src="./i18n.yaml"></i18n>
 <script>
+ import { SET_LEFT_SIDE_BAR_STATUS } from "store/mutation-types"
   export default{
   data(){
     return {
@@ -347,8 +348,10 @@
   },
   watch: {
     $route(val, oldVal){
-      let $html = document.querySelector("html");
-      $html.classList.toggle("sidebar-left-opened");
+      // let $html = document.querySelector("html");
+      // $html.classList.toggle("sidebar-left-opened");
+      console.log("menu js");
+      this.$store.commit(SET_LEFT_SIDE_BAR_STATUS,false)
     }
   }
 }

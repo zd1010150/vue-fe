@@ -40,7 +40,12 @@
 			}
 		},
 		props:{
-			option:{},
+			externalOption:{
+				type:Object,
+				default:function(){
+					return {};
+				}
+			},
 			width:{
 				default:'100%'
 			},
@@ -84,7 +89,7 @@
 				this.theme = val;
 				this.initEcharts();
 			},
-			option:function(val){
+			externalOption:function(val){
 				this.innerOption = val;
 				this.rerender();
 			},
@@ -98,11 +103,13 @@
 			}
 		},
 		mounted(){
-			this.el = this.$el;
+			this.el = this.$el
+			this.innerOption = this.externalOption
+			console.log("mounted echarts",this.innerOption,this.width);
 			this.initEcharts();
 			this.attachEvent();
 		},
-		beforeDestory(){
+		beforeDestroy(){
 			window.removeEventListener('resize',this.resize)
 		}
 	}

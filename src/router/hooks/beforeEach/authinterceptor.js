@@ -2,8 +2,6 @@ import store from 'src/store'
 
 const authInterceptor = (router) => (to, from, next) => {
   let userInfo = store.state.userInfo;
-  console.log("intercepter:", to.path, to.matched, from.path);
-
   const {meta:{requiresAuth, forbidAuthen}} = to;
 
   if (to.matched.length < 1) {

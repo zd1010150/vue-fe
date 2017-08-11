@@ -2,8 +2,8 @@
 	<div class="row">
 		<div class="col-lg-12 col-md-12">
 				<h4 class="pull-left">PC platform</h4><span></span>
-				<section class="panel panel-horizontal">
-					<div class="panel-body p-lg">
+				<section class="panel panel-responsive">
+					<div class="panel-body ">
 						<table class="client-table">
 							<tr>
 								<td class="padding-10">有效客户数：</td>
@@ -27,10 +27,8 @@
 
 								
 					</div>
-					<header class="panel-heading bg-white p-none">
-						<div class="panel-heading-icon bg-primary mt-sm ">
-							<i class="fa fa-music"></i>
-						</div>
+					<header class="panel-heading bg-white ">
+						<chp-liquid-fill :percentage="20" width="140px" height="140px" class="liquid-fill-chart"></chp-liquid-fill>
 					</header>
 					
 				</section>
@@ -43,9 +41,51 @@
 	}
 </script>
 <style lang="less">
-	@import "~assets/less/variable.less";
-	.client-table{
-		
+@import "~assets/less/normal.less";
+	.panel-responsive{
+		display: table;
+		width:100%;
+		.panel-body{
+			display: table-cell;
+			vertical-align: middle;
+			padding:20px;
+		}
+		header.panel-heading{
+			width:140px;
+			display: table-cell;
+			padding:30px;
+			vertical-align: middle;
+		}
+
+	}
+	@media(max-width:@screen-sm-min){
+		.panel-responsive{
+			.panel-body{
+				padding:5px;
+			}
+			header.panel-heading{
+				padding:10px;
+			}
+		}
+	}
+
+	@media(max-width:@screen-xs-min){
+		.panel-responsive{
+			.panel-body{
+				display: block;
+				width:100%;
+			}
+			header.panel-heading{
+				display: table;
+				width:100%;
+				padding:0px 10px 30px;
+				.liquid-fill-chart{
+					display: table-cell;
+					text-align: center;
+					width:100% !important;
+				}
+			}
+		}
 	}
 	
 </style>
