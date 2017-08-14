@@ -10,7 +10,7 @@
 								<td class="padding-10">总客户数：</td>
 							</tr>
 							<tr>
-								<td class="padding-10"><span class="lead text-dark padding-right-10">456789</span>位</td>
+								<td class="padding-10"><span class="lead text-dark padding-right-10">{{currentValue}}</span>位</td>
 								<td class="padding-10"><span class="lead text-dark padding-right-10">10000</span>位</td>
 							</tr>
 						</table>
