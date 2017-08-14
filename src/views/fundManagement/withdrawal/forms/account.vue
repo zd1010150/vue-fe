@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import mt4Service from 'services/mt4Service'
+
 import validateMixin from 'mixins/validatemix'
 import fundsService from 'services/fundsService' 
   
@@ -123,20 +123,16 @@ export default {
           
         }
     	},
-    	async fetchMT4(){
-    		let {success,data,message} = await mt4Service.getMT4Account();
-            if(success && data ){
-              this.MT4 = data.map((mt4)=>{
-                return {
-                  id:mt4.mt4_id,
-                  text:"#"+mt4.mt4_id+" | "+mt4.balance,
-                  baseCurrency:mt4.base_currency
-                }
-              });
-              this.$set(this.model,"mt4_id",this.MT4[0].id)
-            }
-            return {success,data,message};
-    	},
+    	fetchMT4(){
+    		this.MT4 = this.$store.state.mt4Accounts.map((mt4)=>{
+          return {
+            id:mt4.mt4_id,
+            text:"#"+mt4.mt4_id+" | "+mt4.balance,
+            baseCurrency:mt4.base_currency
+          }
+        });
+        this.$set(this.model,"mt4_id",this.MT4[0].id)
+      },
       async validate(){
         console.log(this.model,"validate");
         let validateResult = await this.$validator.validateAll();
@@ -175,12 +171,13 @@ export default {
       }
     },
     created(){
-    	this.$emit("loading",true);
-      this.$validator.attach("bank_code","required");
-      this.$validator.attach('withdraw_pay','required|positiveFloatMoney');
-    	let self = this;
-    	Promise.all([this.fetchMT4(),this.fetchMethodsAccounts()]).then(function(){
-            self.$emit("loading",false);
+    	this.$emit("loading",true)
+      this.$validator.attach("bank_code","required")
+      this.$validator.attach('withdraw_pay','required|positiveFloatMoney')
+    	this.fetchMT4()
+      let self = this
+    	Promise.all([this.fetchMethodsAccounts()]).then(function(){
+            self.$emit("loading",false)
       });
     }
   }

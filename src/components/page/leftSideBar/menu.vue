@@ -350,8 +350,11 @@
     $route(val, oldVal){
       // let $html = document.querySelector("html");
       // $html.classList.toggle("sidebar-left-opened");
-      console.log("menu js");
-      this.$store.commit(SET_LEFT_SIDE_BAR_STATUS,false)
+      if(window.innerWidth<768){//小屏幕下才自动关闭，大屏幕不会
+        console.log("menu js");
+        this.$store.commit(SET_LEFT_SIDE_BAR_STATUS,false)
+      }
+      
     }
   }
 }

@@ -1,6 +1,7 @@
 import * as type from "./mutation-types"
 import userService from "../services/userService"
 import pwdService from "../services/pwdService"
+import mt4Service from "../services/mt4Service"
 export default{
 
   async login({ commit }, form){
@@ -38,5 +39,19 @@ export default{
     }
     return {data,success,message};
    },
+   async getMT4Accounts({commit}){
+    let {data,success,message} = await mt4Service.getMT4Account();
+    if(success){
+      let {traderAccounts,agentAccounts} = mt4Service.filterAccounts(data)
+      commit(type.SET_MT4_ACCOUNTS,data) 
+      commit(type.SET_MT4_TRADER_ACCOUNTS,traderAccounts)
+      commit(type.SET_MT4_AGENT_ACCOUNTS,agentAccounts)
+    }else{
+      commit(type.SET_MT4_ACCOUNTS,[])
+      commit(type.SET_MT4_TRADER_ACCOUNTS,[])
+      commit(type.SET_MT4_AGENT_ACCOUNTS,[])
+    }
+    return {data,success,message}
+   }
    
 }

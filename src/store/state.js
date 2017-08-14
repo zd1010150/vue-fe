@@ -10,4 +10,7 @@ export default {
   path:"",
   leftSideBarStatus:window.innerWidth>=768,
   refreshTable:"",
+  mt4Accounts:[],
+  traderAccounts:[],
+  agentAccounts:[]
 }

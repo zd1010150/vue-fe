@@ -5,8 +5,8 @@ import   { fetchData }  from  './network/getData'
 
 export default{
   
-  async getMT4Account(id="",{type}={}){
-    return fetchData('GET','/account/'+id,{type})
+  async getMT4Account(type="all"){
+    return fetchData('GET','/account/'+type+"/index")
   },
   /**
    * 申请mt4账号
@@ -19,6 +19,22 @@ export default{
    */
   async applyMT4Account({plat_form,account_type,lever,base_currency,reason}){
   	return fetchData('POST','/account',{plat_form,account_type,lever,base_currency,reason})
+  },
+  /**
+   * 传入所有的accounts,然后{traderAccounts:[],agentAccounts:[]}
+   * @param  {[type]} accounts [description]
+   * @return {[type]}          [description]
+   */
+  filterAccounts(accounts){
+    let result = {traderAccounts:[],agentAccounts:[]}
+    accounts.forEach((account)=>{
+      if(account.account_type == "Agent"){
+        result.agentAccounts.push(account)
+      }else{
+        result.traderAccounts.push(account)
+      }
+    })
+    return result;
   }
 
 }

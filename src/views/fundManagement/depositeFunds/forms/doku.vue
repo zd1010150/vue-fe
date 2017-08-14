@@ -39,7 +39,7 @@
     </chp-panel>
 </template>
 <script>
-  import mt4Service from 'services/mt4Service'
+  
   import validateMixin from 'mixins/validatemix'
   import payingDialog from './payingDialog'
   import loadingMix from 'mixins/loading'
@@ -78,30 +78,22 @@
       cancel(){
         this.$set(this.model,"order_amount","");
       },
-      async fetchMT4(){
-         let {success,data,message} = await mt4Service.getMT4Account();
-            if(success && data ){
-              this.MT4 = data.map((mt4)=>{
+      fetchMT4(){
+         this.MT4 = this.$store.state.traderAccounts.map((mt4)=>{
                 return {
                   id:mt4.mt4_id,
                   text:"#"+mt4.mt4_id+" | "+mt4.balance,
                   baseCurrency:mt4.base_currency
                 }
               });
-              this.$set(this.model,"mt4_id",this.MT4[0].id)
-            }
-            return {success,data,message};
+         this.$set(this.model,"mt4_id",this.MT4[0].id)
       },
         handlerDialogClose(){
           this.$set(this.model,"order_amount","");
         }
       },
     created(){
-        this.loadingStatus = true;
-        let self =this;
-        Promise.all([this.fetchMT4()]).then(function(){
-          self.loadingStatus = false;
-        });
+       this.fetchMT4();
       },
     watch:{
       'model.mt4_id' : function(val,oldVal){

@@ -1,5 +1,17 @@
 
-import {SET_USERINFO,ADD_ERROR_INFO,SET_TOKEN,SET_LANGUAGE,SET_THEME,SET_PATH,SET_LEFT_SIDE_BAR_STATUS ,SET_REFRESH_TABLE} from "./mutation-types";
+import {
+  SET_USERINFO,
+  ADD_ERROR_INFO,
+  SET_TOKEN,
+  SET_LANGUAGE,
+  SET_THEME,
+  SET_PATH,
+  SET_LEFT_SIDE_BAR_STATUS ,
+  SET_REFRESH_TABLE,
+  SET_MT4_ACCOUNTS,
+  SET_MT4_AGENT_ACCOUNTS,
+  SET_MT4_TRADER_ACCOUNTS
+} from "./mutation-types";
 
 
 
@@ -31,6 +43,15 @@ export default{
   },
   [SET_REFRESH_TABLE](state,status){
     state.refreshTable = status
+  },
+  [SET_MT4_ACCOUNTS](state,accounts){
+    state.mt4Accounts = accounts
+  },
+  [SET_MT4_AGENT_ACCOUNTS](state,accounts){
+    state.agentAccounts = accounts
+  },
+  [SET_MT4_TRADER_ACCOUNTS](state,accounts){
+    state.traderAccounts = accounts
   }
 
 }

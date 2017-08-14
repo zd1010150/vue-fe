@@ -1,7 +1,7 @@
 <template>
-	<div class="row">
+	<div class="row pt-lg">
 		<div class="col-lg-12 col-md-12">
-				<h4 class="pull-left">PC platform</h4><span></span>
+				<h4 class="pull-left">有效客户等级</h4><span></span>
 				<section class="panel panel-responsive">
 					<div class="panel-body ">
 						<table class="client-table">
@@ -23,9 +23,6 @@
 							<span class="level lead pr-md">等级10</span>
 						<span class="number">9999/1000000</span>
 						</p>
-						
-
-								
 					</div>
 					<header class="panel-heading bg-white ">
 						<chp-liquid-fill :percentage="20" width="140px" height="140px" class="liquid-fill-chart"></chp-liquid-fill>
@@ -37,7 +34,14 @@
 </template>
 <script>
 	export default{
-
+		props:{
+			agent:{
+				type: [String, Number]
+			},
+			dataInfo:{
+				type: Object
+			}
+		}
 	}
 </script>
 <style lang="less">

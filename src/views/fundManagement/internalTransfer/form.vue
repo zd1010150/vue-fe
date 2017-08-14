@@ -60,7 +60,6 @@
 </div>
 </template>
 <script>
-	import mt4Service from 'services/mt4Service'
 	import fundsService from 'services/fundsService'
 	import validateMixin from 'mixins/validatemix'
 	import loadingMix from 'mixins/loading'
@@ -69,8 +68,9 @@
 		data(){
 			return{
 				checkedIterms:[],
-				MT4:null,
 				originMt4:null,
+				originTargetMT4:null,
+				originSrcMT4:null,
 				targetMt4:null,
 				disableSubmit:false,
 				loadingStatus:false,
@@ -83,15 +83,12 @@
 			}
 		},
 		created(){
-			this.loadingStatus = true;
-	        let self =this;
-	        Promise.all([this.fetchMT4()]).then(function(){
-	          self.loadingStatus = false
-	        });
+			this.fetchMT4()
+			console.log(this.$store.state.traderAccounts,this.$store.state.mt4Accounts,this.targetMt4,this.originMt4,this.model.origin_login,this.model.target_login);
 		},
 		watch:{
 			'model.origin_login':function(id,oldId){
-				this.targetMt4 = this.MT4.filter((mt4) => {
+				this.targetMt4 = this.originTargetMT4.filter((mt4) => {
 					if(mt4.id == id){
 						this.baseCurrency = mt4.baseCurrency ;
 					}
@@ -99,7 +96,7 @@
 				});
 		    },
 			'model.target_login':function(id){
-				this.originMt4 = this.MT4.filter((mt4) => {
+				this.originMt4 = this.originSrcMT4.filter((mt4) => {
 					return mt4.id !== id ;
 				});
 
@@ -119,23 +116,28 @@
 			cancel(){
 
 			},
-			async fetchMT4(){
-	        let {success,data,message} = await mt4Service.getMT4Account();
-	            if(success && data && data.length >= 2 ){
-	              this.MT4 = this.originMt4 = this.targetMt4 = data.map((mt4)=>{
-	                return {
-	                  id:mt4.mt4_id,
-	                  text:"#"+mt4.mt4_id+" | "+mt4.balance,
-	                  baseCurrency:mt4.base_currency
-	                }
-	              });
-	              this.$set(this.model,"origin_login",this.MT4[0].id)
-	            }else if(data && data.length < 2){
-	            	this.toastr.error(this.$t("internalTransfer.errors.onlyOneAccount"))
-	            	this.disableSubmit = true
-	            }
-	            return {success,data,message}
-      		},
+			fetchMT4(){
+		        if(this.$store.state.mt4Accounts.length >= 2){
+		        	this.originSrcMT4 = this.originMt4 = this.$store.state.mt4Accounts.map((mt4)=>{
+		                return {
+		                  id:mt4.mt4_id,
+		                  text:"#"+mt4.mt4_id+" | "+mt4.balance,
+		                  baseCurrency:mt4.base_currency
+		                }
+		              });
+		            this.originTargetMT4 = this.targetMt4 = this.$store.state.traderAccounts.map((mt4)=>{
+		                return {
+		                  id:mt4.mt4_id,
+		                  text:"#"+mt4.mt4_id+" | "+mt4.balance,
+		                  baseCurrency:mt4.base_currency
+		                }
+		              });
+		            this.$set(this.model,"origin_login",this.originMt4[0].id)
+		        }else{
+		        	this.toastr.error(this.$t("internalTransfer.errors.onlyOneAccount"))
+		            this.disableSubmit = true
+		        }
+	        },
 		}
 	}
 </script>

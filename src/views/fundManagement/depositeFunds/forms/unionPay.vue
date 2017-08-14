@@ -93,19 +93,15 @@
       cancel(){
         this.$set(this.model,"order_amount","");
       },
-      async fetchMT4(){
-         let {success,data,message} = await mt4Service.getMT4Account();
-            if(success && data ){
-              this.MT4 = data.map((mt4)=>{
-                return {
-                  id:mt4.mt4_id,
-                  text:"#"+mt4.mt4_id+" | "+mt4.balance,
-                  baseCurrency:mt4.base_currency
-                }
-              });
-              this.$set(this.model,"mt4_id",this.MT4[0].id)
-            }
-            return {success,data,message};
+      fetchMT4(){
+        this.MT4 = this.$store.state.traderAccounts.map((mt4)=>{
+          return {
+            id:mt4.mt4_id,
+            text:"#"+mt4.mt4_id+" | "+mt4.balance,
+            baseCurrency:mt4.base_currency
+          }
+        });
+        this.$set(this.model,"mt4_id",this.MT4[0].id)
       },
       async fetchBank(){
         let {success,data,message} = await bankService.getBank(this.methodCode);
@@ -128,9 +124,10 @@
       },
     created(){
       if(this.methodCode){//需要加入条件判断，
-          this.loadingStatus = true;
-          let self =this;
-          Promise.all([this.fetchMT4(),this.fetchBank()]).then(function(){
+          this.fetchMT4()
+          this.loadingStatus = true
+          let self =this
+          Promise.all([this.fetchBank()]).then(function(){
             self.loadingStatus = false;
           });
      }
