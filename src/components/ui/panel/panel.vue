@@ -1,9 +1,16 @@
 <template>
   <section class="panel" :class="classes">
 
-      <chp-panel-header @close="closePanel" @collapse="collapsePanel" :isTransparent="isHeaderTransparent"
-                    :canCollapse="canCollapse" :canClose="canClose">
-          <h2 class="panel-title" v-if="hasTitle">
+      <chp-panel-header @close="closePanel" @collapse="collapsePanel" 
+                    :isTransparent="isHeaderTransparent"
+                    :canCollapse="canCollapse" 
+                    :canClose="canClose" 
+                    :collapsePanelText="collapsePanelText"
+                    :expandPanelText="expandPanelText"
+                    :closeText="closeText"
+                    :showActionRipple ="showActionRipple"
+                    >
+          <h2 class="panel-title">
             <slot name="title"></slot>
           </h2>
           <p class="panel-subtitle">
@@ -76,6 +83,22 @@
       isLoading:{
         type:Boolean,
         default:false
+      },
+      expandPanelText:{
+        type:String,
+        default:''
+      },
+      closeText:{
+        type:String,
+        default:''
+      },
+      collapsePanelText:{
+        type:String,
+        default:''
+      },
+      showActionRipple:{
+          type:Boolean,
+          default:true
       }
     },
     methods: {

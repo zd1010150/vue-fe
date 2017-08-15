@@ -2,6 +2,7 @@ import * as type from "./mutation-types"
 import userService from "../services/userService"
 import pwdService from "../services/pwdService"
 import mt4Service from "../services/mt4Service"
+import configService from "../services/configService"
 export default{
 
   async login({ commit }, form){
@@ -52,6 +53,15 @@ export default{
       commit(type.SET_MT4_AGENT_ACCOUNTS,[])
     }
     return {data,success,message}
+   },
+   async getLeverage({commit}){
+     let {data,success,message} = await configService.getConfigByKey({fields:["leverage"]})
+     if(success){
+       commit(type.SET_LEVERAGE,configService.mapLeverage(data['leverage']))
+     }else{
+      commit(type.SET_LEVERAGE,[])
+     }
+     return {success,data}
    }
    
 }

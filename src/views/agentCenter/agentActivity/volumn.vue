@@ -1,31 +1,76 @@
+<i18n src="../i18n.yaml"></i18n>
 <template>
 	<div class="row pt-lg">
 		<div class="col-lg-12 col-md-12">
-				<h4>交易量等级</h4>
-				<div class="col-lg-6 col-md-6 col-xs-12 pl-none col-volumn">
+				<div class="clearfix col-lg-12 col-md-12 col-xs-12 pl-none">
+					<h4 class="pull-left trade-volume-title">{{ $t('tradeVolumn')}}{{$t('level')}}</h4>
+					<a href="javascript:void(0)" @click="showTerms" class="pull-right trade-volume-terms">
+						<i class="fa fa-info-circle" aria-hidden="true"></i>
+						{{$t('activityTerms')}}
+					</a>
+				</div>
+				
+				<template v-for="(value,key) in activityData">
+					<div class="col-lg-6 col-md-6 col-xs-12 pl-none col-volumn">
 					<section class="panel volumn-panel">
 						<div class="panel-body p-lg bg-default">
 							<div class="widget-summary">
 								<div class="widget-summary-col pl-md pr-md info-col">
 									<div class="summary pb-lg">
-										<h4 class="title">FX</h4>
+										<h4 class="title">{{ $t(''+key) }}</h4>
 										<div class="info">
-											<strong class="amount">1281</strong>手
+											<strong class="amount">
+											{{ value.currentValue}}
+											</strong>
+											{{ $t('lots')}}
 										</div>
 									</div>
-									<div class="summary-footer pt-lg">
-										<span class="level lead pr-md">等级:10 </span>
-										<span>4000/10000</span>	
-									</div>
+								<!--test-->
+									<template v-if="value.hasAward">
+										<div class="summary-footer pt-lg" :class="classes">
+											<div class="level-left">
+												<span>
+													{{ $t('level') }} {{ value.awardLevel}}
+													<i class="fa lead fa-caret-right" aria-hidden="true"></i>
+													{{ $t('level') }} {{ value.currentLevel}}
+												</span>
+												 
+											</div>
+											<div class="level-right">
+												<span class="text-primary text-primary lead">
+													<i class="fa fa-money" aria-hidden="true"></i>
+														{{ value.amount}}({{ value.baseCurrency }})
+												</span>
+												<chp-button class="btn-primary" @click="getBonus(key)">
+													<i class="fa fa-gift"></i>&nbsp;{{ $t('getBonus') }}
+												</chp-button>
+											</div>
+										</div>
+									</template>
+									<template v-else>
+										<div class="summary-footer pt-lg">
+											<span class="level lead pr-md">
+											{{ $t('level') }}: {{ value.currentLevel}} 
+											</span>
+											<span>
+											{{ value.currentValue }}/{{ value.level[value.currentLevel] }}
+											</span>	
+										</div>
+									</template> 
 								</div>
 								<div class="widget-summary-col widget-summary-col-icon">
-									<chp-circle-chart class="circle-chart"></chp-circle-chart>
+									<chp-circle-chart class="circle-chart" :externalOption='value.chartData'>
+									</chp-circle-chart>
 								</div>
 							</div>
 						</div>
 					</section>
 				</div>
-				<div class="col-lg-6 col-md-6 col-xs-12  pl-none pr-none col-volumn">
+
+				</template>
+				
+
+				<!-- <div class="col-lg-6 col-md-6 col-xs-12  pl-none pr-none col-volumn">
 					<section class="panel  volumn-panel">
 						<div class="panel-body p-lg bg-default">
 							<div class="widget-summary">
@@ -62,96 +107,193 @@
 							</div>
 						</div>
 					</section>
-				</div>
-				<div class="col-lg-6 col-md-6 col-xs-12  pl-none col-volumn">
-					<section class="panel  volumn-panel">
-						<div class="panel-body p-lg bg-default">
-							<div class="widget-summary">
-								<div class="widget-summary-col pl-md pr-md info-col">
-									<div class="summary pb-lg">
-										<h4 class="title">FX</h4>
-										<div class="info">
-											<strong class="amount">1281</strong>手
-										</div>
-									</div>
-									<div class="summary-footer pt-lg" :class="classes">
-										<div class="level-left">
-											<span>
-												等级6
-												<i class="fa lead fa-caret-right" aria-hidden="true"></i>
-												等级10
-											</span>
-											 
-										</div>
-										<div class="level-right">
-											<span class="text-primary text-primary lead">
-												<i class="fa fa-money" aria-hidden="true"></i>
-													300(AUD)
-											</span>
-											<chp-button class="btn-primary">
-												<i class="fa fa-gift"></i>&nbsp;点我领奖
-											</chp-button>
-										</div>
-									</div>
-								</div>
-								<div class="widget-summary-col widget-summary-col-icon">
-									<chp-circle-chart class="circle-chart"></chp-circle-chart>
-								</div>
-							</div>
-						</div>
-					</section>
-				</div>
-				<div class="col-lg-6 col-md-6 col-xs-12  pl-none pr-none col-volumn">
-					<section class="panel  volumn-panel">
-						<div class="panel-body p-lg bg-default">
-							<div class="widget-summary">
-								<div class="widget-summary-col pl-md pr-md info-col">
-									<div class="summary pb-lg">
-										<h4 class="title">FX</h4>
-										<div class="info">
-											<strong class="amount">1281</strong>手
-										</div>
-									</div>
-									<div class="summary-footer pt-lg">
-										<span class="level lead pr-md">等级:10 </span>
-										<span>4000/10000</span>	
-									</div>
-								</div>
-								<div class="widget-summary-col widget-summary-col-icon">
-									<chp-circle-chart class="circle-chart"></chp-circle-chart>
-								</div>
-							</div>
-						</div>
-					</section>
-				</div>
+				</div> -->
 		</div>
+		<!-- <mu-dialog :open="termsDialogOpen" scrollable class="panel">
+			<h2 slot="title" class="panel-title">{{$t('activityTerms')}}</h2>
+      		<div class="panel-body">{{terms}}</div>
+      		<chp-button slot="actions" @click="closeTermsDialog" class="panel-footer">{{$t('ui.button.close')}}</chp-button>	
+        </mu-dialog>  -->
+		<chp-dialog-alert
+	  	:chp-title="$t('activityTerms')"
+	  	:chpContentHtml="terms"
+	  	:chp-ok-text="$t('ui.button.confirm')"
+	  	:scrollable="true"
+	  	ref="termsDailog"/>
 	</div>
 </template>
 <script>
+	import activityService from "services/activityService"
 	export default{
-	 data(){
-       return {
-       	
-       }
-	 },
-     computed:{
-     	classes:function(){
-     		let status = this.$store.state.leftSideBarStatus
-     		if(status && window.innerWidth <= 768){
-     			return ""
-     		}else{
-     			return "level"
-     		}
-     	}
-     },
-     created(){
-     	
-	}
+		props:{
+			dataInfo:{
+					type: Object,
+					default:function(){
+						return {}
+					}
+				},
+			agent:{
+				type:[String,Number]
+			}
+		},
+		data(){
+			return {
+				terms:"XX",
+				defaultData:{
+		       		fx:{
+		       			level:[0,0,0,0,0,0,0,0,0,0],
+		       			currentValue: 0,
+		       			currentLevel: 0,
+		       			awardLevel:0,
+		       			hasAward:0,
+		       			awardBonus:0,
+		       			baseCurrency:"USD",
+		       			percentage:0,
+		       			nextLevelValue:0
+		       		},
+		       		metal:{
+		       			level:[0,0,0,0,0,0,0,0,0,0],
+		       			currentValue: 0,
+		       			currentLevel: 0,
+		       			awardLevel:0,
+		       			hasAward:0,
+		       			awardBonus:0,
+		       			baseCurrency:"USD",
+		       			percentage:0,
+		       		    nextLevelValue:0
+		       		},
+		       		oil:{
+		       			level:[0,0,0,0,0,0,0,0,0,0],
+		       			currentValue: 0,
+		       			currentLevel: 0,
+		       			awardLevel:0,
+		       			hasAward:0,
+		       			awardBonus:0,
+		       			baseCurrency:"USD",
+		       			percentage:0,
+		       			nextLevelValue:0
+		       		},
+		       		cfd:{
+		       			level:[0,0,0,0,0,0,0,0,0,0],
+		       			currentValue: 0,
+		       			currentLevel: 0,
+		       			awardLevel:0,
+		       			hasAward:0,
+		       			awardBonus:0,
+		       			baseCurrency:"USD",
+		       			percentage:0,
+		       			nextLevelValue:0
+		       		}
+		       	}
+			}
+		},
+	    computed:{
+	     	classes:function(){
+	     		let status = this.$store.state.leftSideBarStatus
+	     		if(status && window.innerWidth <= 768){
+	     			return ""
+	     		}else{
+	     			return "level"
+	     		}
+	     	},
+	     	activityData:function(){
+	     		let tmpObject = Object.assign({},this.defaultData,this.dataInfo)
+	     		for(let key in tmpObject){
+	     			tmpObject[key].chartData = this.calculateChartData(tmpObject[key])
+	     		}
+	     		return tmpObject
+	     	}
+	    },
+	    methods:{
+	    	calculateChartData(data){
+	    		return {
+	    			graphic:[{
+	    				type:'group',
+				    	left:'center',
+				    	top:'50%',
+				    	children:[
+				    		{
+				    			type:'text',
+				    			id:'level',
+				    			z:100,
+				    			style:{
+				    				text:this.$t("level")+data.currentLevel+'\n\n'+data.currentValue+'/'+data.level[data.currentLevel],
+				    				fill:'#ccc',
+				    				lineHeight:16,
+				    				font: 'bold 14px Microsoft YaHei',
+				    				textAlign: 'center'
+				    			}
+
+				    		}
+				    	]
+	    			}],
+	    			series: [
+				        {
+				            
+				            type:'pie',
+				            radius: ['78%', '88%'],
+				            avoidLabelOverlap: false,
+				            startAngle:360,
+				            label: {
+				                normal: {
+				                    show: false,
+				                    position: 'center'
+				                },
+				                emphasis: {
+				                    show: false
+				                }
+				            },
+				            labelLine: {
+				                normal: {
+				                    show: false
+				                }
+				            },
+				            data:[
+				                {
+				                	value:data.currentValue, 
+				                	name:this.$t("doneLots")
+				                },
+				                {
+				                	value:data.nextLevelValue, 
+				                	name:this.$t('remainLots'),
+					                itemStyle:{ 
+					                	normal:{
+					                	color:'#ccc'
+					                }}
+				            	}
+				            ]
+				        }
+				    ]
+	    		}
+	    	},
+	    	async getBonus(type){
+	    		let {data,message,success} = await activityService.agentAward({type:type,agentId:this.agent})
+	    		if(success){
+	    			this.$emit('refresh')
+	    			this.toastr.info(this.$t("info.SUCCESS"));
+	    		}
+	    	},
+	    	async showTerms(){
+	    		let {data,message,success} = await activityService.getAgentLevelActivityTerms(this.$store.state.language == "en" ? "en" :"zh")
+	    		if(success){
+	    			//this.terms = data
+	    			this.terms = data
+	    			this.$refs.termsDailog.open()
+	    		}
+	    	}
+	     }
 }
 </script>
 <style lang="less">
 @import "~assets/less/normal.less";
+
+.trade-volume-terms{
+	height:29px;
+	line-height: 43px;
+	display: inline-block;
+}
 .widget-summary{
+
 	.widget-summary-col{
 		vertical-align: middle;
 		.title{

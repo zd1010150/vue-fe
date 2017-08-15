@@ -9,6 +9,14 @@ export default{
    */
   async getConfigByKey({fields}){
     return fetchData('GET',"/setting",fields)
+  },
+  mapLeverage(level){
+  	return level && level.length > 0 && level.split("|").map((le)=>{
+															return {
+																val : le,
+																title : le +":1"
+															}
+														})
   }
   
 }

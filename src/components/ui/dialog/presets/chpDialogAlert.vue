@@ -1,13 +1,18 @@
 <template>
-  <chp-dialog class="chp-dialog-alert" ref="dialog" @close="fireCloseEvent()">
-    <chp-dialog-title v-if="chpTitle">{{ chpTitle }}</chp-dialog-title>
+  <chp-dialog class="chp-dialog-alert" ref="dialog" @close="fireCloseEvent()" :scrollable="scrollable">
+   
+    <template v-if="chpTitle" slot="title">
+      {{ chpTitle }}
+    </template>
+    <template v-if="chpContentHtml" v-html="chpContentHtml">
+      <div v-html="chpContentHtml" slot="body"></div>
+    </template>
+    <template v-else slot="body">{{ chpContent }}</template>
 
-    <chp-dialog-content v-if="chpContentHtml" v-html="chpContentHtml"></chp-dialog-content>
-    <chp-dialog-content v-else>{{ chpContent }}</chp-dialog-content>
-
-    <chp-dialog-actions>
+    <template slot="footer">
       <chp-button class="chp-primary" @click="close()">{{ chpOkText }}</chp-button>
-    </chp-dialog-actions>
+    </template>
+
   </chp-dialog>
 </template>
 
@@ -21,7 +26,11 @@
       chpOkText: {
         type: String,
         default: 'Ok'
-      }
+      },
+      scrollable: {
+        type: Boolean,
+        default: false
+      },
     },
     data: () => ({
       debounce: false

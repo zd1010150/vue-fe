@@ -1,14 +1,13 @@
 <template>
-  <chp-dialog class="chp-dialog-prompt" ref="dialog" @close="fireCloseEvent('cancel')">
-    <chp-dialog-title v-if="chpTitle">{{ chpTitle }}</chp-dialog-title>
-
-    <chp-dialog-content v-if="chpContentHtml" v-html="chpContentHtml"></chp-dialog-content>
-    <chp-dialog-content v-if="chpContent">{{ chpContent }}</chp-dialog-content>
-
-    <chp-dialog-content>
-
-
-        <mu-text-field ref="input"
+  <chp-dialog class="chp-dialog-prompt" ref="dialog" @close="fireCloseEvent('cancel')" :scrollable="scrollable">
+    
+ <template v-if="chpTitle" slot="title">
+      {{ chpTitle }}
+    </template>
+    <template v-if="chpContentHtml" v-html="chpContentHtml" slot="body"></template>
+    <template v-if="chpContent" slot="body">{{ chpContent }}</template>
+    <template v-else slot="body">
+      <mu-text-field ref="input"
                        :id="chpInputId"
                        :name="chpInputName"
                        :maxLength="chpInputMaxlength"
@@ -18,26 +17,12 @@
                        @keydown.enter.native="confirmValue"
 
         ></mu-text-field>
-    </chp-dialog-content>
-    <chp-dialog chp-open-from="#fab" chp-close-to="#fab" ref="dialog2">
-      <chp-dialog-title>Create new note</chp-dialog-title>
 
-      <chp-dialog-content>
-        <form>
-
-        </form>
-      </chp-dialog-content>
-
-      <chp-dialog-actions>
-        <chp-button class="chp-primary" @click="closeDialog('dialog2')">Cancel</chp-button>
-        <chp-button class="chp-primary" @click="closeDialog('dialog2')">Create</chp-button>
-      </chp-dialog-actions>
-    </chp-dialog>
-
-    <chp-dialog-actions>
+    </template>
+    <template slot="footer">
       <chp-button class="chp-primary" @click="close('cancel')">{{ chpCancelText }}</chp-button>
       <chp-button class="chp-primary" @click="confirmValue">{{ chpOkText }}</chp-button>
-    </chp-dialog-actions>
+    </template>
   </chp-dialog>
 </template>
 
@@ -63,7 +48,11 @@
       chpInputId: String,
       chpInputName: String,
       chpInputMaxlength: [String, Number],
-      chpInputPlaceholder: String
+      chpInputPlaceholder: String,
+      scrollable: {
+        type: Boolean,
+        default: false
+      },
     },
     data: () => ({
       debounce: false

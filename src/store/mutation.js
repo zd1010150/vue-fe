@@ -10,7 +10,8 @@ import {
   SET_REFRESH_TABLE,
   SET_MT4_ACCOUNTS,
   SET_MT4_AGENT_ACCOUNTS,
-  SET_MT4_TRADER_ACCOUNTS
+  SET_MT4_TRADER_ACCOUNTS,
+  SET_LEVERAGE
 } from "./mutation-types";
 
 
@@ -52,6 +53,8 @@ export default{
   },
   [SET_MT4_TRADER_ACCOUNTS](state,accounts){
     state.traderAccounts = accounts
+  },
+  [SET_LEVERAGE](state,leverage){
+    state.leverage = leverage
   }
-
 }

@@ -1,8 +1,8 @@
 <template>
 	<div class="container-fluid" >
 		<agent-activity-head @agentChange="agentChange"></agent-activity-head>
-		<agent-activity-client :agent="agent" :dataInfo="dataInfo"></agent-activity-client>
-		<agent-activity-volumn :agent="agent" :dataInfo="dataInfo"></agent-activity-volumn>
+		<agent-activity-client :agent="agent" :dataInfo="clientDataInfo"></agent-activity-client>
+		<agent-activity-volumn :agent="agent" :dataInfo="volumnDataInfo" @refresh="refresh"></agent-activity-volumn>
 	</div>	
 </template>
 <script>
@@ -34,11 +34,33 @@
 				if(success){
 					this.dataInfo = data 
 				}
+			},
+			refresh(){//刷新当前数据
+				this.fetchData()
 			}
 		},
 		watch:{
 			agent:function(val){
 				this.fetchData();
+			}
+		},
+		computed:{
+			clientDataInfo:function(){
+				if(this.dataInfo && this.dataInfo.client){
+					return this.dataInfo.client
+				}else{
+					return {}
+				}
+			},
+			volumnDataInfo:function(){
+				if(this.dataInfo && this.dataInfo.fx && this.dataInfo.metal && this.dataInfo.cfd && this.dataInfo.oil)
+					return {
+						oil: this.dataInfo.oil,
+						fx: this.dataInfo.fx,
+						metal: this.dataInfo.metal,
+						cfd:this.dataInfo.cfd
+					}
+				else return {}
 			}
 		},
 		created(){

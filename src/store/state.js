@@ -12,5 +12,6 @@ export default {
   refreshTable:"",
   mt4Accounts:[],
   traderAccounts:[],
-  agentAccounts:[]
+  agentAccounts:[],
+  leverage:[]
 }

@@ -27,9 +27,10 @@
       console.log("====");
       let self = this
       this.isLoading = true
-      await this.$store.dispatch("getMT4Accounts")
-      this.isLoading = false
-      this.begainRouter = true
+      Promise.all([await this.$store.dispatch("getMT4Accounts"),await this.$store.dispatch("getLeverage")]).then(function(){
+        self.isLoading = false
+        self.begainRouter = true
+      })
     },
     watch:{
       $route(val, oldVal){

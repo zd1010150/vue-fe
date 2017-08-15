@@ -34,6 +34,17 @@ export default{
   async traderAward({type='all'}){
     return fetchData('POST','/activity/trader-level/award',{type})
   },
-  
+  /**
+   * 获取交易者等级活动条款
+   */
+  async getTraderLevelActivityTerms(language){
+    return fetchData('GET','/activity/trader-level/terms/'+language)
+  },
+  /**
+   * 获取代理等级活动条款
+   */
+  async getAgentLevelActivityTerms(language){
+    return fetchData('GET','/activity/agent-level/terms/'+language)
+  }
 
 }

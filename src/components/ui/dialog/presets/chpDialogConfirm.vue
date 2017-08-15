@@ -1,14 +1,18 @@
 <template>
-  <chp-dialog class="chp-dialog-confirm" ref="dialog" @close="fireCloseEvent('cancel')">
-    <chp-dialog-title v-if="chpTitle">{{ chpTitle }}</chp-dialog-title>
+  <chp-dialog class="chp-dialog-confirm" ref="dialog" @close="fireCloseEvent('cancel')" :scrollable="scrollable">
+     <template v-if="chpTitle" slot="title">
+      {{ chpTitle }}
+    </template>
 
-    <chp-dialog-content v-if="chpContentHtml" v-html="chpContentHtml"></chp-dialog-content>
-    <chp-dialog-content v-else>{{ chpContent }}</chp-dialog-content>
+    <template v-if="chpContentHtml" >
+      <div v-html="chpContentHtml" slot="body"></div>
+    </template>
+    <template v-else slot="body">{{ chpContent }}</template>
 
-    <chp-dialog-actions>
-      <chp-button class="chp-primary" @click="close('cancel')">{{ chpCancelText }}</chp-button>
+    <template slot="footer">
+     <chp-button class="chp-primary" @click="close('cancel')">{{ chpCancelText }}</chp-button>
       <chp-button class="chp-primary" @click="close('ok')">{{ chpOkText }}</chp-button>
-    </chp-dialog-actions>
+    </template>
   </chp-dialog>
 </template>
 
@@ -26,7 +30,11 @@
       chpCancelText: {
         type: String,
         default: 'Cancel'
-      }
+      },
+      scrollable: {
+        type: Boolean,
+        default: false
+      },
     },
     data: () => ({
       debounce: false

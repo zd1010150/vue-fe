@@ -147,12 +147,7 @@ outer<i18n src="../i18n.yaml"></i18n>
 						}
 				})
 				this.$set(this.model,"account_type",this.accountTypes.length > 0 ? this.accountTypes[0].val : "");
-				this.leverages = data["leverage"].split("|").map((level)=>{
-					return {
-						val : level,
-						title : level +":1"
-					}
-				})
+				this.leverages = this.$store.state.leverage
 				this.$set(this.model,"lever",this.leverages.length > 0 ? this.leverages[0].val : "");
 				this.baseCurrencies = data["client_base_currency"].split("|").map((currency)=>{
 					return {
@@ -166,7 +161,7 @@ outer<i18n src="../i18n.yaml"></i18n>
 
 			},
 			async fetchConfig(){
-				let fields = ["leverage","client_account_type","client_base_currency"]
+				let fields = ["client_account_type","client_base_currency"]
 				this.loadingStatus = true
 				let {success,data} = await configService.getConfigByKey({fields})
 				this.loadingStatus = false

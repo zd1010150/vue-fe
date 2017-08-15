@@ -1,7 +1,8 @@
+<i18n src="../i18n.yaml"></i18n>
 <template>
 	<div class="row pt-lg">
 		<div class="col-lg-12 col-md-12">
-				<h4 class="pull-left">有效客户等级</h4><span></span>
+				<h4 class="pull-left">{{ $t('activeClient')}}{{$t('level')}}</h4>
 				<section class="panel panel-responsive">
 					<div class="panel-body ">
 						<table class="client-table">
@@ -10,22 +11,30 @@
 								<td class="padding-10">总客户数：</td>
 							</tr>
 							<tr>
-								<td class="padding-10"><span class="lead text-dark padding-right-10">{{currentValue}}</span>位</td>
-								<td class="padding-10"><span class="lead text-dark padding-right-10">10000</span>位</td>
+								<td class="padding-10">
+									<span class="lead text-dark padding-right-10">
+									{{ activityInfo.currentValue}}
+									</span>{{ $t('traderUnit') }}
+								</td>
+								<td class="padding-10">
+									<span class="lead text-dark padding-right-10">
+									10000
+									</span>{{ $t('traderUnit') }}
+								</td>
 							</tr>
 						</table>
 						<div class="progress progress-striped progress-xs m-sm light">
-							<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-								<span class="sr-only">60%</span>
+							<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuemax="100" :style="{width: activityInfo.percentage+'%' }">
+								<span class="sr-only">{{ activityInfo.percentage }}%</span>
 							</div>
 						</div>
 						<p class="padding-10 pb-none padding-top-20">
-							<span class="level lead pr-md">等级10</span>
-						<span class="number">9999/1000000</span>
+							<span class="level lead pr-md">{{ $t('level') }}{{ activityInfo.currentLevel}}</span>
+						<span class="number">{{ activityInfo.currentValue}}/{{ activityInfo.level[activityInfo.currentLevel]}}</span>
 						</p>
 					</div>
 					<header class="panel-heading bg-white ">
-						<chp-liquid-fill :percentage="20" width="140px" height="140px" class="liquid-fill-chart"></chp-liquid-fill>
+						<chp-liquid-fill :percentage="activityInfo.percentage" width="140px" height="140px" class="liquid-fill-chart"></chp-liquid-fill>
 					</header>
 					
 				</section>
@@ -40,6 +49,26 @@
 			},
 			dataInfo:{
 				type: Object
+			}
+		},
+		data(){
+			return {
+				defaultData:{
+					level:[0,0,0,0,0,0,0,0,0,0],
+	       			currentValue: 0,
+	       			currentLevel: 0,
+	       			awardLevel:0,
+	       			hasAward:0,
+	       			awardBonus:0,
+	       			baseCurrency:"USD",
+	       			percentage:0,
+	       			nextLevelValue:0
+				}
+			}
+		},
+		computed:{
+			activityInfo:function(){
+				return Object.assign(this.defaultData,this.dataInfo)
 			}
 		}
 	}

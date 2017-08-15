@@ -27,21 +27,15 @@
 					return []
 				}
 			}
-			
 		},
-		watch:{
-			externalOption : function(val,oldVal){
-				if (val == oldVal) return
-				this.innerOption = Object.assign({},this.circleDefaultOption,val)			
-		    }
-		},
-		created(){
-			this.innerOption = Object.assign({},this.circleDefaultOption,this.externalOption)
-			console.log("circle created:",this.width,this.height);
+		computed:{
+			innerOption:function(){
+				console.log(this.externalOption,Object.assign(this.circleDefaultOption,this.externalOption),"=====");
+				return Object.assign(this.circleDefaultOption,this.externalOption)
+			}
 		},
 		data(){
 			return {
-				innerOption:{},
 				circleDefaultOption:{
 					grid:{
 						width:140,
