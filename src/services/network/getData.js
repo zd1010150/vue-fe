@@ -19,7 +19,7 @@ let fetchData = async function(type = 'GET', url = '', data = {}){
   console.log("fetch data:",data);
     return fetch(type,url,data).then((response)=>{
         filterResoveResponse(response);
-        let success = response.status_code == 0 ? true : false
+        let success = response.status_code == 200 ? true : false
         if(!success){
           if(response.status_code == 500){
             vm.toastr.error(vm.$t("info.Unauthenticated"));

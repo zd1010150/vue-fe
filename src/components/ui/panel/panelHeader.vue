@@ -1,7 +1,7 @@
 <template>
     <header class="panel-heading" :class="classes">
       <div class="panel-actions">
-        <a href="javascript:void(0)" class="panel-action panel-action-toggle" :class="collapseClasses" v-if="canCollapse" @click.stop = "collapseHandler">
+      <a href="javascript:void(0)" class="panel-action panel-action-toggle" :class="collapseClasses" v-if="canCollapse" @click.stop = "collapseHandler">
           {{ isCollapsed ? collapsePanelText : expandPanelText}}
         </a>
         <a href="javascript:void(0)" class="panel-action panel-action-dismiss" :class="closeClasses" v-if="canClose"  @click.stop = "closeHandler">
@@ -19,7 +19,7 @@
   export default{
     data(){
       return {
-        isCollapsed:false
+        isCollapsed:this.defaultStatus != "open" 
       }
     },
     name: 'chp-panel-header',
@@ -35,6 +35,9 @@
         canClose:{
           type: Boolean,
           default:true
+        },
+        defaultStatus:{
+          type:String
         },
         expandPanelText:{
           type:String,
@@ -83,6 +86,11 @@
             this.isCollapsed  = !this.isCollapsed
             this.$emit("collapse");
         }
+    },
+    watch:{
+      defaultStatus:function(val){
+        this.isCollapsed = val!="open"
+      }
     }
   }
 

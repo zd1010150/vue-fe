@@ -119,7 +119,6 @@
       });
       },
       '$store.state.refreshTable':function(val){
-        console.log("isok");
         if(val == TABLES.WITHDRAWAL_TABLE){
           this.fetchDepositeData();
         }
@@ -132,11 +131,9 @@
     methods : {
       changeEndday(val){
       	this.model.endDay = val;
-        console.log(this.errors);
       }	,
       changeStartday(val){
       	this.model.startDay = val;
-         console.log(this.errors);
       },
       filterFields(originData){
       	if(originData && originData.length > 0){
@@ -166,34 +163,21 @@
               sort:this.sort
            },{queryParameter:this.model},params));
         this.loadingStatus = false;
-        this.$nextTick(function(){
-          console.log(this.loadingStatus);
-        });
-          if(success){
+        if(success){
             
       			this.filterFields(data.data);
       			this.pageIndex = data.current_page;
       			this.rowsTotal = data.total;
       			this.pageSize = Number(data.per_page);
-      		}
+      	}
       },
       async research(){
-        console.log(this.errors);
-        try{
-            let validateResult = await this.$validator.validateAll();
-            console.log(this.model,JSON.stringify(this.errors),validateResult,"====");
-            if(validateResult){
-              console.log("validate success");
-              this.fetchDepositeData();
-            }
-        }catch(err){
-          console.log(err);
+        let validateResult = await this.$validator.validateAll();
+        if(validateResult){
+          this.fetchDepositeData();
         }
-        
-          //console.log(this.$validator.validate('startDate'));
       },
       toggleDisplayFilterToolbar(val){
-        console.log("it is toggle",val);
         this.isDisplayFilterToolbar = val
       },
       sortRow({name,type}){
@@ -204,7 +188,6 @@
         this.pageSize = newSize;
       },
       pageNumberChange(newIndex){
-        console.log(newIndex);
         this.pageIndex = newIndex;
       }
 

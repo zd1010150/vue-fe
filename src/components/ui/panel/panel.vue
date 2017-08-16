@@ -9,6 +9,7 @@
                     :expandPanelText="expandPanelText"
                     :closeText="closeText"
                     :showActionRipple ="showActionRipple"
+                    :defaultStatus = "headerStatus"
                     >
           <h2 class="panel-title">
             <slot name="title"></slot>
@@ -17,7 +18,8 @@
             <slot name="subtitle"></slot>
           </p>
       </chp-panel-header>
-      <div class="panel-body" :class=" {'loading-overlay-showing':isLoading } " ref="panelBody" v-if="isOpen" >
+      
+      <div class="panel-body" :class=" {'loading-overlay-showing':isLoading } " ref="panelBody" v-show="isOpen" >
           <slot name="body"></slot>
           <div class="loading-overlay" style="border-radius: 0px 0px 5px 5px;">
             <div class="bounce-loader">
@@ -27,6 +29,7 @@
             </div>
           </div>
         </div>
+
       <div class="panel-footer" v-if="hasfooter">
         <slot name="footer"></slot>
       </div>
@@ -50,9 +53,14 @@
           return {
             'panel-collapsed' : !(this.isOpen)
           }
+      },
+      headerStatus(){
+
+        return this.isOpen ? "open" : "close"
       }
     },
     mounted(){
+      console.log('defaultStatus',this.defaultStatus)
       this.hasfooter = this.$slots.footer && this.$slots.footer.length>0;
       this.hasTitle = this.$slots.title || this.$slots.subtitle ;
     },
@@ -109,6 +117,12 @@
       collapsePanel(){
         this.isOpen = !(this.isOpen);
         this.$emit("collapsePanel",this.isOpen);
+      },
+      expandPanel(){
+        this.isOpen = true
+      },
+      shrinkPanel(){
+        this.isOpen = false
       }
     },
     watch:{

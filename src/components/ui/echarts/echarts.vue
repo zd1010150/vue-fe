@@ -1,5 +1,5 @@
 <template>
- <div :style="style" @resize="resize"></div>
+ <div :style="style" @resize="resize" class="echart-wrapper"></div>
 
 </template>
 <script>
@@ -47,10 +47,10 @@
 				}
 			},
 			width:{
-				default:'100%'
+				default:''
 			},
 			height:{
-				default:'300px'
+				default:''
 
 			},
 			media:Array
@@ -65,6 +65,7 @@
 				this.rerender();
 			},
 			rerender(){
+				this.$emit("rerender")
 				this.myChart.setOption({ 
 					baseOption:this.innerOption,
 					media:this.innerMedia && this.innerMedia.length > 0 ? this.innerMedia : this.defaultMedia
@@ -72,8 +73,12 @@
 			},
 			resize(){
 				let self = this
+				this.$emit("resize")
 				window.requestAnimationFrame(()=>{
-						console.log("it is resized window",new Date().getTime());
+					// self.myChart.setOption({ 
+					// baseOption:this.innerOption,
+					// media:this.innerMedia && this.innerMedia.length > 0 ? this.innerMedia : this.defaultMedia
+					// });
 						self.myChart.resize();
 					})
 			},
@@ -94,7 +99,6 @@
 				this.rerender();
 			},
 			media:function(val){
-				console.log("it is media watch");
 				this.innerMedia = val;
 				this.rerender();
 			},
@@ -105,7 +109,6 @@
 		mounted(){
 			this.el = this.$el
 			this.innerOption = this.externalOption
-			console.log("mounted echarts",this.innerOption,this.width);
 			this.initEcharts();
 			this.attachEvent();
 		},
@@ -114,3 +117,19 @@
 		}
 	}
 </script>
+<style lang="less">
+	@import "~assets/less/variable.less";	
+	.echart-wrapper{
+		width:100%;
+		height:300px;
+	}
+	@media(max-width:@screen-sm-min){
+		.echart-wrapper{
+			width:100%;
+			height:400px;
+			overflow: auto;
+		}
+	}
+
+	
+</style>

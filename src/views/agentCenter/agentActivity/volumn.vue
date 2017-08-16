@@ -3,7 +3,7 @@
 	<div class="row pt-lg">
 		<div class="col-lg-12 col-md-12">
 				<div class="clearfix col-lg-12 col-md-12 col-xs-12 pl-none">
-					<h4 class="pull-left trade-volume-title">{{ $t('tradeVolumn')}}{{$t('level')}}</h4>
+					<h4 class="pull-left trade-volume-title">{{ $t('trade.tradeVolumn')}}{{$t('trade.level')}}</h4>
 					<a href="javascript:void(0)" @click="showTerms" class="pull-right trade-volume-terms">
 						<i class="fa fa-info-circle" aria-hidden="true"></i>
 						{{$t('activityTerms')}}
@@ -17,12 +17,12 @@
 							<div class="widget-summary">
 								<div class="widget-summary-col pl-md pr-md info-col">
 									<div class="summary pb-lg">
-										<h4 class="title">{{ $t(''+key) }}</h4>
+										<h4 class="title">{{ $t('trade.'+key) }}</h4>
 										<div class="info">
 											<strong class="amount">
 											{{ value.currentValue}}
 											</strong>
-											{{ $t('lots')}}
+											{{ $t('trade.lots')}}
 										</div>
 									</div>
 								<!--test-->
@@ -30,9 +30,9 @@
 										<div class="summary-footer pt-lg" :class="classes">
 											<div class="level-left">
 												<span>
-													{{ $t('level') }} {{ value.awardLevel}}
+													{{ $t('trade.level') }} {{ value.awardLevel}}
 													<i class="fa lead fa-caret-right" aria-hidden="true"></i>
-													{{ $t('level') }} {{ value.currentLevel}}
+													{{ $t('trade.level') }} {{ value.currentLevel}}
 												</span>
 												 
 											</div>
@@ -50,7 +50,7 @@
 									<template v-else>
 										<div class="summary-footer pt-lg">
 											<span class="level lead pr-md">
-											{{ $t('level') }}: {{ value.currentLevel}} 
+											{{ $t('trade.level') }}: {{ value.currentLevel}} 
 											</span>
 											<span>
 											{{ value.currentValue }}/{{ value.level[value.currentLevel] }}

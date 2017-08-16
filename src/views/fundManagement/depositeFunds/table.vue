@@ -127,16 +127,13 @@
     methods : {
       changeEndday(val){
       	this.model.endDay = val;
-        console.log(this.errors);
       }	,
       changeStartday(val){
       	this.model.startDay = val;
-         console.log(this.errors);
       },
       filterFields(originData){
       	if(originData && originData.length > 0){
-          
-      	this.histories = originData.map(function(row,index) {
+        this.histories = originData.map(function(row,index) {
             return {
       				order_time : row.order_time,
       				mt4_id : row.mt4_id,
@@ -151,7 +148,6 @@
         }
       },
       async fetchDepositeData(params){
-        
         this.loadingStatus = true;
       	let {data,message,success} = await dataTableService.pagingQuery(Object.assign({
       			url:'/deposit'
@@ -161,10 +157,7 @@
               sort:this.sort
            },{queryParameter:this.model},params));
         this.loadingStatus = false;
-        this.$nextTick(function(){
-          console.log(this.loadingStatus);
-        });
-          if(success){
+        if(success){
             
       			this.filterFields(data.data);
       			this.pageIndex = data.current_page;
@@ -173,22 +166,12 @@
       		}
       },
       async research(){
-        console.log(this.errors);
-        try{
-            let validateResult = await this.$validator.validateAll();
-            console.log(this.model,JSON.stringify(this.errors),validateResult,"====");
-            if(validateResult){
-              console.log("validate success");
-              this.fetchDepositeData();
-            }
-        }catch(err){
-          console.log(err);
-        }
-        
-          //console.log(this.$validator.validate('startDate'));
+          let validateResult = await this.$validator.validateAll();
+          if(validateResult){
+            this.fetchDepositeData();
+          }
       },
       toggleDisplayFilterToolbar(val){
-        console.log("it is toggle",val);
         this.isDisplayFilterToolbar = val
       },
       sortRow({name,type}){
@@ -199,7 +182,6 @@
         this.pageSize = newSize;
       },
       pageNumberChange(newIndex){
-        console.log(newIndex);
         this.pageIndex = newIndex;
       }
 

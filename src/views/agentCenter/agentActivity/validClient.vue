@@ -2,7 +2,7 @@
 <template>
 	<div class="row pt-lg">
 		<div class="col-lg-12 col-md-12">
-				<h4 class="pull-left">{{ $t('activeClient')}}{{$t('level')}}</h4>
+				<h4 class="pull-left">{{ $t('trade.activeClient')}}{{$t('trade.level')}}</h4>
 				<section class="panel panel-responsive">
 					<div class="panel-body ">
 						<table class="client-table">
@@ -14,12 +14,12 @@
 								<td class="padding-10">
 									<span class="lead text-dark padding-right-10">
 									{{ activityInfo.currentValue}}
-									</span>{{ $t('traderUnit') }}
+									</span>{{ $t('trade.traderUnit') }}
 								</td>
 								<td class="padding-10">
 									<span class="lead text-dark padding-right-10">
 									10000
-									</span>{{ $t('traderUnit') }}
+									</span>{{ $t('trade.traderUnit') }}
 								</td>
 							</tr>
 						</table>
@@ -29,7 +29,7 @@
 							</div>
 						</div>
 						<p class="padding-10 pb-none padding-top-20">
-							<span class="level lead pr-md">{{ $t('level') }}{{ activityInfo.currentLevel}}</span>
+							<span class="level lead pr-md">{{ $t('trade.level') }}{{ activityInfo.currentLevel}}</span>
 						<span class="number">{{ activityInfo.currentValue}}/{{ activityInfo.level[activityInfo.currentLevel]}}</span>
 						</p>
 					</div>

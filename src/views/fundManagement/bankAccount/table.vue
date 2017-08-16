@@ -79,7 +79,6 @@
      },
     watch:{
     	"$store.state.refreshTable":function(val){
-        console.log("isok");
         if(val == TABLES["BANK_CARD_TABLE"]){
           this.fetchBankcardData();
         }
@@ -120,7 +119,6 @@
       	return {data};
       },
       previewImage(src){
-        console.log("===",src,this.documentSrc)
         this.documentSrc = src
         this.documentOpen = true
       },
