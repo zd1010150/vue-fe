@@ -230,7 +230,7 @@
         routerLink = createElement("router-link", {
           props: {
             to: node.to,
-            exact: true
+            exact: false
           }
         }, children);
 
@@ -269,11 +269,34 @@
 
   },
   mounted(){
-    //console.log("mounted is trigger,",this.$route.path,JSON.stringify(this.items));
+    console.log("mounted is trigger,",this.$route.path,JSON.stringify(this.items));
     this.setItemsOpen(this.$route.path);
+
   },
   methods: {
+    closeAllItems(){
+      try{
+
+
+      let traverse = (root)=>{
+        if(root.open != undefined){
+          root.open = false
+        }
+        if(root.subs){
+          for(let i=0,len=root.subs.length;i<len;i++){
+            traverse(root.subs[i])
+          }
+        }
+      }
+      for(let i=0,len=this.items.length;i<len;i++){
+        traverse(this.items[i])
+      }
+       }catch(ex){
+        console.log(ex)
+       }
+    },
     setItemsOpen(path){
+      this.closeAllItems();
       let parentIds = [], routerArr;
       const getPathIndex = (path) => {
         let _pathIndex;
@@ -355,6 +378,10 @@
         this.$store.commit(SET_LEFT_SIDE_BAR_STATUS,false)
       }
       
+    },
+    "$route.path"(val){
+      console.log("menu path change",val);
+      this.setItemsOpen(val)
     }
   }
 }

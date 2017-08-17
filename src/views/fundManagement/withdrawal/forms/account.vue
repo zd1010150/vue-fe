@@ -75,6 +75,7 @@ export default {
 	data(){
       return {
         MT4 : [],
+        defaultMT4:0,
         methodsAndAccounts: {},
         nullHintText:"",
         fee:null,
@@ -131,7 +132,7 @@ export default {
             baseCurrency:mt4.base_currency
           }
         });
-        this.$set(this.model,"mt4_id",this.MT4[0].id)
+        this.$set(this.model,"mt4_id",this.defaultMT4 ? Number(this.defaultMT4) : this.MT4[0].id)
       },
       async validate(){
         console.log(this.model,"validate");
@@ -174,7 +175,8 @@ export default {
     	this.$emit("loading",true)
       this.$validator.attach("bank_code","required")
       this.$validator.attach('withdraw_pay','required|positiveFloatMoney')
-    	this.fetchMT4()
+      this.defaultMT4 = this.$route.query && this.$route.query.mt4Id ? this.$route.query.mt4Id+"" : ""
+     this.fetchMT4()
       let self = this
     	Promise.all([this.fetchMethodsAccounts()]).then(function(){
             self.$emit("loading",false)

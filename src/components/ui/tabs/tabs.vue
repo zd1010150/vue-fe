@@ -32,13 +32,13 @@
       classes (){
           return {
             'tabs-primary' : this.isPrimary,
-            'nav-justified': this.isJustified,
             'tabs' : this.type === "tabs",
             'wizard-tabs' :this.type === "wizard"
           };
       },
       headerClasses(){
-        return [this.type === "tabs" ? "nav nav-tabs" : "wizard-steps"]
+
+        return [this.type === "tabs" ? "nav nav-tabs" : "wizard-steps"].concat([this.isJustified ? 'nav-justified':''])
       }
     },
     methods: {
@@ -50,6 +50,16 @@
     }
   }
 </script>
+<style lang='less'>
+  @import "~assets/less/variable.less";
+  .nav-tabs.nav-justified{
+    li.active a{
+      border-top: 3px solid @blue-color !important;
+      color:@blue-color !important;
 
+    }
+  } 
+
+</style>
 
 

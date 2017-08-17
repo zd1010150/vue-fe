@@ -24,18 +24,12 @@
     },
    async created(){
       //做一些初始化工作，拿一些数据
-      console.log("====");
       let self = this
       this.isLoading = true
       Promise.all([await this.$store.dispatch("getMT4Accounts"),await this.$store.dispatch("getLeverage")]).then(function(){
         self.isLoading = false
         self.begainRouter = true
       })
-    },
-    watch:{
-      $route(val, oldVal){
-        console.log(val,"index");
-      }
     }
   }
 </script>

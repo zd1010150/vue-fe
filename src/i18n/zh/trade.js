@@ -11,5 +11,7 @@ export default{
   traderUnit: "位",
   level: "等级",
   tradeVolumn: "交易量",
-  doneLots : "已交易手数"
+  doneLots : "已交易手数",
+  com : "佣金",
+  totalCom: "总佣金",
 }

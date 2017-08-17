@@ -18,7 +18,7 @@
             <slot name="subtitle"></slot>
           </p>
       </chp-panel-header>
-      
+
       <div class="panel-body" :class=" {'loading-overlay-showing':isLoading } " ref="panelBody" v-show="isOpen" >
           <slot name="body"></slot>
           <div class="loading-overlay" style="border-radius: 0px 0px 5px 5px;">
@@ -60,7 +60,6 @@
       }
     },
     mounted(){
-      console.log('defaultStatus',this.defaultStatus)
       this.hasfooter = this.$slots.footer && this.$slots.footer.length>0;
       this.hasTitle = this.$slots.title || this.$slots.subtitle ;
     },
@@ -127,11 +126,10 @@
     },
     watch:{
       defaultStatus(val){
-        console.log("panel val:",val);
         this.isOpen = val=="open"?true:false;
       },
       isLoading(val){
-        console.log("isLoading:",val);
+        
       }
      }
     }

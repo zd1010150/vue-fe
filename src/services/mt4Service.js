@@ -37,10 +37,10 @@ export default{
     return result;
   },
   async modifyAccountLeverage(mt4Id,level){
-    return fetchData('PUT','/account'+mt4Id,{leverage:level})
+    return fetchData('PUT','/account/'+mt4Id,{leverage:level})
   },
   async modifyAccountPWD(mt4Id){
-    return fetchData('PUT','/account'+mt4Id,{password:""})
+    return fetchData('PUT','/account/'+mt4Id,{password:""})
   }
 
 }

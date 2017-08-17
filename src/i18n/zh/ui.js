@@ -14,12 +14,15 @@ export default {
     submit:"确认"
   },
   datePicker:{
-    startDate:"选择开始时间",
-    endDate:"选择结束时间"
+    startDate:"开始时间",
+    endDate:"结束时间"
   },
   dialog:{
     confirm : {
       title : "确认"
     }
+  },
+  textFiled:{
+    keywords: "搜索关键字"
   }
 }

@@ -14,12 +14,15 @@ export default {
     submit:"Submit"
   },
   datePicker:{
-    startDate:"Select Start Date",
-    endDate:"Select End Date"
+    startDate:"Start Date",
+    endDate:"End Date"
   },
   dialog:{
     confirm : {
       title : "Confirm"
     }
+  },
+  textFiled:{
+    keywords: "Input keywords"
   }
 }

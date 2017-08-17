@@ -65,6 +65,7 @@
         MT4 : null,
         banks: null,
         baseCurrency: "",
+        defaultMT4:0,
         model : {
           mt4_id : "",
           order_amount: "",
@@ -101,7 +102,7 @@
             baseCurrency:mt4.base_currency
           }
         });
-        this.$set(this.model,"mt4_id",this.MT4[0].id)
+        this.$set(this.model,"mt4_id",this.defaultMT4 ? this.defaultMT4 : this.MT4[0].id)
       },
       async fetchBank(){
         let {success,data,message} = await bankService.getBank(this.methodCode);
@@ -124,6 +125,7 @@
       },
     created(){
       if(this.methodCode){//需要加入条件判断，
+          this.defaultMT4 = this.$route.query && this.$route.query.mt4Id ? Number(this.$route.query.mt4Id) : 0
           this.fetchMT4()
           this.loadingStatus = true
           let self =this

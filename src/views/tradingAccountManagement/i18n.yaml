@@ -7,6 +7,7 @@ en:
   leverage: "Leverage"
   basecurrency: "Base Currency"
   reason: "Reason"
+  modifyPwdNotification: " Please check the modification password email"
 zh:
   applicationSubaccount:
     agreenTerms: "我同意<<条款和须知>>"
@@ -16,4 +17,5 @@ zh:
   leverage: "交易杠杆"
   basecurrency: "基础货币"
   reason: "申请理由"
+  modifyPwdNotification: "请查收修改密码邮件"
   

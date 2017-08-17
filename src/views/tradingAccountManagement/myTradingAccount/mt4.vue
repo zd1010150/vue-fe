@@ -2,27 +2,16 @@
 <template>
 	<div class="row pt-none">
 			<div class="col-lg-12 col-md-12">
-			<section class="one-mt4-section">
-				<header class="clearfix">
+			<section class="one-mt4-section pb-lg">
+				<header class="clearfix bottom-2px-border pb-sm pt-sm">
 					<div class="col-lg-6 col-md-6 col-xs-12 mt4-account p-none">
 						<span class="mt4-title">MT4 Account:</span>
 						<strong class="amount mt4 text-dark">{{ mt4.mt4_id}}</strong>
-				    	<span class="text-primary">(Type:{{mt4.account_type}})</span>	
+				    	<span class="text-primary pl-sm">(Type:{{mt4.account_type}})</span>	
 					</div>
-					<div class="col-lg-6 col-md-6 col-xs-12 text-right p-none operate">
-						<chp-button class="mb-xs mt-xs  btn btn-default print-btn" @click="modifyPwd">
-					       改变密码
-					    </chp-button>
-				       	<chp-button class="mb-xs mt-xs  btn btn-default print-btn">
-				       		出金
-				      	</chp-button>
-						<chp-button class="mb-xs mt-xs  btn btn-default print-btn">
-							入金
-						</chp-button>
-					</div>
+					<operate-trading-account :mt4Id="mt4.mt4_id"></operate-trading-account>	
 				</header>
 				<div class="charts pt-lg">
-					
 					<table  class="subtitle small-screen">
 						<tr>
 							<td>Balance:</td>
@@ -33,7 +22,7 @@
 							<td class="info-number text-dark">{{ mt4.balance}}</td>
 							<td class="info-number text-dark">{{ mt4.base_currency}}</td>
 							<td class="info-number text-dark select">
-								<chp-select :value="''+mt4.leverage" class="leverage pull-right">
+								<chp-select :value="''+mt4.leverage" class="leverage pull-right" @change="changeLeverage">
 						            <template v-for="(l,index) in leverages">
 						                <mu-menu-item :value="l.val" :title="l.title" key="index"/>
 						            </template>
@@ -59,7 +48,7 @@
 							<dd class="amount info-number text-dark">{{ mt4.base_currency}}</dd>
 							<dt class="info-title">Leverage</dt>
 							<dd class="amount info-number text-dark leverage">
-								<chp-select :value="''+mt4.leverage">
+								<chp-select :value="''+mt4.leverage" @change="changeLeverage">
 					              <template v-for="(l,index) in leverages">
 					                <mu-menu-item :value="l.val" :title="l.title" key="index"/>
 					              </template>
@@ -67,23 +56,7 @@
 							</dd>
 						</dl>
 						<div slot="body" v-if="mt4.account_type != 'Agent'">
-							<div class="col-md-12 col-sm-12 pull-right pt-sm pr-none">
-				                <form class="form-inline">
-				                    <div class="form-group" :class="errorClass('startDate')">
-				                      <chp-date-picker :hintText="$t('ui.datePicker.startDate')" v-model.lazy="model.startDay" @input="changeStartday" :fullWidth="true" :required="true"  v-validate="'required'" data-vv-value-path="model.startDay" data-vv-name="startDate" data-vv-validate-on="change" :maxDate="maxStartDate"/>
-				                       <span  class="error"
-				                      v-if="errors.has('startDate:required')">{{errors.first('startDate:required')}}</span>
-				                    </div>
-				                    <div class="form-group " :class="errorClass('endDate')">
-				                      <chp-date-picker :hintText="$t('ui.datePicker.endDate')" @input="changeEndday" :minDate = "minEndDate" v-model.lazy="model.endDay"  v-validate="'required'" data-vv-value-path="model.endDay" data-vv-name="endDate" :fullWidth="true" :required="true" data-vv-validate-on="change"/>
-				                       <span class="error"
-				                      v-if="errors.has('endDate:required')">{{errors.first('endDate:required')}}</span>
-				                    </div>
-				                    <chp-button class="mb-xs mt-xs mr-xs btn btn-primary print-btn" @click="research">
-				                      <i class="fa fa-search "></i>
-				                    </chp-button>
-				                </form>
-          					</div>
+							<filter-trading-account @refetchChartData="refetchChartData"></filter-trading-account>
 							<div class="col-md-12 col-sm-12 pt-lg pr-none pl-none">
 							  <chp-echart :media="media"	:externalOption="option" v-if="option" ></chp-echart>
 							</div>
@@ -96,12 +69,15 @@
 		</div>
 </template>
 <script>
-	import validateMixin from 'mixins/validatemix.js'
-	import tradeService from 'services/tradeService'
 	import mt4Service from 'services/mt4Service'
-	const MT4_CHART_PANEL_PREX = "mt4-chart-panel-"
-
+	import tradeService from 'services/tradeService'
+	import filter from './filter'
+	import operate from './operate'
 	export default{
+		components:{
+			'filter-trading-account' : filter,
+			'operate-trading-account' : operate 
+		},
 		props:{
 			account:{
 				type:Object
@@ -118,17 +94,13 @@
 			}
 
 		},
-		mixins:[validateMixin],
+		
 		data(){
 			return {
 				leverages : this.$store.state.leverage,
-				model:{
-					startDay:"",
-					endDay:""
-				},
+				
 				total:[],
-				minEndDate:"",
-          		maxStartDate:"",
+				
           		loadingStatus:false,
           		collapsed:true,
           		isFirstShow:true,
@@ -195,33 +167,21 @@
 			}
 		},
 		methods:{
-			
-			async modifyPwd(){
-				let {success,data} = mt4Service.modifyAccountPWD()
+			async changeLeverage(val){
+				await mt4Service.modifyAccountLeverage(this.mt4.mt4_id,val)
 			},
-			changeEndday(val){
-		      	this.model.endDay = val;
-		    },
-	      	changeStartday(val){
-		      	this.model.startDay = val
-		        
-	      	},
-	      	async fetchChartData(mt4Id){
+			refetchChartData(start_date,end_date){
+				this.fetchChartData(this.mt4.mt4_id,start_date,end_date)
+			},
+			async fetchChartData(mt4Id,start_date="",end_date=""){
         		this.loadingStatus = true;
-		      	let {data,message,success} = await tradeService.getVolumeStatistics(mt4Id);
+		      	let {data,message,success} = await tradeService.getVolumeStatistics(mt4Id,start_date,end_date);
 		        this.loadingStatus = false;
 		        if(success){
 		          	this.mapData(data)
 		    	}
       		},
-
-	      	async research(){
-	            let validateResult = await this.$validator.validateAll();
-	            if(validateResult){
-	              this.fetchChartData();
-	            }
-	       	},
-	       	mapData(data){
+			mapData(data){
 	       		let series = { fx:[],oil:[],metal:[],cfd:[]},
 	       		 	xAxis = {
 				        type: 'category',
@@ -324,16 +284,8 @@
 	       		}
 	       		
 	       	}
-  		},
-  		watch:{
-  			'model.startDay' : function(val){
-    			this.minEndDate = val;
-    		},
-      		'model.endDay':function(val){
-       			this.maxStartDate = val;
-     		}
-
   		}
+  		
 
 	}
 </script>
@@ -387,8 +339,10 @@
 				}
 				.panel-body{
 					border-bottom: none;
+
 				}
 			}
+
 			.panel-heading{
 				overflow: hidden;
 				padding-bottom: 0px;
@@ -401,10 +355,10 @@
 				.panel-actions{
 					padding: 0px 10px;
 					background-color: @light-component-bg-color;
+					border-top: 3px solid #0088CC;
 					top:0px;
 					bottom:0px;
-					border-top: 3px solid #0088CC;
-    				border-radius: 5px 5px 0px 0px ;
+					border-radius: 5px 5px 0px 0px ;
 					a.action-text{
 						&:hover{
 							background-color:  @light-component-bg-color;	
@@ -415,14 +369,7 @@
 			}
 			.panel-body{
 				border-bottom: 2px solid #0088CC;
-				form{
-					&.form-inline{
-						text-align: right;
-					}
-					.form-group{
-						text-align: left;
-					}
-				}
+				padding:0px;
 			}
 		}
 	}
@@ -452,18 +399,18 @@
 			.subtitle.small-screen{
 					display: table ;
 					font-size: 1.3rem;
-					width:100%;
 					
-					td{
+					td{ 
+						padding: 0px 20px 5px 0px;
 						text-align: left !important;
-						&:first-child{
+						/*&:first-child{
 							width:40%;
 							
 						}
 						&:nth-child(2){
 							width:40%;
 							
-						}
+						}*/
 						&:last-child{
 							text-align: right !important;
 						}
@@ -472,7 +419,6 @@
 						}
 					}
 					.info-number{
-						padding-right: 0px;
 						.leverage{
 							width:90px;
 						}
@@ -484,15 +430,19 @@
 				.subtitle.big-screen{
 					display: none;
 				}
-				
-				.panel-actions{
-					flot:right;
-					position:absolute;
-					margin-bottom:0px;
-					button{
-						float:left !important;
+				.panel-heading{
+					.panel-actions{
+						
+						left:0;
+						right:auto !important;
+						position:absolute;
+						margin-bottom:0px;
+						button{
+							float:left !important;
+						}
 					}
 				}
+
 			}
 		}
 	}

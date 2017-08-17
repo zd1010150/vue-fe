@@ -11,5 +11,7 @@ export default {
   traderUnit: "Trader",
   level : "Level",
   tradeVolumn: "Trading Volume",
-  doneLots : "Current trading lots"
+  doneLots : "Current trading lots",
+  com : "Com",
+  totalCom: "Total Com",
 }

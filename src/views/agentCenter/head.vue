@@ -125,6 +125,7 @@ import mt4Service from 'services/mt4Service'
 			&:hover{
 				text-decoration: none;
 				color:@blue-color !important;
+				background-color: transparent;
 			}
 			vertical-align: middle;	
 			strong.mt4{

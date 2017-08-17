@@ -1,6 +1,6 @@
 <template>
   
-    <div class="tab-pane active">
+    <div class="tab-pane" :class="classes">
      
       <slot></slot>
     
@@ -44,14 +44,3 @@
       }
   }
 </script>
-<style lang="less">
-.tab-pane{
-      // transition: opacity .4s cubic-bezier(.25, .8, .25, 1);
-      // opacity: 0;
-      // display: block;
-      // &.active{
-      //   opacity: 1;
-      // }
-}
-
-</style>
