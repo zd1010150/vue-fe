@@ -29,7 +29,7 @@
           <div class="form-group mb-lg required-field" :class="errorClass('password')">
             <div class="clearfix">
               <label class="pull-left control-label">Password</label>
-              <a href="pages-recover-password.html" class="pull-right">Lost Password?</a>
+              <router-link to="/recoverPassword" class="pull-right">Lost Password?</router-link>
             </div>
             <div class="input-group input-group-icon">
               <mu-text-field v-validate="'required|min:8'" data-vv-value-path="model.password" data-vv-name="password"

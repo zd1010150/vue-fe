@@ -16,5 +16,6 @@ export default {
   agentActivity:"Agent Activity",
   statistics:"Statistics",
   clientList:"Client List",
-  marketingMaterials:"Marketing Materials"
+  marketingMaterials:"Marketing Materials",
+  event:"Event"
 }

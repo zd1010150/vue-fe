@@ -78,9 +78,11 @@ let initVue = () =>{
       return UserService.getUserInfo();
     }
   }).then(({data,success,message})=>{
+    initVue()
 
-    if(success){
-      initVue();
+    if(vm.$route.meta.requireAuth == false){ // 需要能够直接访问的url ，不需要登录
+      vm.$router.push(vm.$route.fullPath)
+    }else if(vm.$route.meta.requireAuth != false && success){
       router.addRoutes(routers);
       vm.$store.commit(SET_USERINFO,data);
       //如果用户已登录，然后刷新页面，此时cookie依然有效，但是vuex中的token已经没有值了，所以此时需要把token重新设置到vuex中去
@@ -93,8 +95,13 @@ let initVue = () =>{
   }).catch((error)=>{
       initVue();
       vm.$store.commit("ADD_ERROR_INFO",{ msg : error.message,type: "system"});
-      vm.$router.push("/login");
-  });
+
+      if(vm.$route.meta.requireAuth == false && vm.$route.path != "/404"){
+        vm.$router.push(vm.$route.fullPath)
+      }else {
+        vm.$router.push("/login")
+      }
+ });
 /*AuthenService.checkLogin().then(({success,message})=>{
   if(!success){
     throw new Error(message);

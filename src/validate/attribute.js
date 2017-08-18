@@ -31,7 +31,7 @@ export default {
     keywords: "搜索关键字"
   },
   en:{
-    email : "test email address",
+    email : "Email address",
     password : "Password",
     confirm_password : "Confirmed Password",
     old_password : "Current Password",

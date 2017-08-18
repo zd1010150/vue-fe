@@ -45,6 +45,13 @@ export default{
    */
   async getAgentLevelActivityTerms(language){
     return fetchData('GET','/activity/agent-level/terms/'+language)
+  },
+  /**
+   * landing page 的活动
+   * @param  {[type]} language [description]
+   * @return {[type]}          [description]
+   */
+  async getCampaigns(language){
+    return fetchData('GET','/campaigns',{language})
   }
-
 }

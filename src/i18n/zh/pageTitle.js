@@ -16,5 +16,6 @@ export default {
   agentActivity:"代理活动",
   statistics:"统计信息",
   clientList:"代理客户列表",
-  marketingMaterials:"代理营销材料"
+  marketingMaterials:"代理营销材料",
+  event:"活动"
 }

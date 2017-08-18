@@ -9,11 +9,12 @@ import training from './training'
 import notice from './notice'
 import downloadCenter from './downloadCenter'
 import agentCenter from './agentCenter'
+import event from './event'
 export default [{
   path: "/",
   component: Index,
   meta: {
     requiresAuth: true
   }, 
-  children: _.concat(Dashboard,tradingAccountManagement,uiDemo,training,FundManage,notice,downloadCenter,agentCenter)
+  children: _.concat(Dashboard,tradingAccountManagement,uiDemo,training,FundManage,notice,downloadCenter,agentCenter,event)
 }];
