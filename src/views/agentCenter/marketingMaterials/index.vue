@@ -30,46 +30,67 @@
 							</section>
 						</div>
 						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-							
 							<section class="picture">
-								<div class="pic" >
-									<img class="img-responsive" src="http://images2.china.com/travel/zh_cn/newlvyou/wanle/food/11075021/20120202/17010383_2012020209345111860900.jpg" alt="">
-								</div>
-								<p class="size">Image Size:600*120</p>
-								<p>
-									<chp-button class="mb-xs mt-xs  btn btn-primary print-btn" >
-										copy URL
-									</chp-button>	
-								</p>
-							</section>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-							
-							<section class="picture">
-								<div class="pic">
-									<img class="img-responsive" src="http://p3.pstatp.com/large/3c4000ca62150b1cb1f" alt="">
-								</div>
-								<p class="size">Image Size:600*120</p>
-								<p>
-									<chp-button class="mb-xs mt-xs  btn btn-primary print-btn" >
-										copy URL
-									</chp-button>	
-								</p>
-							</section>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-							
-							<section class="picture">
-								<div class="pic">
+								<mu-paper class="pic" :zDepth="2">
 									<img class="img-responsive" src="http://s3img.city.sina.com.cn/xiancheng/common/thumbnail/0/572c261447243db5d8c25020c8e314b8.jpg" alt="">
-								</div>
-								<p class="size">Image Size:600*120</p>
-								<p>
+									<div class="mask">
+										<p class="p-sm"> 
+											{{imgScript}}
+										</p>
+
+										
+									</div>
+								</mu-paper>
+								<p class="size pt-sm">Image Size:600*120</p>
+								<p class="copy">
 									<chp-button class="mb-xs mt-xs  btn btn-primary print-btn" >
 										copy URL
 									</chp-button>	
 								</p>
 							</section>
+							
+						</div>
+						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+							
+							<section class="picture">
+								<mu-paper class="pic" :zDepth="2">
+									<img class="img-responsive" src="http://image.thepaper.cn/www/image/4/150/720.jpg" alt="">
+									<div class="mask">
+										<p class="p-sm"> 
+											{{imgScript}}
+										</p>
+
+										
+									</div>
+								</mu-paper>
+								<p class="size pt-sm">Image Size:600*120</p>
+								<p class="copy">
+									<chp-button class="mb-xs mt-xs  btn btn-primary print-btn" >
+										copy URL
+									</chp-button>	
+								</p>
+							</section>
+						</div>
+						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+							<section class="picture">
+								<mu-paper class="pic" :zDepth="2">
+									<img class="img-responsive" src="http://www.mfmm99.com/UploadFiles/FCK/2016-01/201601232PT62J2F6X.jpg" alt="">
+									<div class="mask">
+										<p class="p-sm"> 
+											{{imgScript}}
+										</p>
+
+										
+									</div>
+								</mu-paper>
+								<p class="size pt-sm">Image Size:600*120</p>
+								<p class="copy">
+									<chp-button class="mb-xs mt-xs  btn btn-primary print-btn" >
+										copy URL
+									</chp-button>	
+								</p>
+							</section>
+							
 						</div>
                     </chp-tab-content>
                     <chp-tab-content id="tab2">
@@ -105,11 +126,14 @@
 	@import "~assets/less/transition.less";
 	.picture{
 		.pic{
-			max-height:200px;
-			height:200px;
+			max-height:300px;
+			height:300px;
 			display: table-cell;
 			vertical-align: middle;
 			position:relative;
+			img{
+
+			}
 			.mask{
 				transparent:0;
 				position:absolute;
