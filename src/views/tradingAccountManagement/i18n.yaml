@@ -1,0 +1,21 @@
+en:
+  applicationSubaccount:
+    agreenTerms: "I agree with <<Terams and Conditions>>"
+    registerSubAccount : "Register for Sub Account"
+  platForm: "Plat Form "
+  accountType: "Account Type"
+  leverage: "Leverage"
+  basecurrency: "Base Currency"
+  reason: "Reason"
+  modifyPwdNotification: " Please check the modification password email"
+zh:
+  applicationSubaccount:
+    agreenTerms: "我同意<<条款和须知>>"
+    registerSubAccount : "申请交易子账户"
+  platForm: "交易平台 "
+  accountType: "账户类型"
+  leverage: "交易杠杆"
+  basecurrency: "基础货币"
+  reason: "申请理由"
+  modifyPwdNotification: "请查收修改密码邮件"
+  

@@ -1,0 +1,27 @@
+@import "~assets/less/variable.less";
+.mu-list,.mu-menu-list{
+  .mu-item-title,mu-menu-item,.mu-menu-item-wrapper{
+    font-size: 1.3rem;
+  }
+  .mu-icon{
+    font-size:2rem;
+    color:@light-font-color;
+  }
+  .mu-item-content{
+    .flex(1);
+  }
+
+}
+
+
+html.dark{
+  .mu-list,.mu-menu-list{
+    .mu-icon{
+      color:@dark-font-color;
+    }
+  }
+  .mu-list{
+    color:@dark-font-color;
+    background-color: @dark-component-bg-color;
+  }
+}

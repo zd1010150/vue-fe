@@ -1,0 +1,27 @@
+en:
+  theme: "Theme"
+  language: "Translation"
+  changeLanguage: "Change Language"
+  changeTheme: "Change Theme"
+  languages:
+    english: "english"
+    chinese: "chinese"
+  themes:
+    dark: "Dark Theme"
+    light: "Light Theme"
+  logout: "Logout"
+  logoutDialogHtml : "Confirm logout？"
+zh:
+  theme: "主题"
+  language: "多语言"
+  changeLanguage: "更改语言"
+  changeTheme: "更改主题"
+  languages:
+    english: "英语"
+    chinese: "普通话"
+  themes:
+    dark: "深色主题"
+    light: "浅色主题"
+  logout: "退出"
+  logoutDialogHtml : "确认退出？"
+    

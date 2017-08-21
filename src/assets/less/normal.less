@@ -1,0 +1,143 @@
+@import "./variable.less";
+@import "./transition.less";
+.word-wrap {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+.flex-container{
+  display: table-cell;
+  vertical-align:middle;
+  text-align: center;
+  .display(flex);
+
+  &.content-center{
+    .align-content(center);
+    .justify-content(center);
+  }
+}
+.bottom-2px-border{
+  border-bottom: 1px solid #666;
+}
+.error{
+  color:@red-error-color;
+}
+.padding-10{
+  padding:10px;
+}
+.padding-20{
+  padding:20px;
+}
+.data-table-filter-panel{
+  width:100%;
+  margin-top: 20px;
+}
+.padding-left-10{
+  padding-left: 10px;
+}
+.padding-right-10{
+  padding-right: 10px;
+}
+.padding-top-10{
+  padding-top: 10px;
+}
+.padding-bottom-10{
+  padding-bottom: 10px;
+}
+.padding-left-20{
+  padding-left: 20px;
+}
+.padding-right-20{
+  padding-right: 20px;
+}
+.padding-top-20{
+  padding-top: px;
+}
+.padding-bottom-20{
+  padding-bottom: 20px;
+}
+
+  /* 可以设置不同的进入和离开动画 transition 动画*/
+  /* 设置持续时间和动画函数 */
+  .slide-fade-enter-active {
+    transition:  @swift-ease-in;
+  }
+  .slide-fade-leave-active {
+    transition:  @swift-ease-out;
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active for <2.1.8 */ {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+  .chp-fade-enter-active {
+    
+    transition:@swift-ease-in;
+  }
+  .chp-fade-leave-active{
+    transition: @swift-ease-out;
+  }
+  .chp-fade-enter,.fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+    opacity: 0;
+  } 
+  .chp-fade-enter-to{
+    opacity: 1;
+  }
+/*loading*/
+.loading-overlay{
+  background-color: @light-component-bg-color;
+}
+html.dark{
+  .loading-overlay{
+    background-color: @dark-component-bg-color;
+  }
+}
+/*progress mask*/
+.chp-progress-mask{
+  position:fixed;
+  left:0px;
+  right:0px;
+  top:0px;
+  bottom:0px;
+  
+  &.loading-overlay-showing{
+    visibility: visible;
+    opacity: .8;
+    z-index:999999;
+    .display(flex);
+    .justify-content(center);
+    .align-items(center);
+  }
+}
+
+/**
+ * panel
+ */
+.panel-body .wizard-tabs{
+  margin:-15px -15px 0px;
+}
+.panel-body .tab-content{
+  border:none;
+  box-shadow: none;
+  padding:15px 15px 0px;
+}
+
+html.fixed.sidebar-left-hidden{
+  .sidebar-left{
+    
+    .sidebar-header{
+      width:0px;
+     height:0px;
+
+    }
+    
+  }
+  .content-body{
+    margin-left: 0px;
+    .page-header{
+      left:0px;
+    }
+  }
+}
+
+

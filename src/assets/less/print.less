@@ -1,0 +1,21 @@
+@media print{
+	.body{
+		& >.header{
+			display: none;
+		}
+		& >.inner-wrapper{
+			>.sidebar-left{
+				display:none;
+			}
+			.deposite-methods{
+				display: none;
+			}
+			.funds-table{
+				display: none;
+			}
+		}
+		& > .sidebar-right{
+			display:none;
+		}
+	}
+}

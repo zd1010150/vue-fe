@@ -1,0 +1,74 @@
+@import "~assets/less/variable.less";
+.mu-text-field {
+  font-size: 14px;
+  height: 34px;
+  min-height: 34px;
+  padding: 0px 12px;
+  margin-bottom: 8px;
+  .mu-text-field-content {
+    padding: 0px;
+  }
+  
+  &.form-control.multi-line {
+    height: auto;
+    .mu-text-field-hint,
+    textarea {
+      padding: 6px 12px 6px 0px;
+    }
+  }
+  .mu-text-field-line.disabled {
+    border-bottom: none;
+  }
+  &.disabled {
+    background-color: #eee;
+    input{
+      background-color: transparent;
+    }
+  }
+}
+
+html.dark {
+  .mu-text-field {
+    &.disabled {
+      background-color: @dark-component-disable-color;
+      color:@dark-font-disable-color;
+    }
+  }
+}
+
+.mu-text-field.input-lg {
+  height: 45px;
+  min-height: 45px;
+  .mu-text-field-content {
+
+    .mu-text-field-hint {
+      line-height: 43px;
+    }
+    &>input {
+      height: 43px;
+    }
+  }
+}
+
+.has-error {
+  .mu-text-field {
+    .mu-text-field-line,
+    .mu-text-field-focus-line {
+      background-color: @red-error-color;
+    }
+  }
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: @light-font-color !important;
+}
+
+html.dark {
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    -webkit-text-fill-color: @dark-font-color !important;
+  }
+}

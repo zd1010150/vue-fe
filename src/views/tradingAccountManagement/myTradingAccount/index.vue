@@ -1,0 +1,37 @@
+<template>
+	<div class="container-fluid" >
+		<template v-for="(mt4,index) in $store.state.mt4Accounts">
+			<mt4 :account="mt4" :key="index" :ref="'mt4'+index" :order="index" @collapsePanel="collapsePanel"></mt4>
+			
+		</template>
+	</div>
+</template>
+<script>
+	import mt4 from "./mt4"
+	export default{
+		data(){
+			return {
+				previousOrder:null
+			}
+		},
+		components:{
+			"mt4" : mt4
+		},
+		mounted(){
+			if(this.$store.state.mt4Accounts.length > 0){
+				this.$refs['mt40'][0].open()
+				this.previousOrder = 0
+			}
+			
+		},
+		methods:{
+			collapsePanel(order,isOpen){
+				if(isOpen && order != this.previousOrder){
+					this.$refs['mt4'+this.previousOrder][0].close()
+					this.previousOrder = order
+				}
+
+			}
+		}
+	}
+</script>
