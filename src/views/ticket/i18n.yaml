@@ -1,0 +1,22 @@
+en:
+  addNew: "New Ticket"
+  time: "Time"
+  account: "Account"
+  questionType: "Question Type"
+  subject: "Subject"
+  status: "Status"
+  actions: "Actions"
+  statusInfo:
+    pending: "Pending"
+    closed: "Closed"
+zh:
+  addNew: "新增工单"
+  time: "时间"
+  account: "账户"
+  questionType: "问题类别"
+  subject: "主题"
+  status: "状态"
+  actions: "操作"
+  statusInfo:
+    pending: "等待"
+    closed: "关闭"

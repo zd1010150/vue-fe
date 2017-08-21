@@ -138,20 +138,9 @@
         {
           icon: 'tags',
           title: 'ticket',
-          subs: [
-            {
-              title: "newTicket",
-              open: false,
-              routerLink: true,
-              to: "/ticket/new-ticket"
-            },
-            {
-              title: "ticketList",
-              open: false,
-              routerLink: true,
-              to: "/ticket/ticket-list"
-            }
-          ]
+          open: false,
+          routerLink: true,
+          to: "/ticket/ticketList"
         },
         {
           icon: 'graduation-cap',

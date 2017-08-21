@@ -12,6 +12,7 @@ export const UPLOAD_CONFIG = {
 		size:10*Math.pow(2,20)
 	}
 }
+
 export const TABLES = {
 	BANK_CARD_TABLE : "BANK_CARD_TABLE",
 	WITHDRAWAL_TABLE :"WITHDRAWAL_TABLE"

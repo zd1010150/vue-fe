@@ -9,20 +9,13 @@
         <chp-tab-header href="tab2">Profile</chp-tab-header>
       </template>
       <template slot="content">
-		<!-- <chp-tab-content id="tab1">
-			<bank-account-method @methodChange="methodChange"></bank-account-method>	
-	    </chp-tab-content> -->
-        
-			<!-- <bank-account :method="method"></bank-account> -->
-        	<chp-expand-transition name="chp-fade" >
+		<chp-expand-transition name="chp-fade" >
         		<keep-alive>
 		         <component v-bind:is="currentView" @methodChange="methodChange" :method="method" :editMethod="editMethod" ref="accountView" :editObj="editObj" @close="closePanel"></component>
 		        </keep-alive>
-	        </chp-expand-transition>
-        
-	  </template>
-
-    </chp-tabs>
+	    </chp-expand-transition>
+       </template>
+	</chp-tabs>
     <div class="row" slot="footer">
       <div class="col-md-6 col-sm-6 col-xs-6" >
           <chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn" @click="previous" v-if="activeStepTab =='tab2'">

@@ -2,7 +2,8 @@
 	<div class="col-lg-12 col-md-12">
 		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
 	      <template slot="title">Withdrawal History</template>
-	      	<chp-data-table slot="body" :isDisplayFilterToolbar="isDisplayFilterToolbar"
+	      	<chp-data-table slot="body" 
+                      :isDisplayFilterToolbar="isDisplayFilterToolbar"
                       :pageSize = "pageSize"
                       :rowsTotal = "rowsTotal"
                       :pageOptions = "pageOptions"

@@ -28,7 +28,10 @@ export default {
     platForm : "交易平台",
     lever : "杠杆",
     baseCurrency : "基本货币",
-    keywords: "搜索关键字"
+    keywords: "搜索关键字",
+    account: "账户",
+    questionType: "工单类型",
+    content:"内容"
   },
   en:{
     email : "Email address",
@@ -60,5 +63,8 @@ export default {
     lever : "Leverage",
     baseCurrency : "Base currency",
     keywords: "Key words",
+    account: "Account",
+    questionType:"Question Type",
+    content:"Content"
   }
 }

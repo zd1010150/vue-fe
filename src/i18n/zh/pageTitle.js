@@ -17,5 +17,7 @@ export default {
   statistics:"统计信息",
   clientList:"代理客户列表",
   marketingMaterials:"代理营销材料",
-  event:"活动"
+  event:"活动",
+  ticketList: "工单列表",
+  ticketDetail:"工单详情"
 }

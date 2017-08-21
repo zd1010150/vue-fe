@@ -11,7 +11,8 @@ export default {
     confirm: "确认",
     previous: "上一步",
     next:"下一步",
-    submit:"确认"
+    submit:"确认",
+    search:"搜索"
   },
   datePicker:{
     startDate:"开始时间",

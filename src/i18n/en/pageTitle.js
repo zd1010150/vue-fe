@@ -17,5 +17,7 @@ export default {
   statistics:"Statistics",
   clientList:"Client List",
   marketingMaterials:"Marketing Materials",
-  event:"Event"
+  event:"Event",
+  ticketList: "Ticket List",
+  ticketDetail:"Ticket Detail"
 }

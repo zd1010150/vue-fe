@@ -11,7 +11,8 @@ export default {
     confirm: "OK",
     previous: "Previous",
     next:"Next",
-    submit:"Submit"
+    submit:"Submit",
+    search:"Search"
   },
   datePicker:{
     startDate:"Start Date",

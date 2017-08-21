@@ -11,9 +11,10 @@
           <span class="hidden-sm hidden-xs"> records per page</span>
         </div>
         <div class="col-md-8 col-xs-6 text-right" :class="{'col-md-offset-4':!canPaging,'col-xs-offset-6':!canPaging}">
-          <mu-icon-button @click="displayFilter" v-if="canFilter">
-            <i class="fa fa-filter" aria-hidden="true"></i>
-          </mu-icon-button>
+          
+          <chp-button class=" btn btn-default mr-xs" @click="displayFilter" v-if="canFilter">
+            <i class="fa fa-filter mr-xs"></i>{{ $t('ui.button.search')}}
+          </chp-button>
           <template v-if="canAdd">
            <slot name="addToolbar">
              <chp-button class=" btn btn-primary mr-xs" @click="openAddDialog" id="openAddDialogBtn">
