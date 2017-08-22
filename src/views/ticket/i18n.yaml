@@ -9,6 +9,7 @@ en:
   statusInfo:
     pending: "Pending"
     closed: "Closed"
+    replied: "Replied"
 zh:
   addNew: "新增工单"
   time: "时间"
@@ -20,3 +21,4 @@ zh:
   statusInfo:
     pending: "等待"
     closed: "关闭"
+    replied: "已回复"

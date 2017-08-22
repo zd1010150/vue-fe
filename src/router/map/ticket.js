@@ -1,6 +1,5 @@
 
-import ticketList from 'views/ticket/ticketList'
-import ticketDetail from 'views/ticket/ticketDetail'
+import ticketList from 'views/ticket/index'
 
 export default [{
   path: "/ticket/ticketList",
@@ -8,12 +7,5 @@ export default [{
   meta: {
     requiresAuth: true,
     pageTitle: "ticketList"
-  }
-},{
-  path: "/ticket/ticketDetail",
-  component: ticketDetail,
-  meta: {
-    requiresAuth: true,
-    pageTitle: "ticketDetail"
   }
 }];

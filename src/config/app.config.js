@@ -7,9 +7,13 @@ export const DEFAULT_PAY_GATEWAY = { key :"wireTransfer",code: ""} //默认支�
 export const MAX_FETCH_TIMEOUT = 100*1000//网络请求最大超时时间
 
 export const UPLOAD_CONFIG = {
-	bill:{
-		extentions:['png', 'jpg','jpeg','bmp','pdf'],
+	bill:{//bank account 的上传附件
+		extentions:['png', 'jpg','jpeg','bmp','pdf','doc','docx'],
 		size:10*Math.pow(2,20)
+	},
+	img:{ // 在ticket上传文件的时候，对图片进行了限制
+		extentions:['png', 'jpg','jpeg','bmp'],
+		size:2*Math.pow(2,20)
 	}
 }
 

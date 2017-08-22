@@ -1,6 +1,6 @@
 
 import Store from "store"
-import { ADD_ERROR_INFO } from "store/mutation-types"
+import { ADD_ERROR_INFO,SET_USERINFO,SET_TOKEN } from "store/mutation-types"
 import fetch from "./fetch"
 
 /*统一处理 后端接口的一些统一错误*/
@@ -21,12 +21,8 @@ let fetchData = async function(type = 'GET', url = '', data = {}){
         filterResoveResponse(response);
         let success = response.status_code == 200 ? true : false
         if(!success){
-          if(response.status_code == 500){
-            if(response.message == "Unauthenticated."){
-                vm.toastr.error(vm.$t("info.Unauthenticated"))
-            }else{
-                vm.toastr.error(vm.$t("info.SYSTEM_ERROR"))
-            }
+          if(response.status_code == 401){
+            vm.toastr.error(vm.$t("info.Unauthenticated"))
             Store.commit(SET_USERINFO, null)
             Store.commit(SET_TOKEN,null)
             vm.$router.push("/login")
@@ -43,10 +39,6 @@ let fetchData = async function(type = 'GET', url = '', data = {}){
         };
     },(errorResponse)=>{
         filterRejectResponse(errorResponse);
-        console.log("reject callback",errorResponse.message)
-       // let errorMsg = errorResponse.message ? errorResponse.message : "";
-        //Store.state.commit(ADD_ERROR_INFO,{msg:"errorResponse",level:"system"});
-
         throw errorResponse;
     });
   }

@@ -70,7 +70,7 @@
           </transition-group>
          <input type="hidden" v-model="model.attachment">
          </div>
-        </div>
+    </div>
     <div class="form-group" :class="errorClass('content')">
       <label class="control-label col-md-3">Content
       <span class="required" aria-required="true">*</span></label>
@@ -94,10 +94,10 @@
  <div class="row" slot="footer">
   <div class="col-md-6 col-md-offset-3 " >
       <chp-button class="mb-xs mt-xs mr-xs btn btn-primary print-btn" @click="submit" :disabled="disableSubmit">
-        <i class="fa fa-check hidden-sm hidden-xs"></i> {{ $t('ui.button.submit') }}
+        <i class="fa fa-paper-plane-o hidden-sm hidden-xs"></i> {{ $t('ui.button.send') }}
       </chp-button>
       <chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn" @click="cancel">
-       <i class="fa fa-times hidden-sm hidden-xs"></i> {{ $t('ui.button.cancel') }}
+       <i class="fa fa-times hidden-sm hidden-xs"></i> {{ $t('ui.button.discard') }}
       </chp-button>
   </div>
  </div>
@@ -109,6 +109,7 @@
 	import loadingMix from 'mixins/loading'
 	import { UPLOAD_DOCUMENT_URL } from "src/config/url.config.js"  
 	import { UPLOAD_CONFIG,TABLES } from "src/config/app.config.js"
+  import ticketService from 'services/ticketService'
 	export default{
 		mixins:[validateMixin,loadingMix],
 		data(){
@@ -119,7 +120,7 @@
 				loadingStatus:false,
 				baseCurrency:"",
 				uploadConfig:UPLOAD_CONFIG,
-        		dropPostAction:UPLOAD_DOCUMENT_URL+"/bill",
+        dropPostAction:UPLOAD_DOCUMENT_URL+"/bill",
 				model:{
 					account_no:"",
 					type:"",
@@ -132,42 +133,43 @@
 		created(){
 			this.fetchMT4()
 		},
-		
 		methods:{
 			async submit(){
-				this.disableSubmit = true;
+				this.disableSubmit = true
 				let validateResult = await this.$validator.validateAll()
-		          if(validateResult){
-		            let {message,success,data} = await fundsService.internalTransferDeposite(this.model)
-		            this.toastr.info(this.$t("info.SUCCESS"));
-		          }
-		        this.disableSubmit = false;
+        if(validateResult){
+          let {message,success,data} = await ticketService.addTicket(this.model)
+          if(success){
+             this.toastr.info(this.$t("info.SUCCESS"))
+          }
+        }
+		    this.disableSubmit = false
 			},
 			cancel(){
 				this.$emit('cancel')
 			},
 			fetchMT4(){
-	        	this.originMt4 = this.$store.state.mt4Accounts.map((mt4)=>{
-	                return {
-	                  id:mt4.mt4_id,
-	                  text:"#"+mt4.mt4_id
-	                }
-	              });
-		            this.$set(this.model,"origin_login",this.originMt4[0].id)
-		    },
-		    deleteDocument(){
-        		this.$set(this.model,"attachment","");
-      		},
-      		dropInputFunction(files,isAllsuccess,error){
-		        this.$refs.dropUploads.active = true;
-		        if(isAllsuccess){
-		          this.$set(this.model,"attachment",files[0].response.data.url);
-		        }else{
-		          this.$set(this.model,"attachment","")
-		          
-		          this.toastr.error(this.$t("info.UPLOAD_ERROR."+error[0]))
-		        }
-      		},
+	      this.originMt4 = this.$store.state.mt4Accounts.map((mt4)=>{
+            return {
+              id:mt4.mt4_id,
+              text:"#"+mt4.mt4_id
+            }
+	      });
+		    this.$set(this.model,"origin_login",this.originMt4[0].id)
+		  },
+	    deleteDocument(){
+      		this.$set(this.model,"attachment","")
+    	},
+  		dropInputFunction(files,isAllsuccess,error){
+        this.$refs.dropUploads.active = true;
+        if(isAllsuccess){
+          this.$set(this.model,"attachment",files[0].response.data.url)
+        }else{
+          this.$set(this.model,"attachment","")
+          
+          this.toastr.error(this.$t("info.UPLOAD_ERROR."+error[0]))
+        }
+  		},
 		}
 	}
 </script>

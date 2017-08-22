@@ -12,7 +12,12 @@ export default {
     previous: "Previous",
     next:"Next",
     submit:"Submit",
-    search:"Search"
+    search:"Search",
+    send:"Send",
+    discard:"Discard",
+    reply:"Replay",
+    closeIssue:"Close Issue",
+    back:"Back"
   },
   datePicker:{
     startDate:"Start Date",

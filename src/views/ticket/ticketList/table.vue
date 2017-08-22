@@ -73,7 +73,7 @@
                       {{ $t('statusInfo.'+column) }}
                     </template>
                     <template v-else-if="columnIndex =='id'">
-                       <mu-flat-button  @click="editRow(column)" label="detail">
+                       <mu-flat-button  @click="detail(column)" label="detail">
                         <i aria-hidden="true" class="fa fa-info-circle"></i> 
                        </mu-flat-button>
                     </template>
@@ -149,7 +149,7 @@
         if(originData && originData.length > 0){
           this.tickets = originData.map((row,index) => {
             return {
-              create_at:row.create_at,
+              created_at:row.created_at,
               account_no:row.account_no,
               type:row.type,
               subject:row.subject,
@@ -196,9 +196,11 @@
       },
       pageNumberChange(newIndex){
         this.pageIndex = newIndex;
+      },
+      detail(id){
+        this.$emit("detail",id)
       }
-
-    }
+  }
 }
 </script>
 <style lang="less">

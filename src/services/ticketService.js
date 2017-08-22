@@ -12,19 +12,14 @@ export default{
   async getTicketDetail(id){
   	return fetchData('GET','/tickets/display/'+id)
   },
-  /**
-   * 传入所有的accounts,然后{traderAccounts:[],agentAccounts:[]}
-   * @param  {[type]} accounts [description]
-   * @return {[type]}          [description]
-   */
   async addTicket({subject,account_no,type,content,attachment}){
-    return fetchData('POST','/tickets/save')
+    return fetchData('POST','/tickets/save',{subject,account_no,type,content,attachment})
   },
-  async modifyAccountLeverage(mt4Id,level){
-    return fetchData('PUT','/account/'+mt4Id,{leverage:level})
+  async replayTicket({ticket_id,content,attachment,fileid}){
+    return fetchData('POST','/ticketposts/save',{ticket_id,content,attachment,fileid})
   },
-  async modifyAccountPWD(mt4Id){
-    return fetchData('PUT','/account/'+mt4Id,{password:""})
+  async closeTicket(ticket_id){
+     return fetchData('POST','/tickets/modify',{ticket_id:ticket_id,status:'closed'})
   }
 
 }
