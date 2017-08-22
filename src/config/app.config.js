@@ -19,7 +19,8 @@ export const UPLOAD_CONFIG = {
 
 export const TABLES = {
 	BANK_CARD_TABLE : "BANK_CARD_TABLE",
-	WITHDRAWAL_TABLE :"WITHDRAWAL_TABLE"
+	WITHDRAWAL_TABLE :"WITHDRAWAL_TABLE",
+	TICKET_TABLE:"TICKET_TABLE"
 }
 //MT4网页版地址，注意如果官网更换域名，那么对应的网址也需要修改
 export const MT4_WEB_PLATFORM = { zh : "https://cn.acy.com/acy-webtrader",en:"https://www.acy.com/acy-webtrader"}

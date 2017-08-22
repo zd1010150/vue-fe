@@ -51,8 +51,8 @@
             </div>
             <div v-show="model.attachment.length <=0 "  key="upload" >
               <chp-file-upload 
-              :extensions="uploadConfig.bill.extensions"
-              :size="uploadConfig.bill.size"
+              :extensions="uploadConfig.img.extensions"
+              :size="uploadConfig.img.size"
               name="document" 
               drop=".dropFileAreaDiv" 
               :dropDirectory="false" 
@@ -62,7 +62,7 @@
               ref="dropUploads" class="form-control dropFileArea">  
               <div class="dropFileAreaDiv">
                   <h6> Drop File Here or Click to Upload </h6>
-                  <P>Only Accept: png, jpg,jpeg,bmp, pdf</P>
+                  <P>Only Accept: png, jpg,jpeg,bmp</P>
               </div>
             </chp-file-upload> 
             </div>
@@ -107,9 +107,10 @@
 <script>
 	import validateMixin from 'mixins/validatemix'
 	import loadingMix from 'mixins/loading'
-	import { UPLOAD_DOCUMENT_URL } from "src/config/url.config.js"  
+	import { UPLOAD_ASSET_URL } from "src/config/url.config.js"  
 	import { UPLOAD_CONFIG,TABLES } from "src/config/app.config.js"
   import ticketService from 'services/ticketService'
+  import {SET_REFRESH_TABLE} from "store/mutation-types"
 	export default{
 		mixins:[validateMixin,loadingMix],
 		data(){
@@ -120,7 +121,7 @@
 				loadingStatus:false,
 				baseCurrency:"",
 				uploadConfig:UPLOAD_CONFIG,
-        dropPostAction:UPLOAD_DOCUMENT_URL+"/bill",
+        dropPostAction:UPLOAD_ASSET_URL,
 				model:{
 					account_no:"",
 					type:"",
@@ -141,6 +142,8 @@
           let {message,success,data} = await ticketService.addTicket(this.model)
           if(success){
              this.toastr.info(this.$t("info.SUCCESS"))
+             this.$store.commit(SET_REFRESH_TABLE,TABLES["TICKET_TABLE"]);
+             this.$emit("close")
           }
         }
 		    this.disableSubmit = false

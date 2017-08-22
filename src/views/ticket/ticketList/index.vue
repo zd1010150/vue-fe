@@ -2,7 +2,7 @@
 	<div class="container-fluid" >
 		<div class="row">
     		<chp-expand-transition>
-    			<ticket-list-add v-if="show" @cancel="cancel"></ticket-list-add>
+    			<ticket-list-add v-if="show" @cancel="cancel" @close="cancel"></ticket-list-add>
     		</chp-expand-transition>
     	</div>
     	<div class="row">
