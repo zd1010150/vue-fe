@@ -108,8 +108,7 @@ import validateMixin from 'mixins/validatemix'
 import configService from 'services/configService' 
 import bankCardService from 'services/bankCardService'
 import { UPLOAD_DOCUMENT_URL } from "src/config/url.config.js"  
-import { UPLOAD_CONFIG,TABLES } from "src/config/app.config.js"
-import {SET_REFRESH_TABLE} from "store/mutation-types"
+import { UPLOAD_CONFIG } from "src/config/app.config.js"
 import { assignToObject } from "src/utils/objectUtil"
 export default {
   mixins:[validateMixin],
@@ -183,9 +182,8 @@ export default {
           }
           let {success}=res;
           if(success){
-            this.toastr.info(this.$t("info.SUCCESS"));
-            this.$store.commit(SET_REFRESH_TABLE,TABLES["BANK_CARD_TABLE"]);
-            this.$emit('close');
+            this.toastr.info(this.$t("info.SUCCESS"))
+            this.$emit('refresh')
           }
         }
          

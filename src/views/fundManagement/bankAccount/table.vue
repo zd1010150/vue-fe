@@ -63,7 +63,6 @@
     import validateMixin from 'mixins/validatemix.js'
     import loadingMix from 'mixins/loading'
     import {Validator} from 'vee-validate'
-   import  { TABLES  } from "src/config/app.config.js"
 	export default{
 		mixins: [validateMixin,loadingMix],
     data () {
@@ -77,18 +76,14 @@
           editId : null
         }
      },
-    watch:{
-    	"$store.state.refreshTable":function(val){
-        if(val == TABLES["BANK_CARD_TABLE"]){
-          this.fetchBankcardData();
-        }
-      }
-    },
     created(){
       
-    	this.fetchBankcardData();
+    	this.fetchBankcardData()
     },
     methods : {
+      refresh(){
+        this.fetchBankcardData()
+      },
       add(){
         this.$emit('add')
       },

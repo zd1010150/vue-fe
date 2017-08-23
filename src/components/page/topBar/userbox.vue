@@ -108,6 +108,9 @@ import changeTheme  from 'utils/theme.js'
 	display: none;
 }
 .userbox{
+  .role{
+    font-size: 13px;
+  }
   width:200px;
   i{
 		transition : @arrow-rotate-transition;

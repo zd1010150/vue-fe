@@ -1,10 +1,12 @@
 <template>
 	<transition name="slide-fade" mode="out-in">
- 		<component
-  			v-bind:is= "currentView"
-			@close = "close"
-			:ticketId = "ticketId"
-		></component>	
+		<keep-alive>
+	 		<component
+	  			v-bind:is= "currentView"
+				@close = "close"
+				:ticketId = "ticketId"
+			></component>	
+		</keep-alive>
 	</transition>
 </template>
 <script>

@@ -80,7 +80,7 @@
 				uploadConfig:UPLOAD_CONFIG,
         		dropPostAction:UPLOAD_ASSET_URL,
 				model:{
-					fileid:"",
+					fileid:0,
 					content:"",
 					attachment:"",
 					ticket_id:Number(this.ticketId || "")
@@ -99,7 +99,7 @@
 		          this.$set(this.model,"attachment",files[0].response.data.url);
 		        }else{
 		          this.$set(this.model,"attachment","")
-		          
+		          this.$set(this.model,"fileid","")
 		          this.toastr.error(this.$t("info.UPLOAD_ERROR."+error[0]))
 		        }
 	  		},

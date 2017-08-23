@@ -1,6 +1,6 @@
 <i18n src="../i18n.yaml"></i18n>
 <template>
-	<div class="container-fluid" >
+	<div class="container-fluid" v-show="loadingStatus">
     	<div >
     	<section>
     		<header class="row bottom-2px-border pb-sm">
@@ -11,7 +11,7 @@
                         Ticket for account 
                         <span class="text-primary"> {{ ticket.account_no}} </span>
                         about 
-                        <span class="text-primary">{{ ticket.type}}</span> 
+                        <span class="text-primary">{{ $t("type."+ticket.type)}}</span> 
                     </p>
                 </div>
                 <div class="operate col-lg-6 col-md-6 col-sm-12 text-right" v-if="currentView == null">
@@ -63,7 +63,10 @@
     import ticketDetailReplay from './reply'
     import ticketPost from './post'
     import ticketService from 'services/ticketService'
+    import {SET_CONTENT_LOADING } from 'store/mutation-types'
+    import loadingMix from 'mixins/loading'
     export default{
+        mixins:[loadingMix],
         data(){
             return {
                 currentView:null,
@@ -90,12 +93,15 @@
                 this.currentView = null
             },
             async fetchPosts(){
+                
                 let {success,data} = await ticketService.getTicketDetail(this.ticketId)
                 if(success){
                     this.posts = data && data.posts
                     this.ticket = Object.assign({},this.ticket,data && data.ticket)
                     console.log("posts",this.posts)
                 }
+                this.$store.commit(SET_CONTENT_LOADING ,false)
+                this.loadingStatus = true
             },
             reply(){
                 this.currentView = 'ticket-detail-replay'
@@ -112,9 +118,9 @@
                 this.fetchPosts();
             }
         },
-        created(){
+        /**created(){
             this.fetchPosts()
-        },
+        },**/
         computed:{
             canReply:function(){
                 return this.ticket && (this.ticket.status == "replied" || this.ticket.status == "pending")
@@ -122,6 +128,12 @@
             canClose:function(){
                 return this.ticket && this.ticket.status !="closed"
             }
+        },
+        activated(){
+            this.loadingStatus = false
+            this.$store.commit(SET_CONTENT_LOADING ,true)
+            this.posts = []
+            this.fetchPosts()    
         }
     }
 </script>

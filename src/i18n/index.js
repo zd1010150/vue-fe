@@ -4,7 +4,7 @@ import Store from 'store'
 
 import en from "./en"
 import zh from "./zh"
-
+import dateTimeFormats from "./dateTimeFormats"
 Vue.use(VueI18n);
 
 let messages =  {
@@ -15,5 +15,6 @@ let messages =  {
 
 export default new VueI18n({
   locale : Store.state.language,
-  messages : messages
+  messages : messages,
+  dateTimeFormats
 });

@@ -258,9 +258,7 @@
 
   },
   mounted(){
-    console.log("mounted is trigger,",this.$route.path,JSON.stringify(this.items));
     this.setItemsOpen(this.$route.path);
-
   },
   methods: {
     closeAllItems(){

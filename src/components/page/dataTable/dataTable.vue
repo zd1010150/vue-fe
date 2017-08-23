@@ -49,7 +49,9 @@
     <!--Multi operation toolbar end-->
 
     <!--Table begin-->
+    <chp-scroll-bar wrapper="table-main-wrapper" hBarInternal="vueScrollInternalBar" hBar="vueScrollBar" :style="styles">
     <slot name="table"></slot>
+    </chp-scroll-bar>
     <!--Table end-->
 
     <!--Pagination begin-->
@@ -72,6 +74,8 @@
     name:"chp-data-table",
     data(){
         return {
+          width:0,
+          height:0,
           innerPageSize :  this.pageSize
         };
     },
@@ -139,6 +143,23 @@
         this.closeDialog('addDialog')
         this.$emit("createNewObject");
       }
+    },
+    created(){
+     // console.log("size:",this.$el)
+    },
+    mounted(){
+      //
+      
+      this.width = this.$el.querySelector("table").getBoundingClientRect().width
+      this.height = this.$el.querySelector("table").getBoundingClientRect().height
+      console.log("size:",this.width,this.height)
+    },
+    computed:{
+      styles:function(){
+        return {
+          heigt:this.height+"px"
+        }
+      }
     }
   }
 </script>
@@ -177,5 +198,9 @@
   }
   .filter-toolbar{
 
+  }
+
+  .table-main-wrapper{
+    width:100%;
   }
 </style>

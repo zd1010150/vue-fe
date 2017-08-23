@@ -7,11 +7,11 @@ import {
   SET_THEME,
   SET_PATH,
   SET_LEFT_SIDE_BAR_STATUS ,
-  SET_REFRESH_TABLE,
   SET_MT4_ACCOUNTS,
   SET_MT4_AGENT_ACCOUNTS,
   SET_MT4_TRADER_ACCOUNTS,
-  SET_LEVERAGE
+  SET_LEVERAGE,
+  SET_CONTENT_LOADING
 } from "./mutation-types";
 
 
@@ -42,9 +42,7 @@ export default{
   [SET_LEFT_SIDE_BAR_STATUS ](state,status){
     state.leftSideBarStatus = status
   },
-  [SET_REFRESH_TABLE](state,status){
-    state.refreshTable = status
-  },
+  
   [SET_MT4_ACCOUNTS](state,accounts){
     state.mt4Accounts = accounts
   },
@@ -56,5 +54,8 @@ export default{
   },
   [SET_LEVERAGE](state,leverage){
     state.leverage = leverage
+  },
+  [SET_CONTENT_LOADING](state,loading){
+    state.contentLoading = loading
   }
 }

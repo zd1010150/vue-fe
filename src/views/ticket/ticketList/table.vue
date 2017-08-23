@@ -93,7 +93,6 @@
   import validateMixin from 'mixins/validatemix.js'
   import loadingMix from 'mixins/loading'
   import {Validator} from 'vee-validate'
-  import  { TABLES  } from "src/config/app.config.js"
   export default{
     mixins: [validateMixin,loadingMix],
     data () {
@@ -114,11 +113,6 @@
       }
     },
     watch:{
-      "$store.state.refreshTable":function(val){
-        if(val == TABLES["TICKET_TABLE"]){
-          this.fetchData();
-        }
-      },
       'model.start_time' : function(val){
         this.minEndDate = val
       },
@@ -142,6 +136,9 @@
       this.fetchData();
     },
     methods : {
+      refresh(){
+        this.fetchData()
+      },
       add(){
         this.$emit("add")
       },
@@ -198,10 +195,11 @@
           this.fetchData();
       },
       pageSizeChange(newSize){
-        this.pageSize = newSize;
+        this.pageSize = newSize
+        this.pageIndex = 1
       },
       pageNumberChange(newIndex){
-        this.pageIndex = newIndex;
+        this.pageIndex = newIndex
       },
       detail(id){
         this.$emit("detail",id)

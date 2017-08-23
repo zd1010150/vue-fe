@@ -9,9 +9,9 @@ export default {
   token:null,
   path:"",
   leftSideBarStatus:window.innerWidth>=768,
-  refreshTable:"",
   mt4Accounts:[],
   traderAccounts:[],
   agentAccounts:[],
-  leverage:[]
+  leverage:[],
+  contentLoading:false
 }

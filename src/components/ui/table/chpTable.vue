@@ -1,9 +1,11 @@
 <template>
-  <div class="chp-table" >
-    <table>
-      <slot></slot>
-    </table>
-  </div>
+  
+    <div class="chp-table" >
+      <table>
+        <slot></slot>
+      </table>
+    </div>
+  
 </template>
 
 <style lang="scss" src="./chpTable.scss"></style>
@@ -90,3 +92,4 @@
     }
   };
 </script>
+

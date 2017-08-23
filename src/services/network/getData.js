@@ -16,8 +16,7 @@ let filterRejectResponse = (xhr) => {
 
 
 let fetchData = async function(type = 'GET', url = '', data = {}){
-  console.log("fetch data:",data);
-    return fetch(type,url,data).then((response)=>{
+  return fetch(type,url,data).then((response)=>{
         filterResoveResponse(response);
         let success = response.status_code == 200 ? true : false
         if(!success){

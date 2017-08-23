@@ -51,8 +51,7 @@ export default {
    },
    methods:{
    	methodChange(){
-         console.log(this.innerMethod);
-   		this.$emit("methodChange",this.innerMethod);
+         this.$emit("methodChange",this.innerMethod);
    	},
       filterMethodsByLanguage(val){
          this.methods = this.originMethods.filter((method)=>{

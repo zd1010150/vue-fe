@@ -26,7 +26,7 @@
       <div class="col-md-6" >
         <chp-select v-model="model.type" v-validate="'required'" data-vv-value-path="model.type" data-vv-name="questionType" >
           <template v-for="(q,key) in questionType">
-            <mu-menu-item :value="q" :title="q" key="key"/>
+            <mu-menu-item :value="q.code" :title="q.text" key="key"/>
           </template>
         </chp-select>
          <span slot="required" class="error" v-if="errors.has('questionType:required')">{{errors.first('questionType:required')}}</span>
@@ -53,7 +53,7 @@
               <chp-file-upload 
               :extensions="uploadConfig.img.extensions"
               :size="uploadConfig.img.size"
-              name="document" 
+              name="file" 
               drop=".dropFileAreaDiv" 
               :dropDirectory="false" 
               :multiple="false"
@@ -108,9 +108,9 @@
 	import validateMixin from 'mixins/validatemix'
 	import loadingMix from 'mixins/loading'
 	import { UPLOAD_ASSET_URL } from "src/config/url.config.js"  
-	import { UPLOAD_CONFIG,TABLES } from "src/config/app.config.js"
+	import { UPLOAD_CONFIG} from "src/config/app.config.js"
   import ticketService from 'services/ticketService'
-  import {SET_REFRESH_TABLE} from "store/mutation-types"
+  
 	export default{
 		mixins:[validateMixin,loadingMix],
 		data(){
@@ -118,7 +118,6 @@
 				originMt4:null,
 				questionType:[],
 				disableSubmit:false,
-				loadingStatus:false,
 				baseCurrency:"",
 				uploadConfig:UPLOAD_CONFIG,
         dropPostAction:UPLOAD_ASSET_URL,
@@ -127,12 +126,14 @@
 					type:"",
 					subject:"",
 					content:"",
-					attachment:""
+					attachment:"",
+          fileid:0
 				}
 			}
 		},
 		created(){
 			this.fetchMT4()
+      this.fetchTypes()
 		},
 		methods:{
 			async submit(){
@@ -142,7 +143,6 @@
           let {message,success,data} = await ticketService.addTicket(this.model)
           if(success){
              this.toastr.info(this.$t("info.SUCCESS"))
-             this.$store.commit(SET_REFRESH_TABLE,TABLES["TICKET_TABLE"]);
              this.$emit("close")
           }
         }
@@ -158,18 +158,36 @@
               text:"#"+mt4.mt4_id
             }
 	      });
-		    this.$set(this.model,"origin_login",this.originMt4[0].id)
+		    this.$set(this.model,"account_no",this.originMt4[0].id)
 		  },
 	    deleteDocument(){
       		this.$set(this.model,"attachment","")
     	},
+      mapTypes(data){
+        this.questionType = data.map((item,index)=>{
+            return {
+              code : item,
+              text: this.$t('type.'+item)
+            }
+        })
+        this.$set(this.model,"type",this.questionType[0].code)
+      },
+      async fetchTypes(){
+        this.loadingStatus = true
+        let {success,data} = await ticketService.getTicketTypes()
+        if(success){
+          this.mapTypes(data)
+        }
+        this.loadingStatus = false
+      },
   		dropInputFunction(files,isAllsuccess,error){
         this.$refs.dropUploads.active = true;
         if(isAllsuccess){
+          this.$set(this.model,"fileid",files[0].response.data.fileid)
           this.$set(this.model,"attachment",files[0].response.data.url)
         }else{
           this.$set(this.model,"attachment","")
-          
+          this.$set(this.model,"fileid","")
           this.toastr.error(this.$t("info.UPLOAD_ERROR."+error[0]))
         }
   		},

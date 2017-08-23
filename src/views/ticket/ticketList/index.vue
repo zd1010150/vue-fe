@@ -2,11 +2,11 @@
 	<div class="container-fluid" >
 		<div class="row">
     		<chp-expand-transition>
-    			<ticket-list-add v-if="show" @cancel="cancel" @close="cancel"></ticket-list-add>
+    			<ticket-list-add v-if="show" @cancel="cancel" @close="close"></ticket-list-add>
     		</chp-expand-transition>
     	</div>
     	<div class="row">
-    		<ticket-list-table @add="addNew" @detail="detail"></ticket-list-table>
+    		<ticket-list-table @add="addNew" @detail="detail" ref="table"></ticket-list-table>
     	</div>
     </div>
 </template>
@@ -26,6 +26,10 @@
 			"ticket-detail" : ticketDetail
 		},
 		methods:{
+			close(){
+				this.$refs.table.refresh()
+				this.show = false	
+			},
 			addNew(){
 				this.show = true
 			},

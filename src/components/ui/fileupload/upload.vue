@@ -56,10 +56,8 @@
 		watch:{
 			active:function(val,oldVal){
 				if(val !== oldVal && val){
-					console.log("show mask");
 					this.showProgressMask();
 				}else if(val !== oldVal && !val){
-					console.log("hide mask");
 					this.hideProgressMask();
 				}
 			}
@@ -148,7 +146,6 @@
 
 		methods:{
 			input:function(files){
-				console.log("=====",this.active,JSON.stringify(files));
 				if(files.length < 1){ this.active = false; return;}
 				this.$refs.upload.active = true;
 				let errors = [],
@@ -161,7 +158,6 @@
 				//console.log("=====",JSON.stringify(files));
 				if(isAllSuccess || errors.length > 0){
 					this.active = false;
-					console.log("it is returened:",this.active);
 					this.$nextTick(()=>{
 						this.$emit('input',this.progressValue,isAllSuccess ? true : false,errors); //返回上传文件的结果
 					});
@@ -182,7 +178,6 @@
 				let self = this;
 				setTimeout(()=>{
 					if(self.progressMaskEl && self.$refs.upload && document.body.contains( self.progressMaskEl ) ){
-						console.log("it is realy remove");
 						self.$refs.upload.clear();//必须要清空控件的文件
 						document.body.removeChild(self.progressMaskEl);	
 					}

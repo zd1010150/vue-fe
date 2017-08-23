@@ -60,11 +60,11 @@ import {TABLES } from "src/config/app.config.js"
 			currentView(){
 				switch (this.tabIndex){
 					case 1:
-						return 'withdrawal-account';
+						return 'withdrawal-account'
 					case 2:
-						return 'withdrawal-profile';
+						return 'withdrawal-profile'
 					case 3:
-						return 'withdrawal-confirm';
+						return 'withdrawal-confirm'
 					}
 				}
 		},
@@ -84,22 +84,22 @@ import {TABLES } from "src/config/app.config.js"
 				}
 			},
 			async validateTab(){
-				return await this.$refs.tab.validate();
+				return await this.$refs.tab.validate()
 			},
 			async submit(){
-				let result = await this.validateTab();
+				let result = await this.validateTab()
 				if(result && this.model){
 					this.hasSubmit = true;
 					let {success,data} = await fundsService.deposite(this.model)
 					if(success){
-						this.toastr.info(this.$t("info.SUCCESS"));
-						this.$store.commit(SET_REFRESH_TABLE,TABLES.WITHDRAWAL_TABLE)
-						this.$refs.tab.init();
-						this.activeStepTab = "tab1";
-						this.$refs.tab.init();
+						this.toastr.info(this.$t("info.SUCCESS"))
+						this.$refs.tab.init()
+						this.activeStepTab = "tab1"
+						this.$refs.tab.init()
+						this.$emit("refresh")
 
 					}else{
-						this.activeStepTab = "tab1";
+						this.activeStepTab = "tab1"
 					}
 					this.hasSubmit = false;
 				}
@@ -115,16 +115,16 @@ import {TABLES } from "src/config/app.config.js"
 				}
 			},
 			async next(){
-				let result = await this.validateTab();
+				let result = await this.validateTab()
 				if(result){
 					this.activeStepTab = "tab"+(this.tabIndex+1)
 				}
 			},
 			loadingData(loading){
-				this.loadingStatus = loading;
+				this.loadingStatus = loading
 			},
 			submitData(model){
-				this.model = model;
+				this.model = model
 			}
 		}
 	}

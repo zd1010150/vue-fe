@@ -11,7 +11,7 @@
       <template slot="content">
 		<chp-expand-transition name="chp-fade" >
         		<keep-alive>
-		         <component v-bind:is="currentView" @methodChange="methodChange" :method="method" :editMethod="editMethod" ref="accountView" :editObj="editObj" @close="closePanel"></component>
+		         <component v-bind:is="currentView" @methodChange="methodChange" :method="method" :editMethod="editMethod" ref="accountView" :editObj="editObj" @close="closePanel" @refresh="refresh"></component>
 		        </keep-alive>
 	    </chp-expand-transition>
        </template>
@@ -91,7 +91,6 @@ import method from "./forms/method"
 		},
 		methods:{
 			handleStepTabChange(id){
-				console.log("tabs ",id," is clicked");
 				this.activeStepTab = id
 			},
 			methodChange(val){
@@ -111,7 +110,8 @@ import method from "./forms/method"
 			},submit(){
 				this.$refs.accountView.submit()
 			},refresh(){
-				this.$emit("refreshTable")
+
+				this.$emit("refresh")
 			},
 			async fetchSingleBankCardInfo(id){
 				this.loadingStatus=true
