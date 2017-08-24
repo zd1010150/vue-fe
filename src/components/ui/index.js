@@ -1,6 +1,7 @@
-import vBar from './vBar';
-import chpInkRipple from './chpInkRipple/chpInkRipple';
-import button from './button';
+import vBar from './vBar'
+import scrollBar from './scrollBar'
+import chpInkRipple from './chpInkRipple/chpInkRipple'
+import button from './button'
 import panel from './panel/panel'
 import Checkbox from './checkbox'
 import Radio from './radio'
@@ -29,6 +30,7 @@ export default function install(Vue) {
   Vue.use(DropBack)
   Vue.use(MuseUI)
   Vue.use(vBar)
+  Vue.use(scrollBar)
   Vue.use(Select)
   Vue.use(Tabs)
   Vue.use(Pagination)

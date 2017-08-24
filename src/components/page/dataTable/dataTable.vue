@@ -1,5 +1,5 @@
 <template>
-  <chp-table-card>
+  <chp-table-card ref="card" class="data-table">
 
     <!--Table header toolbar begin-->
     <chp-toolbar v-show="!isDisplayFilterToolbar">
@@ -49,8 +49,11 @@
     <!--Multi operation toolbar end-->
 
     <!--Table begin-->
-    <chp-scroll-bar wrapper="table-main-wrapper" hBarInternal="vueScrollInternalBar" hBar="vueScrollBar" :style="styles">
-    <slot name="table"></slot>
+    <chp-scroll-bar wrapper="table-main-wrapper" hBarInternal="tableHorizonInnerBar" hBar="tableHorizonBar" :style="styles" ref="scollerbar">
+    <div class="table-container">
+      <slot name="table"></slot>
+    </div>
+    
     </chp-scroll-bar>
     <!--Table end-->
 
@@ -76,6 +79,9 @@
         return {
           width:0,
           height:0,
+          $table:null,
+          $card:null,
+          observer:null,
           innerPageSize :  this.pageSize
         };
     },
@@ -142,22 +148,29 @@
       createNewObject(){
         this.closeDialog('addDialog')
         this.$emit("createNewObject");
-      }
+      },
+      
     },
     created(){
      // console.log("size:",this.$el)
     },
     mounted(){
-      //
-      
-      this.width = this.$el.querySelector("table").getBoundingClientRect().width
-      this.height = this.$el.querySelector("table").getBoundingClientRect().height
-      console.log("size:",this.width,this.height)
+      this.$table = this.$el.querySelector("table")
+      this.$card = this.$refs.card.$el
     },
-    computed:{
+    updated(){
+       console.log("---updated",this.$table,this.$card)
+       if(this.$table && this.$card){
+          this.height = this.$table.getBoundingClientRect().height
+          this.width = this.$card.scrollWidth
+          
+          console.log("size:",this.width,this.height,this.$table.scrollWidth,document.querySelector(".bar--wrapper").scrollWidth)
+        }
+       },
+     computed:{
       styles:function(){
         return {
-          heigt:this.height+"px"
+          height:this.height+"px"
         }
       }
     }
@@ -199,8 +212,22 @@
   .filter-toolbar{
 
   }
-
-  .table-main-wrapper{
-    width:100%;
+  .data-table{
+    .chp-table{
+     display:block;
+      box-sizing: border-box;
+      overflow-x: visible;
+      table{
+        width:100%;
+        box-sizing: content-box;
+        td:last-child{
+          padding-right: 24px;
+        }
+        
+      }
+    }
   }
+  
+
+  
 </style>
