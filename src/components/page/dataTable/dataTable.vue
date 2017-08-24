@@ -72,7 +72,7 @@
   </chp-table-card>
 </template>
 <script>
-
+  import "javascript-detect-element-resize"
   export default {
     name:"chp-data-table",
     data(){
@@ -149,24 +149,24 @@
         this.closeDialog('addDialog')
         this.$emit("createNewObject");
       },
+      calculateHeight(){
+        if(this.$table && this.$card){
+          this.height = this.$table.getBoundingClientRect().height
+          this.width = this.$card.scrollWidth
+          console.log("size:",this.width,this.height,this.$table.scrollWidth,document.querySelector(".bar--wrapper").scrollWidth)
+        }
+      },
       
     },
-    created(){
-     // console.log("size:",this.$el)
-    },
+    
     mounted(){
       this.$table = this.$el.querySelector("table")
       this.$card = this.$refs.card.$el
+      addResizeListener(this.$table,this.calculateHeight)
     },
-    updated(){
-       console.log("---updated",this.$table,this.$card)
-       if(this.$table && this.$card){
-          this.height = this.$table.getBoundingClientRect().height
-          this.width = this.$card.scrollWidth
-          
-          console.log("size:",this.width,this.height,this.$table.scrollWidth,document.querySelector(".bar--wrapper").scrollWidth)
-        }
-       },
+    beforeDestory(){
+     removeResizeListener(this.$table,this.calculateHeight)
+    },
      computed:{
       styles:function(){
         return {

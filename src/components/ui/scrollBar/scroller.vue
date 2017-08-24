@@ -9,6 +9,3 @@
 		}
 	}
 </script>
-<style>
-	@import  "~vue2-scrollbar/style/vue2-scrollbar.css";
-</style>

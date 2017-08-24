@@ -23,6 +23,7 @@
     "es6-promise": "^4.1.0",
     "es6-shim": "^0.35.3",
     "isomorphic-fetch": "^2.2.1",
+    "javascript-detect-element-resize": "^0.5.3",
     "lesshat": "^4.1.0",
     "lodash": "^4.17.4",
     "mini-toastr": "^0.6.5",
