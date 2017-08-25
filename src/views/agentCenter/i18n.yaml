@@ -2,10 +2,42 @@ en:
   remainLots : "Number of standard lots required to next level"
   getBonus: "Get Bonus"
   activityTerms: "Terms and Conditions"
+  availabelCommissions: "Available Commissions"
+  totalClientBalance: "Total Client Balance"
+  agnetNo: "Agent No."
+  affiliate: "Apply For Affiliate Account"
+  apply:
+    experience: "Agent Experience",
+    otherCompanies: "Other Affiliate FX companies"
+    accountPerMonth: "Expected new accounts per month"
+    volumePerMonth: "Expected trading volume per month"
+    averageAccount: "Expected average account size"
+    relatedExperience: "Describe your experience with FOREX or any related experience"
+    comments: "Describe your services/Include any comments"
+    unit:
+      year: "Year"
+      lots: "Lots"
+      money: "USD"
 zh:
   remainLots : "到下一等级还需交易手数"
   getBonus: "点我领奖"
   activityTerms: "活动条款和细则"
+  availabelCommissions: "可提取佣金"
+  totalClientBalance: "总用户余额"
+  agnetNo: "代理号"
+  affiliate: "申请代理账户"
+  apply:
+    experience: "代理经验",
+    otherCompanies: "代理过的公司"
+    accountPerMonth: "一个月内可开新账户"
+    volumePerMonth: "预计每月交易量"
+    averageAccount: "平均客户入金额"
+    relatedExperience: "描述与外汇有关经验"
+    comments: "描述您的服务/营销策略"
+    unit:
+      year: "年"
+      lots: "标准手"  
+      money: "USD"
   
 
-    
+  

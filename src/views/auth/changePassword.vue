@@ -71,7 +71,6 @@
     },
     methods:{
       async validatePwd(){
-          console.log("blur is trigger");
           //需要调用验证密码接口
           let {success,message} = await pwdService.validatePwd({old_password:this.model.old_password});
           if(success){

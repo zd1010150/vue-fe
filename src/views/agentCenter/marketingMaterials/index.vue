@@ -104,7 +104,9 @@
 	</div>
 </template>
 <script>
+	import agentRouterMixin from 'mixins/agentRouterMixin'
 	export default{
+		mixins:[agentRouterMixin],
 		data(){
 			return {
 				activeStepTab:'tab1',

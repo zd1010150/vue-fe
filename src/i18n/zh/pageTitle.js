@@ -19,5 +19,6 @@ export default {
   marketingMaterials:"代理营销材料",
   event:"活动",
   ticketList: "工单列表",
-  ticketDetail:"工单详情"
+  ticketDetail:"工单详情",
+  affiliate: "代理账户"
 }

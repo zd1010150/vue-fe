@@ -1,199 +1,12 @@
 <i18n src="./i18n.yaml"></i18n>
 <script>
- import { SET_LEFT_SIDE_BAR_STATUS } from "store/mutation-types"
+  import { SET_LEFT_SIDE_BAR_STATUS } from "store/mutation-types"
+  import { common,agent,nonAgent } from "src/config/menu.config.js"
   export default{
   data(){
     return {
       routerArr: [],
-      items: [
-        {
-          icon: 'home',
-          title: 'dashboard',
-          open: false,
-          routerLink: true,
-          to: "/main"
-        },
-        {
-          icon: 'money',
-          title: 'uiDemo',
-          subs: [
-            {
-              title: "uiComponent",
-              open: false,
-              routerLink: true,
-              to: "/uiDemo/ui-component"
-            },
-            {
-              title: "formvalidate",
-              open: false,
-              routerLink: true,
-              to: "/uiDemo/form-validate"
-            },
-            {
-              title: "echarts",
-              open: false,
-              routerLink: true,
-              to: "/uiDemo/echarts"
-            }
-          ]
-        },
-
-        {
-          icon: 'trademark',
-          title: 'accountManagement',
-          subs:[{
-              title: "myTradingAcoount",
-              open: false,
-              routerLink: true,
-              to: "/account-management/my-trading-account"
-            },{
-              title: "applicationSubaccount",
-              open: false,
-              routerLink: true,
-              to: "/account-management/application-sub-account"
-            }]
-        },
-        {
-          icon: 'money',
-          title: 'fundManagement',
-          subs: [
-            {
-              title: "depositeFunds",
-              open: false,
-              routerLink: true,
-              to: "/fund-manager/deposite-funds"
-            },
-            {
-              title: "withdrawal",
-              open: false,
-              routerLink: true,
-              to: "/fund-manager/withdrawal"
-            },
-            {
-              title: "internalTransfer",
-              open: false,
-              routerLink: true,
-              to: "/fund-manager/internal-transfer"
-            },
-            {
-              title: "bankAccount",
-              open: false,
-              routerLink: true,
-              to: "/fund-manager/bank-account"
-            }
-          ]
-        },
-        {
-          icon: 'line-chart',
-          title: 'agentCenter',
-          subs: [
-            {
-              title: 'agentActivity',
-              open: false,
-              routerLink: true,
-              to: "/agent-center/agent-activity"
-            },
-            {
-              title: "statistics",
-              open: false,
-              routerLink: true,
-              to: "/agent-center/statistics"
-            },
-            {
-              title: "clientList",
-              open: false,
-              routerLink: true,
-              to: "/agent-center/client-list"
-            },
-            {
-              title: " marketingMaterials",
-              open: false,
-              routerLink: true,
-              to: "/agent-center/marketing-materials"
-            }
-          ]
-        },
-
-        {
-          icon: 'download',
-          title: 'downloadCenter',
-          open: false,
-          routerLink: true,
-          to: "/download-center"
-        },
-        {
-          icon: 'bell-o',
-          title: 'notice',
-          open: false,
-          routerLink: true,
-          to: "/notice"
-        },
-        {
-          icon: 'gift',
-          title: 'event',
-          open: false,
-          routerLink: true,
-          to: "/event"
-        },
-        {
-          icon: 'tags',
-          title: 'ticket',
-          open: false,
-          routerLink: true,
-          to: "/ticket/ticketList"
-        },
-        {
-          icon: 'graduation-cap',
-          title: 'training',
-          subs: [
-            {
-              title: "onlineTraining",
-              open: false,
-              routerLink: true,
-              to: "/training/online-training"
-            },
-            {
-              title: "booksandMagazines",
-              open: false,
-              routerLink: false,
-              subs: [{
-                title: 'moneyTheory',
-                to: '/training/books-magazines/money-theory',
-                open: false,
-                routerLink: true
-              }, {
-                title: "educationalBooks",
-                to: '/training/books-magazines/educational-books',
-                open: false,
-                routerLink: true
-              }]
-            },
-            {
-              title: "videos",
-              open: false,
-              routerLink: false,
-              subs: [{
-                title: 'stock',
-                to: '/training/videos/stock',
-                open: false,
-                routerLink: true
-              }, {
-                title: "analyse",
-                to: '/training/videos/analyse',
-                open: false,
-                routerLink: true
-              },
-                {
-                  title: "teaching",
-                  to: '/training/videos/teaching',
-                  open: false,
-                  routerLink: true
-                }]
-            },
-          ]
-        }
-
-      ]
+      items: []
     }
   },
   render(createElement){
@@ -356,6 +169,18 @@
     }
 
   },
+  created(){
+    let temp = common.slice()
+    if( this.$store.state.agentAccounts && this.$store.state.agentAccounts.length > 0 ){
+      temp.splice(3,0,...agent)
+      console.log("itis true",...agent)
+    }else{
+      console.log("itis false",...agent)
+      temp.splice(3,0,...nonAgent)
+    }
+    console.log("---------",temp,this.$store.state.agentAccounts)
+    this.items = temp 
+  },
   watch: {
     $route(val, oldVal){
       // let $html = document.querySelector("html");
@@ -369,6 +194,18 @@
     "$route.path"(val){
       console.log("menu path change",val);
       this.setItemsOpen(val)
+    },
+    "$store.state.userInfo": function(val){
+      let temp = common.slice()
+      if( val && val.hasAgent ){
+        temp.splice(3,0,...agent)
+        console.log("itis true",...agent)
+      }else{
+        console.log("itis false",...agent)
+        temp.splice(3,0,...nonAgent)
+      }
+      console.log("---------",temp,this.$store.state.agentAccounts)
+      this.items = temp 
     }
   }
 }

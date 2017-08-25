@@ -5,9 +5,11 @@
 	</div>
 </template>
 <script>
+	import agentRouterMixin from 'mixins/agentRouterMixin'
 	import head from '../head.vue'
 	import table from './table.vue'
 	export default{
+		mixins:[agentRouterMixin],
 		data(){
 			return {
 				agentId:""

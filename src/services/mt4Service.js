@@ -41,6 +41,10 @@ export default{
   },
   async modifyAccountPWD(mt4Id){
     return fetchData('PUT','/account/'+mt4Id,{password:""})
+  },
+  //申请合作子账户
+  async applyAffiliate({exp,exp_company,one_month_new_acc,per_month_trading_volume,avg_deposit,exp_comment,service_comment}){
+    return fetchData('POST','/affiliate/apply',{exp,exp_company,one_month_new_acc,per_month_trading_volume,avg_deposit,exp_comment,service_comment})
   }
 
 }

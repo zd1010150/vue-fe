@@ -3,6 +3,7 @@ export default {
   metal: "METAL",
   oil:  "OIL",
   activeClient: "Active Client",
+  totalClient: " Total Client",
   cfd: "CFD",
   lots: "Lots",
   balance: "Balance",

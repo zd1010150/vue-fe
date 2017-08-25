@@ -17,7 +17,8 @@ export default {
     discard:"丢弃",
     reply:"回复",
     closeIssue:"关闭工单",
-    back:"返回"
+    back:"返回",
+    resetPwd: "重置密码"
   },
   datePicker:{
     startDate:"开始时间",

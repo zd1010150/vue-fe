@@ -66,54 +66,8 @@
 						</div>
 					</section>
 				</div>
-
-				</template>
-				
-
-				<!-- <div class="col-lg-6 col-md-6 col-xs-12  pl-none pr-none col-volumn">
-					<section class="panel  volumn-panel">
-						<div class="panel-body p-lg bg-default">
-							<div class="widget-summary">
-								<div class="widget-summary-col pl-md pr-md info-col">
-									<div class="summary pb-lg">
-										<h4 class="title">FX</h4>
-										<div class="info">
-											<strong class="amount">1281</strong>手
-										</div>
-									</div>
-									<div class="summary-footer pt-lg" :class="classes">
-										<div class="level-left">
-											<span>
-												level 6
-												<i class="fa lead fa-caret-right" aria-hidden="true"></i>
-												level 10
-											</span>
-											 
-										</div>
-										<div class="level-right">
-											<span class="text-primary text-primary lead">
-												<i class="fa fa-money" aria-hidden="true"></i>
-													300(AUD)
-											</span>
-											<chp-button class="btn-primary">
-												<i class="fa fa-gift"></i>&nbsp;Get Bonus
-											</chp-button>
-										</div>
-									</div>
-								</div>
-								<div class="widget-summary-col widget-summary-col-icon">
-									<chp-circle-chart class="circle-chart"></chp-circle-chart>
-								</div>
-							</div>
-						</div>
-					</section>
-				</div> -->
+			</template>
 		</div>
-		<!-- <mu-dialog :open="termsDialogOpen" scrollable class="panel">
-			<h2 slot="title" class="panel-title">{{$t('activityTerms')}}</h2>
-      		<div class="panel-body">{{terms}}</div>
-      		<chp-button slot="actions" @click="closeTermsDialog" class="panel-footer">{{$t('ui.button.close')}}</chp-button>	
-        </mu-dialog>  -->
 		<chp-dialog-alert
 	  	:chp-title="$t('activityTerms')"
 	  	:chpContentHtml="terms"
@@ -276,7 +230,6 @@
 	    	async showTerms(){
 	    		let {data,message,success} = await activityService.getAgentLevelActivityTerms(this.$store.state.language == "en" ? "en" :"zh")
 	    		if(success){
-	    			//this.terms = data
 	    			this.terms = data
 	    			this.$refs.termsDailog.open()
 	    		}

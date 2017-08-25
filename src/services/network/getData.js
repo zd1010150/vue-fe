@@ -24,7 +24,7 @@ let fetchData = async function(type = 'GET', url = '', data = {}){
             vm.toastr.error(vm.$t("info.Unauthenticated"))
             Store.commit(SET_USERINFO, null)
             Store.commit(SET_TOKEN,null)
-            vm.$router.push("/login")
+            vm.$router.replace("/login")
           }else{
             vm.toastr.error(vm.$t("info."+response.message))
           }

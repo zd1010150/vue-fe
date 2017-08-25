@@ -31,7 +31,10 @@ export default {
     keywords: "搜索关键字",
     account: "账户",
     questionType: "工单类型",
-    content:"内容"
+    content:"内容",
+    service_comment:"服务和营销策略",
+    exp_comment:"外汇相关经验",
+    exp_company:"代理过的公司"
   },
   en:{
     email : "Email address",
@@ -65,6 +68,9 @@ export default {
     keywords: "Key words",
     account: "Account",
     questionType:"Question Type",
-    content:"Content"
+    content:"Content"，
+    service_comment:" your services comments",
+    exp_comment:"your experience with FOREX or any related experience",
+    exp_company:"Other Affiliate FX companies"
   }
 }

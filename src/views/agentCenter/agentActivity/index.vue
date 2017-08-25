@@ -1,20 +1,23 @@
 <template>
 	<div class="container-fluid" >
-		<agent-activity-head @agentChange="agentChange"></agent-activity-head>
-		<agent-activity-client :agent="agent" :dataInfo="clientDataInfo"></agent-activity-client>
+		<agent-activity-head @agentChange="agentChange" @totalClients="totalClients"></agent-activity-head>
+		<agent-activity-client :dataInfo="clientDataInfo" :totalClients="totalClientsNumber"></agent-activity-client>
 		<agent-activity-volumn :agent="agent" :dataInfo="volumnDataInfo" @refresh="refresh"></agent-activity-volumn>
 	</div>	
 </template>
 <script>
+	import agentRouterMixin from 'mixins/agentRouterMixin'
 	import activitiService from 'services/activityService'
 	import head from '../head.vue'
 	import validClient from './validClient'
 	import volumn from './volumn'
 	export default{
+		mixins:[agentRouterMixin],
 		data(){
 			return {
 				agent:"",
-				dataInfo:{}
+				dataInfo:{},
+				totalClientsNumber:0
 			}
 		},
 		components:{
@@ -37,11 +40,14 @@
 			},
 			refresh(){//刷新当前数据
 				this.fetchData()
+			},
+			totalClients(val){
+				this.totalClientsNumber = val
 			}
 		},
 		watch:{
 			agent:function(val){
-				this.fetchData();
+				this.fetchData()
 			}
 		},
 		computed:{
@@ -62,9 +68,6 @@
 					}
 				else return {}
 			}
-		},
-		created(){
-			//this.fetchData();
 		}
 	}
 </script>

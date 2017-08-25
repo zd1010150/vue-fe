@@ -19,5 +19,6 @@ export default {
   marketingMaterials:"Marketing Materials",
   event:"Event",
   ticketList: "Ticket List",
-  ticketDetail:"Ticket Detail"
+  ticketDetail:"Ticket Detail",
+  affiliate: "Affiliate Account"
 }
