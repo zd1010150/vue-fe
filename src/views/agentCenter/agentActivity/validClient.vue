@@ -2,13 +2,13 @@
 <template>
 	<div class="row pt-lg">
 		<div class="col-lg-12 col-md-12">
-				<h4 class="pull-left">{{ $t('trade.activeClient')}}{{$t('trade.level')}}</h4>
+				<h4 class="pull-left">{{ $t('trade.activeClient')}} {{$t('trade.level')}}</h4>
 				<section class="panel panel-responsive">
 					<div class="panel-body ">
 						<table class="client-table">
 							<tr>
-								<td class="padding-10">有效客户数：</td>
-								<td class="padding-10">总客户数：</td>
+								<td class="padding-10">{{ $t('trade.activeClient') }}：</td>
+								<td class="padding-10">{{ $t('trade.totalClient') }}：</td>
 							</tr>
 							<tr>
 								<td class="padding-10">
@@ -18,7 +18,7 @@
 								</td>
 								<td class="padding-10">
 									<span class="lead text-dark padding-right-10">
-									10000
+									{{ totalClients }}
 									</span>{{ $t('trade.traderUnit') }}
 								</td>
 							</tr>
@@ -44,12 +44,10 @@
 <script>
 	export default{
 		props:{
-			agent:{
-				type: [String, Number]
-			},
 			dataInfo:{
 				type: Object
-			}
+			},
+			totalClients:Number
 		},
 		data(){
 			return {
@@ -68,6 +66,7 @@
 		},
 		computed:{
 			activityInfo:function(){
+				console.log(this.dataInfo,"validclient")
 				return Object.assign(this.defaultData,this.dataInfo)
 			}
 		}

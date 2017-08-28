@@ -11,7 +11,15 @@ export default {
     confirm: "OK",
     previous: "Previous",
     next:"Next",
-    submit:"Submit"
+    submit:"Submit",
+    search:"Search",
+    send:"Send",
+    discard:"Discard",
+    reply:"Replay",
+    closeIssue:"Close Issue",
+    back:"Back",
+    resetPwd: "Reset",
+    withdraw: "Withdraw"
   },
   datePicker:{
     startDate:"Start Date",

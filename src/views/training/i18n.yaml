@@ -1,0 +1,24 @@
+zh:
+  onlineTraining:
+    subject: "主题"
+    presenter: "主讲人"
+    date: "讲课日期"
+    time: "讲课时间"
+    status: "课程状态"
+    bjTime: "北京时间"
+    allStatus:
+      end: "已结束"
+      enrolled: "已报名"
+      unenrolled: "点击报名"
+en:
+  onlineTraining:
+    subject: "Subject"
+    presenter: "Presenter"
+    date: "Date"
+    time: "Time"
+    status: "Status"
+    bjTime: "Beijing Time"
+    allStatus:
+      end: "Ended"
+      enrolled: "Enrolled"
+      unenrolled: "Click to enroll"

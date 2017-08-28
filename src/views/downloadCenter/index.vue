@@ -102,7 +102,7 @@
 </template>
 <script>
 	import configService from 'services/configService'
-	import { MT4_WEB_PLATFORM } from 'src/config/app.config.js'
+	import { MT4_WEB_PLATFORM } from 'src/config/url.config.js'
 	export default{
 		data(){
 			return {

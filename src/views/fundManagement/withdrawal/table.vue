@@ -78,7 +78,6 @@
     import validateMixin from 'mixins/validatemix.js'
     import loadingMix from 'mixins/loading'
     import {Validator} from 'vee-validate'
-    import  { TABLES  } from "src/config/app.config.js"
 	export default{
 		mixins: [validateMixin,loadingMix],
 		data () {
@@ -101,55 +100,52 @@
      },
     watch:{
     	'model.startDay' : function(val){
-    		this.minEndDate = val;
+    		this.minEndDate = val
     	},
       'model.endDay':function(val){
-        this.maxStartDate = val;
+        this.maxStartDate = val
       },
       pageSize:function(val){
         this.fetchDepositeData({
-        pageIndex:this.pageIndex,
-        pageSize:val
-      });
+          pageIndex:this.pageIndex,
+          pageSize:val
+        })
       },
       pageIndex:function(val){
         this.fetchDepositeData({
-        pageIndex:val,
-        pageSize:this.pageSize
-      });
-      },
-      '$store.state.refreshTable':function(val){
-        if(val == TABLES.WITHDRAWAL_TABLE){
-          this.fetchDepositeData();
-        }
+          pageIndex:val,
+          pageSize:this.pageSize
+        })
       }
     },
     created(){
       
-    	this.fetchDepositeData();
+    	this.fetchDepositeData()
     },
     methods : {
+      refresh(){
+        this.fetchDepositeData()
+      },
       changeEndday(val){
-      	this.model.endDay = val;
+      	this.model.endDay = val
       }	,
       changeStartday(val){
-      	this.model.startDay = val;
+      	this.model.startDay = val
       },
       filterFields(originData){
       	if(originData && originData.length > 0){
-          
-      	this.histories = originData.map(function(row,index) {
-            return {
-      				order_time : row.order_time,
-      				mt4_id : row.mt4_id,
-      				method : row.method,
-      				top_up_amount: row.top_up_amount,
-      				currency_type: row.currency_type,
-      				trade_status: row.trade_status
-				    }
-      		});
+          this.histories = originData.map(function(row,index) {
+              return {
+        				order_time : row.order_time,
+        				mt4_id : row.mt4_id,
+        				method : row.method,
+        				top_up_amount: row.top_up_amount,
+        				currency_type: row.currency_type,
+        				trade_status: row.trade_status
+  				    }
+        		})
       	}else{
-          this.histories = [];
+          this.histories = []
         }
       },
       async fetchDepositeData(params){
@@ -161,18 +157,18 @@
               pageIndex:this.pageIndex,
               pageSize:this.pageSize,
               sort:this.sort
-           },{queryParameter:this.model},params));
+           },{queryParameter:this.model},params))
         this.loadingStatus = false;
         if(success){
             
-      			this.filterFields(data.data);
-      			this.pageIndex = data.current_page;
-      			this.rowsTotal = data.total;
-      			this.pageSize = Number(data.per_page);
+      			this.filterFields(data.data)
+      			this.pageIndex = data.current_page
+      			this.rowsTotal = data.total
+      			this.pageSize = Number(data.per_page)
       	}
       },
       async research(){
-        let validateResult = await this.$validator.validateAll();
+        let validateResult = await this.$validator.validateAll()
         if(validateResult){
           this.fetchDepositeData();
         }
@@ -181,14 +177,15 @@
         this.isDisplayFilterToolbar = val
       },
       sortRow({name,type}){
-          this.sort = (type=="desc" ?"-":"" )+ name;
+          this.sort = (type=="desc" ?"-":"" )+ name
           this.fetchDepositeData();
       },
       pageSizeChange(newSize){
-        this.pageSize = newSize;
+        this.pageSize = newSize
+        this.pageIndex = 1
       },
       pageNumberChange(newIndex){
-        this.pageIndex = newIndex;
+        this.pageIndex = newIndex
       }
 
     }

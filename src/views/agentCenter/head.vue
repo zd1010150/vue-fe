@@ -1,33 +1,33 @@
+<i18n src="./i18n.yaml"></i18n>
 <template>
 	<div class="row  mt4-select-row pb-lg">
 		<div class="col-md-12 col-lg-12">
 			<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 pl-none">
-				<span class="mt4-title">代理号：</span>
+				<span class="mt4-title">{{ $t('agnetNo') }}</span>
 				 <!-- <mu-select-field v-model="agent" multiple label="选择多个" @change="change">
 				 <template v-for='m in MT4'>
 				 	<mu-menu-item :value='m.mt4_id' :title="m.mt4_id"></mu-menu-item>	
 				 </template>
 				 </mu-select-field> -->
 
-				 <mu-flat-button class="select-mt4" :class="{'open' : open}" ref="selectMT4" @click="toggle" href="javascript:void(0)">
+				<mu-flat-button class="select-mt4" :class="{'open' : open}" ref="selectMT4" @click="toggle" href="javascript:void(0)">
 				 	<strong class="amount mt4 text-dark">{{agent}}</strong>
 				    <i class="fa custom-caret"></i>
-				 </mu-flat-button>
-				  <mu-popover :trigger="trigger" :open="open" :value="agent">
+				</mu-flat-button>
+				<mu-popover :trigger="trigger" :open="open" @close="handleCloseAgentList">
 				    <mu-menu @change="change">
-				      
-				    <template v-for='m in MT4'>
-				 		<mu-menu-item :value='m.mt4_id' :title="m.mt4_id + ''"></mu-menu-item>	
-				 	</template>
+				      	<template v-for='m in MT4'>
+					 		<mu-menu-item :value='m.mt4_id' :title="m.mt4_id + ''"></mu-menu-item>	
+					 	</template>
 				    </mu-menu>
-				  </mu-popover>
+				</mu-popover>
 			</div>
 			<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 pl-none pr-none ">
 				<table class="total-table ">
 					<tr>
-						<td> 可提取佣金：</td>
-						<td>总用户余额：</td>
-						<td>总用户数：</td>
+						<td> {{ $t('availabelCommissions') }}：</td>
+						<td>{{ $t('totalClientBalance') }}：</td>
+						<td>{{ $t('trade.totalClient') }}：</td>
 					</tr>
 					<tr class="number">
 						<td>
@@ -35,12 +35,11 @@
 							<span>{{model.baseCurrency}}</span>	
 						</td>
 						<td>
-							<strong class="lead text-dark">73899.98 </strong>
-							<span>USD</span>
+							<strong class="lead text-dark">{{ model.totalBalance}} </strong>
 						</td>
 						<td>
-							<strong class="lead text-dark">300</strong>
-							<span>位</span>
+							<strong class="lead text-dark">{{ model.totalClient }}</strong>
+							<span>{{ $t('trade.traderUnit') }}</span>
 						</td>
 					</tr>
 				</table>
@@ -49,58 +48,68 @@
 	</div>
 </template>
 <script>
-import mt4Service from 'services/mt4Service'
+	import tradeService from 'services/tradeService'
 	export default{
 		data(){
 			return{
 				trigger:null,
 				open:false,
 				MT4:[],
-				agent:"122",
-				origiModel:{
-							balance : "",
-							baseCurrency : ""
-						}
-				
+				agent:"",
+				model:{
+					totalBalance: 0 ,
+					balance: 0,
+					baseCurrency:"",
+					totalClient:0
+				}
 			}
 		},
 		methods:{
 			change(val){
-				this.agent = val;
-				console.log(val);
-				this.$emit('agentChange',val);
+				this.agent = val
 				this.open = false
 			},
 			toggle(){
 				this.open = !this.open
+			},
+			async fetchBalanceAndTotal(){
+				let { success,data } = await tradeService.getAgentTotalClientsAndBalance(this.agent)
+				if(success){
+					let {balance,traders} = data
+					this.model = Object.assign({},this.model,{
+						totalBalance:balance,
+						totalClient:traders
+					})
+				}
+				
+			},
+			handleCloseAgentList(){
+				this.open = false
 			}
 		},
 		watch:{
 			agent:function(val,oldVal){
-				if ( val== oldVal ) return;
-
-			},
-			async fetchAgentMT4Account(){
-
-			}
-		},
-		computed:{
-			model : function(){
+				console.log("agnet is changed",val)
+				
 				let tmp = this.MT4.map((mt4)=>{
-					if(mt4.mt4_id == this.agent){
+					if(mt4.mt4_id == val){
 						return {
 							balance : mt4.balance,
 							baseCurrency : mt4.base_currency
 						}
 					}
-				});
-				return tmp.length > 0 ? tmp[0] : this.origiModel
+				})
+				this.model = Object.assign({},this.model,tmp.length > 0 ? tmp[0] : {balance:0,baseCurrency:""})
+				this.fetchBalanceAndTotal()
+				this.$emit("agentChange",val)
+			},
+			"model.totalClient":function(val){
+				this.$emit('totalClients',val)
 			}
 		},
 		created(){
 			this.MT4 = this.$store.state.agentAccounts
 			this.agent = this.MT4.length > 0 ?this.MT4[0].mt4_id :""
-			this.$emit("agentChange",this.agent);
 		},
 		mounted(){
 			this.trigger = this.$refs.selectMT4.$el

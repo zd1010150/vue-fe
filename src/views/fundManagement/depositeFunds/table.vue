@@ -144,7 +144,7 @@
 				    }
       		});
       	}else{
-          this.histories = [];
+          this.histories = []
         }
       },
       async fetchDepositeData(params){
@@ -156,33 +156,34 @@
               pageSize:this.pageSize,
               sort:this.sort
            },{queryParameter:this.model},params));
-        this.loadingStatus = false;
+        this.loadingStatus = false
         if(success){
             
-      			this.filterFields(data.data);
-      			this.pageIndex = data.current_page;
-      			this.rowsTotal = data.total;
-      			this.pageSize = Number(data.per_page);
+      			this.filterFields(data.data)
+      			this.pageIndex = data.current_page
+      			this.rowsTotal = data.total
+      			this.pageSize = Number(data.per_page)
       		}
       },
       async research(){
           let validateResult = await this.$validator.validateAll();
           if(validateResult){
-            this.fetchDepositeData();
+            this.fetchDepositeData()
           }
       },
       toggleDisplayFilterToolbar(val){
         this.isDisplayFilterToolbar = val
       },
       sortRow({name,type}){
-          this.sort = (type=="desc" ?"-":"" )+ name;
+          this.sort = (type=="desc" ?"-":"" )+ name
           this.fetchDepositeData();
       },
       pageSizeChange(newSize){
-        this.pageSize = newSize;
+        this.pageSize = newSize
+        this.pageIndex = 1
       },
       pageNumberChange(newIndex){
-        this.pageIndex = newIndex;
+        this.pageIndex = newIndex
       }
 
     }

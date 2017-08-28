@@ -1,4 +1,4 @@
-import onlineTraining from 'views/training/onlineTraining'
+import onlineTraining from 'views/training/onlineTraining/index'
 
 import VideoAnalyse from 'views/training/video/analyse'
 import VideoStock from 'views/training/video/stock'
@@ -11,13 +11,15 @@ export default [{
   path: 'training/online-training',
   component: onlineTraining,
   meta: {
-    requiresAuth: true
+    requiresAuth: true,
+    pageTitle: "onlineTraining"
   }
 }, {
   path: 'training/books-magazines/money-theory',
   component: moneyTheory,
   meta: {
-    requiresAuth: true
+    requiresAuth: true,
+    
   }
 }, {
   path: 'training/books-magazines/educational-books',

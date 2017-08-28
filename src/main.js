@@ -30,7 +30,6 @@ import UserService from "services/userService"
 
 Vue.use(Components);
 Vue.use(Validate);
-
 miniToastr.init();
 Vue.prototype.toastr = miniToastr;
 
@@ -44,11 +43,11 @@ let initVue = () =>{
     template: '<App/>',
     components: { App },
     mounted(){
-      changeTheme(this.$store.state.theme);
+      changeTheme(this.$store.state.theme)
       window.onbeforeunload = function () {
         vm.$store.commit(SET_PATH,vm.$router.currentRoute.fullPath)
         syncVuexStateAndLocalStorage(vm.$store.state)
-        return 'Do you want to leave?';
+        return 'Do you want to leave?'
       }
     },
     methods:{

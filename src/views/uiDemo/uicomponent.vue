@@ -315,6 +315,7 @@
 
       pageSizeChanged(val){
         this.pageSizeNumber = Number(val);
+        
       },
       showToster(type){
        console.log(this.toastr[type](type + " info"));

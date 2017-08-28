@@ -49,7 +49,7 @@
 		<chp-table slot="table" chp-sort="calories" chp-sort-type="desc" @sort="sortRow" >
           <chp-table-header>
             <chp-table-row>
-              <chp-table-head >MT4#</chp-table-head>
+              <chp-table-head chp-numeric>MT4#</chp-table-head>
               <chp-table-head >{{ $t('account.name') }}</chp-table-head>
               <chp-table-head chp-sort-by="ForexVolume" chp-numeric>
               {{ $t('trade.fx') }}({{ $t('trade.lots') }})
@@ -83,7 +83,7 @@
           </chp-table-header>
 		  <chp-table-body>
             <chp-table-row v-for="(row, rowIndex) in histories" :key="rowIndex"  :chp-selection="chpSelection">
-              <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :chp-numeric="columnIndex == 'top_up_amount' ">
+              <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :chp-numeric="columnIndex != 'name' ">
               {{column}}
               </chp-table-cell>
             </chp-table-row>
@@ -198,6 +198,7 @@
       },
       pageSizeChange(newSize){
         this.pageSize = newSize
+        this.pageIndex = 1
       },
       pageNumberChange(newIndex){
         this.pageIndex = newIndex

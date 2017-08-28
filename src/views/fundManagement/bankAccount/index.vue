@@ -2,11 +2,11 @@
  <div class="container-fluid" >
     <chp-expand-transition>
         <div class="row" v-if="showForm">
-        	<bank-account-form @close="close" :editId="editId"></bank-account-form>
+        	<bank-account-form @close="close" @refresh="refresh" :editId="editId"></bank-account-form>
         </div> 
     </chp-expand-transition>
     <div class="row funds-table">
-    	<bank-account-table @add = "add" @edit="edit"></bank-account-table>
+    	<bank-account-table @add = "add" @edit="edit" ref="table"></bank-account-table>
     </div>
 </div>
 </template>
@@ -32,10 +32,15 @@ import table from './table'
             },
             close(){
                 this.showForm = false;
+
             },
             edit(id){
                 this.showForm = true;
                 this.editId = id;
+            },
+            refresh(){
+                this.showForm = false
+                this.$refs.table.refresh()
             }
         }
 	}

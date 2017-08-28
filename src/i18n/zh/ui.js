@@ -11,7 +11,15 @@ export default {
     confirm: "确认",
     previous: "上一步",
     next:"下一步",
-    submit:"确认"
+    submit:"确认",
+    search:"搜索",
+    send:"发送",
+    discard:"丢弃",
+    reply:"回复",
+    closeIssue:"关闭工单",
+    back:"返回",
+    resetPwd: "重置密码",
+    withdraw: "撤销"
   },
   datePicker:{
     startDate:"开始时间",

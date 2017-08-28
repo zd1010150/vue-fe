@@ -1,210 +1,12 @@
 <i18n src="./i18n.yaml"></i18n>
 <script>
- import { SET_LEFT_SIDE_BAR_STATUS } from "store/mutation-types"
+  import { SET_LEFT_SIDE_BAR_STATUS } from "store/mutation-types"
+  import { common,agent,nonAgent } from "src/config/menu.config.js"
   export default{
   data(){
     return {
       routerArr: [],
-      items: [
-        {
-          icon: 'home',
-          title: 'dashboard',
-          open: false,
-          routerLink: true,
-          to: "/main"
-        },
-        {
-          icon: 'money',
-          title: 'uiDemo',
-          subs: [
-            {
-              title: "uiComponent",
-              open: false,
-              routerLink: true,
-              to: "/uiDemo/ui-component"
-            },
-            {
-              title: "formvalidate",
-              open: false,
-              routerLink: true,
-              to: "/uiDemo/form-validate"
-            },
-            {
-              title: "echarts",
-              open: false,
-              routerLink: true,
-              to: "/uiDemo/echarts"
-            }
-          ]
-        },
-
-        {
-          icon: 'trademark',
-          title: 'accountManagement',
-          subs:[{
-              title: "myTradingAcoount",
-              open: false,
-              routerLink: true,
-              to: "/account-management/my-trading-account"
-            },{
-              title: "applicationSubaccount",
-              open: false,
-              routerLink: true,
-              to: "/account-management/application-sub-account"
-            }]
-        },
-        {
-          icon: 'money',
-          title: 'fundManagement',
-          subs: [
-            {
-              title: "depositeFunds",
-              open: false,
-              routerLink: true,
-              to: "/fund-manager/deposite-funds"
-            },
-            {
-              title: "withdrawal",
-              open: false,
-              routerLink: true,
-              to: "/fund-manager/withdrawal"
-            },
-            {
-              title: "internalTransfer",
-              open: false,
-              routerLink: true,
-              to: "/fund-manager/internal-transfer"
-            },
-            {
-              title: "bankAccount",
-              open: false,
-              routerLink: true,
-              to: "/fund-manager/bank-account"
-            }
-          ]
-        },
-        {
-          icon: 'line-chart',
-          title: 'agentCenter',
-          subs: [
-            {
-              title: 'agentActivity',
-              open: false,
-              routerLink: true,
-              to: "/agent-center/agent-activity"
-            },
-            {
-              title: "statistics",
-              open: false,
-              routerLink: true,
-              to: "/agent-center/statistics"
-            },
-            {
-              title: "clientList",
-              open: false,
-              routerLink: true,
-              to: "/agent-center/client-list"
-            },
-            {
-              title: " marketingMaterials",
-              open: false,
-              routerLink: true,
-              to: "/agent-center/marketing-materials"
-            }
-          ]
-        },
-
-        {
-          icon: 'download',
-          title: 'downloadCenter',
-          open: false,
-          routerLink: true,
-          to: "/download-center"
-        },
-        {
-          icon: 'bell-o',
-          title: 'notice',
-          open: false,
-          routerLink: true,
-          to: "/notice"
-        },
-        {
-          icon: 'gift',
-          title: 'event',
-          open: false,
-          routerLink: true,
-          to: "/event"
-        },
-        {
-          icon: 'tags',
-          title: 'ticket',
-          subs: [
-            {
-              title: "newTicket",
-              open: false,
-              routerLink: true,
-              to: "/ticket/new-ticket"
-            },
-            {
-              title: "ticketList",
-              open: false,
-              routerLink: true,
-              to: "/ticket/ticket-list"
-            }
-          ]
-        },
-        {
-          icon: 'graduation-cap',
-          title: 'training',
-          subs: [
-            {
-              title: "onlineTraining",
-              open: false,
-              routerLink: true,
-              to: "/training/online-training"
-            },
-            {
-              title: "booksandMagazines",
-              open: false,
-              routerLink: false,
-              subs: [{
-                title: 'moneyTheory',
-                to: '/training/books-magazines/money-theory',
-                open: false,
-                routerLink: true
-              }, {
-                title: "educationalBooks",
-                to: '/training/books-magazines/educational-books',
-                open: false,
-                routerLink: true
-              }]
-            },
-            {
-              title: "videos",
-              open: false,
-              routerLink: false,
-              subs: [{
-                title: 'stock',
-                to: '/training/videos/stock',
-                open: false,
-                routerLink: true
-              }, {
-                title: "analyse",
-                to: '/training/videos/analyse',
-                open: false,
-                routerLink: true
-              },
-                {
-                  title: "teaching",
-                  to: '/training/videos/teaching',
-                  open: false,
-                  routerLink: true
-                }]
-            },
-          ]
-        }
-
-      ]
+      items: []
     }
   },
   render(createElement){
@@ -269,9 +71,7 @@
 
   },
   mounted(){
-    console.log("mounted is trigger,",this.$route.path,JSON.stringify(this.items));
     this.setItemsOpen(this.$route.path);
-
   },
   methods: {
     closeAllItems(){
@@ -369,12 +169,18 @@
     }
 
   },
+  created(){
+    let temp = common.slice()
+    if( this.$store.state.userInfo && this.$store.state.userInfo.hasAgent ){
+      temp.splice(3,0,...agent)
+    }else{
+      temp.splice(3,0,...nonAgent)
+    }
+    this.items = temp 
+  },
   watch: {
     $route(val, oldVal){
-      // let $html = document.querySelector("html");
-      // $html.classList.toggle("sidebar-left-opened");
       if(window.innerWidth<768){//小屏幕下才自动关闭，大屏幕不会
-        console.log("menu js");
         this.$store.commit(SET_LEFT_SIDE_BAR_STATUS,false)
       }
       

@@ -13,7 +13,10 @@ export default{
   async checkEmail(email){
   	return fetchData("GET","/email-check/"+encodeURIComponent(email))
   },
-  async resetPwd(email,domain){
-  	return fetchData("GET","/recovery",{email,domain}) 
+  async applyResetPwd(email){
+  	return fetchData("POST","/recovery",{email}) 
+  },
+  async resetPwd({email,password,password_confirmation,token}){
+    return fetchData("POST","/reset-password",{email,password,password_confirmation,token})
   }
 }

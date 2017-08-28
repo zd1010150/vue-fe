@@ -72,7 +72,7 @@ import changeTheme  from 'utils/theme.js'
       }
     },
     mounted(){
-    	this.trigger = this.$refs.toggleBtn.$el;
+    	this.trigger = this.$refs.toggleBtn.$el
     },
     methods:{
       confirmLogout(val){
@@ -80,7 +80,7 @@ import changeTheme  from 'utils/theme.js'
           this.$store.dispatch("logout").then(() => {
             this.$store.commit(SET_USERINFO, null)
             this.$store.commit(SET_TOKEN,null)
-            this.$router.push("/login");
+            this.$router.push("/login")
           })
          }
       },
@@ -95,7 +95,7 @@ import changeTheme  from 'utils/theme.js'
       		this.open = !this.open
       },
       handleClose(){
-          this.open = false;
+          this.open = false
       }
     }
 	}
@@ -108,6 +108,10 @@ import changeTheme  from 'utils/theme.js'
 	display: none;
 }
 .userbox{
+  .role{
+    font-size: 13px;
+    line-height: 26px;
+  }
   width:200px;
   i{
 		transition : @arrow-rotate-transition;

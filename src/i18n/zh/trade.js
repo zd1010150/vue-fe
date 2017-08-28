@@ -3,6 +3,7 @@ export default{
   metal: "贵金属",
   oil:  "石油",
   activeClient: "有效客户",
+  totalClient: "总客户",
   cfd: "差价合约",
   lots: "手数",
   balance: "余额",

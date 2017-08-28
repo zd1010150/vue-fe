@@ -45,3 +45,19 @@
     }
   };
 </script>
+<style lang="less">
+  @import "~assets/less/variable.less";
+  button.btn-trans{
+    background-color: transparent;
+    &:hover{
+      color:@light-font-bright-color;
+    }
+  }
+  html.dark{
+     button.btn-trans{
+      &:hover{
+        color:@dark-font-bright-color;
+      }
+    }
+  }
+</style>

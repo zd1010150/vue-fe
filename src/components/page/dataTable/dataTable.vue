@@ -1,5 +1,5 @@
 <template>
-  <chp-table-card>
+  <chp-table-card ref="card" class="data-table">
 
     <!--Table header toolbar begin-->
     <chp-toolbar v-show="!isDisplayFilterToolbar">
@@ -11,9 +11,10 @@
           <span class="hidden-sm hidden-xs"> records per page</span>
         </div>
         <div class="col-md-8 col-xs-6 text-right" :class="{'col-md-offset-4':!canPaging,'col-xs-offset-6':!canPaging}">
-          <mu-icon-button @click="displayFilter" v-if="canFilter">
-            <i class="fa fa-filter" aria-hidden="true"></i>
-          </mu-icon-button>
+          
+          <chp-button class=" btn btn-default mr-xs" @click="displayFilter" v-if="canFilter">
+            <i class="fa fa-filter mr-xs"></i>{{ $t('ui.button.search')}}
+          </chp-button>
           <template v-if="canAdd">
            <slot name="addToolbar">
              <chp-button class=" btn btn-primary mr-xs" @click="openAddDialog" id="openAddDialogBtn">
@@ -48,7 +49,12 @@
     <!--Multi operation toolbar end-->
 
     <!--Table begin-->
-    <slot name="table"></slot>
+    <chp-scroll-bar wrapper="table-main-wrapper" hBarInternal="tableHorizonInnerBar" hBar="tableHorizonBar" :style="styles" ref="scollerbar">
+    <div class="table-container">
+      <slot name="table"></slot>
+    </div>
+    
+    </chp-scroll-bar>
     <!--Table end-->
 
     <!--Pagination begin-->
@@ -66,11 +72,16 @@
   </chp-table-card>
 </template>
 <script>
-
+  import "javascript-detect-element-resize"
   export default {
     name:"chp-data-table",
     data(){
         return {
+          width:0,
+          height:0,
+          $table:null,
+          $card:null,
+          observer:null,
           innerPageSize :  this.pageSize
         };
     },
@@ -137,6 +148,30 @@
       createNewObject(){
         this.closeDialog('addDialog')
         this.$emit("createNewObject");
+      },
+      calculateHeight(){
+        if(this.$table && this.$card){
+          this.height = this.$table.getBoundingClientRect().height
+          this.width = this.$card.scrollWidth
+          console.log("size:",this.width,this.height,this.$table.scrollWidth,document.querySelector(".bar--wrapper").scrollWidth)
+        }
+      },
+      
+    },
+    
+    mounted(){
+      this.$table = this.$el.querySelector("table")
+      this.$card = this.$refs.card.$el
+      addResizeListener(this.$table,this.calculateHeight)
+    },
+    beforeDestory(){
+     removeResizeListener(this.$table,this.calculateHeight)
+    },
+     computed:{
+      styles:function(){
+        return {
+          height:this.height+"px"
+        }
       }
     }
   }
@@ -177,4 +212,22 @@
   .filter-toolbar{
 
   }
+  .data-table{
+    .chp-table{
+     display:block;
+      box-sizing: border-box;
+      overflow-x: visible;
+      table{
+        width:100%;
+        box-sizing: content-box;
+        td:last-child{
+          padding-right: 24px;
+        }
+        
+      }
+    }
+  }
+  
+
+  
 </style>

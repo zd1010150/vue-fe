@@ -109,7 +109,6 @@
             top = event.changedTouches[0].pageY;
             left = event.changedTouches[0].pageX;
           }
-          console.log(document.body.scrollTop);
           return {
             top: top - rect.top - this.$refs.ripple.offsetHeight / 2 - document.body.scrollTop + 'px',
             left: left - rect.left - this.$refs.ripple.offsetWidth / 2 - document.body.scrollLeft + 'px'
@@ -120,13 +119,11 @@
       },
       setDimensions() {
         const size = this.getParentSize();
-
         this.parentDimensions.width = size;
         this.parentDimensions.height = size;
       },
       setPositions(event) {
         const positions = this.getClickPosition(event);
-
         if (positions) {
           this.parentDimensions.top = positions.top;
           this.parentDimensions.left = positions.left;
