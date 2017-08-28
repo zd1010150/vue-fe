@@ -1,0 +1,65 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "68766365a0d698f55156ba5e5c764f84",
+    "content-hash": "72dab6b9e55b9847d258861ce406fbb0",
+    "packages": [],
+    "packages-dev": [
+        {
+            "name": "tools/deploy",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "git@c7git.acy.svr:tools/deploy.git",
+                "reference": "a0b2855d726738ef567fd55e5309e18789f47781"
+            },
+            "bin": [
+                "bin/deploy_version.sh",
+                "bin/bump_version.sh",
+                "bin/functions.sh"
+            ],
+            "type": "library",
+            "scripts": {
+                "vbump:major": [
+                    "bin/bump_version.sh -t major"
+                ],
+                "vbump:minor": [
+                    "bin/bump_version.sh -t minor"
+                ],
+                "vbump:patch": [
+                    "bin/bump_version.sh -t patch"
+                ],
+                "deploy:staging": [
+                    "bin/deploy_version.sh"
+                ],
+                "deploy:production": [
+                    "bin/deploy_version.sh -e production"
+                ]
+            },
+            "license": [
+                "Proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Fan Deng",
+                    "email": "fan.deng@acyfx.com"
+                }
+            ],
+            "description": "Scripts and tools to help development",
+            "keywords": [
+                "dev tools"
+            ],
+            "time": "2017-03-22 07:59:08"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
