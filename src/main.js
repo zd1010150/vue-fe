@@ -15,7 +15,6 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import filters from './filters'
 import i18n from './i18n'
 import miniToastr from 'mini-toastr'
 import Components from "./components"
@@ -31,7 +30,6 @@ import UserService from "services/userService"
 
 Vue.use(Components);
 Vue.use(Validate);
-
 miniToastr.init();
 Vue.prototype.toastr = miniToastr;
 
@@ -40,17 +38,16 @@ let initVue = () =>{
     store,
     router,
     i18n,
-    filters,
     miniToastr,
     el:"#app",
     template: '<App/>',
     components: { App },
     mounted(){
-      changeTheme(this.$store.state.theme);
+      changeTheme(this.$store.state.theme)
       window.onbeforeunload = function () {
         vm.$store.commit(SET_PATH,vm.$router.currentRoute.fullPath)
         syncVuexStateAndLocalStorage(vm.$store.state)
-        return 'Do you want to leave?';
+        return 'Do you want to leave?'
       }
     },
     methods:{

@@ -9,7 +9,7 @@
 								<div class="summary">
 									<h4 class="title">{{ t.title }}</h4>
 									<div class="description">{{ t.subtitle }}</div>
-									<div class="text-dark">{{ t.start_time | beijingTime }}</div>
+									<div class="text-dark">{{ t.start | beijingZoneTime }}</div>
 								</div>
 								<div class="summary-footer clearfix">
 									<span>timer:</span>
@@ -27,9 +27,14 @@
 	</div>
 </template>
 <script>
+	import filters from "src/filters"
 	export default{
+		filters,
 		props:{
 			trainings:Array
+		},
+		created(){
+			
 		}
 	}
 </script>
