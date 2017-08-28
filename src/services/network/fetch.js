@@ -36,7 +36,7 @@ export default async(type = 'GET', url = '', data = {},uploadFile = false) => {
   }
 
   if(store.state.token){
-    requestConfig.headers["Authorization"] = store.state.token;
+    requestConfig.headers["Authorization"] = "Bearer "+ store.state.token;
   }
   if (type == 'POST' || type=='PUT' ) {
      Object.defineProperty(requestConfig, 'body', {
