@@ -20,5 +20,6 @@ export default {
   event:"活动",
   ticketList: "工单列表",
   ticketDetail:"工单详情",
-  affiliate: "代理账户"
+  affiliate: "代理账户",
+  onlineTraining: "在线培训"
 }
