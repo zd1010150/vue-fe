@@ -7,7 +7,7 @@ en:
   agnetNo: "Agent No."
   affiliate: "Apply For Affiliate Account"
   apply:
-    experience: "Agent Experience",
+    experience: "Agent Experience"
     otherCompanies: "Other Affiliate FX companies"
     accountPerMonth: "Expected new accounts per month"
     volumePerMonth: "Expected trading volume per month"
@@ -18,6 +18,8 @@ en:
       year: "Year"
       lots: "Lots"
       money: "USD"
+    terms: "《Terms and Conditions》"
+    iAgree: "I agree with"
 zh:
   remainLots : "到下一等级还需交易手数"
   getBonus: "点我领奖"
@@ -27,7 +29,7 @@ zh:
   agnetNo: "代理号"
   affiliate: "申请代理账户"
   apply:
-    experience: "代理经验",
+    experience: "代理经验"
     otherCompanies: "代理过的公司"
     accountPerMonth: "一个月内可开新账户"
     volumePerMonth: "预计每月交易量"
@@ -38,6 +40,8 @@ zh:
       year: "年"
       lots: "标准手"  
       money: "USD"
+    terms: "《条款和条件》"
+    iAgree: "我同意"
   
 
   

@@ -171,22 +171,16 @@
   },
   created(){
     let temp = common.slice()
-    if( this.$store.state.agentAccounts && this.$store.state.agentAccounts.length > 0 ){
+    if( this.$store.state.userInfo && this.$store.state.userInfo.hasAgent ){
       temp.splice(3,0,...agent)
-      console.log("itis true",...agent)
     }else{
-      console.log("itis false",...agent)
       temp.splice(3,0,...nonAgent)
     }
-    console.log("---------",temp,this.$store.state.agentAccounts)
     this.items = temp 
   },
   watch: {
     $route(val, oldVal){
-      // let $html = document.querySelector("html");
-      // $html.classList.toggle("sidebar-left-opened");
       if(window.innerWidth<768){//小屏幕下才自动关闭，大屏幕不会
-        console.log("menu js");
         this.$store.commit(SET_LEFT_SIDE_BAR_STATUS,false)
       }
       
@@ -194,18 +188,6 @@
     "$route.path"(val){
       console.log("menu path change",val);
       this.setItemsOpen(val)
-    },
-    "$store.state.userInfo": function(val){
-      let temp = common.slice()
-      if( val && val.hasAgent ){
-        temp.splice(3,0,...agent)
-        console.log("itis true",...agent)
-      }else{
-        console.log("itis false",...agent)
-        temp.splice(3,0,...nonAgent)
-      }
-      console.log("---------",temp,this.$store.state.agentAccounts)
-      this.items = temp 
     }
   }
 }

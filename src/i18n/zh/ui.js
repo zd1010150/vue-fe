@@ -18,7 +18,8 @@ export default {
     reply:"回复",
     closeIssue:"关闭工单",
     back:"返回",
-    resetPwd: "重置密码"
+    resetPwd: "重置密码",
+    withdraw: "撤销"
   },
   datePicker:{
     startDate:"开始时间",

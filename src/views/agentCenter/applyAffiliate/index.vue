@@ -3,10 +3,10 @@
  	<div class='container-fluid' >
 	    <div class='row'>
 	    	<div class='col-lg-12 col-md-12'>
-				<chp-panel :canCollapse='false' :canClose='false' :isLoading='loadingStatus'>
-					 <template slot='title'>{{ $t('affiliate')}}</template>
-					 <form slot='body' class='form-horizontal form-bordered ' ref='accountForm'>
-				        <div class='form-group' :class='errorClass('platForm')'>
+				<chp-panel :canCollapse='false' :canClose='false'>
+					<template slot='title'>{{ $t('affiliate') }}</template>
+					<form slot='body' class='form-horizontal form-bordered ' ref='accountForm'>
+				        <div class='form-group' :class='errorClass("platForm")'>
 				          <label class='control-label col-md-3'> 
 							{{ $t('apply.experience') }}
 							<span class='required' aria-required='true'>*</span>
@@ -14,12 +14,12 @@
 				          <div class='col-md-6' >
 				            <chp-select v-model='model.exp'>
 				              <template v-for='(p,index) in exps'>
-				                <mu-menu-item :value='p.val' :title='p.title+$t("apply.unit.year")' key='index'/>
+				                <mu-menu-item :value='p.val' :title='p.text+" "+$t("apply.unit.year")' key='index'/>
 				              </template>
 				            </chp-select>
 				          </div>
 				        </div>
-				        <div class='form-group' :class='errorClass('exp_company')'>
+				        <div class='form-group' :class='errorClass("exp_company")'>
 				          <label class='control-label col-md-3'>
 				          	{{ $t('apply.otherCompanies')}} 
 				            <span class='required' aria-required='true'>*</span>
@@ -33,8 +33,8 @@
 								             v-validate='"required"' 
 								             data-vv-value-path='model.exp_company' 
 								             name='exp_company'/>
-				            
-				            <span slot='required' class='error' v-if='errors.has('exp_company:required')'>
+				            <br>
+				            <span slot='required' class='error' v-if='errors.has("exp_company:required")'>
 				            	{{errors.first('exp_company:required')}}
 				            </span>
 				          </div>
@@ -60,7 +60,7 @@
 				          <div class='col-md-6' >
 				            <chp-select v-model='model.per_month_trading_volume'>
 				              <template v-for='(l,index) in perVolumeOptions'>
-				                <mu-menu-item :value='l.val' :title='l.text+$t("apply.unit.lots")' key='index'/>
+				                <mu-menu-item :value='l.val' :title='l.text+" "+$t("apply.unit.lots")' key='index'/>
 				              </template>
 				            </chp-select>
 				           </div>
@@ -73,12 +73,12 @@
 				          <div class='col-md-6' >
 				            <chp-select v-model='model.avg_deposit'>
 				              <template v-for='(l,index) in perMoneyOptions'>
-				                <mu-menu-item :value='l.val' :title='l.text+$t("apply.unit.money")' key='index'/>
+				                <mu-menu-item :value='l.val' :title='l.text+" "+$t("apply.unit.money")' key='index'/>
 				              </template>
 				            </chp-select>
 				           </div>
 				        </div>
-				       	 <div class='form-group' :class='errorClass('exp_comment')'>
+				       	 <div class='form-group' :class='errorClass("exp_comment")'>
 				          <label class='control-label col-md-3'>
 				          	{{ $t('apply.relatedExperience')}} 
 				            <span class='required' aria-required='true'>*</span>
@@ -92,13 +92,13 @@
 								             v-validate='"required"' 
 								             data-vv-value-path='model.exp_comment' 
 								             name='exp_comment'/>
-				            
-				            <span slot='required' class='error' v-if='errors.has('exp_comment:required')'>
+				            <br>
+				            <span slot='required' class='error' v-if='errors.has("exp_comment:required")'>
 				            	{{errors.first('exp_comment:required')}}
 				            </span>
 				          </div>
 				        </div>
-				        <div class='form-group' :class='errorClass('service_comment')'>
+				        <div class='form-group' :class='errorClass("service_comment")'>
 				          <label class='control-label col-md-3'>
 				          	{{ $t('apply.comments')}} 
 				            <span class='required' aria-required='true'>*</span>
@@ -112,14 +112,33 @@
 								             v-validate='"required"' 
 								             data-vv-value-path='model.service_comment' 
 								             name='service_comment'/>
-				            
-				            <span slot='required' class='error' v-if='errors.has('service_comment:required')'>
+				            <br>
+				            <span slot='required' class='error' v-if='errors.has("service_comment:required")'>
 				            	{{errors.first('service_comment:required')}}
 				            </span>
 				          </div>
 				        </div>
-				       
-	       			</form> 
+				        <div class="form-group" :class="errorClass('terms')">
+							<div class="col-md-9 col-md-offset-3">
+						    	<chp-checkbox   name="terms" 
+											    nativeValue="checkedIterms" 
+											    v-model="checkedIterms" 
+											    data-vv-value-path="checkedIterms" 
+											    v-validate="'required'" 
+											    data-vv-name="terms" 
+											    data-vv-validate-on="input" 
+											    type="checkbox"/>
+							    <span>
+							    	{{ $t('apply.iAgree')}} 
+							    	<a target="_blank" :href="termURL">{{ $t('apply.terms')}}</a>
+							    </span>
+							    <br>
+							    <span slot="required" class="error" v-if="errors.has('terms:required')">
+							    	{{errors.first('terms:required')}}
+							    </span>
+						  </div>
+						</div>
+				    </form> 
 					<div class='row' slot='footer'>
 					    <div class='col-md-6 col-md-offset-3' >
 				          <chp-button class='mb-xs mt-xs mr-xs btn btn-primary print-btn' @click='submit' :disabled='submitDisable'>
@@ -136,19 +155,13 @@
   import validateMixin from 'mixins/validatemix'
   import configService from 'services/configService' 
   import mt4Service from 'services/mt4Service'
+  import { TERMS } from 'src/config/url.config.js'
   export default{
   		mixins : [validateMixin],
 		data(){
 			return {
-				model :{
-					exp:'',
-					exp_company:'',
-					one_month_new_acc:'',
-					per_month_trading_volume:'',
-					avg_deposit:'',
-					exp_comment:'',
-					service_comment:''
-				},
+				termURL:TERMS[this.$store.state.language],
+				checkedIterms:[],
 				exps:[{
 					val:0,text:'0-1'
 				},
@@ -205,7 +218,16 @@
 				{
 					val:4,text:'>20000'
 				}],
-				submitDisable : false
+				submitDisable : false,
+				model :{
+					exp:0,
+					exp_company:'',
+					one_month_new_acc:0,
+					per_month_trading_volume:0,
+					avg_deposit:0,
+					exp_comment:'',
+					service_comment:''
+				},
 			}
 		},
 		methods:{
@@ -213,17 +235,19 @@
 				this.submitDisable = true
 				let validateResult = await this.$validator.validateAll()
 				if(validateResult){
-					let {success} = await mt4Service.applyMT4Account(this.model)
+					let {success} = await mt4Service.applyAffiliate(this.model)
 					if(success){
 						this.toastr.info(this.$t('info.SUCCESS'))
-						this.resetForm()
+						//this.resetForm()
 					}
 				}
 				this.submitDisable = false
 			},
 		},
-		created(){
-			this.fetchConfig()
+		watch:{
+			"$store.state.language" : function(val){
+				this.termURL = TERMS[val]
+			}
 		}
 	}
 </script>

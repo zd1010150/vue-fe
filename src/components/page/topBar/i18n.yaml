@@ -11,6 +11,9 @@ en:
     light: "Light Theme"
   logout: "Logout"
   logoutDialogHtml : "Confirm logout？"
+  notification:
+    youHaveChance : 'You have'
+    opportunity : 'chance to draw'
 zh:
   theme: "主题"
   language: "多语言"
@@ -24,4 +27,7 @@ zh:
     light: "浅色主题"
   logout: "退出"
   logoutDialogHtml : "确认退出？"
+  notification:
+    youHaveChance : '你有'
+    opportunity : '次抽奖机会'
     

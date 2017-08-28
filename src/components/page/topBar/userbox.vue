@@ -110,6 +110,7 @@ import changeTheme  from 'utils/theme.js'
 .userbox{
   .role{
     font-size: 13px;
+    line-height: 26px;
   }
   width:200px;
   i{

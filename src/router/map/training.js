@@ -1,4 +1,4 @@
-import onlineTraining from 'views/training/onlineTraining'
+import onlineTraining from 'views/training/onlineTraining/index'
 
 import VideoAnalyse from 'views/training/video/analyse'
 import VideoStock from 'views/training/video/stock'

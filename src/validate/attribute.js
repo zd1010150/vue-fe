@@ -68,7 +68,7 @@ export default {
     keywords: "Key words",
     account: "Account",
     questionType:"Question Type",
-    content:"Content"，
+    content:"Content",
     service_comment:" your services comments",
     exp_comment:"your experience with FOREX or any related experience",
     exp_company:"Other Affiliate FX companies"

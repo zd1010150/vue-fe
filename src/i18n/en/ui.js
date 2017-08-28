@@ -18,7 +18,8 @@ export default {
     reply:"Replay",
     closeIssue:"Close Issue",
     back:"Back",
-    resetPwd: "Reset"
+    resetPwd: "Reset",
+    withdraw: "Withdraw"
   },
   datePicker:{
     startDate:"Start Date",

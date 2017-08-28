@@ -15,6 +15,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import filters from './filters'
 import i18n from './i18n'
 import miniToastr from 'mini-toastr'
 import Components from "./components"
@@ -39,6 +40,7 @@ let initVue = () =>{
     store,
     router,
     i18n,
+    filters,
     miniToastr,
     el:"#app",
     template: '<App/>',
