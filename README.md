@@ -1,15 +1,8 @@
-http://preview.oklerthemes.com/porto-admin/1.6.0/layouts-default.html
-https://www.muse-ui.org/#/list
 
 
+# CloudhubPanel 2.0
 
-https://github.com/JeffreyWay/laravel-mix/issues/169
-DarlingFei  17:41:24
-https://github.com/webpack/webpack/issues/1789
-
-# vuemarterial-test
-
-> vuemarterial
+> CloudhubPanel 2.0
 
 ## Build Setup
 

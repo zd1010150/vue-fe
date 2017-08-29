@@ -20,5 +20,6 @@ export default {
   event:"Event",
   ticketList: "Ticket List",
   ticketDetail:"Ticket Detail",
-  affiliate: "Affiliate Account"
+  affiliate: "Affiliate Account",
+  onlineTraining: "Online Training"
 }

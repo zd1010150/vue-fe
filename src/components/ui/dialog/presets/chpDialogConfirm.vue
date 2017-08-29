@@ -10,8 +10,8 @@
     <template v-else slot="body">{{ chpContent }}</template>
 
     <template slot="footer">
-     <chp-button class="chp-primary" @click="close('cancel')">{{ chpCancelText }}</chp-button>
-      <chp-button class="chp-primary" @click="close('ok')">{{ chpOkText }}</chp-button>
+      <chp-button class="chp-primary btn-default" @click="close('cancel')">{{ chpCancelText }}</chp-button>
+      <chp-button class="chp-primary btn-primary" @click="close('ok')">{{ chpOkText }}</chp-button>
     </template>
   </chp-dialog>
 </template>
