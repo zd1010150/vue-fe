@@ -10,7 +10,7 @@ export default {
             return (day< 10 ? ('0'+day) : day) + '/' + (month < 10 ? '0'+(month) : month) + '/' + year + ' ' + (hour < 10 ? ('0'+hour) : hour) + ':' + (minute < 10 ? ('0'+minute) : minute) + ':' + second
         },
         beijingDate: function(value){
-             let date = new Date (value + (1000*60*60*8)),
+            let date = new Date (value + (1000*60*60*8)),
                  year,
                  month,
                  day

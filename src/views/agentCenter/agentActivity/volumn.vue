@@ -93,6 +93,7 @@
 		data(){
 			return {
 				terms:"XX",
+				activityData : this.mapData(this.dataInfo),
 				defaultData:{
 		       		fx:{
 		       			level:[0,0,0,0,0,0,0,0,0,0],
@@ -149,16 +150,21 @@
 	     		}else{
 	     			return "level"
 	     		}
-	     	},
-	     	activityData:function(){
-	     		let tmpObject = Object.assign({},this.defaultData,this.dataInfo)
+	     	}
+	    },
+	    watch:{
+	    	dataInfo : function(val){
+	    		this.mapData(val)
+	    	}
+	    },
+	    methods:{
+	    	mapData(data){
+	    		let tmpObject = Object.assign({},this.defaultData||{},data)
 	     		for(let key in tmpObject){
 	     			tmpObject[key].chartData = this.calculateChartData(tmpObject[key])
 	     		}
-	     		return tmpObject
-	     	}
-	    },
-	    methods:{
+	     		this.activityData = Object.assign({},this.activityData || {},tmpObject)
+	    	},
 	    	calculateChartData(data){
 	    		return {
 	    			graphic:[{

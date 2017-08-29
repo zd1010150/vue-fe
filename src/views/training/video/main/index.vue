@@ -4,8 +4,7 @@
   	<router-link to="?level=2&videoType=stock">stock</router-link>
   	<router-link to="?level=2&videoType=analyse">analyse</router-link>
   	<router-link to="?level=2&videoType=teaching">teaching</router-link>
-
-  </div>
+ </div>
 
 </template>
 
