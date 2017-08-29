@@ -1,10 +1,5 @@
 import onlineTraining from 'views/training/onlineTraining/index'
-
-import VideoAnalyse from 'views/training/video/analyse'
-import VideoStock from 'views/training/video/stock'
-import VideoTeaching from 'views/training/video/teaching'
-import Videos from 'views/training/video/index'
-
+import VideoIndex from 'views/training/video/index'
 import EducationalBooks from 'views/training/booksMagazines/educationalBooks'
 import moneyTheory from 'views/training/booksMagazines/moneyTheory'
 
@@ -28,30 +23,11 @@ export default [{
   meta: {
     requiresAuth: true
   }
-}, {
-  path: '/training/videos/index',
-  component: Videos,
-  meta: {
-    requiresAuth: true
-  },
-
 },{
-  path: '/training/videos/stock',
-  component: VideoStock,
+  path: 'training/videos',
+  component: VideoIndex,
   meta: {
     requiresAuth: true
   },
-
-}, {
-  path: '/training/videos/analyse',
-  component: VideoAnalyse,
-  meta: {
-    requiresAuth: true
-  },
-},{
-  path: '/training/videos/teaching',
-  component: VideoTeaching,
-  meta: {
-    requiresAuth: true
-  }
 }];
+

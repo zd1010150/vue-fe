@@ -1,18 +1,23 @@
 <i18n src="./i18n.yaml"></i18n>
 <template>
     <div id="userbox" class="userbox" :class="{opened:open}">
-    	<mu-flat-button class="userbox-toggle-btn" tag="div"  href="javascript:void(0)" @click="toggleOperationPopover"  ref="toggleBtn" >
+    	<mu-flat-button class="userbox-toggle-btn" 
+                      tag="div"
+                      :rippleOpacity="0"
+                      href="javascript:void(0)" 
+                      @click="toggleOperationPopover"  
+                      ref="toggleBtn" >
         	<figure class="profile-picture">
                 <!-- <img v-bind:src="$store.state.userInfo.avatar" alt="Joseph Doe" class="img-circle"> -->
                 <mu-avatar :src="$store.state.userInfo.avatar" slot="avatar" :size="35" class="summary-icon bg-primary "/>
             </figure>
             <div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
                 <span class="name word-wrap" >{{ $store.state.userInfo.name}}</span>
-                <span class="role"> 普通用户</span>
+            <!--     <span class="role"> 普通用户</span>
 
-            </div>
+             --></div>
             <i class="fa custom-caret"></i>
-        <chp-tooltip chp-direction="bottom">George Calton</chp-tooltip>
+        <chp-tooltip chp-direction="bottom">{{ $store.state.userInfo.name}}</chp-tooltip>
         </mu-flat-button>
 
         <mu-popover :trigger="trigger" :open="open" @close="handleClose" popoverClass="userbox-dropdown-menu">
@@ -149,6 +154,9 @@ import changeTheme  from 'utils/theme.js'
     padding-left:10px;
     padding-right: 10px;
     width:100%;
+    &.hover{
+      background-color: transparent;
+    }
   }
  }
 .mu-popover.userbox-dropdown-menu{

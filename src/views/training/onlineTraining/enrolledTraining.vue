@@ -1,5 +1,9 @@
+<i18n src="../i18n.yaml"></i18n>
 <template>
-	<div class="row">
+	<div class="row" v-if="trainings && trainings.length > 0">
+		<div class="col-lg-12 col-md-12 col-xs-12 mb-lg bottom-2px-border">
+			<h3 class="text-dark">{{ $t('onlineTraining.enrolledOnlineTraining') }}</h3>
+		</div>
 		<template v-for="(t,index) in trainings">
 			<div class="col-md-4 col-lg-4 col-xl-4" :key="index">
 				<section class="panel panel-featured-left panel-featured-primary">
@@ -9,12 +13,12 @@
 								<div class="summary">
 									<h4 class="title">{{ t.title }}</h4>
 									<div class="description">{{ t.subtitle }}</div>
-									<div class="text-dark">{{ t.start | beijingZoneTime }}</div>
+									<div class="text-dark">{{ Number(t.start)*1000 | beijingZoneTime }}</div>
 								</div>
 								<div class="summary-footer clearfix">
 									<span>timer:</span>
 									<span class="timer text-dark">1天2小时30分</span>
-									<chp-button class="mb-xs mt-xs mr-xs btn btn-danger print-btn pull-right">
+									<chp-button class="mb-xs mt-xs mr-xs btn btn-danger print-btn pull-right" @click="showConfirmDialog(t.id)">
 				                        <i class="fa fa-times pr-xs"></i> {{ $t('ui.button.withdraw') }}
 				                    </chp-button>
 								</div>
@@ -24,17 +28,48 @@
 				</section>
 			</div>
 		</template>
+		<chp-dialog-confirm   :chp-title="$t('ui.dialog.confirm.title')"
+							  :chp-content-html="$t('onlineTraining.withdrawDialogText')"
+							  :chp-ok-text="$t('ui.button.confirm')"
+							  :chp-cancel-text="$t('ui.button.cancel')"
+							  @close="closeConfirmDialog"
+							  ref="confirmDeleteDailog"/>
 	</div>
 </template>
 <script>
 	import filters from "src/filters"
+	import trainingService from "services/trainingService"
 	export default{
 		filters,
+		data(){
+			return {
+				editId:null
+			}
+		},
 		props:{
 			trainings:Array
 		},
-		created(){
-			
+		methods:{
+			showConfirmDialog(id){
+				this.editId = id
+				this.$refs.confirmDeleteDailog.open()
+			},
+			closeConfirmDialog(status){
+				if(status == 'ok'){
+		          this.withdrawTraining()
+		        }else{
+		          this.editId = null;
+		        }
+			},
+			async withdrawTraining(){
+				if(this.editId){
+					let {success,data} = await trainingService.cancelOnlineTraining(this.editId)
+					if(success){
+						this.$emit('refresh')
+						this.toastr.info(this.$t("info.SUCCESS"))
+					}
+				}
+			}
 		}
 	}
 </script>
