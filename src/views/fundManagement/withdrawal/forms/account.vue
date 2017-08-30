@@ -7,12 +7,13 @@
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6" >
-            <chp-select v-model="model.mt4_id" v-validate="'required'" data-vv-value-path="model.mt4_id" name="mt4_id">
+            <chp-select v-model="model.mt4_id" 
+                        name="mt4_id">
               <template v-for="mt4 in MT4">
                 <mu-menu-item :value="mt4.id" :title="mt4.text" key="mt4.id"/>
               </template>
             </chp-select>
-             <span slot="required" class="error" v-if="errors.has('MT4:required')">{{errors.first('MT4:required')}}</span>
+             <span slot="required" class="error" v-if="validator.errors.has('MT4:required')">{{errors.first('MT4:required')}}</span>
           </div>
         </div>
         <div class="form-group" :class="errorClass('withdraw_pay')">
@@ -21,16 +22,16 @@
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6">
-            <mu-text-field v-model="model.order_amount" 
+            <mu-text-field  v-model="model.order_amount" 
                             @input="amountInput" 
                             @blur="amountInput"  
                             name="withdraw_pay"  
                             class="form-control"   
                             :fullWidth="true" />
             <br>
-            <span slot="required" class="error" v-if="errors.has('withdraw_pay:required')">{{errors.first('withdraw_pay:required')}}</span>
-            <span slot="required" class="error" v-if="errors.has('withdraw_pay:positiveFloatMoney')">{{errors.first('withdraw_pay:positiveFloatMoney')}}</span>
-            <span slot="required" class="error" v-if="errors.has('withdraw_pay:moneyRange')">{{errors.first('withdraw_pay:moneyRange')}}</span>
+            <span slot="required" class="error" v-if="validator.errors.has('withdraw_pay:required')">{{validator.errors.first('withdraw_pay:required')}}</span>
+            <span slot="required" class="error" v-if="validator.errors.has('withdraw_pay:positiveFloatMoney')">{{validator.errors.first('withdraw_pay:positiveFloatMoney')}}</span>
+            <span slot="required" class="error" v-if="validator.errors.has('withdraw_pay:moneyRange')">{{validator.errors.first('withdraw_pay:moneyRange')}}</span>
           </div>
         </div>
         <div class="form-group" :class="errorClass('withdrawMethod')">
@@ -38,12 +39,14 @@
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6" >
-            <chp-select v-model="model.method" v-validate="'required'" data-vv-value-path="model.method" name="withdrawMethod" :hintText="nullHintText">
+            <chp-select v-model="model.method" 
+                        name="withdrawMethod" 
+                        :hintText="nullHintText">
               <template v-for="(value,key) in methodsAndAccounts">
                 <mu-menu-item :value="key" :title="$t('payMentMethod.'+key)" key="key"/>
               </template>
             </chp-select>
-             <span slot="required" class="error" v-if="errors.has('withdrawMethod:required')">{{errors.first('withdrawMethod:required')}}</span>
+             <span slot="required" class="error" v-if="validator.errors.has('withdrawMethod:required')">{{validator.errors.first('withdrawMethod:required')}}</span>
           </div>
         </div>
         <div class="form-group" :class="errorClass('bank_code')">
@@ -58,7 +61,7 @@
                 <mu-menu-item :value="a.accountId" :title="a.bankName+'|'+a.accountNumber" key="mt4.id"/>
               </template>
            </chp-select>
-             <span slot="required" class="error" v-if="errors.has('bank_code:required')">{{errors.first('bank_code:required')}}</span>
+             <span slot="required" class="error" v-if="validator.errors.has('bank_code:required')">{{validator.errors.first('bank_code:required')}}</span>
           </div>
         </div>
         <div class="form-group">
@@ -75,7 +78,8 @@
 
 import validateMixin from 'mixins/validatemix'
 import fundsService from 'services/fundsService' 
-  
+import { Validator } from 'vee-validate'
+   
 export default {
   mixins:[validateMixin],
   data(){
@@ -85,6 +89,7 @@ export default {
         methodsAndAccounts: {},
         nullHintText:"",
         fee:null,
+        validator:null,
         model : {
           mt4_id : "",
           order_amount: "",
@@ -106,19 +111,16 @@ export default {
       },
       methodsAndAccounts:function(data,oldVal){
             this.$set(this.model,"method",Object.keys(data)[0])
-            this.fee = data[this.model.method].fees;
-            console.log(this.model,"fetch methods accounts")
+            this.fee = data[this.model.method].fees
       },
       'model.method':function(method){
-          console.log("before",method,this.methodsAndAccounts[method].accounts);
           if(this.methodsAndAccounts[method].accounts.length<1){
-            this.$set(this.model,"bank_code","");
+            this.$set(this.model,"bank_code","")
           }else{
             this.$set(this.model,"bank_code",this.methodsAndAccounts[method].accounts[0].accountId)
           }
-          console.log(this.model.bank_code,"code")
-          this.$validator.detach('withdraw_pay')
-          this.$validator.attach('withdraw_pay','required|positiveFloatMoney|moneyRange:'+this.filedKeys[method]+"");
+          this.validator.detach('withdraw_pay')
+          this.validator.attach('withdraw_pay','required|positiveFloatMoney|moneyRange:'+this.filedKeys[method]+"")
       }
    },
     methods:{
@@ -127,7 +129,6 @@ export default {
         let {success,data} = await fundsService.getWithdrawMethod(this.$store.state.language)
         if(success && data){
           this.methodsAndAccounts = data;
-          
         }
       },
       fetchMT4(){
@@ -142,7 +143,7 @@ export default {
       },
       async validate(){
         console.log(this.model,"validate")
-        let validateResult = await this.$validator.validateAll()
+        let validateResult = await this.validator.validateAll({MT4:this.model.mt4_id,withdrawMethod:this.model.method})
         validateResult = validateResult && await this.validateAmount(this.model.order_amount) && await this.validateBankCode(this.model.bank_code) ;
         if(validateResult){
           this.$emit("submit",this.model);
@@ -153,20 +154,30 @@ export default {
 
       },
       async amountInput(){
-        return await this.validateAmount(this.model.order_amount);
+        return await this.validateAmount(this.model.order_amount)
       },
       async validateAmount(val){
-        return await this.$validator.validate('withdraw_pay',val);
+        let result = await this.validator.validate('withdraw_pay',val)
+        console.log(result,"***8",this.validator.errors)
+        return result
       },
       async validateBankCode(val){
-        return await this.$validator.validate('bank_code',val);
+        return await this.validator.validate('bank_code',val)
       },
       init(){
-        this.$set(this.model,"order_amount","");
+        this.$set(this.model,"order_amount","")
+      },
+      initValidator(){
+        this.validator = new Validator()
+        this.validator.attach('bank_code','required')
+        this.validator.attach('withdraw_pay','required|positiveFloatMoney')
+        this.validator.attach('MT4','required')
+        this.validator.attach('withdrawMethod','required')
+        
       }
     },
     computed:{
-      accounts:function(){
+     accounts:function(){
         return this.model.method && this.methodsAndAccounts && this.methodsAndAccounts[this.model.method] && this.methodsAndAccounts[this.model.method].accounts
       },
       baseCurrency:function(){
@@ -178,8 +189,7 @@ export default {
     },
     created(){
       this.$emit("loading",true)
-      this.$validator.attach("bank_code","required")
-      this.$validator.attach('withdraw_pay','required|positiveFloatMoney')
+      this.initValidator()
       this.defaultMT4 = this.$route.query && this.$route.query.mt4Id ? this.$route.query.mt4Id+"" : ""
       this.fetchMT4()
       let self = this

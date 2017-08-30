@@ -33,5 +33,9 @@ export default {
   },
   textFiled:{
     keywords: "Input keywords"
+  },
+  upload:{
+    tips: "Drop File Here or Click to Upload",
+    accepts : "Only Accept"
   }
 }

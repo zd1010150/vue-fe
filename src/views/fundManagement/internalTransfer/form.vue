@@ -2,11 +2,11 @@
 <template>
 <div class="col-lg-12 col-md-12">
  <chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-  <template slot="title">InternalTransfer</template>
+  <template slot="title">{{ $t('internalTransfer.internalTransfer') }}</template>
   <form slot="body" class="form-horizontal form-bordered ">
     
     <div class="form-group" :class="errorClass('origin_login')">
-      <label class="control-label col-md-3">From Account</label>
+      <label class="control-label col-md-3">{{ $t('internalTransfer.fromAccount') }}</label>
       <div class="col-md-6" >
         <chp-select v-model="model.origin_login" v-validate="'required'" data-vv-value-path="model.origin_login" data-vv-name="origin_login" >
           <template v-for="mt4 in originMt4">
@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="form-group" :class="errorClass('target_login')">
-      <label class="control-label col-md-3">To Account</label>
+      <label class="control-label col-md-3">{{ $t('internalTransfer.toAccount') }}</label>
       <div class="col-md-6" >
         <chp-select v-model="model.target_login" v-validate="'required'" data-vv-value-path="model.target_login" data-vv-name="target_login" >
           <template v-for="mt4 in targetMt4">
@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="form-group" :class="errorClass('money')">
-      <label class="control-label col-md-3">Amount({{baseCurrency}})</label>
+      <label class="control-label col-md-3">{{ $t('internalTransfer.amount') }} ({{baseCurrency}})</label>
       <div class="col-md-6">
         <mu-text-field v-model="model.money"  v-validate="'required|positiveFloatMoney'" data-vv-value-path="model.money" data-vv-name="money" data-vv-validate-on="blur" class="form-control"   :fullWidth="true" />
         
@@ -39,7 +39,14 @@
     <div class="form-group" :class="errorClass('terms')">
       <div class="col-md-9 col-md-offset-3">
         
-        <chp-checkbox  name="terms" nativeValue="checkedIterms" v-model="checkedIterms" data-vv-value-path="checkedIterms" v-validate="'required'" data-vv-name="terms" data-vv-validate-on="input" type="checkbox"></chp-checkbox>
+        <chp-checkbox  name="terms" 
+				        nativeValue="checkedIterms" 
+				        v-model="checkedIterms" 
+				        data-vv-value-path="checkedIterms" 
+				        v-validate="'required'" 
+				        data-vv-name="terms" 
+				        data-vv-validate-on="input" 
+				        type="checkbox"/>
         <span class="">{{ $t('internalTransfer.note')}}</span>
         <br>
         <span slot="required" class="error" v-if="errors.has('terms:required')">{{errors.first('terms:required')}}</span>

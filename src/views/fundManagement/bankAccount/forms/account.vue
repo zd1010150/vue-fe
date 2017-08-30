@@ -1,8 +1,10 @@
+<i18n src="../../i18n.yaml"></i18n>
 <template lang="html">
 
       <form slot="body" class="form-horizontal form-bordered " method="POST"  target="_blank" ref="accountForm">
        <div class="form-group" :class="errorClass('bankName')">
-          <label class="control-label col-md-3">Bank 
+          <label class="control-label col-md-3">
+            {{ $t('bankcard.bank_name') }}
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6" >
@@ -12,7 +14,8 @@
           </div>
         </div>
         <div class="form-group" :class="errorClass('bankAccount')">
-          <label class="control-label col-md-3">Account Number
+          <label class="control-label col-md-3">
+            {{ $t('bankcard.account') }}
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6">
@@ -24,8 +27,9 @@
           </div>
         </div>
         <div class="form-group" :class="errorClass('bankProvince')" v-if="isCUP">
-          <label class="control-label col-md-3">Bank Province
-          <span class="required" aria-required="true">*</span>
+          <label class="control-label col-md-3">
+            {{ $t('bankcard.province') }}
+            <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6">
             <mu-text-field v-model="model.province"  v-validate="'required'" data-vv-value-path="model.province" data-vv-name="bankProvince"  class="form-control"   :fullWidth="true" />
@@ -34,8 +38,9 @@
           </div>
         </div>
         <div class="form-group" :class="errorClass('bankCity')" v-if="isCUP">
-          <label class="control-label col-md-3">Bank City
-          <span class="required" aria-required="true">*</span>
+          <label class="control-label col-md-3">
+            {{ $t('bankcard.city') }}
+            <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6">
             <mu-text-field v-model="model.city"  v-validate="'required'" data-vv-value-path="model.account" data-vv-name="bankCity"  class="form-control"   :fullWidth="true" />
@@ -44,7 +49,8 @@
           </div>
         </div>
         <div class="form-group" :class="errorClass('branchName')" v-if="isCUP">
-          <label class="control-label col-md-3">Branch Name
+          <label class="control-label col-md-3">
+            {{ $t('bankcard.branchName') }}
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6">
@@ -64,13 +70,14 @@
           </div>
         </div>
         <div class="form-group" :class="errorClass('bankDocument')">
-          <label class="control-label col-md-3">Uploads bill
+          <label class="control-label col-md-3">
+            {{ $t('bankcard.uploadsBill') }}
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6" >
           <transition-group name="chp-fade" mode="out-in">
             <div v-show="model.document.length > 0" key="attachment">
-              <a :href="model.document"  target="_blank">附件</a>
+              <a :href="model.document"  target="_blank"> {{ $t('bankcard.attachment') }}</a>
               <mu-icon-button @click.stop="deleteDocument"><i class="fa fa-times" aria-hidden="true"></i></mu-icon-button>
             </div>
             <div v-show="model.document.length <=0 "  key="upload" >
@@ -85,10 +92,10 @@
               @input="dropInputFunction" 
               ref="dropUploads" class="form-control dropFileArea">  
               <div class="dropFileAreaDiv">
-                  <h6> Drop File Here or Click to Upload </h6>
-                  <P>Bank Account Statement or  Online Banking e-statement </P>
+                  <h6> {{ $t('ui.upload.tips') }} </h6>
+                  <P>{{ $t('bankcard.uploadNote') }}</P>
                   <div v-html="promotingMsg"></div>
-                  <P>Only Accept: png, jpg,jpeg,bmp, pdf</P>
+                  <P>{{ $t('ui.upload.accepts') }} : png, jpg,jpeg,bmp, pdf</P>
                 
               </div>
             </chp-file-upload> 

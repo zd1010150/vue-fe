@@ -3,12 +3,20 @@ en:
     note : "Note: Accounts that has open positions cannot submit inter-transfers, affiliate accounts required to meet minimum requirement before activate inter-transfers."
     errors:
       onlyOneAccount : "Only one account,can't internal transfer"
+    internalTransfer: "Internal Transfer"
+    internalTransferHistory : "Internal Transfer History"
+    fromAccount : "From Account"
+    toAccount : "To Account"
+    amount: "Amount"
+    time: "Time"
+    status: "Status"
   payMentMethod:
     unionPay: "Union Pay"
     doku: "Doku"
     fasaPay: "Fasa Pay"
     wireTransfer: "Wire Transfers"
   bankcard:
+    profile: "Profile"
     editBtnText : "Edit Bank Account"
     newBtnText : "Add Bank Account"
     method : "Method"
@@ -18,6 +26,7 @@ en:
     province : "Province"
     city : "City"
     branchName : "BranchName"
+    uploadsBill : "Uploads Bill"
     attachment : "Attachment"
     status : "Status"
     Action : "Action"
@@ -30,6 +39,7 @@ en:
       cup : "Bank bill"
       doku : "Doku"
       fasa : "Fasa"
+    uploadNote : "Bank Account Statement or  Online Banking e-statement "
   withdrawal :
     profile : "Profile"
     confirm : "Confirm"
@@ -47,17 +57,26 @@ en:
     time: "Time"
     allStatus:
       SUCCESS: "Success"
+      UNPAY: "Unpay"
 zh:
   internalTransfer:
     note : "注意：有仓位的账户无法进行转出资金，代理账户需激活后才能进行内转"
     errors:
       onlyOneAccount : "只有一个账户，不能实现内转"
+    internalTransfer: "资金内转"
+    internalTransferHistory : "资金内转记录"
+    fromAccount : "转出账户"
+    toAccount : "转入账户"
+    amount: "金额"
+    time: "时间"
+    status: "状态"
   payMentMethod:
     unionPay: "银联"
     doku: "Doku"
     fasaPay: "Fasa Pay"
     wireTransfer: "银行转账"
   bankcard:
+    profile: "个人信息"
     editBtnText : "编辑账号信息"
     newBtnText : "新增账号"
     method : "方式"
@@ -67,6 +86,7 @@ zh:
     province : "省份"
     city : "城市"
     branchName : "支行名称"
+    uploadsBill : "上传银行账单"
     attachment : "账单附件"
     status : "状态"
     Action : "操作"  
@@ -79,6 +99,7 @@ zh:
       cup : "Bank bill"
       doku : "Doku"
       fasa : "Fasa"
+    uploadNote : "银行账户证明或者网上银行证明"
   withdrawal :
     profile : "个人信息"
     confirm : "确认"
@@ -96,3 +117,4 @@ zh:
     time: "时间"
     allStatus:
       SUCCESS: "成功"
+      UNPAY: "未支付"
