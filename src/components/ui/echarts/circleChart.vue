@@ -3,40 +3,7 @@
 </template>
 <script>
 	import echarts from './echarts.vue'
-	export default{
-		components:{
-			'e-charts':echarts
-		},
-		props:{
-			externalOption:{
-				type:Object,
-				default:function(){
-					return this.circleDefaultOption
-				}
-			},
-			width:{
-				default:'160px'
-			},
-			height:{
-				default:'160px'
-
-			},
-			media:{
-				type:Array,
-				default:function(){
-					return []
-				}
-			}
-		},
-		computed:{
-			innerOption:function(){
-				console.log(this.externalOption,Object.assign(this.circleDefaultOption,this.externalOption),"=====");
-				return Object.assign(this.circleDefaultOption,this.externalOption)
-			}
-		},
-		data(){
-			return {
-				circleDefaultOption:{
+	const DEFAULT_OPTION = {
 					grid:{
 						width:140,
 						height:140
@@ -100,6 +67,34 @@
 				        }
 				    ]
 				}
+	export default{
+		components:{
+			'e-charts':echarts
+		},
+		props:{
+			externalOption:{
+				type:Object,
+				default:function(){
+					{}
+				}
+			},
+			width:{
+				default:'160px'
+			},
+			height:{
+				default:'160px'
+
+			},
+			media:{
+				type:Array,
+				default:function(){
+					return []
+				}
+			}
+		},
+		data(){
+			return {
+				innerOption : Object.assign({},DEFAULT_OPTION,this.externalOption)
 			}
 		}
 	}

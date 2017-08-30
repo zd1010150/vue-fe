@@ -31,9 +31,22 @@ en:
       doku : "Doku"
       fasa : "Fasa"
   withdrawal :
+    profile : "Profile"
+    confirm : "Confirm"
     note : "I agree to the terms of service"
     nullAccount : "Please add account in account admin"
-
+    balance: "Balance"
+    amount: "Amount"
+    methods: "Methods"
+    account: "Account"
+    fee: "Fee"
+    withdrawal : "Withdrawal"
+    withdrawalHistory : "Withdrawal History"
+    currency: "Currency"
+    status: "Status"
+    time: "Time"
+    allStatus:
+      SUCCESS: "Success"
 zh:
   internalTransfer:
     note : "注意：有仓位的账户无法进行转出资金，代理账户需激活后才能进行内转"
@@ -67,5 +80,19 @@ zh:
       doku : "Doku"
       fasa : "Fasa"
   withdrawal :
+    profile : "个人信息"
+    confirm : "确认"
     note : "我同意该条款"
     nullAccount : "请添加账号"
+    balance: "余额"
+    amount: "金额"
+    methods: "出款方式"
+    account: "账号"
+    fee: "费用"
+    withdrawal : "提取资金"
+    withdrawalHistory : "提取资金历史记录"
+    currency: "货币"
+    status: "状态"
+    time: "时间"
+    allStatus:
+      SUCCESS: "成功"

@@ -58,7 +58,7 @@
 						<div slot="body" v-if="mt4.account_type != 'Agent'">
 							<filter-trading-account @refetchChartData="refetchChartData"></filter-trading-account>
 							<div class="col-md-12 col-sm-12 pt-lg pr-none pl-none">
-							  <chp-echart :media="media"	:externalOption="option" v-if="option" ></chp-echart>
+							  <chp-echart :externalOption="option" :media = "media" v-if="option" ></chp-echart>
 							</div>
 						</div>
 					</chp-panel>
@@ -73,6 +73,7 @@
 	import tradeService from 'services/tradeService'
 	import filter from './filter'
 	import operate from './operate'
+	import { LINE_OPTION_CONFIG,LINE_MEDIA_CONFIG } from 'src/config/chart.config.js'
 	export default{
 		components:{
 			'filter-trading-account' : filter,
@@ -89,81 +90,19 @@
 				return this.account || {}
 			},
 			defaultStatus:function(){
-				console.log(this.mt4.account_type == 'Agent' ? 'close' : 'open',"******")
 				return 'close'
 			}
 
 		},
-		
 		data(){
 			return {
 				leverages : this.$store.state.leverage,
-				
 				total:[],
-				
-          		loadingStatus:false,
+				loadingStatus:false,
           		collapsed:true,
           		isFirstShow:true,
-          		defaultOption:{
-          			legend: {
-          				left:0,
-          				orient:'horizontal',
-          				data:[]
-				    },
-				    grid:{
-				    	width:'auto',
-				    	height:'auto',
-				    	left:'10%',
-				    	right:'5%'
-				    },
-				     xAxis: {
-				        type: 'category',
-				        boundaryGap: false,
-				        data: []
-				    }, 
-				    yAxis: {
-				        type: 'value'
-				    },
-				    series: [],
-				    tooltip: {
-				        trigger: 'axis'
-				    },
-          		},
           		option: null,
-          		media:[{
-          			query: {
-			           maxWidth: 768,
-			           minWidth:400 
-
-			        },
-			        option:{
-			        	legend:{
-			        		orient:'horizontal',
-			        		//padding:10
-			        		left:"5%"
-			        	},
-			        	grid:{
-			        		left:"10%",
-			        		top:"10%"
-			        	}
-			        }
-          		},
-          		{
-          			query: {
-			           maxWidth: 400    
-			        },
-			        option:{
-			        	legend:{
-			        		orient:'vertical',
-			        		//padding:10
-			        		left:'20%'
-			        	},
-			        	grid:{
-			        		top:'25%',
-			        		left:'20%'
-			        	}
-			        }
-          		}]
+          		media: LINE_MEDIA_CONFIG
 			}
 		},
 		methods:{
@@ -224,16 +163,13 @@
 				}
 	       		for(let key in chart){
 	       			let tmp = chart[key]
-
-	       			xAxis.data.push(key)
+					xAxis.data.push(key)
 	       			series.fx.push(tmp.fx)
 	       			series.oil.push(tmp.oil)
 	       			series.metal.push(tmp.metal)
 	       			series.cfd.push(tmp.cfd)
 	       		}
-
-
-	       		this.option = Object.assign({},this.defaultOption,{
+				this.option = Object.assign({},LINE_OPTION_CONFIG,{
 	       			legend:legend,
 	       			xAxis:xAxis,
 	       			series: [
@@ -259,9 +195,7 @@
 	       				}
 	       			]
 	       		})
-
-	       		
-	       	},
+			},
 	       	open(){
 	       		this.$refs.panel.expandPanel()
 	       		if(this.isFirstShow){

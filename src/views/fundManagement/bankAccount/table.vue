@@ -129,19 +129,18 @@
       },
       deleteRow(id){
         this.editId = id;
-        this.$refs.confirmDeleteDailog.open();
+        this.$refs.confirmDeleteDailog.open()
       },
       closeConfirmDialog(status){
         if(status == 'ok'){
-          this.deleteData(this.editId);
+          this.deleteData(this.editId)
         }else{
-          this.editId = null;
+          this.editId = null
         }
       },
       editRow(id){
-          this.$emit("edit",id);
+          this.$emit("edit",id)
       }
-
     }
 }
 </script>

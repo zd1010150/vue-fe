@@ -1,7 +1,7 @@
 <template>
 	<div class="fluid-container">
-		<enrolled-training :trainings="enrolledTrainings"></enrolled-training>
-		<training-table :trainings="allTrainings"></training-table>
+		<enrolled-training :trainings="enrolledTrainings" @refresh="refresh"></enrolled-training>
+		<training-table :trainings="allTrainings" @refresh="refresh"></training-table>
 	</div>
 </template>
 <script>
@@ -16,18 +16,28 @@ export default{
 	},
 	data(){
 		return {
-			lanuage: this.$store.state.language,
+			language: this.$store.state.language,
 			allTrainings : []
 		}
 	},
 	methods:{
-		async fetchTraining(language){
+		async fetchTraining(){
 			this.$store.commit(SET_CONTENT_LOADING,true)
-			let {success,data} = await trainingService.getOnlineTraining(this.lanuage=="zh" ? "mandarin" : "english")
+			let {success,data} = await trainingService.getOnlineTraining(this.language == "zh" ? "mandarin" : "english")
 			this.$store.commit(SET_CONTENT_LOADING,false)
 			if(success){
 				this.allTrainings= data.paginatedList
 			}
+		},
+		refresh(){
+			this.fetchTraining()
+		}
+	},
+	watch:{
+		"$store.state.language" : function(val){
+			console.log(val)
+			this.language = val
+			this.fetchTraining()
 		}
 	},
 	computed:{

@@ -73,7 +73,7 @@
                       {{ $t('statusInfo.'+column) }}
                     </template>
                     <template v-else-if="columnIndex =='id'">
-                       <mu-flat-button  @click="detail(column)" label="detail">
+                       <mu-flat-button  @click="detail(column)" :label="$t('ui.button.detail')">
                         <i aria-hidden="true" class="fa fa-info-circle"></i> 
                        </mu-flat-button>
                     </template>

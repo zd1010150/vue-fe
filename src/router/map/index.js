@@ -13,6 +13,7 @@ import event from './event'
 import ticket from './ticket'
 export default [{
   path: "/",
+  redirect:'/main',
   component: Index,
   meta: {
     requiresAuth: true

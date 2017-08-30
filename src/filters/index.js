@@ -7,17 +7,17 @@ export default {
             hour = date.getUTCHours()
             minute = date.getUTCMinutes()
             second = date.getUTCSeconds()
-            return day + '/' + (month < 10 ? '0'+(month) : month) + '/' + year + ' ' + hour + ':' + minute + ':' + second
+            return (day< 10 ? ('0'+day) : day) + '/' + (month < 10 ? '0'+(month) : month) + '/' + year + ' ' + (hour < 10 ? ('0'+hour) : hour) + ':' + (minute < 10 ? ('0'+minute) : minute) + ':' + second
         },
         beijingDate: function(value){
-             let date = new Date (value + (1000*60*60*8)),
+            let date = new Date (value + (1000*60*60*8)),
                  year,
                  month,
                  day
             year = date.getUTCFullYear()
             month = date.getUTCMonth()+1
             day = date.getUTCDate()
-            return day + '/' + (month < 10 ? '0'+(month) : month) + '/' + year
+            return (day< 10 ? ('0'+day) : day) + '/' + (month < 10 ? '0'+(month) : month) + '/' + year
         },
         beijingTime:function(value){
             let date = new Date (value + (1000*60*60*8)),
@@ -27,6 +27,6 @@ export default {
             hour = date.getUTCHours()
             minute = date.getUTCMinutes()
             second = date.getUTCSeconds()
-            return hour + ':' + minute
+            return (hour < 10 ? ('0'+hour) : hour) + ':' + (minute < 10 ? ('0'+minute) : minute)
         }
 }

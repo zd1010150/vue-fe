@@ -1,12 +1,13 @@
+<i18n src="../i18n.yaml"></i18n>
 <template>
 	<div class="col-lg-12 col-md-12">
 		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-			 <template slot="title">Withdrawal</template>
+			 <template slot="title">{{ $t('withdrawal.withdrawal') }}</template>
 		     <chp-tabs :value="activeStepTab"  @change = "handleStepTabChange" type="wizard" slot="body">
 		      <template slot="header">
-		        <chp-tab-header href="tab1">Account</chp-tab-header>
-		        <chp-tab-header href="tab2">Profile</chp-tab-header>
-		        <chp-tab-header href="tab3">Confirm</chp-tab-header>
+		        <chp-tab-header href="tab1">{{ $t('withdrawal.account') }}</chp-tab-header>
+		        <chp-tab-header href="tab2">{{ $t('withdrawal.profile') }}</chp-tab-header>
+		        <chp-tab-header href="tab3">{{ $t('withdrawal.confirm') }}</chp-tab-header>
 		      </template>
 		      <template slot="content">
 				<chp-expand-transition name="chp-fade" >

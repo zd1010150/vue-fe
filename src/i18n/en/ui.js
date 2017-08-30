@@ -19,7 +19,8 @@ export default {
     closeIssue:"Close Issue",
     back:"Back",
     resetPwd: "Reset",
-    withdraw: "Withdraw"
+    withdraw: "Withdraw",
+    detail: "Detail"
   },
   datePicker:{
     startDate:"Start Date",

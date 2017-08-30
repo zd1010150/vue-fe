@@ -134,25 +134,9 @@ export const common= [
             {
               title: "videos",
               open: false,
-              routerLink: false,
-              subs: [{
-                title: 'stock',
-                to: '/training/videos/stock',
-                open: false,
-                routerLink: true
-              }, {
-                title: "analyse",
-                to: '/training/videos/analyse',
-                open: false,
-                routerLink: true
-              },
-                {
-                  title: "teaching",
-                  to: '/training/videos/teaching',
-                  open: false,
-                  routerLink: true
-                }]
-            },
+              routerLink: true,
+              to:"/training/videos"
+            }
           ]
         }
 
