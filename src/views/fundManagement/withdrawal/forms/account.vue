@@ -141,8 +141,8 @@ export default {
         this.$set(this.model,"mt4_id",this.defaultMT4 ? Number(this.defaultMT4) : this.MT4[0].id)
       },
       async validate(){
-        console.log(this.model,"validate");
-        let validateResult = await this.$validator.validateAll();
+        console.log(this.model,"validate")
+        let validateResult = await this.$validator.validateAll()
         validateResult = validateResult && await this.validateAmount(this.model.order_amount) && await this.validateBankCode(this.model.bank_code) ;
         if(validateResult){
           this.$emit("submit",this.model);
@@ -167,7 +167,6 @@ export default {
     },
     computed:{
       accounts:function(){
-
         return this.model.method && this.methodsAndAccounts && this.methodsAndAccounts[this.model.method] && this.methodsAndAccounts[this.model.method].accounts
       },
       baseCurrency:function(){
