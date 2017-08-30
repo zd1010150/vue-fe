@@ -1,7 +1,16 @@
 <template>
 
  <div class="date-picker-wrapper form-control">
-    <mu-date-picker :hintText="hintText" class="date-picker" :fullWidth="fullWidth" :minDate="minDate" :maxDate="maxDate" @input="input" @change = "change" :required='required'/>
+    <mu-date-picker 
+    :hintText="hintText" 
+    class="date-picker" 
+    :fullWidth="fullWidth" 
+    :minDate="minDate" 
+    :maxDate="maxDate" 
+    @input="input" 
+    @change = "change" 
+    :required='required'
+    :value='value'/>
     <span class="icon icon-lg icon-calendar">
       <i class="fa fa-calendar"></i>
     </span>

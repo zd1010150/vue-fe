@@ -1,3 +1,4 @@
+<i18n src="./i18n.yaml"></i18n>
 <template>
   <chp-table-card ref="card" class="data-table">
 
@@ -8,7 +9,7 @@
           <chp-select v-model="innerPageSize" class="pageSelect">
             <mu-menu-item v-for=" (option,index) in pageOptions" :key="index" :value="option" :title="String(option)"></mu-menu-item>
           </chp-select>
-          <span class="hidden-sm hidden-xs"> records per page</span>
+          <span class="hidden-sm hidden-xs"> {{ $t('perPage') }}</span>
         </div>
         <div class="col-md-8 col-xs-6 text-right" :class="{'col-md-offset-4':!canPaging,'col-xs-offset-6':!canPaging}">
           

@@ -1,16 +1,20 @@
 <i18n src="../../i18n.yaml"></i18n>
 <template lang="html">
 	<div class="row padding-20">
-		<p class="center-block" v-html="terms"></p>
-      	<div class="form-group" :class="errorClass('terms')">
-      		<div class="">
-        	<chp-checkbox  name="terms" nativeValue="checkedIterms" v-model="checkedIterms" data-vv-value-path="checkedIterms" v-validate="'required'" data-vv-name="terms" data-vv-validate-on="input" type="checkbox">
+		<p class="terms" v-html="terms"></p>
+    <div class="form-group" :class="errorClass('terms')">
+      	<chp-checkbox  name="terms" 
+                          nativeValue="checkedIterms" 
+                          v-model="checkedIterms" 
+                          data-vv-value-path="checkedIterms" 
+                          v-validate="'required'" 
+                          data-vv-name="terms" 
+                          data-vv-validate-on="input" 
+                          type="checkbox">
            {{ $t('withdrawal.note')}} 
-          </chp-checkbox>
-	        <span class=""></span>
-	        <br>
-	        <span slot="required" class="error" v-if="errors.has('terms:required')">{{errors.first('terms:required')}}</span>
-      </div>
+        </chp-checkbox>
+	      <br>
+	      <span slot="required" class="error" v-if="errors.has('terms:required')">{{errors.first('terms:required')}}</span>
     </div>
 	</div>
 </template>
@@ -56,4 +60,5 @@ export default {
    }
   }
 </script>
+
 

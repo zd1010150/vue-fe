@@ -22,9 +22,9 @@
 	</div>
 </template>
 <script>
-	import client from './client'
-	import treasury from './treasury'
-	import volume from './volume'
+	import client from './client/client'
+	import treasury from './treasury/treasury'
+	import volume from './volume/volume'
 	export default{
 		props:{
 			agent:[String,Number]
@@ -36,7 +36,7 @@
 		},
 		data(){
 			return {
-				activeTab:"treasury",
+				activeTab:"client",
 			}
 		},
 		methods:{

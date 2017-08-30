@@ -3,7 +3,7 @@
 
       <form slot="body" class="form-horizontal form-bordered " method="POST"  target="_blank" ref="accountForm">
        <div class="form-group" :class="errorClass('MT4')">
-          <label class="control-label col-md-3">MT4 | Balance
+          <label class="control-label col-md-3">MT4 | {{ $t('withdrawal.balance') }}
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6" >
@@ -16,20 +16,25 @@
           </div>
         </div>
         <div class="form-group" :class="errorClass('withdraw_pay')">
-          <label class="control-label col-md-3">Amount({{baseCurrency}})
+          <label class="control-label col-md-3"> 
+            {{ $t('withdrawal.amount') }} ({{baseCurrency}})
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6">
-            <mu-text-field v-model="model.order_amount" @input="amountInput" @blur="amountInput"  name="withdraw_pay"  class="form-control"   :fullWidth="true" />
-            
+            <mu-text-field v-model="model.order_amount" 
+                            @input="amountInput" 
+                            @blur="amountInput"  
+                            name="withdraw_pay"  
+                            class="form-control"   
+                            :fullWidth="true" />
+            <br>
             <span slot="required" class="error" v-if="errors.has('withdraw_pay:required')">{{errors.first('withdraw_pay:required')}}</span>
             <span slot="required" class="error" v-if="errors.has('withdraw_pay:positiveFloatMoney')">{{errors.first('withdraw_pay:positiveFloatMoney')}}</span>
-            
             <span slot="required" class="error" v-if="errors.has('withdraw_pay:moneyRange')">{{errors.first('withdraw_pay:moneyRange')}}</span>
           </div>
         </div>
         <div class="form-group" :class="errorClass('withdrawMethod')">
-          <label class="control-label col-md-3">Methods
+          <label class="control-label col-md-3"> {{ $t('withdrawal.methods') }}
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6" >
@@ -42,7 +47,8 @@
           </div>
         </div>
         <div class="form-group" :class="errorClass('bank_code')">
-          <label class="control-label col-md-3">Account
+          <label class="control-label col-md-3">
+            {{ $t('withdrawal.account') }}
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6" >
@@ -55,8 +61,8 @@
              <span slot="required" class="error" v-if="errors.has('bank_code:required')">{{errors.first('bank_code:required')}}</span>
           </div>
         </div>
-		    <div class="form-group">
-          <label class="control-label col-md-3">Fee({{baseCurrency}})</label>
+        <div class="form-group">
+          <label class="control-label col-md-3">{{ $t('withdrawal.fee') }} ({{baseCurrency}})</label>
           <div class="col-md-6">
             <mu-text-field v-model="fee" class="form-control"   :fullWidth="true" name="order_amount" :disabled="true"/>
           </div>
@@ -72,7 +78,7 @@ import fundsService from 'services/fundsService'
   
 export default {
   mixins:[validateMixin],
-	data(){
+  data(){
       return {
         MT4 : [],
         defaultMT4:0,
@@ -117,15 +123,15 @@ export default {
    },
     methods:{
       
-    	async fetchMethodsAccounts(){
+      async fetchMethodsAccounts(){
         let {success,data} = await fundsService.getWithdrawMethod(this.$store.state.language)
         if(success && data){
           this.methodsAndAccounts = data;
           
         }
-    	},
-    	fetchMT4(){
-    		this.MT4 = this.$store.state.mt4Accounts.map((mt4)=>{
+      },
+      fetchMT4(){
+        this.MT4 = this.$store.state.mt4Accounts.map((mt4)=>{
           return {
             id:mt4.mt4_id,
             text:"#"+mt4.mt4_id+" | "+mt4.balance,
@@ -172,16 +178,15 @@ export default {
       }
     },
     created(){
-    	this.$emit("loading",true)
+      this.$emit("loading",true)
       this.$validator.attach("bank_code","required")
       this.$validator.attach('withdraw_pay','required|positiveFloatMoney')
       this.defaultMT4 = this.$route.query && this.$route.query.mt4Id ? this.$route.query.mt4Id+"" : ""
-     this.fetchMT4()
+      this.fetchMT4()
       let self = this
-    	Promise.all([this.fetchMethodsAccounts()]).then(function(){
+      Promise.all([this.fetchMethodsAccounts()]).then(function(){
             self.$emit("loading",false)
       });
     }
   }
 </script>
-

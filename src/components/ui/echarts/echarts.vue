@@ -4,13 +4,12 @@
 </template>
 <script>
 	import  echarts from 'echarts'
-	
 	export default{
 		data(){
 			return {
 				el:"",
 				theme:this.$store.state.theme,
-				innerOption:this.option,
+				innerOption:this.externalOption,
 				myChart:null,
 				style:{
 					width:this.width,
@@ -37,13 +36,14 @@
 					}
 				}],
 				innerMedia:this.media
+				
 			}
 		},
 		props:{
 			externalOption:{
 				type:Object,
 				default:function(){
-					return {};
+					return {}
 				}
 			},
 			width:{
@@ -53,13 +53,15 @@
 				default:''
 
 			},
-			media:Array
+			media:{
+				type:Array
+			}
 			
 		},
 		methods:{
 			initEcharts(){
 				if(this.myChart && (!this.myChart.isDisposed())){ //为了重新切换主题，必须disposed reference https://github.com/ecomfe/echarts/issues/4607
-					this.myChart.dispose();
+					this.myChart.dispose()
 				}
 				this.myChart = echarts.init(this.el,this.theme);
 				this.rerender();
@@ -75,11 +77,7 @@
 				let self = this
 				this.$emit("resize")
 				window.requestAnimationFrame(()=>{
-					// self.myChart.setOption({ 
-					// baseOption:this.innerOption,
-					// media:this.innerMedia && this.innerMedia.length > 0 ? this.innerMedia : this.defaultMedia
-					// });
-						self.myChart.resize();
+						self.myChart.resize()
 					})
 			},
 			attachEvent(){
@@ -90,17 +88,17 @@
 		},
 		watch:{
 			"$store.state.theme":function(val,oldVal){
-				if(val == oldVal) return;
-				this.theme = val;
-				this.initEcharts();
+				if(val == oldVal) return
+				this.theme = val
+				this.initEcharts()
 			},
 			externalOption:function(val){
-				this.innerOption = val;
-				this.rerender();
+				this.innerOption = val
+				this.rerender()
 			},
 			media:function(val){
-				this.innerMedia = val;
-				this.rerender();
+				this.innerMedia = val
+				this.rerender()
 			},
 			"$store.state.leftSideBarStatus":function(){
 				this.resize();
@@ -108,9 +106,8 @@
 		},
 		mounted(){
 			this.el = this.$el
-			this.innerOption = this.externalOption
-			this.initEcharts();
-			this.attachEvent();
+			this.initEcharts()
+			this.attachEvent()
 		},
 		beforeDestroy(){
 			window.removeEventListener('resize',this.resize)

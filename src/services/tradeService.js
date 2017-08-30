@@ -23,19 +23,19 @@ export default{
   /**
    * 代理账号的新用户和有效用户折线图
    */
-  async getAccountsAndActiveClient({mt4_id,start_date,end_date}){
+  async getAccountsAndActiveClient({mt4_id,start_date='',end_date=''}){
     return fetchData('GET','/agent/clients/cumulative',{mt4_id,start_date,end_date})
   },
   /**
    * 有效账户和所有账户的比例饼图
    */
-  async getPerceptionActiveClient({mt4_id,start_date,end_date}){
+  async getPercentageActiveClient({mt4_id,start_date='',end_date=''}){
     return fetchData('GET','/agent/clients/activation',{mt4_id,start_date,end_date})
   },
   /**
-   * 代理有效账户和净入金图
+   * 代理有效账户和净入金折线图和区域图
    */
-  async getActiveAndNetDeposite({mt4_id,start_date,end_date}){
+  async getActiveAndNetDeposite({mt4_id,start_date='',end_date=''}){
     return fetchData('GET','/agent/clients/contribution',{mt4_id,start_date,end_date})
   }
 

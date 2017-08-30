@@ -7,7 +7,7 @@
 	</div>
 </template>
 <script>
-	import timePicker from './timePicker'
+	import timePicker from '../timePicker'
 	export default{
 		components:{
 			'agent-statistics-time-picker' : timePicker
