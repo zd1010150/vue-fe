@@ -6,6 +6,7 @@
                       :pageSize = "pageSize"
                       :rowsTotal = "rowsTotal"
                       :pageOptions = "pageOptions"
+                      :canAdd = "false"
                       @toggleDisplayFilterToolbar="toggleDisplayFilterToolbar"
                       @pageSizeChange="pageSizeChange"
                       @pageNumberChange="pageNumberChange"

@@ -1,12 +1,14 @@
+<i18n src="../i18n.yaml"></i18n>
 <template>
 	<div class="col-lg-12 col-md-12">
 		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-	      <template slot="title">Withdrawal History</template>
+	      <template slot="title">{{ $t('internalTransfer.internalTransferHistory') }}</template>
 	      	<chp-data-table slot="body" 
                       :isDisplayFilterToolbar="isDisplayFilterToolbar"
                       :pageSize = "pageSize"
                       :rowsTotal = "rowsTotal"
                       :pageOptions = "pageOptions"
+                      :canAdd = "false"
                       @toggleDisplayFilterToolbar="toggleDisplayFilterToolbar"
                       @pageSizeChange="pageSizeChange"
                       @pageNumberChange="pageNumberChange"
@@ -52,17 +54,16 @@
 		<chp-table slot="table" chp-sort="calories" chp-sort-type="desc" @sort="sortRow" >
           <chp-table-header>
             <chp-table-row>
-              <chp-table-head chp-sort-by="order_time">Time</chp-table-head>
-              <chp-table-head chp-sort-by="mt4_id" width="100px">Account</chp-table-head>
-              <chp-table-head chp-sort-by="method" width="100px">Method</chp-table-head>
-              <chp-table-head chp-sort-by="top_up_amount" chp-numeric>Amount</chp-table-head>
-              <chp-table-head chp-sort-by="currency_type">Currency</chp-table-head>
-              <chp-table-head chp-sort-by="trade_status">Status</chp-table-head>
+              <chp-table-head chp-sort-by="created_at">{{ $t('internalTransfer.time') }}</chp-table-head>
+              <chp-table-head chp-sort-by="origin_login" width="100px">{{ $t('internalTransfer.fromAccount') }}</chp-table-head>
+              <chp-table-head chp-sort-by="target_login" width="100px">{{ $t('internalTransfer.toAccount') }}</chp-table-head>
+              <chp-table-head chp-sort-by="money">{{ $t('internalTransfer.amount') }}</chp-table-head>
+              <chp-table-head chp-sort-by="trade_status">{{ $t('internalTransfer.status') }}</chp-table-head>
 			</chp-table-row>
           </chp-table-header>
 		  <chp-table-body>
             <chp-table-row v-for="(row, rowIndex) in histories" :key="rowIndex"  :chp-selection="chpSelection">
-              <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :chp-numeric="columnIndex == 'top_up_amount' ">
+              <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" >
               {{column}}
               </chp-table-cell>
             </chp-table-row>
@@ -137,11 +138,10 @@
           
       	this.histories = originData.map(function(row,index) {
             return {
-      				order_time : row.order_time,
-      				mt4_id : row.mt4_id,
-      				method : row.method,
-      				top_up_amount: row.top_up_amount,
-      				currency_type: row.currency_type,
+      				created_at : row.created_at,
+      				origin_login : row.origin_login,
+      				target_login : row.target_login,
+      				money: row.money,
       				trade_status: row.trade_status
 				    }
       		})

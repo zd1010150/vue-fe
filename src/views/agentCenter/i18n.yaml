@@ -1,4 +1,5 @@
-en: 
+en:
+  clientList: "Client List" 
   remainLots : "Number of standard lots required to next level"
   getBonus: "Get Bonus"
   activityTerms: "Terms and Conditions"
@@ -20,7 +21,12 @@ en:
       money: "USD"
     terms: "《Terms and Conditions》"
     iAgree: "I agree with"
+  marketingMaterial:
+    video: "Video"
+    banner: "Banner"
+    copy: "Copy URL"
 zh:
+  clientList: "客户列表" 
   remainLots : "到下一等级还需交易手数"
   getBonus: "点我领奖"
   activityTerms: "活动条款和细则"
@@ -42,6 +48,10 @@ zh:
       money: "USD"
     terms: "《条款和条件》"
     iAgree: "我同意"
+  marketingMaterial:
+    video: "视频"
+    banner: "Banner"
+    copy: "复制URL"
   
 
   

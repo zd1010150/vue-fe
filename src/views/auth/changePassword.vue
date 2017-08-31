@@ -4,7 +4,7 @@
   <chp-pwd-layout>
     <form slot="body" @submit.prevent="changePassword">
       <div class="current-user text-center">
-        <img :src=" $store.state.userInfo.avatar " alt="$store.state.userInfo.name" class="img-circle user-image">
+        <img :src=" $store.state.userInfo.avatar " :alt="$store.state.userInfo.name" class="img-circle user-image">
         <h2 class="user-name text-dark m-none">{{ $store.state.userInfo.name }}</h2>
         <p class="user-email m-none">{{ $store.state.userInfo.email }}</p>
       </div>

@@ -2,8 +2,8 @@
  * 页面标题
  */
 export default {
-	dashboard:"Doshboard",
-  depositeFunds:"Deposite Funds",
+	dashboard:"Dashboard",
+  depositeFunds:"Deposit Funds",
   bankAccount:"Bank Account",
   withdrawal:"Withdrawal",
   internalTransfer: "Internal Transfer",

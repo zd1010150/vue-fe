@@ -2,7 +2,7 @@
 <template>
 	<div class="col-lg-12 col-md-12">
 		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-	      <template slot="title">银行卡管理</template>
+	      <template slot="title">{{ $t('bankcard.bankCardRecord') }}</template>
       	<chp-data-table slot="body" :isDisplayFilterToolbar="false" :canFilter = "false" :canPaging="false">
         <template slot="addToolbar">
           <chp-button class=" btn btn-primary mr-xs" @click="add">
@@ -28,6 +28,7 @@
                       <i class="fa fa-paperclip" aria-hidden="true"></i>
                     </mu-icon-button>  
                     <template v-else-if="columnIndex == 'status'">
+                      <chp-tooltip chp-direction="bottom" v-if="column == 2 ">{{ originData[rowIndex].comment}}</chp-tooltip>
                       {{$t('bankcard.bankStatus.'+column)}}
                     </template>
                     <template v-else-if="columnIndex =='id'">
@@ -92,8 +93,7 @@
         this.originData = originData;  
       	this.bankCards = originData.map(function(row,index) {
             return {
-              
-      				method : row.method,
+              method : row.method,
       				bank_name : row.bank_name,
       				account : row.account,
       				swift : row.swift,

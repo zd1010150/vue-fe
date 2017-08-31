@@ -2,13 +2,13 @@
 <template>
 	<div class="col-lg-6 col-md-6 col-xs-12 text-right p-none operate">
 		<chp-button class="mb-xs mt-xs  btn btn-primary print-btn" @click="modifyPwd">
-	       改变密码
+	        {{ $t('changePwd') }}
 	    </chp-button>
        	<chp-button class="mb-xs mt-xs  btn btn-primary print-btn" @click="withdrawal">
-       	出金
+       		{{ $t('withdraw') }}
       	</chp-button>
 		<chp-button class="mb-xs mt-xs  btn btn-primary print-btn" @click="deposite">
-			入金
+			{{ $t('deposit') }}
 		</chp-button>
 	</div>
 </template>

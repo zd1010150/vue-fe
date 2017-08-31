@@ -33,5 +33,10 @@ export default {
   },
   textFiled:{
     keywords: "搜索关键字"
+  },
+  upload:{
+    tips: "点击或者拖动文件到本区域上传",
+    accepts : "只接受以下文件类型",
+    attachment : "附件"
   }
 }
