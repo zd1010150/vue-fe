@@ -50,7 +50,8 @@
 				this.refresh()
 			},
 			totalChange(val){
-				this.totaltreasurys = Object.assign({},val)
+				console.log("*****",val)
+				this.totalTreasurys = Object.assign({},val)
 			}
 		},
 		watch:{
