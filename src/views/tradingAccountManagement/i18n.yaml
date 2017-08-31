@@ -8,6 +8,13 @@ en:
   basecurrency: "Base Currency"
   reason: "Reason"
   modifyPwdNotification: " Please check the modification password email"
+  changePwd: "Change Password"
+  withdraw: "Withdrawal"
+  deposit: "Deposit"
+  type: "Type"
+  account: "Account"
+  detail: "Detail"
+  close: "Close"
 zh:
   applicationSubaccount:
     agreenTerms: "我同意<<条款和须知>>"
@@ -18,4 +25,11 @@ zh:
   basecurrency: "基础货币"
   reason: "申请理由"
   modifyPwdNotification: "请查收修改密码邮件"
+  changePwd: "更改密码"
+  withdraw: "出金"
+  deposit: "入金"
+  type: "类型"
+  account: "账户"
+  detail: "详情"
+  close: "关闭"
   

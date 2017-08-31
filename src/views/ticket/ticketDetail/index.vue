@@ -7,10 +7,10 @@
     			
                 <div class="title col-lg-6 col-md-6 col-sm-12">
                     <h4 class="pb-none m-none">{{$t("subject")}}:{{ ticket.subject }}</h4>
-                    <p>
-                        Ticket for account 
+                    <p class="pt-sm">
+                        {{ $t('ticketForAccount') }}
                         <span class="text-primary"> {{ ticket.account_no}} </span>
-                        about 
+                        {{ $t('about') }} 
                         <span class="text-primary">{{ $t("type."+ticket.type)}}</span> 
                     </p>
                 </div>

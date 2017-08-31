@@ -2,7 +2,7 @@
 <template>
 	<div class="col-lg-12 col-md-12">
 		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-	      <template slot="title">Ticket List</template>
+	      <template slot="title">{{ $t('tickList') }}</template>
       	<chp-data-table 
         slot="body" 
         :isDisplayFilterToolbar="isDisplayFilterToolbar" 
@@ -55,35 +55,38 @@
           </div>
         
         <!--过滤操作的toolbar end-->
-        <chp-table slot="table" chp-sort="calories" chp-sort-type="desc">
-              <chp-table-header>
-                <chp-table-row>
-				  <chp-table-head chp-sort-by="method">{{ $t('time') }}</chp-table-head>
-                  <chp-table-head >{{ $t('account') }}</chp-table-head>
-                  <chp-table-head >{{ $t('questionType')}}</chp-table-head>
-                  <chp-table-head >{{ $t('subject')}}</chp-table-head>
-                  <chp-table-head>{{ $t('status')}}</chp-table-head>
-                  <chp-table-head >{{ $t('actions')}}</chp-table-head>
-    			</chp-table-row>
-              </chp-table-header>
-    		  <chp-table-body>
-                <chp-table-row v-for="(row, rowIndex) in tickets" :key="rowIndex">
-                  <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" >
-                    <template v-if="columnIndex == 'status'">
-                      {{ $t('statusInfo.'+column) }}
-                    </template>
-                    <template v-else-if="columnIndex =='id'">
-                       <mu-flat-button  @click="detail(column)" :label="$t('ui.button.detail')">
-                        <i aria-hidden="true" class="fa fa-info-circle"></i> 
-                       </mu-flat-button>
-                    </template>
-                    <template v-else>
-                      {{column}}
-                    </template>
-                  </chp-table-cell>
-                </chp-table-row>
-              </chp-table-body>
-            </chp-table>
+          <chp-table slot="table" chp-sort="calories" chp-sort-type="desc" @sort="sortRow">
+            <chp-table-header>
+              <chp-table-row>
+  		          <chp-table-head chp-sort-by="created_at">{{ $t('time') }}</chp-table-head>
+                <chp-table-head >{{ $t('account') }}</chp-table-head>
+                <chp-table-head >{{ $t('questionType')}}</chp-table-head>
+                <chp-table-head >{{ $t('subject')}}</chp-table-head>
+                <chp-table-head>{{ $t('status')}}</chp-table-head>
+                <chp-table-head >{{ $t('actions')}}</chp-table-head>
+      			  </chp-table-row>
+            </chp-table-header>
+      		  <chp-table-body>
+              <chp-table-row v-for="(row, rowIndex) in tickets" :key="rowIndex">
+                <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" >
+                  <template v-if="columnIndex == 'status'">
+                    {{ $t('statusInfo.'+column) }}
+                  </template>
+                  <template v-else-if="columnIndex == 'type'">
+                    {{ $t('type.'+column) }}
+                  </template>
+                  <template v-else-if="columnIndex =='id'">
+                     <mu-flat-button  @click="detail(column)" :label="$t('ui.button.detail')">
+                      <i aria-hidden="true" class="fa fa-info-circle"></i> 
+                     </mu-flat-button>
+                  </template>
+                  <template v-else>
+                    {{column}}
+                  </template>
+                </chp-table-cell>
+              </chp-table-row>
+            </chp-table-body>
+          </chp-table>
         </chp-data-table>
       </chp-panel>
    </div>
@@ -106,6 +109,7 @@
           rowsTotal:100,
           pageOptions:[5,10,20,30],
           tickets: null,
+          sort: "",
           model:{
             start_time:"",
             end_time:""

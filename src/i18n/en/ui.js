@@ -36,6 +36,7 @@ export default {
   },
   upload:{
     tips: "Drop File Here or Click to Upload",
-    accepts : "Only Accept"
+    accepts : "Only Accept",
+    attachment : "Attachment"
   }
 }

@@ -2,16 +2,19 @@
 <template>
 <div class="col-lg-12 col-md-12">
  <chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-  <template slot="title">Add New Ticket</template>
+  <template slot="title">{{ $t('addNew') }}</template>
   <form slot="body" class="form-horizontal form-bordered ">
     
     <div class="form-group" :class="errorClass('account')">
       <label class="control-label col-md-3">
-      	Account
+      	{{ $t('account') }}
        <span class="required" aria-required="true">*</span>
        </label>
       <div class="col-md-6" >
-        <chp-select v-model="model.account_no" v-validate="'required'" data-vv-value-path="model.account_no" data-vv-name="account" >
+        <chp-select v-model="model.account_no" 
+                    v-validate="'required'" 
+                    data-vv-value-path="model.account_no" 
+                    data-vv-name="account" >
           <template v-for="mt4 in originMt4">
             <mu-menu-item :value="mt4.id" :title="mt4.text" key="mt4.id"/>
           </template>
@@ -20,9 +23,10 @@
       </div>
     </div>
     <div class="form-group" :class="errorClass('questionType')">
-      <label class="control-label col-md-3">Question  Type
-       <span class="required" aria-required="true">*</span>
-       </label>
+      <label class="control-label col-md-3">
+        {{ $t('questionType') }}
+        <span class="required" aria-required="true">*</span>
+      </label>
       <div class="col-md-6" >
         <chp-select v-model="model.type" v-validate="'required'" data-vv-value-path="model.type" data-vv-name="questionType" >
           <template v-for="(q,key) in questionType">
@@ -33,7 +37,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-md-3">Subject</label>
+      <label class="control-label col-md-3">{{ $t('subject') }}</label>
       <div class="col-md-6">
         <mu-text-field v-model="model.subject" class="form-control" :fullWidth="true" />
       </div>
@@ -41,12 +45,14 @@
     
     <div class="form-group">
           <label class="control-label col-md-3">
-          Attachment
+          {{ $t('attach') }}
           </label>
           <div class="col-md-6" >
           <transition-group name="chp-fade" mode="out-in">
             <div v-show="model.attachment.length > 0" key="attachment">
-              <a :href="model.attachment"  target="_blank">附件</a>
+              <a :href="model.attachment"  target="_blank">
+                {{ $t('ui.upload.attachment') }} 
+              </a>
               <mu-icon-button @click.stop="deleteDocument"><i class="fa fa-times" aria-hidden="true"></i></mu-icon-button>
             </div>
             <div v-show="model.attachment.length <=0 "  key="upload" >
@@ -61,8 +67,8 @@
               @input="dropInputFunction" 
               ref="dropUploads" class="form-control dropFileArea">  
               <div class="dropFileAreaDiv">
-                  <h6> Drop File Here or Click to Upload </h6>
-                  <P>Only Accept: png, jpg,jpeg,bmp</P>
+                  <h6> {{ $t('ui.upload.tips') }} </h6>
+                  <P> {{ $t('ui.upload.accepts') }}: png, jpg,jpeg,bmp</P>
               </div>
             </chp-file-upload> 
             </div>
@@ -72,7 +78,7 @@
          </div>
     </div>
     <div class="form-group" :class="errorClass('content')">
-      <label class="control-label col-md-3">Content
+      <label class="control-label col-md-3">{{ $t('content') }}
       <span class="required" aria-required="true">*</span></label>
       <div class="col-md-6" >
          <mu-text-field 

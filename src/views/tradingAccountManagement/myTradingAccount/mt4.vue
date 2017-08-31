@@ -1,22 +1,22 @@
-
+<i18n src="../i18n.yaml"></i18n>
 <template>
 	<div class="row pt-none">
 			<div class="col-lg-12 col-md-12">
 			<section class="one-mt4-section pb-lg">
 				<header class="clearfix bottom-2px-border pb-sm pt-sm">
 					<div class="col-lg-6 col-md-6 col-xs-12 mt4-account p-none">
-						<span class="mt4-title">MT4 Account:</span>
+						<span class="mt4-title">MT4 {{ $t('account') }}:</span>
 						<strong class="amount mt4 text-dark">{{ mt4.mt4_id}}</strong>
-				    	<span class="text-primary pl-sm">(Type:{{mt4.account_type}})</span>	
+				    	<span class="text-primary pl-sm">({{ $t('type') }} :{{ mt4.account_type }})</span>	
 					</div>
 					<operate-trading-account :mt4Id="mt4.mt4_id"></operate-trading-account>	
 				</header>
 				<div class="charts pt-lg">
 					<table  class="subtitle small-screen">
 						<tr>
-							<td>Balance:</td>
-							<td>Currency:</td>
-							<td>Leverage:</td>
+							<td>{{ $t('trade.balance') }}:</td>
+							<td>{{ $t('trade.currency') }}:</td>
+							<td>{{ $t('trade.leverage') }}:</td>
 						</tr>
 						<tr>
 							<td class="info-number text-dark">{{ mt4.balance}}</td>
@@ -32,8 +32,8 @@
 					</table>
 					<chp-panel  :canCollapse="true" 
 								:canClose="false" 
-								collapsePanelText="detaile"
-					 			expandPanelText="close" 
+								:collapsePanelText="$t('detail')"
+					 			:expandPanelText="$t('close')" 
 					 			:isHeaderTransparent="true" 
 					 			:showActionRipple="false"  
 								:isLoading="loadingStatus" 
@@ -42,11 +42,11 @@
 								:defaultStatus="defaultStatus"
 					>
 						<dl slot="subtitle" class="subtitle clearfix big-screen">
-							<dt class="info-title">Balance</dt>
+							<dt class="info-title">{{ $t('trade.balance') }}</dt>
 							<dd class="amount info-number text-dark">{{ mt4.balance}}</dd>
-							<dt class="info-title">Currency</dt>
+							<dt class="info-title">{{ $t('trade.currency') }}</dt>
 							<dd class="amount info-number text-dark">{{ mt4.base_currency}}</dd>
-							<dt class="info-title">Leverage</dt>
+							<dt class="info-title">{{ $t('trade.leverage') }}</dt>
 							<dd class="amount info-number text-dark leverage">
 								<chp-select :value="''+mt4.leverage" @change="changeLeverage">
 					              <template v-for="(l,index) in leverages">

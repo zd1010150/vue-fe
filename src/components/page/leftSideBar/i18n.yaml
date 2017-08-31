@@ -13,7 +13,7 @@ en:
     fundManagement: "Fund Management"
     depositeFunds: "Deposit Funds"
     withdrawal: "Withdrawal"
-    internalTransfer: "InternalTransfer"
+    internalTransfer: "Internal Transfer"
     bankAccount: "Bank Account"
     agentCenter: "Agent Center"
     agentActivity: "Agent Activity"

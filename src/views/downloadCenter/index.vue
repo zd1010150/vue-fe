@@ -1,9 +1,10 @@
+<i18n src="./i18n.yaml"></i18n>
 <template>
 	<div class="container-fluid" >
 	   <h3>META Trader 4</h3>
 	    <div class="row">
 	    	<div class="col-lg-5 col-md-5">
-				<h4>PC platform</h4>
+				<h4>{{ $t('pcPlatform') }}</h4>
 		    	<section class="panel panel-featured-left panel-featured-primary platform" :class="{ 'selected' : type== 'desktop'}" @click="openPage('desktop')">
 					<div class="panel-body">
 						<div class="widget-summary">
@@ -14,9 +15,9 @@
 							</div>
 							<div class="widget-summary-col padding-10" >
 								<div class="summary">
-									<h4 class="title ">Windows-Desktop</h4>
+									<h4 class="title ">{{ $t('windowsDesktop') }}</h4>
 									<div class="info">
-										<span class="">PC platform for desktop</span>
+										<span class="">{{ $t('pc') }}</span>
 									</div>
 								</div>
 							</div>
@@ -27,7 +28,7 @@
 	    </div>
 	    <div class="row">
 	    		<div class="col-lg-5 col-md-5">
-			    	<h4>Web Platform</h4>
+			    	<h4>{{ $t('webPlatform') }}</h4>
 			    	<section class="panel panel-featured-left panel-featured-primary platform" :class="{ 'selected' : type== 'browsers'}" @click="openPage('browsers')">
 						<div class="panel-body">
 							<div class="widget-summary">
@@ -38,9 +39,9 @@
 								</div>
 								<div class="widget-summary-col padding-10" >
 									<div class="summary">
-										<h4 class="title ">Web Platform</h4>
+										<h4 class="title ">{{ $t('webpagePlatform') }}</h4>
 										<div class="info">
-											Web Platform for browser
+											{{ $t('web') }}
 										</div>
 									</div>
 								</div>
@@ -51,7 +52,7 @@
 	    </div>
 	    <div class="row">
 	    		<div class="col-lg-12 col-md-12 download-center-mobile">
-		    	<h4 class="download-center-mobile-title">Mobile Platform</h4>
+		    	<h4 class="download-center-mobile-title">{{ $t('mobilePlatform')}}</h4>
 		    	<div class="col-lg-5 col-md-5">
 			    	<section class="panel panel-featured-left panel-featured-primary platform" :class="{ 'selected' : type== 'ios'}" @click="openPage('ios')">
 						<div class="panel-body">
@@ -65,7 +66,7 @@
 									<div class="summary">
 										<h4 class="title ">IOS</h4>
 										<div class="info">
-											Mobile Platform for iPhone
+											{{ $t('ios') }}
 										</div>
 									</div>
 								</div>
@@ -87,7 +88,7 @@
 									<div class="summary">
 										<h4 class="title ">Android</h4>
 										<div class="info">
-											Mobile Platform for Android
+											{{ $t('android') }}
 										</div>
 									</div>
 								</div>

@@ -1,7 +1,7 @@
 <template>
 	<div class="tab">
 		<agent-statistics-time-picker @research = "research" :agent="agent">
-			this is client
+			
 		</agent-statistics-time-picker>
 		<agent-statistics-client-chart-1 ref="chart1" ></agent-statistics-client-chart-1>
 		<agent-statistics-client-chart-2 ref="chart2" ></agent-statistics-client-chart-2>

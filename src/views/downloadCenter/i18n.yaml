@@ -1,0 +1,21 @@
+zh:
+  pcPlatform: "MT4 桌面版"
+  webPlatform: "MT4 浏览器版"
+  mobilePlatform: "MT4 移动应用"
+  windowsDesktop: "windows应用"
+  pc: "基于windows操作系统"
+  webpagePlatform: "网页交易平台"
+  web: "基于浏览器的跨平台应用"
+  ios : "iPhone版"
+  android: "安卓版"
+en: 
+  pcPlatform: "PC Platform"
+  webPlatform: "Web Platform"
+  mobilePlatform: "Mobile Platform"
+  windowsDesktop: "Windows Desktop"
+  pc: "PC Platform for desktop"
+  webpagePlatform: "Website Platform"
+  web: "Based on browser"
+  ios : "Mobile Platform for iPhone"
+  android: "Mobile Platform for Android"
+

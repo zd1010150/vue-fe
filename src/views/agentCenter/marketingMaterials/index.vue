@@ -1,11 +1,12 @@
+<i18n src="../i18n.yaml"></i18n>
 <template>
 	<div class="fluid-container">
 	<div class="row">
 		<div class="col-lg-12 col-md-12">
 			<chp-tabs :isJustified="true"  :value="activeStepTab"  @change = "handleStepTabChange">
       			<template slot="header">
-	        		<chp-tab-header href="tab1">Account</chp-tab-header>
-	       			 <chp-tab-header href="tab2">Profile</chp-tab-header>
+	        		<chp-tab-header href="tab1">{{ $t('marketingMaterial.banner') }}</chp-tab-header>
+	       			 <chp-tab-header href="tab2">{{ $t('marketingMaterial.video') }}</chp-tab-header>
 	      		</template>
       			<template slot="content">
       			 	<chp-tab-content id="tab1" class="row">
@@ -24,7 +25,7 @@
 								<p class="size pt-sm">Image Size:600*120</p>
 								<p class="copy">
 									<chp-button class="mb-xs mt-xs  btn btn-primary print-btn" >
-										copy URL
+										{{ $t('marketingMaterial.copy') }}
 									</chp-button>	
 								</p>
 							</section>

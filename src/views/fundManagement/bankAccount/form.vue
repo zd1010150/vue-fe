@@ -5,8 +5,8 @@
 	 <template slot="title">{{ editObj? $t('bankcard.editBtnText') : $t('bankcard.newBtnText')}}</template>
      <chp-tabs :value="activeStepTab"  @change = "handleStepTabChange" type="wizard" slot="body">
       <template slot="header">
-        <chp-tab-header href="tab1">Account</chp-tab-header>
-        <chp-tab-header href="tab2">Profile</chp-tab-header>
+        <chp-tab-header href="tab1">{{ $t('bankcard.account') }}</chp-tab-header>
+        <chp-tab-header href="tab2">{{ $t('bankcard.profile') }}</chp-tab-header>
       </template>
       <template slot="content">
 		<chp-expand-transition name="chp-fade" >
