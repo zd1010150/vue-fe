@@ -37,6 +37,18 @@ export default{
    */
   async getActiveAndNetDeposite({mt4_id,start_date='',end_date=''}){
     return fetchData('GET','/agent/clients/contribution',{mt4_id,start_date,end_date})
-  }
+  },
+  /**
+   * 代理的出入金折线图
+   */
+  async getWithdrawalAndDeposit({mt4_id,start_date='',end_date=''}){
+    return fetchData('GET','/agent/treasury/transations',{mt4_id,start_date,end_date})
+  },
+  /**
+   * 代理的佣金折线图
+   */
+  async getCommission({mt4_id,start_date='',end_date=''}){
+    return fetchData('GET','/agent/treasury/commissioins',{mt4_id,start_date,end_date})
+  },
 
 }

@@ -25,6 +25,10 @@ en:
     video: "Video"
     banner: "Banner"
     copy: "Copy URL"
+  charts:
+    withdrawlAndDepositLineChart: "Withdrawal & Deposit Statistics"
+    commissionPieChart: "Commission Statistics"
+    historyTotalCommission: "History Total Commissions"
 zh:
   clientList: "客户列表" 
   remainLots : "到下一等级还需交易手数"
@@ -52,6 +56,10 @@ zh:
     video: "视频"
     banner: "Banner"
     copy: "复制URL"
+  charts:
+    withdrawlAndDepositLineChart: "出入金信息统计"
+    commissionPieChart: "佣金统计"
+    historyTotalCommission: "历史总佣金"
   
 
   

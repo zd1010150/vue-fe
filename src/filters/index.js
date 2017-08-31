@@ -28,5 +28,16 @@ export default {
             minute = date.getUTCMinutes()
             second = date.getUTCSeconds()
             return (hour < 10 ? ('0'+hour) : hour) + ':' + (minute < 10 ? ('0'+minute) : minute)
+        },
+        /**
+         * yyyy-mm-dd to dd/mm/yyyy 
+         */
+        reverseDate: function(val){
+            if(!val)return ""
+            try{
+                return val.split("-").reverse().join("/")
+            }catch(e){
+                return ""
+            }
         }
 }

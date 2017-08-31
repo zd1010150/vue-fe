@@ -128,7 +128,19 @@
 				        data: []
 				    },
 				    lots = this.$t("trade.lots"),
-				    legendData = [this.$t('trade.fx'),this.$t('trade.oil'),this.$t('trade.metal'),this.$t('trade.cfd')],
+				    legendData = [{
+				    	name:this.$t('trade.fx'),
+				    	icon:'circle'
+				    },{
+				    	name:this.$t('trade.oil'),
+				    	icon:'circle'
+				    },{
+				    	name:this.$t('trade.metal'),
+				    	icon:'circle'
+				    },{
+				    	name:this.$t('trade.cfd'),
+				    	icon:'circle'
+				    }],
 				    chart = data.chart,
 				    total = [
 				    			{

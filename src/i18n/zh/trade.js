@@ -15,4 +15,11 @@ export default{
   doneLots : "已交易手数",
   com : "佣金",
   totalCom: "总佣金",
+  netDeposit: "净入金",
+  trader: "客户",
+  withdrawal: "出金",
+  deposit : "入金",
+  totalWithdrawal: "总出金",
+  totalDeposit: "总入金",
+  withdrawaledCom: "已提取佣金"
 }

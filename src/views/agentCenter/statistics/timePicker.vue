@@ -1,13 +1,14 @@
 <template>
-	<div class="row">
-		<div class="col-left">
+	<div class="row pb-sm pr-md">
+		<div class="col-left pl-lg pb-sm">
 			<slot></slot>
+
 		</div>
 		<div class="col-right">
-			
 			<form class="form-inline">
 		        <div class="form-group" :class="errorClass('startDate')">
-		            <chp-date-picker :hintText="$t('ui.datePicker.startDate')" 
+		            <chp-date-picker :hintText="$t('ui.datePicker.startDate')"
+		            			  class="date start-date" 
 						          v-model.lazy="model.start_date" 
 						          :fullWidth="true" 
 						          :required="true"  
@@ -26,6 +27,7 @@
 		        </div>
 		        <div class="form-group " :class="errorClass('endDate')">
 		           <chp-date-picker :hintText="$t('ui.datePicker.endDate')" 
+		           					class="date end-date" 
 							        :minDate = "minEndDate"
 							        :maxDate = "maxEndDate" 
 						            v-model.lazy="model.end_date"  
@@ -42,9 +44,11 @@
 		      			{{errors.first('endDate:required')}}
 		            </span>
 		        </div>
-		        <chp-button class="mb-xs mt-xs mr-xs btn btn-primary print-btn" @click="research">
-		          <i class="fa fa-search "></i>
-		        </chp-button>
+		        <div class="form-group btn-search">
+			        <chp-button class=" btn btn-primary print-btn" @click="research">
+			          <i class="fa fa-search "></i>
+			        </chp-button>
+		        </div>
 	      </form>
 		</div>
 	</div>
@@ -115,7 +119,21 @@
 		.row{
 			.col-right,.col-left{
 				float:none;
-				padding:5px 0px;
+			}
+			.form-inline{
+				padding-left: 10px;
+			}
+			.form-group{
+				float:left;
+				padding-left: 3px;
+				&.btn-search{
+					button{
+						margin:4px;
+					}
+				}
+			}
+			.date{
+				width:120px;
 			}
 		}
 	}

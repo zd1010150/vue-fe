@@ -15,4 +15,11 @@ export default {
   doneLots : "Current trading lots",
   com : "Com",
   totalCom: "Total Com",
+  netDeposit: "Net Deposit",
+  trader: "Trader",
+  withdrawal: "Withdrawal",
+  deposit : "Deposit",
+  totalWithdrawal: "Total Withdrawal",
+  totalDeposit: "Total Deposit",
+  withdrawaledCom: "Withdrawn Com"
 }

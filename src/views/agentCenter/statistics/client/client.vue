@@ -1,10 +1,12 @@
+<i18n src="../../i18n.yaml"></i18n>
 <template>
 	<div class="tab">
 		<agent-statistics-time-picker @research = "research" :agent="agent">
-			
+			{{ $t('trade.activeClient') }} : <span class="text-dark info-number"> {{ totalClients.activeClients}} </span>
+			{{ $t('trade.totalClient') }} : <span class="text-dark info-number"> {{ totalClients.allClients}}  </span>
 		</agent-statistics-time-picker>
 		<agent-statistics-client-chart-1 ref="chart1" ></agent-statistics-client-chart-1>
-		<agent-statistics-client-chart-2 ref="chart2" ></agent-statistics-client-chart-2>
+		<agent-statistics-client-chart-2 ref="chart2" :agent="agent" @totalChange="totalChange"></agent-statistics-client-chart-2>
 		<agent-statistics-client-chart-3 ref="chart3" ></agent-statistics-client-chart-3>
 		
 	</div>
@@ -22,7 +24,11 @@
 		data(){
 			return {
 				start_date:"",
-				end_date:""
+				end_date:"",
+				totalClients:{
+					activeClients:0,
+					allClients:0
+				}
 			}
 		},
 		components:{
@@ -44,6 +50,9 @@
 				this.start_date = start_date
 				this.end_date = end_date
 				this.refresh()
+			},
+			totalChange(val){
+				this.totalClients = Object.assign({},val)
 			}
 		},
 		watch:{
@@ -53,3 +62,10 @@
 		}
 	}
 </script>
+<style scoped>
+	.info-number{ 
+					font-size: 1.7rem;
+					padding-right: 20px;
+
+				}
+</style>

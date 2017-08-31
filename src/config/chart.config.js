@@ -31,12 +31,12 @@ export const LINE_MEDIA_CONFIG = [{
     option: {
       legend: {
         orient: 'horizontal',
-        //padding:10
-        left: "5%"
+        
       },
       grid: {
-        left: "10%",
-        top: "10%"
+        left: "5%",
+        top: "10%",
+        containLabel: true
       }
     }
   },
@@ -51,8 +51,10 @@ export const LINE_MEDIA_CONFIG = [{
         left: '20%'
       },
       grid: {
-        top: '25%',
-        left: '20%'
+        top: '30%',
+        left: 'center',
+        containLabel: true,
+        width:'90%'
       }
     }
   }
