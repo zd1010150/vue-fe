@@ -13,6 +13,11 @@ export default{
   },
   async cancelOnlineTraining(course_id){
   	return fetchData('GET','/training/courses/cancel/'+course_id)
-  }
+  },
+  async getVideo(language){
+    return fetchData('GET','/training/videos',{language})
+  },
+
+
 
 }

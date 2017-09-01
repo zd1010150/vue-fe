@@ -30,7 +30,8 @@ export default {
         return (hour < 10 ? ('0' + hour) : hour) + ':' + (minute < 10 ? ('0' + minute) : minute)
     },
     PascalCase: function (value) {
-        return value.replace(/(?:^\w|[A-Z]|\b\w)/g, function (letter, index) {
+        console.log(value,"-------")
+        return value.replace (/(?:^\w|[A-Z]|\b\w)/g, function (letter, index) {
             return letter.toUpperCase();
         });
     }

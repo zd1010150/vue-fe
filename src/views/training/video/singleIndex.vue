@@ -35,13 +35,36 @@
 
 <script>
 import filters from "src/filters";
+import trainingService from "services/trainingService"
+import { SET_CONTENT_LOADING } from 'store/mutation-types'
 export default {
 	data() {
 		return {
 
 		}
 	},
-	filters
+	filters,
+	methods: {
+		async fetchInfoVideo() {
+			this.$store.commit(SET_CONTENT_LOADING, true)
+			let { success, data } = await trainingService.getVideo(this.language == "zh" ? "mandarin" : "english", "info", "info")
+			this.$store.commit(SET_CONTENT_LOADING, false)
+			if (success) {
+				
+				console.log(data);
+			}
+		},
+		watch: {
+			"$store.state.language": function(val) {
+				console.log(val);
+				this.language = val;
+				this.fetchInfoVideo();
+			}
+		},
+		created() {
+			this.fetchInfoVideo();
+		}
+	},
 }
 </script>
 
@@ -52,8 +75,7 @@ export default {
 }
 
 .video-header .action {
-	margin:-10px -5px;
-	
+	margin: -10px -5px;
 }
 
 .featured-image {
@@ -61,7 +83,7 @@ export default {
 	height: 0;
 	padding-bottom: 57%;
 	background: url(http://thevideoanalyst.com/wp-content/uploads/2016/05/video-conference.jpg) no-repeat;
-	background-size: 100%; 
+	background-size: 100%;
 }
 </style>
 
