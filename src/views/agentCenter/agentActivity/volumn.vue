@@ -230,7 +230,7 @@
 	    		let {data,message,success} = await activityService.agentAward({type:type,agentId:this.agent})
 	    		if(success){
 	    			this.$emit('refresh')
-	    			this.toastr.info(this.$t("info.SUCCESS"));
+	    			this.toastr.info(this.$t("info.SUCCESS"))
 	    		}
 	    	},
 	    	async showTerms(){

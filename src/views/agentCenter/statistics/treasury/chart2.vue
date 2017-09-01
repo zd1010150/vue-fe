@@ -8,11 +8,8 @@
 				<template slot="title">{{ $t('charts.commissionPieChart') }}</template>
 		<div slot="body" class="row">
 			<div class="col-lg-6 col-md-6 col-sm-12 pr-none pl-none content-center">
-			    
-			    
-			    				
+			    <chp-echart class="circle-chart" :externalOption='option'></chp-echart>
 			</div>
-			
 			<div class="col-lg-6 col-md-6 col-sm-12 pr-none pl-none ">
 			 <table class="table table-striped ">
 				<thead>
@@ -72,16 +69,46 @@
 		},
 		data(){
 			return {
-				chartData:{all:{},selected:{}},
+				chartData:{current:{},last:{},total:{}},
 				activeDate:'',
-				allPercentage:0,
-				selectedPerCentage:0
+				option:{}
 			}
 		},
 		methods:{
 			mapData(data){
-				this.allPercentage = (data.all.activeClients / data.all.allClients)*100
-				this.selectedPerCentage = (data.selected.activeClients / data.selected.allClients)*100
+				this.option = {
+					series:[{
+						name:this.$t('charts.historyTotalCommission'),
+						type:'pie',
+						radius:[0,'30%'],
+						data: this.calculateCircleChart(data,'total')
+					},{
+						name:data.last.time,
+						type:'pie',
+						radius:['40%','50%'],
+						data: this.calculateCircleChart(data,'last')
+					},{
+						name:data.current.time,
+						type:'pie',
+						radius:['60%','70%'],
+						data: this.calculateCircleChart(data,'current')
+					}]
+				}
+			},
+			calculateCircleChart(data,type){
+				return [{
+					name: this.$t('trade.fx'),
+					value: data[type].forex
+				},{
+					name: this.$t('trade.oil'),
+					value: data[type].oil
+				},{
+					name: this.$t('trade.metal'),
+					value: data[type].metal
+				},{
+					name: this.$t('trade.cfd'),
+					value: data[type].cfdss
+				}]
 			},
 			async fetchData({mt4_id,start_date,end_date}){
 				this.loadingStatus = true

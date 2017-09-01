@@ -89,8 +89,6 @@
 		},
 		watch:{
 			agent:function(val,oldVal){
-				console.log("agnet is changed",val)
-				
 				let tmp = this.MT4.map((mt4)=>{
 					if(mt4.mt4_id == val){
 						return {
