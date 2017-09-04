@@ -21,7 +21,7 @@
 
 
   import ChpTopBarLanguage from './language.vue'
-  import ChpTopBarNotificateion from './notification'
+  import ChpTopBarNotificateion from './notification/index'
   import ChpTopBarUserbox from "./userbox"
   import { SET_LEFT_SIDE_BAR_STATUS } from "store/mutation-types"
   export default {

@@ -22,25 +22,25 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>{{ $t('trade.fx') }}</td>
+						<td><i class="fa fa-circle chart-blue" aria-hidden="true"></i> {{ $t('trade.fx') }}</td>
 						<td>{{chartData.current.forex}}</td>
 						<td>{{chartData.last.forex}}</td>
 						<td>{{chartData.total.forex}}</td>
 					</tr>
 					<tr>
-						<td>{{ $t('trade.metal') }}</td>
+						<td><i class="fa fa-circle chart-red" aria-hidden="true"></i>{{ $t('trade.metal') }}</td>
 						<td>{{chartData.current.metal}}</td>
 						<td>{{chartData.last.metal}}</td>
 						<td>{{chartData.total.metal}}</td>
 					</tr>
 					<tr>
-						<td>{{ $t('trade.oil') }}</td>
+						<td><i class="fa fa-circle chart-green" aria-hidden="true"></i>{{ $t('trade.oil') }}</td>
 						<td>{{chartData.current.oil}}</td>
 						<td>{{chartData.last.oil}}</td>
 						<td>{{chartData.total.oil}}</td>
 					</tr>
 					<tr>
-						<td>{{ $t('trade.cfd') }}</td>
+						<td><i class="fa fa-circle chart-orange" aria-hidden="true"></i>{{ $t('trade.cfd') }}</td>
 						<td>{{chartData.current.cfd}}</td>
 						<td>{{chartData.last.cfd}}</td>
 						<td>{{chartData.total.cfd}}</td>
@@ -71,34 +71,90 @@
 			return {
 				chartData:{current:{},last:{},total:{}},
 				activeDate:'',
-				option:{}
+				option:{
+					series:[{
+						
+						type:'pie',
+						radius:[0,'30%'],
+						data: 0,
+
+					},{
+						
+						type:'pie',
+						radius:['40%','50%'],
+						data: 0
+					},{
+						
+						type:'pie',
+						radius:['60%','70%'],
+						data: 0
+					}]
+				}
 			}
 		},
 		methods:{
 			mapData(data){
-				this.option = {
+				this.option = Object.assign({},{
+					grid:{
+						containLabel: true
+					},
+					tooltip: {
+				        trigger: 'item',
+				        formatter: "{a} <br/>{b}: {c} ({d}%)"
+				    },
 					series:[{
 						name:this.$t('charts.historyTotalCommission'),
 						type:'pie',
-						radius:[0,'30%'],
+						radius:[0,'40%'],
+						labelLine:{
+							normal:{
+								show: false
+							}
+						},
+						label: {
+			                normal: {
+			                	show:false
+			                }
+		            	},
 						data: this.calculateCircleChart(data,'total')
 					},{
 						name:data.last.time,
 						type:'pie',
-						radius:['40%','50%'],
+						label: {
+			                normal: {
+			                	show:false
+			                }
+		            	},
+		            	labelLine:{
+							normal:{
+								show: false
+							}
+						},
+						radius:['45%','65%'],
 						data: this.calculateCircleChart(data,'last')
 					},{
 						name:data.current.time,
 						type:'pie',
-						radius:['60%','70%'],
+						label: {
+			                normal: {
+			                	show:false
+			                }
+		            	},
+		            	labelLine:{
+							normal:{
+								show: false
+							}
+						},
+						radius:['70%','90%'],
 						data: this.calculateCircleChart(data,'current')
 					}]
-				}
+				})
 			},
 			calculateCircleChart(data,type){
 				return [{
 					name: this.$t('trade.fx'),
 					value: data[type].forex
+					
 				},{
 					name: this.$t('trade.oil'),
 					value: data[type].oil
@@ -107,7 +163,7 @@
 					value: data[type].metal
 				},{
 					name: this.$t('trade.cfd'),
-					value: data[type].cfdss
+					value: data[type].cfd
 				}]
 			},
 			async fetchData({mt4_id,start_date,end_date}){
@@ -129,6 +185,10 @@
 	@import "~assets/less/variable.less";
 	table{
 		margin-top: 50px;
+		.fa-circle{
+			display: inline-block;
+			padding-right: 5px;
+		}
 	}
 	
 	@media(max-width:@screen-sm-min){

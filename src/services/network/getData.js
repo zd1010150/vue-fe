@@ -18,6 +18,7 @@ let filterRejectResponse = (xhr) => {
 let fetchData = async function(type = 'GET', url = '', data = {}){
   return fetch(type,url,data).then((response)=>{
         filterResoveResponse(response);
+        console.log(response,"++++")
         let success = response.status_code == 200 ? true : false
         if(!success){
           if(response.status_code == 401){
@@ -25,22 +26,23 @@ let fetchData = async function(type = 'GET', url = '', data = {}){
             Store.commit(SET_USERINFO, null)
             Store.commit(SET_TOKEN,null)
             vm.$router.replace("/login")
+          }else if(response.status_code == 429){
+            vm.toastr.error(vm.$t("info.TOO_MANY_REQUEST"))
           }else{
             vm.toastr.error(vm.$t("info."+response.message))
           }
-          
         }
         return {
           data:response.data,
           success:success,
           message:response.message,
           errors:response.errors
-        };
-    },(errorResponse)=>{
-        filterRejectResponse(errorResponse);
-        throw errorResponse;
+        }
+    },(error)=>{
+        filterRejectResponse(error)
+        throw error
     });
   }
 
 
-export { fetchData } ;
+export { fetchData } 

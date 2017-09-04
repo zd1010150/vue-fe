@@ -68,12 +68,19 @@ export default async(type = 'GET', url = '', data = {},uploadFile = false) => {
     }
    let response,resoponseJson;
    try{
-      response = await _fetch(fetch(url,requestConfig),MAX_FETCH_TIMEOUT);
-      resoponseJson = await response.json();
+      response = await _fetch(fetch(url,requestConfig),MAX_FETCH_TIMEOUT)
+      console.log(response,"=====")
+      if(response.status == 429 || response.status == 401){ // http 的status code 为429 ，后端无法返回json
+        resoponseJson = {
+          status_code : response.status,
+          message: response.body
+        }
+      }else{
+        resoponseJson = await response.json()
+      }
    }catch(error){
-      console.log("Error",error);
-      throw new Error(error);
+      throw new Error(error)
    }
-   return resoponseJson;
+   return resoponseJson
 
 }

@@ -1,24 +1,5 @@
-<i18n src="./i18n.yaml"></i18n>
 <template>
-   <ul class="notifications">
-      <li>
-        <a :href="landingPageURL" class="dropdown-toggle notification-icon" data-toggle="dropdown" target="_blank">
-          <i class="fa fa-trophy" aria-hidden="true"></i>
-          <span class="badge">3</span>
-          <chp-tooltip chp-direction="bottom">
-            {{ $t('notification.youHaveChance') }} 
-            3 
-            {{ $t('notification.opportunity') }}
-          </chp-tooltip>
-        </a>
-      </li>
-      <li>
-        <a href="javascript:void(0)" class="dropdown-toggle notification-icon" data-toggle="dropdown">
-          <i class="fa fa-tasks"></i>
-          <span class="badge">3</span>
-        </a>
-      </li>
-      <li>
+	<li>
         <mu-icon-button 
             @click="toggleNoticePopover" 
             class="dropdown-toggle notification-icon" 
@@ -87,39 +68,28 @@
                 </div>
               </div>
         </mu-popover>
-        
-      </li>
-
-    </ul>
+    </li>
 </template>
-
 <script>
-  import { PRIZE_LANDING_PAGE } from 'src/config/url.config.js'
-  export default{
-    data(){
-      return {
-        noticeOpen:false,
-        noticeTrigger:null,
-        landingPageURL: PRIZE_LANDING_PAGE[this.$store.state.language]
-      }
-    },
-    methods:{
-      handleClose(){
-        this.noticeOpen = false
-      },
-      toggleNoticePopover(){
-        this.noticeOpen = !this.noticeOpen
-      }
-    },
-    mounted(){
-      this.noticeTrigger = this.$refs.noticeTrigger.$el
-    },
-    watch:{
-      "$store.state.language": function(val){
-        this.landingPageURL = PRIZE_LANDING_PAGE[val]
-      }
-    }
-  }
+	export default{
+		data(){
+			return {
+				noticeOpen:false,
+        		noticeTrigger:null,
+			}
+		},
+		mounted(){
+      		this.noticeTrigger = this.$refs.noticeTrigger.$el
+    	},
+		methods:{
+	      	handleClose(){
+	        	this.noticeOpen = false
+	      	},
+	      	toggleNoticePopover(){
+	        	this.noticeOpen = !this.noticeOpen
+	      	}
+    	},
+	}
 </script>
 <style lang="less">
   @import "~assets/less/variable.less";

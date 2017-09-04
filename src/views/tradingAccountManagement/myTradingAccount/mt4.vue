@@ -224,7 +224,7 @@
 	       		}
 	       		if(this.mt4.account_type == "Agent"){
 	       			this.close();
-	       			this.$router.push('agent-center/statistics');
+	       			this.$router.push('/agent-center/statistics');
 	       		}else{
 	       			this.$emit("collapsePanel",this.order,isOpen)
 	       		}

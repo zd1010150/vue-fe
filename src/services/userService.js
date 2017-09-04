@@ -15,5 +15,8 @@ export default{
   },
   async getUserInfo(){
     return fetchData("GET","/user/me")
+  },
+  async syncProfile(){
+    return fetchData('GET','/profile/sync')
   }
 }

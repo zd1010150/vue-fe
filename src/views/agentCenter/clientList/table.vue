@@ -39,7 +39,7 @@
             </chp-table-row>
           </chp-table-header>
   		    <chp-table-body>
-            <chp-table-row v-for="(row, rowIndex) in histories" :key="rowIndex"  :chp-selection="chpSelection">
+            <chp-table-row v-for="(row, rowIndex) in histories" :key="rowIndex" >
               <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :chp-numeric="columnIndex != 'name' ">
               {{column}}
               </chp-table-cell>

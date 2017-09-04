@@ -1,23 +1,22 @@
+<i18n src="../i18n.yaml"></i18n>
 <template>
 	<div class='row'>
 	<div class='col-md-12 col-lg-12 col-sm-12'></div>
 		<chp-tabs :value='activeTab'  :isJustified='true' :isPrimary='true' @change = 'handleTabChange'>
             <template slot='header'>
-	            <chp-tab-header href='treasury'>Treasury</chp-tab-header>
-	            <chp-tab-header href='volume'>Volume</chp-tab-header>
-	            <chp-tab-header href='client'>Client</chp-tab-header>
+	            <chp-tab-header href='treasury'>{{ $t('charts.treasury') }}</chp-tab-header>
+	            <chp-tab-header href='volume'>{{ $t('charts.volume') }}</chp-tab-header>
+	            <chp-tab-header href='client'>{{ $t('charts.client') }}</chp-tab-header>
             </template>
             <template slot='content'>
-	            <chp-tab-content id='treasury'>
-					<agent-statistics-treasury :agent="agent"></agent-statistics-treasury>
-	            </chp-tab-content>
-	            <chp-tab-content id='volume'>
-	            	<agent-statistics-volume :agent="agent"></agent-statistics-volume>
-				</chp-tab-content>
-	            <chp-tab-content id='client'>
-					<agent-statistics-client :agent="agent"></agent-statistics-client>
-	            </chp-tab-content>
-		    </template>
+            	
+            		<chp-expand-transition name="chp-fade" >
+		        		<keep-alive>
+				        	<component v-bind:is="currentView" :agent="agent"></component>
+				        </keep-alive>
+	    			</chp-expand-transition>
+            	
+			</template>
 		</chp-tabs>
 	</div>
 </template>
@@ -36,13 +35,19 @@
 		},
 		data(){
 			return {
-				activeTab:"treasury",
+				activeTab:"volume",
+				currentView:"agent-statistics-volume"
 			}
 		},
 		methods:{
 			handleTabChange(val){
 				this.activeTab = val
 			}
+		},
+		watch:{
+			activeTab(val){
+				this.currentView ='agent-statistics-'+val
+			},
 		}
 	}
 </script>

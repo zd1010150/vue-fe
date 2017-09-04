@@ -2,8 +2,14 @@
 <template>
 	<div class="tab">
 		<agent-statistics-time-picker @research = "research" :agent="agent">
-			{{ $t('trade.activeClient') }} : <span class="text-dark info-number"> {{ totalClients.activeClients}} </span>
-			{{ $t('trade.totalClient') }} : <span class="text-dark info-number"> {{ totalClients.allClients}}  </span>
+			<ul class="total-info">
+				<li>
+					{{ $t('trade.activeClient') }} : <span class="text-dark info-number"> {{ totalClients.activeClients}} </span>
+				</li>
+				<li>
+					{{ $t('trade.totalClient') }} : <span class="text-dark info-number"> {{ totalClients.allClients}}  </span>
+				</li>
+			</ul>
 		</agent-statistics-time-picker>
 		<agent-statistics-client-chart-1 ref="chart1" ></agent-statistics-client-chart-1>
 		<agent-statistics-client-chart-2 ref="chart2" :agent="agent" @totalChange="totalChange"></agent-statistics-client-chart-2>
@@ -17,9 +23,11 @@
 	import chart2 from './chart2'
 	import chart3 from './chart3'
 	export default{
+		activated(){
+			this.refresh()
+		},
 		props:{
 			agent:[String,Number],
-			
 		},
 		data(){
 			return {
@@ -62,10 +70,19 @@
 		}
 	}
 </script>
-<style scoped>
-	.info-number{ 
-					font-size: 1.7rem;
-					padding-right: 20px;
+<style scoped lang="less">
+.total-info{
+		padding: 0px;
+		margin: 0px;
+		overflow: hidden;
+		list-style-type: none;
+		li {
+			float: left;
+		}
+	}
+.info-number{ 
+	font-size: 1.7rem;
+	padding-right: 20px;
 
-				}
+}
 </style>

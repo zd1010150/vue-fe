@@ -2,9 +2,18 @@
 <template>
 	<div class="tab">
 		<agent-statistics-time-picker @research = "research" :agent="agent">
-			{{ $t('trade.totalDeposit') }} : <span class="text-dark info-number"> {{ totalTreasurys.total_clients_deposit }} </span>
-			{{ $t('trade.totalWithdrawal') }} : <span class="text-dark info-number"> {{ totalTreasurys.total_clients_withdraw }}  </span>
-			{{ $t('trade.withdrawaledCom') }} : <span class="text-dark info-number"> {{ totalTreasurys.total_withdraw }}  </span>
+			<ul class="total-info">
+				<li>
+					{{ $t('trade.totalDeposit') }} : <span class="text-dark info-number"> {{ totalTreasurys.total_clients_deposit }} </span>
+				</li>
+				<li>
+					{{ $t('trade.totalWithdrawal') }} : <span class="text-dark info-number"> {{ totalTreasurys.total_clients_withdraw }}  </span>
+				</li>
+				<li>
+					{{ $t('trade.withdrawaledCom') }} : <span class="text-dark info-number"> {{ totalTreasurys.total_withdraw }}  </span>
+				</li>
+
+			</ul>
 		</agent-statistics-time-picker>
 		<agent-statistics-treasury-chart-1 ref="chart1" @totalChange="totalChange"></agent-statistics-treasury-chart-1>
 		<agent-statistics-treasury-chart-2 ref="chart2" ></agent-statistics-treasury-chart-2>
@@ -16,6 +25,9 @@
 	import chart1 from './chart1'
 	import chart2 from './chart2'
 	export default{
+		activated(){
+			this.refresh()
+		},
 		props:{
 			agent:[String,Number],
 			
@@ -61,10 +73,18 @@
 		}
 	}
 </script>
-<style scoped>
-	.info-number{ 
-					font-size: 1.7rem;
-					padding-right: 20px;
-
-				}
+<style lang="less" scoped>
+.total-info{
+	padding: 0px;
+	margin: 0px;
+	overflow: hidden;
+	list-style-type: none;
+	li {
+		float: left;
+	}
+}
+.info-number{ 
+	font-size: 1.7rem;
+	padding-right: 20px;
+}
 </style>

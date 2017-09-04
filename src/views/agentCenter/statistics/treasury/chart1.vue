@@ -46,12 +46,12 @@
 				    },
 				    option: {
 				      legend: {
-				        orient: 'vertical',
+				        orient: 'horizontal',
 				        //padding:10
 				        left: '20%'
 				      },
 				      grid: {
-				        top: '25%',
+				        top: '10%',
 				        left: '20%'
 				      }
 				    }

@@ -21,5 +21,9 @@ export default {
   deposit : "Deposit",
   totalWithdrawal: "Total Withdrawal",
   totalDeposit: "Total Deposit",
-  withdrawaledCom: "Withdrawn Com"
+  withdrawaledCom: "Withdrawn Com",
+  totalFx:"Total FX",
+  totalMetal: "Total Metals",
+  totalOil:"Total Oil",
+  totalCfd: "Total CFD"
 }

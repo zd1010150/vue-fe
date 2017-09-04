@@ -50,5 +50,22 @@ export default{
   async getCommission({mt4_id,start_date='',end_date=''}){
     return fetchData('GET','/agent/treasury/commissioins',{mt4_id,start_date,end_date})
   },
-
+  /**
+   * 交易各项产品手数每天的折线图
+   */
+  async getDailyAndTotalVolume({mt4_id,start_date='',end_date=''}){
+    return fetchData('GET','/agent/volume/daily',{mt4_id,start_date,end_date})
+  },
+   /**
+   * 交易各项产品手数饼图
+   */
+  async getPeriodVolume({mt4_id,start_date='',end_date=''}){
+    return fetchData('GET','/agent/volume/period',{mt4_id,start_date,end_date})
+  },
+   /**
+   * 交易各项产品者交易量贡献值柱状图
+   */
+  async getAverageVolume({mt4_id,start_date='',end_date=''}){
+    return fetchData('GET','/agent/volume/average',{mt4_id,start_date,end_date})
+  },
 }
