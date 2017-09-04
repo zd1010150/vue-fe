@@ -21,5 +21,7 @@ export default {
   ticketList: "工单列表",
   ticketDetail:"工单详情",
   affiliate: "代理账户",
-  onlineTraining: "在线培训"
+  onlineTraining: "在线培训",
+  video:"视频",
+  book:"书刊与杂志",
 }

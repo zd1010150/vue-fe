@@ -1,13 +1,14 @@
+<i18n src="../../i18n.yaml"></i18n>
 <template lang="html">
 <!--所有视频的首页-->
   <div class="container-fluid">
     <div v-for="category in categories" class="categories">
       <div class="video-header">
         <h3 class="title">
-          <span class="mt-none">{{category.title}}</span>
+          <span class="mt-none">{{ $t('video.'+category.title) }}</span>
           <div class="pull-right action">
             <router-link v-bind:to="'?level=2&videoType='+ category.link">
-              <button class="mb-xs mt-xs mr-xs btn btn-sm btn-primary"><i class="fa fa-info-circle mr-xs"></i>More</button>
+              <button class="mb-xs mt-xs mr-xs btn btn-sm btn-primary"><i class="fa fa-info-circle mr-xs"></i>{{ $t('video.more')}}</button>
             </router-link>
           </div>
         </h3>
@@ -16,8 +17,8 @@
       <div class="media-gallery">
         <div class="row mg-files">
           <div v-for="video in category.loop" class="col-sm-6 col-lg-3">
-            <div class="thumbnail" v-if="video.featured ">
-              <router-link :to="'?level=3&videoType='+category.link+'&videoId=233'">
+            <div class="thumbnail">
+              <router-link :to="'?level=3&videoType='+category.link+'&videoId='+video.id">
                 <div class="featured-image" v-bind:style='{backgroundImage:"url(" + video.imagepath +")"}'></div>
               </router-link>	
                 <div>
@@ -32,10 +33,6 @@
         </div>
       </div>
     </div>
-    
-    <router-link v-bind:to="'?level=2&videoType='+'stock'">stock</router-link>
-  	<router-link to="?level=2&videoType=analyse">analyse</router-link>
-  	<router-link to="?level=2&videoType=teaching">teaching</router-link>
 	</div>
   	
 
@@ -51,44 +48,41 @@ export default {
     return {
       language: this.$store.state.language,
       categories: [
-        { title: 'Stock', link: 'stock', loop:[]},
-        { title: 'Analyse', link: 'analyse',loop:[]},
-        { title: 'Teaching', link: 'teaching',loop:[]}
+        { title: 'info', link: 'info', loop: [] },
+        { title: 'analysis', link: 'analysis', loop: [] },
+        { title: 'tutorials', link: 'tutorials', loop: [] }
       ]
-      
-      
     }
   },
   methods: {
-		async fetchVideo() {
-			this.$store.commit(SET_CONTENT_LOADING, true)
-      let { success, data } = await trainingService.getVideo(this.language == "zh" ? "mandarin" : "english","info")
+    async fetchVideo() {
+      this.$store.commit(SET_CONTENT_LOADING, true)
+      let { success, data } = await trainingService.getVideo(this.language == "zh" ? "mandarin" : "english", "")
       this.$store.commit(SET_CONTENT_LOADING, false)
-			if (success) {				
-        this.categories[0].loop = data.info;
-        this.categories[1].loop = data.analysis;
-        this.categories[2].loop = data.tutorials;
-				console.log(data);
-			}
+      if (success) {
+        this.categories[0].loop = data.info
+        this.categories[1].loop = data.analysis
+        this.categories[2].loop = data.tutorials
+      }
     },
-    
-		refresh(){
-			this.fetchVideo()
-		}
+
+    refresh() {
+      this.fetchVideo()
+    }
   },
   watch: {
     "$store.state.language": function(val) {
-			console.log(val);
-			this.language = val;
-			this.fetchVideo();
-		}
+      console.log(val);
+      this.language = val
+      this.fetchVideo()
+    }
   },
-	created() {
-		this.fetchVideo();
-	}
+  created() {
+    this.fetchVideo()
+  }
 }
 </script>
-<<style scoped>
+<style scoped>
 .video-header {	
 	border-bottom: 1px solid #4C4C4C;
 	margin-bottom: 15px;

@@ -29,7 +29,7 @@ export default {
         second = date.getUTCSeconds()
         return (hour < 10 ? ('0' + hour) : hour) + ':' + (minute < 10 ? ('0' + minute) : minute)
     },
-    PascalCase: function (value) {
+    pascalCase: function (value) {
         console.log(value,"-------")
         return value.replace (/(?:^\w|[A-Z]|\b\w)/g, function (letter, index) {
             return letter.toUpperCase();

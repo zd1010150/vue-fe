@@ -1,22 +1,22 @@
+<i18n src="../i18n.yaml"></i18n>
 <template>
 	<div class="container-fluid">
 		<section class="media-gallery">
 			<div class="row mg-files">
 				<div class="col-xs-12">
-					<div class="thumbnail">					
-						<iframe src="http://player.youku.com/embed/XMjg4NjY3MjA4NA==' frameborder=0 'allowfullscreen"></iframe>
-						
+					<div class="thumbnail">
+						<iframe v-bind:src="video.url" frameborder="0"></iframe>
 						<div class="general-infor">
-							<h2 class="mg-title text-weight-semibold mt-md mb-xs">美国5月季调后非农大跌眼镜</h2>							
+							<h2 class="mg-title text-weight-semibold mt-md mb-xs">{{video.title}}</h2>							
 							<div>
-								<div class="pull-right">Ginny - 05/06/2017 </div>
-								Category:
-								<router-link to="?level=1">Video</router-link> /
-								<router-link :to="'?level=2&videoType='+ $route.query.videoType "> {{ $route.query.videoType | PascalCase }} </router-link><br>
+								<div class="pull-right">{{video.uploader_name}} - {{video.upload_date}} </div>
+								{{ $t('video.category')}}:
+								<router-link to="?level=1">{{ $t('video.video')}}</router-link> /
+								<router-link :to="'?level=2&videoType='+ $route.query.videoType "> {{ $route.query.videoType | pascalCase }} </router-link><br>
 							</div>
 						</div>
 						<div class="description">
-							thi detail id is {{ $route.query.videoId }} -- type is: {{ $route.query.videoType }} 上个交易日，周二（8月22日）欧元区经济数据录得疲弱，日内跌幅0.5%。目前欧元/美元回到上周五收盘水平附近，由于美元开始走强，欧元本周一录得的涨幅几乎全部被抹去
+							{{video.description}}
 						</div>
 					</div>
 				</div>
@@ -26,18 +26,47 @@
 	</div>
 </template>
 <script>
-import filters from "src/filters";
+import filters from "src/filters"
+import trainingService from "services/trainingService"
+import { SET_CONTENT_LOADING } from 'store/mutation-types'
 export default {
+	data () {
+		return {
+			video:{},
+			url:"http://player.youku.com/embed/XMjY5OTE2NzA5Mg"
+		}
+	},
 	created() {
 		console.log("")
 	},
-	filters
+	filters,
+	watch: {
+			"$store.state.language": function(val) {
+				this.language = val;
+				this.getSingleVideo();
+			}
+	},
+	activated() {
+			console.log("single video")
+			this.getSingleVideo()
+	},
+	methods:{
+		async getSingleVideo() {
+			this.$store.commit(SET_CONTENT_LOADING, true)
+			let { success, data } = await trainingService.getSingleVideo(this.$route.query.videoId)
+			this.$store.commit(SET_CONTENT_LOADING, false)
+			if (success) {
+				this.video = data;
+			}
+		},
+	}
+
 }
 </script>
 <style scoped>
 .thumbnail iframe {
 	width: 100%;
-	height: 32vw;
+	height: 35vw;
 }
 .general-infor {
 	padding-bottom: 10px;

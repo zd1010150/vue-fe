@@ -1,12 +1,13 @@
+<i18n src="../i18n.yaml"></i18n>
 <template>
 	<!--teaching 页面的首页-->
 	<div class="container-fluid">
 		<div class="video-header">
 			<h3>
-				<span class="mt-none">{{ $route.query.videoType | PascalCase}}</span>
+				<span class="mt-none">{{ $t('video.'+ $route.query.videoType) }}</span>
 				<div class="pull-right action">
 					<router-link to="?level=1">
-						<button class="mb-xs mt-xs mr-xs btn btn-sm btn-primary mt-none">All Videos</button>
+						<button class="mb-xs mt-xs mr-xs btn btn-sm btn-primary mt-none">{{ $t('video.allVideos')}}</button>
 					</router-link>
 				</div>
 			</h3>
@@ -14,16 +15,16 @@
 
 		<div class="media-gallery">
 			<div class="row mg-files">
-				<div v-for="video in [1,2,3,4,5,6,7,8]" class="col-sm-6 col-md-4 col-lg-3">
+				<div v-for="video in loopList" class="col-sm-6 col-md-4 col-lg-3">
 					<div class="thumbnail">
-						<router-link :to="'?level=3&videoType='+$route.query.videoType+'&videoId=233'">
-							<div class="featured-image"></div>
+						<router-link :to="'?level=3&videoType='+$route.query.videoType+'&videoId='+video.id">
+							<div class="featured-image" v-bind:style='{backgroundImage:"url(" + video.imagepath +")"}'></div>
 						</router-link>
 
-						<h5 class="mb-xs mt-md">美国5月季调后非农大跌眼镜</h5>
+						<h5 class="mb-xs mt-md">{{video.title}}</h5>
 						<div class="mg-description">
-							<span class="text-muted">Ginney</span>
-							<small class="text-muted pull-right pt-xs">05/06/2017 </small>
+							<span class="text-muted">{{video.uploader_name}}</span>
+							<small class="text-muted pull-right pt-xs">{{video.upload_date}}</small>
 						</div>
 
 					</div>
@@ -34,37 +35,39 @@
 </template>
 
 <script>
-import filters from "src/filters";
+import filters from "src/filters"
 import trainingService from "services/trainingService"
 import { SET_CONTENT_LOADING } from 'store/mutation-types'
 export default {
 	data() {
 		return {
-
+			language: this.$store.state.language,
+			loopList: []
 		}
 	},
 	filters,
+	watch: {
+			"$store.state.language": function(val) {
+				this.language = val;
+				this.getCategoryVideo();
+			}
+	},
+	activated() {
+			console.log("single index activated")
+			this.getCategoryVideo()
+	},
 	methods: {
-		async fetchInfoVideo() {
+		async getCategoryVideo() {
 			this.$store.commit(SET_CONTENT_LOADING, true)
-			let { success, data } = await trainingService.getVideo(this.language == "zh" ? "mandarin" : "english", "info", "info")
+			let { success, data } = await trainingService.getCategoryVideo(this.language == "zh" ? "mandarin" : "english", this.$route.query.videoType)
 			this.$store.commit(SET_CONTENT_LOADING, false)
 			if (success) {
-				
-				console.log(data);
+				this.loopList = data[this.$route.query.videoType];
+				console.log(data[this.$route.query.videoType]);
 			}
 		},
-		watch: {
-			"$store.state.language": function(val) {
-				console.log(val);
-				this.language = val;
-				this.fetchInfoVideo();
-			}
-		},
-		created() {
-			this.fetchInfoVideo();
-		}
-	},
+		
+	}
 }
 </script>
 

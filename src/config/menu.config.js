@@ -118,18 +118,8 @@ export const common= [
             {
               title: "booksandMagazines",
               open: false,
-              routerLink: false,
-              subs: [{
-                title: 'moneyTheory',
-                to: '/training/books-magazines/money-theory',
-                open: false,
-                routerLink: true
-              }, {
-                title: "educationalBooks",
-                to: '/training/books-magazines/educational-books',
-                open: false,
-                routerLink: true
-              }]
+              routerLink: true,
+              to:"/training/books"
             },
             {
               title: "videos",

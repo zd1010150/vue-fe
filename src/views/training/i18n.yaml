@@ -12,6 +12,17 @@ zh:
       end: "已结束"
       enrolled: "已报名"
       unenrolled: "点击报名"
+  video:
+    more: "更多"
+    allVideos: "所有视频"
+    category: "分类"
+    video: "视频"
+    info: "汇市情报局"
+    analysis: "视频分析"
+    tutorials: "教学视频"
+  book:
+    article: "论金月刊"
+    book: "教学书籍"
 en:
   onlineTraining:
     subject: "Subject"
@@ -26,3 +37,14 @@ en:
       end: "Ended"
       enrolled: "Enrolled"
       unenrolled: "Click to enroll"
+  video:
+    more: "More"
+    allVideos: "All Videos"
+    category: "Category"
+    video: "Video"
+    info: "Stock"
+    analysis: "Analysis"
+    tutorials: "Tutorial"
+  book:
+    article: "Money Theory"
+    book: "Educational Book"
