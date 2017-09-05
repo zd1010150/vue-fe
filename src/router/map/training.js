@@ -1,9 +1,6 @@
 import onlineTraining from 'views/training/onlineTraining/index'
-
-
 import VideoIndex from 'views/training/video/index'
-import EducationalBooks from 'views/training/booksMagazines/educationalBooks'
-import moneyTheory from 'views/training/booksMagazines/moneyTheory'
+import BookIndex from 'views/training/book/index'
 
 export default [{
   path: 'training/online-training',
@@ -13,23 +10,18 @@ export default [{
     pageTitle: "onlineTraining"
   }
 }, {
-  path: 'training/books-magazines/money-theory',
-  component: moneyTheory,
+  path: 'training/books',
+  component: BookIndex,
   meta: {
     requiresAuth: true,
-    
+    pageTitle:"book"
   }
 }, {
-  path: 'training/books-magazines/educational-books',
-  component: EducationalBooks,
-  meta: {
-    requiresAuth: true
-  }
-},{
   path: 'training/videos',
   component: VideoIndex,
   meta: {
-    requiresAuth: true
+    requiresAuth: true,
+    pageTitle: "video"
   },
 }];
 

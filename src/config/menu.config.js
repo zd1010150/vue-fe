@@ -28,9 +28,7 @@ export const common = [{
         to: "/uiDemo/echarts"
       }
     ]
-  },
-
-  {
+  },{
     icon: 'trademark',
     title: 'accountManagement',
     subs: [{
@@ -44,8 +42,7 @@ export const common = [{
       routerLink: true,
       to: "/account-management/application-sub-account"
     }]
-  },
-  {
+  },{
     icon: 'money',
     title: 'fundManagement',
     subs: [{
@@ -73,36 +70,31 @@ export const common = [{
         to: "/fund-manager/bank-account"
       }
     ]
-  },
-  {
+  },{
     icon: 'download',
     title: 'downloadCenter',
     open: false,
     routerLink: true,
     to: "/download-center"
-  },
-  {
+  },{
     icon: 'bell-o',
     title: 'notice',
     open: false,
     routerLink: true,
     to: "/notice"
-  },
-  {
+  },{
     icon: 'gift',
     title: 'event',
     open: false,
     routerLink: true,
     to: "/event"
-  },
-  {
+  },{
     icon: 'tags',
     title: 'ticket',
     open: false,
     routerLink: true,
     to: "/ticket/ticketList"
   }
-
 ]
 export const zh_menu = [{
   icon: 'graduation-cap',
@@ -112,24 +104,12 @@ export const zh_menu = [{
       open: false,
       routerLink: true,
       to: "/training/online-training"
-    },
-    {
+    },{
       title: "booksandMagazines",
       open: false,
-      routerLink: false,
-      subs: [{
-        title: 'moneyTheory',
-        to: '/training/books-magazines/money-theory',
-        open: false,
-        routerLink: true
-      }, {
-        title: "educationalBooks",
-        to: '/training/books-magazines/educational-books',
-        open: false,
-        routerLink: true
-      }]
-    },
-    {
+      routerLink: true,
+      to:"/training/books"
+    },{
       title: "videos",
       open: false,
       routerLink: true,
@@ -143,20 +123,9 @@ export const en_menu = [{
   subs: [{
       title: "booksandMagazines",
       open: false,
-      routerLink: false,
-      subs: [{
-        title: 'moneyTheory',
-        to: '/training/books-magazines/money-theory',
-        open: false,
-        routerLink: true
-      }, {
-        title: "educationalBooks",
-        to: '/training/books-magazines/educational-books',
-        open: false,
-        routerLink: true
-      }]
-    },
-    {
+      routerLink: true,
+      to:"/training/books"
+  },{
       title: "videos",
       open: false,
       routerLink: true,

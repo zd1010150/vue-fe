@@ -13,6 +13,24 @@ export default{
   },
   async cancelOnlineTraining(course_id){
   	return fetchData('GET','/training/courses/cancel/'+course_id)
-  }
+  },
+  async getVideo(language){
+    return fetchData('GET','/training/videos',{language})
+  },
+  async getCategoryVideo(language,category){
+    return fetchData('GET','/training/videos',{language,category})
+  },
+  async getSingleVideo(id){
+    return fetchData('GET','/training/videos/display/'+id)
+  },
+  async getBook(language){
+    return fetchData('GET','/training/books/',{language})
+  },
+  async getCategoryBook(language,category){
+    return fetchData('GET','/training/books/',{language,category})
+  },
+  
+
+
 
 }

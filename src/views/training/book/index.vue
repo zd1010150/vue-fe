@@ -6,38 +6,34 @@
 	</transition>
 </template>
 <script>
-import VideoMain from './main/index'
+import BookMain from './main.vue'
 import singleIndex from './singleIndex.vue'
-import detail from './detail'
 
 export default {
 	data() {
 		return {
-			currentView: "video-main",			
+			currentView: "book-main",			
 		}
 	},
 	
 	components: {
-		"video-main": VideoMain,
-		"video-single-index": singleIndex,
-		"video-detail": detail
+		"book-main": BookMain,
+		"book-single-index": singleIndex,
+
 	},
 	methods:{
 		switchComponents(level){
 			if(level){
 				switch (Number(level)) {
 					case 1:
-						this.currentView = "video-main"
+						this.currentView = "book-main"
 						break
 					case 2:
-						this.currentView = "video-single-index"
-						break
-					case 3:
-						this.currentView = "video-detail"
+						this.currentView = "book-single-index"
 						break
 				}
 			}else{
-				this.currentView = "video-main"
+				this.currentView = "book-main"
 			}
 		}
 	},

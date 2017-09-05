@@ -1,5 +1,5 @@
 export default {
-  beijingZoneTime: function(value) {
+beijingZoneTime: function(value) {
     let date = new Date(value + (1000 * 60 * 60 * 8)),
       year, month, day, hour, minute, second
     year = date.getUTCFullYear()
@@ -40,5 +40,11 @@ export default {
     } catch (e) {
       return ""
     }
-  }
+  },
+  pascalCase: function (value) {
+        return value.replace (/(?:^\w|[A-Z]|\b\w)/g, function (letter, index) {
+            return letter.toUpperCase();
+        })
+    }
 }
+
