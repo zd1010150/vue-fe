@@ -1,4 +1,5 @@
 export default {
+  NETWORK_ERROR: '网络错误',
   SUCCESS: '操作成功',
   SYSTEM_ERROR: '系统错误',
   INVALID_USER_ERROR: '无效的用户',

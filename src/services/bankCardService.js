@@ -9,7 +9,7 @@ export default{
     return fetchData('GET',"/bank-card")
   },
   async deleteBankCard(id){
-  	return fetchData('DELETE',"/bank-card",{id:id})
+  	return fetchData('DELETE',"/bank-card/"+id)
   },
   async addBankCard({province,city,address,account,swift,bank_name,method,document}){
   	return fetchData('POST',"/bank-card",{province,city,address,account,swift,bank_name,method,document})

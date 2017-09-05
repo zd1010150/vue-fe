@@ -21,6 +21,8 @@ import ImagePreview from './imagePreview'
 import ExpandTransition from './expandTransition'
 import Echarts from './echarts'
 import liquidFill from './liquidFill'
+import Timer from './timer'
+import Carousel from './carousel'
 export default function install(Vue) {
   Vue.component('chp-ink-ripple', chpInkRipple)
   Vue.component('chp-button',button)
@@ -45,4 +47,6 @@ export default function install(Vue) {
   Vue.use(ExpandTransition)
   Vue.use(Echarts)
   Vue.use(liquidFill)
+  Vue.use(Timer)
+  Vue.use(Carousel)
 }
