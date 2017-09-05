@@ -23,6 +23,7 @@ zh:
   book:
     article: "论金月刊"
     book: "教学书籍"
+    allBooks: "所有书籍"
 en:
   onlineTraining:
     subject: "Subject"
@@ -48,3 +49,4 @@ en:
   book:
     article: "Money Theory"
     book: "Educational Book"
+    allBooks: "All Books"

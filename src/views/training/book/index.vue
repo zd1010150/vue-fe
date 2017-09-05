@@ -18,7 +18,7 @@ export default {
 	
 	components: {
 		"book-main": BookMain,
-		"video-single-index": singleIndex,
+		"book-single-index": singleIndex,
 
 	},
 	methods:{
@@ -29,7 +29,7 @@ export default {
 						this.currentView = "book-main"
 						break
 					case 2:
-						this.currentView = "video-single-index"
+						this.currentView = "book-single-index"
 						break
 				}
 			}else{

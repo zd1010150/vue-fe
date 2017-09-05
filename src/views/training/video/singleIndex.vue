@@ -84,8 +84,8 @@ export default {
 .featured-image {
 	width: 100%;
 	height: 0;
-	padding-bottom: 57%;
-	background: url(http://thevideoanalyst.com/wp-content/uploads/2016/05/video-conference.jpg) no-repeat;
+	padding-bottom: 56.25%;
+	background: rgba(0, 0, 0, 0.1) no-repeat center;
 	background-size: 100%;
 }
 </style>

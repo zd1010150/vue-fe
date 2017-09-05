@@ -26,6 +26,9 @@ export default{
   async getBook(language){
     return fetchData('GET','/training/books/',{language})
   },
+  async getCategoryBook(language,category){
+    return fetchData('GET','/training/books/',{language,category})
+  },
   
 
 
