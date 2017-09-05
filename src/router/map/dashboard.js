@@ -1,4 +1,4 @@
-import Dashboard from 'views/dashboard/dashboard'
+import Dashboard from 'views/dashboard/index'
 
 export default {
     path: "main",
