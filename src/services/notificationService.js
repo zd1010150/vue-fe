@@ -15,9 +15,9 @@ export default {
 
   	return dataTableService.pagingQuery({
   		url : "/notice/"+type+"/all",
-  		pageIndex:pageIndex,
-  		pageSize:pageSize,
-  		sort:"",
+  		pageIndex,
+  		pageSize,
+  		sort,
   		queryParameter:{language,category,startDay,endDay}
   	})
   },
