@@ -3,13 +3,15 @@
 		<div class="row">
 			<dashboard-carousel></dashboard-carousel>
 		</div>
-		<dashboard-activity></dashboard-activity>
 		<div class="row">
 			<dashboard-mt4></dashboard-mt4>
 			<dashboard-announcement></dashboard-announcement>
 		</div>
+		<dashboard-activity></dashboard-activity>
 		<div class="row">
 			<dashboard-analysis></dashboard-analysis>
+		</div>
+		<div class="row">
 			<dashboard-books></dashboard-books>
 			<dashboard-videos></dashboard-videos>
 		</div>
@@ -37,6 +39,7 @@
 	}
 </script>
 <style lang="less">
+	@import "~assets/less/variable.less";
 	.dashbord-fix-height-panel{
 		height: 319px;
 		.panel-body{
@@ -45,6 +48,13 @@
 			width:100%;
 			table{
 				max-width: 100%;
+				&.no-header{
+					tr:first-child{
+						td{
+							border-top:none;
+						}
+					}
+				}
 			}
 			.one-line{
 				max-width: 300px;
@@ -52,6 +62,14 @@
 				overflow: hidden;
 				text-overflow:ellipsis;
 				white-space: nowrap;
+			}
+		}
+	}
+	@media(max-width:@screen-sm-min){
+		.dashbord-fix-height-panel{
+			height: auto;
+			.panel-body{
+				height:auto;
 			}
 		}
 	}

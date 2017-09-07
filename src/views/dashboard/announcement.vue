@@ -4,17 +4,15 @@
 		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus" class="dashbord-fix-height-panel">
 			<template slot="title">
 				{{ $t("notification.announcement") }}
-				<a class="pull-right" href="#/notice">
-					<i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-					<chp-ink-ripple></chp-ink-ripple>
-				</a>
+				
+				<chp-view-all href="#/notice"></chp-view-all>
 			</template>
 			<template slot="body">
-				<table class="table mb-none ">
+				<table class="table mb-none no-header">
 					<tbody>
 						<tr v-for="(a,index) in announcements" :key="Math.random()">
 							<td >
-								<span class="one-line" v-html='a.content'></span>
+								<chp-one-line :isHtml="true" :content='a.content' :lens="20"></chp-one-line>
 							</td>
 							<td> {{ a.dateTime}} </td>
 						</tr>
@@ -40,7 +38,7 @@
 				let { success,data } = await notificationService.getNoticeByType("announcement",{ 
 					language: this.$store.state.language,
 					pageIndex: 1,
-					pageSize: 2
+					pageSize: 5
 				})
 				this.loadingStatus = false
 				if(success){

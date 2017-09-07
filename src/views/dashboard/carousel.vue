@@ -5,7 +5,8 @@
 							:autoplay="true" 
 							:autoplayHoverPause="true" 
 							:loop="true" 
-							:paginationPadding="5">
+							:paginationPadding="5"
+							:autoplayTimeout="5000">
 				<chp-slide v-for="(activity,index) in activities" class="slide-wrapper" :key="index">
 					<chp-feature-image :src= "activity.imagepath || activity.image_link "/>
 		      		<div class="mask">

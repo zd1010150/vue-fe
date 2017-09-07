@@ -12,8 +12,7 @@ export default {
 	当type为announcement, course时，返回language语言的对应数据，
  */
   async getNoticeByType(type,{language='',category='',startDay='',endDay='',pageIndex=1,pageSize=5,sort=''}){
-
-  	return dataTableService.pagingQuery({
+    return dataTableService.pagingQuery({
   		url : "/notice/"+type+"/all",
   		pageIndex,
   		pageSize,
@@ -22,6 +21,9 @@ export default {
   	})
   },
   async getUnreadNotice(){
-	return fetchData("GET","/notice/unread")
+	   return fetchData("GET","/notice/unread")
+  },
+  async markReaded(){
+    return fetchData("GET","/notice/check")
   }
 }

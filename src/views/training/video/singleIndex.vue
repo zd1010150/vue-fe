@@ -18,7 +18,7 @@
 				<div v-for="video in loopList" class="col-sm-6 col-md-4 col-lg-3">
 					<div class="thumbnail">
 						<router-link :to="'?level=3&videoType='+$route.query.videoType+'&videoId='+video.id">
-							<chp-feature-image :src='video.imagepath'/>
+							<chp-feature-image :src='video.imagepath || video.image_link'/>
 						</router-link>
 						<h5 class="mb-xs mt-md">{{video.title}}</h5>
 						<div class="mg-description">

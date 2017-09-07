@@ -11,8 +11,9 @@ import {
   SET_MT4_AGENT_ACCOUNTS,
   SET_MT4_TRADER_ACCOUNTS,
   SET_LEVERAGE,
-  SET_CONTENT_LOADING
-} from "./mutation-types";
+  SET_CONTENT_LOADING,
+  SET_NOTICE_REFRESH_FLAG
+} from "./mutation-types"
 
 
 
@@ -57,5 +58,8 @@ export default{
   },
   [SET_CONTENT_LOADING](state,loading){
     state.contentLoading = loading
+  },
+  [SET_NOTICE_REFRESH_FLAG](state,flag){
+    state.refreshNoticeFlag = flag
   }
 }
