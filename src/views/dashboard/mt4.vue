@@ -1,6 +1,35 @@
+<i18n src="./i18n.yaml"></i18n>
 <template>
-	<div class="col-lg-8 col-md-8 col-xs-12">
-		
+	<div class="col-lg-6 col-md-6 col-xs-12">
+		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
+			<template slot="title">MT4</template>
+			<template slot="body">
+				<div class="operater pull-right pb-sm pt-sm">
+					<chp-button class="btn  btn-primary btn-sm" href="#/fund-manager/deposite-funds"> 
+						{{ $t('fund.deposit') }} 
+					</chp-button>
+					<chp-button class="btn btn-primary btn-sm" href="#/fund-manager/withdrawal">
+						{{ $t('fund.withdraw') }} 
+					</chp-button>
+				</div>
+				<table class="table mb-none">
+					<thead>
+						<tr>
+							<th>{{ $t('account.account') }}</th>
+							<th>{{ $t('account.type') }}</th>
+							<th>{{ $t('account.balance') }}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="(t,index) in $store.state.mt4Accounts" :key="index">
+							<td>{{ t.mt4_id }}</td>
+							<td>{{ t.account_type }}</td>
+							<td>{{ t.balance }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</template>
+		</chp-panel>
 	</div>
 </template>
 <script>

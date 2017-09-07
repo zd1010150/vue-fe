@@ -9,7 +9,7 @@
 						<strong class="amount mt4 text-dark">{{ mt4.mt4_id}}</strong>
 				    	<span class="text-primary pl-sm">({{ $t('type') }} :{{ mt4.account_type }})</span>	
 					</div>
-					<operate-trading-account :mt4Id="mt4.mt4_id"></operate-trading-account>	
+					<operate-trading-account :mt4Id="mt4.mt4_id" v-if="mt4.account_type == 'Agent'" ></operate-trading-account>	
 				</header>
 				<div class="charts pt-lg">
 					<table  class="subtitle small-screen">

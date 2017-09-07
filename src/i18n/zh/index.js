@@ -4,4 +4,5 @@ import info from './info'
 import pageTitle from './pageTitle'
 import account from './account'
 import trade from './trade'
-export default { ui, loginAndPassword,info,pageTitle,account,trade }
+import fund from './fund'
+export default { ui, loginAndPassword,info,pageTitle,account,trade,fund }

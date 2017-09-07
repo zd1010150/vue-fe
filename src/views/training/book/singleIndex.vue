@@ -18,7 +18,7 @@
         <div v-for="book in loopList" class="col-sm-6 col-md-4 col-lg-3">
           <div class="thumbnail">
             <div class="image-box">
-              <div class="featured-image" v-bind:style='{backgroundImage:"url(" + book.imagepath +")"}'></div>
+              <chp-feature-image :src='book.imagepath'/>
               <div class="description">
                 <div class="word-box">
                   <small class="central-word">{{book.description}}</small>

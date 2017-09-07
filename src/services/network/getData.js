@@ -31,7 +31,6 @@ let filterRejectResponse = (error) => {
 let fetchData = async function(type = 'GET', url = '', data = {}) {
   return fetch(type, url, data).then((response) => {
     let success = response.status_code == 200 ? true : false
-    console.log(response,"==========")
     if (!success) {
       handlerFailedResponse(response)
     }
@@ -42,7 +41,6 @@ let fetchData = async function(type = 'GET', url = '', data = {}) {
       errors: response.errors
     }
   }, (error) => {
-    console.log(error,"+=====")
     filterRejectResponse(error)
   })
 }
