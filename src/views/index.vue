@@ -12,6 +12,9 @@
           </div>
         </div>
    </div>
+   <div slot="footer" v-html="$store.state.terms" class="page-footer pt-lg mt-lg">
+     
+   </div>
   </chp-main-layout>
 </template>
 <script>
@@ -26,15 +29,23 @@
       //做一些初始化工作，拿一些数据
       let self = this
       this.isLoading = true
-      Promise.all([await this.$store.dispatch("getMT4Accounts"),await this.$store.dispatch("getLeverage")]).then(function(){
+      Promise.all([await this.fetchMt4(),await this.fetchConfig()]).then(function(){
         self.isLoading = false
         self.begainRouter = true
       })
+    },
+    methods:{
+      async fetchMt4(){
+        return await this.$store.dispatch("getMT4Accounts")
+      },
+      async fetchConfig(){
+        return await this.$store.dispatch("getLeverageAndTerms")
+      }
     }
   }
 </script>
 <style lang="less">
-  .content-wrapper{
+.content-wrapper{
   	& > .container-fluid{
 		padding-right:0px;
 		padding-left: 0px;
@@ -45,5 +56,8 @@
     position:fixed;
 
     z-index:9999999;
+  }
+  .page-footer{
+    border-top:1px solid #666;
   }
 </style>

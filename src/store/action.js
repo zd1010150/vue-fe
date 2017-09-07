@@ -54,10 +54,11 @@ export default{
     }
     return {data,success,message}
    },
-   async getLeverage({commit}){
-     let {data,success,message} = await configService.getConfigByKey({fields:["leverage"]})
+   async getLeverageAndTerms({commit}){
+     let {data,success,message} = await configService.getConfigByKey({fields:["leverage","terms"]})
      if(success){
        commit(type.SET_LEVERAGE,configService.mapLeverage(data['leverage']))
+       commit(type.SET_TERMS,data['terms'])
      }else{
       commit(type.SET_LEVERAGE,[])
      }

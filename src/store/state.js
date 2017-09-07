@@ -14,5 +14,6 @@ export default {
   agentAccounts:[],
   leverage:[],
   contentLoading:false,
-  refreshNoticeFlag:false
+  refreshNoticeFlag:false,
+  terms:""
 }

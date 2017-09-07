@@ -12,7 +12,8 @@ import {
   SET_MT4_TRADER_ACCOUNTS,
   SET_LEVERAGE,
   SET_CONTENT_LOADING,
-  SET_NOTICE_REFRESH_FLAG
+  SET_NOTICE_REFRESH_FLAG,
+  SET_TERMS
 } from "./mutation-types"
 
 
@@ -61,5 +62,8 @@ export default{
   },
   [SET_NOTICE_REFRESH_FLAG](state,flag){
     state.refreshNoticeFlag = flag
+  },
+  [SET_TERMS](state,terms){
+    state.terms = terms
   }
 }
