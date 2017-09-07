@@ -116,7 +116,6 @@ import method from "./forms/method"
 			async fetchSingleBankCardInfo(id){
 				this.loadingStatus=true
 				let {success,data}= await bankCardService.getBankCardById(id);
-				console.log("it is fetch ",data);
 				if(success && data){
 
 					this.editObj = data

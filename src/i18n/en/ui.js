@@ -38,5 +38,8 @@ export default {
     tips: "Drop File Here or Click to Upload",
     accepts : "Only Accept",
     attachment : "Attachment"
+  },
+  timer:{
+    over: "Expired "
   }
 }

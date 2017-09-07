@@ -2,16 +2,15 @@
 <template>
 	<div class="row pt-lg">
 		<div class="col-lg-12 col-md-12">
-				<div class="clearfix col-lg-12 col-md-12 col-xs-12 pl-none">
-					<h4 class="pull-left trade-volume-title">{{ $t('trade.tradeVolumn')}}{{$t('trade.level')}}</h4>
-					<a href="javascript:void(0)" @click="showTerms" class="pull-right trade-volume-terms">
-						<i class="fa fa-info-circle" aria-hidden="true"></i>
-						{{$t('activityTerms')}}
-					</a>
-				</div>
-				
-				<template v-for="(value,key) in activityData">
-					<div class="col-lg-6 col-md-6 col-xs-12 pl-none col-volumn">
+			<div class="clearfix col-lg-12 col-md-12 col-xs-12 pl-none">
+				<h4 class="pull-left trade-volume-title">{{ $t('trade.tradeVolumn')}}{{$t('trade.level')}}</h4>
+				<a href="javascript:void(0)" @click="showTerms" class="pull-right trade-volume-terms">
+					<i class="fa fa-info-circle" aria-hidden="true"></i>
+					{{$t('activityTerms')}}
+				</a>
+			</div>
+			<template v-for="(value,key) in activityData">
+				<div class="col-lg-6 col-md-6 col-xs-12 pl-none col-volumn">
 					<section class="panel volumn-panel">
 						<div class="panel-body p-lg bg-default">
 							<div class="widget-summary">
@@ -68,12 +67,12 @@
 				</div>
 			</template>
 		</div>
-		<chp-dialog-alert
-	  	:chp-title="$t('activityTerms')"
-	  	:chpContentHtml="terms"
-	  	:chp-ok-text="$t('ui.button.confirm')"
-	  	:scrollable="true"
-	  	ref="termsDailog"/>
+	<chp-dialog-alert
+  	:chp-title="$t('activityTerms')"
+  	:chpContentHtml="terms"
+  	:chp-ok-text="$t('ui.button.confirm')"
+  	:scrollable="true"
+  	ref="termsDailog"/>
 	</div>
 </template>
 <script>
@@ -230,7 +229,7 @@
 	    		let {data,message,success} = await activityService.agentAward({type:type,agentId:this.agent})
 	    		if(success){
 	    			this.$emit('refresh')
-	    			this.toastr.info(this.$t("info.SUCCESS"));
+	    			this.toastr.info(this.$t("info.SUCCESS"))
 	    		}
 	    	},
 	    	async showTerms(){

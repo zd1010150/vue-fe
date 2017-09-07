@@ -7,7 +7,7 @@
 				ref="panel">
 				<template slot="title">Active Client Statistics</template>
 		<div slot="body">
-			<div class="col-md-12 col-sm-12 pt-lg pr-none pl-none">
+			<div class="col-md-12 col-sm-12 pr-none pl-none">
 			  <chp-echart :media="media" :externalOption="option" v-if="option"></chp-echart>
 			</div>
 		</div>
@@ -17,65 +17,85 @@
 	import tradeService from 'services/tradeService'
 	import loadingMix from 'mixins/loading'
 	import { LINE_OPTION_CONFIG,LINE_MEDIA_CONFIG } from 'src/config/chart.config.js'
+
 	export default{
 		mixins:[loadingMix],
 		data(){
 			return {
 				chartData:null,
-				media:LINE_MEDIA_CONFIG,
-				defaultOption:{
-          			legend: {
-          				left:0,
-          				orient:'horizontal',
-          				data:[]
+				media:[{
+				    query: {
+				      maxWidth: 768,
+				      minWidth: 400
 				    },
-				    grid:{
-				    	width:'auto',
-				    	height:'auto',
-				    	left:'10%',
-				    	right:'5%'
+				    option: {
+				      legend: {
+				        orient: 'horizontal',
+				        //padding:10
+				        left: "center"
+				      },
+				      grid: {
+				        left: "10%",
+				        top: "10%"
+				      }
+				    }
+				  },
+				  {
+				    query: {
+				      maxWidth: 400
 				    },
-				     xAxis: {
-				        type: 'category',
-				        boundaryGap: false,
-				        data: []
-				    }, 
-				    yAxis: {
-				        type: 'value'
-				    },
-				    series: [],
-				    tooltip: {
-				        trigger: 'axis'
-				    },
-          		},
-          		option: null
+				    option: {
+				      legend: {
+				        orient: 'horizontal',
+				        //padding:10
+				        left: '20%'
+				      },
+				      grid: {
+				        top: '15%',
+				        left: '15%'
+				      }
+				    }
+				  }
+				],
+				option: null
 			}
 		},
 		methods:{
 			mapData(data){
 				let series = {clients:[],accounts:[]},
+					yAxis = [{
+							name:this.$t('trade.trader'),
+							type:'value'
+						}],
 					xAxis = {
 					        type: 'category',
 					        boundaryGap: false,
 					        data: []
 					    },
-				    legend = { data : [this.$t('ui.trade.activeClient'),this.$t('ui.trade.totalClient')]}
-			    for(let c in data.clients){
+				    legend = { data : [ { 
+				    	name:this.$t('trade.activeClient'),
+				    	icon:'circle'
+				    },{
+				    	name:this.$t('trade.totalClient'),
+				    	icon:'circle'
+				    }]}
+			    for(let c in data.activeClients){
 			    	xAxis.data.push(c)
-			    	series.clients.push(data.clients[c])
-			    	series.accounts.push(data.accounts[c])
+			    	series.clients.push(data.activeClients[c])
+			    	series.accounts.push(data.allClients[c])
 				}
 				this.option = Object.assign({},LINE_OPTION_CONFIG,{
-					legend:legend,
-	       			xAxis:xAxis,
+					legend,
+	       			xAxis,
+	       			yAxis,
 	       			series: [
 	       				{
-	       					name: this.$t('ui.trade.activeClient'),
+	       					name: this.$t('trade.activeClient'),
 	       					data:series.clients,
 	       					type:'line'
 	       				},
 	       				{
-	       					name: this.$t('ui.trade.totalClient'),
+	       					name: this.$t('trade.totalClient'),
 	       					data:series.accounts,
 	       					type:'line'
 	       				}]

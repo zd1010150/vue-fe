@@ -2,6 +2,7 @@
  * 请求api返回的message
  */
 export default {
+  NETWORK_ERROR: 'Network error',
   SUCCESS: 'Operating Success',
   SYSTEM_ERROR : 'System  Error',
   INVALID_USER_ERROR : 'Invalid User Error',

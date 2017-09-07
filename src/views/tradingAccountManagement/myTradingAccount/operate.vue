@@ -5,10 +5,10 @@
 	        {{ $t('changePwd') }}
 	    </chp-button>
        	<chp-button class="mb-xs mt-xs  btn btn-primary print-btn" @click="withdrawal">
-       		{{ $t('withdraw') }}
+       		{{ $t('fund.withdraw') }}
       	</chp-button>
 		<chp-button class="mb-xs mt-xs  btn btn-primary print-btn" @click="deposite">
-			{{ $t('deposit') }}
+			{{ $t('fund.deposit') }}
 		</chp-button>
 	</div>
 </template>

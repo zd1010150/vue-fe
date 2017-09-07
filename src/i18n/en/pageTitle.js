@@ -21,5 +21,7 @@ export default {
   ticketList: "Ticket List",
   ticketDetail:"Ticket Detail",
   affiliate: "Affiliate Account",
-  onlineTraining: "Online Training"
+  onlineTraining: "Online Training",
+  video:"Video",
+  book:"Books and Magazines",
 }

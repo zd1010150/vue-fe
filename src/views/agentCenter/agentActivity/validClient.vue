@@ -23,11 +23,11 @@
 								</td>
 							</tr>
 						</table>
-						<div class="progress progress-striped progress-xs m-sm light">
-							<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuemax="100" :style="{width: activityInfo.percentage+'%' }">
-								<span class="sr-only">{{ activityInfo.percentage }}%</span>
-							</div>
-						</div>
+						<chp-progress-bar 
+						:percentage= "activityInfo.percentage" 
+						:bgClasses="['progress-striped','progress-xs','m-sm' ,'light']"
+						:barClasses="['progress-bar-primary']"
+						/>
 						<p class="padding-10 pb-none padding-top-20">
 							<span class="level lead pr-md">{{ $t('trade.level') }}{{ activityInfo.currentLevel}}</span>
 						<span class="number">{{ activityInfo.currentValue}}/{{ activityInfo.level[activityInfo.currentLevel]}}</span>

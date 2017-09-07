@@ -8,7 +8,7 @@
 	            <template slot="title">{{ activity.title}}</template>
 	            <div slot="body" class="row p-sm">
 	              <mu-card class="pic col-lg-3 col-md-3 col-sm-12 p-sm">
-	              	<img class="img-responsive" :src="activity.image_link || activity.imagepath" alt="">
+	              	<img class="img-responsive" :src=" activity.imagepath || activity.image_link  " alt="">
 	              	<div class="mask">
 						<h3><a :href="activity.url" target="_blank">{{ $t("more")}}</a></h3>
 					</div>
@@ -22,8 +22,6 @@
 						</a>	
 	              	</p>
 	              </section>
-	              
-
 	            </div>
           </chp-panel>
 			</div>
@@ -59,19 +57,17 @@
 <style lang="less" scoped>
 	@import "~assets/less/variable.less";
 	@import "~assets/less/transition.less";
-	
 		.row{
 			.display(flex);
 			.align-items(center);
 		}
 		.pic{
-			
-			
 			display: table-cell;
 			vertical-align: middle;
 			position:relative;
 			img{
-
+				vertical-align: middle;
+				max-width:100%;
 			}
 			.mask{
 				transparent:0;
@@ -88,7 +84,6 @@
 				.align-items(center);
 				.justify-content(center);
 				color:transparent;
-				
 				transition:@material-enter;
 				h3 > a{
 					color:transparent;
@@ -103,23 +98,16 @@
 			}
 			
 		}
-		.pic img{
-
-			vertical-align: middle;
-			max-width:100%;
-		}
 		.size,.copy{
 			text-align: center;
 		}
 	
 	html.dark{
-		
 			.pic{
 				.mask{
 					&:hover{
 						h3 > a{
 							color:@light-color;
-					
 						}
 						background-color: rgba(0, 0, 0,.6)
 					}

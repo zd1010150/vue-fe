@@ -6,5 +6,8 @@ export default {
 	first_name : "Given name",
 	last_name : "Family name",
 	email : "Email",
-	phone : "Phone"
+	phone : "Phone",
+	account: "Account",
+	type: "Type",
+	balance: "Balance"
 }

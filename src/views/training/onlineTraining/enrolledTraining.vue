@@ -5,7 +5,7 @@
 			<h3 class="text-dark">{{ $t('onlineTraining.enrolledOnlineTraining') }}</h3>
 		</div>
 		<template v-for="(t,index) in trainings">
-			<div class="col-md-4 col-lg-4 col-xl-4" :key="index">
+			<div class="col-md-4 col-lg-4 col-xl-4" :key="Math.random()">
 				<section class="panel panel-featured-left panel-featured-primary">
 					<div class="panel-body">
 						<div class="widget-summary">
@@ -17,7 +17,12 @@
 								</div>
 								<div class="summary-footer clearfix">
 									<span>timer:</span>
-									<span class="timer text-dark">1天2小时30分</span>
+									<span class="timer text-dark">
+									<chp-timer  :startTime="Number(t.start)*1000" 
+													:overHint="$t('ui.timer.over')"
+													:id="index"/>
+									
+									</span>
 									<chp-button class="mb-xs mt-xs mr-xs btn btn-danger print-btn pull-right" @click="showConfirmDialog(t.id)">
 				                        <i class="fa fa-times pr-xs"></i> {{ $t('ui.button.withdraw') }}
 				                    </chp-button>

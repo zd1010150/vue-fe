@@ -5,11 +5,14 @@
 	</div>
 </template>
 <script>
+import trainingRouteMixin from 'src/mixins/trainingRouteMixin'
 import enrolled from "./enrolledTraining"
 import table from "./table"
 import trainingService from "services/trainingService"
 import { SET_CONTENT_LOADING } from 'store/mutation-types'
+import { ZH_LANGUAGE } from 'src/config/app.config.js'
 export default{
+	mixins:[trainingRouteMixin],
 	components:{
 		'enrolled-training' :enrolled,
 		'training-table' : table
@@ -17,7 +20,8 @@ export default{
 	data(){
 		return {
 			language: this.$store.state.language,
-			allTrainings : []
+			allTrainings : [],
+			enrolledTrainings:[]
 		}
 	},
 	methods:{
@@ -26,7 +30,9 @@ export default{
 			let {success,data} = await trainingService.getOnlineTraining(this.language == "zh" ? "mandarin" : "english")
 			this.$store.commit(SET_CONTENT_LOADING,false)
 			if(success){
+
 				this.allTrainings= data.paginatedList
+				console.log(this.allTrainings,"=====")
 			}
 		},
 		refresh(){
@@ -35,14 +41,14 @@ export default{
 	},
 	watch:{
 		"$store.state.language" : function(val){
-			console.log(val)
-			this.language = val
-			this.fetchTraining()
-		}
-	},
-	computed:{
-		enrolledTrainings : function(){
-			return this.allTrainings.filter((t)=>{
+			if(val !== ZH_LANGUAGE){
+				this.$router.push("/403")
+			}else{
+				this.fetchTraining()
+			}
+		},
+		allTrainings : function(val){
+			this.enrolledTrainings = val.filter((t)=>{
 				return t.enrolled
 			})
 		}

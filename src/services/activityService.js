@@ -53,5 +53,11 @@ export default{
    */
   async getCampaigns(language){
     return fetchData('GET','/campaigns',{language})
+  },
+  /**
+   * 获取次数接口
+   */
+  async getLotteryTimes(){
+    return fetchData('GET','/lottery/getlucky')
   }
 }

@@ -9,7 +9,7 @@
 						<strong class="amount mt4 text-dark">{{ mt4.mt4_id}}</strong>
 				    	<span class="text-primary pl-sm">({{ $t('type') }} :{{ mt4.account_type }})</span>	
 					</div>
-					<operate-trading-account :mt4Id="mt4.mt4_id"></operate-trading-account>	
+					<operate-trading-account :mt4Id="mt4.mt4_id" v-if="mt4.account_type == 'Agent'" ></operate-trading-account>	
 				</header>
 				<div class="charts pt-lg">
 					<table  class="subtitle small-screen">
@@ -128,7 +128,19 @@
 				        data: []
 				    },
 				    lots = this.$t("trade.lots"),
-				    legendData = [this.$t('trade.fx'),this.$t('trade.oil'),this.$t('trade.metal'),this.$t('trade.cfd')],
+				    legendData = [{
+				    	name:this.$t('trade.fx'),
+				    	icon:'circle'
+				    },{
+				    	name:this.$t('trade.oil'),
+				    	icon:'circle'
+				    },{
+				    	name:this.$t('trade.metal'),
+				    	icon:'circle'
+				    },{
+				    	name:this.$t('trade.cfd'),
+				    	icon:'circle'
+				    }],
 				    chart = data.chart,
 				    total = [
 				    			{
@@ -212,7 +224,7 @@
 	       		}
 	       		if(this.mt4.account_type == "Agent"){
 	       			this.close();
-	       			this.$router.push('agent-center/statistics');
+	       			this.$router.push('/agent-center/statistics');
 	       		}else{
 	       			this.$emit("collapsePanel",this.order,isOpen)
 	       		}

@@ -25,6 +25,21 @@ en:
     video: "Video"
     banner: "Banner"
     copy: "Copy URL"
+  charts:
+    withdrawlAndDepositLineChart: "Withdrawal & Deposit Statistics"
+    commissionPieChart: "Commission Statistics"
+    historyTotalCommission: "History Total Commissions"
+    lastMonth: "Last Month"
+    selectedDate: "Selected Date"
+    history: "History"
+    dailyVolumeStatistics: "Daily Volume Statistics"
+    percantageVolumeStatistics: "Volume Percentage Statistics"
+    traderVolumePercentageStatistics: "Product Volume Percentage Statistics"
+    average: "Average"
+    historyTotalVolume: "History Total Volume"
+    volume: "Volume"
+    treasury: "Treasury"
+    client: "Client"
 zh:
   clientList: "客户列表" 
   remainLots : "到下一等级还需交易手数"
@@ -52,6 +67,22 @@ zh:
     video: "视频"
     banner: "Banner"
     copy: "复制URL"
+  charts:
+    withdrawlAndDepositLineChart: "出入金信息统计"
+    commissionPieChart: "佣金统计"
+    historyTotalCommission: "历史总佣金"
+    lastMonth: "上个月"
+    selectedDate: "选择的日期"
+    history: "历史总"
+    dailyVolumeStatistics: "每日交易量统计"
+    percantageVolumeStatistics: "交易产品占比统计"
+    traderVolumePercentageStatistics: "交易产品交易量统计"
+    average: "平均"
+    historyTotalVolume: "历史总手数"
+    volume: "交易量"
+    treasury: "出入金"
+    client: "客户数"
+
   
 
   

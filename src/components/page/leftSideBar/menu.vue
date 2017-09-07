@@ -1,7 +1,7 @@
 <i18n src="./i18n.yaml"></i18n>
 <script>
   import { SET_LEFT_SIDE_BAR_STATUS } from "store/mutation-types"
-  import { common,agent,nonAgent } from "src/config/menu.config.js"
+  import { common,agent,nonAgent,zh_menu,en_menu } from "src/config/menu.config.js"
   export default{
   data(){
     return {
@@ -144,6 +144,7 @@
       }
 
       const setAllparents = () => {
+        console.log(parentIds,"***")
         if (!parentIds) {
           return;
         }
@@ -165,29 +166,33 @@
         }
       }
 
-      setAllparents();
+      setAllparents()
+    },
+    filterByLanguageAndRole(language,hasAgent){
+      let temp =  common.slice(),
+          languageTmp = language == "zh" ? zh_menu : en_menu,
+          agentTmp = hasAgent ? agent : nonAgent
+          temp.splice(3,0,...agentTmp)
+          temp.splice(this.items.length-1,0,...languageTmp)
+          console.log(temp,"menu",languageTmp,language,zh_menu,en_menu,this.$store.language,this.$store)
+      this.items = temp
     }
 
   },
-  created(){
-    let temp = common.slice()
-    if( this.$store.state.userInfo && this.$store.state.userInfo.hasAgent ){
-      temp.splice(3,0,...agent)
-    }else{
-      temp.splice(3,0,...nonAgent)
-    }
-    this.items = temp 
+  mounted(){
+    this.filterByLanguageAndRole(this.$store.state.language,this.$store.state.userInfo && this.$store.state.userInfo.hasAgent)
   },
   watch: {
     $route(val, oldVal){
       if(window.innerWidth<768){//小屏幕下才自动关闭，大屏幕不会
         this.$store.commit(SET_LEFT_SIDE_BAR_STATUS,false)
       }
-      
     },
-    "$route.path"(val){
-      console.log("menu path change",val);
+    "$route.path":function(val){
       this.setItemsOpen(val)
+    },
+    "$store.state.language":function(val){
+      this.filterByLanguageAndRole(val,this.$store.state.userInfo && this.$store.state.userInfo.hasAgent)
     }
   }
 }
