@@ -11,7 +11,7 @@ export default {
 	当type为action时，无category字段时返回所有action数据，有categ时返回请求类别的数据，和language无关
 	当type为announcement, course时，返回language语言的对应数据，
  */
-  async getNoticeByType(type,{language,category,startDay,endDay,pageIndex,pageSize,sort}){
+  async getNoticeByType(type,{language='',category='',startDay='',endDay='',pageIndex=1,pageSize=5,sort=''}){
 
   	return dataTableService.pagingQuery({
   		url : "/notice/"+type+"/all",

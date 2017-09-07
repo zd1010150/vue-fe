@@ -20,7 +20,8 @@ export default {
     back:"Back",
     resetPwd: "Reset",
     withdraw: "Withdraw",
-    detail: "Detail"
+    detail: "Detail",
+    viewAll: "View All"
   },
   datePicker:{
     startDate:"Start Date",

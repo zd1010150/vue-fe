@@ -1,8 +1,13 @@
 <i18n src="./i18n.yaml"></i18n>
 <template>
 	<div class="col-lg-6 col-md-6 col-xs-12">
-		<chp-panel :canCollapse="false" :canClose="false">
-			<template slot="title">MT4</template>
+		<chp-panel :canCollapse="false" :canClose="false" class="dashbord-fix-height-panel">
+			<template slot="title">MT4
+				<a class="pull-right" href="#/account-management/my-trading-account">
+					<i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+					<chp-ink-ripple></chp-ink-ripple>
+				</a>
+			</template>
 			<template slot="body">
 				<div class="operater pull-right pb-sm pt-sm">
 					<chp-button class="btn  btn-primary btn-sm" href="#/fund-manager/deposite-funds"> 
@@ -22,9 +27,12 @@
 					</thead>
 					<tbody>
 						<tr v-for="(t,index) in $store.state.mt4Accounts" :key="index">
+						<template v-if="index<3">
 							<td>{{ t.mt4_id }}</td>
 							<td>{{ t.account_type }}</td>
 							<td>{{ t.balance }}</td>
+						</template>
+							
 						</tr>
 					</tbody>
 				</table>

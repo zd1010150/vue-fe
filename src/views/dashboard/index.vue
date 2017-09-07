@@ -36,3 +36,23 @@
 		}
 	}
 </script>
+<style lang="less">
+	.dashbord-fix-height-panel{
+		height: 319px;
+		.panel-body{
+			height:255px;
+			overflow:auto;
+			width:100%;
+			table{
+				max-width: 100%;
+			}
+			.one-line{
+				max-width: 300px;
+				height:20px;
+				overflow: hidden;
+				text-overflow:ellipsis;
+				white-space: nowrap;
+			}
+		}
+	}
+</style>
