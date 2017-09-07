@@ -1,7 +1,7 @@
 <i18n src="./i18n.yaml"></i18n>
 <template>
 	<div class="col-lg-6 col-md-6 col-xs-12">
-		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
+		<chp-panel :canCollapse="false" :canClose="false">
 			<template slot="title">MT4</template>
 			<template slot="body">
 				<div class="operater pull-right pb-sm pt-sm">

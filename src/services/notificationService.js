@@ -1,6 +1,6 @@
 
-import   { fetchData }  from  './network/getData'
-
+import { fetchData }  from  './network/getData'
+import dataTableService from './dataTableService'
 
 export default {
 /**
@@ -11,10 +11,17 @@ export default {
 	当type为action时，无category字段时返回所有action数据，有categ时返回请求类别的数据，和language无关
 	当type为announcement, course时，返回language语言的对应数据，
  */
-  getNoticeByType({type,language,category,startDay,endDay}){
-  	 return fetchData("GET","/notice/"+type+"/all",{ language,category,startDay,endDay })
+  async getNoticeByType(type,{language,category,startDay,endDay,pageIndex,pageSize,sort}){
+
+  	return dataTableService.pagingQuery({
+  		url : "/notice/"+type+"/all",
+  		pageIndex:pageIndex,
+  		pageSize:pageSize,
+  		sort:"",
+  		queryParameter:{language,category,startDay,endDay}
+  	})
   },
-  getUnreadNotice(){
+  async getUnreadNotice(){
 	return fetchData("GET","/notice/unread")
   }
 }
