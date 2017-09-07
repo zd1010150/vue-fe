@@ -4,13 +4,17 @@
             <chp-table-header>
                 <chp-table-row>
                     <chp-table-head chp-sort-by="order_time">Time</chp-table-head>
-                    <chp-table-head chp-sort-by="mt4_id" width="100px">Account</chp-table-head>
+                    <chp-table-head chp-sort-by="mt4_id" width="200px">Account</chp-table-head>
                 </chp-table-row>
             </chp-table-header>
             <chp-table-body>
                 <chp-table-row v-for="(row, rowIndex) in noticeList" :key="rowIndex" :chp-selection="chpSelection">
                     <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :chp-numeric="columnIndex == 'top_up_amount' ">
-                        {{column}}
+                        <span  v-if="columnIndex == 'content'" v-html="column"></span>
+                        <span v-else>
+                            {{column}}
+                        </span>
+                        
                     </chp-table-cell>
                 </chp-table-row>
             </chp-table-body>
@@ -52,7 +56,7 @@ export default {
         },
         filterFields(originData) {
             if(originData && originData.length > 0){
-                this.noticeList = originData.map(function() {
+                this.noticeList = originData.map(function(row,index) {
                     return {
                         content:row.content,
                         date_time:row.dateTime
@@ -64,13 +68,13 @@ export default {
         },
 
         async fetchAnnoucement() {
-            this.$store.commit(SET_CONTENT_LOADING, true)
+           
             let { success, data } = await trainingService.getNoticeByType('announcement', {
                 language: this.language,
                 pageIndex: this.pageIndex,
                 pageSize: this.pageSize
             })
-            this.$store.commit(SET_CONTENT_LOADING, false)
+            
             if (success) {
                 console.log('announcement', data);
                 this.filterFields(data.data)
