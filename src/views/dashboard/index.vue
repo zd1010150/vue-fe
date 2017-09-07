@@ -1,9 +1,9 @@
 <template>
 	<div class="container-fluid">
-		<div class="row first-row">
-			<dashboard-carousel class="dashboard-carousel pr-lg" @resize="resize" ></dashboard-carousel>
-			<dashboard-activity class="mt4-activity" ref="activity"></dashboard-activity>
+		<div class="row">
+			<dashboard-carousel></dashboard-carousel>
 		</div>
+		<dashboard-activity></dashboard-activity>
 		<div class="row">
 			<dashboard-mt4></dashboard-mt4>
 			<dashboard-announcement></dashboard-announcement>
@@ -33,38 +33,6 @@
 			'dashboard-analysis':analysis,
 			'dashboard-books':books,
 			'dashboard-videos':videos,
-		},
-		methods:{
-			resize(height){
-				this.$refs.activity.resize(height)
-			}
 		}
 	}
 </script>
-<style lang="less">
-	.first-row{
-		.dashboard-carousel{
-			width: 66.66%;
-			float:left;
-		}
-		.mt4-activity{
-			width:33.33%;
-		}
-	}
-	@media(max-width:1680px){
-		.first-row{
-			.dashboard-carousel{
-				width: 100%;
-				float: none;
-				padding: 0px 15px;
-			}
-			.mt4-activity{
-				width:100%;
-				padding: 0px 15px;
-				.panel{
-					margin-bottom: 10px;
-				}
-			}
-		}
-	}
-</style>

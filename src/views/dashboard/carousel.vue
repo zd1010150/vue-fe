@@ -1,5 +1,5 @@
 <template>
-	<div >
+	<div class="col-lg-12">
 		<div class="thumbnail">
 			<chp-carousel   :perPage="1" 
 							:autoplay="true" 
@@ -18,7 +18,6 @@
 </template>
 <script>
 	import activityService from "services/activityService"
-	import "javascript-detect-element-resize"
 	export default{
 		data(){
 			return {
@@ -34,19 +33,6 @@
 				if(success){
 					this.activities = data.items
 				}
-			},
-			resize(){
-				this.$emit('resize',this.$el.offsetHeight)
-			}
-		},
-		mounted(){
-			if(window.innerWidth > 1680){
-				addResizeListener(this.$el,this.resize)
-			}
-		},
-		beforeDestroy(){
-			if(window.innerWidth > 1680){
-				removeResizeListener(this.$el,this.resize)
 			}
 		},
 		watch:{

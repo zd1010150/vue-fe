@@ -1,8 +1,8 @@
 <i18n src="./i18n.yaml"></i18n>
 <template>
-	<div  :style="styles">
+	<div class="row mt4-activity">
 		<template v-for="(value,key) in volumnDataInfo">
-			<section class="panel volumn-panel" :class="'volume-'+key">
+			<section class="panel volumn-panel col-lg-6 col-xs-12" :class="'volume-'+key">
 					<div class="panel-body">
 						<div class="widget-summary">
 							<div class="widget-summary-col info-col">
@@ -30,7 +30,7 @@
 										<div class="pull-left">
 											<span>
 												{{ $t('trade.level') }} {{ value.awardLevel}}
-												<i class="fa lead fa-caret-right" aria-hidden="true"></i>
+												<i class="fa fa-caret-right" aria-hidden="true"></i>
 												{{ $t('trade.level') }} {{ value.currentLevel}}
 											</span>
 											 
@@ -66,8 +66,7 @@
 	export default{
 		data(){
 			return {
-				dataInfo:{},
-				styles:null
+				dataInfo:{}
 			}
 		},
 		methods:{
@@ -77,11 +76,6 @@
 				})
 				if(success){
 					this.dataInfo = data 
-				}
-			},
-			resize(height){
-				this.styles= {
-					height:height+'px'
 				}
 			},
 			async getBonus(type){
@@ -113,9 +107,6 @@
 <style lang="less">
 	@import "~assets/less/variable.less";
 	.mt4-activity{
-		.display(flex);
-		.flex-direction(column);
-		.justify-content(space-between); 
 		.panel-body{
 			padding:10px 20px !important;
 		}
@@ -133,6 +124,7 @@
 			border-top: none;
 			height:27px;
 			padding:0px;
+
 		}
 		.colorMix(@color){
 			h4{
