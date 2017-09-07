@@ -70,7 +70,6 @@ export default {
     }
   },
   activated() {
-    console.log("single index activated")
     this.getCategoryBook()
   },
   methods: {
