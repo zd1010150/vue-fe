@@ -13,5 +13,6 @@ export default {
   traderAccounts:[],
   agentAccounts:[],
   leverage:[],
-  contentLoading:false
+  contentLoading:false,
+  refreshNoticeFlag:false
 }
