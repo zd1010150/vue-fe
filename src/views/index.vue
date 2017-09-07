@@ -24,7 +24,6 @@
     },
    async created(){
       //做一些初始化工作，拿一些数据
-      console.log("index created")
       let self = this
       this.isLoading = true
       Promise.all([await this.$store.dispatch("getMT4Accounts"),await this.$store.dispatch("getLeverage")]).then(function(){

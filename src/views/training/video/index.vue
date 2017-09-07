@@ -46,7 +46,6 @@ export default {
 	},
 	watch: {
 		"$route.query": function(val) {
-			console.log(val, "=====")
 			this.switchComponents(val && val.level)
 			
 		}

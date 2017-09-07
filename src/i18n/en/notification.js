@@ -1,6 +1,7 @@
 
 export default {
-	announcement:"Announcement",
+  notification: "Notification",
+  announcement:"Announcement",
   course:"Course",
   action:"Action"
 }

@@ -117,8 +117,8 @@
 			}
 		}
 		.progress-xxs{
-			height:3px;
-			border-radius: 3px;
+			height:2px;
+			border-radius: 2px;
 		}
 		.widget-summary .summary-footer{
 			border-top: none;

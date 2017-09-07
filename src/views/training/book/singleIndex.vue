@@ -18,7 +18,7 @@
         <div v-for="book in loopList" class="col-sm-6 col-md-4 col-lg-3">
           <div class="thumbnail">
             <div class="image-box">
-              <chp-feature-image :src='book.imagepath'/>
+              <chp-feature-image :src='book.imagepath || book.image_link'/>
               <div class="description">
                 <div class="word-box">
                   <small class="central-word">{{book.description}}</small>
@@ -75,11 +75,11 @@ export default {
   methods: {
     async getCategoryBook() {
       this.$store.commit(SET_CONTENT_LOADING, true)
-      let { success, data } = await trainingService.getCategoryBook(this.language == "zh" ? "mandarin" : "english", this.$route.query.bookType)
+      let { success, data } = await trainingService.getCategoryBook(this.language == "zh" ? "mandarin" : "english", 
+                                                                    this.$route.query.bookType)
       this.$store.commit(SET_CONTENT_LOADING, false)
       if (success) {
-        this.loopList = data.paginatedList.data;
-        console.log(data);
+        this.loopList = data.paginatedList.data
       }
     },
 
