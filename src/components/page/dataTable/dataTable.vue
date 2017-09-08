@@ -12,24 +12,25 @@
           <span class="hidden-sm hidden-xs"> {{ $t('perPage') }}</span>
         </div>
         <div class="col-md-8 col-xs-6 text-right" :class="{'col-md-offset-4':!canPaging,'col-xs-offset-6':!canPaging}">
-          
-          <chp-button class=" btn btn-default mr-xs" @click="displayFilter" v-if="canFilter">
-            <i class="fa fa-filter mr-xs"></i>{{ $t('ui.button.search')}}
-          </chp-button>
-          <template v-if="canAdd">
-           <slot name="addToolbar">
-             <chp-button class=" btn btn-primary mr-xs" @click="openAddDialog" id="openAddDialogBtn">
-             <i class="fa fa-plus mr-xs"></i><slot name="addBtnText">{{ $t('ui.button.add')}}</slot>
+          <slot name="toolBar">
+            <chp-button class=" btn btn-default mr-xs" @click="displayFilter" v-if="canFilter">
+              <i class="fa fa-filter mr-xs"></i>{{ $t('ui.button.search')}}
             </chp-button>
-            <chp-dialog chp-open-from="#openAddDialogBtn" chp-close-to="#openAddDialogBtn" ref="addDialog">
-              <slot name="addDialogSlot"></slot>
-              <chp-dialog-actions >
-                <chp-button class="btn btn-primary" @click="createNewObject">Create</chp-button>
-                <chp-button class="btn btn-default " @click="closeDialog('addDialog')">Cancel</chp-button>
-              </chp-dialog-actions>
-            </chp-dialog>
-           </slot>
-          </template>
+            <template v-if="canAdd">
+             <slot name="addToolbar">
+               <chp-button class=" btn btn-primary mr-xs" @click="openAddDialog" id="openAddDialogBtn">
+               <i class="fa fa-plus mr-xs"></i><slot name="addBtnText">{{ $t('ui.button.add')}}</slot>
+              </chp-button>
+              <chp-dialog chp-open-from="#openAddDialogBtn" chp-close-to="#openAddDialogBtn" ref="addDialog">
+                <slot name="addDialogSlot"></slot>
+                <chp-dialog-actions >
+                  <chp-button class="btn btn-primary" @click="createNewObject">Create</chp-button>
+                  <chp-button class="btn btn-default " @click="closeDialog('addDialog')">Cancel</chp-button>
+                </chp-dialog-actions>
+              </chp-dialog>
+             </slot>
+            </template>
+          </slot>
         </div>
       </div>
     </chp-toolbar>
