@@ -33,6 +33,7 @@ en:
     stock: "Stock"
     analyse: "Analyse"
     teaching: "Teaching"
+    setting: "Setting"
 zh:
   hello: "您好"
   viewProfile: "查看个人资料"
@@ -68,3 +69,4 @@ zh:
     stock: "汇市情报局"
     analyse: "视频分析"
     teaching: "教学视频"
+    setting: "设置"

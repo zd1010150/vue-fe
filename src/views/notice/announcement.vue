@@ -13,8 +13,7 @@
                         <span  v-if="columnIndex == 'content'" v-html="column"></span>
                         <span v-else>
                             {{column}}
-                        </span>
-                        
+                        </span>                        
                     </chp-table-cell>
                 </chp-table-row>
             </chp-table-body>

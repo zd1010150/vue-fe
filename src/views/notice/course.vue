@@ -10,7 +10,10 @@
             <chp-table-body>
                 <chp-table-row v-for="(row, rowIndex) in noticeList" :key="rowIndex" :chp-selection="chpSelection">
                     <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :chp-numeric="columnIndex == 'top_up_amount' ">
-                        {{column}}
+                        <span  v-if="columnIndex == 'content'" v-html="column"></span>
+                        <span v-else>
+                            {{column}}
+                        </span>
                     </chp-table-cell>
                 </chp-table-row>
             </chp-table-body>

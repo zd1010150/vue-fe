@@ -10,4 +10,4 @@ export default [{
     requiresAuth: true,
     pageTitle: "notice"
   }
-}];
+}]

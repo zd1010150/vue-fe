@@ -24,4 +24,5 @@ export default {
   onlineTraining: "在线培训",
   video:"视频",
   book:"书刊与杂志",
+  setting:"设置"
 }
