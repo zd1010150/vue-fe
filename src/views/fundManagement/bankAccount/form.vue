@@ -1,43 +1,40 @@
 <i18n src="../i18n.yaml"></i18n>
 <template>
 	<div class="col-lg-12 col-md-12">
-	 <chp-panel :canCollapse="false" :canClose="true" :isLoading="loadingStatus" @closePanel="closePanel">
-	 <template slot="title">{{ editObj? $t('bankcard.editBtnText') : $t('bankcard.newBtnText')}}</template>
-     <chp-tabs :value="activeStepTab"  @change = "handleStepTabChange" type="wizard" slot="body">
-      <template slot="header">
-        <chp-tab-header href="tab1">{{ $t('bankcard.account') }}</chp-tab-header>
-        <chp-tab-header href="tab2">{{ $t('bankcard.profile') }}</chp-tab-header>
-      </template>
-      <template slot="content">
-		<chp-expand-transition name="chp-fade" >
-        		<keep-alive>
-		         <component v-bind:is="currentView" @methodChange="methodChange" :method="method" :editMethod="editMethod" ref="accountView" :editObj="editObj" @close="closePanel" @refresh="refresh"></component>
-		        </keep-alive>
-	    </chp-expand-transition>
-       </template>
-	</chp-tabs>
-    <div class="row" slot="footer">
-      <div class="col-md-6 col-sm-6 col-xs-6" >
-          <chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn" @click="previous" v-if="activeStepTab =='tab2'">
-            <i class="fa fa-angle-left hidden-sm hidden-xs"></i> {{ $t('ui.button.previous') }}
-          </chp-button>
-          
-      </div>
-       <div class="col-md-6 col-sm-6 col-xs-6" >
-       		<chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn pull-right" @click="next" v-if="activeStepTab =='tab1'">
-           		{{ $t('ui.button.next') }}
-           		<i class="fa fa-angle-right hidden-sm hidden-xs"></i> 
-          	</chp-button>
-          	<chp-button class="mb-xs mt-xs mr-xs btn btn-primary print-btn pull-right" @click="submit" v-if="activeStepTab =='tab2'">
-           		<i class="fa fa-check hidden-sm hidden-xs"></i> 
-           		{{ $t('ui.button.submit') }}
-          	</chp-button>
-       </div>
-    </div>
-   
-    </chp-panel>
-</div>
-	
+		<chp-panel :canCollapse="false" :canClose="true" :isLoading="loadingStatus" @closePanel="closePanel">
+		 	<template slot="title">{{ editObj? $t('bankcard.editBtnText') : $t('bankcard.newBtnText')}}</template>
+		    <chp-tabs :value="activeStepTab"  @change = "handleStepTabChange" type="wizard" slot="body">
+		      <template slot="header">
+		        <chp-tab-header href="tab1">{{ $t('bankcard.account') }}</chp-tab-header>
+		        <chp-tab-header href="tab2">{{ $t('bankcard.profile') }}</chp-tab-header>
+		      </template>
+		      <template slot="content">
+				<chp-expand-transition name="chp-fade" >
+		        		<keep-alive>
+				         <component v-bind:is="currentView" @methodChange="methodChange" :method="method" :editMethod="editMethod" ref="accountView" :editObj="editObj" @close="closePanel" @refresh="refresh"></component>
+				        </keep-alive>
+			    </chp-expand-transition>
+		       </template>
+			</chp-tabs>
+		    <div class="row" slot="footer">
+		      <div class="col-md-6 col-sm-6 col-xs-6" >
+		          <chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn" @click="previous" v-if="activeStepTab =='tab2'">
+		            <i class="fa fa-angle-left hidden-sm hidden-xs"></i> {{ $t('ui.button.previous') }}
+		          </chp-button>
+		      </div>
+		      <div class="col-md-6 col-sm-6 col-xs-6" >
+		       		<chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn pull-right" @click="next" v-if="activeStepTab =='tab1'">
+		           		{{ $t('ui.button.next') }}
+		           		<i class="fa fa-angle-right hidden-sm hidden-xs"></i> 
+		          	</chp-button>
+		          	<chp-button class="mb-xs mt-xs mr-xs btn btn-primary print-btn pull-right" @click="submit" v-if="activeStepTab =='tab2'">
+		           		<i class="fa fa-check hidden-sm hidden-xs"></i> 
+		           		{{ $t('ui.button.submit') }}
+		          	</chp-button>
+		       </div>
+		    </div>
+   		</chp-panel>
+	</div>
 </template>
 <script>
 import account from "./forms/account"

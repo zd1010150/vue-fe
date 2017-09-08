@@ -1,9 +1,9 @@
 <i18n src="../i18n.yaml"></i18n>
 <template>
 	<li>
-        <a href="javascript:void(0)" class="dropdown-toggle notification-icon" data-toggle="dropdown" @click="syncProfile">
+        <mu-icon-button  class="dropdown-toggle notification-icon" data-toggle="dropdown" @click="syncProfile">
           	<i class="fa fa-refresh"></i>
-        </a>
+        </mu-icon-button>
         <chp-tooltip chp-direction="bottom">
             {{ $t('notification.syncProfile.hintMsg') }} 
           </chp-tooltip>

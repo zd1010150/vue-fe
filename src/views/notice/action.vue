@@ -9,29 +9,29 @@
     @pageSizeChange="pageSizeChange" 
     @pageNumberChange="pageNumberChange">
     <div slot="toolBar">
-        <chp-select :autoWidth="true">
+        <chp-select :autoWidth="true" class="category-select">
             <mu-menu-item v-for=" (option,index) in category" :key="index" :value="option" :title="String(option)"></mu-menu-item>
         </chp-select>
     </div>
-        <chp-table slot="table">
-            <chp-table-header>
-                <chp-table-row>
-                    <chp-table-head chp-sort-by="order_time">Time</chp-table-head>
-                    <chp-table-head chp-sort-by="mt4_id" width="100px">Category</chp-table-head>
-                    <chp-table-head chp-sort-by="mt4_id" width="200px">Account</chp-table-head>
-                </chp-table-row>
-            </chp-table-header>
-            <chp-table-body>
-                <chp-table-row v-for="(row, rowIndex) in noticeList" :key="rowIndex" :chp-selection="chpSelection">
-                    <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :chp-numeric="columnIndex == 'top_up_amount' ">
-                        <span  v-if="columnIndex == 'content'" v-html="column"></span>
-                        <span v-else>
-                            {{column}}
-                        </span>                        
-                    </chp-table-cell>
-                </chp-table-row>
-            </chp-table-body>
-        </chp-table>
+    <chp-table slot="table">
+        <chp-table-header>
+            <chp-table-row>
+                <chp-table-head chp-sort-by="order_time">Time</chp-table-head>
+                <chp-table-head chp-sort-by="mt4_id" width="100px">Category</chp-table-head>
+                <chp-table-head chp-sort-by="mt4_id" width="200px">Account</chp-table-head>
+            </chp-table-row>
+        </chp-table-header>
+        <chp-table-body>
+            <chp-table-row v-for="(row, rowIndex) in noticeList" :key="rowIndex" :chp-selection="chpSelection">
+                <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :chp-numeric="columnIndex == 'top_up_amount' ">
+                    <span  v-if="columnIndex == 'content'" v-html="column"></span>
+                    <span v-else>
+                        {{column}}
+                    </span>                        
+                </chp-table-cell>
+            </chp-table-row>
+        </chp-table-body>
+    </chp-table>
     </chp-data-table>
 </template>
 <script>
@@ -101,5 +101,9 @@ export default {
     }
 }
 </script>
-
+<style lang="less" scoped>
+    .category-select{
+        width:192px;
+    }
+</style>
 

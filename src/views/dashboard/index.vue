@@ -3,17 +3,18 @@
 		<div class="row">
 			<dashboard-carousel></dashboard-carousel>
 		</div>
+		<dashboard-activity></dashboard-activity>
 		<div class="row">
 			<dashboard-mt4></dashboard-mt4>
 			<dashboard-announcement></dashboard-announcement>
 		</div>
-		<dashboard-activity></dashboard-activity>
 		<div class="row">
 			<dashboard-analysis></dashboard-analysis>
 		</div>
 		<div class="row">
-			<dashboard-books></dashboard-books>
 			<dashboard-videos></dashboard-videos>
+			<dashboard-books></dashboard-books>
+			
 		</div>
 	</div>
 	

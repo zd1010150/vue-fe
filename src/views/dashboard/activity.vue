@@ -38,8 +38,15 @@
 										<div class="pull-right">
 											<i class="fa fa-money" aria-hidden="true"></i>
 											{{ value.amount}}({{ value.baseCurrency }})
-											<chp-button class="btn-xs btn-primary" @click="getBonus(key)">
-												<i class="fa fa-gift"></i>&nbsp;{{ $t('getBonus') }}
+											<chp-button class="animated  rubberBand btn-xs  pl-sm pr-sm ml-xs visible-md-inline-block visible-lg-inline-block" @click="getBonus(key)">
+												<span class="button-content-wrapper">
+												 	<i class="fa fa-gift"></i>&nbsp;{{ $t('getBonus') }} 
+												</span>
+											</chp-button>
+											<chp-button class="btn-xs  visible-xs-inline-block" @click="getBonus(key)">
+												<span class="button-content-wrapper">
+												 	<i class="fa fa-gift"></i>&nbsp;{{ $t('getBonus') }} 
+												</span>
 											</chp-button>
 										</div>
 									</div>
@@ -124,13 +131,19 @@
 			border-top: none;
 			height:27px;
 			padding:0px;
-
+			.button-content-wrapper{
+				display: inline-block;
+		      	min-width: 30px;
+		      	min-height: 20px;
+		      
+			}
 		}
 		.colorMix(@color){
 			h4{
 				color:@color !important;
 			}
-			.btn-primary{
+			.btn{
+				color:#fff;
 				border-color:@color;
 				background-color: @color;
 			}

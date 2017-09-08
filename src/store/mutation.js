@@ -21,7 +21,6 @@ import {
 export default{
   [SET_USERINFO](state,userInfo){
     state.userInfo= userInfo
-
   },
   [ADD_ERROR_INFO](state,error){
     state.errors.push(error)

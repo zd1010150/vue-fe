@@ -147,15 +147,14 @@
 		methods:{
 			input:function(files){
 				if(files.length < 1){ this.active = false; return;}
-				this.$refs.upload.active = true;
+				this.$refs.upload.active = true
 				let errors = [],
-					isAllSuccess = true;
+					isAllSuccess = true
 				this.progressValue = files.map((file)=>{
 					isAllSuccess = isAllSuccess && file.success && (!file.active);
 					file.error ? errors.push(file.error) :"";
 					return { progress :Number(file.progress),response:file.response}
 				});
-				//console.log("=====",JSON.stringify(files));
 				if(isAllSuccess || errors.length > 0){
 					this.active = false;
 					this.$nextTick(()=>{

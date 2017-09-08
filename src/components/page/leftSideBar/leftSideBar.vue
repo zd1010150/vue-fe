@@ -1,29 +1,22 @@
-<template lang="html">
-
-<mu-drawer  :docked="true" class="sidebar-left" id="sidebar-left"  :open="showSideBar">
-      <div class="sidebar-header">
-          <div class="sidebar-title hidden-xs">
-            Navigation
-          </div>
-          <div class="sidebar-toggle hidden-xs" @click="closeLeftSidenav" >
-            <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
-          </div> 
+<i18n src="./i18n.yaml"></i18n>
+<template>
+  <mu-drawer  :docked="true" class="sidebar-left" id="sidebar-left"  :open="showSideBar">
+    <div class="sidebar-header">
+        <div class="sidebar-title hidden-xs">
+          {{ $t('navigation') }}
         </div>
-        
-          <div class="sidebar-body">
-            <chp-left-side-bar-profile></chp-left-side-bar-profile>
-            <chp-scroll-bar wrapper="nav-main-wrapper" vBarInternal="vueScrollInternalBar" vBar="vueScrollBar">
-              <chp-left-side-bar-menu></chp-left-side-bar-menu>
-              <chp-left-side-bar-contact></chp-left-side-bar-contact>
-            </chp-scroll-bar>
-          </div>
-      
-</mu-drawer>
-      
-        
-     
-       
-    
+        <div class="sidebar-toggle hidden-xs" @click="closeLeftSidenav" >
+          <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+        </div> 
+      </div>
+      <div class="sidebar-body">
+        <chp-left-side-bar-profile></chp-left-side-bar-profile>
+        <chp-scroll-bar wrapper="nav-main-wrapper" vBarInternal="vueScrollInternalBar" vBar="vueScrollBar">
+          <chp-left-side-bar-menu></chp-left-side-bar-menu>
+          <chp-left-side-bar-contact></chp-left-side-bar-contact>
+        </chp-scroll-bar>
+      </div>
+  </mu-drawer>
 </template>
 
 <script>
