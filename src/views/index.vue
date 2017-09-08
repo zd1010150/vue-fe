@@ -46,6 +46,7 @@
 </script>
 <style lang="less">
 .content-wrapper{
+    min-height: ~"calc(100vh - 256px)";
   	& > .container-fluid{
 		padding-right:0px;
 		padding-left: 0px;

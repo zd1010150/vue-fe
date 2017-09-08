@@ -2,7 +2,7 @@
 <template>
   <div class="header">
       <div class="logo-container">
-        <a href="www.acy.com" class="logo"><img src="static/images/logo.png" alt="cloudhub client 2.0"></a>
+        <a href="#/main" class="logo"><img src="static/images/logo.png" alt="cloudhub client 2.0"></a>
           <div class="toggle-sidebar-left visible-xs" @click="toggleSidebarOpen">
             <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
           </div>

@@ -7,10 +7,12 @@
 			</template>
 			<template slot="body">
 				<div class="operater pull-right pb-sm ">
-					<chp-button class="btn  btn-primary btn-sm" href="#/fund-manager/deposite-funds"> 
+					<chp-button classes="btn-success  btn-sm mr-sm pl-lg pr-lg" href="#/fund-manager/deposite-funds"> 
+						<i class="fa fa-money" aria-hidden="true"></i>
 						{{ $t('fund.deposit') }} 
 					</chp-button>
-					<chp-button class="btn btn-primary btn-sm" href="#/fund-manager/withdrawal">
+					<chp-button classes="btn-danger btn-sm pl-lg pr-lg" href="#/fund-manager/withdrawal">
+						<i class="fa fa-credit-card" aria-hidden="true"></i>
 						{{ $t('fund.withdraw') }} 
 					</chp-button>
 				</div>
