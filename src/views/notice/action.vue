@@ -8,7 +8,11 @@
     :canAdd="false" 
     @pageSizeChange="pageSizeChange" 
     @pageNumberChange="pageNumberChange">
-    <div slot="toolBar">  ddddd</div>
+    <div slot="toolBar">
+        <chp-select :autoWidth="true">
+            <mu-menu-item v-for=" (option,index) in category" :key="index" :value="option" :title="String(option)"></mu-menu-item>
+        </chp-select>
+    </div>
         <chp-table slot="table">
             <chp-table-header>
                 <chp-table-row>
@@ -44,6 +48,7 @@ export default {
             pageOptions: [5, 20, 30],
             noticeList: [],
             chpSelection: false,
+            category:['Systems', 'InternalTransfer', 'Withdrawals', 'Deposits']
         }
     },
     watch: {
