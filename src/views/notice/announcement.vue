@@ -46,6 +46,9 @@ export default {
         this.fetchAnnoucement()
     },
     methods: {
+        research(model){
+            console.log("annoucement",model)
+        },
         pageSizeChange(newSize) {
             this.pageSize = newSize
             this.pageIndex = 1
