@@ -114,7 +114,6 @@ import method from "./forms/method"
 				this.loadingStatus=true
 				let {success,data}= await bankCardService.getBankCardById(id);
 				if(success && data){
-
 					this.editObj = data
 					this.editMethod = data.method
 				}

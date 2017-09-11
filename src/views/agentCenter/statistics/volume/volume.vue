@@ -54,7 +54,6 @@
 		},
 		methods:{
 			refresh(){
-				console.log(this.agent,"volume refresh trigger")
 				if(this.agent){
 					let model = { mt4_id:this.agent,start_date:this.start_date,end_date:this.end_date}
 					this.$refs.chart1.research(model)
