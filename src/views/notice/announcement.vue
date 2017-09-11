@@ -3,8 +3,8 @@
         <chp-table slot="table">
             <chp-table-header>
                 <chp-table-row>
-                    <chp-table-head chp-sort-by="order_time">Time</chp-table-head>
-                    <chp-table-head chp-sort-by="mt4_id" width="200px">Account</chp-table-head>
+                    <chp-table-head>Content</chp-table-head>
+                    <chp-table-head width="200px">Date/Time</chp-table-head>
                 </chp-table-row>
             </chp-table-header>
             <chp-table-body>
@@ -46,6 +46,9 @@ export default {
         this.fetchAnnoucement()
     },
     methods: {
+        research(model){
+            console.log("annoucement",model)
+        },
         pageSizeChange(newSize) {
             this.pageSize = newSize
             this.pageIndex = 1
