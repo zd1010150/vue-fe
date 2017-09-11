@@ -17,7 +17,7 @@
 				<mu-popover :trigger="trigger" :open="open" @close="handleCloseAgentList">
 				    <mu-menu @change="change">
 				      	<template v-for='m in MT4'>
-					 		<mu-menu-item :value='m.mt4_id' :title="m.mt4_id + ''"></mu-menu-item>	
+					 		<mu-menu-item :value='m.mt4_id' :title="m.mt4_id + ''" :key="Math.random()"></mu-menu-item>	
 					 	</template>
 				    </mu-menu>
 				</mu-popover>
