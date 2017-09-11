@@ -8,7 +8,7 @@
 		<template slot="title">{{ $t('charts.percantageVolumeStatistics') }}</template>
 		<div slot="body" class="row">
 			<div class="col-lg-6 col-md-6 col-sm-12 pr-none pl-none content-center">
-			    <chp-echart class="circle-chart" :externalOption='option'></chp-echart>
+				<chp-echart class="circle-chart" :externalOption='option'></chp-echart>
 			</div>
 			<div class="col-lg-6 col-md-6 col-sm-12 pr-none pl-none ">
 			 <table class="table table-striped ">
@@ -64,23 +64,7 @@
 			return {
 				chartData:{current:{},last:{},total:{}},
 				option:{
-					series:[{
-						
-						type:'pie',
-						radius:[0,'30%'],
-						data: 0,
-
-					},{
-						
-						type:'pie',
-						radius:['40%','50%'],
-						data: 0
-					},{
-						
-						type:'pie',
-						radius:['60%','70%'],
-						data: 0
-					}]
+					series:[] //pie chart 没有数据的时候，要将series设置为[]
 				}
 			}
 		},
