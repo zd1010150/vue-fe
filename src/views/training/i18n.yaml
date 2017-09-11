@@ -8,6 +8,7 @@ zh:
     bjTime: "北京时间"
     withdrawDialogText: "你确定撤销报名？"
     enrolledOnlineTraining : "已报名课程"
+    content: "培训内容"
     allStatus:
       end: "已结束"
       enrolled: "已报名"
@@ -34,6 +35,7 @@ en:
     bjTime: "Beijing Time"
     withdrawDialogText: "Are you sure withdraw this class？"
     enrolledOnlineTraining : "Enrolled Online Training"
+    content: "Training Content"
     allStatus:
       end: "Ended"
       enrolled: "Enrolled"

@@ -94,8 +94,13 @@ export const common = [{
     open: false,
     routerLink: true,
     to: "/ticket/ticketList"
-  }
-]
+  },{
+    icon: 'cog',
+    title: 'setting',
+    open: false,
+    routerLink: true,
+    to: "/setting"
+  }]
 export const zh_menu = [{
   icon: 'graduation-cap',
   title: 'training',

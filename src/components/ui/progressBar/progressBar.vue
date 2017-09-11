@@ -27,3 +27,8 @@
 		}
 	}
 </script>
+<style lang="less">
+	.progress.light{
+		background: rgba(255,255,255,.2 )
+	}
+</style>

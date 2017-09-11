@@ -1,7 +1,7 @@
 <i18n src="../i18n.yaml"></i18n>
 <template>
 	<li>
-        <a href="javascript:void(0)" class="dropdown-toggle notification-icon" @click="openLandingPage">
+        <mu-icon-button class="dropdown-toggle notification-icon" @click="openLandingPage">
 	        <i class="fa fa-trophy" aria-hidden="true"></i>
 	        <span class="badge">{{ times }}</span>
 	        <chp-tooltip chp-direction="bottom">
@@ -9,7 +9,7 @@
 	            {{ times }}
 	            {{ $t('notification.opportunity') }}
 	        </chp-tooltip>
-        </a>
+        </mu-icon-button>
     </li>
 </template>
 <script>

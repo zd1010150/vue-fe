@@ -167,12 +167,10 @@ export default {
     	
       dropInputFunction(files,isAllsuccess,error){
         this.$refs.dropUploads.active = true;
-        console.log("ifiles:",JSON.stringify(files),error,isAllsuccess);
         if(isAllsuccess){
-          this.$set(this.model,"document",files[0].response.data.url);
+          this.$set(this.model,"document",files[0].response.data.url)
         }else{
           this.$set(this.model,"document","")
-          
           this.toastr.error(this.$t("info.UPLOAD_ERROR."+error[0]))
         }
       },

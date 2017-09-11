@@ -1,8 +1,8 @@
 <i18n src="./i18n.yaml"></i18n>
 <template>
-	<div  :style="styles">
+	<div class="row mt4-activity">
 		<template v-for="(value,key) in volumnDataInfo">
-			<section class="panel volumn-panel" :class="'volume-'+key">
+			<section class="panel volumn-panel col-lg-6 col-xs-12" :class="'volume-'+key">
 					<div class="panel-body">
 						<div class="widget-summary">
 							<div class="widget-summary-col info-col">
@@ -30,7 +30,7 @@
 										<div class="pull-left">
 											<span>
 												{{ $t('trade.level') }} {{ value.awardLevel}}
-												<i class="fa lead fa-caret-right" aria-hidden="true"></i>
+												<i class="fa fa-caret-right" aria-hidden="true"></i>
 												{{ $t('trade.level') }} {{ value.currentLevel}}
 											</span>
 											 
@@ -38,8 +38,15 @@
 										<div class="pull-right">
 											<i class="fa fa-money" aria-hidden="true"></i>
 											{{ value.amount}}({{ value.baseCurrency }})
-											<chp-button class="btn-xs btn-primary" @click="getBonus(key)">
-												<i class="fa fa-gift"></i>&nbsp;{{ $t('getBonus') }}
+											<chp-button class="animated  rubberBand btn-xs  pl-sm pr-sm ml-xs visible-md-inline-block visible-lg-inline-block" @click="getBonus(key)">
+												<span class="button-content-wrapper">
+												 	<i class="fa fa-gift"></i>&nbsp;{{ $t('getBonus') }} 
+												</span>
+											</chp-button>
+											<chp-button class="btn-xs  visible-xs-inline-block" @click="getBonus(key)">
+												<span class="button-content-wrapper">
+												 	<i class="fa fa-gift"></i>&nbsp;{{ $t('getBonus') }} 
+												</span>
 											</chp-button>
 										</div>
 									</div>
@@ -66,8 +73,7 @@
 	export default{
 		data(){
 			return {
-				dataInfo:{},
-				styles:null
+				dataInfo:{}
 			}
 		},
 		methods:{
@@ -77,11 +83,6 @@
 				})
 				if(success){
 					this.dataInfo = data 
-				}
-			},
-			resize(height){
-				this.styles= {
-					height:height+'px'
 				}
 			},
 			async getBonus(type){
@@ -113,9 +114,6 @@
 <style lang="less">
 	@import "~assets/less/variable.less";
 	.mt4-activity{
-		.display(flex);
-		.flex-direction(column);
-		.justify-content(space-between); 
 		.panel-body{
 			padding:10px 20px !important;
 		}
@@ -126,19 +124,26 @@
 			}
 		}
 		.progress-xxs{
-			height:3px;
-			border-radius: 3px;
+			height:2px;
+			border-radius: 2px;
 		}
 		.widget-summary .summary-footer{
 			border-top: none;
 			height:27px;
 			padding:0px;
+			.button-content-wrapper{
+				display: inline-block;
+		      	min-width: 30px;
+		      	min-height: 20px;
+		      
+			}
 		}
 		.colorMix(@color){
 			h4{
 				color:@color !important;
 			}
-			.btn-primary{
+			.btn{
+				color:#fff;
 				border-color:@color;
 				background-color: @color;
 			}

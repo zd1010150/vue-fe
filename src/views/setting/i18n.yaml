@@ -1,0 +1,14 @@
+en:
+  subscribeAndUnsubscribe: "Subscribe/Unsubscribe Email"
+  companyInformation: "Company Information"
+  active_trader: "Active Trader"
+  active_agent: "Active Agent"
+  dormant_trader: "Dormant Trader"
+  dormant_agent: "Dormant Agent"
+zh:
+  subscribeAndUnsubscribe: "订阅/退订邮件"
+  companyInformation: "公司信息"
+  active_trader: "活跃用户"
+  active_agent: "活跃代理"
+  dormant_trader: "不活跃用户"
+  dormant_agent: "不活跃代理"

@@ -1,14 +1,18 @@
 <i18n src="./i18n.yaml"></i18n>
 <template>
 	<div class="col-lg-6 col-md-6 col-xs-12">
-		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-			<template slot="title">MT4</template>
+		<chp-panel :canCollapse="false" :canClose="false" class="dashbord-fix-height-panel">
+			<template slot="title">MT4
+				<chp-view-all href="#/account-management/my-trading-account"></chp-view-all>
+			</template>
 			<template slot="body">
-				<div class="operater pull-right pb-sm pt-sm">
-					<chp-button class="btn  btn-primary btn-sm" href="#/fund-manager/deposite-funds"> 
+				<div class="operater pull-right pb-sm ">
+					<chp-button classes="btn-success  btn-sm mr-sm pl-lg pr-lg" href="#/fund-manager/deposite-funds"> 
+						<i class="fa fa-money" aria-hidden="true"></i>
 						{{ $t('fund.deposit') }} 
 					</chp-button>
-					<chp-button class="btn btn-primary btn-sm" href="#/fund-manager/withdrawal">
+					<chp-button classes="btn-danger btn-sm pl-lg pr-lg" href="#/fund-manager/withdrawal">
+						<i class="fa fa-credit-card" aria-hidden="true"></i>
 						{{ $t('fund.withdraw') }} 
 					</chp-button>
 				</div>
@@ -22,9 +26,12 @@
 					</thead>
 					<tbody>
 						<tr v-for="(t,index) in $store.state.mt4Accounts" :key="index">
+						<template v-if="index<4">
 							<td>{{ t.mt4_id }}</td>
 							<td>{{ t.account_type }}</td>
 							<td>{{ t.balance }}</td>
+						</template>
+							
 						</tr>
 					</tbody>
 				</table>
@@ -32,8 +39,3 @@
 		</chp-panel>
 	</div>
 </template>
-<script>
-	export default{
-		
-	}
-</script>

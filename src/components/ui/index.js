@@ -25,6 +25,8 @@ import Timer from './timer'
 import Carousel from './carousel'
 import FeatureImage from './featureImage'
 import ProgressBar from './progressBar'
+import OneLine from './oneLine'
+import ViewAll from './viewAll'
 export default function install(Vue) {
   Vue.component('chp-ink-ripple', chpInkRipple)
   Vue.component('chp-button',button)
@@ -53,4 +55,6 @@ export default function install(Vue) {
   Vue.use(Carousel)
   Vue.use(FeatureImage)
   Vue.use(ProgressBar)
+  Vue.use(OneLine)
+  Vue.use(ViewAll)
 }

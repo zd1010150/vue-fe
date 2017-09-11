@@ -3,27 +3,28 @@
   <div class="panel-body sidebar-profile">
     <div class="widget-summary widget-summary-xlg">
       <div class="widget-summary-col widget-summary-col-icon">
-      
-         <chp-file-upload name="document" :extensions="['png','bmp','jpg','jpeg']"  :post-action="postAction" @input="inputFunction" >
-          <mu-avatar :src="$store.state.userInfo.avatar"  :size="80" class="summary-icon bg-primary"/>
+        <chp-file-upload name="document" :extensions="['png','bmp','jpg','jpeg']"  :post-action="postAction" @input="inputFunction" >
+          <mu-avatar :src="$store.state.userInfo.avatar"  :size="100" class="summary-icon bg-primary" imgClass="avatar-img"/>
         </chp-file-upload>
       </div>
       <div class="widget-summary-col">
         <div class="summary">
-          <h4 class="title">{{ $t('hello')}}</h4>
-          <div class="info">
-            <strong class="username">{{$store.state.userInfo.name}}</strong>
+         <div class="info">
+           {{ $t('hello')}}
           </div>
+           <h4 class="title"> {{$store.state.userInfo.name}} </h4>
         </div>
         <div class="summary-footer">
-          <router-link to="" class="text-muted">{{ $t('viewProfile') }}</router-link>
+          <router-link to="/setting" class="text-muted pull-right">{{ $t('viewProfile') }}</router-link>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-  import { UPLOAD_DOCUMENT_URL } from "src/config/url.config.js"
+  import { UPLOAD_DOCUMENT_URL } from "src/config/url.config"
+  import { HTTP_STATUS_CODE } from 'src/config/app.config'
+  import { SET_USERINFO } from 'store/mutation-types'
   export default{
       name :"leftSideBarProfile",
       data(){
@@ -33,25 +34,24 @@
       },
       methods:{
         inputFunction(response,success,errors){
-          console.log(response);
-          let {status_code,message,data} = response[0].response;
-          if(status_code != 0){
-            this.toastr.error(this.$t("info."+message));
+          let {status_code,message,data} = response[0].response
+          if(status_code != HTTP_STATUS_CODE.OK){
+            this.toastr.error(this.$t("info.UPLOAD_ERROR."+errors[0]))
           }else{
-            this.$store.state.userInfo.avatar = data.url;
+            this.$store.commit(SET_USERINFO,Object.assign({},this.$store.state.userInfo,{avatar:data.url}))
           }
-          
-        },
-        changeAvatar(){
-
         }
+      }
     }
-  }
 </script>
 <style lang="less">
 @import "~assets/less/variable.less";
 
   .sidebar-profile.panel-body{
+    .avatar-img{
+      border: 4px solid #fff;
+      border-radius: 50px;
+    }
     .widget-summary{
        .summary-footer{
 

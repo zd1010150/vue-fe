@@ -1,7 +1,7 @@
 import {
   baseUrl
 } from '../../config/env.config.js'
-import { MAX_FETCH_TIMEOUT } from '../../config/app.config.js'
+import { MAX_FETCH_TIMEOUT,HTTP_STATUS_CODE } from '../../config/app.config.js'
 import store from "store"
 
 export default async(type = 'GET', url = '', data = {}) => {
@@ -60,7 +60,7 @@ export default async(type = 'GET', url = '', data = {}) => {
   try {
     let response, resoponseJson
     response = await _fetch(fetch(url, requestConfig), MAX_FETCH_TIMEOUT)
-    if (response.status == 200 && response.ok) {
+    if (response.status == HTTP_STATUS_CODE.OK && response.ok) {
       resoponseJson = await response.json()
     } else {
       resoponseJson = {

@@ -22,5 +22,8 @@ export const TABLES = {
 	WITHDRAWAL_TABLE :"WITHDRAWAL_TABLE",
 	TICKET_TABLE:"TICKET_TABLE"
 }
-//MT4网页版地址，注意如果官网更换域名，那么对应的网址也需要修改
 
+//网络请求的code
+export const HTTP_STATUS_CODE = {
+	OK : 200 //成功的status code
+}

@@ -11,15 +11,16 @@ import {
   SET_MT4_AGENT_ACCOUNTS,
   SET_MT4_TRADER_ACCOUNTS,
   SET_LEVERAGE,
-  SET_CONTENT_LOADING
-} from "./mutation-types";
+  SET_CONTENT_LOADING,
+  SET_NOTICE_REFRESH_FLAG,
+  SET_TERMS
+} from "./mutation-types"
 
 
 
 export default{
   [SET_USERINFO](state,userInfo){
     state.userInfo= userInfo
-
   },
   [ADD_ERROR_INFO](state,error){
     state.errors.push(error)
@@ -57,5 +58,11 @@ export default{
   },
   [SET_CONTENT_LOADING](state,loading){
     state.contentLoading = loading
+  },
+  [SET_NOTICE_REFRESH_FLAG](state,flag){
+    state.refreshNoticeFlag = flag
+  },
+  [SET_TERMS](state,terms){
+    state.terms = terms
   }
 }

@@ -174,7 +174,6 @@
           agentTmp = hasAgent ? agent : nonAgent
           temp.splice(3,0,...agentTmp)
           temp.splice(this.items.length-1,0,...languageTmp)
-          console.log(temp,"menu",languageTmp,language,zh_menu,en_menu,this.$store.language,this.$store)
       this.items = temp
     }
 

@@ -53,8 +53,11 @@
       }
     },
     mounted() {
-      if (!this.chpContent && !this.chpContentHtml) {
-        throw new Error('Missing chp-content or chp-content-html attributes');
+      console.log(this.chpContent,this.chpContentHtml,"----")
+      if ( (this.chpContent && this.chpContent.length >= 0) || (this.chpContentHtml && this.chpContentHtml.length >= 0)) {
+        
+      }else{
+        throw new Error('Missing chp-content or chp-content-html attributes')
       }
     }
   };

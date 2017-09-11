@@ -7,7 +7,10 @@
       <chp-left-side-bar></chp-left-side-bar>
        <section role="main" class="content-body" :class="{'loading-overlay-showing':isLoading}">
          <chp-page-header></chp-page-header>
-         <slot name="content-body"></slot>
+            <slot name="content-body"></slot>
+         <div class="footer"> 
+            <slot name="footer"></slot> 
+         </div>
            <div class="loading-overlay content-loading" >
             <div class="bounce-loader">
               <div class="bounce1"></div>

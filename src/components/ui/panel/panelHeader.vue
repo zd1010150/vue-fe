@@ -1,16 +1,23 @@
 <template>
     <header class="panel-heading" :class="classes">
       <div class="panel-actions">
-      <a href="javascript:void(0)" class="panel-action panel-action-toggle" :class="collapseClasses" v-if="canCollapse" @click.stop = "collapseHandler">
-         {{ isCollapsed ? collapsePanelText : expandPanelText}}
+        <a href="javascript:void(0)" 
+           class="panel-action panel-action-toggle" 
+           :class="collapseClasses" 
+           v-if="canCollapse" 
+           @click.stop = "collapseHandler">
+            {{ isCollapsed ? collapsePanelText : expandPanelText}}
         </a>
-        <a href="javascript:void(0)" class="panel-action panel-action-dismiss" :class="closeClasses" v-if="canClose"  @click.stop = "closeHandler">
-         {{closeText}}
+        <a href="javascript:void(0)" 
+           class="panel-action panel-action-dismiss" 
+           :class="closeClasses" 
+           v-if="canClose"  
+           @click.stop = "closeHandler">
+           {{closeText}}
         </a>
       </div>
 
       <slot></slot>
-      <chp-ink-ripple v-if="showActionRipple"></chp-ink-ripple>
     </header>
 
 </template>
@@ -50,10 +57,6 @@
         collapsePanelText:{
           type:String,
           default:''
-        },
-        showActionRipple:{
-          type:Boolean,
-          default:true
         }
     },
     computed:{

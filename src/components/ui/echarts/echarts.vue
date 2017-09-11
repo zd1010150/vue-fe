@@ -68,10 +68,13 @@
 			},
 			rerender(){
 				this.$emit("rerender")
-				this.myChart.setOption({ 
-					baseOption:this.innerOption,
-					media:this.innerMedia && this.innerMedia.length > 0 ? this.innerMedia : this.defaultMedia
-				});
+				let self = this
+				setTimeout(()=>{
+					self.myChart.setOption({ 
+						baseOption:self.innerOption,
+						media:self.innerMedia && self.innerMedia.length > 0 ?self.innerMedia : self.defaultMedia
+					})
+				},1000) // echart bug ,can't render in main process https://github.com/ecomfe/echarts/issues/5093
 			},
 			resize(){
 				let self = this

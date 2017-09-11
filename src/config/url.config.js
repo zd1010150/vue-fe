@@ -21,3 +21,8 @@ export const PRIZE_LANDING_PAGE = {
 	zh : "https://cn.acy.com/landingpage/annuallottery",
 	en: "https://www.acy.com/landingpage/monthlydraw"
 }
+//常见问题的链接地址
+export const COMMON_QUESTION = {
+	zh : "https://cn.acy.com/why-acy/faq",
+	en: "https://www.acy.com/why-acy/faq"
+}

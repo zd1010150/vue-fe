@@ -19,11 +19,17 @@
       			</chp-table-row>
                 </chp-table-header>
       		  <chp-table-body>
-                  <chp-table-row v-for="(row, rowIndex) in innerTrainings" :key="rowIndex">
+                  <chp-table-row v-for="(row, rowIndex) in innerTrainings" 
+                  :key="rowIndex" 
+                  :class="{ marked : trainings[rowIndex].marked} ">
                     <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" >
                       
                       <template v-if="columnIndex == 'date'">
                         {{ column | beijingDate }}
+                      </template>
+                      <template v-else-if="columnIndex == 'subject'">
+                        <a href="javascript:void(0)" @click="showContent(rowIndex)"> {{column}}</a>
+                        <i class="fa fa-heart animated infinite zoomIn text-danger pl-xs" aria-hidden="true" v-if="trainings[rowIndex].marked"></i>
                       </template>
                       <template v-else-if="columnIndex =='time'">
                         {{ $t('onlineTraining.bjTime') }} : {{ column | beijingTime }}
@@ -46,8 +52,13 @@
                   </chp-table-row>
                 </chp-table-body>
               </chp-table>
-          
         </chp-panel>
+        <chp-dialog-alert
+          :chp-title="$t('onlineTraining.content')"
+          :chp-content-html="trainingContent"
+          :chp-ok-text="$t('ui.button.close')"
+          :scrollable="true"
+          ref="contentDailog"/>
     </div>
   </div>  
 </template>
@@ -59,6 +70,11 @@
     filters,
 		props:{
       trainings : Array
+    },
+    data(){
+      return {
+        trainingContent: "  "
+      }
     },
     computed:{
       innerTrainings:function(){
@@ -81,17 +97,48 @@
               this.$emit('refresh')
               this.toastr.info(this.$t("info.SUCCESS"))
           }
+      },
+      showContent(rowIndex){
+        this.trainingContent = this.trainings[rowIndex].content || '   '
+        this.$refs.contentDailog.open()
       }
    }
 }
 </script>
-<style lang="less">
+<style lang="less" scoped>
+  @import "~assets/less/variable.less";
+  
   .date-picker-wrapper{
     width:200px;
   }
   .form-inline{
     .form-control{
       width:200px;
+    }
+  }
+  .chp-table{
+    .chp-table-cell{
+      line-height: 34px;
+    }
+    tr.marked{
+     font-weight: bold;
+     background: rgba(0,0,0,.05);
+    }
+    a{
+      color:inherit;
+
+    }
+    .fa-heart{
+      display: inline-block;
+      min-width: 30px;
+      min-height: 20px;
+    }
+  }
+  html.dark{
+    table{
+      tr.marked{
+        background: rgba(0,0,0,.3);
+      }
     }
   }
 </style>

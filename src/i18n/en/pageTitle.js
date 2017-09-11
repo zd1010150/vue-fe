@@ -24,4 +24,5 @@ export default {
   onlineTraining: "Online Training",
   video:"Video",
   book:"Books and Magazines",
+  setting:"Setting"
 }

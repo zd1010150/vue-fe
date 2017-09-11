@@ -5,6 +5,10 @@ zh:
   maxLevelLots: "最大等级手数"
   maxLevel: "最大等级"
   getBonus: "点我领奖"
+  download: "点击下载"
+  watch: "点击观看"
+  video: "视频教学"
+  books: "电子书"
 en:
   more : "More"
   currentLots: "Current Lots"
@@ -12,3 +16,7 @@ en:
   maxLevelLots: "Max Level Lots"
   maxLevel: "Max Level"
   getBonus: "Get Bonus"
+  download: "Download"
+  watch: "Watch Online"
+  video: "Video"
+  books: "Books and Magazines"

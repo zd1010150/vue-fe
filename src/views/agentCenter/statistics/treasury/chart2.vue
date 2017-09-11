@@ -69,26 +69,28 @@
 		},
 		data(){
 			return {
-				chartData:{current:{},last:{},total:{}},
+				chartData:{current:{
+					time: '',
+					forex:0,
+					oil:0,
+					metal:0,
+					cfd:0
+				},last:{
+					time: '',
+					forex:0,
+					oil:0,
+					metal:0,
+					cfd:0
+				},total:{
+					time: '',
+					forex:0,
+					oil:0,
+					metal:0,
+					cfd:0
+				}},
 				activeDate:'',
 				option:{
-					series:[{
-						
-						type:'pie',
-						radius:[0,'30%'],
-						data: 0,
-
-					},{
-						
-						type:'pie',
-						radius:['40%','50%'],
-						data: 0
-					},{
-						
-						type:'pie',
-						radius:['60%','70%'],
-						data: 0
-					}]
+					series:[]
 				}
 			}
 		},

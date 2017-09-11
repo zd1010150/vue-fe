@@ -5,7 +5,16 @@ import pageTitle from './pageTitle'
 import account from './account'
 import trade from './trade'
 import fund from './fund'
+import notification from './notification'
+import company from './company'
 export default {
-  ui,loginAndPassword,info,pageTitle,account,trade,fund
-
+  ui,
+  loginAndPassword,
+  info,
+  pageTitle,
+  account,
+  trade,
+  fund,
+  notification,
+  company
 }

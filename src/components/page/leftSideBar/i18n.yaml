@@ -1,6 +1,10 @@
 en:
   hello: "Hello"
   viewProfile: "View Profile"
+  navigation: "Navigation"
+  contactUs: "Contact US"
+  QQ: "Online QQ"
+  commonQuestion: "Common Question" 
   menu:
     dashboard: "Dashboard"
     uiDemo: "UI Demo"
@@ -33,9 +37,14 @@ en:
     stock: "Stock"
     analyse: "Analyse"
     teaching: "Teaching"
+    setting: "Setting"
 zh:
   hello: "您好"
   viewProfile: "查看个人资料"
+  navigation: "导航"
+  contactUs: "联系我们"
+  QQ: "在线QQ"
+  commonQuestion: "常见问题"
   menu:
     dashboard: "Dashboard"
     uiDemo: "UI Demo"
@@ -68,3 +77,4 @@ zh:
     stock: "汇市情报局"
     analyse: "视频分析"
     teaching: "教学视频"
+    setting: "设置"
