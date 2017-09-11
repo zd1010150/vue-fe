@@ -53,7 +53,6 @@
       }
     },
     mounted() {
-      console.log(this.chpContent,this.chpContentHtml,"----")
       if ( (this.chpContent && this.chpContent.length >= 0) || (this.chpContentHtml && this.chpContentHtml.length >= 0)) {
         
       }else{
