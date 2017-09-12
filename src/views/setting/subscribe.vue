@@ -12,24 +12,30 @@
 	            </div>
 	            <div class="accordion-body">
 	                <div class="panel-body">
-	                    <div class="checkbox-default col-lg-4 col-md-6 col-sm-6">
-	                        <chp-checkbox id="active_trader" v-model="subscribe" nativeValue="active_trader">{{ $t('active_trader') }}</chp-checkbox>
-	                    </div>
-	                    <div class="checkbox-default col-lg-4 col-md-6 col-sm-6">
-	                         <chp-checkbox id="active_agent" v-model="subscribe" nativeValue="active_agent">{{ $t('active_agent') }}</chp-checkbox>
-	                    </div>
-	                    <div class="checkbox-default col-lg-4 col-md-6 col-sm-6">
-	                         <chp-checkbox id="dormant_trader" v-model="subscribe" nativeValue="dormant_trader">{{ $t('dormant_trader') }}</chp-checkbox>
-	                    </div>
-	                    <div class="checkbox-default col-lg-4 col-md-6 col-sm-6">
-	                         <chp-checkbox  id="dormant_agent" v-model="subscribe" nativeValue="dormant_agent">{{ $t('dormant_agent') }}</chp-checkbox>
-	                    </div>
-	                    <div class="clear-fix"></div>
-	                    <div class="col-lg-12">
-	                    	<chp-button class="btn btn btn-primary mr-xs btn-sm mt-sm" @click="save()" :disabled="saveDisabled"> 
-	                    		<i class="fa fa-save mr-xs"></i> Save
-	                    	</chp-button>
-	                    </div>
+		                <div class="row">
+		                	<div class="checkbox-default col-lg-4 col-md-4 col-sm-6">
+		                        <chp-checkbox id="active_trader" v-model="subscribe" nativeValue="active_trader">{{ $t('active_trader') }}</chp-checkbox>
+		                    </div>
+		                    <div class="checkbox-default col-lg-4 col-md-4 col-sm-6">
+		                         <chp-checkbox id="active_agent" v-model="subscribe" nativeValue="active_agent">{{ $t('active_agent') }}</chp-checkbox>
+		                    </div>
+		                    <div class="checkbox-default col-lg-4 col-md-4 col-sm-6">
+		                         <chp-checkbox id="dormant_trader" v-model="subscribe" nativeValue="dormant_trader">{{ $t('dormant_trader') }}</chp-checkbox>
+		                    </div>
+		                    <div class="checkbox-default col-lg-4 col-md-4 col-sm-6">
+		                         <chp-checkbox  id="dormant_agent" v-model="subscribe" nativeValue="dormant_agent">{{ $t('dormant_agent') }}</chp-checkbox>
+		                    </div>
+		                    <div class="checkbox-default col-lg-4 col-md-4 col-sm-6">
+		                         <chp-checkbox :value="['system']" :nativeValue="'system'" :disabled="true">{{ $t('systemEmail') }}</chp-checkbox>
+		                    </div>
+		                </div>
+		                <div class="row">
+		                	 <div class="col-lg-12">
+		                    	<chp-button class="btn btn btn-primary mr-xs btn-sm mt-sm" @click="save()" :disabled="saveDisabled"> 
+		                    		<i class="fa fa-save mr-xs"></i> Save
+		                    	</chp-button>
+		                    </div>
+		                </div>
 	                </div>
 	            </div>
 	        </div>
