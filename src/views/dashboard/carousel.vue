@@ -6,10 +6,11 @@
 							:autoplayHoverPause="true" 
 							:loop="true" 
 							:paginationPadding="5"
-							:autoplayTimeout="5000"
+							:autoplayTimeout="3000"
 							class="dashboard-carousel">
 				<chp-slide v-for="(activity,index) in activities" class="slide-wrapper" :key="index">
-					<chp-feature-image :src= "activity.imagepath || activity.image_link "/>
+					<!-- <chp-feature-image :src= "activity.imagepath || activity.image_link "/>
+					 --><img class="slide-img" :src= "activity.imagepath || activity.image_link " alt="">
 		      		<div class="mask">
 						<h3><a :href="activity.url" target="_blank">{{ $t("more")}}</a></h3>
 					</div>
@@ -47,18 +48,20 @@
 <style lang="less">
 	@import "~assets/less/variable.less";
 	@import "~assets/less/transition.less";
-	.dashboard-carousel{
-		max-width: 80%;
-		margin:0 auto;
-	}
+	
 	.VueCarousel-pagination{
 		float:none !important;
+	}
+	.slide-img{
+		width:100%;
+		height:auto;
+		max-height: 650px;
 	}
 	.slide-wrapper{
 		position:relative;
 		.featured-image{
-			max-width: 80%;
-			margin:0 auto;
+			max-width: 900px;
+			background-color: transparent;
 		}
 		.mask{
 			position:absolute;
@@ -95,6 +98,13 @@
 				}
 				
 			}
+		}
+	}
+	@media(max-width:@screen-sm-min){
+		.slide-img{
+			width:100%;
+			height:auto;
+			max-height: auto;
 		}
 	}
 </style>

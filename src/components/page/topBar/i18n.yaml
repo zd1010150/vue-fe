@@ -15,8 +15,9 @@ en:
     youHaveChance : 'You have'
     opportunity : 'chance to draw'
     syncProfile:
+      tooManyTimes: "Sync should be executed in 15 minutes since your last sync operation"
       hintMsg: 'Click to sync MT4 information'
-      prompMsg: 'You have successfully synced the remote MT4 info,Click OK to refresh page to get the latest info,Or you can Click cancel to refresh page later'
+      prompMsg: 'You have successfully synced the remote MT4 info,Click OK to refresh page to get the latest info（It will lost the current page data）,Or you can Click cancel to refresh page later'
 zh:
   theme: "主题"
   language: "多语言"
@@ -34,7 +35,8 @@ zh:
     youHaveChance : '你有'
     opportunity : '次抽奖机会'
     syncProfile:
+      tooManyTimes: "每15分钟只能刷新一次"
       hintMsg: '点击同步MT4信息'
-      prompMsg: '你已经成功同步服务器的MT4的信息，点击‘确定’立刻刷新当前页面获取最新信息，点击‘取消’稍后刷新'
+      prompMsg: '你已经成功同步服务器的MT4的信息，点击‘确定’立刻刷新当前页面获取最新信息（会丢失当前页面状态），点击‘取消’稍后刷新页面'
 
     

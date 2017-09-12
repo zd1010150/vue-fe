@@ -111,7 +111,6 @@ export default {
       },
       methodsAndAccounts:function(data,oldVal){
             this.$set(this.model,"method",Object.keys(data)[0])
-            this.fee = data[this.model.method].fees
       },
       'model.method':function(method){
           if(this.methodsAndAccounts[method].accounts.length<1){
@@ -119,6 +118,7 @@ export default {
           }else{
             this.$set(this.model,"bank_code",this.methodsAndAccounts[method].accounts[0].accountId)
           }
+          this.fee = this.methodsAndAccounts[method].fees
           this.validator.detach('withdraw_pay')
           this.validator.attach('withdraw_pay','required|positiveFloatMoney|moneyRange:'+this.filedKeys[method]+"")
       }

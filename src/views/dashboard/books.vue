@@ -37,7 +37,7 @@
 		methods:{
 			async fetchData(){
 				this.loadingStatus = true
-				let {success,data} = await trainingService.getBook(this.language == "zh" ? "mandarin" : "english")
+				let {success,data} = await trainingService.getBook(this.$store.state.language == "zh" ? "mandarin" : "english")
 				this.loadingStatus = false
 				if(success){
 					this.books = [...data.articles,...data.books]

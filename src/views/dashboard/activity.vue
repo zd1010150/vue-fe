@@ -40,7 +40,8 @@
 											{{ value.amount}}({{ value.baseCurrency }})
 											<chp-button class="animated  rubberBand btn-xs  pl-sm pr-sm ml-xs " @click="getBonus(key)">
 												<span class="button-content-wrapper">
-												 	<i class="fa fa-gift visible-md-inline-block visible-lg-inline-block"></i>&nbsp;{{ $t('getBonus') }} 
+												 	<i class="fa fa-gift hidden-xs">&nbsp;</i>
+												 	{{ $t('getBonus') }} 
 												</span>
 											</chp-button>
 										</div>

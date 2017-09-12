@@ -1,6 +1,6 @@
 <i18n src="../i18n.yaml"></i18n>
 <template>
-	<div class="row pt-none">
+	<div class="row pt-none mt4-row">
 			<div class="col-lg-12 col-md-12">
 			<section class="one-mt4-section pb-lg">
 				<header class="clearfix bottom-2px-border pb-sm pt-sm">
@@ -237,6 +237,14 @@
 </script>
 <style lang="less">
 @import "~assets/less/variable.less";
+	.mt4-row:nth-child(even){
+		background-color: @light-hover-color;
+	}
+	html.dark{
+		.mt4-row:nth-child(even){
+			background-color: @dark-component-disable-color;
+		}
+	}
 	.one-mt4-section{
 		header{
 			.mt4-account{

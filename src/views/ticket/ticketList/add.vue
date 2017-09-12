@@ -36,10 +36,20 @@
          <span slot="required" class="error" v-if="errors.has('questionType:required')">{{errors.first('questionType:required')}}</span>
       </div>
     </div>
-    <div class="form-group">
-      <label class="control-label col-md-3">{{ $t('subject') }}</label>
+    <div class="form-group" :class="errorClass('subject')">
+      <label class="control-label col-md-3">
+        {{ $t('subject') }}
+        <span class="required" aria-required="true">*</span>
+      </label>
       <div class="col-md-6">
-        <mu-text-field v-model="model.subject" class="form-control" :fullWidth="true" />
+        <mu-text-field v-model="model.subject" 
+                        v-validate="'required'" 
+                        data-vv-value-path="model.subject" 
+                        data-vv-name="subject"  
+                        class="form-control" 
+                        :fullWidth="true" />
+        <span slot="required" class="error" v-if="errors.has('subject:required')">{{errors.first('subject:required')}}
+        </span>
       </div>
     </div>
     
