@@ -7,15 +7,16 @@
 			<chp-panel :canClose="false" :canCollapse="false">
 	            <template slot="title">{{ activity.title}}</template>
 	            <div slot="body" class="row p-sm">
-	              <mu-card class="pic col-lg-3 col-md-3 col-sm-12 p-sm">
-	              	<img class="img-responsive" :src=" activity.imagepath || activity.image_link  " alt="">
+	              <mu-card class="pic col-lg-4 col-md-4 col-sm-12 p-sm">
+	              	<!-- <img class="img-responsive" :src=" activity.imagepath || activity.image_link  " alt=""> -->
+	              	<chp-feature-image :src= "activity.imagepath || activity.image_link "/>
 	              	<div class="mask">
 						<h3><a :href="activity.url" target="_blank">{{ $t("more")}}</a></h3>
 					</div>
 	              </mu-card>
-	              <section class="col-lg-9 col-md-9 col-sm-12 pr-lg pt-lg">
-	              	<p>{{activity.start_time}}-{{activity.end_time}}</p>
-	              	<p>{{activity.description}}</p>
+	              <section class="col-lg-8 col-md-8 col-sm-12 pr-lg pt-lg">
+	              	<p >{{activity.start_time}}-{{activity.end_time}}</p>
+	              	<p v-html="activity.description"></p>
 	              	<p class="more">
 	              		<a class="mb-xs mt-xs  btn btn-primary print-btn" :href="activity.url" target="_blank">
 										{{ $t("more")}}

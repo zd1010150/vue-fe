@@ -1,5 +1,6 @@
 zh:
   onlineTraining:
+    onlineTrainingList: "在线培训课程列表"
     subject: "主题"
     presenter: "主讲人"
     date: "讲课日期"
@@ -27,6 +28,7 @@ zh:
     allBooks: "所有书籍"
 en:
   onlineTraining:
+    onlineTrainingList: "Online Training List"
     subject: "Subject"
     presenter: "Presenter"
     date: "Date"
