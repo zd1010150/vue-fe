@@ -23,7 +23,7 @@
 													:id="index"/>
 									
 									</span>
-									<chp-button class="mb-xs mt-xs mr-xs btn btn-danger print-btn pull-right" @click="showConfirmDialog(t.id)">
+									<chp-button class="mb-xs mt-sm  btn btn-xs btn-danger  pull-right" @click="showConfirmDialog(t.id)">
 				                        <i class="fa fa-times pr-xs"></i> {{ $t('ui.button.withdraw') }}
 				                    </chp-button>
 								</div>

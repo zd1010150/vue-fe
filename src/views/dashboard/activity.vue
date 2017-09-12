@@ -38,14 +38,9 @@
 										<div class="pull-right">
 											<i class="fa fa-money" aria-hidden="true"></i>
 											{{ value.amount}}({{ value.baseCurrency }})
-											<chp-button class="animated  rubberBand btn-xs  pl-sm pr-sm ml-xs visible-md-inline-block visible-lg-inline-block" @click="getBonus(key)">
+											<chp-button class="animated  rubberBand btn-xs  pl-sm pr-sm ml-xs " @click="getBonus(key)">
 												<span class="button-content-wrapper">
-												 	<i class="fa fa-gift"></i>&nbsp;{{ $t('getBonus') }} 
-												</span>
-											</chp-button>
-											<chp-button class="btn-xs  visible-xs-inline-block" @click="getBonus(key)">
-												<span class="button-content-wrapper">
-												 	<i class="fa fa-gift"></i>&nbsp;{{ $t('getBonus') }} 
+												 	<i class="fa fa-gift visible-md-inline-block visible-lg-inline-block"></i>&nbsp;{{ $t('getBonus') }} 
 												</span>
 											</chp-button>
 										</div>

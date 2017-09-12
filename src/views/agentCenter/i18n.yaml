@@ -25,6 +25,9 @@ en:
     video: "Video"
     banner: "Banner"
     copy: "Copy URL"
+    imageSize: "Image Size"
+    copySuccess: "Copy Success.Please paste the URL to your web pages quickly"
+    unsupportCopy: "Copy Failed"
   charts:
     withdrawlAndDepositLineChart: "Withdrawal & Deposit Statistics"
     commissionPieChart: "Commission Statistics"
@@ -67,6 +70,9 @@ zh:
     video: "视频"
     banner: "Banner"
     copy: "复制URL"
+    imageSize: "图片尺寸"
+    copySuccess: "拷贝成功，赶快把宣传URL黏贴到你的网页中吧"
+    unsupportCopy: "拷贝失败"
   charts:
     withdrawlAndDepositLineChart: "出入金信息统计"
     commissionPieChart: "佣金统计"
