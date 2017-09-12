@@ -6,10 +6,11 @@
 			<chp-tabs :isJustified="true"  :value="activeStepTab"  @change = "handleStepTabChange">
       			<template slot="header">
 	        		<chp-tab-header href="tab1">{{ $t('marketingMaterial.banner') }}</chp-tab-header>
-	       			 <chp-tab-header href="tab2">{{ $t('marketingMaterial.video') }}</chp-tab-header>
+	       			<chp-tab-header href="tab2">{{ $t('marketingMaterial.video') }}</chp-tab-header>
 	      		</template>
       			<template slot="content">
       			 	<chp-tab-content id="tab1" class="row">
+
 						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 							<section class="picture">
 								<mu-paper class="pic" :zDepth="2">
@@ -30,69 +31,7 @@
 								</p>
 							</section>
 						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-							<section class="picture">
-								<mu-paper class="pic" :zDepth="2">
-									<img class="img-responsive" src="http://s3img.city.sina.com.cn/xiancheng/common/thumbnail/0/572c261447243db5d8c25020c8e314b8.jpg" alt="">
-									<div class="mask">
-										<p class="p-sm"> 
-											{{imgScript}}
-										</p>
-
-										
-									</div>
-								</mu-paper>
-								<p class="size pt-sm">Image Size:600*120</p>
-								<p class="copy">
-									<chp-button class="mb-xs mt-xs  btn btn-primary print-btn" >
-										copy URL
-									</chp-button>	
-								</p>
-							</section>
-							
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-							
-							<section class="picture">
-								<mu-paper class="pic" :zDepth="2">
-									<img class="img-responsive" src="http://image.thepaper.cn/www/image/4/150/720.jpg" alt="">
-									<div class="mask">
-										<p class="p-sm"> 
-											{{imgScript}}
-										</p>
-
-										
-									</div>
-								</mu-paper>
-								<p class="size pt-sm">Image Size:600*120</p>
-								<p class="copy">
-									<chp-button class="mb-xs mt-xs  btn btn-primary print-btn" >
-										copy URL
-									</chp-button>	
-								</p>
-							</section>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-							<section class="picture">
-								<mu-paper class="pic" :zDepth="2">
-									<img class="img-responsive" src="http://www.mfmm99.com/UploadFiles/FCK/2016-01/201601232PT62J2F6X.jpg" alt="">
-									<div class="mask">
-										<p class="p-sm"> 
-											{{imgScript}}
-										</p>
-
-										
-									</div>
-								</mu-paper>
-								<p class="size pt-sm">Image Size:600*120</p>
-								<p class="copy">
-									<chp-button class="mb-xs mt-xs  btn btn-primary print-btn" >
-										copy URL
-									</chp-button>	
-								</p>
-							</section>
-							
-						</div>
+						
                     </chp-tab-content>
                     <chp-tab-content id="tab2">
 
@@ -106,10 +45,14 @@
 </template>
 <script>
 	import agentRouterMixin from 'mixins/agentRouterMixin'
+	import materialService from 'services/materialService'
+	import { SET_CONTENT_LOADING } from 'store/mutation-types'
 	export default{
 		mixins:[agentRouterMixin],
 		data(){
 			return {
+				images:[],
+				videos: [],
 				activeStepTab:'tab1',
 				imgScript:'<a href="www.acy.com">click me ver y longlong1111111111longlong1111111111longlong11111111111111111111</a>'
 			}
@@ -120,7 +63,22 @@
 			},
 			toggleURL(id){
 				document.getElementById("#"+id).classList.toggleClass('active')
+			},
+			async fetchImageData(){
+				let { success,data } = materialService.getMarketingImage()
+				if( success ){
+					this.images = data
+				}
+			},
+			async fetchVideoData(){
+				let { success,data } = materialService.getMarketingVideo()
+				if( success ){
+					this.videos  = data
+				}
 			}
+		},
+		created(){
+			
 		}
 	}
 </script>
