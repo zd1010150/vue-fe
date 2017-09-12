@@ -73,9 +73,7 @@
     },
     watch:{
       '$store.state.refreshNoticeFlag' : function(val){
-        if(val){
-          this.fetchData()
-        }
+        this.fetchData()
       }
     }
 	}

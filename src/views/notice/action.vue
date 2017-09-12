@@ -1,3 +1,4 @@
+<i18n src="./i18n.yaml"></i18n>
 <template>
     <chp-data-table slot="body" 
     :isDisplayFilterToolbar="isDisplayFilterToolbar" 
@@ -9,16 +10,21 @@
     @pageSizeChange="pageSizeChange" 
     @pageNumberChange="pageNumberChange">
     <div slot="toolBar">
-        <chp-select :autoWidth="true" class="category-select">
-            <mu-menu-item v-for=" (option,index) in category" :key="index" :value="option" :title="String(option)"></mu-menu-item>
+        <chp-select :autoWidth="true" class="category-select" @change="searchCategory">
+            <mu-menu-item v-for=" (option,index) in categories" 
+            :key="index" 
+            :value="option.val" 
+            :title= "$t('notification.'+option.title)"  >
+            </mu-menu-item>
+            
         </chp-select>
     </div>
     <chp-table slot="table">
         <chp-table-header>
             <chp-table-row>
-                <chp-table-head chp-sort-by="order_time">Time</chp-table-head>
-                <chp-table-head chp-sort-by="mt4_id" width="100px">Category</chp-table-head>
-                <chp-table-head chp-sort-by="mt4_id" width="200px">Account</chp-table-head>
+                <chp-table-head>{{ $t('notification.content') }}</chp-table-head>
+                <chp-table-head width="100px">{{ $t('notification.category') }}</chp-table-head>
+                <chp-table-head width="200px">{{ $t('notification.date') }}</chp-table-head>
             </chp-table-row>
         </chp-table-header>
         <chp-table-body>
@@ -35,8 +41,8 @@
     </chp-data-table>
 </template>
 <script>
-import trainingService from "services/notificationService"
-import { SET_CONTENT_LOADING } from 'store/mutation-types'
+import notificationService from "services/notificationService"
+import { SET_CONTENT_LOADING,SET_NOTICE_REFRESH_FLAG } from 'store/mutation-types'
 export default {
     data() {
         return {
@@ -48,7 +54,14 @@ export default {
             pageOptions: [5, 20, 30],
             noticeList: [],
             chpSelection: false,
-            category:['Systems', 'InternalTransfer', 'Withdrawals', 'Deposits']
+            category:'',
+            categories:[
+                {val:'',title:'all'},
+                {val:'Systems',title:'system'},
+                {val:'InternalTransfer',title:'internaltransfer'},
+                {val:'Withdrawals',title:'withdrawals'},
+                {val:'Deposits',title:'deposits'}
+                ]
         }
     },
     watch: {
@@ -63,6 +76,15 @@ export default {
     methods: {
          research(model){
             console.log(model)
+            this.startDay = model.startDay
+            this.endDay = model.endDay
+            this.pageIndex = 1
+            this.fetchAnnoucement()
+        },
+        searchCategory(val){
+            console.log(val)
+            this.category = val
+            this.fetchAnnoucement()
         },
         pageSizeChange(newSize) {
             this.pageSize = newSize
@@ -87,10 +109,13 @@ export default {
 
         async fetchAnnoucement() {
            
-            let { success, data } = await trainingService.getNoticeByType('action', {
+            let { success, data } = await notificationService.getNoticeByType('action', {
                 language: this.language,
                 pageIndex: this.pageIndex,
-                pageSize: this.pageSize
+                pageSize: this.pageSize,
+                startDay: this.startDay,
+                endDay: this.endDay,
+                category: this.category
             })
             
             if (success) {
@@ -99,6 +124,11 @@ export default {
                 this.pageIndex = data.current_page
                 this.rowsTotal = data.total
                 this.pageSize = Number(data.per_page)
+
+                let {success} = await notificationService.markReaded('action')
+                if (success) {
+                    this.$store.commit(SET_NOTICE_REFRESH_FLAG,"action")
+                }
             }
         },
     }

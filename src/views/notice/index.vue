@@ -59,10 +59,10 @@
 				activeTab: "announcement",
 				currentView: "notice-announcement",
 				minEndDate:"",
-        maxStartDate:"",
+        		maxStartDate:"",
 				model:{
-          	startDay:"",
-          	endDay:""
+          		startDay:"",
+          		endDay:""
           },
 			}
 		},
@@ -71,7 +71,7 @@
 				console.log("tab change:",val)
 				this.activeTab = val
 			},
-			research(){
+			research(){				
 				this.$refs.signelCategoryNotice.research(this.model)
 			},
 			changeEndday(val){

@@ -1,4 +1,14 @@
 en:
-  more : "More information"
+  notification:
+    all : "All"
+    system : "System"
+    internaltransfer : "Internaltransfer"
+    withdrawals : "Withdrawals"
+    deposits : "Deposits"
 zh:
-  more : "更多信息"  
+  notification:
+    all : "全部"
+    system : "系统消息"
+    internaltransfer : "资金内转"
+    withdrawals : "出金"
+    deposits : "入金"
