@@ -6,7 +6,8 @@
 							:autoplayHoverPause="true" 
 							:loop="true" 
 							:paginationPadding="5"
-							:autoplayTimeout="5000">
+							:autoplayTimeout="5000"
+							class="dashboard-carousel">
 				<chp-slide v-for="(activity,index) in activities" class="slide-wrapper" :key="index">
 					<chp-feature-image :src= "activity.imagepath || activity.image_link "/>
 		      		<div class="mask">
@@ -46,12 +47,19 @@
 <style lang="less">
 	@import "~assets/less/variable.less";
 	@import "~assets/less/transition.less";
-
+	.dashboard-carousel{
+		max-width: 80%;
+		margin:0 auto;
+	}
 	.VueCarousel-pagination{
 		float:none !important;
 	}
 	.slide-wrapper{
 		position:relative;
+		.featured-image{
+			max-width: 80%;
+			margin:0 auto;
+		}
 		.mask{
 			position:absolute;
 			left:0px;
@@ -76,10 +84,6 @@
 			
 		}
 	}
-	.size,.copy{
-		text-align: center;
-	}
-	
 	html.dark{
 		.slide-wrapper{
 			.mask{

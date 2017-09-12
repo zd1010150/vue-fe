@@ -6,6 +6,11 @@ export let UPLOAD_ASSET_URL = baseUrl+"/file/asset"
 /*
  * 链接到官网的一些地址
  */
+//官网的首页
+export const ORG_INDEX = {
+	zh: "https://cn.acy.com",
+	en: "https://www.acy.com"
+}
 //下载中心的web mt4 地址
 export const MT4_WEB_PLATFORM = { 
 		zh : "https://cn.acy.com/acy-webtrader",
