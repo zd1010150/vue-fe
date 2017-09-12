@@ -3,5 +3,8 @@ export default {
   notification: "Notification",
   announcement:"Announcement",
   course:"Course",
-  action:"Action"
+  action:"Action",
+  content:"Content",
+  category:"Category",
+  date:"Date"
 }

@@ -3,8 +3,8 @@
         <chp-table slot="table">
             <chp-table-header>
                 <chp-table-row>
-                    <chp-table-head chp-sort-by="order_time">Time</chp-table-head>
-                    <chp-table-head chp-sort-by="mt4_id" width="200px">Account</chp-table-head>
+                    <chp-table-head>{{ $t('notification.content') }}</chp-table-head>
+                    <chp-table-head width="200px">{{ $t('notification.date') }}</chp-table-head>
                 </chp-table-row>
             </chp-table-header>
             <chp-table-body>
@@ -21,8 +21,8 @@
     </chp-data-table>
 </template>
 <script>
-import trainingService from "services/notificationService"
-import { SET_CONTENT_LOADING } from 'store/mutation-types'
+import notificationService from "services/notificationService"
+import { SET_CONTENT_LOADING,SET_NOTICE_REFRESH_FLAG } from 'store/mutation-types'
 export default {
     data() {
         return {
@@ -34,6 +34,8 @@ export default {
             pageOptions: [5, 20, 30],
             noticeList: [],
             chpSelection: false,
+            startDay:"",
+            endDay:""
         }
     },
     watch: {
@@ -48,6 +50,10 @@ export default {
     methods: {
         research(model){
             console.log(model)
+            this.startDay = model.startDay
+            this.endDay = model.endDay
+            this.pageIndex = 1
+            this.fetchAnnoucement()
         },
         pageSizeChange(newSize) {
             this.pageSize = newSize
@@ -70,10 +76,12 @@ export default {
         },
 
         async fetchAnnoucement() {            
-            let { success, data } = await trainingService.getNoticeByType('course', {
+            let { success, data } = await notificationService.getNoticeByType('course', {
                 language: this.language,
                 pageIndex: this.pageIndex,
-                pageSize: this.pageSize
+                pageSize: this.pageSize,
+                startDay: this.startDay,
+                endDay: this.endDay
             })            
             if (success) {
                 console.log('course', data);
@@ -81,6 +89,11 @@ export default {
                 this.pageIndex = data.current_page
                 this.rowsTotal = data.total
                 this.pageSize = Number(data.per_page)
+
+                let {success} = await notificationService.markReaded('course')
+                if (success) {
+                     this.$store.commit(SET_NOTICE_REFRESH_FLAG,"course")
+                }
             }
         },
     }

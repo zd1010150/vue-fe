@@ -3,17 +3,17 @@
         <chp-table slot="table">
             <chp-table-header>
                 <chp-table-row>
-                    <chp-table-head>Content</chp-table-head>
-                    <chp-table-head width="200px">Date/Time</chp-table-head>
+                    <chp-table-head>{{ $t('notification.content') }}</chp-table-head>
+                    <chp-table-head width="200px">{{ $t('notification.date') }}</chp-table-head>
                 </chp-table-row>
             </chp-table-header>
             <chp-table-body>
                 <chp-table-row v-for="(row, rowIndex) in noticeList" :key="rowIndex" :chp-selection="chpSelection">
                     <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :chp-numeric="columnIndex == 'top_up_amount' ">
-                        <span  v-if="columnIndex == 'content'" v-html="column"></span>
+                        <span v-if="columnIndex == 'content'" v-html="column"></span>
                         <span v-else>
                             {{column}}
-                        </span>                        
+                        </span>
                     </chp-table-cell>
                 </chp-table-row>
             </chp-table-body>
@@ -21,9 +21,9 @@
     </chp-data-table>
 </template>
 <script>
-import trainingService from "services/notificationService"
-import { SET_CONTENT_LOADING } from 'store/mutation-types'
-export default {
+import notificationService from "services/notificationService"
+import { SET_CONTENT_LOADING,SET_NOTICE_REFRESH_FLAG } from 'store/mutation-types'
+export default {    
     data() {
         return {
             language: this.$store.state.language,
@@ -34,6 +34,9 @@ export default {
             pageOptions: [5, 20, 30],
             noticeList: [],
             chpSelection: false,
+            startDay:"",
+            endDay:""
+            
         }
     },
     watch: {
@@ -47,7 +50,12 @@ export default {
     },
     methods: {
         research(model){
-            console.log("annoucement",model)
+            console.log("annoucementsearch",model)
+            this.startDay = model.startDay
+            this.endDay = model.endDay
+            this.pageIndex = 1
+            this.fetchAnnoucement()
+            
         },
         pageSizeChange(newSize) {
             this.pageSize = newSize
@@ -71,10 +79,12 @@ export default {
 
         async fetchAnnoucement() {
            
-            let { success, data } = await trainingService.getNoticeByType('announcement', {
+            let { success, data } = await notificationService.getNoticeByType('announcement', {
                 language: this.language,
                 pageIndex: this.pageIndex,
-                pageSize: this.pageSize
+                pageSize: this.pageSize,
+                startDay: this.startDay,
+                endDay: this.endDay
             })
             
             if (success) {
@@ -83,6 +93,11 @@ export default {
                 this.pageIndex = data.current_page
                 this.rowsTotal = data.total
                 this.pageSize = Number(data.per_page)
+
+                let {success} = await notificationService.markReaded('announcement')
+                if (success) {
+                     this.$store.commit(SET_NOTICE_REFRESH_FLAG,"announcement")
+                }
             }
         },
     }

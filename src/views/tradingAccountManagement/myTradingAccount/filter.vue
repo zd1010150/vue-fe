@@ -43,6 +43,7 @@
 </template>
 <script>
 	import validateMixin from 'mixins/validatemix.js'
+	import { timePickerFormat,aMonthDate } from 'utils/dateUtil'
 	export default{
 		mixins:[validateMixin],
 		data(){
@@ -77,6 +78,11 @@
        			this.maxStartDate = val;
      		}
 
+  		},
+  		mounted(){
+  			let { now,monthAgo } = aMonthDate()
+			this.$set(this.model,'startDay',monthAgo)
+			this.$set(this.model,'endDay',now)
   		}
 	}
 </script>
