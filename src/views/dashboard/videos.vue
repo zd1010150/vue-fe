@@ -44,7 +44,7 @@
 				this.loadingStatus = true
 				let { success,data } = await trainingService.getVideo(this.$store.state.language == "zh" ? "mandarin" : "english")
 				this.loadingStatus = false
-				if(success){
+				if(success && data.info && data.analysis && data.tutorials){
 					this.videos = [...data.info,...data.analysis,...data.tutorials]
 				}
 			}

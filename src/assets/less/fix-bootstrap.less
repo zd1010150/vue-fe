@@ -1,8 +1,13 @@
 @import "./variable.less";
+/*在index.html中先引入了bootstrap，后引入了theme的样式，那么bootstrop的样式可能被theme里面的样式重写，造成样式错乱，所以需要修正*/
+
 .form-bordered {
   .form-group {
     padding-bottom: 5px;
   }
+}
+.input-group .input-group-btn .btn{
+  white-space: nowrap;
 }
 
 html.dark{
