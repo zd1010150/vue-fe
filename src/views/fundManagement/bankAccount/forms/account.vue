@@ -8,8 +8,13 @@
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6" >
-            <mu-text-field v-model="model.bank_name" :disabled="!isCUP" v-validate="'required'" data-vv-value-path="model.bank_name" data-vv-name="bankName"  class="form-control"   :fullWidth="true" />
-            
+            <mu-text-field  v-model="model.bank_name" 
+                            :disabled="!isCUP" 
+                            v-validate="'required'" 
+                            data-vv-value-path="model.bank_name" 
+                            data-vv-name="bankName"  
+                            class="form-control"   
+                            :fullWidth="true" />
             <span slot="required" class="error" v-if="errors.has('bankName:required')">{{errors.first('bankName:required')}}</span>
           </div>
         </div>
@@ -19,7 +24,12 @@
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6">
-            <mu-text-field v-model="model.account"  v-validate="'required'" data-vv-value-path="model.account" data-vv-name="bankAccount"  class="form-control"   :fullWidth="true" />
+            <mu-text-field  v-model="model.account"  
+                            v-validate="'required'" 
+                            data-vv-value-path="model.account" 
+                            data-vv-name="bankAccount"  
+                            class="form-control"   
+                            :fullWidth="true" />
             
             <span slot="required" class="error" v-if="errors.has('bankAccount:required')">
               {{errors.first('bankAccount:required')}}
@@ -32,7 +42,12 @@
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6">
-            <mu-text-field v-model="model.province"  v-validate="'required'" data-vv-value-path="model.province" data-vv-name="bankProvince"  class="form-control"   :fullWidth="true" />
+            <mu-text-field  v-model="model.province"  
+                            v-validate="'required'" 
+                            data-vv-value-path="model.province" 
+                            data-vv-name="bankProvince"  
+                            class="form-control"   
+                            :fullWidth="true" />
             
             <span slot="required" class="error" v-if="errors.has('bankProvince:required')">{{errors.first('bankProvince:required')}}</span>
           </div>
@@ -43,7 +58,12 @@
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6">
-            <mu-text-field v-model="model.city"  v-validate="'required'" data-vv-value-path="model.account" data-vv-name="bankCity"  class="form-control"   :fullWidth="true" />
+            <mu-text-field  v-model="model.city"  
+                            v-validate="'required'" 
+                            data-vv-value-path="model.account" 
+                            data-vv-name="bankCity"  
+                            class="form-control"   
+                            :fullWidth="true" />
             
             <span slot="required" class="error" v-if="errors.has('bankCity:required')">{{errors.first('bankCity:required')}}</span>
           </div>
@@ -54,7 +74,12 @@
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6">
-            <mu-text-field v-model="model.address"  v-validate="'required'" data-vv-value-path="model.address" data-vv-name="branchName"  class="form-control"   :fullWidth="true" />
+            <mu-text-field  v-model="model.address"  
+                            v-validate="'required'" 
+                            data-vv-value-path="model.address" 
+                            data-vv-name="branchName"  
+                            class="form-control"   
+                            :fullWidth="true" />
             
             <span slot="required" class="error" v-if="errors.has('branchName:required')">{{errors.first('branchName:required')}}</span>
           </div>
@@ -64,7 +89,12 @@
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6">
-            <mu-text-field v-model="model.swift"  v-validate="'required'" data-vv-value-path="model.swift" data-vv-name="swift"  class="form-control"   :fullWidth="true" />
+            <mu-text-field  v-model="model.swift"  
+                            v-validate="'required'" 
+                            data-vv-value-path="model.swift" 
+                            data-vv-name="swift"  
+                            class="form-control"   
+                            :fullWidth="true" />
             
             <span slot="required" class="error" v-if="errors.has('swift:required')">{{errors.first('swift:required')}}</span>
           </div>
@@ -121,8 +151,8 @@ export default {
   mixins:[validateMixin],
 	data(){
       return {
-        innerMethod:"",
-        innerEditObj:"",
+        innerMethod: this.method,
+        innerEditObj: this.editObj,
         uploadConfig:UPLOAD_CONFIG,
         isCUP:true,
         promotingMsg:"",
@@ -160,12 +190,11 @@ export default {
     	async fetchPromtingMessage(val){
         this.$emit('loading',true)
         let key =  "prompting_message_"+(val == "en" ?"en":"cn"),
-            {success,data} = await configService.getConfigByKey({fields:[key]});
-        this.promotingMsg = data[key];
+            {success,data} = await configService.getConfigByKey({fields:[key]})
+        this.promotingMsg = data[key]
         this.$emit('loading',false)
     	},
-    	
-      dropInputFunction(files,isAllsuccess,error){
+    	dropInputFunction(files,isAllsuccess,error){
         this.$refs.dropUploads.active = true;
         if(isAllsuccess){
           this.$set(this.model,"document",files[0].response.data.url)
@@ -175,17 +204,15 @@ export default {
         }
       },
       async submit(){
-        console.log("",this.model.document,this.$validator,this.$validator.fieldBag,this.$validator.errorBag);
-        let validateResult = await this.$validator.validateAll();
-        console.log(validateResult);
+        let validateResult = await this.$validator.validateAll()
         if(validateResult){
-          let res;
+          let res 
           if(this.editId){
-            res = await bankCardService.updateBankCard(this.editId,this.model);
+            res = await bankCardService.updateBankCard(this.editId,this.model)
           }else{
-            res = await bankCardService.addBankCard(this.model);
+            res = await bankCardService.addBankCard(this.model)
           }
-          let {success}=res;
+          let { success } = res
           if(success){
             this.toastr.info(this.$t("info.SUCCESS"))
             this.$emit('refresh')
@@ -194,7 +221,7 @@ export default {
          
       },
       deleteDocument(){
-        this.$set(this.model,"document","");
+        this.$set(this.model,"document","")
       },
       initModel:function(){
         this.isEdit = this.innerEditObj !=null
@@ -202,25 +229,21 @@ export default {
           this.editId = this.innerEditObj.id;
           this.model = Object.assign({},this.model,assignToObject(this.originModel,this.innerEditObj));
         }else{
-          this.editId = null;
+          this.editId = null
           this.model = Object.assign({},this.model,this.originModel,{method:this.innerMethod,bank_name:this.innerMethod});
         }
-         this.isCUP = this.model.method == "CUP";
+         this.isCUP = this.model.method == "CUP"
       }
         
     },
     mounted(){
-      console.log(this.editObj);
-      this.innerMethod = this.method;
-      this.innerEditObj = this.editObj;
-      this.initModel();
-    	this.fetchPromtingMessage(this.$store.state.language);
+      this.initModel()
+    	this.fetchPromtingMessage(this.$store.state.language)
     },
-
     watch :{
       "$store.state.language" : function(val,oldVal){
-        if(val == oldVal){ return;}
-        this.fetchPromtingMessage(val);
+        if(val == oldVal) return 
+        this.fetchPromtingMessage(val)
       },
       method:function(val){
         this.innerMethod = val
@@ -229,10 +252,10 @@ export default {
         this.innerEditObj = val
       },
       innerMethod : function(val,oldVal){
-       this.initModel();
+       this.initModel()
       },
       innerEditObj:function(val){
-        this.initModel();
+        this.initModel()
       }
     }
   }

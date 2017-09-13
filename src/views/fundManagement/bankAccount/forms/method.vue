@@ -8,7 +8,7 @@
       <div class="col-md-6" >
         <chp-select v-model="innerMethod" @input="methodChange" :disabled="editObj!=null">
 			<template v-for="m in methods">
-				<mu-menu-item :value="m.method" :title="m.title" />
+				<mu-menu-item :value="m.method" :title="$t('bankcard.methodType.'+m.title)" />
 			</template>
 		</chp-select>
       </div>
@@ -21,15 +21,15 @@ export default {
    	return {
    		innerMethod :null,
 	   	originMethods :[{
-	   		title:this.$t('bankcard.methodType.cup'),
+	   		title:'cup',
 	   		type:["en","zh"],
 	   		method:"CUP"
 	   	},{
-	   		title:this.$t('bankcard.methodType.doku'),
+	   		title:'doku',
 	   		type:["en"],
 	   		method:"DOKU"
 	   	},{
-	   		title:this.$t('bankcard.methodType.fasa'),
+	   		title:'fasa',
 	   		type:["en"],
 	   		method:"FASA"
 	   	}],
