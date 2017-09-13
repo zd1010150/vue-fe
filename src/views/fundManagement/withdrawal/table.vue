@@ -145,7 +145,7 @@
         				order_time : row.order_time,
         				mt4_id : row.mt4_id,
         				method : row.method,
-        				top_up_amount: row.top_up_amount,
+        				order_amount: row.order_amount,
         				currency_type: row.currency_type,
         				trade_status: row.trade_status
   				    }
