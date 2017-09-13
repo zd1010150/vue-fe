@@ -24,13 +24,22 @@
             <ul class="list-unstyled">
                 <li class="divider"></li>
                 <li>
-                    <a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i class="fa fa-user"></i> My Profile</a>
+                    <a role="menuitem" tabindex="-1" href="pages-user-profile.html">
+                      <i class="fa fa-user"></i>
+                      {{ $t('userbox.myProfile') }}
+                    </a>
                 </li>
                 <li>
-                    <router-link role="menuitem" tabindex="-1" to="/changePassword" data-lock-screen="true"><i class="fa fa-lock"></i>Modify Password</router-link>
+                    <a role="menuitem" tabindex="-1" href="#/changePassword">
+                      <i class="fa fa-lock"></i>
+                      {{ $t('userbox.modifyPassword') }}
+                    </a>
                 </li>
                 <li>
-                    <a role="menuitem" tabindex="-1" href="javascript:void(0)" class="logout-item" @click="logout"><i class="fa fa-power-off"></i> Logout</a>
+                    <a role="menuitem" tabindex="-1" href="javascript:void(0)" class="logout-item" @click="logout">
+                      <i class="fa fa-power-off"></i> 
+                      {{ $t('userbox.logout') }} 
+                    </a>
                 </li>
                 <li class="divider"></li>
                 <li>

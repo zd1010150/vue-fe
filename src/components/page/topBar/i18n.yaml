@@ -11,6 +11,10 @@ en:
     light: "Light Theme"
   logout: "Logout"
   logoutDialogHtml : "Confirm logout？"
+  userbox:
+    myProfile: "My Profile"
+    modifyPassword: "Modify Password"
+    logout: "Logout"
   notification:
     youHaveChance : 'You have'
     opportunity : 'chance to draw'
@@ -31,6 +35,10 @@ zh:
     light: "浅色主题"
   logout: "退出"
   logoutDialogHtml : "确认退出？"
+  userbox:
+    myProfile: "个人资料"
+    modifyPassword: "修改密码"
+    logout: "退出"
   notification:
     youHaveChance : '你有'
     opportunity : '次抽奖机会'
