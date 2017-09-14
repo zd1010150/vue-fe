@@ -92,18 +92,18 @@
 		},
 		watch:{
 			'model.origin_login':function(id,oldId){
+				this.baseCurrency = this.originSrcMT4.filter((mt4) =>{
+					return mt4.id == id
+				})[0].baseCurrency
+
 				this.targetMt4 = this.originTargetMT4.filter((mt4) => {
-					if(mt4.id == id){
-						this.baseCurrency = mt4.baseCurrency ;
-					}
-					return mt4.id !== id ;
-				});
+					return mt4.id !== id 
+				})
 		    },
 			'model.target_login':function(id){
 				this.originMt4 = this.originSrcMT4.filter((mt4) => {
-					return mt4.id !== id ;
-				});
-
+					return mt4.id !== id 
+				})
 			}
 		},
 		methods:{
