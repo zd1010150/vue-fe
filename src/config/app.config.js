@@ -27,3 +27,9 @@ export const TABLES = {
 export const HTTP_STATUS_CODE = {
 	OK : 200 //成功的status code
 }
+
+//同步后端数据的最大间隔
+export const MAX_SYNC_TIME = 15 //单位min
+
+export const ONLINE_TRAINING_YY = 89270992
+export const ONLINE_TRAINING_YY_URL = 'http://www.yy.com/89270992' 

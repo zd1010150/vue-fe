@@ -4,6 +4,8 @@ en:
     placeholderEmail: "Input Email"
     placeholderPwd: "Input Password"
     password: "Password"
+    signIn: "Sign In"
+    lostPassword: "Lost Password"
   pwd:
     placeHolderCurrentPwd: "Input Current Password"
     placeHolderNewPwd: "Input New Password"
@@ -23,6 +25,8 @@ zh:
       placeholderEmail: "请输入电子邮件地址"
       placeholderPwd: "请输入密码"
       password: "密码"
+      signIn: "登录"
+      lostPassword: "忘记密码"
     pwd:
       placeHolderCurrentPwd: "请输入当前密码"
       placeHolderNewPwd: "请输入新密码"

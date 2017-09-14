@@ -4,12 +4,6 @@
 		<div class="col-md-12 col-lg-12">
 			<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 pl-none">
 				<span class="mt4-title">{{ $t('agnetNo') }}</span>
-				 <!-- <mu-select-field v-model="agent" multiple label="选择多个" @change="change">
-				 <template v-for='m in MT4'>
-				 	<mu-menu-item :value='m.mt4_id' :title="m.mt4_id"></mu-menu-item>	
-				 </template>
-				 </mu-select-field> -->
-
 				<mu-flat-button class="select-mt4" :class="{'open' : open}" ref="selectMT4" @click="toggle" href="javascript:void(0)">
 				 	<strong class="amount mt4 text-dark">{{agent}}</strong>
 				    <i class="fa custom-caret"></i>

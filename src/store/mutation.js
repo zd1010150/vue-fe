@@ -13,7 +13,8 @@ import {
   SET_LEVERAGE,
   SET_CONTENT_LOADING,
   SET_NOTICE_REFRESH_FLAG,
-  SET_TERMS
+  SET_TERMS,
+  SET_SYNC_TIME
 } from "./mutation-types"
 
 
@@ -64,5 +65,9 @@ export default{
   },
   [SET_TERMS](state,terms){
     state.terms = terms
+  },
+  [SET_SYNC_TIME](state,time){
+    state.syncTime = time
   }
+  
 }

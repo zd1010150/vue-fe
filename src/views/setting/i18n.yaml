@@ -1,0 +1,16 @@
+en:
+  subscribeAndUnsubscribe: "Subscribe/Unsubscribe Email"
+  companyInformation: "Company Information"
+  active_trader: "Trader Email"
+  active_agent: "Agent Email"
+  dormant_trader: "Trader Educational Email"
+  dormant_agent: "Agent Educational Email"
+  systemEmail: "System Email"
+zh:
+  subscribeAndUnsubscribe: "订阅/退订邮件"
+  companyInformation: "公司信息"
+  active_trader: "交易者邮件"
+  active_agent: "交易者教学邮件"
+  dormant_trader: "代理邮件"
+  dormant_agent: "代理教学邮件"
+  systemEmail: "系统邮件"

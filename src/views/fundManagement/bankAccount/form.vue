@@ -11,7 +11,14 @@
 		      <template slot="content">
 				<chp-expand-transition name="chp-fade" >
 		        		<keep-alive>
-				         <component v-bind:is="currentView" @methodChange="methodChange" :method="method" :editMethod="editMethod" ref="accountView" :editObj="editObj" @close="closePanel" @refresh="refresh"></component>
+				         <component v-bind:is="currentView" 
+							        @methodChange="methodChange" 
+							        :method="method" 
+							        :editMethod="editMethod" 
+							        ref="accountView" 
+							        :editObj="editObj" 
+							        @close="closePanel" 
+							        @refresh="refresh"/>
 				        </keep-alive>
 			    </chp-expand-transition>
 		       </template>
@@ -114,7 +121,6 @@ import method from "./forms/method"
 				this.loadingStatus=true
 				let {success,data}= await bankCardService.getBankCardById(id);
 				if(success && data){
-
 					this.editObj = data
 					this.editMethod = data.method
 				}

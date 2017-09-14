@@ -58,18 +58,12 @@ export default async(type = 'GET', url = '', data = {}) => {
   }
 
   try {
-    let response, resoponseJson
-    response = await _fetch(fetch(url, requestConfig), MAX_FETCH_TIMEOUT)
-    if (response.status == HTTP_STATUS_CODE.OK && response.ok) {
-      resoponseJson = await response.json()
-    } else {
-      resoponseJson = {
-        status_code: response.status
-      }
-    }
-    return resoponseJson
+    let response = await _fetch(fetch(url, requestConfig), MAX_FETCH_TIMEOUT)
+    return await response.json()
   } catch (error) {
-    throw new Error(error)
+    return {
+      status_code: response.status
+    }
   }
 
 }

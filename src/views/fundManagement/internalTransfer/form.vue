@@ -58,9 +58,7 @@
       <chp-button class="mb-xs mt-xs mr-xs btn btn-primary print-btn" @click="submit" :disabled="disableSubmit">
         <i class="fa fa-check hidden-sm hidden-xs"></i> {{ $t('ui.button.submit') }}
       </chp-button>
-      <chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn" @click="cancel">
-       <i class="fa fa-times hidden-sm hidden-xs"></i> {{ $t('ui.button.cancel') }}
-      </chp-button>
+      
   </div>
  </div>
  </chp-panel>
@@ -91,7 +89,6 @@
 		},
 		created(){
 			this.fetchMT4()
-			console.log(this.$store.state.traderAccounts,this.$store.state.mt4Accounts,this.targetMt4,this.originMt4,this.model.origin_login,this.model.target_login);
 		},
 		watch:{
 			'model.origin_login':function(id,oldId){
@@ -111,17 +108,13 @@
 		},
 		methods:{
 			async submit(){
-				this.disableSubmit = true;
-				console.log("checkbox",JSON.stringify(this.checkedIterms));
+				this.disableSubmit = true
 				let validateResult = await this.$validator.validateAll()
 		          if(validateResult){
 		            let {message,success,data} = await fundsService.internalTransferDeposite(this.model)
-		            this.toastr.info(this.$t("info.SUCCESS"));
+		            this.toastr.info(this.$t("info.SUCCESS"))
 		          }
-		        this.disableSubmit = false;
-			},
-			cancel(){
-
+		        this.disableSubmit = false
 			},
 			fetchMT4(){
 		        if(this.$store.state.mt4Accounts.length >= 2){

@@ -2,7 +2,6 @@
 	<div class="container-fluid" >
 		<template v-for="(mt4,index) in $store.state.mt4Accounts">
 			<mt4 :account="mt4" :key="index" :ref="'mt4'+index" :order="index" @collapsePanel="collapsePanel"></mt4>
-			
 		</template>
 	</div>
 </template>
@@ -19,10 +18,16 @@
 		},
 		mounted(){
 			if(this.$store.state.mt4Accounts.length > 0){
-				this.$refs['mt40'][0].open()
-				this.previousOrder = 0
+				let noAgentIndex 
+				this.$store.state.mt4Accounts.filter((account,index)=>{
+					if(account.type !='Agent' && (noAgentIndex == undefined)){
+						noAgentIndex =  index
+					}
+				})
+				noAgentIndex = noAgentIndex ? noAgentIndex : 0
+				this.$refs['mt4'+noAgentIndex][0].open()
+				this.previousOrder = noAgentIndex
 			}
-			
 		},
 		methods:{
 			collapsePanel(order,isOpen){

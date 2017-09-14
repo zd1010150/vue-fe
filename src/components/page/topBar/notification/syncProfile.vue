@@ -14,17 +14,31 @@
 		  :chp-cancel-text="$t('ui.button.cancel')"
 		  @close="refreshConfirmDialog"
 		  ref="confirmRefeshDailog"/>
+		  <chp-dialog-alert
+		  :chp-content-html="$t('notification.syncProfile.tooManyTimes')"
+		  :chp-ok-text="$t('ui.button.confirm')"
+		  ref="refreshAlertDialog"/>
     </li>
 </template>
 <script>
 	import userService from 'services/userService'
+	import { MAX_SYNC_TIME } from 'src/config/app.config'
+	import { SET_SYNC_TIME } from 'store/mutation-types'
 	export default{
+		
 		methods:{
 			async syncProfile(){
-				let {success} = await userService.syncProfile()
-				if(success){
-					this.$refs.confirmRefeshDailog.open()
+				console.log(this.$store.state.syncTime)
+				if((!this.$store.state.syncTime) || (new Date().getTime() - this.$store.state.syncTime > MAX_SYNC_TIME*60*1000)){
+					let {success} = await userService.syncProfile()
+					if(success){
+						this.$refs.confirmRefeshDailog.open()
+						this.$store.commit(SET_SYNC_TIME,new Date())
+					}
+				}else{
+					this.$refs.refreshAlertDialog.open()
 				}
+				
 			},
 			refreshConfirmDialog(status){
 				 if(status == 'ok'){

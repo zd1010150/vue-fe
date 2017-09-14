@@ -70,14 +70,10 @@
     return createElement("chp-list", nodes);
 
   },
-  mounted(){
-    this.setItemsOpen(this.$route.path);
-  },
+  
   methods: {
     closeAllItems(){
       try{
-
-
       let traverse = (root)=>{
         if(root.open != undefined){
           root.open = false
@@ -120,31 +116,30 @@
           }
         };
         for (let i = 0, len = this.items.length; i < len; i++) {
-          let oneItem = this.items[i];
+          let oneItem = this.items[i]
           if (oneItem.to === path) {
-            return oneItem.index;
+            return oneItem.index
           } else {
-            let _index = traverseChild(oneItem);
+            let _index = traverseChild(oneItem)
             if (_index) {
               return _index
             } else {
-              continue;
+              continue
             }
           }
         }
-        ;
+        
         return _pathIndex;
       }
       
-      let _path = getPathIndex(path)+"";
+      let _path = getPathIndex(path)+""
       if(_path.indexOf("-") > -1){
-        parentIds = _path.split("-");
+        parentIds = _path.split("-")
       }else{
-        parentIds = new Array(_path);
+        parentIds = new Array(_path)
       }
 
       const setAllparents = () => {
-        console.log(parentIds,"***")
         if (!parentIds) {
           return;
         }
@@ -174,13 +169,16 @@
           agentTmp = hasAgent ? agent : nonAgent
           temp.splice(3,0,...agentTmp)
           temp.splice(this.items.length-1,0,...languageTmp)
-          console.log(temp,"menu",languageTmp,language,zh_menu,en_menu,this.$store.language,this.$store)
       this.items = temp
     }
 
   },
-  mounted(){
+  created(){
     this.filterByLanguageAndRole(this.$store.state.language,this.$store.state.userInfo && this.$store.state.userInfo.hasAgent)
+    
+  },
+  mounted(){
+    this.setItemsOpen(this.$route.path)
   },
   watch: {
     $route(val, oldVal){

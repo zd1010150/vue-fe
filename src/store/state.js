@@ -15,5 +15,6 @@ export default {
   leverage:[],
   contentLoading:false,
   refreshNoticeFlag:false,
-  terms:""
+  terms:"",
+  syncTime:getStore("syncTime") || null
 }

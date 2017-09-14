@@ -61,8 +61,8 @@ export default {
     return {
       language: this.$store.state.language,
       categories: [
-        { title: 'article', link: 'articles', loop: [] },
-        { title: 'book', link: 'books', loop: [] }
+        { title: 'articles', link: 'articles', loop: [] },
+        { title: 'books', link: 'books', loop: [] }
       ]
     }
   },
