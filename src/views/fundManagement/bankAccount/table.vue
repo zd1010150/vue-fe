@@ -49,14 +49,12 @@
         </chp-data-table>
       </chp-panel>
     <chp-image-preview :src="documentSrc" :open="documentOpen" @close="closePreview"></chp-image-preview>
-    <chp-dialog-confirm
-  :chp-title="$t('ui.dialog.confirm.title')"
-  :chp-content-html="$t('bankcard.deleteDialogText')"
-  :chp-ok-text="$t('ui.button.confirm')"
-  :chp-cancel-text="$t('ui.button.cancel')"
-  @close="closeConfirmDialog"
-  ref="confirmDeleteDailog">
-</chp-dialog-confirm>
+    <chp-dialog-confirm :chp-title="$t('ui.dialog.confirm.title')"
+                        :chp-content-html="$t('bankcard.deleteDialogText')"
+                        :chp-ok-text="$t('ui.button.confirm')"
+                        :chp-cancel-text="$t('ui.button.cancel')"
+                        @close="closeConfirmDialog"
+                        ref="confirmDeleteDailog"/>
 	</div>
 </template>
 <script>
