@@ -1,11 +1,12 @@
 <template>
 	<p>
-		<span v-if="isHtml" v-html="innerContent"></span>
+		<span v-if="isHtml" v-html="innerHtml"></span>
 		<span v-else> {{ innerContent }} </span>
-		<chp-tooltip> {{ content }}</chp-tooltip>
+		<chp-tooltip> {{ innerContent }}</chp-tooltip>
 	</p>
 </template>
 <script>
+	const HTML_REG = /(\<[a](.*?)\>)(.*?)(\<\/[a]\>)/i
 	export default{
 		props:{
 			lens:Number,
@@ -17,11 +18,26 @@
 			}
 		},
 		computed:{
+			innerHtml() {
+				let arr = HTML_REG.exec(this.content)
+				console.log(this.content,"one line")
+				if( this.isHtml && arr && arr.length == 5){
+					return arr[1] + this.substrLen(arr[3]) + arr[4]
+				}else return this.content
+			},
 			innerContent(){
-				if( this.content.length < this.lens){
-					return this.content
-				}else{
-					return this.content.substr(0,this.lens) + this.mark
+				let arr = HTML_REG.exec(this.content)
+				if( this.isHtml && arr && arr.length == 5){
+					return arr[3]
+				}else return this.substrLen(this.content)
+			}
+		},
+		methods:{
+			substrLen(str){
+				if( str && str.length < this.lens){
+						return str
+					}else{
+						return str.substr(0,this.lens) + this.mark
 				}
 			}
 		}
