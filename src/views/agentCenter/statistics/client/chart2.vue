@@ -90,7 +90,7 @@
 				if(success){
 					this.chartData = data
 					this.mapData(data)
-					this.$emit("totalChange",data.all)
+					this.$emit("totalChange",data.selected)
 				}
 			},
 			research({mt4_id,start_date,end_date}){
