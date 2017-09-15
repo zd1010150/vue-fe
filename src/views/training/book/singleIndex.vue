@@ -21,7 +21,7 @@
               <chp-feature-image :src='book.imagepath || book.image_link'/>
               <div class="description">
                 <div class="word-box">
-                  <small class="central-word">{{book.description}}</small>
+                  <small class="central-word" v-html="book.description"></small>
                 </div>
               </div>
             </div>
