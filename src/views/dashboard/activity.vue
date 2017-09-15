@@ -84,8 +84,8 @@
 			async getBonus(type){
 	    		let {data,message,success} = await activityService.traderAward({type:type})
 	    		if(success){
-	    			this.$emit('refresh')
 	    			this.toastr.info(this.$t("info.SUCCESS"))
+	    			this.fetchData()
 	    		}
 	    	},
 		},
