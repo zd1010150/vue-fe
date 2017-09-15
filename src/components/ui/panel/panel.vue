@@ -1,22 +1,29 @@
 <template>
   <section class="panel" :class="classes">
-      <chp-panel-header @close="closePanel" 
-                        @collapse="collapsePanel" 
-                        :isTransparent="isHeaderTransparent"
-                        :canCollapse="canCollapse" 
-                        :canClose="canClose" 
-                        :collapsePanelText="collapsePanelText"
-                        :expandPanelText="expandPanelText"
-                        :closeText="closeText"
-                        :showActionRipple ="showActionRipple"
-                        :defaultStatus = "headerStatus">
-          <h2 class="panel-title">
-            <slot name="title"></slot>
+      <header class="panel-heading" :class="headerClasses">
+        <div class="panel-actions">
+          <a href="javascript:void(0)" 
+             class="panel-action panel-action-toggle" 
+             :class="headerCollapseClasses" 
+             v-if="canCollapse" 
+             @click.stop = "collapsePanel">
+              {{ isOpen ? expandPanelText : collapsePanelText }}
+          </a>
+          <a href="javascript:void(0)" 
+             class="panel-action panel-action-dismiss" 
+             :class="headerCloseClasses" 
+             v-if="canClose"  
+             @click.stop = "closePanel">
+             {{closeText}}
+          </a>
+        </div>
+         <h2 class="panel-title">
+            <slot name="panelTitle"></slot>
           </h2>
           <p class="panel-subtitle">
             <slot name="subtitle"></slot>
           </p>
-      </chp-panel-header>
+      </header>
       <div class="panel-body" :class=" {'loading-overlay-showing':isLoading } " ref="panelBody" v-show="isOpen" >
         <slot name="body"></slot>
         <div class="loading-overlay" style="border-radius: 0px 0px 5px 5px;">
@@ -34,33 +41,56 @@
 </template>
 
 <script>
-  import panelHeader from './panelHeader.vue'
-  
-  export default{
+ export default{
     name: 'chp-panel',
     data(){
       return {
         hasfooter: true,
-        hasTitle:true,
-        isOpen : this.defaultStatus == "open" ? true : false
-      };
+        hasTitle: true,
+        isOpen : true,
+        headerClasses: {
+          'panel-heading-transparent' : this.isHeaderTransparent
+        },
+        headerCollapseClasses: this.collapsePanelText || this.expandPanelText ? 'action-text' : '',
+        headerCloseClasses: this.closeText ? 'action-text' : ''
+      }
     },
     computed: {
       classes(){
           return {
             'panel-collapsed' : !(this.isOpen)
           }
-      },
-      headerStatus(){
-        return this.isOpen ? "open" : "close"
       }
     },
     mounted(){
-      this.hasfooter = this.$slots.footer && this.$slots.footer.length>0;
-      this.hasTitle = this.$slots.title || this.$slots.subtitle ;
+      this.hasfooter = this.$slots.footer && this.$slots.footer.length>0
+      this.hasTitle = this.$slots.title || this.$slots.subtitle
+      this.initPanel()
     },
-    components: {
-      chpPanelHeader: panelHeader
+    methods: {
+      initPanel(){
+        this.isOpen = this.defaultStatus == "open"
+      },
+      closePanel(){
+        this.isOpen = false
+        this.$emit("closePanel")
+      },
+      collapsePanel(){
+        this.isOpen = !(this.isOpen)
+        this.$emit("collapsePanel",this.isOpen)
+      },
+      expandPanel(){
+        this.isOpen = true
+      },
+      shrinkPanel(){
+        this.isOpen = false
+      }
+    },
+    watch:{
+      defaultStatus(val){
+        this.isOpen = val=="open"? true : false
+      },
+      isLoading(val){}
     },
     props: {
       defaultStatus:{
@@ -103,34 +133,8 @@
           type:Boolean,
           default:true
       }
-    },
-    methods: {
-      closePanel(){
-        this.isOpen=false;
-        this.$emit("closePanel");
-      },
-      collapsePanel(){
-        this.isOpen = !(this.isOpen);
-        this.$emit("collapsePanel",this.isOpen);
-      },
-      expandPanel(){
-        this.isOpen = true
-      },
-      shrinkPanel(){
-        this.isOpen = false
-      }
-    },
-    watch:{
-      defaultStatus(val){
-        this.isOpen = val=="open"?true:false;
-      },
-      isLoading(val){
-        
-      }
-     }
     }
-  
-
+  }
 </script>
 <style lang="less">
   @import "~assets/less/transition.less";
@@ -139,5 +143,10 @@
       position: relative;
       visibility: visible;
     }
+  }
+  .panel-action.action-text{
+    width:auto;
+    display: inline-block;
+    padding:10px ;
   }
 </style>

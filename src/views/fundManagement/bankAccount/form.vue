@@ -2,7 +2,7 @@
 <template>
 	<div class="col-lg-12 col-md-12">
 		<chp-panel :canCollapse="false" :canClose="true" :isLoading="loadingStatus" @closePanel="closePanel">
-		 	<template slot="title">{{ editObj? $t('bankcard.editBtnText') : $t('bankcard.newBtnText')}}</template>
+		 	<template slot="panelTitle">{{ editObj? $t('bankcard.editBtnText') : $t('bankcard.newBtnText')}}</template>
 		    <chp-tabs :value="activeStepTab"  @change = "handleStepTabChange" type="wizard" slot="body">
 		      <template slot="header">
 		        <chp-tab-header href="tab1">{{ $t('bankcard.account') }}</chp-tab-header>

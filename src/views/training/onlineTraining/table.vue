@@ -3,7 +3,7 @@
 <div class="row pt-lg">
    <div class="col-lg-12 col-md-12">
   		<chp-panel :canCollapse="false" :canClose="false" >
-  	       <template slot="title">{{ $t('onlineTraining.onlineTrainingList') }}</template>
+  	       <template slot="panelTitle">{{ $t('onlineTraining.onlineTrainingList') }}</template>
         	 <template slot="subtitle">
             ACY稀万国际分析师位大家推出全新的网络课程，不管你是外汇新手还是有一定交易时间的投资者，我们相信只有打下扎实的基础才能在外汇市场中生存
             <h4 class="text-dark pb-none mb-none">ACY 授课官方YY 频道号：<a :href="yyUrl" target="_blank">{{ yy }}</a> </h4>

@@ -25,5 +25,6 @@ export default {
   totalFx:"Total FX",
   totalMetal: "Total Metals",
   totalOil:"Total Oil",
-  totalCfd: "Total CFD"
+  totalCfd: "Total CFD",
+  activeClient: "Active Client"
 }

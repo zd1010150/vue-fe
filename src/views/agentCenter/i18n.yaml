@@ -43,6 +43,9 @@ en:
     volume: "Volume"
     treasury: "Treasury"
     client: "Client"
+    activeClientStatistics: "Active Client Statistics"
+    activeClientComparision: "Active Client Comparison"
+    activeClientNetdeposite: "Active Client Deposit Contribution"
 
 zh:
   clientList: "客户列表" 
@@ -89,6 +92,9 @@ zh:
     volume: "交易量"
     treasury: "出入金"
     client: "客户数"
+    activeClientStatistics: "有效客户统计"
+    activeClientComparision: "历史有效客户对比"
+    activeClientNetdeposite: "有效客户与净入金"
 
   
 

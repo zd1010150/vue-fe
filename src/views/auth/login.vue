@@ -5,7 +5,7 @@
       <chp-panel slot="content" :isHeaderTransparent="true" :canClose="false" :canCollapse="false"
                  :titles="{mainTitle:'login'}" class="panel-sign">
 
-        <div slot="title" class="panel-title-sign mt-xl text-right">
+        <div slot="panelTitle" class="panel-title-sign mt-xl text-right">
           <h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i>{{ $t("login.signIn") }}</h2>
         </div>
 

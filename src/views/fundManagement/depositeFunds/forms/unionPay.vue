@@ -1,6 +1,6 @@
 <template>
 	<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-    <template slot="title">unionPay</template>
+    <template slot="panelTitle">unionPay</template>
      <form slot="body" class="form-horizontal form-bordered " method="POST" name="unionPay" target="_blank" ref="unionPayForm">
         <paying-dialog ref="dialog" @close="handlerDialogClose"></paying-dialog>
         <div class="form-group" :class="errorClass('MT4')">

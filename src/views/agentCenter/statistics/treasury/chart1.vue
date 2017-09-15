@@ -5,7 +5,7 @@
 	 			:showActionRipple="false"  
 				:isLoading="loadingStatus" 
 				ref="panel">
-				<template slot="title">{{ $t('charts.withdrawlAndDepositLineChart') }}</template>
+				<template slot="panelTitle">{{ $t('charts.withdrawlAndDepositLineChart') }}</template>
 		<div slot="body">
 			<div class="col-md-12 col-sm-12 pr-none pl-none">
 			  <chp-echart :media="media" :externalOption="option" v-if="option"></chp-echart>

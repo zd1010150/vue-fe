@@ -2,7 +2,7 @@
 <template>
 	<div class="col-lg-6 col-md-6 col-sm-12">
 		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-			<template slot="title">
+			<template slot="panelTitle">
 					{{ $t("books") }}
 					<chp-view-all href="#/training/books"></chp-view-all>
 				</template>
