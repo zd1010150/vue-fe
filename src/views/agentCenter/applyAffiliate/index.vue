@@ -4,7 +4,7 @@
 	    <div class='row'>
 	    	<div class='col-lg-12 col-md-12'>
 				<chp-panel :canCollapse='false' :canClose='false'>
-					<template slot='title'>{{ $t('affiliate') }}</template>
+					<template slot='panelTitle'>{{ $t('affiliate') }}</template>
 					<form slot='body' class='form-horizontal form-bordered ' ref='accountForm'>
 				        <div class='form-group' :class='errorClass("platForm")'>
 				          <label class='control-label col-md-3'> 

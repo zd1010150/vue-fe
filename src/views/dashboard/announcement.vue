@@ -2,9 +2,8 @@
 <template>
 	<div class="col-lg-6 col-md-6 col-xs-12">
 		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus" class="dashbord-fix-height-panel">
-			<template slot="title">
+			<template slot="panelTitle">
 				{{ $t("notification.announcement") }}
-				
 				<chp-view-all href="#/notice"></chp-view-all>
 			</template>
 			<template slot="body">

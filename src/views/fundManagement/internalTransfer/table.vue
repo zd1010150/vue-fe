@@ -2,7 +2,7 @@
 <template>
 	<div class="col-lg-12 col-md-12">
 		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-	      <template slot="title">{{ $t('internalTransfer.internalTransferHistory') }}</template>
+	      <template slot="panelTitle">{{ $t('internalTransfer.internalTransferHistory') }}</template>
 	      	<chp-data-table slot="body" 
                       :isDisplayFilterToolbar="isDisplayFilterToolbar"
                       :pageSize = "pageSize"

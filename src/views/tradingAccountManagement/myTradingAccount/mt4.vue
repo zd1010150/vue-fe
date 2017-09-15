@@ -16,12 +16,12 @@
 						<tr>
 							<td>{{ $t('trade.balance') }}:</td>
 							<td>{{ $t('trade.currency') }}:</td>
-							<td>{{ $t('trade.leverage') }}:</td>
+							<td v-if="mt4.account_type != 'Agent'">{{ $t('trade.leverage') }}:</td>
 						</tr>
 						<tr>
 							<td class="info-number text-dark">{{ mt4.balance}}</td>
 							<td class="info-number text-dark">{{ mt4.base_currency}}</td>
-							<td class="info-number text-dark select">
+							<td class="info-number text-dark select" v-if="mt4.account_type != 'Agent'">
 								<chp-select :value="''+mt4.leverage" class="leverage pull-right" @change="changeLeverage">
 						            <template v-for="(l,index) in leverages">
 						                <mu-menu-item :value="l.val" :title="l.title" key="index"/>
@@ -46,8 +46,8 @@
 							<dd class="amount info-number text-dark">{{ mt4.balance}}</dd>
 							<dt class="info-title">{{ $t('trade.currency') }}</dt>
 							<dd class="amount info-number text-dark">{{ mt4.base_currency}}</dd>
-							<dt class="info-title">{{ $t('trade.leverage') }}</dt>
-							<dd class="amount info-number text-dark leverage">
+							<dt class="info-title" v-if="mt4.account_type != 'Agent'">{{ $t('trade.leverage') }}</dt>
+							<dd class="amount info-number text-dark leverage" v-if="mt4.account_type != 'Agent'">
 								<chp-select :value="''+mt4.leverage" @change="changeLeverage">
 					              <template v-for="(l,index) in leverages">
 					                <mu-menu-item :value="l.val" :title="l.title" key="index"/>

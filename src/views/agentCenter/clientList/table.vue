@@ -3,7 +3,7 @@
   <div class="row">
 		<div class="col-lg-12 col-md-12">
   		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-  	    <template slot="title">{{ $t('clientList') }}</template>
+  	    <template slot="panelTitle">{{ $t('clientList') }}</template>
   	    <chp-table slot="body" chp-sort="calories" chp-sort-type="desc" @sort="sortRow" >
           <chp-table-header>
             <chp-table-row>

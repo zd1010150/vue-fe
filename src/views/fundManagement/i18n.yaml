@@ -59,6 +59,8 @@ en:
     allStatus:
       SUCCESS: "Success"
       UNPAY: "Unpay"
+  deposit:
+    paymentHistory: "Payment History"
 zh:
   internalTransfer:
     note : "注意：有仓位的账户无法进行转出资金，代理账户需激活后才能进行内转"

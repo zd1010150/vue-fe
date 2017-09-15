@@ -5,7 +5,7 @@
 	 			:showActionRipple="false"  
 				:isLoading="loadingStatus" 
 				ref="panel">
-		<template slot="title">{{ $t("charts.dailyVolumeStatistics") }}</template>
+		<template slot="panelTitle">{{ $t("charts.dailyVolumeStatistics") }}</template>
 		<div slot="body" class="row">
 			<div class="col-lg-6 col-md-6 col-sm-12 pr-lg pl-none content-center">
 			    <chp-echart :media="media" :externalOption="option" v-if="option"></chp-echart>

@@ -5,7 +5,7 @@
 	 			:showActionRipple="false"  
 				:isLoading="loadingStatus" 
 				ref="panel">
-				<template slot="title">Active Client Statistics</template>
+				<template slot="panelTitle">{{ $t("charts.activeClientComparision") }}</template>
 		<div slot="body" class="row">
 			<div class="col-lg-3 col-md-3 col-sm-12 pr-none pl-none content-center">
 			    <h5>{{ activeDate | reverseDate }}-{{chartData.all.time}}</h5>
@@ -56,6 +56,7 @@
 	import tradeService from 'services/tradeService'
 	import loadingMix from 'mixins/loading'
 	import filters from 'src/filters'
+	import mathUtil from 'src/utils/mathUtil'
 	export default{
 		mixins:[loadingMix],
 		filters,
@@ -80,8 +81,8 @@
 		},
 		methods:{
 			mapData(data){
-				this.allPercentage = (data.all.activeClients / data.all.allClients)*100
-				this.selectedPerCentage = (data.selected.activeClients / data.selected.allClients)*100
+				this.allPercentage = mathUtil.getPercentage(data.all.activeClients,data.all.allClients)*100
+				this.selectedPerCentage = mathUtil.getPercentage(data.selected.activeClients,data.selected.allClients)*100
 			},
 			async fetchData({mt4_id,start_date,end_date}){
 				this.loadingStatus = true

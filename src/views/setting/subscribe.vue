@@ -16,13 +16,13 @@
 		                	<div class="checkbox-default col-lg-4 col-md-4 col-sm-6">
 		                        <chp-checkbox id="active_trader" v-model="subscribe" nativeValue="active_trader">{{ $t('active_trader') }}</chp-checkbox>
 		                    </div>
-		                    <div class="checkbox-default col-lg-4 col-md-4 col-sm-6">
+		                    <div class="checkbox-default col-lg-4 col-md-4 col-sm-6" v-if="$store.state.userInfo.hasAgent">
 		                         <chp-checkbox id="active_agent" v-model="subscribe" nativeValue="active_agent">{{ $t('active_agent') }}</chp-checkbox>
 		                    </div>
 		                    <div class="checkbox-default col-lg-4 col-md-4 col-sm-6">
 		                         <chp-checkbox id="dormant_trader" v-model="subscribe" nativeValue="dormant_trader">{{ $t('dormant_trader') }}</chp-checkbox>
 		                    </div>
-		                    <div class="checkbox-default col-lg-4 col-md-4 col-sm-6">
+		                    <div class="checkbox-default col-lg-4 col-md-4 col-sm-6" v-if="$store.state.userInfo.hasAgent">
 		                         <chp-checkbox  id="dormant_agent" v-model="subscribe" nativeValue="dormant_agent">{{ $t('dormant_agent') }}</chp-checkbox>
 		                    </div>
 		                    <div class="checkbox-default col-lg-4 col-md-4 col-sm-6">
