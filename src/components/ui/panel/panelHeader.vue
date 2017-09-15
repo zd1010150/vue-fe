@@ -30,7 +30,7 @@
         classes: {
           'panel-heading-transparent' : this.isTransparent
         },
-        collapseClasses: this.collapsePanelText || this.expandPanelText ? 'action-text' : ''
+        collapseClasses: this.collapsePanelText || this.expandPanelText ? 'action-text' : '',
         closeClasses: this.closeText ? 'action-text' : ''
       }
     },
