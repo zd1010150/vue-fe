@@ -20,7 +20,6 @@
 		computed:{
 			innerHtml() {
 				let arr = HTML_REG.exec(this.content)
-				console.log(this.content,"one line")
 				if( this.isHtml && arr && arr.length == 5){
 					return arr[1] + this.substrLen(arr[3]) + arr[4]
 				}else return this.content
