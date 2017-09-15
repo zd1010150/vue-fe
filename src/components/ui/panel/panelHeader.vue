@@ -26,7 +26,12 @@
   export default{
     data(){
       return {
-        isCollapsed:this.defaultStatus != "open" 
+        isCollapsed:this.defaultStatus != "open",
+        classes: {
+          'panel-heading-transparent' : this.isTransparent
+        },
+        collapseClasses: this.collapsePanelText || this.expandPanelText ? 'action-text' : ''
+        closeClasses: this.closeText ? 'action-text' : ''
       }
     },
     name: 'chp-panel-header',
@@ -59,28 +64,6 @@
           default:''
         }
     },
-    computed:{
-      classes(){
-          return {
-              'panel-heading-transparent' : this.isTransparent
-          }
-      },
-      collapseClasses(){
-        if(this.collapsePanelText || this.expandPanelText){
-          return 'action-text'
-        }else{
-          return ''
-        }
-      },
-      closeClasses(){
-        if(this.closeText){
-          return 'action-text'
-        }else{
-          return ''
-        }
-      }
-
-    },
     methods:{
         closeHandler(){
             this.$emit("close");
@@ -92,7 +75,7 @@
     },
     watch:{
       defaultStatus:function(val){
-        this.isCollapsed = val!="open"
+        this.isCollapsed = val!= "open"
       }
     }
   }
