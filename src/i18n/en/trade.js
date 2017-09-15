@@ -2,7 +2,7 @@ export default {
   fx: "FX",
   metal: "METAL",
   oil:  "OIL",
-  activeClient: "Active Client",
+  totalActiveClient: "Total Active Client",
   totalClient: " Total Client",
   cfd: "CFD",
   lots: "Lots",

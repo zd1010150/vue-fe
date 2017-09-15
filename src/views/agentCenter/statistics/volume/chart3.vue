@@ -17,7 +17,7 @@
 						<th></th>
 						<th> <i class="fa fa-circle chart-blue" aria-hidden="true"></i>  {{ chartData.current.time}}</th>
 						<th><i class="fa fa-circle chart-red" aria-hidden="true"></i> {{ chartData.last.time}}</th>
-						<th><i class="fa fa-circle chart-green" aria-hidden="true"></i> {{ $t("charts.average") }}</th>
+						<th><i class="fa fa-circle chart-green" aria-hidden="true"></i> {{ $t("charts.monthlyAverage") }}</th>
 					</tr>
 				</thead>
 				<tbody>
