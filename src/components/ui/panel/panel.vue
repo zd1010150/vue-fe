@@ -52,7 +52,6 @@
           }
       },
       headerStatus(){
-
         return this.isOpen ? "open" : "close"
       }
     },
