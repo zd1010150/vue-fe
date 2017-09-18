@@ -31,6 +31,13 @@ en:
     attachment : "Attachment"
     status : "Status"
     Action : "Action"
+    rejectReason :
+      MissingName: "Missing Name"
+      MissingAcc : "Missing Account"
+      MissingTitle : "Missing Title"
+      MissingURL : "Missing URL"
+      NonUsers : "Invalid Users"
+      Blurry : "Blurry"
     bankStatus :
       Pending : "Pending"
       Approve : "Approve"
@@ -95,6 +102,13 @@ zh:
     attachment : "账单附件"
     status : "状态"
     Action : "操作"  
+    rejectReason :
+      MissingName: "缺姓名"
+      MissingAcc : "缺账号"
+      MissingTitle : "缺抬头"
+      MissingURL : "缺URL"
+      NonUsers : "非用户本人"
+      Blurry : "太模糊"
     bankStatus :
       Pending : "待处理"
       Approve : "已认证"

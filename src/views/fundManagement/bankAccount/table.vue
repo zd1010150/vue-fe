@@ -28,7 +28,7 @@
                       <i class="fa fa-paperclip" aria-hidden="true"></i>
                     </mu-icon-button>  
                     <template v-else-if="columnIndex == 'status'">
-                      <chp-tooltip chp-direction="bottom" v-if="column == CARD_STATUS.reject">{{ originData[rowIndex].comment}}</chp-tooltip>
+                      <chp-tooltip chp-direction="bottom" v-if="column == CARD_STATUS.reject">{{ $t("bankcard.rejectReason."+originData[rowIndex].comment)}}</chp-tooltip>
                       {{$t('bankcard.bankStatus.'+column)}}
                     </template>
                     <template v-else-if="columnIndex =='id'">
@@ -77,7 +77,12 @@
           documentSrc : "",
           documentOpen : false,
           selected : null,
-          editId : null
+          editId : null,
+          CARD_STATUS :{
+            reject: "Reject",
+            approve: "Approve",
+            pending: "Pending"
+          }
         }
      },
     created(){
