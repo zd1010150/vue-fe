@@ -1,7 +1,7 @@
 <i18n src="../i18n.yaml"></i18n>
 <template>
 	<div class="row pt-none mt4-row">
-			<div class="col-lg-12 col-md-12">
+		<div class="col-lg-12 col-md-12">
 			<section class="one-mt4-section pb-lg">
 				<header class="clearfix bottom-2px-border pb-sm pt-sm">
 					<div class="col-lg-6 col-md-6 col-xs-12 mt4-account p-none">
@@ -22,11 +22,11 @@
 							<td class="info-number text-dark">{{ mt4.balance}}</td>
 							<td class="info-number text-dark">{{ mt4.base_currency}}</td>
 							<td class="info-number text-dark select" v-if="mt4.account_type != 'Agent'">
-								<chp-select :value="''+mt4.leverage" class="leverage pull-right" @change="changeLeverage">
-						            <template v-for="(l,index) in leverages">
-						                <mu-menu-item :value="l.val" :title="l.title" key="index"/>
+								<mu-select-field v-model="mt4.leverage" class="leverage" @change="confirmModifyLeverage">
+						            <template v-for="(l,index) in leverages" slot="default">
+						                <mu-menu-item :value="Number(l.val)" :title="l.title" :key="Math.random()"/>
 						            </template>
-				           		 </chp-select> 
+				           		 </mu-select-field> 
 				           </td>
 						</tr>
 					</table>
@@ -48,11 +48,12 @@
 							<dd class="amount info-number text-dark">{{ mt4.base_currency}}</dd>
 							<dt class="info-title" v-if="mt4.account_type != 'Agent'">{{ $t('trade.leverage') }}</dt>
 							<dd class="amount info-number text-dark leverage" v-if="mt4.account_type != 'Agent'">
-								<chp-select :value="''+mt4.leverage" @change="changeLeverage">
-					              <template v-for="(l,index) in leverages">
-					                <mu-menu-item :value="l.val" :title="l.title" key="index"/>
+								<mu-select-field v-model="mt4.leverage" @change="confirmModifyLeverage">
+					              <template v-for="(l,index) in leverages" slot="default">
+					                <mu-menu-item  :value="Number(l.val)" :title="l.title" :key="Math.random()"/>
 					              </template>
-				           		 </chp-select> 
+				           		 </mu-select-field> 
+				           		 
 							</dd>
 						</dl>
 						<div slot="body" v-if="mt4.account_type != 'Agent'">
@@ -65,8 +66,16 @@
 				</div>
 				<footer></footer>
 			</section>
-			</div>
 		</div>
+		<chp-dialog-confirm
+		  :chp-title = "$t('ui.dialog.confirm.riskTip')"
+          :chp-content-html="$t('info.RISK_TIP')"
+          :chp-ok-text="$t('ui.button.confirm')"
+          :chp-cancel-text="$t('ui.button.cancel')"
+          @close="confirmModify"
+          ref="confirmLeverageDialog">
+        </chp-dialog-confirm>
+	</div>
 </template>
 <script>
 	import mt4Service from 'services/mt4Service'
@@ -74,6 +83,7 @@
 	import filter from './filter'
 	import operate from './operate'
 	import { LINE_OPTION_CONFIG,LINE_MEDIA_CONFIG } from 'src/config/chart.config.js'
+	import { SET_ASYNC_LOADING } from 'store/mutation-types'
 	export default{
 		components:{
 			'filter-trading-account' : filter,
@@ -85,42 +95,65 @@
 			},
 			order:Number
 		},
-		computed:{
-			mt4:function(){
-				return this.account || {}
-			},
+		computed: {
 			defaultStatus:function(){
 				return 'close'
 			}
-
 		},
-		data(){
+		data() {
 			return {
+				game:"",
+				mt4 : Object.assign({mt4_id:'',leverage:0},this.account),
 				leverages : this.$store.state.leverage,
 				total:[],
 				loadingStatus:false,
           		collapsed:true,
           		isFirstShow:true,
           		option: null,
-          		media: LINE_MEDIA_CONFIG
+          		media: LINE_MEDIA_CONFIG,
+          		previousLeverage: this.account && this.account.leverage,
+          		nextLeverage: 0,
+          		chartData:null
 			}
 		},
-		methods:{
+		methods: {
+			confirmModifyLeverage(val){
+				this.nextLeverage = val
+				this.$refs.confirmLeverageDialog.open()
+			},
+			confirmModify(val){
+				if(val == "ok"){
+					this.changeLeverage(this.nextLeverage)
+				}else{
+					console.log("previous",this.previousLeverage)
+					this.$set(this.mt4,"leverage",this.previousLeverage)
+				}
+			},
 			async changeLeverage(val){
-				await mt4Service.modifyAccountLeverage(this.mt4.mt4_id,val)
+				this.$store.commit(SET_ASYNC_LOADING,true)
+				let {success,data} = await mt4Service.modifyAccountLeverage(this.mt4.mt4_id,val)
+				this.$store.commit(SET_ASYNC_LOADING,false)
+				if(success){
+					this.previousLeverage = val
+					this.toastr.info(this.$t("info.SUCCESS"))
+				}else{
+					this.$set(this.mt4,"leverage",this.previousLeverage)
+				}
 			},
 			refetchChartData(start_date,end_date){
 				this.fetchChartData(this.mt4.mt4_id,start_date,end_date)
 			},
 			async fetchChartData(mt4Id,start_date="",end_date=""){
-        		this.loadingStatus = true;
+        		this.loadingStatus = true
 		      	let {data,message,success} = await tradeService.getVolumeStatistics(mt4Id,start_date,end_date);
-		        this.loadingStatus = false;
+		        this.loadingStatus = false
 		        if(success){
+		        	this.chartData = data
 		          	this.mapData(data)
 		    	}
       		},
 			mapData(data){
+				if(!data) return
 	       		let series = { fx:[],oil:[],metal:[],cfd:[]},
 	       		 	xAxis = {
 				        type: 'category',
@@ -230,6 +263,12 @@
 	       		}
 	       		
 	       	}
+  		},
+  		watch: {
+  			"$store.state.language"() {
+  				console.log("trigger change")
+  				this.mapData(this.chartData)
+  			}
   		}
   		
 
@@ -274,11 +313,9 @@
 				.leverage{
 					width:110px;
 					position: relative;
-					.chp-select{
-						padding-top: 5px;
-						position:absolute;
-						top:-25px;
-					}
+					vertical-align: middle;
+					bottom:3px;
+					
 				}
 			}
 			&.small-screen{

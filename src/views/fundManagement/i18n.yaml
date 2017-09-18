@@ -32,9 +32,9 @@ en:
     status : "Status"
     Action : "Action"
     bankStatus :
-      0 : "Pending"
-      1 : "Approve"
-      2 : "Reject"
+      Pending : "Pending"
+      Approve : "Approve"
+      Reject : "Reject"
     deleteDialogText : " Are you sure delete this record?"
     methodType :
       cup : "Bank bill"
@@ -57,8 +57,9 @@ en:
     status: "Status"
     time: "Time"
     allStatus:
-      SUCCESS: "Success"
-      UNPAY: "Unpay"
+      Pending : "Pending"
+      Approve : "Approve"
+      Reject : "Reject"
   deposit:
     paymentHistory: "Payment History"
 zh:
@@ -95,9 +96,9 @@ zh:
     status : "状态"
     Action : "操作"  
     bankStatus :
-      0 : "待处理"
-      1 : "已认证"
-      2 : "拒绝"
+      Pending : "待处理"
+      Approve : "已认证"
+      Reject : "拒绝"
     deleteDialogText: "你确定删除该条记录?"
     methodType :
       cup : "银行账单"
@@ -120,5 +121,6 @@ zh:
     status: "状态"
     time: "时间"
     allStatus:
-      SUCCESS: "成功"
-      UNPAY: "未支付"
+      Pending : "待处理"
+      Approve : "已认证"
+      Reject : "拒绝"

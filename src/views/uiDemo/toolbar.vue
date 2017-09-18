@@ -7,12 +7,12 @@
       <chp-toolbar>
         <div class="chp-toolbar-container row">
           <div class="col-md-2">
-            <chp-select v-model="pageSize" >
+            <mu-select-field v-model="pageSize" >
               <mu-menu-item :value="10" title="10"/>
               <mu-menu-item :value="20" title="20"/>
               <mu-menu-item :value="30" title="30"/>
               <mu-menu-item :value="40" title="40"/>
-            </chp-select>
+            </mu-select-field>
           </div>
 
          <div class="col-md-10 operaters">

@@ -7,12 +7,12 @@
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6" >
-            <chp-select v-model="model.mt4_id" 
+            <mu-select-field v-model="model.mt4_id" 
                         name="mt4_id">
               <template v-for="mt4 in MT4">
                 <mu-menu-item :value="mt4.id" :title="mt4.text" key="mt4.id"/>
               </template>
-            </chp-select>
+            </mu-select-field>
              <span slot="required" class="error" v-if="validator.errors.has('MT4:required')">{{errors.first('MT4:required')}}</span>
           </div>
         </div>
@@ -39,13 +39,13 @@
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6" >
-            <chp-select v-model="model.method" 
+            <mu-select-field v-model="model.method" 
                         name="withdrawMethod" 
                         :hintText="nullHintText">
               <template v-for="(value,key) in methodsAndAccounts">
                 <mu-menu-item :value="key" :title="$t('payMentMethod.'+key)" key="key"/>
               </template>
-            </chp-select>
+            </mu-select-field>
              <span slot="required" class="error" v-if="validator.errors.has('withdrawMethod:required')">{{validator.errors.first('withdrawMethod:required')}}</span>
           </div>
         </div>
@@ -56,11 +56,11 @@
           </label>
           <div class="col-md-6" >
            <mu-text-field :hintText="$t('withdrawal.nullAccount')" class="form-control"   :fullWidth="true"  :disabled="true" v-if="accounts.length <1"/>
-           <chp-select v-model="model.bank_code"  name="bank_code" v-else>
+           <mu-select-field v-model="model.bank_code"  name="bank_code" v-else>
               <template  v-for="a in accounts" >
                 <mu-menu-item :value="a.accountId" :title="a.bankName+'|'+a.accountNumber" key="mt4.id"/>
               </template>
-           </chp-select>
+           </mu-select-field>
              <span slot="required" class="error" v-if="validator.errors.has('bank_code:required')">{{validator.errors.first('bank_code:required')}}</span>
           </div>
         </div>

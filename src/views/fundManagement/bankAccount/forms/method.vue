@@ -6,11 +6,11 @@
          <span class="required" aria-required="true">*</span>
       </label>
       <div class="col-md-6" >
-        <chp-select v-model="innerMethod" @input="methodChange" :disabled="editObj!=null">
+        <mu-select-field v-model="innerMethod" @input="methodChange" :disabled="editObj!=null">
 			<template v-for="m in methods">
 				<mu-menu-item :value="m.method" :title="$t('bankcard.methodType.'+m.title)" />
 			</template>
-		</chp-select>
+		</mu-select-field>
       </div>
 	</div>
 </template>

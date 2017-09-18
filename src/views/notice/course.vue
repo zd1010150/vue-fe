@@ -8,7 +8,7 @@
                 </chp-table-row>
             </chp-table-header>
             <chp-table-body>
-                <chp-table-row v-for="(row, rowIndex) in noticeList" :key="rowIndex" :chp-selection="chpSelection">
+                <chp-table-row v-for="(row, rowIndex) in noticeList" :key="rowIndex" :mu-select-fieldion="chpSelection">
                     <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :chp-numeric="columnIndex == 'top_up_amount' ">
                         <span  v-if="columnIndex == 'content'" v-html="column"></span>
                         <span v-else>

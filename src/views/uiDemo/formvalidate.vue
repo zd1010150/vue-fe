@@ -50,14 +50,14 @@
           <div class="form-group">
             <label class="control-label col-md-3">你最喜欢的游戏:</label>
             <div class="col-md-6">
-              <chp-select v-model="game2">
+              <mu-select-field v-model="game2">
                 <mu-menu-item value="1" title="阴阳师"/>
                 <mu-menu-item value="2" title="影之刃"/>
                 <mu-menu-item value="3" title="天下HD"/>
                 <mu-menu-item value="4" title="穿越火线"/>
                 <mu-menu-item value="5" title="英雄联盟"/>
                 <mu-menu-item value="6" title="王者荣耀"/>
-              </chp-select>
+              </mu-select-field>
             </div>
           </div>
           <div class="form-group">

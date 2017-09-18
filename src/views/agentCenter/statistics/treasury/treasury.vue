@@ -69,6 +69,9 @@
 		watch:{
 			agent:function(val){
 				this.refresh()
+			},
+			"$store.state.language"(){
+				this.refresh()
 			}
 		}
 	}
