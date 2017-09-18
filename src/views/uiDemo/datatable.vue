@@ -60,7 +60,7 @@
           </chp-table-header>
 
           <chp-table-body>
-            <chp-table-row v-for="(row, rowIndex) in nutrition" :key="rowIndex" :chp-item="row" :chp-selection="chpSelection">
+            <chp-table-row v-for="(row, rowIndex) in nutrition" :key="rowIndex" :chp-item="row" :mu-select-fieldion="chpSelection">
               <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :chp-numeric="columnIndex !== 'dessert' && columnIndex !== 'comment' && columnIndex !== 'type'">
                 <template v-if="columnIndex === 'comment'" >
                   {{ column || '  &nbsp;' }}
@@ -71,7 +71,7 @@
 
 
 
-                <chp-select hintText="Type"
+                <mu-select-field hintText="Type"
                             :name="'type' + columnIndex"
                             :id="'type' + columnIndex"
                             v-model="nutrition[rowIndex].type"
@@ -83,7 +83,7 @@
                   <mu-menu-item value="ice_cream" title="Ice Cream"></mu-menu-item>
                   <mu-menu-item value="pastry" title="Pastry"></mu-menu-item>
                   <mu-menu-item value="other" title="Other"></mu-menu-item>
-                </chp-select>
+                </mu-select-field>
 
                 <span v-if="columnIndex !== 'type' && columnIndex !== 'comment'" class="chp-cell-content">{{ column }}</span>
               </chp-table-cell>

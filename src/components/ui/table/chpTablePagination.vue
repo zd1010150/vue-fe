@@ -2,14 +2,14 @@
   <div class="chp-table-pagination">
     <span class="chp-table-pagination-label">{{ chpLabel }}:</span>
 
-    <!--<chp-select v-model="currentSize" chp-menu-class="chp-pagination-select" @change="changeSize" v-if="chpPageOptions !== false">
+    <!--<mu-select-field v-model="currentSize" chp-menu-class="chp-pagination-select" @change="changeSize" v-if="chpPageOptions !== false">
       <chp-option v-for="amount in chpPageOptions" :key="amount" :value="amount">{{ amount }}</chp-option>
-    </chp-select>-->
-    <chp-select v-model="currentSize" class="chp-pagination-select" @change="changeSize" v-if="chpPageOptions !== false" >
+    </mu-select-field>-->
+    <mu-select-field v-model="currentSize" class="chp-pagination-select" @change="changeSize" v-if="chpPageOptions !== false" >
 
       <mu-menu-item v-for="amount in chpPageOptions" :key="amount" :value="amount" :title="String(amount)"></mu-menu-item>
 
-    </chp-select>
+    </mu-select-field>
 
     <span>{{ ((currentPage - 1) * currentSize) + 1 }}-{{ subTotal }} {{ chpSeparator }} {{ chpTotal }}</span>
 
@@ -132,7 +132,7 @@
 </script>
 <style lang="less">
   .chp-table-pagination{
-    .chp-select{
+    .mu-select-field{
       width:70px;
     }
   }

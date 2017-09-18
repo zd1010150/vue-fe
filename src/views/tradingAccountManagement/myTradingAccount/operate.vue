@@ -21,7 +21,7 @@
 		},
 		methods:{
 			async modifyPwd(){
-				let {success,data} = mt4Service.modifyAccountPWD(this.mt4Id)
+				let {success,data} = await mt4Service.modifyAccountPWD(this.mt4Id)
 				if(success){
 					this.toastr.info(this.$t('modifyPwdNotification'))
 				}

@@ -20,7 +20,7 @@
 			if(this.$store.state.mt4Accounts.length > 0){
 				let noAgentIndex 
 				this.$store.state.mt4Accounts.filter((account,index)=>{
-					if(account.type !='Agent' && (noAgentIndex == undefined)){
+					if(account.account_type !='Agent' && (noAgentIndex == undefined)){
 						noAgentIndex =  index
 					}
 				})

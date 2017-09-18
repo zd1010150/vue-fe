@@ -6,11 +6,11 @@
         <div class="form-group" :class="errorClass('MT4')">
           <label class="control-label col-md-3">MT4 | Balance</label>
           <div class="col-md-6" >
-            <chp-select v-model="model.mt4_id" v-validate="'required'" data-vv-value-path="model.mt4_id" name="mt4_id" >
+            <mu-select-field v-model="model.mt4_id" v-validate="'required'" data-vv-value-path="model.mt4_id" name="mt4_id" >
               <template v-for="mt4 in MT4">
                 <mu-menu-item :value="mt4.id" :title="mt4.text" key="mt4.id"/>
               </template>
-            </chp-select>
+            </mu-select-field>
              <span slot="required" class="error" v-if="errors.has('MT4:required')">{{errors.first('MT4:required')}}</span>
           </div>
         </div>
@@ -27,11 +27,11 @@
         <div class="form-group" :class="errorClass('bank')">
           <label class="control-label col-md-3">Bank</label>
           <div class="col-md-6">
-            <chp-select v-model="model.bank_code" v-validate="'required'" data-vv-value-path="model.bank_code" data-vv-name="bank" name="bank_code">
+            <mu-select-field v-model="model.bank_code" v-validate="'required'" data-vv-value-path="model.bank_code" data-vv-name="bank" name="bank_code">
               <template v-for="(value,key) in banks">
                 <mu-menu-item :value="key" :title="value" key="key"/>
               </template>
-            </chp-select>
+            </mu-select-field>
             <span slot="required" class="error" v-if="errors.has('bank:required')">{{errors.first('bank:required')}}</span>
           </div>
         </div>

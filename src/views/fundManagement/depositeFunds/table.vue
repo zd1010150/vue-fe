@@ -57,14 +57,13 @@
               <chp-table-head chp-sort-by="order_time">{{ $t('withdrawal.time')}}</chp-table-head>
               <chp-table-head chp-sort-by="mt4_id" width="100px">{{ $t('withdrawal.account')}}</chp-table-head>
               <chp-table-head chp-sort-by="method" width="100px">{{ $t('withdrawal.methods')}}</chp-table-head>
-              <chp-table-head chp-sort-by="top_up_amount" chp-numeric>{{ $t('withdrawal.amount')}}</chp-table-head>
+              <chp-table-head chp-sort-by="top_up_amount">{{ $t('withdrawal.amount')}}</chp-table-head>
               <chp-table-head chp-sort-by="currency_type">{{ $t('withdrawal.currency')}}</chp-table-head>
-              <chp-table-head chp-sort-by="trade_status">{{ $t('withdrawal.status')}}</chp-table-head>
 			</chp-table-row>
           </chp-table-header>
 		  <chp-table-body>
-            <chp-table-row v-for="(row, rowIndex) in histories" :key="rowIndex"  :chp-selection="chpSelection">
-              <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :chp-numeric="columnIndex == 'top_up_amount' ">
+            <chp-table-row v-for="(row, rowIndex) in histories" :key="rowIndex"  :mu-select-fieldion="chpSelection">
+              <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" >
               {{column}}
               </chp-table-cell>
             </chp-table-row>
@@ -142,8 +141,7 @@
       				mt4_id : row.mt4_id,
       				method : row.method,
       				top_up_amount: row.top_up_amount,
-      				currency_type: row.currency_type,
-      				trade_status: row.trade_status
+      				currency_type: row.currency_type
 				    }
       		});
       	}else{

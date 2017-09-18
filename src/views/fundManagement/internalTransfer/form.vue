@@ -8,22 +8,22 @@
     <div class="form-group" :class="errorClass('origin_login')">
       <label class="control-label col-md-3">{{ $t('internalTransfer.fromAccount') }}</label>
       <div class="col-md-6" >
-        <chp-select v-model="model.origin_login" v-validate="'required'" data-vv-value-path="model.origin_login" data-vv-name="origin_login" >
+        <mu-select-field v-model="model.origin_login" v-validate="'required'" data-vv-value-path="model.origin_login" data-vv-name="origin_login" >
           <template v-for="mt4 in originMt4">
             <mu-menu-item :value="mt4.id" :title="mt4.text" key="mt4.id"/>
           </template>
-        </chp-select>
+        </mu-select-field>
          <span slot="required" class="error" v-if="errors.has('origin_login:required')">{{errors.first('origin_login:required')}}</span>
       </div>
     </div>
     <div class="form-group" :class="errorClass('target_login')">
       <label class="control-label col-md-3">{{ $t('internalTransfer.toAccount') }}</label>
       <div class="col-md-6" >
-        <chp-select v-model="model.target_login" v-validate="'required'" data-vv-value-path="model.target_login" data-vv-name="target_login" >
+        <mu-select-field v-model="model.target_login" v-validate="'required'" data-vv-value-path="model.target_login" data-vv-name="target_login" >
           <template v-for="mt4 in targetMt4">
             <mu-menu-item :value="mt4.id" :title="mt4.text" key="mt4.id"/>
           </template>
-        </chp-select>
+        </mu-select-field>
          <span slot="required" class="error" v-if="errors.has('target_login:required')">{{errors.first('target_login:required')}}</span>
       </div>
     </div>

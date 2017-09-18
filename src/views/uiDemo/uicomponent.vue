@@ -69,14 +69,14 @@
               <div class="form-group">
                 <label class="control-label col-md-3">your faviorate game:</label>
                 <div class="col-md-6">
-                  <chp-select v-model="game2">
+                  <mu-select-field v-model="game2">
                     <mu-menu-item value="1" title="阴阳师"/>
                     <mu-menu-item value="2" title="影之刃"/>
                     <mu-menu-item value="3" title="天下HD"/>
                     <mu-menu-item value="4" title="穿越火线"/>
                     <mu-menu-item value="5" title="英雄联盟"/>
                     <mu-menu-item value="6" title="王者荣耀"/>
-                  </chp-select>
+                  </mu-select-field>
                 </div>
               </div>
               <h4>checkbox(MATERIAL-UI)</h4>
@@ -204,12 +204,12 @@
               <h4>pagination</h4>
               <div>
                 <!--此处的pageSize 传给了pagination-->
-                <chp-select v-model="pageSize" >
+                <mu-select-field v-model="pageSize" >
                   <mu-menu-item :value="10" title="10"/>
                   <mu-menu-item :value="20" title="20"/>
                   <mu-menu-item :value="30" title="30"/>
                   <mu-menu-item :value="40" title="40"/>
-                </chp-select>
+                </mu-select-field>
 
 
               </div>

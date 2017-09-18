@@ -11,11 +11,11 @@ outer<i18n src="../i18n.yaml"></i18n>
 				            <span class="required" aria-required="true">*</span>
 				          </label>
 				          <div class="col-md-6" >
-				            <chp-select v-model="model.plat_form" v-validate="'required'" data-vv-value-path="model.plat_form" name="platForm">
+				            <mu-select-field v-model="model.plat_form" v-validate="'required'" data-vv-value-path="model.plat_form" name="platForm">
 				              <template v-for="(p,index) in platForms">
 				                <mu-menu-item :value="p.val" :title="p.title" key="index"/>
 				              </template>
-				            </chp-select>
+				            </mu-select-field>
 				            
 				            <span slot="required" class="error" v-if="errors.has('platForm:required')">{{errors.first('platForm:required')}}</span>
 				          </div>
@@ -25,11 +25,11 @@ outer<i18n src="../i18n.yaml"></i18n>
 				            <span class="required" aria-required="true">*</span>
 				          </label>
 				          <div class="col-md-6" >
-				            <chp-select v-model="model.account_type" v-validate="'required'" data-vv-value-path="model.account_type" name="accountType">
+				            <mu-select-field v-model="model.account_type" v-validate="'required'" data-vv-value-path="model.account_type" name="accountType">
 				              <template v-for="(a,index) in accountTypes">
 				                <mu-menu-item :value="a.val" :title="a.title" key="index"/>
 				              </template>
-				            </chp-select>
+				            </mu-select-field>
 				            
 				            <span slot="required" class="error" v-if="errors.has('accountType:required')">{{errors.first('accountType:required')}}</span>
 				          </div>
@@ -39,11 +39,11 @@ outer<i18n src="../i18n.yaml"></i18n>
 				            <span class="required" aria-required="true">*</span>
 				          </label>
 				          <div class="col-md-6" >
-				            <chp-select v-model="model.lever" v-validate="'required'" data-vv-value-path="model.lever" name="lever">
+				            <mu-select-field v-model="model.lever" v-validate="'required'" data-vv-value-path="model.lever" name="lever">
 				              <template v-for="(l,index) in leverages">
 				                <mu-menu-item :value="l.val" :title="l.title" key="index"/>
 				              </template>
-				            </chp-select>
+				            </mu-select-field>
 				            
 				            <span slot="required" class="error" v-if="errors.has('lever:required')">{{errors.first('lever:required')}}</span>
 				          </div>
@@ -53,11 +53,11 @@ outer<i18n src="../i18n.yaml"></i18n>
 				            <span class="required" aria-required="true">*</span>
 				          </label>
 				          <div class="col-md-6" >
-				            <chp-select v-model="model.base_currency" v-validate="'required'" data-vv-value-path="model.base_currency" name="baseCurrency">
+				            <mu-select-field v-model="model.base_currency" v-validate="'required'" data-vv-value-path="model.base_currency" name="baseCurrency">
 				              <template v-for="(b,index) in baseCurrencies">
 				                <mu-menu-item :value="b.val" :title="b.title" key="index"/>
 				              </template>
-				            </chp-select>
+				            </mu-select-field>
 				            
 				            <span slot="required" class="error" v-if="errors.has('baseCurrency:required')">{{errors.first('baseCurrency:required')}}</span>
 				          </div>

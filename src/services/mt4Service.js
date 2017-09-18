@@ -40,7 +40,7 @@ export default{
     return fetchData('PUT','/account/'+mt4Id,{leverage:level})
   },
   async modifyAccountPWD(mt4Id){
-    return fetchData('PUT','/account/'+mt4Id,{password:""})
+    return fetchData('PUT','/account/'+mt4Id,{password:"reset"})
   },
   //申请代理子账户
   async applyAffiliate({exp,exp_company,one_month_new_acc,per_month_trading_volume,avg_deposit,exp_comment,service_comment}){
