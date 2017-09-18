@@ -2,7 +2,7 @@
 <template>
 <div class="col-lg-12 col-md-12">
  <chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-  <template slot="title">{{ $t('addNew') }}</template>
+  <template slot="panelTitle">{{ $t('addNew') }}</template>
   <form slot="body" class="form-horizontal form-bordered ">
     
     <div class="form-group" :class="errorClass('account')">

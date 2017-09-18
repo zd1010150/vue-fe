@@ -4,7 +4,7 @@ outer<i18n src="../i18n.yaml"></i18n>
 	    <div class="row">
 	    	<div class="col-lg-12 col-md-12">
 				<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-					 <template slot="title">{{ $t('applicationSubaccount.registerSubAccount')}}</template>
+					 <template slot="panelTitle">{{ $t('applicationSubaccount.registerSubAccount')}}</template>
 					 <form slot="body" class="form-horizontal form-bordered " ref="accountForm">
 				        <div class="form-group" :class="errorClass('platForm')">
 				          <label class="control-label col-md-3"> {{ $t("platForm")}} 
@@ -157,8 +157,6 @@ outer<i18n src="../i18n.yaml"></i18n>
 				})
 				this.$set(this.model,"base_currency",this.baseCurrencies.length > 0 ? this.baseCurrencies[0].val : "")
 				this.$set(this.model,"plat_form",this.platForms[0].val)
-				
-
 			},
 			async fetchConfig(){
 				let fields = ["client_account_type","client_base_currency"]

@@ -2,7 +2,7 @@
 <template>
 	<div class="col-lg-6 col-md-6 col-xs-12">
 		<chp-panel :canCollapse="false" :canClose="false" class="dashbord-fix-height-panel">
-			<template slot="title">MT4
+			<template slot="panelTitle">MT4
 				<chp-view-all href="#/account-management/my-trading-account"></chp-view-all>
 			</template>
 			<template slot="body">
@@ -25,13 +25,10 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr v-for="(t,index) in $store.state.mt4Accounts" :key="index">
-						<template v-if="index<4">
+						<tr v-for="(t,index) in accounts" :key="index">
 							<td>{{ t.mt4_id }}</td>
 							<td>{{ t.account_type }}</td>
 							<td>{{ t.balance }}</td>
-						</template>
-							
 						</tr>
 					</tbody>
 				</table>
@@ -39,3 +36,17 @@
 		</chp-panel>
 	</div>
 </template>
+<script>
+	export default{
+		data(){
+			return {
+				accounts : this.$store.state.mt4Accounts.slice(0,4)
+			}
+		},
+		watch:{
+			'$store.state.mt4Accounts' (){
+				this.accounts = this.$store.state.mt4Accounts.slice(0,4)
+			}
+		}
+	}
+</script>

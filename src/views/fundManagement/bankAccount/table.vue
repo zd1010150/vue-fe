@@ -2,7 +2,7 @@
 <template>
 	<div class="col-lg-12 col-md-12">
 		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-	      <template slot="title">{{ $t('bankcard.bankCardRecord') }}</template>
+	      <template slot="panelTitle">{{ $t('bankcard.bankCardRecord') }}</template>
       	<chp-data-table slot="body" :isDisplayFilterToolbar="false" :canFilter = "false" :canPaging="false">
         <template slot="addToolbar">
           <chp-button class=" btn btn-primary mr-xs" @click="add">

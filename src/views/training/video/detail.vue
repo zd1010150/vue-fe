@@ -15,9 +15,7 @@
 								<router-link :to="'?level=2&videoType='+ $route.query.videoType "> {{ $route.query.videoType | pascalCase }} </router-link><br>
 							</div>
 						</div>
-						<div class="description">
-							{{video.description}}
-						</div>
+						<div class="description" v-html = "video.description"></div>
 					</div>
 				</div>
 			</div>

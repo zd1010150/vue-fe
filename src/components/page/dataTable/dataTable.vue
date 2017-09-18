@@ -220,7 +220,7 @@
       table{
         width:100%;
         box-sizing: content-box;
-        td:last-child{
+        th:last-child,td:last-child{
           padding-right: 24px;
         }
         

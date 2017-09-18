@@ -1,6 +1,6 @@
 <template>
   <chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-    <template slot="title">Doku pay</template>
+    <template slot="panelTitle">Doku pay</template>
      <form slot="body" class="form-horizontal form-bordered " method="POST"  target="_blank" ref="dokuForm">
         <paying-dialog ref="dialog" @close="handlerDialogClose"></paying-dialog>
         <div class="form-group" :class="errorClass('MT4')">

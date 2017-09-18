@@ -1,6 +1,6 @@
 <template>
   <chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-    <template slot="title">Fasa Pay</template>
+    <template slot="panelTitle">Fasa Pay</template>
      <form slot="body" class="form-horizontal form-bordered " method="POST" target="_blank" ref="fasaPayForm">
         <paying-dialog ref="dialog" @close="handlerDialogClose"></paying-dialog>
         <div class="form-group" :class="errorClass('MT4')">

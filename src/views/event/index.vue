@@ -1,11 +1,10 @@
 <i18n src="./i18n.yaml"></i18n>
 <template>
 	<div class="fluid-container">
-
 		<div class="row" v-for="(activity,index) in activities">
 			<div class="col-lg-12 col-md-12" :key="index">
 			<chp-panel :canClose="false" :canCollapse="false">
-	            <template slot="title">{{ activity.title}}</template>
+	            <template slot="panelTitle">{{ activity.title}}</template>
 	            <div slot="body" class="row p-sm">
 	              <mu-card class="pic col-lg-4 col-md-4 col-sm-12 p-sm">
 	              	<!-- <img class="img-responsive" :src=" activity.imagepath || activity.image_link  " alt=""> -->

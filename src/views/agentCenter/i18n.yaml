@@ -38,11 +38,15 @@ en:
     dailyVolumeStatistics: "Daily Volume Statistics"
     percantageVolumeStatistics: "Volume Percentage Statistics"
     traderVolumePercentageStatistics: "Product Volume Percentage Statistics"
-    average: "Average"
+    monthlyAverage: "Monthly Average"
     historyTotalVolume: "History Total Volume"
     volume: "Volume"
     treasury: "Treasury"
     client: "Client"
+    activeClientStatistics: "Active Client Statistics"
+    activeClientComparision: "Active Client Comparison"
+    activeClientNetdeposite: "Active Client Deposit Contribution"
+
 zh:
   clientList: "客户列表" 
   remainLots : "到下一等级还需交易手数"
@@ -83,11 +87,14 @@ zh:
     dailyVolumeStatistics: "每日交易量统计"
     percantageVolumeStatistics: "交易产品占比统计"
     traderVolumePercentageStatistics: "交易产品交易量统计"
-    average: "平均"
+    monthlyAverage: "每月平均"
     historyTotalVolume: "历史总手数"
     volume: "交易量"
     treasury: "出入金"
     client: "客户数"
+    activeClientStatistics: "有效客户统计"
+    activeClientComparision: "历史有效客户对比"
+    activeClientNetdeposite: "有效客户与净入金"
 
   
 

@@ -1,6 +1,6 @@
 <template>
 	<chp-panel :canCollapse="false" :canClose="false">
-    <template slot="title">wire Transfer</template>
+    <template slot="panelTitle">wire Transfer</template>
     <div slot="body" class="row padding-20">
       <div class="col-lg-6 col-md-6 col-sm-12 bank-detail padding-10" id="bank-detail">
         

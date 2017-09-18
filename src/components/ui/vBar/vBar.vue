@@ -91,6 +91,7 @@ export default {
         barInternalHorizontal: {
             left: 0
         },
+        flag:false,
         hiddenMaxStyle: {}
     }),
     mounted () {
@@ -165,20 +166,20 @@ export default {
         getSizes () {
             let wrapperObj = this.wrapperObj.elm,
                 container = this.container.elm
-            // this.bars.horizontal.size = wrapperObj.scrollWidth - container.scrollWidth > 24 &&
-            //     wrapperObj.scrollWidth - container.scrollWidth !== 0
-            //     ? (container.scrollWidth / wrapperObj.scrollWidth) * container.scrollWidth
-            //     : 0
-            // this.bars.vertical.size = wrapperObj.scrollHeight - container.scrollHeight > 24 &&
-            //     wrapperObj.scrollHeight - container.scrollHeight !== 0
-            //     ? (container.scrollHeight / wrapperObj.scrollHeight) * container.scrollHeight
-            //     : 0
-            this.bars.horizontal.size = wrapperObj.scrollWidth - container.scrollWidth !== 0
+            this.bars.horizontal.size = wrapperObj.scrollWidth - container.scrollWidth > 24 &&
+                wrapperObj.scrollWidth - container.scrollWidth !== 0
                 ? (container.scrollWidth / wrapperObj.scrollWidth) * container.scrollWidth
                 : 0
-            this.bars.vertical.size = wrapperObj.scrollHeight - container.scrollHeight !== 0
+            this.bars.vertical.size = wrapperObj.scrollHeight - container.scrollHeight > 24 &&
+                wrapperObj.scrollHeight - container.scrollHeight !== 0
                 ? (container.scrollHeight / wrapperObj.scrollHeight) * container.scrollHeight
                 : 0
+            // this.bars.horizontal.size = wrapperObj.scrollWidth - container.scrollWidth !== 0
+            //     ? (container.scrollWidth / wrapperObj.scrollWidth) * container.scrollWidth
+            //     : 0
+            // this.bars.vertical.size = wrapperObj.scrollHeight - container.scrollHeight !== 0
+            //     ? (container.scrollHeight / wrapperObj.scrollHeight) * container.scrollHeight
+            //     : 0
         },
         scroll (e) {
             this.calculateInternalBar()
@@ -186,7 +187,14 @@ export default {
         resize (e) {
             console.log('resize', e,this)
             this.getSizes()
-            this.calculateInternalBar()
+            // if(!this.flag){
+            //     let self = this
+            //     this.flag = true
+            //     setTimeout(()=>{
+            //         self.calculateInternalBar()
+            //         self.flag = false
+            //     },500)
+            // }
         },
         
         getCoordinates (e, axis) {
@@ -256,7 +264,6 @@ export default {
                 width: this.bars.horizontal.size + 'px',
                 left: this.getBarInternal('X') + 'px'
             }
-            console.log('calculateInternalBar')
         },
         getBarInternal (axis) {
             let internalSize,
@@ -293,7 +300,14 @@ export default {
             }
         }
     },
-    props: ['wrapper', 'vBar', 'vBarInternal', 'hBar', 'hBarInternal']
+    props: ['wrapper', 'vBar', 'vBarInternal', 'hBar', 'hBarInternal'],
+    watch:{
+        "$store.state.leftSideBarStatus" : function(val){
+           this.getSizes()
+           this.calculateInternalBar()
+        }
+        
+    }
 }
 </script>
 <style scoped lang="sass">

@@ -43,6 +43,18 @@ export default {
         "$store.state.language": function(val) {
             this.language = val;
             this.fetchAnnoucement();
+        },
+        pageSize: function(val) {
+            this.fetchAnnoucement({
+                pageIndex: this.pageIndex,
+                pageSize: val
+            })
+        },
+        pageIndex: function(val) {
+            this.fetchAnnoucement({
+                pageIndex: val,
+                pageSize: this.pageSize
+            })
         }
     },
     activated() {
@@ -50,7 +62,6 @@ export default {
     },
     methods: {
         research(model){
-            console.log("annoucementsearch",model)
             this.startDay = model.startDay
             this.endDay = model.endDay
             this.pageIndex = 1
@@ -88,7 +99,6 @@ export default {
             })
             
             if (success) {
-                console.log('announcement', data);
                 this.filterFields(data.data)
                 this.pageIndex = data.current_page
                 this.rowsTotal = data.total

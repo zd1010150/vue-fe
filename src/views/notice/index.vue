@@ -68,7 +68,6 @@
 		},
 		methods: {
 			handleTabChange(val) {
-				console.log("tab change:",val)
 				this.activeTab = val
 			},
 			research(){				

@@ -2,7 +2,7 @@ export default{
 	fx: "外汇",
   metal: "贵金属",
   oil:  "原油",
-  activeClient: "有效客户",
+  totalActiveClient: "总有效客户",
   totalClient: "总客户",
   cfd: "差价合约",
   lots: "手数",
@@ -25,5 +25,6 @@ export default{
   totalFx:"总外汇",
   totalMetal: "总重金属",
   totalOil:"总原油",
-  totalCfd: "总差价合约"
+  totalCfd: "总差价合约",
+  activeClient: "有效客户"
 }
