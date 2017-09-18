@@ -60,6 +60,7 @@ let checkLogin = async()=>{
 let getUserInfo = async()=>{
   return await UserService.getUserInfo()
 }
+// 首先从 cookie里面直接发送给服务器验证，是否正确，如果正确了，就获取用户信息，如果用户信息获取成功，就进入之前的页面，否则就进入登录页面
 let init = async()=>{
   try{
     let {success,message,data} = await checkLogin()
@@ -89,3 +90,4 @@ let init = async()=>{
 }
 init()
 
+ 
