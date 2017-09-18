@@ -14,7 +14,8 @@ import {
   SET_CONTENT_LOADING,
   SET_NOTICE_REFRESH_FLAG,
   SET_TERMS,
-  SET_SYNC_TIME
+  SET_SYNC_TIME,
+  SET_ASYNC_LOADING
 } from "./mutation-types"
 
 
@@ -68,6 +69,8 @@ export default{
   },
   [SET_SYNC_TIME](state,time){
     state.syncTime = time
+  },
+  [SET_ASYNC_LOADING](state,loading){
+    state.asyncLoading = loading
   }
-  
 }

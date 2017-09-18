@@ -90,21 +90,21 @@
 
 		},
 		watch:{
-			"$store.state.theme":function(val,oldVal){
+			"$store.state.theme" (val,oldVal){
 				if(val == oldVal) return
 				this.theme = val
 				this.initEcharts()
 			},
-			externalOption:function(val){
+			externalOption (val){
 				this.innerOption = val
 				this.rerender()
 			},
-			media:function(val){
+			media (val){
 				this.innerMedia = val
 				this.rerender()
 			},
-			"$store.state.leftSideBarStatus":function(){
-				this.resize();
+			"$store.state.leftSideBarStatus" (){
+				this.resize()
 			}
 		},
 		mounted(){

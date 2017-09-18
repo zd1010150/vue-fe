@@ -23,7 +23,7 @@
   tbody .chp-table-row {
     border-top: 1px solid #e0e0e0;
 
-    &.chp-selected .chp-table-cell {
+    &.mu-select-fielded .chp-table-cell {
       background-color: $light-hover-color;
     }
 
@@ -241,11 +241,11 @@
     }
   }
 
-  .chp-select {
+  .mu-select-field {
     min-width: 84px;
   }
 
-  .chp-select-value,
+  .mu-select-field-value,
   .chp-option {
     font-size: 13px;
   }
@@ -344,7 +344,7 @@
       margin-left: 18px;
     }
 
-    .chp-select {
+    .mu-select-field {
       width: auto;
       min-width: 36px;
       margin: 0 32px;
@@ -353,7 +353,7 @@
         margin-top: 0;
       }
 
-      .chp-select-value {
+      .mu-select-field-value {
         padding: 0;
         border: none;
         font-size: 13px;
@@ -455,7 +455,7 @@ html.dark{
     tbody .chp-table-row{
       border-top:1px solid $dark-component-border-color;
 
-      &:hover,&.chp-selected{
+      &:hover,&.mu-select-fielded{
         .chp-table-cell{
           background-color: $dark-hover-color;
         }

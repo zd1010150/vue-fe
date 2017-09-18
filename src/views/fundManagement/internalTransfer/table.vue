@@ -58,11 +58,10 @@
               <chp-table-head chp-sort-by="origin_login" width="100px">{{ $t('internalTransfer.fromAccount') }}</chp-table-head>
               <chp-table-head chp-sort-by="target_login" width="100px">{{ $t('internalTransfer.toAccount') }}</chp-table-head>
               <chp-table-head chp-sort-by="money">{{ $t('internalTransfer.amount') }}</chp-table-head>
-              <chp-table-head chp-sort-by="trade_status">{{ $t('internalTransfer.status') }}</chp-table-head>
 			</chp-table-row>
           </chp-table-header>
 		  <chp-table-body>
-            <chp-table-row v-for="(row, rowIndex) in histories" :key="rowIndex"  :chp-selection="chpSelection">
+            <chp-table-row v-for="(row, rowIndex) in histories" :key="rowIndex"  :mu-select-fieldion="chpSelection">
               <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" >
               {{column}}
               </chp-table-cell>
@@ -141,8 +140,7 @@
       				created_at : row.created_at,
       				origin_login : row.origin_login,
       				target_login : row.target_login,
-      				money: row.money,
-      				trade_status: row.trade_status
+      				money: row.money
 				    }
       		})
       	}else{

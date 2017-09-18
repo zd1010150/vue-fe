@@ -12,7 +12,7 @@
           </div>
         </div>
    </div>
-   <div slot="footer" v-html="$store.state.terms" class="page-footer pt-lg mt-lg">
+   <div slot="footer" v-html="$store.state.terms[$store.state.language]" class="page-footer pt-lg mt-lg">
      
    </div>
   </chp-main-layout>
@@ -40,6 +40,11 @@
       },
       async fetchConfig(){
         return await this.$store.dispatch("getLeverageAndTerms")
+      }
+    },
+    watch:{
+      "$store.state.language" (val){
+        this.terms = this.$store.state.terms[val]
       }
     }
   }

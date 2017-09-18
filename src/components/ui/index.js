@@ -7,7 +7,6 @@ import Checkbox from './checkbox'
 import Radio from './radio'
 import DropBack from './backdrop'
 import MuseUI from './museUI'
-import Select from './select'
 import Tabs from './tabs'
 import Pagination from './pagination'
 import Datepicker from './datePicker'
@@ -37,7 +36,6 @@ export default function install(Vue) {
   Vue.use(MuseUI)
   Vue.use(vBar)
   Vue.use(scrollBar)
-  Vue.use(Select)
   Vue.use(Tabs)
   Vue.use(Pagination)
   Vue.use(Datepicker)

@@ -2,11 +2,11 @@
 <template>
     <chp-data-table slot="body" :isDisplayFilterToolbar="isDisplayFilterToolbar" :pageSize="pageSize" :rowsTotal="rowsTotal" :pageOptions="pageOptions" :canFilter="false" :canAdd="false" @pageSizeChange="pageSizeChange" @pageNumberChange="pageNumberChange">
         <div slot="toolBar">
-            <chp-select :autoWidth="true" class="category-select" @change="searchCategory">
+            <mu-select-field :autoWidth="true" class="category-select" @change="searchCategory">
                 <mu-menu-item v-for=" (option,index) in categories" :key="index" :value="option.val" :title="$t('notification.'+option.title)">
                 </mu-menu-item>
 
-            </chp-select>
+            </mu-select-field>
         </div>
         <chp-table slot="table">
             <chp-table-header>
@@ -17,7 +17,7 @@
                 </chp-table-row>
             </chp-table-header>
             <chp-table-body>
-                <chp-table-row v-for="(row, rowIndex) in noticeList" :key="rowIndex" :chp-selection="chpSelection">
+                <chp-table-row v-for="(row, rowIndex) in noticeList" :key="rowIndex" :mu-select-fieldion="chpSelection">
                     <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :chp-numeric="columnIndex == 'top_up_amount' ">
                         <span v-if="columnIndex == 'content'" v-html="column"></span>
                         <span v-else>

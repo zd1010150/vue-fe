@@ -49,106 +49,45 @@ let initVue = () =>{
         syncVuexStateAndLocalStorage(vm.$store.state)
         return 'Do you want to leave?'
       }
-    },
-    methods:{
-      leaving(e){
-       // alert( "Are you sure you want to close the window?");
-        this.$store.commit(SET_PATH,this.$router.currentRoute.fullPath)
-        syncVuexStateAndLocalStorage(this.$store.state)
-        e.returnValue = "Are you sure you want to close the window?";
-        return "Are you sure you want to close the window?";
-      }
-    },
-    beforeDestroy(){
-      console.log("vue beforedestorey");
     }
   })
   Vue.config.productionTip = false
 };
 
-
+let checkLogin = async()=>{
+  return await AuthenService.checkLogin()
+}
+let getUserInfo = async()=>{
+  return await UserService.getUserInfo()
+}
 // 首先从 cookie里面直接发送给服务器验证，是否正确，如果正确了，就获取用户信息，如果用户信息获取成功，就进入之前的页面，否则就进入登录页面
-  let token;
-  AuthenService.checkLogin().then(({success,message,data})=>{
-    if(!success){
-      throw new Error(message);
-    }else{
-      
-      return UserService.getUserInfo();
-    }
-  }).then(({data,success,message})=>{
-    initVue()
-
-    if(vm.$route.meta.requireAuth == false){ // 需要能够直接访问的url ，不需要登录
-      vm.$router.push(vm.$route.fullPath)
-    }else if(vm.$route.meta.requireAuth != false && success){
-      router.addRoutes(routers);
-      vm.$store.commit(SET_USERINFO,data);
-      //如果用户已登录，然后刷新页面，此时cookie依然有效，但是vuex中的token已经没有值了，所以此时需要把token重新设置到vuex中去
-      vm.$store.commit(SET_TOKEN,getStore("token"))
-      let path = getStore("path") == "/login" ? "/main" : getStore("path");
-      vm.$router.push(path);
-    }else{
-      throw new Error(message);
-    }
-  }).catch((error)=>{
-      initVue();
-      vm.$store.commit("ADD_ERROR_INFO",{ msg : error.message,type: "system"});
-
-      if(vm.$route.meta.requireAuth == false && vm.$route.path != "/404"){
-        vm.$router.push(vm.$route.fullPath)
-      }else {
-        vm.$router.push("/login")
+let init = async()=>{
+  try{
+    let {success,message,data} = await checkLogin()
+    if(success){
+      let {success,message,data} = await getUserInfo()
+      if(success){
+        router.addRoutes(routers)
+        store.commit(SET_USERINFO,data)
+        store.commit(SET_TOKEN,getStore("token"))
+        initVue()
+        let path = getStore("path") == "/login" ? "/main" : getStore("path")
+        vm.$router.push(path)
+      }else{
+        throw new Error(message)
       }
- });
-/*AuthenService.checkLogin().then(({success,message})=>{
-  if(!success){
-    throw new Error(message);
-  }else{
-    return UserService.getUserInfo();
+    }else{
+      throw new Error(message)
+    }
+  }catch(error){
+    initVue()
+    if(vm.$route.meta.requiresAuth == false && vm.$route.path != "/404"){
+      vm.$router.push(vm.$route.fullPath)
+    }else {
+      vm.$router.push("/login")
+    }
   }
-}).then(({data:{user},success,message})=>{
+}
+init()
 
-  if(success){
-    vm.$store.commit(SET_USERINFO,user);
-  //  vm.$router.addRoutes(routers);
-    vm.$router.push(getStore("path") || "/");
-  }else{
-    throw new Error(message);
-  }
-}).catch((error)=>{
-    console.log("error:",getStore("path") || "/");
-    router.addRoutes(routers);//必须放在
-    initVue();
-    vm.$router.push(getStore("path") || "/");
-    // vm.$store.commit("ADD_ERROR_INFO",{ msg : error.message,type: "system"});
-    // vm.$router.push("/login");
-});*/
-
-// AuthenService.checkLogin().then(({data:{userInfo,token}}) =>{
-//   if(userInfo){
-//     vm.$store.commit(SET_USERINFO,userInfo);
-//     vm.$store.commit(SET_TOKEN,"");
-//   }else{
-//     vm.$router.push("/login");
-//     vm.$store.commit(SET_USERINFO,null);
-//     vm.$store.commit(SET_TOKEN,"");
-//   }
-// }).catch((err)=>{
-//   vm.$router.push("/login");
-//   vm.$store.commit(SET_USERINFO,null);
-// });
-
-
-// /* eslint-disable no-new */
-// // window.onunload = function(e){
-//   // alert( "Are you sure you want to close the window?");
-//   // this.$store.dispatch(SET_PATH,this.$router.currentRoute.fullPath)
-//    syncVuexStateAndLocalStorage(vm.$store.state)
-//   e.returnValue = "Are you sure you want to close the window?";
-//   return "Are you sure you want to close the window?";
-// }
-//
-// window.addEventListener('unload', function(event) {
-//   console.log('I am the 3rd one.');
-// });
+ 

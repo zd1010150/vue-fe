@@ -12,11 +12,11 @@
 							<span class='required' aria-required='true'>*</span>
 				          </label>
 				          <div class='col-md-6' >
-				            <chp-select v-model='model.exp'>
+				            <mu-select-field v-model='model.exp'>
 				              <template v-for='(p,index) in exps'>
 				                <mu-menu-item :value='p.val' :title='p.text+" "+$t("apply.unit.year")' key='index'/>
 				              </template>
-				            </chp-select>
+				            </mu-select-field>
 				          </div>
 				        </div>
 				        <div class='form-group' :class='errorClass("exp_company")'>
@@ -45,11 +45,11 @@
 				            <span class='required' aria-required='true'>*</span>
 				          </label>
 				          <div class='col-md-6' >
-				            <chp-select v-model='model.one_month_new_acc'>
+				            <mu-select-field v-model='model.one_month_new_acc'>
 				              <template v-for='(l,index) in perAccountOptions'>
 				                <mu-menu-item :value='l.val' :title='l.text' key='index'/>
 				              </template>
-				            </chp-select>
+				            </mu-select-field>
 				           </div>
 				        </div>
 				        <div class='form-group'>
@@ -58,11 +58,11 @@
 				            <span class='required' aria-required='true'>*</span>
 				          </label>
 				          <div class='col-md-6' >
-				            <chp-select v-model='model.per_month_trading_volume'>
+				            <mu-select-field v-model='model.per_month_trading_volume'>
 				              <template v-for='(l,index) in perVolumeOptions'>
 				                <mu-menu-item :value='l.val' :title='l.text+" "+$t("apply.unit.lots")' key='index'/>
 				              </template>
-				            </chp-select>
+				            </mu-select-field>
 				           </div>
 				        </div>
 				        <div class='form-group'>
@@ -71,11 +71,11 @@
 				            <span class='required' aria-required='true'>*</span>
 				          </label>
 				          <div class='col-md-6' >
-				            <chp-select v-model='model.avg_deposit'>
+				            <mu-select-field v-model='model.avg_deposit'>
 				              <template v-for='(l,index) in perMoneyOptions'>
 				                <mu-menu-item :value='l.val' :title='l.text+" "+$t("apply.unit.money")' key='index'/>
 				              </template>
-				            </chp-select>
+				            </mu-select-field>
 				           </div>
 				        </div>
 				       	 <div class='form-group' :class='errorClass("exp_comment")'>

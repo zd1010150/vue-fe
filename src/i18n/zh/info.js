@@ -44,5 +44,7 @@ export default {
     size:"文件太大了",
     extension : "文件类型不对",
     denied : "文件类型或大小不对"
-  }
+  },
+  RISK_TIP: "高杠杆可能会增加您的交易风险，请谨慎使用!",
+  LEAVE_WEBSIT: "你确定关闭本页面? 如果你离开这个页面，将会丢失页面数据"
 }

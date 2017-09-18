@@ -11,14 +11,14 @@
        <span class="required" aria-required="true">*</span>
        </label>
       <div class="col-md-6" >
-        <chp-select v-model="model.account_no" 
+        <mu-select-field v-model="model.account_no" 
                     v-validate="'required'" 
                     data-vv-value-path="model.account_no" 
                     data-vv-name="account" >
           <template v-for="mt4 in originMt4">
             <mu-menu-item :value="mt4.id" :title="mt4.text" key="mt4.id"/>
           </template>
-        </chp-select>
+        </mu-select-field>
          <span slot="required" class="error" v-if="errors.has('account:required')">{{errors.first('account:required')}}</span>
       </div>
     </div>
@@ -28,11 +28,11 @@
         <span class="required" aria-required="true">*</span>
       </label>
       <div class="col-md-6" >
-        <chp-select v-model="model.type" v-validate="'required'" data-vv-value-path="model.type" data-vv-name="questionType" >
+        <mu-select-field v-model="model.type" v-validate="'required'" data-vv-value-path="model.type" data-vv-name="questionType" >
           <template v-for="(q,key) in questionType">
             <mu-menu-item :value="q.code" :title="q.text" key="key"/>
           </template>
-        </chp-select>
+        </mu-select-field>
          <span slot="required" class="error" v-if="errors.has('questionType:required')">{{errors.first('questionType:required')}}</span>
       </div>
     </div>

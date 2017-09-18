@@ -62,9 +62,9 @@
 			</chp-table-row>
           </chp-table-header>
 		  <chp-table-body>
-            <chp-table-row v-for="(row, rowIndex) in histories" :key="rowIndex"  :chp-selection="chpSelection">
+            <chp-table-row v-for="(row, rowIndex) in histories" :key="rowIndex"  :mu-select-fieldion="chpSelection">
               <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" >
-                <template v-if="columnIndex == 'trade_status'">
+                <template v-if="columnIndex == 'status'">
                   {{ $t('withdrawal.allStatus.'+column)}}
                 </template>
                 <template v-else>
@@ -147,7 +147,7 @@
         				method : row.method,
         				order_amount: row.order_amount,
         				currency_type: row.currency_type,
-        				trade_status: row.trade_status
+        				status: row.status
   				    }
         		})
       	}else{

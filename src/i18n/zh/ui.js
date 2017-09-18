@@ -29,7 +29,8 @@ export default {
   },
   dialog:{
     confirm : {
-      title : "确认"
+      title : "确认",
+      riskTip : "风险提示"
     }
   },
   textFiled:{

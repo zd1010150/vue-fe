@@ -47,5 +47,7 @@ export default {
     size:"Too large file size",
     extension : "Invalid file type",
     denied : "Type or size of file is invalid"
-  }
+  },
+  RISK_TIP: "Higher leverage may expose higher risk, please use with caution!",
+  LEAVE_WEBSIT: "Are you sure you want to close the window? If you leave this page,you will lost your page's data"
 }

@@ -51,7 +51,7 @@
       },
       classes() {
         return {
-          'chp-selected': this.checkbox
+          'mu-select-fielded': this.checkbox
         };
       }
     },
@@ -111,7 +111,7 @@
           this.headRow = true;
         } else {
           if (!this.chpItem && this.chpSelection) {
-            throw new Error('You should set the chp-item property when using chpSelection. Example: <chp-table-row chp-selection :chp-item="ITEM" ...>');
+            throw new Error('You should set the chp-item property when using chpSelection. Example: <chp-table-row mu-select-fieldion :chp-item="ITEM" ...>');
           }
 
           if (this.chpSelection) {

@@ -31,10 +31,17 @@ en:
     attachment : "Attachment"
     status : "Status"
     Action : "Action"
+    rejectReason :
+      MissingName: "Missing Name"
+      MissingAcc : "Missing Account"
+      MissingTitle : "Missing Title"
+      MissingURL : "Missing URL"
+      NonUsers : "Invalid Users"
+      Blurry : "Blurry"
     bankStatus :
-      0 : "Pending"
-      1 : "Approve"
-      2 : "Reject"
+      Pending : "Pending"
+      Approve : "Approve"
+      Reject : "Reject"
     deleteDialogText : " Are you sure delete this record?"
     methodType :
       cup : "Bank bill"
@@ -57,8 +64,9 @@ en:
     status: "Status"
     time: "Time"
     allStatus:
-      SUCCESS: "Success"
-      UNPAY: "Unpay"
+      Pending : "Pending"
+      Approve : "Approve"
+      Reject : "Reject"
   deposit:
     paymentHistory: "Payment History"
 zh:
@@ -94,10 +102,17 @@ zh:
     attachment : "账单附件"
     status : "状态"
     Action : "操作"  
+    rejectReason :
+      MissingName: "缺姓名"
+      MissingAcc : "缺账号"
+      MissingTitle : "缺抬头"
+      MissingURL : "缺URL"
+      NonUsers : "非用户本人"
+      Blurry : "太模糊"
     bankStatus :
-      0 : "待处理"
-      1 : "已认证"
-      2 : "拒绝"
+      Pending : "待处理"
+      Approve : "已认证"
+      Reject : "拒绝"
     deleteDialogText: "你确定删除该条记录?"
     methodType :
       cup : "银行账单"
@@ -120,5 +135,6 @@ zh:
     status: "状态"
     time: "时间"
     allStatus:
-      SUCCESS: "成功"
-      UNPAY: "未支付"
+      Pending : "待处理"
+      Approve : "已认证"
+      Reject : "拒绝"
