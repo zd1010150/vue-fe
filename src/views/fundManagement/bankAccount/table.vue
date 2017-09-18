@@ -28,14 +28,14 @@
                       <i class="fa fa-paperclip" aria-hidden="true"></i>
                     </mu-icon-button>  
                     <template v-else-if="columnIndex == 'status'">
-                      <chp-tooltip chp-direction="bottom" v-if="column == 2 ">{{ originData[rowIndex].comment}}</chp-tooltip>
+                      <chp-tooltip chp-direction="bottom" v-if="column == CARD_STATUS.reject">{{ originData[rowIndex].comment}}</chp-tooltip>
                       {{$t('bankcard.bankStatus.'+column)}}
                     </template>
                     <template v-else-if="columnIndex =='id'">
                        <mu-icon-button  @click="deleteRow(column)">
                         <i aria-hidden="true" class="fa fa-trash-o"></i> 
                        </mu-icon-button>
-                       <mu-icon-button  @click="editRow(column)" v-if="row.status == 2">
+                       <mu-icon-button  @click="editRow(column)" v-if="row.status == CARD_STATUS.reject">
                         <i aria-hidden="true" class="fa fa-pencil"></i> 
                        </mu-icon-button>
                     </template>
@@ -58,6 +58,11 @@
 	</div>
 </template>
 <script>
+    const CARD_STATUS = {
+      reject: "Reject",
+      approve: "Approve",
+      pending: "Pending"
+    }
     import bankCardService from 'services/bankCardService'
     import validateMixin from 'mixins/validatemix.js'
     import loadingMix from 'mixins/loading'
