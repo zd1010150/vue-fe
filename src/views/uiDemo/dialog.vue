@@ -1,7 +1,7 @@
 <template>
   <chp-panel>
-    <template slot="title">Dialog</template>
-    <template slot="subtitle">custom,scroll,alert,confirm,prompt,imagePreview</template>
+    <template slot="panelTitle">Dialog</template>
+    <template slot="panelSubtitle">custom,scroll,alert,confirm,prompt,imagePreview</template>
     <div class="form-horizontal form-bordered" slot="body">
       <h4>Dialog</h4>
       <chp-dialog-prompt

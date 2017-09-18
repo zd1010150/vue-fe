@@ -29,7 +29,7 @@
                     </mu-icon-button>  
                     <template v-else-if="columnIndex == 'status'">
                       <chp-tooltip chp-direction="bottom" v-if="column == CARD_STATUS.reject">{{ $t("bankcard.rejectReason."+originData[rowIndex].comment)}}</chp-tooltip>
-                      {{$t('bankcard.bankStatus.'+column)}}
+                        {{$t('bankcard.bankStatus.'+column)}}
                     </template>
                     <template v-else-if="columnIndex =='id'">
                        <mu-icon-button  @click="deleteRow(column)">
@@ -55,6 +55,7 @@
                         :chp-cancel-text="$t('ui.button.cancel')"
                         @close="closeConfirmDialog"
                         ref="confirmDeleteDailog"/>
+
   </div>
 </template>
 <script>

@@ -37,11 +37,9 @@
     <!--Table header toolbar end-->
 
     <!--Filter toolbar begin-->
-    
-      <chp-toolbar v-show="isDisplayFilterToolbar" class="filter-toolbar">
-        <slot name="filterToolbar"></slot>
-      </chp-toolbar>
-    
+    <chp-toolbar v-show="isDisplayFilterToolbar" class="filter-toolbar">
+      <slot name="filterToolbar"></slot>
+    </chp-toolbar>
     <!--Filter toolbar end-->
 
     <!--Multi operation toolbar begin-->
@@ -51,24 +49,25 @@
     <!--Multi operation toolbar end-->
 
     <!--Table begin-->
-    <chp-scroll-bar wrapper="table-main-wrapper" hBarInternal="tableHorizonInnerBar" hBar="tableHorizonBar" :style="styles" ref="scollerbar">
-    <div class="table-container">
-      <slot name="table"></slot>
-    </div>
-    
+    <chp-scroll-bar wrapper="table-main-wrapper" 
+                    hBarInternal="tableHorizonInnerBar" 
+                    hBar="tableHorizonBar" 
+                    :style="styles" 
+                    ref="scollerbar">
+      <div class="table-container">
+        <slot name="table"></slot>
+      </div>
     </chp-scroll-bar>
     <!--Table end-->
 
     <!--Pagination begin-->
-    
     <chp-pagination v-if="canPaging"
-      class="pagination-bar "
-      :total="rowsTotal"
-      :current="currentPage"
-      :pageSize="innerPageSize"
-      @pageSizeChange="pageSizeChange"
-      @pageChange="pageNumberChange"
-    ></chp-pagination>
+                    class="pagination-bar "
+                    :total="rowsTotal"
+                    :current="currentPage"
+                    :pageSize="innerPageSize"
+                    @pageSizeChange="pageSizeChange"
+                    @pageChange="pageNumberChange"/>
     <!--Pagination end-->
 
   </chp-table-card>
@@ -155,12 +154,10 @@
         if(this.$table && this.$card){
           this.height = this.$table.getBoundingClientRect().height
           this.width = this.$card.scrollWidth
-          console.log("size:",this.width,this.height,this.$table.scrollWidth,document.querySelector(".bar--wrapper").scrollWidth)
         }
       },
       
     },
-    
     mounted(){
       this.$table = this.$el.querySelector("table")
       this.$card = this.$refs.card.$el
@@ -222,7 +219,7 @@
       table{
         width:100%;
         box-sizing: content-box;
-        td:last-child{
+        th:last-child,td:last-child{
           padding-right: 24px;
         }
         

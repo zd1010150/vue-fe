@@ -157,8 +157,6 @@ outer<i18n src="../i18n.yaml"></i18n>
 				})
 				this.$set(this.model,"base_currency",this.baseCurrencies.length > 0 ? this.baseCurrencies[0].val : "")
 				this.$set(this.model,"plat_form",this.platForms[0].val)
-				
-
 			},
 			async fetchConfig(){
 				let fields = ["client_account_type","client_base_currency"]

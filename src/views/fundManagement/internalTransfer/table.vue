@@ -2,65 +2,77 @@
 <template>
 	<div class="col-lg-12 col-md-12">
 		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-	      <template slot="panelTitle">{{ $t('internalTransfer.internalTransferHistory') }}</template>
-	      	<chp-data-table slot="body" 
-                      :isDisplayFilterToolbar="isDisplayFilterToolbar"
-                      :pageSize = "pageSize"
-                      :rowsTotal = "rowsTotal"
-                      :pageOptions = "pageOptions"
-                      :canAdd = "false"
-                      @toggleDisplayFilterToolbar="toggleDisplayFilterToolbar"
-                      @pageSizeChange="pageSizeChange"
-                      @pageNumberChange="pageNumberChange"
-      >
-        
-
-        <!--过滤的toolbar begin-->
-          
-          <div slot="filterToolbar" class="data-table-filter-panel">
-          
-            <div class="row" >
-              <div class="col-sm-12 visible-sm visible-xs">
-                <mu-icon-button @click="toggleDisplayFilterToolbar(false)" class="pull-right">
-                  <i class="fa fa-close "></i>
-               </mu-icon-button>
-              </div>
-              <div class="col-md-10 col-sm-12">
-                 <form class="form-inline">
-                    <div class="form-group" :class="errorClass('startDate')">
-                      <chp-date-picker :hintText="$t('ui.datePicker.startDate')" v-model.lazy="model.startDay" @input="changeStartday" :fullWidth="true" :required="true"  v-validate="'required'" data-vv-value-path="model.startDay" data-vv-name="startDate" data-vv-validate-on="change" :maxDate="maxStartDate"/>
-                       <span slot="password" class="error"
-                      v-if="errors.has('startDate:required')">{{errors.first('startDate:required')}}</span>
-                    </div>
-                    <div class="form-group " :class="errorClass('endDate')">
-                      <chp-date-picker :hintText="$t('ui.datePicker.endDate')" @input="changeEndday" :minDate = "minEndDate" v-model.lazy="model.endDay"  v-validate="'required'" data-vv-value-path="model.endDay" data-vv-name="endDate" :fullWidth="true" :required="true" data-vv-validate-on="change"/>
-                       <span slot="password" class="error"
-                      v-if="errors.has('endDate:required')">{{errors.first('endDate:required')}}</span>
-                    </div>
-                    <chp-button class="mb-xs mt-xs mr-xs btn btn-primary print-btn" @click="research">
-                      <i class="fa fa-search "></i>
-                    </chp-button>
-                  </form>
-              </div>
-              <div class="col-md-2 hidden-sm hidden-xs">
-                <mu-icon-button @click="toggleDisplayFilterToolbar(false)" class="pull-right">
-                  <i class="fa fa-close "></i>
-               </mu-icon-button>
-              </div>
+      <template slot="panelTitle">{{ $t('internalTransfer.internalTransferHistory') }}</template>
+    	<chp-data-table slot="body" 
+                  :isDisplayFilterToolbar="isDisplayFilterToolbar"
+                  :pageSize = "pageSize"
+                  :rowsTotal = "rowsTotal"
+                  :pageOptions = "pageOptions"
+                  :canAdd = "false"
+                  @toggleDisplayFilterToolbar="toggleDisplayFilterToolbar"
+                  @pageSizeChange="pageSizeChange"
+                  @pageNumberChange="pageNumberChange">
+        <div slot="filterToolbar" class="data-table-filter-panel">
+          <div class="row" >
+            <div class="col-sm-12 visible-sm visible-xs">
+              <mu-icon-button @click="toggleDisplayFilterToolbar(false)" class="pull-right">
+               <i class="fa fa-close "></i>
+             </mu-icon-button>
+            </div>
+            <div class="col-md-10 col-sm-12">
+               <form class="form-inline">
+                  <div class="form-group" :class="errorClass('startDate')">
+                    <chp-date-picker  :hintText="$t('ui.datePicker.startDate')" 
+                                      v-model.lazy="model.startDay" 
+                                      @input="changeStartday" 
+                                      :fullWidth="true" 
+                                      :required="true"  
+                                      v-validate="'required'" 
+                                      data-vv-value-path="model.startDay" 
+                                      data-vv-name="startDate" 
+                                      data-vv-validate-on="change" 
+                                      :maxDate="maxStartDate"/>
+                    <span slot="password" class="error" v-if="errors.has('startDate:required')">
+                      {{errors.first('startDate:required')}}
+                    </span>
+                  </div>
+                  <div class="form-group " :class="errorClass('endDate')">
+                    <chp-date-picker  :hintText="$t('ui.datePicker.endDate')" 
+                                      @input="changeEndday" 
+                                      :minDate = "minEndDate" 
+                                      v-model.lazy="model.endDay"  
+                                      v-validate="'required'" 
+                                      data-vv-value-path="model.endDay" 
+                                      data-vv-name="endDate" 
+                                      :fullWidth="true" 
+                                      :required="true" 
+                                      data-vv-validate-on="change"/>
+                    <span slot="password" class="error" v-if="errors.has('endDate:required')">
+                      {{errors.first('endDate:required')}}
+                    </span>
+                  </div>
+                  <chp-button class="mb-xs mt-xs mr-xs btn btn-primary print-btn" @click="research">
+                    <i class="fa fa-search "></i>
+                  </chp-button>
+                </form>
+            </div>
+            <div class="col-md-2 hidden-sm hidden-xs">
+              <mu-icon-button @click="toggleDisplayFilterToolbar(false)" class="pull-right">
+                <i class="fa fa-close "></i>
+             </mu-icon-button>
             </div>
           </div>
-        
-        <!--过滤操作的toolbar end-->
-		<chp-table slot="table" chp-sort="calories" chp-sort-type="desc" @sort="sortRow" >
+        </div>
+        <chp-table slot="table" chp-sort="calories" chp-sort-type="desc" @sort="sortRow" >
           <chp-table-header>
             <chp-table-row>
               <chp-table-head chp-sort-by="created_at">{{ $t('internalTransfer.time') }}</chp-table-head>
               <chp-table-head chp-sort-by="origin_login" width="100px">{{ $t('internalTransfer.fromAccount') }}</chp-table-head>
               <chp-table-head chp-sort-by="target_login" width="100px">{{ $t('internalTransfer.toAccount') }}</chp-table-head>
               <chp-table-head chp-sort-by="money">{{ $t('internalTransfer.amount') }}</chp-table-head>
-			</chp-table-row>
+            </chp-table-row>
           </chp-table-header>
-		  <chp-table-body>
+		      <chp-table-body>
             <chp-table-row v-for="(row, rowIndex) in histories" :key="rowIndex"  :mu-select-fieldion="chpSelection">
               <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" >
               {{column}}
@@ -68,9 +80,8 @@
             </chp-table-row>
           </chp-table-body>
         </chp-table>
-
       </chp-data-table>
-	    </chp-panel>
+	  </chp-panel>
 	</div>
 </template>
 <script>
