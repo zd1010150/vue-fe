@@ -174,50 +174,30 @@ export default {
                 wrapperObj.scrollHeight - container.scrollHeight !== 0
                 ? (container.scrollHeight / wrapperObj.scrollHeight) * container.scrollHeight
                 : 0
-            // this.bars.horizontal.size = wrapperObj.scrollWidth - container.scrollWidth !== 0
-            //     ? (container.scrollWidth / wrapperObj.scrollWidth) * container.scrollWidth
-            //     : 0
-            // this.bars.vertical.size = wrapperObj.scrollHeight - container.scrollHeight !== 0
-            //     ? (container.scrollHeight / wrapperObj.scrollHeight) * container.scrollHeight
-            //     : 0
         },
         scroll (e) {
             this.calculateInternalBar()
         },
         resize (e) {
-            console.log('resize', e,this)
-            this.getSizes()
-            // if(!this.flag){
-            //     let self = this
-            //     this.flag = true
-            //     setTimeout(()=>{
-            //         self.calculateInternalBar()
-            //         self.flag = false
-            //     },500)
-            // }
+           this.getSizes()
         },
-        
         getCoordinates (e, axis) {
-            console.log('getCoordinates trigger', new Date())
             let coordinate,
                 sizeWrapper,
                 sizeBar,
                 sizeContainer
-
             if (axis === 'X') {
                 sizeWrapper = this.wrapperObj.elm.scrollWidth
                 sizeBar = this.bars.horizontal.size
                 sizeContainer = this.container.elm.scrollWidth
                 let percentage = (e.clientX - this.dragging.offset) / (this.bars.horizontal.parent.offsetWidth - sizeBar)
                 coordinate = (percentage > 1 ? 1 : percentage) * (sizeWrapper - sizeContainer)
-                console.log(sizeWrapper, sizeContainer, e.clientX, this.dragging.offset, percentage, 'x-dragging')
             } else if (axis === 'Y') {
                 sizeWrapper = this.wrapperObj.elm.scrollHeight
                 sizeBar = this.bars.vertical.size
                 sizeContainer = this.container.elm.scrollHeight
                 let percentage = (e.clientY - this.dragging.offset) / (this.bars.vertical.parent.offsetHeight - sizeBar)
                 coordinate = (percentage > 1 ? 1 : percentage) * (sizeWrapper - sizeContainer)
-                console.log(e.clientY, this.dragging.offset, this.bars.vertical.elm.offsetTop, percentage, this.bars.vertical.parent.offsetHeight, sizeBar, 'y-dragging')
             }
             return coordinate
         },
@@ -243,15 +223,12 @@ export default {
                 e.preventDefault()
                 e.stopPropagation()
                 e = e.changedTouches ? e.changedTouches[0] : e
-
                 const wrapper = this.$refs.wrapperRef
-
                 if (this.dragging.axis === 'X') {
                     wrapper.scrollLeft = this.getCoordinates(e, 'X')
                 } else if (this.dragging.axis === 'Y') {
                     wrapper.scrollTop = this.getCoordinates(e, 'Y')
                 }
-
                 this.calculateInternalBar()
             }
         },

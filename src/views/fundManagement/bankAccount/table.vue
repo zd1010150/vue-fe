@@ -1,9 +1,9 @@
 <i18n src="../i18n.yaml"></i18n>
 <template>
-	<div class="col-lg-12 col-md-12">
-		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-	      <template slot="panelTitle">{{ $t('bankcard.bankCardRecord') }}</template>
-      	<chp-data-table slot="body" :isDisplayFilterToolbar="false" :canFilter = "false" :canPaging="false">
+  <div class="col-lg-12 col-md-12">
+    <chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
+        <template slot="panelTitle">{{ $t('bankcard.bankCardRecord') }}</template>
+        <chp-data-table slot="body" :isDisplayFilterToolbar="false" :canFilter = "false" :canPaging="false">
         <template slot="addToolbar">
           <chp-button class=" btn btn-primary mr-xs" @click="add">
             <i class="fa fa-plus mr-xs"></i>{{ $t('bankcard.newBtnText')}}
@@ -19,17 +19,17 @@
                   <chp-table-head>{{ $t('bankcard.attachment')}}</chp-table-head>
                   <chp-table-head chp-sort-by="status">{{ $t('bankcard.status')}}</chp-table-head>
                   <chp-table-head >{{ $t('bankcard.Action')}} </chp-table-head>
-    			</chp-table-row>
+          </chp-table-row>
               </chp-table-header>
-    		  <chp-table-body>
+          <chp-table-body>
                 <chp-table-row v-for="(row, rowIndex) in bankCards" :key="rowIndex">
                   <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" >
                     <mu-icon-button  @click="previewImage(column)" class="text-primary" v-if="columnIndex == 'document'">
                       <i class="fa fa-paperclip" aria-hidden="true"></i>
                     </mu-icon-button>  
                     <template v-else-if="columnIndex == 'status'">
-                      <chp-tooltip chp-direction="bottom" v-if="column == CARD_STATUS.reject">{{ originData[rowIndex].comment}}</chp-tooltip>
-                      {{$t('bankcard.bankStatus.'+column)}}
+                      <chp-tooltip chp-direction="bottom" v-if="column == CARD_STATUS.reject">{{ $t("bankcard.rejectReason."+originData[rowIndex].comment)}}</chp-tooltip>
+                        {{$t('bankcard.bankStatus.'+column)}}
                     </template>
                     <template v-else-if="columnIndex =='id'">
                        <mu-icon-button  @click="deleteRow(column)">
@@ -55,7 +55,8 @@
                         :chp-cancel-text="$t('ui.button.cancel')"
                         @close="closeConfirmDialog"
                         ref="confirmDeleteDailog"/>
-	</div>
+
+  </div>
 </template>
 <script>
     const CARD_STATUS = {
@@ -67,8 +68,8 @@
     import validateMixin from 'mixins/validatemix.js'
     import loadingMix from 'mixins/loading'
     import {Validator} from 'vee-validate'
-	export default{
-		mixins: [validateMixin,loadingMix],
+  export default{
+    mixins: [validateMixin,loadingMix],
     data () {
         return{
           originData: null,
@@ -77,12 +78,17 @@
           documentSrc : "",
           documentOpen : false,
           selected : null,
-          editId : null
+          editId : null,
+          CARD_STATUS :{
+            reject: "Reject",
+            approve: "Approve",
+            pending: "Pending"
+          }
         }
      },
     created(){
       
-    	this.fetchBankcardData()
+      this.fetchBankcardData()
     },
     methods : {
       refresh(){
@@ -92,20 +98,20 @@
         this.$emit('add')
       },
       filterFields(originData){
-      	if(originData && originData.length > 0){
+        if(originData && originData.length > 0){
         this.originData = originData;  
-      	this.bankCards = originData.map(function(row,index) {
+        this.bankCards = originData.map(function(row,index) {
             return {
               method : row.method,
-      				bank_name : row.bank_name,
-      				account : row.account,
-      				swift : row.swift,
-      				document : row.document,
+              bank_name : row.bank_name,
+              account : row.account,
+              swift : row.swift,
+              document : row.document,
               status: row.status,
               id: row.id // 一定要把id放到最后编辑
-				    }
-      		});
-      	}else{
+            }
+          });
+        }else{
           this.bankCards = [];
         }
       },
@@ -114,7 +120,7 @@
         if(success && data){
          this.filterFields(data);
         }
-      	return {data};
+        return {data};
       },
       previewImage(src){
         this.documentSrc = src

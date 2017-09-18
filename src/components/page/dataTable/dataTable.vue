@@ -154,7 +154,6 @@
         if(this.$table && this.$card){
           this.height = this.$table.getBoundingClientRect().height
           this.width = this.$card.scrollWidth
-          console.log("size:",this.width,this.height,this.$table.scrollWidth,document.querySelector(".bar--wrapper").scrollWidth)
         }
       },
       
