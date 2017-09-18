@@ -4,8 +4,8 @@
       <div class="row">
         <div class="col-lg-12">
           <chp-panel>
-            <template slot="title">Text Field</template>
-            <template slot="subtitle"> input</template>
+            <template slot="panelTitle">Text Field</template>
+            <template slot="panelSubtitle"> input</template>
             <form slot="body" class="form-horizontal form-bordered">
               <h4>input</h4>
               <div class="form-group">

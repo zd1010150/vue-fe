@@ -41,7 +41,7 @@
 								ref="panel" 
 								:defaultStatus="defaultStatus"
 					>
-						<dl slot="subtitle" class="subtitle clearfix big-screen">
+						<dl slot="panelSubtitle" class="subtitle clearfix big-screen">
 							<dt class="info-title">{{ $t('trade.balance') }}</dt>
 							<dd class="amount info-number text-dark">{{ mt4.balance}}</dd>
 							<dt class="info-title">{{ $t('trade.currency') }}</dt>

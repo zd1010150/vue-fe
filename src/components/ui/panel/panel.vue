@@ -17,12 +17,12 @@
              {{closeText}}
           </a>
         </div>
-         <h2 class="panel-title">
-            <slot name="panelTitle"></slot>
-          </h2>
-          <p class="panel-subtitle">
-            <slot name="subtitle"></slot>
-          </p>
+        <h2 class="panel-title">
+          <slot name="panelTitle"></slot>
+        </h2>
+        <p class="panel-subtitle">
+          <slot name="panelSubtitle"></slot>
+        </p>
       </header>
       <div class="panel-body" :class=" {'loading-overlay-showing':isLoading } " ref="panelBody" v-show="isOpen" >
         <slot name="body"></slot>

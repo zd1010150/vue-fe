@@ -1,7 +1,7 @@
 <template>
   <chp-panel>
-    <template slot="title">DataTable</template>
-    <template slot="subtitle"></template>
+    <template slot="panelTitle">DataTable</template>
+    <template slot="panelSubtitle"></template>
     <div class="form-horizontal form-bordered" slot="body">
       <h4>DatePicker8</h4>
       <chp-data-table :isDisplayFilterToolbar="isDisplayFilterToolbar"
