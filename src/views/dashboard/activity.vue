@@ -65,7 +65,8 @@
 	</div>
 </template>
 <script>
-	import activityService from "services/activityService"
+	import activityService from 'services/activityService'
+	import { SET_ASYNC_LOADING } from 'store/mutation-types'
 	export default{
 		data(){
 			return {
@@ -82,7 +83,9 @@
 				}
 			},
 			async getBonus(type){
+				this.$store.commit(SET_ASYNC_LOADING,true)
 	    		let {data,message,success} = await activityService.traderAward({type:type})
+	    		this.$store.commit(SET_ASYNC_LOADING,false)
 	    		if(success){
 	    			this.toastr.info(this.$t("info.SUCCESS"))
 	    			this.fetchData()

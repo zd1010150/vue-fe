@@ -2,7 +2,7 @@ import vBar from './vBar'
 import scrollBar from './scrollBar'
 import chpInkRipple from './chpInkRipple/chpInkRipple'
 import button from './button'
-import panel from './panel/panel'
+import Panel from './panel'
 import Checkbox from './checkbox'
 import Radio from './radio'
 import DropBack from './backdrop'
@@ -29,7 +29,7 @@ import ViewAll from './viewAll'
 export default function install(Vue) {
   Vue.component('chp-ink-ripple', chpInkRipple)
   Vue.component('chp-button',button)
-  Vue.component('chp-panel',panel)
+  Vue.use(Panel)
   Vue.use(Checkbox)
   Vue.use(Radio)
   Vue.use(DropBack)

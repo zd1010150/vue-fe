@@ -1,5 +1,6 @@
 zh:
   onlineTraining:
+    timer: "倒计时"
     onlineTrainingList: "在线培训课程列表"
     subject: "主题"
     presenter: "主讲人"
@@ -28,6 +29,7 @@ zh:
     allBooks: "所有书籍"
 en:
   onlineTraining:
+    timer: "Timer"
     onlineTrainingList: "Online Training List"
     subject: "Subject"
     presenter: "Presenter"

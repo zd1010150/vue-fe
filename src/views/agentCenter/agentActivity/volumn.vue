@@ -24,7 +24,6 @@
 											{{ $t('trade.lots')}}
 										</div>
 									</div>
-								<!--test-->
 									<template v-if="value.hasAward">
 										<div class="summary-footer pt-lg" :class="classes">
 											<div class="level-left">
@@ -76,7 +75,8 @@
 	</div>
 </template>
 <script>
-	import activityService from "services/activityService"
+	import activityService from 'services/activityService'
+	import { SET_ASYNC_LOADING } from 'store/mutation-types'
 	export default{
 		props:{
 			dataInfo:{
@@ -226,7 +226,9 @@
 	    		}
 	    	},
 	    	async getBonus(type){
+	    		this.$store.commit(SET_ASYNC_LOADING,true)
 	    		let {data,message,success} = await activityService.agentAward({type:type,agentId:this.agent})
+	    		this.$store.commit(SET_ASYNC_LOADING,false)
 	    		if(success){
 	    			this.$emit('refresh')
 	    			this.toastr.info(this.$t("info.SUCCESS"))

@@ -30,9 +30,7 @@ export default{
 			let {success,data} = await trainingService.getOnlineTraining(this.language == "zh" ? "mandarin" : "english")
 			this.$store.commit(SET_CONTENT_LOADING,false)
 			if(success){
-
 				this.allTrainings= data.paginatedList
-				console.log(this.allTrainings,"=====")
 			}
 		},
 		refresh(){

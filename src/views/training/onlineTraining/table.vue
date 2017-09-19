@@ -73,7 +73,7 @@
     },
     data(){
       return {
-        innerTrainings:this.mapData(this.trainings),
+        innerTrainings:Object.assign({},this.mapData(this.trainings)),
         trainingContent: "  ",
         yy: ONLINE_TRAINING_YY,
         yyUrl: ONLINE_TRAINING_YY_URL
@@ -81,7 +81,7 @@
     },
     watch:{
       trainings(val){
-        this.mapData(val)
+        this.innerTrainings = Object.assign({},this.mapData(val))
       }
     },
     methods : {

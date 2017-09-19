@@ -16,7 +16,7 @@
 									<div class="text-dark">{{ Number(t.start)*1000 | beijingZoneTime }}</div>
 								</div>
 								<div class="summary-footer clearfix">
-									<span>timer:</span>
+									<span>{{ $t('onlineTraining.timer') }}:</span>
 									<span class="timer text-dark">
 									<chp-timer  :startTime="Number(t.start)*1000" 
 													:overHint="$t('ui.timer.over')"
