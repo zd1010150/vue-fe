@@ -49,10 +49,8 @@
 							<dt class="info-title" v-if="mt4.account_type != 'Agent'">{{ $t('trade.leverage') }}</dt>
 							<dd class="amount info-number text-dark leverage" v-if="mt4.account_type != 'Agent'">
 								<mu-select-field v-model="mt4.leverage" @change="confirmModifyLeverage">
-					              <template v-for="(l,index) in leverages" slot="default">
-					                <mu-menu-item  :value="Number(l.val)" :title="l.title" :key="Math.random()"/>
-					              </template>
-				           		 </mu-select-field> 
+					              <mu-menu-item v-for="(l,index) in leverages" :value="Number(l.val)" :title="l.title" :key="Math.random()"/>
+					            </mu-select-field> 
 				           		 
 							</dd>
 						</dl>
