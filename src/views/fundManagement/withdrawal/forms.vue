@@ -91,7 +91,7 @@ import {TABLES } from "src/config/app.config.js"
 				let result = await this.validateTab()
 				if(result && this.model){
 					this.hasSubmit = true;
-					let {success,data} = await fundsService.deposite(this.model)
+					let {success,data} = await fundsService.withdrawal(this.model)
 					if(success){
 						this.toastr.info(this.$t("info.SUCCESS"))
 						this.$refs.tab.init()

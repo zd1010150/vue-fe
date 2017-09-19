@@ -1,9 +1,9 @@
 <template>
-  <div class="method  center-block" :class="{active:isActive}">
-    <div class="method-bg" @click="chosePaymentMethods">
+  <div class="method  center-block mb-lg" :class="{active:isActive}">
+    <div class="method-bg " :class="classes" @click="chosePaymentMethods">
       <img :src="bgUrl" alt="" class="">
     </div>
-    <div class="method-title">{{title}}</div>
+    <h5 class="method-title" :class="{'text-dark' : isActive}">{{title}}</h5>
   </div>
 </template>
 <script>
@@ -23,32 +23,35 @@
           title:{
               type:String
           },
-          methodCode:{
-            type:String,
-            required:true
+          type:{
+            typs:String
           }
       },
       methods:{
         chosePaymentMethods(){
-          this.$emit('chosePaymentMethod',this.value,this.methodCode);
+          this.$emit('chosePaymentMethod',this.value,this.type)
+        }
+      },
+      computed:{
+        classes(){
+          return this.isActive ? "mu-paper mu-paper-circle mu-paper-round mu-paper-3" : ""
         }
       }
   }
 </script>
-<style lang="less">
+<style lang="less" scoped>
   @import "~assets/less/variable.less";
-
   .method{
-    display:table-cell;
+    display:table;
+    width:80%;
     &.active{
       .method-bg{
         background-color: @light-component-accent-bg-color;
-        
       }
     }
       .method-bg{
-        width:114px;
-        height:114px;
+        width:70px;
+        height:70px;
         border-radius: 50%;
         position:relative;
         background-color:@light-component-bg-color;
@@ -57,25 +60,29 @@
         text-align: center;
       img{
         vertical-align: middle;
-        &.doku{
-         width:36px;
-       }
+        width:50px;
+        
       }
     }
     .method-title{
-      width: 100%;
-      margin:15px auto;
-      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+      text-align: left;
+      padding-left: 10px;
     }
   }
   html.dark{
+    h5{
+      color:inherit;
+    }
     .method{
       .method-bg{
         background-color: @dark-component-border-color;
       }
       &.active{
         .method-bg{
-          background-color: @dark-component-accent-bg-color;
+          background-color: #ffffff;
+         
         }
       }
     }

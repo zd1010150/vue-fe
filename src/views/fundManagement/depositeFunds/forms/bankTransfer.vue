@@ -1,35 +1,51 @@
 <i18n src="../../i18n.yaml"></i18n>
 <template>
-	<chp-panel :canCollapse="false" :canClose="false">
+	<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
     <template slot="panelTitle">{{ methodName }}</template>
-    <div slot="body" class="row padding-20">
-     <div class="col-lg-6 col-md-6 col-sm-12 bank-detail padding-10" id="bank-detail">
+    <template slot="body">
+      <div  class="row padding-20">
+        <div class="form-group">
+          <label class="control-label col-md-3">
+             {{ $t('deposit.selectCurrency') }}
+             <span class="required" aria-required="true">*</span>
+          </label>
+          <div class="col-md-6" >
+            <mu-select-field v-model="currency" @input="currencyChange">
+              <template v-for="c in currencies">
+                <mu-menu-item :value="c" :title="$t('currency.'+c)+'('+c+')'" />
+              </template>
+            </mu-select-field>
+          </div>
+        </div>
+      </div>
+      <div class="row padding-20" v-if="infos">
+        <div class="col-lg-6 col-md-6 col-sm-12 bank-detail padding-10" id="bank-detail">
           
              <h5> {{ $t('deposit.acyAccountDetail')}} <small >({{ currencies.join("、")}})</small></h5>
           <table >
             <tr>
               <td class="field text-primary">{{ $t('deposit.bankName')}}</td>
-              <td class="field-value">HSBC</td>
+              <td class="field-value">{{ infos.BANKNAME }}</td>
               <td></td>
             </tr>
             <tr>
               <td class="field text-primary">{{ $t('deposit.bankAddress')}}</td>
-              <td class="field-value">1 Queen's Road Central, Hong Kong</td>
+              <td class="field-value">{{ infos.CITY }}</td>
               <td></td>
             </tr>
             <tr>
               <td class="field text-primary">{{ $t('deposit.bankAccount')}}</td>
-              <td class="field-value">848-587093-838</td>
+              <td class="field-value">{{ infos.BANKACCOUNTNUMBER }}</td>
               <td></td>
             </tr>
-            <tr>
+            <tr v-if="infos.SWIFTCODE">
               <td class="field text-primary">{{ $t('deposit.swift')}}</td>
-              <td class="field-value">HSBCHKHHHKH</td>
+              <td class="field-value">{{ infos.SWIFTCODE }}</td>
               <td></td>
             </tr>
             <tr>
               <td class="field text-primary">{{ $t('deposit.accountName')}}</td>
-              <td class="field-value">ACY Capital Australia Limited</td>
+              <td class="field-value">{{ infos.ACCOUNTHOLDER }}</td>
               <td class="print-btn-td ">
                 <chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn hidden-md hidden-sm hidden-xs" @click="print">
                  <i class="fa fa-print"></i> {{ $t('ui.button.print') }}
@@ -50,24 +66,46 @@
         <div class="col-lg-6 col-md-6 col-sm-12 padding-20">
           <p>{{ $t('deposit.wireTransferNote')}} <a herf="mailto:accounts@acyfx.com">accounts@acyfx.com</a></p>
         </div>
-    </div>
+      </div>
+    </template>
   </chp-panel>
 </template>
 <script>
-import {printDiv} from "utils/print.js";
+  import {printDiv} from 'utils/print.js'
+  import fundsService from 'services/fundsService'
+  import loadingMix from 'mixins/loading'
 	export default{
-    data(){
-      return {
-        currencies: ['AUD','CAD','EUR','GBP','HKD' ,'IDR','JPY','MYR','NZD','SGD','TWD','USD']
-      }
-    },
+    mixins:[loadingMix],
     props:{
       methodName:String
     },
+    data(){
+      return {
+        infos:null,
+        currency:'USD',
+        currencies: ['AUD','CAD','EUR','GBP','HKD' ,'IDR','JPY','MYR','NZD','SGD','TWD','USD']
+      }
+    },
 		methods:{
       print(){
-        window.print();
+        window.print()
+      },
+      async getBankTransferInfo(){
+        this.loadingStatus = true
+        let { success,data } = await fundsService.getBanktransferInfo(this.currency)
+        this.loadingStatus = false
+        if(success){
+          console.log(data,"***8")
+          this.infos = data
+        }
+
+      },
+      currencyChange(){
+        this.getBankTransferInfo()
       }
+    },
+    created(){
+      this.getBankTransferInfo()
     }
 	}
 </script>
