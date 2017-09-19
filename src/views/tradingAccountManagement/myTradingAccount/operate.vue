@@ -15,13 +15,16 @@
 
 <script>
 	import mt4Service from 'services/mt4Service'
+	import { SET_ASYNC_LOADING } from 'store/mutation-types'
 	export default{
 		props:{
 			mt4Id:[String,Number]
 		},
 		methods:{
 			async modifyPwd(){
+				this.$store.commit(SET_ASYNC_LOADING,true)
 				let {success,data} = await mt4Service.modifyAccountPWD(this.mt4Id)
+				this.$store.commit(SET_ASYNC_LOADING,false)
 				if(success){
 					this.toastr.info(this.$t('modifyPwdNotification'))
 				}

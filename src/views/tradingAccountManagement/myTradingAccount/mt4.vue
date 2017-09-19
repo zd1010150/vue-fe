@@ -123,7 +123,6 @@
 				if(val == "ok"){
 					this.changeLeverage(this.nextLeverage)
 				}else{
-					console.log("previous",this.previousLeverage)
 					this.$set(this.mt4,"leverage",this.previousLeverage)
 				}
 			},
@@ -264,7 +263,6 @@
   		},
   		watch: {
   			"$store.state.language"() {
-  				console.log("trigger change")
   				this.mapData(this.chartData)
   			}
   		}
