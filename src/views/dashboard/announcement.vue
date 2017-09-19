@@ -32,6 +32,14 @@
 			}
 		},
 		methods:{
+			mapData(data){
+				this.announcements = Object.assign({},data.map((a)=>{
+					if(a.category != "wp"){
+						a.content = '<a href="#/notice">'+a.content+'</a>'
+					}
+					return a
+				}))
+			},
 			async fetchData(){
 				this.loadingStatus = true
 				let { success,data } = await notificationService.getNoticeByType("announcement",{ 
@@ -41,7 +49,7 @@
 				})
 				this.loadingStatus = false
 				if(success){
-					this.announcements = data.data
+					this.mapData(data.data)
 				}
 			}
 		},
