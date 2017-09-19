@@ -58,7 +58,7 @@ import {printDiv} from "utils/print.js";
 	export default{
     data(){
       return {
-        currencies: ['AUD','CAD','EUR','GBP','HKD' ,'IDR','JPY','MYR','NZD','SGD','TWD','USD']
+        currencies: ['AUD','CAD','EUR','GBP','HKD' ,'JPY','NZD','SGD','USD']
       }
     },
     props:{

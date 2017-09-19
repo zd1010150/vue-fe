@@ -83,7 +83,7 @@
       return {
         infos:null,
         currency:'USD',
-        currencies: ['AUD','CAD','EUR','GBP','HKD' ,'IDR','JPY','MYR','NZD','SGD','TWD','USD']
+        currencies: ['AUD','CAD','EUR','GBP','HKD' ,'JPY','NZD','SGD','USD']
       }
     },
 		methods:{
