@@ -6,11 +6,11 @@
          <span class="required" aria-required="true">*</span>
       </label>
       <div class="col-md-6" >
-        <mu-select-field v-model="innerMethod" @input="methodChange" :disabled="editObj!=null">
-			<template v-for="m in methods">
-				<mu-menu-item :value="m.method" :title="$t('bankcard.methodType.'+m.title)" />
-			</template>
-		</mu-select-field>
+         <mu-select-field v-model="innerMethod" @input="methodChange" :disabled="editObj!=null">
+   			<template v-for="m in methods">
+   				<mu-menu-item :value="m.method" :title="$t('bankcard.methodType.'+m.title)" />
+   			</template>
+		   </mu-select-field>
       </div>
 	</div>
 </template>
@@ -32,46 +32,50 @@ export default {
 	   		title:'fasa',
 	   		type:["en"],
 	   		method:"FASA"
-	   	}],
+	   	},{
+            title:'credit',
+            type:["en"],
+            method:"CREDIT"
+         }],
    		methods:[]
    	}
    },
    props:{
-      editMethod:String,
+      method:String,
       editObj:Object
    },
    watch:{
    	"$store.state.language":function(val,oldVal){
-         this.filterMethodsByLanguage(val);
+         this.filterMethodsByLanguage(val)
    	},
       editObj:function(val){
-         this.isEdit = val !=null;
-         this.initMethods();
+         this.isEdit = val !=null
+         this.initMethods()
       },
       editMethod:function(val){
-         this.initMethods();
+         this.initMethods()
       }
    },
    methods:{
    	methodChange(){
-         this.$emit("methodChange",this.innerMethod);
+         this.$emit("methodChange",this.innerMethod)
    	},
       filterMethodsByLanguage(val){
          this.methods = this.originMethods.filter((method)=>{
             return method.type.indexOf(val) > -1
          });
-         this.innerMethod = this.methods[0].method;
-         this.$emit("methodChange",this.innerMethod);
+         this.innerMethod = this.methods[0].method
+         this.$emit("methodChange",this.innerMethod)
       },
       initMethods(){
-         let isEdit = this.editObj !=null;
+         let isEdit = this.editObj !=null
           if(!isEdit){
-            this.filterMethodsByLanguage(this.$store.state.language);
+            this.filterMethodsByLanguage(this.$store.state.language)
          }else{
             this.methods = this.originMethods.filter((m)=>{
-               return m.method == this.editMethod
-            });
-            this.innerMethod = this.editMethod;
+               return m.method == this.method
+            })
+            this.innerMethod = this.method
          }
       }
    },

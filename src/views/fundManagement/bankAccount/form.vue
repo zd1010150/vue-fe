@@ -14,8 +14,7 @@
 				         <component v-bind:is="currentView" 
 							        @methodChange="methodChange" 
 							        :method="method" 
-							        :editMethod="editMethod" 
-							        ref="accountView" 
+							       	ref="accountView" 
 							        :editObj="editObj" 
 							        @close="closePanel" 
 							        @refresh="refresh"/>
@@ -44,7 +43,7 @@
 	</div>
 </template>
 <script>
-import account from "./forms/account"
+import account from "./forms/account/index"
 import method from "./forms/method"
  import bankCardService from 'services/bankCardService'
 	export default{
@@ -55,8 +54,7 @@ import method from "./forms/method"
 				activeStepTab:"tab1",
 				currentView:null,
 				editObj:null,
-				innerEditId:this.editId,
-				editMethod:null
+				innerEditId:this.editId
 			}
 		},
 		props:{
@@ -90,7 +88,7 @@ import method from "./forms/method"
 				}
 			},
 			innerEditId:function(val){
-				this.initTab(val);
+				this.initTab(val)
 			}
 		},
 		methods:{
@@ -119,22 +117,22 @@ import method from "./forms/method"
 			},
 			async fetchSingleBankCardInfo(id){
 				this.loadingStatus=true
-				let {success,data}= await bankCardService.getBankCardById(id);
+				let {success,data}= await bankCardService.getBankCardById(id)
 				if(success && data){
 					this.editObj = data
-					this.editMethod = data.method
+					this.method = data.method
 				}
 				this.loadingStatus=false
 			},
 			initTab(id){
 				if(!!id){
-					this.fetchSingleBankCardInfo(id);
+					this.fetchSingleBankCardInfo(id)
 					this.currentView = "bank-account"
-					this.activeStepTab = "tab2";
+					this.activeStepTab = "tab2"
 				}else{
 					this.editObj = null;
-					this.currentView = "bank-account-method";
-					this.activeStepTab = "tab1";
+					this.currentView = "bank-account-method"
+					this.activeStepTab = "tab1"
 				}
 				
 			}

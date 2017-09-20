@@ -32,6 +32,8 @@ en:
     attachment : "Attachment"
     status : "Status"
     Action : "Action"
+    creditPreSixNumber: "First Six Card Numbers"
+    creditAfterFourNumber: "Last Four Card Numbers"
     rejectReason :
       MissingName: "Missing Name"
       MissingAcc : "Missing Account"
@@ -48,7 +50,9 @@ en:
       cup : "Bank bill"
       doku : "Doku"
       fasa : "Fasa"
+      credit : "Credit Card"
     uploadNote : "Bank Account Statement or  Online Banking e-statement "
+    creditUpload : "Please upload Front colour copy of your card. The name on your card must match your trading account for approval."
   withdrawal :
     profile : "Profile"
     confirm : "Confirm"
@@ -117,6 +121,8 @@ zh:
     attachment : "账单附件"
     status : "状态"
     Action : "操作"  
+    creditPreSixNumber: "信用卡前六位"
+    creditAfterFourNumber: "信用卡后四位"
     rejectReason :
       MissingName: "缺姓名"
       MissingAcc : "缺账号"
@@ -133,7 +139,9 @@ zh:
       cup : "银行账单"
       doku : "Doku"
       fasa : "Fasa"
+      credit : "信用卡"
     uploadNote : "银行账户证明或者网上银行证明"
+    creditUpload : "请上传信用卡的彩色复印件,信用卡的名字必须和你的交易账户名一致."
   withdrawal :
     profile : "个人信息"
     confirm : "确认"

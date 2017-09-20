@@ -1,4 +1,4 @@
-<i18n src="../../i18n.yaml"></i18n>
+<i18n src="../../../i18n.yaml"></i18n>
 <template lang="html">
 
       <form slot="body" class="form-horizontal form-bordered " method="POST"  target="_blank" ref="accountForm">
@@ -9,7 +9,6 @@
           </label>
           <div class="col-md-6" >
             <mu-text-field  v-model="model.bank_name" 
-                            :disabled="!isCUP" 
                             v-validate="'required'" 
                             data-vv-value-path="model.bank_name" 
                             data-vv-name="bankName"  
@@ -36,7 +35,7 @@
             </span>
           </div>
         </div>
-        <div class="form-group" :class="errorClass('bankProvince')" v-if="isCUP">
+        <div class="form-group" :class="errorClass('bankProvince')" >
           <label class="control-label col-md-3">
             {{ $t('bankcard.province') }}
             <span class="required" aria-required="true">*</span>
@@ -52,7 +51,7 @@
             <span slot="required" class="error" v-if="errors.has('bankProvince:required')">{{errors.first('bankProvince:required')}}</span>
           </div>
         </div>
-        <div class="form-group" :class="errorClass('bankCity')" v-if="isCUP">
+        <div class="form-group" :class="errorClass('bankCity')" >
           <label class="control-label col-md-3">
             {{ $t('bankcard.city') }}
             <span class="required" aria-required="true">*</span>
@@ -68,7 +67,7 @@
             <span slot="required" class="error" v-if="errors.has('bankCity:required')">{{errors.first('bankCity:required')}}</span>
           </div>
         </div>
-        <div class="form-group" :class="errorClass('branchName')" v-if="isCUP">
+        <div class="form-group" :class="errorClass('branchName')" >
           <label class="control-label col-md-3">
             {{ $t('bankcard.branchName') }}
             <span class="required" aria-required="true">*</span>
@@ -84,7 +83,7 @@
             <span slot="required" class="error" v-if="errors.has('branchName:required')">{{errors.first('branchName:required')}}</span>
           </div>
         </div>
-        <div class="form-group" :class="errorClass('swift')" v-if="isCUP">
+        <div class="form-group" :class="errorClass('swift')">
           <label class="control-label col-md-3">Swift
             <span class="required" aria-required="true">*</span>
           </label>
@@ -122,15 +121,13 @@
               @input="dropInputFunction" 
               ref="dropUploads" class="form-control dropFileArea">  
               <div class="dropFileAreaDiv">
-                  <h6> {{ $t('ui.upload.tips') }} </h6>
-                  <P>{{ $t('bankcard.uploadNote') }}</P>
-                  <div v-html="promotingMsg"></div>
-                  <P>{{ $t('ui.upload.accepts') }} : png, jpg,jpeg,bmp, pdf</P>
-                
+                <h6> {{ $t('ui.upload.tips') }} </h6>
+                <P>{{ $t('bankcard.uploadNote') }}</P>
+                <div v-html="promotingMsg"></div>
+                <P>{{ $t('ui.upload.accepts') }} : png, jpg,jpeg,bmp, pdf</P>
               </div>
             </chp-file-upload> 
             </div>
-            
           </transition-group>
          <input type="hidden" v-model="model.document" v-validate="'required'" data-vv-value-path="model.document" data-vv-name="bankDocument"  >
          <span slot="required" class="error" v-if="errors.has('bankDocument:required')">{{errors.first('bankDocument:required')}}</span>
@@ -154,10 +151,8 @@ export default {
         innerMethod: this.method,
         innerEditObj: this.editObj,
         uploadConfig:UPLOAD_CONFIG,
-        isCUP:true,
         promotingMsg:"",
         dropPostAction:UPLOAD_DOCUMENT_URL+"/bill",
-        editCardId:null,
         isEdit:false,
         editId:null,
         originModel:{
@@ -202,6 +197,7 @@ export default {
           this.$set(this.model,"document","")
           this.toastr.error(this.$t("info.UPLOAD_ERROR."+error[0]))
         }
+        this.$validator.validate("bankDocument",this.model.document)
       },
       async submit(){
         let validateResult = await this.$validator.validateAll()
@@ -224,15 +220,15 @@ export default {
         this.$set(this.model,"document","")
       },
       initModel:function(){
+        console.log("cup initModel",this.innerEditObj)
         this.isEdit = this.innerEditObj !=null
         if(this.isEdit){//如果是编辑
-          this.editId = this.innerEditObj.id;
-          this.model = Object.assign({},this.model,assignToObject(this.originModel,this.innerEditObj));
+          this.editId = this.innerEditObj.id
+          this.model = Object.assign({},this.model,assignToObject(this.originModel,this.innerEditObj))
         }else{
           this.editId = null
-          this.model = Object.assign({},this.model,this.originModel,{method:this.innerMethod,bank_name:this.innerMethod});
+          this.model = Object.assign({},this.model,this.originModel,{method:this.innerMethod,bank_name:this.innerMethod})
         }
-         this.isCUP = this.model.method == "CUP"
       }
         
     },
@@ -241,35 +237,24 @@ export default {
     	this.fetchPromtingMessage(this.$store.state.language)
     },
     watch :{
-      "$store.state.language" : function(val,oldVal){
+      "$store.state.language"(val,oldVal){
         if(val == oldVal) return 
         this.fetchPromtingMessage(val)
       },
-      method:function(val){
+      method(val){
         this.innerMethod = val
       },
-      editObj:function(val){
+      editObj(val){
         this.innerEditObj = val
       },
-      innerMethod : function(val,oldVal){
+      innerMethod (val,oldVal){
        this.initModel()
       },
-      innerEditObj:function(val){
+      innerEditObj(val){
         this.initModel()
       }
     }
   }
 </script>
-<style lang="less">
-  .dropFileArea{
-    max-height:300px;
-    min-height:30px;
-    width:100%;
-    height:auto;
-    overflow: auto;
-    .file-uploads{
-      width:100%;
-    }
-  }
-</style>
+
 
