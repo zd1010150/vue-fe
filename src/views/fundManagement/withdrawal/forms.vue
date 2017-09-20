@@ -29,7 +29,7 @@
 		           {{ $t('ui.button.next') }}
 		           <i class="fa fa-angle-right hidden-sm hidden-xs"></i> 
 		          </chp-button>
-		          <chp-button class="mb-xs mt-xs mr-xs btn btn-primary print-btn pull-right" @click="submit" v-if="activeStepTab =='tab3'" :diabled="hasSubmit">
+		          <chp-button class="mb-xs mt-xs mr-xs btn btn-primary print-btn pull-right" @click="submit" v-if="activeStepTab =='tab3'" :disabled="hasSubmit">
 		           {{ $t('ui.button.submit') }}
 		           <i class="fa fa-check hidden-sm hidden-xs"></i> 
 		          </chp-button>
@@ -75,41 +75,40 @@ import {TABLES } from "src/config/app.config.js"
 			"withdrawal-confirm":confirm
 		},
 		created(){
-			this.activeStepTab="tab1";
+			this.activeStepTab="tab1"
 		},
 		methods:{
 			async handleStepTabChange(id){
-				let result = await this.validateTab();
+				let result = await this.validateTab()
 				if(result){
-					this.activeStepTab = id;
+					this.activeStepTab = id
 				}
 			},
 			async validateTab(){
 				return await this.$refs.tab.validate()
 			},
 			async submit(){
+				this.hasSubmit = true
 				let result = await this.validateTab()
 				if(result && this.model){
-					this.hasSubmit = true;
-					let {success,data} = await fundsService.withdrawal(this.model)
+					let {success,data} = await fundsService.deposite(this.model)
 					if(success){
 						this.toastr.info(this.$t("info.SUCCESS"))
-						this.$refs.tab.init()
 						this.activeStepTab = "tab1"
 						this.$refs.tab.init()
+						this.$refs.tab.init()
 						this.$emit("refresh")
-
 					}else{
 						this.activeStepTab = "tab1"
 					}
-					this.hasSubmit = false;
 				}
+				this.hasSubmit = false
 			},
 			cancel(){
 
 			},
 			async previous(){
-				let result = await this.validateTab();
+				let result = await this.validateTab()
 				if(result){
 					this.activeStepTab= "tab"+(this.tabIndex-1)
 				

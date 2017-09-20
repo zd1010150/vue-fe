@@ -33,29 +33,28 @@ export default {
    	}
    },
    watch :{
-   	"$store.state.language" : function(val,oldVal){
-   		if(val == oldVal){ return;}
-   		this.fetchTerms(val);
+   	"$store.state.language"(val,oldVal){
+   		this.fetchTerms(val)
    	}
    },
    created(){
-   		this.fetchTerms(this.$store.state.language);
+   		this.fetchTerms(this.$store.state.language)
    },
    methods:{
    	async fetchTerms(val){
    		this.$emit("loading",true)
    		let key =  "withdraw_terms_"+(val == "en" ?"en":"cn"),
-            {success,data} = await configService.getConfigByKey({fields:[key]});
-        if(success && data){
-			this.terms = data[key]
-        }
-   		this.$emit("loading",false);
+          {success,data} = await configService.getConfigByKey({fields:[key]})
+      if(success && data){
+			  this.terms = data[key]
+      }
+   		this.$emit("loading",false)
    	},
    	async validate (){
-   		return await this.$validator.validateAll();
+   		return await this.$validator.validateAll()
    	},
     init(){
-      this.checkedIterms.splice(0,this.checkedIterms.length);
+      this.checkedIterms.splice(0,this.checkedIterms.length)
     }
    }
   }

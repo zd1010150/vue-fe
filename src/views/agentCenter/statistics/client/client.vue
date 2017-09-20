@@ -4,10 +4,10 @@
 		<agent-statistics-time-picker @research = "research" :agent="agent">
 			<ul class="total-info">
 				<li>
-					{{ $t('trade.totalActiveClient') }} : <span class="text-dark info-number"> {{ totalClients.activeClients}} </span>
+					{{ $t('trade.newActiveClient') }} : <span class="text-dark info-number"> {{ totalClients.activeClients}} </span>
 				</li>
 				<li>
-					{{ $t('trade.totalClient') }} : <span class="text-dark info-number"> {{ totalClients.allClients}}  </span>
+					{{ $t('trade.newClient') }} : <span class="text-dark info-number"> {{ totalClients.allClients}}  </span>
 				</li>
 			</ul>
 		</agent-statistics-time-picker>
