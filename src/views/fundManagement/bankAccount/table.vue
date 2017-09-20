@@ -116,9 +116,9 @@
         }
       },
       async fetchBankcardData(){
-        let {success,data} = await bankCardService.getBankCard();
+        let {success,data} = await bankCardService.getBankCard()
         if(success && data){
-         this.filterFields(data);
+         this.filterFields(data)
         }
         return {data};
       },
