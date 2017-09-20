@@ -5,7 +5,7 @@
           		<i class="fa fa-times"></i>
       		</mu-icon-button>
     		<figure>
-    			<img class="mfp-img img-responsive" alt="undefined" :src="src" style="max-height: 876px;">
+    			<img class="mfp-img img-responsive" alt="undefined" :src="src" >
     			<figcaption>{{ srcTitle }}</figcaption>
     		</figure>
         </div>
@@ -51,6 +51,7 @@
   			margin:0px;
   			img{
   				padding:30px 0px;
+  				max-height: 760px;
   			}
   		}
   	}
