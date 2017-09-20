@@ -138,17 +138,17 @@ export default {
             text:"#"+mt4.mt4_id+" | "+mt4.balance,
             baseCurrency:mt4.base_currency
           }
-        });
+        })
         this.$set(this.model,"mt4_id",this.defaultMT4 ? Number(this.defaultMT4) : this.MT4[0].id)
       },
       async validate(){
         console.log(this.model,"validate")
         let validateResult = await this.validator.validateAll({MT4:this.model.mt4_id,withdrawMethod:this.model.method})
-        validateResult = validateResult && await this.validateAmount(this.model.order_amount) && await this.validateBankCode(this.model.bank_code) ;
+            validateResult = validateResult && await this.validateAmount(this.model.order_amount) && await this.validateBankCode(this.model.bank_code)
         if(validateResult){
-          this.$emit("submit",this.model);
+          this.$emit("submit",this.model)
         }
-        return validateResult;
+        return validateResult
       },
       submit(){
 
@@ -158,7 +158,6 @@ export default {
       },
       async validateAmount(val){
         let result = await this.validator.validate('withdraw_pay',val)
-        console.log(result,"***8",this.validator.errors)
         return result
       },
       async validateBankCode(val){
@@ -173,7 +172,6 @@ export default {
         this.validator.attach('withdraw_pay','required|positiveFloatMoney')
         this.validator.attach('MT4','required')
         this.validator.attach('withdrawMethod','required')
-        
       }
     },
     computed:{
@@ -182,9 +180,9 @@ export default {
       },
       baseCurrency:function(){
         let currency = this.MT4.filter(mt4 => {
-          return mt4.id == this.model.mt4_id;
+          return mt4.id == this.model.mt4_id
         });
-        return currency && currency[0] && currency[0].baseCurrency;
+        return currency && currency[0] && currency[0].baseCurrency
       }
     },
     created(){

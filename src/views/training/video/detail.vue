@@ -9,7 +9,7 @@
 						<div class="general-infor">
 							<h2 class="mg-title text-weight-semibold mt-md mb-xs">{{video.title}}</h2>							
 							<div>
-								<div class="pull-right">{{video.uploader_name}} - {{video.upload_date}} </div>
+								<div class="pull-right">{{video.uploader_name }}  {{video.upload_date}} </div>
 								{{ $t('video.category')}}:
 								<router-link to="?level=1">{{ $t('video.video')}}</router-link> /
 								<router-link :to="'?level=2&videoType='+ $route.query.videoType "> {{ $route.query.videoType | pascalCase }} </router-link><br>
