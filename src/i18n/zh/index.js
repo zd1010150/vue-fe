@@ -7,6 +7,7 @@ import trade from './trade'
 import fund from './fund'
 import notification from './notification'
 import company from './company'
+import currency from './currency'
 export default { 
 	ui, 
 	loginAndPassword,
@@ -16,5 +17,6 @@ export default {
 	trade,
 	fund,
 	notification,
-	company 
+	company,
+	currency 
 }

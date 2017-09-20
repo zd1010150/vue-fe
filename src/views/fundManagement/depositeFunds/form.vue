@@ -1,39 +1,54 @@
 <template>
 	<div class="col-lg-12 col-md-12">
 	
-		<form-doku v-if="method == 'doku'"></form-doku>
-		<form-fasa-pay v-else-if="method == 'fasaPay'"></form-fasa-pay>
-		<template v-else-if="method.indexOf('unionPay') > -1">
-			<form-union-pay :methodCode="methodCode"></form-union-pay>
-		</template>
-		<form-wire-transfer v-else-if="method == 'wireTransfer'"></form-wire-transfer>
-
+		<form-doku v-if="methodCode == 'doku'  || methodCode == 'inskr' " :methodCode="innerMethodCode" :methodName="innerMethodName"></form-doku>
+		<form-fasa-pay v-else-if="methodCode == 'fasa'" :methodCode="innerMethodCode" :methodName="innerMethodName"></form-fasa-pay>
+		<form-cards v-else-if="cards.indexOf(methodCode) > -1" :methodCode="innerMethodCode" :methodName="innerMethodName"></form-cards>
+		<form-wire-transfer v-else-if="methodCode == 'bankwire'" :methodName="innerMethodName"></form-wire-transfer>
+		<form-bank-transfer v-else-if="methodCode == 'inlbt'" :methodName="innerMethodName"></form-bank-transfer>	
 	</div>
 </template>
 <script>
-import doku from "./forms/doku.vue"
-import fasaPay from "./forms/fasaPay"
-import unionPay from "./forms/unionPay"
-import wireTransfer from "./forms/wireTransfer"
+	import doku from "./forms/doku.vue"
+	import fasaPay from "./forms/fasaPay"
+	import cards from "./forms/cards"
+	import wireTransfer from "./forms/wireTransfer"
+	import bankTransfer from "./forms/bankTransfer"
 	export default{
+		data(){
+			return {
+				innerMethodCode: this.methodCode,
+				innerMethodName: this.methodName,
+				cards : ["dd","hb","an","hd","zl","azf","hby","invis","inmas"]//和unionpay的
+			}
+		},
 		props:{
-			method:{
-				type:String,
-				required: true
-			},
 			methodCode:{
 				type:String,
 				required: true
+			},
+			methodName:{
+				type:String
 			}
+			
 		},
 		components: {
 			'form-doku' : doku,
 			'form-fasa-pay' : fasaPay,
-			'form-union-pay' : unionPay,
-			'form-wire-transfer': wireTransfer
+			'form-cards' : cards,
+			'form-wire-transfer': wireTransfer,
+			'form-bank-transfer': bankTransfer
 		},
 		created(){
-			console.log("form created",this.method);
+			console.log("form created",this.methodCode);
+		},
+		watch:{
+			methodCode(val){
+				this.innerMethodCode = val
+			},
+			methodName(val){
+				this.innerMethodName = val
+			}
 		}
 	}
 </script>

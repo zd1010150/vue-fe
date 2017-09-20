@@ -4,7 +4,7 @@
     	<deposite-funds-methods @chosePaymentMethod="methodChange"></deposite-funds-methods>
     </div>
     <div class="row">
-    	<deposite-funds-form :method="method" :methodCode="methodCode" ></deposite-funds-form>
+    	<deposite-funds-form :methodCode="methodCode" :methodName = "methodName"></deposite-funds-form>
     </div>
     <div class="row funds-table">
     	<deposite-funds-table ></deposite-funds-table>
@@ -18,8 +18,8 @@
   export default{
 		data(){
 			return {
-				method:"unionPay",
-        methodCode:""
+				methodCode:"",
+        methodName:""
       }
 		},
 		components :{
@@ -28,10 +28,11 @@
 			'deposite-funds-table' : table
 		},
     methods:{
-      methodChange:function(method,methodCode){
-      	console.log(method+" is selected");
-      	this.method = method;
-      	this.methodCode = methodCode;
+      methodChange:function(methodCode,name){
+      	console.log(methodCode+" is selected")
+      	
+      	this.methodCode = methodCode
+        this.methodName = name
       }
     }
 	}
