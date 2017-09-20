@@ -18,10 +18,9 @@
           </div>
         </div>
       </div>
-      <div class="row padding-20" v-if="infos">
-        <div class="col-lg-6 col-md-6 col-sm-12 bank-detail padding-10" id="bank-detail">
-          
-             <h5> {{ $t('deposit.acyAccountDetail')}} <small >({{ currencies.join("、")}})</small></h5>
+      <div class="row padding-20" v-if="allInfos">
+        <div v-for="(infos,index) in allInfos" class="col-lg-6 col-md-6 col-sm-12 bank-detail mb-lg padding-10" id="bank-detail" :id="index+'print'">
+          <h5> {{ $t('deposit.acyAccountDetail')}} <small >({{ currencies.join("、")}})</small></h5>
           <table >
             <tr>
               <td class="field text-primary">{{ $t('deposit.bankName')}}</td>
@@ -47,21 +46,19 @@
               <td class="field text-primary">{{ $t('deposit.accountName')}}</td>
               <td class="field-value">{{ infos.ACCOUNTHOLDER }}</td>
               <td class="print-btn-td ">
-                <chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn hidden-md hidden-sm hidden-xs" @click="print">
+                <chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn hidden-md hidden-sm hidden-xs" @click="print(index+'print')">
                  <i class="fa fa-print"></i> {{ $t('ui.button.print') }}
                 </chp-button>
               </td>
             </tr>
             <tr class="visible-md visible-sm visible-xs ">
               <td colspan="3" class="padding-10">
-                <chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn pull-right" @click="print">
+                <chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn pull-right" @click="print(index+'print')">
                  <i class="fa fa-print"></i> {{ $t('ui.button.print') }}
                 </chp-button>
               </td>
             </tr>
           </table>
-          
-          
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 padding-20">
           <p>{{ $t('deposit.wireTransferNote')}} <a herf="mailto:accounts@acyfx.com">accounts@acyfx.com</a></p>
@@ -71,7 +68,7 @@
   </chp-panel>
 </template>
 <script>
-  import {printDiv} from 'utils/print.js'
+  import { printTable } from 'utils/print.js'
   import fundsService from 'services/fundsService'
   import loadingMix from 'mixins/loading'
 	export default{
@@ -81,22 +78,21 @@
     },
     data(){
       return {
-        infos:null,
+        allInfos:null,
         currency:'USD',
         currencies: ['AUD','CAD','EUR','GBP','HKD' ,'JPY','NZD','SGD','USD']
       }
     },
 		methods:{
-      print(){
-        window.print()
+      print(id){
+        printTable(id)
       },
       async getBankTransferInfo(){
         this.loadingStatus = true
         let { success,data } = await fundsService.getBanktransferInfo(this.currency)
         this.loadingStatus = false
         if(success){
-          console.log(data,"***8")
-          this.infos = data
+          this.allInfos = data
         }
 
       },

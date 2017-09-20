@@ -1,10 +1,18 @@
-export function printDiv(divId) {
-  let headstr = "<html><head><title></title></head><body>";
-  let footstr = "</body>";
-  let newstr = document.querySelector(divId).innerHTML;
-  let oldstr = document.body.innerHTML;
-  document.body.innerHTML = headstr + newstr + footstr;
-  window.print();
-  document.body.innerHTML = oldstr;
-  return false;
+export function printTable(tableId) {
+  let css = `@media print{
+	  	#${tableId} {
+	  		display: table;
+	  	}
+  	}`,
+    body = document.body,
+    style = document.createElement('style')
+  style.type = 'text/css'
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+  body.appendChild(style)
+  window.print()
+  body.removeChild(style)
 }

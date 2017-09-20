@@ -54,7 +54,7 @@
   </chp-panel>
 </template>
 <script>
-import {printDiv} from "utils/print.js";
+import { printTable } from "utils/print.js";
 	export default{
     data(){
       return {
@@ -66,7 +66,7 @@ import {printDiv} from "utils/print.js";
     },
 		methods:{
       print(){
-        window.print();
+        printTable('bank-detail')
       }
     }
 	}
