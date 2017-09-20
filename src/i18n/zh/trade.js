@@ -26,5 +26,7 @@ export default{
   totalMetal: "总重金属",
   totalOil:"总原油",
   totalCfd: "总差价合约",
-  activeClient: "有效客户"
+  activeClient: "有效客户",
+  newClient: "新增客户",
+  newActiveClient: "新增有效客户"
 }
