@@ -5,7 +5,7 @@ export default {
   totalActiveClient: "Total Active Client",
   totalClient: " Total Client",
   cfd: "CFD",
-  lots: "Lots",
+  lots: "Standard Lots",
   balance: "Balance",
   currency: "Currency",
   leverage: "Leverage",

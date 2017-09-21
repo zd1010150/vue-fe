@@ -28,10 +28,11 @@
 		
 		methods:{
 			async syncProfile(){
-				console.log(this.$store.state.syncTime)
-				if((!this.$store.state.syncTime) || (new Date().getTime() - this.$store.state.syncTime > MAX_SYNC_TIME*60*1000)){
-					let {success} = await userService.syncProfile()
-					if(success){
+				let syncTime = this.$store.state.syncTime + ""
+				//因为是将时间存入localsrage,localstrage只能存入字符串，这会导致取出的时间格式是“”2017-09-21T01:27:27.082Z“”,同理，将null型值存入localstorage的时候会存入“null”
+				if(syncTime == 'null' || (new Date()-new Date(this.$store.state.syncTime.replace(/\"|\'/g,"")) > MAX_SYNC_TIME*60*1000)){
+					let { success } = await userService.syncProfile()
+					if(success) {
 						this.$refs.confirmRefeshDailog.open()
 						this.$store.commit(SET_SYNC_TIME,new Date())
 					}

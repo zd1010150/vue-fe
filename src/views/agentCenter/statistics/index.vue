@@ -27,3 +27,9 @@
 		}
 	}
 </script>
+<style lang="less">
+	.chart-specification-tip{
+		font-size: 16px;
+		vertical-align: bottom;
+	}
+</style>

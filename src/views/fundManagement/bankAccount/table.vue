@@ -17,13 +17,13 @@
                   <chp-table-head chp-sort-by="account" width="200px">{{ $t('bankcard.account')}}</chp-table-head>
                   <chp-table-head chp-sort-by="swift">{{ $t('bankcard.swift')}}</chp-table-head>
                   <chp-table-head>{{ $t('bankcard.attachment')}}</chp-table-head>
-                  <chp-table-head chp-sort-by="status">{{ $t('bankcard.status')}}</chp-table-head>
+                  <chp-table-head chp-sort-by="status" class='status'>{{ $t('bankcard.status')}}</chp-table-head>
                   <chp-table-head >{{ $t('bankcard.Action')}} </chp-table-head>
           </chp-table-row>
               </chp-table-header>
           <chp-table-body>
                 <chp-table-row v-for="(row, rowIndex) in bankCards" :key="rowIndex">
-                  <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" >
+                  <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :class="columnIndex">
                     <mu-icon-button  @click="previewImage(column)" class="text-primary" v-if="columnIndex == 'document'">
                       <i class="fa fa-paperclip" aria-hidden="true"></i>
                     </mu-icon-button>  
@@ -159,6 +159,20 @@
   }
   .form-inline{
     .form-control{
+      width:200px;
+    }
+  }
+  .chp-table-head.status,.chp-table-cell.status{
+    white-space: nowrap;
+    width:100px;
+  }
+  .chp-table-head,.chp-table-cell{
+    &.status{
+      white-space: nowrap;
+      width:100px;
+    }
+    &.account{
+      white-space: nowrap;
       width:200px;
     }
   }

@@ -5,7 +5,13 @@
 	 			:showActionRipple="false"  
 				:isLoading="loadingStatus" 
 				ref="panel">
-		<template slot="panelTitle">{{ $t('charts.percantageVolumeStatistics') }}</template>
+		<template slot="panelTitle">
+			{{ $t('charts.percantageVolumeStatistics') }}
+			<span class="chart-specification-tip pull-right">
+				<i class="fa fa-info-circle" aria-hidden="true"></i>
+				<chp-tooltip chp-direction="left">{{ $t('charts.volumeChart.percentageIconTip') }}</chp-tooltip>
+			</span>
+		</template>
 		<div slot="body" class="row">
 			<div class="col-lg-6 col-md-6 col-sm-12 pr-none pl-none content-center">
 				<chp-echart class="circle-chart" :externalOption='option'></chp-echart>
@@ -34,17 +40,18 @@
 						<td>{{chartData.total.metal}}</td>
 					</tr>
 					<tr>
-						<td><i class="fa fa-circle chart-green" aria-hidden="true"></i>{{ $t('trade.oil') }}</td>
-						<td>{{chartData.current.oil}}</td>
-						<td>{{chartData.last.oil}}</td>
-						<td>{{chartData.total.oil}}</td>
-					</tr>
-					<tr>
-						<td><i class="fa fa-circle chart-orange" aria-hidden="true"></i>{{ $t('trade.cfd') }}</td>
+						<td><i class="fa fa-circle chart-green" aria-hidden="true"></i>{{ $t('trade.cfd') }}</td>
 						<td>{{chartData.current.cfd}}</td>
 						<td>{{chartData.last.cfd}}</td>
 						<td>{{chartData.total.cfd}}</td>
 					</tr>
+					<tr>
+						<td><i class="fa fa-circle chart-orange" aria-hidden="true"></i>{{ $t('trade.oil') }}</td>
+						<td>{{chartData.current.oil}}</td>
+						<td>{{chartData.last.oil}}</td>
+						<td>{{chartData.total.oil}}</td>
+					</tr>
+					
 					
 				</tbody>
 			</table>
@@ -79,7 +86,7 @@
 				        formatter: "{a} <br/>{b}: {c} ({d}%)"
 				    },
 					series:[{
-						name:this.$t('charts.historyTotalCommission'),
+						name:this.$t('charts.historyTotalVolume'),
 						type:'pie',
 						radius:[0,'40%'],
 						labelLine:{
@@ -132,14 +139,14 @@
 					value: data[type].forex 
 					
 				},{
-					name: this.$t('trade.oil'),
-					value: data[type].oil 
-				},{
 					name: this.$t('trade.metal'),
 					value: data[type].metal 
 				},{
 					name: this.$t('trade.cfd'),
 					value: data[type].cfd 
+				},{
+					name: this.$t('trade.oil'),
+					value: data[type].oil 
 				}]
 			},
 			async fetchData({mt4_id,start_date,end_date}){
