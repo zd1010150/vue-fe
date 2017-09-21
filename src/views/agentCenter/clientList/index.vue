@@ -1,7 +1,7 @@
 <template>
 	<div class="fluid-container">
-	<agent-client-list-head @agentChange="agentChange"></agent-client-list-head>
-	<agent-client-list-table :agentId="agentId"></agent-client-list-table>
+		<agent-client-list-head @agentChange="agentChange"></agent-client-list-head>
+		<agent-client-list-table :agentId="agentId"></agent-client-list-table>
 	</div>
 </template>
 <script>
