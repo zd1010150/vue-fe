@@ -16,6 +16,7 @@ en:
     fasaPay: "Fasa Pay"
     wireTransfer: "Wire Transfers"
     bankTransfer: "Bank Transfer"
+    creditCard: "Credit Card"
   bankcard:
     profile: "Profile"
     editBtnText : "Edit Bank Account"
@@ -105,6 +106,7 @@ zh:
     fasaPay: "Fasa Pay"
     wireTransfer: "电汇"
     bankTransfer: "银行转账"
+    creditCard: "信用卡"
   bankcard:
     profile: "个人信息"
     editBtnText : "编辑账号信息"

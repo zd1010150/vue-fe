@@ -100,7 +100,8 @@ export default {
           doku:"withdraw_pay_doku",
           fasaPay:"withdraw_pay_fasa",
           unionPay:"withdraw_pay",
-          wireTransfer:"withdraw_pay_bank_wire"
+          wireTransfer:"withdraw_pay_bank_wire",
+          creditCard: "withdraw_pay_credit"
         }
       }
     },
@@ -135,7 +136,7 @@ export default {
         this.MT4 = this.$store.state.mt4Accounts.map((mt4)=>{
           return {
             id:mt4.mt4_id,
-            text:"#"+mt4.mt4_id+" | "+mt4.balance,
+            text:"#"+mt4.mt4_id+" | "+ mt4.account_type +" | "+mt4.balance,
             baseCurrency:mt4.base_currency
           }
         })

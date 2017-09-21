@@ -5,7 +5,12 @@
 	 			:showActionRipple="false"  
 				:isLoading="loadingStatus" 
 				ref="panel">
-				<template slot="panelTitle">{{ $t('charts.commissionPieChart') }}</template>
+		<template slot="panelTitle">{{ $t('charts.commissionPieChart') }} ({{ $t('trade.lots')}})
+			<span class="chart-specification-tip pull-right">
+				<i class="fa fa-info-circle" aria-hidden="true"></i>
+				<chp-tooltip chp-direction="left">{{ $t('charts.treasuryChart.commissionIconTip') }}</chp-tooltip>
+			</span>
+		</template>
 		<div slot="body" class="row">
 			<div class="col-lg-6 col-md-6 col-sm-12 pr-none pl-none content-center">
 			    <chp-echart class="circle-chart" :externalOption='option'></chp-echart>

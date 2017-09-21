@@ -4,15 +4,22 @@
 		<agent-statistics-time-picker @research = "research" :agent="agent">
 			<ul class="total-info">
 				<li>
-					{{ $t('trade.totalFx') }} : <span class="text-dark info-number"> {{ totalvolumes.total_forex_volume}} </span>
+					{{ $t('trade.fx') }} : <span class="text-dark info-number"> {{ totalvolumes.total_forex_volume}} </span>
+					<chp-tooltip chp-direction="bottom">{{ $t('charts.volumeChart.fxTip') }}</chp-tooltip>
 				</li>
 				<li>
-					{{ $t('trade.totalOil ') }} : <span class="text-dark info-number"> {{ totalvolumes.total_oil_volume}}  </span>
+					{{ $t('trade.metal') }} : <span class="text-dark info-number"> {{ totalvolumes.total_metal_volume}}  </span>
+					<chp-tooltip chp-direction="bottom">{{ $t('charts.volumeChart.metalTip') }}</chp-tooltip>
+				</li>
+				<li>{{ $t('trade.cfd') }} : <span class="text-dark info-number"> {{ totalvolumes.total_cfd_volume}}  </span>
+					<chp-tooltip chp-direction="bottom">{{ $t('charts.volumeChart.cfdTip') }}</chp-tooltip>
 				</li>
 				<li>
-					{{ $t('trade.totalMetal') }} : <span class="text-dark info-number"> {{ totalvolumes.total_metal_volume}}  </span>
+					{{ $t('trade.oil ') }} : <span class="text-dark info-number"> {{ totalvolumes.total_oil_volume}}  </span>
+					<chp-tooltip chp-direction="bottom">{{ $t('charts.volumeChart.oilTip') }}</chp-tooltip>
 				</li>
-				<li>{{ $t('trade.totalCfd') }} : <span class="text-dark info-number"> {{ totalvolumes.total_cfd_volume}}  </span></li>
+				
+				
 			</ul>
 		</agent-statistics-time-picker>
 		<agent-statistics-volume-chart-1 ref="chart1" @totalChange="totalChange"></agent-statistics-volume-chart-1>
