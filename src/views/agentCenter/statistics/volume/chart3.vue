@@ -146,7 +146,7 @@
 		       					barWidth:10,
 		       					barMinHeight:1
 		       				},{
-		       					name: this.$t('charts.average'),
+		       					name: this.$t('charts.monthlyAverage'),
 		       					data: this.getBarSeriesData(data,"avg"),
 		       					type:'bar',
 		       					barWidth:10,

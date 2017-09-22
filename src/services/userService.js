@@ -1,7 +1,5 @@
 
 import   { fetchData }  from  './network/getData'
-
-
 export default{
   async login(form){
 
