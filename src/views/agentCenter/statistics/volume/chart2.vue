@@ -172,6 +172,11 @@
 			display: inline-block;
 			padding-right: 5px;
 		}
+		th,td{
+			&:first-child{
+				width:90px;
+			}
+		}
 	}
 	
 	@media(max-width:@screen-sm-min){
