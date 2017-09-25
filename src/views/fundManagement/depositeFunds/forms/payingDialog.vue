@@ -1,7 +1,7 @@
 <i18n src="../../i18n.yaml"></i18n>
 <template>
 	<chp-dialog-alert
-  		  :chp-content="$t('deposit.dialogNote')"
+  		  :chp-content-html="$t('deposit.dialogNote')"
 		  :chp-ok-text="$t('ui.button.confirm')"
 		  ref="infoDialog"
 		  @close="close"
