@@ -122,23 +122,22 @@
       },
       pageSize:function(val){
         this.fetchDepositeData({
-        pageIndex:this.pageIndex,
-        pageSize:val
-      });
+          pageIndex:this.pageIndex,
+          pageSize:val
+        })
       },
       pageIndex:function(val){
         this.fetchDepositeData({
-        pageIndex:val,
-        pageSize:this.pageSize
-      });
+          pageIndex:val,
+          pageSize:this.pageSize
+        })
       }
     },
     created(){
-      
-    	this.fetchDepositeData({
+      this.fetchDepositeData({
     		pageIndex:this.pageIndex,
     		pageSize:this.pageSize
-    	});
+    	})
     },
     methods : {
       changeEndday(val){
@@ -163,25 +162,24 @@
         }
       },
       async fetchDepositeData(params){
-        this.loadingStatus = true;
+        this.loadingStatus = true
       	let {data,message,success} = await dataTableService.pagingQuery(Object.assign({
       			url:'/deposit'
       		},{
               pageIndex:this.pageIndex,
               pageSize:this.pageSize,
               sort:this.sort
-           },{queryParameter:this.model},params));
+           },{queryParameter:this.model},params))
         this.loadingStatus = false
         if(success){
-            
-      			this.filterFields(data.data)
+            this.filterFields(data.data)
       			this.pageIndex = data.current_page
       			this.rowsTotal = data.total
       			this.pageSize = Number(data.per_page)
       		}
       },
       async research(){
-          let validateResult = await this.$validator.validateAll();
+          let validateResult = await this.$validator.validateAll()
           if(validateResult){
             this.fetchDepositeData()
           }
@@ -191,7 +189,7 @@
       },
       sortRow({name,type}){
           this.sort = (type=="desc" ?"-":"" )+ name
-          this.fetchDepositeData();
+          this.fetchDepositeData()
       },
       pageSizeChange(newSize){
         this.pageSize = newSize
