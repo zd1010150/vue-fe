@@ -73,12 +73,29 @@ var webpackConfig = merge(baseWebpackConfig, {
       name: 'vendor',
       minChunks: function (module, count) {
         // any required modules inside node_modules are extracted to vendor
+        console.log(module.resource,"==",config.build.notCommonChunks.indexOf(module.resource))
         return (
           module.resource &&
           /\.js$/.test(module.resource) &&
           module.resource.indexOf(
             path.join(__dirname, '../node_modules')
-          ) === 0
+          ) === 0 &&
+          config.build.notCommonChunks.indexOf(module.resource) < 0 
+        )
+      }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'echarts',
+      minChunks: function (module, count) {
+        // any required modules inside node_modules are extracted to vendor
+        console.log(module.resource,"==")
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) &&
+          module.resource.indexOf(
+            path.join(__dirname, '../node_modules')
+          ) === 0 &&
+          config.build.notCommonChunks.indexOf(module.resource) > 0 
         )
       }
     }),
@@ -86,7 +103,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     // prevent vendor hash from being updated whenever app bundle is updated
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
-      chunks: ['vendor']
+      chunks: ['vendor','echarts']
     }),
     // copy custom static assets
     new CopyWebpackPlugin([
