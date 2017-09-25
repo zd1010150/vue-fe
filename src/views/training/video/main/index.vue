@@ -22,7 +22,7 @@
                 <div class="featured-image" v-bind:style='{backgroundImage:"url(" + video.imagepath +")"}'></div>
               </router-link>  
                 <div>
-                  <h5 class="mb-xs mt-md">{{video.title}}</h5>
+                  <h5 class="mb-xs mt-md"><chp-one-line :content='video.title' :lens="15"></chp-one-line></h5>
                   <div class="mg-description">
                     <div class="text-muted">{{video.uploader_name}}</div>
                     <small class="text-muted pull-right pt-xs">{{video.upload_date}}</small>
