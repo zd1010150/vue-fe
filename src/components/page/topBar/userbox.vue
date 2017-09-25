@@ -11,7 +11,7 @@
                 <!-- <img v-bind:src="$store.state.userInfo.avatar" alt="Joseph Doe" class="img-circle"> -->
                 <mu-avatar :src="$store.state.userInfo.avatar" slot="avatar" :size="35" class="summary-icon bg-primary "/>
             </figure>
-            <div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
+            <div class="profile-info">
                 <span class="name word-wrap" >{{ $store.state.userInfo.name}}</span>
             <!--     <span class="role"> 普通用户</span>
 
@@ -24,7 +24,7 @@
             <ul class="list-unstyled">
                 <li class="divider"></li>
                 <li>
-                    <a role="menuitem" tabindex="-1" href="pages-user-profile.html">
+                    <a role="menuitem" tabindex="-1" href="#/setting">
                       <i class="fa fa-user"></i>
                       {{ $t('userbox.myProfile') }}
                     </a>
@@ -36,17 +36,10 @@
                     </a>
                 </li>
                 <li>
-                    <a role="menuitem" tabindex="-1" href="javascript:void(0)" class="logout-item" @click="logout">
-                      <i class="fa fa-power-off"></i> 
-                      {{ $t('userbox.logout') }} 
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                	<a href="javascript:void(0)" @click="changeTheme('dark')" class="color-item">
-                		<mu-radio name="theme" nativeValue="dark" v-model="theme" slot="left" @change="changeTheme" class="item-icon"/>
-					        	<span class="item-title">{{$t('themes.dark')}}</span>
-                	</a>
+                  <a href="javascript:void(0)" @click="changeTheme('dark')" class="color-item">
+                    <mu-radio name="theme" nativeValue="dark" v-model="theme" slot="left" @change="changeTheme" class="item-icon"/>
+                    <span class="item-title">{{$t('themes.dark')}}</span>
+                  </a>
                 </li>
                 <li>
                   <a href="javascript:void(0)" @click="changeTheme('light')" class="color-item">
@@ -54,6 +47,14 @@
                       <span class="item-title">{{$t('themes.light')}}</span>
                   </a>
                 </li>
+                <li>
+                    <a role="menuitem" tabindex="-1" href="javascript:void(0)" class="logout-item" @click="logout">
+                      <i class="fa fa-power-off"></i> 
+                      {{ $t('userbox.logout') }} 
+                    </a>
+                </li>
+                <li class="divider"></li>
+                
             </ul>
         </mu-popover>
         <chp-dialog-confirm
