@@ -4,7 +4,9 @@
 		<chp-file-upload 
 			name="document" 
 			:post-action="postAction" 
+			:put-action="postAction"
 			@input="inputFunction" 
+			:multiple="true"
 			ref="upload"> 
 		file upload
 		</chp-file-upload>
@@ -31,7 +33,7 @@ import { getStore } from "utils/storage.js"
 	 		return {
 	 			files : [],
 	 			postAction : UPLOAD_DOCUMENT_URL+"/bill",
-	 			dropPostAction : UPLOAD_DOCUMENT_URL+"/document",
+	 			dropPostAction : UPLOAD_DOCUMENT_URL+"/bill",
 	 			headers:{
 	 				'Accept': 'application/json',
 	 				'Authorization': 'Bearer '+ this.$store.state.token

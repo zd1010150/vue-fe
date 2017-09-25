@@ -17,7 +17,6 @@
 						:filter="filter"
 						:value="value"
 						:v-model="files"
-						@input="input"
 						@input-file="inputFile" 
 						ref="upload">
 			<slot></slot>
@@ -28,8 +27,6 @@
 					<li v-for="v in progressValue">
 					    <span>{{v.progress}}%</span>
 						<mu-linear-progress mode="determinate" :value="v.progress"/>
-						<!-- <img  v-if="v.response && v.response.data && v.response.data.url" :src="v.response.data.url" class="upload-img-thumb img-thumbnail"/> -->
-
 					</li>
 				</ul>
             </div>
@@ -145,28 +142,86 @@
 		},
 
 		methods:{
-			input:function(files){
-				if(files.length < 1){ this.active = false; return;}
-				this.$refs.upload.active = true
-				let errors = [],
-					isAllSuccess = true
-				this.progressValue = files.map((file)=>{
-					isAllSuccess = isAllSuccess && file.success && (!file.active);
-					file.error ? errors.push(file.error) :"";
-					return { progress :Number(file.progress),response:file.response}
-				});
-				if(isAllSuccess || errors.length > 0){
-					this.active = false;
-					this.$nextTick(()=>{
-						this.$emit('input',this.progressValue,isAllSuccess ? true : false,errors); //返回上传文件的结果
-					});
+			inputFile:function(newFile,oldFile){
+				// // 添加文件// 自动上传
+		  //       if (!this.$refs.upload.active) {
+		  //         	this.$refs.upload.active = true
+	   //      	}
+		  //     	files = _.isArray(files) ? files : [files]
+				// if(files.length < 1){ 
+				// 	this.active = false 
+				// 	return
+				// }
+				// this.$refs.upload.active = true
+				// let errors = [],
+				// 	isAllSuccess = true
+				// this.progressValue = files.map((file)=>{
+				// 	isAllSuccess = isAllSuccess && file.success && (!file.active)
+				// 	file.error ? errors.push(file.error) :""
+				// 	console.log("files,upload---",JSON.stringify(file),JSON.stringify(file.xhr))
+				
+				// 	return { progress : Number(file.progress),response:file.response}
+				// })
+				// console.log("files,upload---end:::::",this.progressValue,isAllSuccess)
+				
+				// if(isAllSuccess || errors.length > 0){
+				// 	this.active = false
+				// 	this.$nextTick(()=>{
+				// 		this.$emit('input',this.progressValue,isAllSuccess ? true : false,errors) //返回上传文件的结果
+				// 	})
 					
-				}else{
-					this.active = true;
-				}
-			},
-			inputFile:function(file,old){
-				this.$emit('input-file',file,old);
+				// }else{
+				// 	this.active = true
+				// }
+		if (newFile && !oldFile) {
+        // 添加文件
+
+        // 自动上传
+        if (!this.$refs.upload.active) {
+          this.$refs.upload.active = true
+        }
+      }
+
+      if (newFile && oldFile) {
+        // 更新文件
+
+        // 开始上传
+        if (newFile.active !== oldFile.active) {
+          console.log('Start upload', newFile.active, newFile)
+
+          // 限定最小字节
+          if (newFile.size >= 0 && newFile.size < 100 * 1024) {
+            newFile = this.$refs.upload.update(newFile, {error: 'size'})
+          }
+        }
+
+        // 上传进度
+        if (newFile.progress !== oldFile.progress) {
+          console.log('progress', newFile.progress, newFile)
+        }
+
+        // 上传错误
+        if (newFile.error !== oldFile.error) {
+          console.log('error', newFile.error, newFile)
+        }
+
+        // 上传成功
+        if (newFile.success !== oldFile.success) {
+          console.log('success', newFile.success, newFile)
+        }
+      }
+
+      if (!newFile && oldFile) {
+        // 删除文件
+
+        // 自动删除 服务器上的文件
+        if (oldFile.success && oldFile.response.id) {
+          // $.ajax({  
+          //   type: 'DELETE',  
+          //   url: '/file/delete?id=' + oldFile.response.id,
+          // });
+        }
+      }
 			},
 			showProgressMask:function(){
 				this.progressMaskEl = this.$refs.progressMask;
