@@ -16,21 +16,20 @@
               <mu-text-field  v-validate="'required|email'" 
                               data-vv-value-path="model.email" 
                               data-vv-name="email"
-                             :hintText="$t('login.placeholderEmail')" 
-                             class="form-control input-lg" 
-                             name="email"
-                             type="email" 
-                             required 
-                             v-model="model.email"  
-                             id="email"/>
-              <span class="input-group-addon">
-                      <span class="icon icon-lg"> <i class="fa fa-user"></i></span>
-                </span>
+                              :hintText="$t('login.placeholderEmail')" 
+                              class="form-control input-lg" 
+                              name="email"
+                              type="email" 
+                              v-model.lazy="model.email"  
+                              id="email"/>
+              <span class="input-group-addon"><span class="icon icon-lg"> <i class="fa fa-user"></i></span></span>
             </div>
-
-            <span slot="required" class="error"
-                  v-if="errors.has('email:required')">{{ errors.first('email:required')}}</span>
-            <span slot="email" class="error" v-if="errors.has('email:email')">{{ errors.first('email:email')}}</span>
+            <span slot="required" class="error" v-if="errors.has('email:required')">
+              {{ errors.first('email:required')}}
+            </span>
+            <span slot="email" class="error" v-if="errors.has('email:email')">
+              {{ errors.first('email:email')}}
+            </span>
           </div>
           <div class="form-group mb-lg required-field" :class="errorClass('password')">
             <div class="clearfix">
@@ -41,22 +40,24 @@
               <mu-text-field  v-validate="'required|min:8'" 
                               data-vv-value-path="model.password" 
                               data-vv-name="password"
-                             :hintText="$t('login.placeholderPwd')" 
-                             class="form-control input-lg"
-                             name="password" 
-                             type="password" 
-                             v-model="model.password" 
-                             required 
-                             id="password"/>
+                              :hintText="$t('login.placeholderPwd')" 
+                              class="form-control input-lg"
+                              name="password" 
+                              type="password" 
+                              v-model.lazy="model.password" 
+                              id="password"/>
               <span class="input-group-addon">
                   <span class="icon icon-lg">
                     <i class="fa fa-lock"></i>
                   </span>
-							</span>
+              </span>
             </div>
-            <span slot="required" class="error" v-if="errors.has('password:required')">{{errors.first('password:required')}}</span>
-            <span slot="password" class="error"
-                v-if="errors.has('password:min')">{{errors.first('password:min')}}</span>
+            <span slot="required" class="error" v-if="errors.has('password:required')">
+              {{errors.first('password:required')}}
+            </span>
+            <span slot="password" class="error" v-if="errors.has('password:min')">
+              {{errors.first('password:min')}}
+            </span>
           </div>
           <div class="row">
             <div class="col-sm-12 text-right">
@@ -89,40 +90,19 @@
     },
     methods: {
       async login (e){
-        
-          let validateResult = await this.$validator.validateAll();
-          if(validateResult){
-            this.loading = true;
-            let {message,success} = await this.$store.dispatch('login', this.model);
-            this.loading = false;
-             if(success){
-              let {message,success} = await this.$store.dispatch('getUserInfo');
-              if(success){
-                this.$router.addRoutes(routers);
-                this.$router.replace("/main");
-              }
+       let validateResult = await this.$validator.validateAll()
+        if(validateResult){
+          this.loading = true
+          let {message,success} = await this.$store.dispatch('login', this.model)
+          if(success){
+            let {message,success} = await this.$store.dispatch('getUserInfo')
+            if(success){
+              this.$router.addRoutes(routers)
+              this.$router.replace("/main")
             }
           }
+          this.loading = false
         }
-      
-    },
-    mounted(){
-       let self = this;
-        setTimeout(()=>{
-          let $pwd = document.querySelector("input[name=password]"),
-              $email = document.querySelector("input[name=email]");
-          if($pwd && $email &&( $pwd.value || $email.value )){
-            document.querySelector("#password .mu-text-field-hint").classList.remove('show');
-
-          }
-        },500);
-    },
-    watch: {
-      errors(val, oldVal){
-        console.log("errors", val);
-      },
-      model(val){
-        console.log("model", val);
       }
     }
   }

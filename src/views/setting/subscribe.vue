@@ -32,7 +32,7 @@
 		                <div class="row">
 		                	 <div class="col-lg-12">
 		                    	<chp-button class="btn btn btn-primary mr-xs btn-sm mt-sm" @click="save()" :disabled="saveDisabled"> 
-		                    		<i class="fa fa-save mr-xs"></i> Save
+		                    		<i class="fa fa-save mr-xs"></i> {{ $t('ui.button.save') }}
 		                    	</chp-button>
 		                    </div>
 		                </div>
