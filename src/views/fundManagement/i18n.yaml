@@ -87,7 +87,7 @@ en:
     wireTransferNote: "Please input your MT4 account number and account name in the comment area when you fill in Wire Transfers .To ensure Wire Transfer credit to your account as soon as possible, please send your receipt to "
     acyAccountDetail: "ACY Bank Account Detail"
     bank: "Bank"
-    dialogNote: "Click this OK button after pay success"
+    dialogNote: "Click this OK button after pay success,<p class='text-danger'>Please note your browser may block the payment web page, you should set the browser to allow to open new page<\/p>"
 zh:
   internalTransfer:
     note : "注意：有仓位的账户无法进行转出资金，代理账户需激活后才能进行内转"
@@ -177,4 +177,4 @@ zh:
     wireTransferNote: "请在填写汇款表格时,在附言中写下您的MT4账号以及账户名字,为了确保第一时间到账,你可以把汇款收据发送到"
     acyAccountDetail: "ACY 银行账户信息"
     bank: "银行"
-    dialogNote: "请支付成功后，点击本确定按钮"
+    dialogNote: "请支付成功后，点击本确定按钮,<p class='text-danger'>注意:你的浏览器可能阻止打开新的页面，需要设置你的浏览器打开新的页面</p>"
