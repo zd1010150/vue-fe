@@ -5,35 +5,35 @@
     <div v-for="category in categories" class="categories">
       <div class="video-header">
         <h3 class="title">
-          <span class="mt-none">{{ $t('video.'+category.title) }}</span>
+          <span class="mt-none">{{ $t('video.'+category.code) }}</span>
           <div class="pull-right action">
-            <router-link v-bind:to="'?level=2&videoType='+ category.link">
+            <router-link v-bind:to="'?level=2&videoType='+ category.code">
               <button class="mb-xs mt-xs mr-xs btn btn-sm btn-primary"><i class="fa fa-info-circle mr-xs"></i>{{ $t('video.more')}}</button>
             </router-link>
           </div>
         </h3>
-		  </div>
+      </div>
 
       <div class="media-gallery">
         <div class="row mg-files">
-          <div v-for="video in category.loop" class="col-sm-6 col-lg-3">
+          <div v-for="video in category.children" class="col-sm-6 col-lg-3">
             <div class="thumbnail">
-              <router-link :to="'?level=3&videoType='+category.link+'&videoId='+video.id">
+              <router-link :to="'?level=3&videoType='+category.code+'&videoId='+video.id">
                 <div class="featured-image" v-bind:style='{backgroundImage:"url(" + video.imagepath +")"}'></div>
-              </router-link>	
+              </router-link>  
                 <div>
                   <h5 class="mb-xs mt-md">{{video.title}}</h5>
                   <div class="mg-description">
                     <div class="text-muted">{{video.uploader_name}}</div>
                     <small class="text-muted pull-right pt-xs">{{video.upload_date}}</small>
                   </div>
-                </div>						
+                </div>            
             </div>
           </div>
         </div>
       </div>
     </div>
-	</div>
+  </div>
 </template>
 
 <script>
@@ -43,11 +43,7 @@ export default {
   data() {
     return {
       language: this.$store.state.language,
-      categories: [
-        { title: 'info', link: 'info', loop: [] },
-        { title: 'analysis', link: 'analysis', loop: [] },
-        { title: 'tutorials', link: 'tutorials', loop: [] }
-      ]
+      categories: []
     }
   },
   methods: {
@@ -56,19 +52,31 @@ export default {
       let { success, data } = await trainingService.getVideo(this.language == "zh" ? "mandarin" : "english", "")
       this.$store.commit(SET_CONTENT_LOADING, false)
       if (success) {
-        this.categories[0].loop = data.info
-        this.categories[1].loop = data.analysis
-        this.categories[2].loop = data.tutorials
+        this.mapData(data)
       }
     },
-
+    mapData(data){
+      if(! (data && data.categorized && data.categories )) return
+      let categories = []
+      for (let categorized in data.categorized){
+        let c_id = categorized,
+            c_children = data.categorized[c_id],
+            category =[]
+        if(c_children && c_children.length > 0){
+          category = data.categories.filter((c)=>{
+              return c.id == c_id
+          })[0]
+          categories.push({code:category.code,children:c_children})
+        }
+      }
+      this.categories = categories
+    },
     refresh() {
       this.fetchVideo()
     }
   },
   watch: {
     "$store.state.language": function(val) {
-      console.log(val);
       this.language = val
       this.fetchVideo()
     }
@@ -79,9 +87,9 @@ export default {
 }
 </script>
 <style scoped>
-.video-header {	
-	border-bottom: 1px solid #4C4C4C;
-	margin-bottom: 15px;
+.video-header { 
+  border-bottom: 1px solid #4C4C4C;
+  margin-bottom: 15px;
 }
 
 .video-header .action {
@@ -89,11 +97,11 @@ export default {
 }
 
 .featured-image {
-	width: 100%;
-	height: 0;
-	padding-bottom: 56.25%;
-	background: rgba(0, 0, 0, 0.1) no-repeat center;
-	background-size: 100%; 
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  background: rgba(0, 0, 0, 0.1) no-repeat center;
+  background-size: 100%; 
 }
 </style>
 
