@@ -146,23 +146,25 @@
 
 		methods:{
 			input:function(files){
-				if(files.length < 1){ this.active = false; return;}
+				if(files.length < 1){ 
+					this.active = false 
+					return
+				}
 				this.$refs.upload.active = true
 				let errors = [],
 					isAllSuccess = true
 				this.progressValue = files.map((file)=>{
-					isAllSuccess = isAllSuccess && file.success && (!file.active);
-					file.error ? errors.push(file.error) :"";
+					isAllSuccess = isAllSuccess && file.success && (!file.active)
+					file.error ? errors.push(file.error) :""
 					return { progress :Number(file.progress),response:file.response}
-				});
+				})
 				if(isAllSuccess || errors.length > 0){
-					this.active = false;
+					this.active = false
 					this.$nextTick(()=>{
-						this.$emit('input',this.progressValue,isAllSuccess ? true : false,errors); //返回上传文件的结果
-					});
-					
+						this.$emit('input',this.progressValue,isAllSuccess ? true : false,errors) //返回上传文件的结果
+					})
 				}else{
-					this.active = true;
+					this.active = true
 				}
 			},
 			inputFile:function(file,old){

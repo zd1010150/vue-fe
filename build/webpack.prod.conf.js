@@ -103,7 +103,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     // prevent vendor hash from being updated whenever app bundle is updated
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
-      chunks: ['vendor','echarts']
+      chunks: ['vendor']
     }),
     // copy custom static assets
     new CopyWebpackPlugin([

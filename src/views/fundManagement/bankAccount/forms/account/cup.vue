@@ -190,8 +190,8 @@ export default {
         this.$emit('loading',false)
     	},
     	dropInputFunction(files,isAllsuccess,error){
-        this.$refs.dropUploads.active = true;
-        if(isAllsuccess){
+        this.$refs.dropUploads.active = true
+        if(isAllsuccess && files[0] && files[0].response){
           this.$set(this.model,"document",files[0].response.data.url)
         }else{
           this.$set(this.model,"document","")
