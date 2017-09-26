@@ -188,8 +188,10 @@
 
 	        // 开始上传
 		        if (newFile.active !== oldFile.active) {
-		          console.log('Start upload', newFile.active, newFile)
-
+		          console.log('Start upload', newFile.active, newFile.progress,newFile)
+		          if(newFile.active){
+		          	this
+		          }
 		          
 		        }
 
@@ -205,7 +207,7 @@
 
 		        // 上传成功
 		        if (newFile.success !== oldFile.success) {
-		          console.log('success', newFile.success, newFile)
+		          console.log('success', newFile.success,newFile.progress, newFile)
 		        }
 	        }
 
