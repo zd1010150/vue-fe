@@ -129,9 +129,8 @@ export default {
         this.$emit('loading',false)
       },
       dropInputFunction(files,isAllsuccess,error){
-        this.$refs.dropUploads.active = true;
         if(isAllsuccess){
-          this.$set(this.model,"document",files[0].response.data.url)
+          this.$set(this.model,"document",files[0].data.url)
         }else{
           this.$set(this.model,"document","")
           this.toastr.error(this.$t("info.UPLOAD_ERROR."+error[0]))

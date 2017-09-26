@@ -92,11 +92,10 @@
       			this.$set(this.model,"attachment","");
     		},
   			dropInputFunction(files,isAllsuccess,error){
-	        	this.$refs.dropUploads.active = true;
-		        if(isAllsuccess){
-		        	console.log(files[0].response.data.fileid);
-		          this.$set(this.model,"fileid",files[0].response.data.fileid);	
-		          this.$set(this.model,"attachment",files[0].response.data.url);
+	        	if(isAllsuccess){
+		        	console.log(files[0].data.fileid);
+		          this.$set(this.model,"fileid",files[0].data.fileid);	
+		          this.$set(this.model,"attachment",files[0].data.url);
 		        }else{
 		          this.$set(this.model,"attachment","")
 		          this.$set(this.model,"fileid","")

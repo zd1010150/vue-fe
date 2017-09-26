@@ -197,10 +197,9 @@
         this.loadingStatus = false
       },
   		dropInputFunction(files,isAllsuccess,error){
-        this.$refs.dropUploads.active = true;
         if(isAllsuccess){
-          this.$set(this.model,"fileid",files[0].response.data.fileid)
-          this.$set(this.model,"attachment",files[0].response.data.url)
+          this.$set(this.model,"fileid",files[0].data.fileid)
+          this.$set(this.model,"attachment",files[0].data.url)
         }else{
           this.$set(this.model,"attachment","")
           this.$set(this.model,"fileid","")

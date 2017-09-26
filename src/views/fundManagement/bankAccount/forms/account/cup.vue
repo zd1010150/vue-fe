@@ -190,15 +190,13 @@ export default {
         this.$emit('loading',false)
     	},
     	dropInputFunction(files,isAllsuccess,error){
-        console.log("****input",JSON.stringify(files),new Date())
-        this.$refs.dropUploads.active = true
-        // if(isAllsuccess){
-        //   this.$set(this.model,"document",files[0].response.data.url)
-        // }else{
-        //   this.$set(this.model,"document","")
-        //   this.toastr.error(this.$t("info.UPLOAD_ERROR."+error[0]))
-        // }
-        // this.$validator.validate("bankDocument",this.model.document)
+        if(isAllsuccess){
+          this.$set(this.model,"document",files[0].data.url)
+        }else{
+          this.$set(this.model,"document","")
+          this.toastr.error(this.$t("info.UPLOAD_ERROR."+error[0]))
+        }
+        this.$validator.validate("bankDocument",this.model.document)
       },
       async submit(){
         let validateResult = await this.$validator.validateAll()

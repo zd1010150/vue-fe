@@ -16,7 +16,7 @@ export default async(type = 'GET', url = '', data = {}) => {
       'Content-Type': 'application/json'
     },
     mode: "cors",
-    cache: "force-cache"
+    cache: "no-cache"
   }
   if (store.state.token) {
     requestConfig.headers["Authorization"] = "Bearer " + store.state.token;
@@ -58,16 +58,14 @@ export default async(type = 'GET', url = '', data = {}) => {
   }
   let response,contentType
   try {
-    //response = await _fetch(fetch(url, requestConfig), MAX_FETCH_TIMEOUT)
-    response = await fetch(url, requestConfig)
-    console.log(response,"====response")
+    response = await _fetch(fetch(url, requestConfig), MAX_FETCH_TIMEOUT)
+    //response = await fetch(url, requestConfig)
     contentType = response.headers.get("content-type")
     if(contentType && contentType.includes('application/json')){
       return await response.json()
     }
     throw new TypeError('Oops,we haven\'t get JSON! ')
   } catch (error) {
-    console.log(url,requestConfig,error,"reject error")
     return {
       status_code: response.status
     }

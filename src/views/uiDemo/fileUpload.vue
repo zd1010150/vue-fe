@@ -13,6 +13,7 @@
 	<chp-file-upload 
 		name="document" 
 		drop=".dropFileArea" 
+		:extensions = "['png', 'jpg','jpeg','bmp','pdf','doc','docx']"
 		:dropDirectory="false" 
 		:multiple="true"
 		:post-action="dropPostAction" 
@@ -41,13 +42,10 @@ import { getStore } from "utils/storage.js"
 	 	},
 	 	methods:{
 	 		inputFunction(files,isAllsuccess,error){
-	 			console.log("input file:",JSON.stringify(files),isAllsuccess,JSON.stringify(error));
-	 			//this.$refs.upload.upload(this.files);
-	 			this.$refs.upload.active = true;
+	 			console.log("input file:",JSON.stringify(files),isAllsuccess,JSON.stringify(error))
 	 		},
-	 		dropInputFunction(response){
-	 			this.$refs.dropUploads.active = true;
-	 			console.log("input files drop:",JSON.stringify(response));
+	 		dropInputFunction(files,isAllsuccess,error){
+	 			console.log("input file:",JSON.stringify(files),isAllsuccess,JSON.stringify(error))
 	 		}
 	 	}
 	 }
