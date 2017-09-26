@@ -1,7 +1,7 @@
 <template>
 	<div class="col-lg-12 col-md-12">
 	
-		<form-doku v-if="methodCode == 'doku'  || methodCode == 'inskr' " :methodCode="innerMethodCode" :methodName="innerMethodName"></form-doku>
+		<form-doku v-if="noAccountAndBank.indexOf(methodCode) > -1" :methodCode="innerMethodCode" :methodName="innerMethodName"></form-doku>
 		<form-fasa-pay v-else-if="methodCode == 'fasa'" :methodCode="innerMethodCode" :methodName="innerMethodName"></form-fasa-pay>
 		<form-cards v-else-if="cards.indexOf(methodCode) > -1" :methodCode="innerMethodCode" :methodName="innerMethodName"></form-cards>
 		<form-wire-transfer v-else-if="methodCode == 'bankwire'" :methodName="innerMethodName"></form-wire-transfer>
@@ -19,7 +19,8 @@
 			return {
 				innerMethodCode: this.methodCode,
 				innerMethodName: this.methodName,
-				cards : ["dd","hb","an","hd","zl","azf","hby","invis","inmas"]//和unionpay的
+				noAccountAndBank: ['doku','inskr','invis','inmas'],
+				cards : ["dd","hb","an","hd","zl","azf","hby"]//和unionpay的
 			}
 		},
 		props:{

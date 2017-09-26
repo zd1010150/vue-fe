@@ -56,9 +56,9 @@ export default async(type = 'GET', url = '', data = {}) => {
     }, timeout)
     return abortable_promise
   }
-
+  let response
   try {
-    let response = await _fetch(fetch(url, requestConfig), MAX_FETCH_TIMEOUT)
+    response = await _fetch(fetch(url, requestConfig), MAX_FETCH_TIMEOUT)
     return await response.json()
   } catch (error) {
     return {

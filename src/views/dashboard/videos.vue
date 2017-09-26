@@ -12,7 +12,7 @@
 							:autoplayHoverPause="true" 
 							:loop="true" 
 							:paginationPadding="5"
-							:autoplayTimeout="7000">
+							:autoplayTimeout="2000">
 				<chp-slide v-for="(video,index) in videos" class="slide-wrapper" :key="index">
 					<chp-feature-image :src= "video.imagepath || video.image_link "/>
 		      		<div class="mask">
@@ -44,9 +44,17 @@
 				this.loadingStatus = true
 				let { success,data } = await trainingService.getVideo(this.$store.state.language == "zh" ? "mandarin" : "english")
 				this.loadingStatus = false
-				if(success && data.info && data.analysis && data.tutorials){
-					this.videos = [...data.info,...data.analysis,...data.tutorials]
+				if( success ){
+					this.mapData(data)
 				}
+			},
+			mapData(data){
+				if(!data.categorized) return
+				let videos = []
+				for(let i in data.categorized){
+					videos = [...videos,...data.categorized[i]]
+				}
+				this.videos = videos
 			}
 		},
 		watch:{

@@ -39,9 +39,17 @@
 				this.loadingStatus = true
 				let {success,data} = await trainingService.getBook(this.$store.state.language == "zh" ? "mandarin" : "english")
 				this.loadingStatus = false
-				if(success && data.articles && data.books){
-					this.books = [...data.articles,...data.books]
+				if(success){
+					this.mapData(data)
 				}
+			},
+			mapData(data){
+				if(!data.categorized) return
+				let books = []
+				for(let i in data.categorized){
+					books = [...books,...data.categorized[i]]
+				}
+				this.books = books
 			}
 		},
 		watch:{

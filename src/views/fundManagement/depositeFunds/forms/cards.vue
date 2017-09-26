@@ -3,6 +3,7 @@
 	<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
     <template slot="panelTitle">{{ methodName }}</template>
      <form slot="body" class="form-horizontal form-bordered " method="POST" name="unionPay" target="_blank" ref="unionPayForm">
+        <input type="hidden" name="language" :value="$store.state.language">
         <paying-dialog ref="dialog" @close="handlerDialogClose"></paying-dialog>
         <div class="form-group" :class="errorClass('MT4')">
           <label class="control-label col-md-3">MT4 | {{ $t('deposit.balance') }}</label>
@@ -70,8 +71,7 @@
         model : {
           mt4_id : "",
           order_amount: "",
-          bank_code:"",
-          gateWayCode:this.methodCode
+          bank_code:""
         }
       }
     },
@@ -87,7 +87,7 @@
           if(validateResult){
             this.$refs.dialog.open()
             let $form = this.$refs.unionPayForm
-            $form.action = "/api/deposit/"+this.model.gateWayCode
+            $form.action = "/api/deposit/submit/"+this.methodCode
             $form.submit()
           }
       },

@@ -2,7 +2,7 @@
  * MT4信息
  */
 import   { fetchData }  from  './network/getData'
-
+import dataTableService from './dataTableService'
 export default{
   
   async getMT4Account(type="all"){
@@ -46,8 +46,9 @@ export default{
   async applyAffiliate({exp,exp_company,one_month_new_acc,per_month_trading_volume,avg_deposit,exp_comment,service_comment}){
     return fetchData('POST','/affiliate/apply',{exp,exp_company,one_month_new_acc,per_month_trading_volume,avg_deposit,exp_comment,service_comment})
   },
-  async getAffiliateList(agentId,{keywords}){
-    return fetchData('GET','/affiliate/'+agentId+'/customers',{keywords})
+  async getAffiliateList(agentId,{keywords,start_date,end_date},pageSize,pageIndex,sort){
+    let url = '/agent/clientlist/clients'
+    return dataTableService.pagingQuery({url,pageSize,pageIndex,sort,queryParameter:{mt4_id:agentId,keywords,start_date,end_date}})
   }
 
 }

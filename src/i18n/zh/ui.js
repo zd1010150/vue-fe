@@ -21,7 +21,8 @@ export default {
     resetPwd: "重置密码",
     withdraw: "撤销",
     detail: "详情",
-    viewAll: "查看全部"
+    viewAll: "查看全部",
+    save: "保存"
   },
   datePicker:{
     startDate:"开始时间",

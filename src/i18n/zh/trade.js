@@ -5,7 +5,7 @@ export default{
   totalActiveClient: "总有效客户",
   totalClient: "总客户",
   cfd: "差价合约",
-  lots: "手数",
+  lots: "标准手",
   balance: "余额",
   currency: "货币种类",
   leverage: "杠杆",

@@ -6,42 +6,40 @@ import configService from "../services/configService"
 export default {
 
   async login({ commit }, form) {
-
     return await userService.login(form).then(({ data, success, message }) => {
       if (success && data.token) {
-        commit(type.SET_TOKEN, data.token);
+        commit(type.SET_TOKEN, data.token)
       }
-      return { data, success, message };
-    });
+      return { data, success, message }
+    })
   },
   async getUserInfo({ commit }) {
     return await userService.getUserInfo().then(({ data, success, message }) => {
       if (success) {
-        commit(type.SET_USERINFO, data);
+        commit(type.SET_USERINFO, data)
 
       }
-      return { success };
+      return { success }
     });
   },
   async logout({ commit, state }) {
-    console.log("logout state", state, state.userInfo);
     if (state && state.userInfo) {
-      return await userService.logout();
+      return await userService.logout()
     }
   },
   async addSystemError({ commit }, error) {
     commit(type.ADD_ERROR_INFO, error)
   },
   async changePassword({ commit }, { old_password, password }) {
-    let { data, success, message } = await pwdService.changePwd({ old_password, password });
+    let { data, success, message } = await pwdService.changePwd({ old_password, password })
     if (success) {
       commit(type.SET_USERINFO, null)
       commit(type.SET_TOKEN, "")
     }
-    return { data, success, message };
+    return { data, success, message }
   },
   async getMT4Accounts({ commit }) {
-    let { data, success, message } = await mt4Service.getMT4Account();
+    let { data, success, message } = await mt4Service.getMT4Account()
     if (success) {
       let { traderAccounts, agentAccounts } = mt4Service.filterAccounts(data)
       commit(type.SET_MT4_ACCOUNTS, data)

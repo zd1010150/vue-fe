@@ -14,12 +14,7 @@
                   @pageNumberChange="pageNumberChange">
         <div slot="filterToolbar" class="data-table-filter-panel">
           <div class="row" >
-            <div class="col-sm-12 visible-sm visible-xs">
-              <mu-icon-button @click="toggleDisplayFilterToolbar(false)" class="pull-right">
-               <i class="fa fa-close "></i>
-             </mu-icon-button>
-            </div>
-            <div class="col-md-10 col-sm-12">
+            <div class="col-md-12 col-sm-12">
                <form class="form-inline">
                   <div class="form-group" :class="errorClass('startDate')">
                     <chp-date-picker  :hintText="$t('ui.datePicker.startDate')" 
@@ -30,13 +25,14 @@
                                       v-validate="'required'" 
                                       data-vv-value-path="model.startDay" 
                                       data-vv-name="startDate" 
-                                      data-vv-validate-on="change" 
+                                      data-vv-validate-on="change"
+                                      class="date" 
                                       :maxDate="maxStartDate"/>
                     <span slot="password" class="error" v-if="errors.has('startDate:required')">
                       {{errors.first('startDate:required')}}
                     </span>
                   </div>
-                  <div class="form-group " :class="errorClass('endDate')">
+                  <div class="form-group" :class="errorClass('endDate')">
                     <chp-date-picker  :hintText="$t('ui.datePicker.endDate')" 
                                       @input="changeEndday" 
                                       :minDate = "minEndDate" 
@@ -45,36 +41,41 @@
                                       data-vv-value-path="model.endDay" 
                                       data-vv-name="endDate" 
                                       :fullWidth="true" 
-                                      :required="true" 
+                                      :required="true"
+                                      class="date" 
                                       data-vv-validate-on="change"/>
                     <span slot="password" class="error" v-if="errors.has('endDate:required')">
                       {{errors.first('endDate:required')}}
                     </span>
                   </div>
-                  <chp-button class="mb-xs mt-xs mr-xs btn btn-primary print-btn" @click="research">
-                    <i class="fa fa-search "></i>
-                  </chp-button>
+                  <div class="form-group search">
+                    <div class="btn-wrapper">
+                      <chp-button class="btn btn-primary" @click="research">
+                        <i class="fa fa-search pr-sm"></i>{{ $t('ui.button.search')}}
+                      </chp-button>
+                    </div>
+                    <div class="btn-wrapper">
+                      <chp-button class="btn btn-danger" @click="toggleDisplayFilterToolbar(false)">
+                        <i class="fa fa-close br-xs"> </i> {{ $t('ui.button.cancel')}}
+                      </chp-button>
+                    </div>
+                  </div>
                 </form>
-            </div>
-            <div class="col-md-2 hidden-sm hidden-xs">
-              <mu-icon-button @click="toggleDisplayFilterToolbar(false)" class="pull-right">
-                <i class="fa fa-close "></i>
-             </mu-icon-button>
             </div>
           </div>
         </div>
         <chp-table slot="table" chp-sort="calories" chp-sort-type="desc" @sort="sortRow" >
           <chp-table-header>
             <chp-table-row>
-              <chp-table-head chp-sort-by="created_at">{{ $t('internalTransfer.time') }}</chp-table-head>
+              <chp-table-head chp-sort-by="created_at" class="created_at">{{ $t('internalTransfer.time') }}</chp-table-head>
               <chp-table-head chp-sort-by="origin_login" width="100px">{{ $t('internalTransfer.fromAccount') }}</chp-table-head>
               <chp-table-head chp-sort-by="target_login" width="100px">{{ $t('internalTransfer.toAccount') }}</chp-table-head>
               <chp-table-head chp-sort-by="money">{{ $t('internalTransfer.amount') }}</chp-table-head>
             </chp-table-row>
           </chp-table-header>
 		      <chp-table-body>
-            <chp-table-row v-for="(row, rowIndex) in histories" :key="rowIndex"  :mu-select-fieldion="chpSelection">
-              <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" >
+            <chp-table-row v-for="(row, rowIndex) in histories" :key="rowIndex"  :mu-select-fieldion="chpSelection" >
+              <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :class="columnIndex">
               {{column}}
               </chp-table-cell>
             </chp-table-row>
@@ -200,13 +201,50 @@
     }
 }
 </script>
-<style lang="less">
-  .date-picker-wrapper{
-    width:200px;
-  }
+<style lang="less" scoped>
+  @import "~assets/less/variable.less";
   .form-inline{
-    .form-control{
-      width:200px;
+    text-align: right;
+    width:100%;
+    .date{
+      text-align: left;
+      width:140px;
+    }
+    .btn-wrapper{
+      display: inline-block;
+    }
+
+  }
+   @media(max-width:@screen-sm-min){
+    .filter-toolbar{
+      .form-inline{
+        .form-group{
+          display: block;
+          margin-bottom: 15px;
+        }
+        .form-group.search{
+          display: table;
+          width:100%;
+          .btn-wrapper{
+            display: table-cell;
+            width:50%;
+            padding:0px 5px;
+            .btn{
+              width:100%;
+            }
+          }
+        }
+        text-align: left;
+        .date{
+          width:100%;        
+        }
+      }
+    }
+  }
+  .chp-table-head,.chp-table-cell{
+    &.created_at{
+      width:250px;
+      white-space: nowrap;
     }
   }
 </style>
