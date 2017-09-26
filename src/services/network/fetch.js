@@ -3,7 +3,7 @@ import {
 } from '../../config/env.config.js'
 import { MAX_FETCH_TIMEOUT,HTTP_STATUS_CODE } from '../../config/app.config.js'
 import store from "store"
-
+import fetch from 'isomorphic-fetch'
 export default async(type = 'GET', url = '', data = {}) => {
   type = type.toUpperCase();
   url = baseUrl + url;
@@ -56,11 +56,18 @@ export default async(type = 'GET', url = '', data = {}) => {
     }, timeout)
     return abortable_promise
   }
-  let response
+  let response,contentType
   try {
-    response = await _fetch(fetch(url, requestConfig), MAX_FETCH_TIMEOUT)
-    return await response.json()
+    //response = await _fetch(fetch(url, requestConfig), MAX_FETCH_TIMEOUT)
+    response = await fetch(url, requestConfig)
+    console.log(response,"====response")
+    contentType = response.headers.get("content-type")
+    if(contentType && contentType.includes('application/json')){
+      return await response.json()
+    }
+    throw new TypeError('Oops,we haven\'t get JSON! ')
   } catch (error) {
+    console.log(url,requestConfig,error,"reject error")
     return {
       status_code: response.status
     }

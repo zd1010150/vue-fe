@@ -4,7 +4,6 @@
 		<chp-file-upload 
 			name="document" 
 			:post-action="postAction" 
-			:put-action="postAction"
 			@input="inputFunction" 
 			:multiple="true"
 			ref="upload"> 

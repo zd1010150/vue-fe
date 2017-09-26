@@ -4,7 +4,7 @@
 
 import 'es6-shim'
 require('es6-promise').polyfill()
-require('isomorphic-fetch') //polyfill fetch
+
 require('./utils/requestanimationFrame.js' ) //polyfill requestAnimationFrame
 require('mutationobserver-shim') // polyfill mutationobserver
 require('element-dataset') // polyfill dataset
