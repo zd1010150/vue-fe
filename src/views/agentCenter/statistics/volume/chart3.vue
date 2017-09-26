@@ -5,7 +5,13 @@
 	 			:showActionRipple="false"  
 				:isLoading="loadingStatus" 
 				ref="panel">
-		<template slot="panelTitle">{{ $t("charts.dailyVolumeStatistics") }}</template>
+		<template slot="panelTitle">
+			{{ $t("charts.traderVolumePercentageStatistics") }} ({{ $t('trade.lots') }})
+			<span class="chart-specification-tip pull-right">
+				<i class="fa fa-info-circle" aria-hidden="true"></i>
+				<chp-tooltip chp-direction="left">{{ $t('charts.volumeChart.productsVolumeIconTip') }}</chp-tooltip>
+			</span>
+		</template>
 		<div slot="body" class="row">
 			<div class="col-lg-6 col-md-6 col-sm-12 pr-lg pl-none content-center">
 			    <chp-echart :media="media" :externalOption="option" v-if="option"></chp-echart>
@@ -34,18 +40,17 @@
 						<td>{{chartData.avg.metal}}</td>
 					</tr>
 					<tr>
-						<td>{{ $t('trade.oil') }}</td>
-						<td>{{chartData.current.oil}}</td>
-						<td>{{chartData.last.oil}}</td>
-						<td>{{chartData.avg.oil}}</td>
-					</tr>
-					<tr>
 						<td>{{ $t('trade.cfd') }}</td>
 						<td>{{chartData.current.cfd}}</td>
 						<td>{{chartData.last.cfd}}</td>
 						<td>{{chartData.avg.cfd}}</td>
 					</tr>
-					
+					<tr>
+						<td>{{ $t('trade.oil') }}</td>
+						<td>{{chartData.current.oil}}</td>
+						<td>{{chartData.last.oil}}</td>
+						<td>{{chartData.avg.oil}}</td>
+					</tr>
 				</tbody>
 			</table>
 			</div>
@@ -117,8 +122,8 @@
 				    
 				xAxis.data.push(this.$t('trade.fx'))
 				xAxis.data.push(this.$t('trade.metal'))
-				xAxis.data.push(this.$t('trade.oil'))
-				xAxis.data.push(this.$t('trade.cfd')) 
+				xAxis.data.push(this.$t('trade.cfd'))
+				xAxis.data.push(this.$t('trade.oil')) 
 			    this.option = Object.assign({},
 			    	LINE_OPTION_CONFIG,
 			    	{
@@ -141,7 +146,7 @@
 		       					barWidth:10,
 		       					barMinHeight:1
 		       				},{
-		       					name: this.$t('charts.average'),
+		       					name: this.$t('charts.monthlyAverage'),
 		       					data: this.getBarSeriesData(data,"avg"),
 		       					type:'bar',
 		       					barWidth:10,
@@ -153,8 +158,8 @@
 				return [
 					data[type].forex,
 					data[type].metal,
-					data[type].oil,
-					data[type].cfd
+					data[type].cfd,
+					data[type].oil
 				]
 			},
 			async fetchData({mt4_id,start_date,end_date}){

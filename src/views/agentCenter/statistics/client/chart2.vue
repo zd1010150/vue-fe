@@ -5,7 +5,13 @@
 	 			:showActionRipple="false"  
 				:isLoading="loadingStatus" 
 				ref="panel">
-				<template slot="panelTitle">{{ $t("charts.activeClientComparision") }}</template>
+		<template slot="panelTitle">
+			{{ $t("charts.activeClientComparision") }}
+			<span class="chart-specification-tip pull-right">
+				<i class="fa fa-info-circle" aria-hidden="true"></i>
+				<chp-tooltip chp-direction="left">{{ $t('charts.clientChart.historyActivetraderIconTip') }}</chp-tooltip>
+			</span>
+		</template>
 		<div slot="body" class="row">
 			<div class="col-lg-3 col-md-3 col-sm-12 pr-none pl-none content-center">
 			    <h5>{{ activeDate | reverseDate }}-{{chartData.all.time}}</h5>
@@ -14,7 +20,11 @@
 							  height="140px" 
 							  class="liquid-fill-chart">
 			    </chp-liquid-fill>
-			    <p>{{ $t('trade.activeClient') }} | {{ $t('trade.totalClient') }} </p>					
+			    <p>
+			    {{ $t('trade.activeClient') }} | {{ $t('trade.totalClient') }}
+			    <chp-tooltip chp-direction="bottom">{{ $t('charts.clientChart.totalPercentageTip') }}
+					</chp-tooltip>
+			     </p>					
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-12 pr-none pl-none content-center">
 				<h5>{{ chartData.selected.time}}</h5>
@@ -23,7 +33,11 @@
 								  height="140px" 
 								  class="liquid-fill-chart">
 				</chp-liquid-fill>
-				<p class="content-center ">{{ $t('trade.activeClient') }} | {{ $t('trade.totalClient') }} </p>
+				<p class="content-center ">
+					{{ $t('trade.activeClient') }} | {{ $t('trade.totalClient') }} 
+					<chp-tooltip chp-direction="bottom">{{ $t('charts.clientChart.selectedPercentageTip') }}
+					</chp-tooltip>
+				</p>
 			</div>
 			<div class="col-lg-6 col-md-6 col-sm-12 pr-none pl-none ">
 			 <table class="table table-striped ">

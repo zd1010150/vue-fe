@@ -13,7 +13,7 @@
         </div>
         <div class="col-md-8 col-xs-6 text-right" :class="{'col-md-offset-4':!canPaging,'col-xs-offset-6':!canPaging}">
           <slot name="toolBar">
-            <chp-button class=" btn btn-default mr-xs" @click="displayFilter" v-if="canFilter">
+            <chp-button class=" btn btn-primary mr-xs" @click="displayFilter" v-if="canFilter">
               <i class="fa fa-filter mr-xs"></i>{{ $t('ui.button.search')}}
             </chp-button>
             <template v-if="canAdd">
@@ -152,11 +152,10 @@
       },
       calculateHeight(){
         if(this.$table && this.$card){
-          this.height = this.$table.getBoundingClientRect().height
+          this.height = this.$table.getBoundingClientRect().height + 15
           this.width = this.$card.scrollWidth
         }
       },
-      
     },
     mounted(){
       this.$table = this.$el.querySelector("table")
@@ -166,7 +165,7 @@
     beforeDestory(){
      removeResizeListener(this.$table,this.calculateHeight)
     },
-     computed:{
+    computed:{
       styles:function(){
         return {
           height:this.height+"px"
@@ -201,7 +200,7 @@
     &>div{
         padding:0px;
         &:nth-child(2){
-          padding:13px 0px;
+          padding:9px 0px;
          }
       }
   }
@@ -213,7 +212,7 @@
   }
   .data-table{
     .chp-table{
-     display:block;
+      display:block;
       box-sizing: border-box;
       overflow-x: visible;
       table{
@@ -222,11 +221,7 @@
         th:last-child,td:last-child{
           padding-right: 24px;
         }
-        
       }
     }
   }
-  
-
-  
 </style>

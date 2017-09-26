@@ -7,6 +7,8 @@ en:
   totalClientBalance: "Total Client Balance"
   agnetNo: "Agent No."
   affiliate: "Apply For Affiliate Account"
+  clientListTable:
+    keywordsHint: "Input MT4 account"
   apply:
     experience: "Agent Experience"
     otherCompanies: "Other Affiliate FX companies"
@@ -31,22 +33,42 @@ en:
   charts:
     withdrawlAndDepositLineChart: "Withdrawal & Deposit Statistics"
     commissionPieChart: "Commission Statistics"
-    historyTotalCommission: "History Total Commissions"
+    historyTotalCommission: "Total Commission to Date"
     lastMonth: "Last Month"
     selectedDate: "Selected Date"
     history: "History"
     dailyVolumeStatistics: "Daily Volume Statistics"
     percantageVolumeStatistics: "Volume Percentage Statistics"
-    traderVolumePercentageStatistics: "Product Volume Percentage Statistics"
+    traderVolumePercentageStatistics: "Volume Statistics"
     monthlyAverage: "Monthly Average"
-    historyTotalVolume: "History Total Volume"
+    historyTotalVolume: "Total Volume percentage to Date"
     volume: "Volume"
     treasury: "Treasury"
     client: "Client"
     activeClientStatistics: "Active Client Statistics"
     activeClientComparision: "Active Client Comparison"
     activeClientNetdeposite: "Active Client Deposit Contribution"
-
+    treasuryChart:
+      depositTip: "Total deposit at a certain period"
+      withdrawalTip: "Total withdrawal at a certain period"
+      comTip: "Commissions withdrawn at a certain period"
+      depositAndWithdrawalIconTip: "Daily Withdrawal and Deposit Statistics "
+      commissionIconTip: "Commission Comparison of certain period with Last Month and Total Commission to Date"
+    volumeChart:
+      fxTip: "Forex Trading Volume at a certain period"
+      metalTip: "Metals Trading Volume at a certain period"
+      cfdTip: "CFDs Trading Volume at a certain period"
+      oilTip: "Oil Trading Volume at a certain period"
+      dailyVolumeIconTip: "Daily Volume Statistics of Forex | Metal | CFD| Oil "
+      percentageIconTip: "Volume Percentage Comparison of certain period with Last Month and Total Volume to Date"
+      productsVolumeIconTip: "Volume Comparison of certain period with last month and Monthly Average "
+    clientChart:
+      traderTip: "Clients at a certain period"
+      activeTraderTip : "Active clients at a certain period"
+      activeIconTip: "Daily Active Client Statistics "
+      historyActivetraderIconTip: "Active Client Comparision with Total Clients"
+      selectedPercentageTip: "Percentage of Active Clients at a certain period "
+      totalPercentageTip: "Percentage of Active Clients to the end of last month"
 zh:
   clientList: "客户列表" 
   remainLots : "到下一等级还需交易手数"
@@ -56,6 +78,8 @@ zh:
   totalClientBalance: "总用户余额"
   agnetNo: "代理号"
   affiliate: "申请代理账户"
+  clientListTable:
+    keywordsHint: "请输入MT4账户名"
   apply:
     experience: "代理经验"
     otherCompanies: "代理过的公司"
@@ -78,7 +102,7 @@ zh:
     copySuccess: "拷贝成功，赶快把宣传URL黏贴到你的网页中吧"
     unsupportCopy: "拷贝失败"
   charts:
-    withdrawlAndDepositLineChart: "出入金信息统计"
+    withdrawlAndDepositLineChart: "出入金统计"
     commissionPieChart: "佣金统计"
     historyTotalCommission: "历史总佣金"
     lastMonth: "上个月"
@@ -86,15 +110,36 @@ zh:
     history: "历史总"
     dailyVolumeStatistics: "每日交易量统计"
     percantageVolumeStatistics: "交易产品占比统计"
-    traderVolumePercentageStatistics: "交易产品交易量统计"
+    traderVolumePercentageStatistics: "交易量统计"
     monthlyAverage: "每月平均"
-    historyTotalVolume: "历史总手数"
+    historyTotalVolume: "截止至当日总交易量"
     volume: "交易量"
     treasury: "出入金"
     client: "客户数"
     activeClientStatistics: "有效客户统计"
-    activeClientComparision: "历史有效客户对比"
+    activeClientComparision: "有效客户占比"
     activeClientNetdeposite: "有效客户与净入金"
+    treasuryChart:
+      depositTip: "特定时间内总入金"
+      withdrawalTip: "特定时间内总出金"
+      comTip: "特定时间内已提取佣金"
+      depositAndWithdrawalIconTip: "每日出入金统计"
+      commissionIconTip: "特定时间、上个月及总手数的佣金比较"
+    volumeChart:
+      fxTip: "特定时间内外汇交易量"
+      metalTip: "特定时间内贵金属交易量"
+      cfdTip: "特定时间内差价合约交易量"
+      oilTip: "特定时间内原油交易量"
+      dailyVolumeIconTip: "外汇、贵金属、差价合约及原油每日统计数据"
+      percentageIconTip: "不同种类产品在特定时间、上个月及开户以来的交易量占比比较"
+      productsVolumeIconTip: "不同种类产品在特定时间、上个月及每月平均的交易量"
+    clientChart:
+      traderTip: "特定时间内客户数"
+      activeTraderTip : "特定时间内有效客户数"
+      activeIconTip: "每日有效客户统计数据"
+      historyActivetraderIconTip: "有效客户与总客户占比"
+      selectedPercentageTip: "特定时间内的有效客户数占比"
+      totalPercentageTip: "截止至上个月末的有效客户数占比"
 
   
 

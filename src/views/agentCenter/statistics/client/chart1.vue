@@ -5,7 +5,13 @@
 	 			:showActionRipple="false"  
 				:isLoading="loadingStatus" 
 				ref="panel">
-				<template slot="panelTitle">{{ $t("charts.activeClientStatistics") }}</template>
+		<template slot="panelTitle">
+			{{ $t("charts.activeClientStatistics") }}
+			<span class="chart-specification-tip pull-right">
+				<i class="fa fa-info-circle" aria-hidden="true"></i>
+				<chp-tooltip chp-direction="left">{{ $t('charts.clientChart.activeIconTip') }}</chp-tooltip>
+			</span>
+		</template>
 		<div slot="body">
 			<div class="col-md-12 col-sm-12 pr-none pl-none">
 			  <chp-echart :media="media" :externalOption="option" v-if="option"></chp-echart>

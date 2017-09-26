@@ -5,7 +5,13 @@
 	 			:showActionRipple="false"  
 				:isLoading="loadingStatus" 
 				ref="panel">
-				<template slot="panelTitle">{{ $t("charts.dailyVolumeStatistics") }}</template>
+		<template slot="panelTitle">
+			{{ $t("charts.dailyVolumeStatistics") }} ({{ $t('trade.lots') }})
+			<span class="chart-specification-tip pull-right">
+				<i class="fa fa-info-circle" aria-hidden="true"></i>
+				<chp-tooltip chp-direction="left">{{ $t('charts.volumeChart.dailyVolumeIconTip') }}</chp-tooltip>
+			</span>
+		</template>
 		<div slot="body">
 			<div class="col-md-12 col-sm-12 pr-none pl-none">
 			  <chp-echart :media="media" :externalOption="option" v-if="option"></chp-echart>
@@ -76,13 +82,13 @@
 				    	name:this.$t('trade.fx'),
 				    	icon:'circle'
 				    },{
-				    	name:this.$t('trade.oil'),
-				    	icon:'circle'
-				    },{
 				    	name:this.$t('trade.metal'),
 				    	icon:'circle'
 				    },{
 				    	name:this.$t('trade.cfd'),
+				    	icon:'circle'
+				    },{
+				    	name:this.$t('trade.oil'),
 				    	icon:'circle'
 				    }]}
 			    for(let c in data.forex_volumes){
@@ -103,16 +109,16 @@
 	       					type:'line'
 	       				},
 	       				{
-	       					name: this.$t('trade.oil'),
-	       					data:series.oil,
-	       					type:'line'
-	       				},{
 	       					name: this.$t('trade.metal'),
 	       					data:series.metal,
 	       					type:'line'
 	       				},{
 	       					name: this.$t('trade.cfd'),
 	       					data:series.cfd,
+	       					type:'line'
+	       				},{
+	       					name: this.$t('trade.oil'),
+	       					data:series.oil,
 	       					type:'line'
 	       				}]
 				})

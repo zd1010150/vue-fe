@@ -91,11 +91,11 @@ import {TABLES } from "src/config/app.config.js"
 				this.hasSubmit = true
 				let result = await this.validateTab()
 				if(result && this.model){
-					let {success,data} = await fundsService.deposite(this.model)
+					let {success,data} = await fundsService.withdrawal(this.model)
 					if(success){
 						this.toastr.info(this.$t("info.SUCCESS"))
-						this.activeStepTab = "tab1"
 						this.$refs.tab.init()
+						this.activeStepTab = "tab1"
 						this.$refs.tab.init()
 						this.$emit("refresh")
 					}else{
@@ -104,14 +104,10 @@ import {TABLES } from "src/config/app.config.js"
 				}
 				this.hasSubmit = false
 			},
-			cancel(){
-
-			},
 			async previous(){
 				let result = await this.validateTab()
 				if(result){
 					this.activeStepTab= "tab"+(this.tabIndex-1)
-				
 				}
 			},
 			async next(){

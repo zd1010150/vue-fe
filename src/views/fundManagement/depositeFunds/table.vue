@@ -3,55 +3,70 @@
 <template>
 	<div class="col-lg-12 col-md-12">
 		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-	      <template slot="panelTitle">{{ $t('deposit.paymentHistory')}}</template>
-	      	<chp-data-table slot="body" :isDisplayFilterToolbar="isDisplayFilterToolbar"
-                      :pageSize = "pageSize"
-                      :rowsTotal = "rowsTotal"
-                      :pageOptions = "pageOptions"
-                      :canAdd = "false"
-                      @toggleDisplayFilterToolbar="toggleDisplayFilterToolbar"
-                      @pageSizeChange="pageSizeChange"
-                      @pageNumberChange="pageNumberChange"
-      >
-        
-
+      <template slot="panelTitle">{{ $t('deposit.paymentHistory')}}</template>
+    	<chp-data-table slot="body" :isDisplayFilterToolbar="isDisplayFilterToolbar"
+                  :pageSize = "pageSize"
+                  :rowsTotal = "rowsTotal"
+                  :pageOptions = "pageOptions"
+                  :canAdd = "false"
+                  @toggleDisplayFilterToolbar="toggleDisplayFilterToolbar"
+                  @pageSizeChange="pageSizeChange"
+                  @pageNumberChange="pageNumberChange">
         <!--过滤的toolbar begin-->
-          
-          <div slot="filterToolbar" class="data-table-filter-panel">
-          
-            <div class="row" >
-              <div class="col-sm-12 visible-sm visible-xs">
-                <mu-icon-button @click="toggleDisplayFilterToolbar(false)" class="pull-right">
-                  <i class="fa fa-close "></i>
-               </mu-icon-button>
-              </div>
-              <div class="col-md-10 col-sm-12">
-                 <form class="form-inline">
-                    <div class="form-group" :class="errorClass('startDate')">
-                      <chp-date-picker :hintText="$t('ui.datePicker.startDate')" v-model.lazy="model.startDay" @input="changeStartday" :fullWidth="true" :required="true"  v-validate="'required'" data-vv-value-path="model.startDay" data-vv-name="startDate" data-vv-validate-on="change" :maxDate="maxStartDate"/>
-                       <span slot="password" class="error"
-                      v-if="errors.has('startDate:required')">{{errors.first('startDate:required')}}</span>
+        <div slot="filterToolbar" class="data-table-filter-panel">
+          <div class="row" >
+            <div class="col-md-12 col-sm-12">
+               <form class="form-inline">
+                  <div class="form-group" :class="errorClass('startDate')">
+                    <chp-date-picker  :hintText="$t('ui.datePicker.startDate')" 
+                                      v-model.lazy="model.startDay" 
+                                      @input="changeStartday" 
+                                      :fullWidth="true" 
+                                      :required="true"  
+                                      v-validate="'required'" 
+                                      data-vv-value-path="model.startDay" 
+                                      data-vv-name="startDate" 
+                                      data-vv-validate-on="change"
+                                      class="date" 
+                                      :maxDate="maxStartDate"/>
+                    <span slot="password" class="error" v-if="errors.has('startDate:required')">
+                      {{errors.first('startDate:required')}}
+                    </span>
+                  </div>
+                  <div class="form-group" :class="errorClass('endDate')">
+                    <chp-date-picker  :hintText="$t('ui.datePicker.endDate')" 
+                                      @input="changeEndday" 
+                                      :minDate = "minEndDate" 
+                                      v-model.lazy="model.endDay"  
+                                      v-validate="'required'" 
+                                      data-vv-value-path="model.endDay" 
+                                      data-vv-name="endDate" 
+                                      :fullWidth="true" 
+                                      :required="true"
+                                      class="date" 
+                                      data-vv-validate-on="change"/>
+                    <span slot="password" class="error" v-if="errors.has('endDate:required')">
+                      {{errors.first('endDate:required')}}
+                    </span>
+                  </div>
+                  <div class="form-group search">
+                    <div class="btn-wrapper">
+                      <chp-button class="btn btn-primary" @click="research">
+                        <i class="fa fa-search pr-sm"></i>{{ $t('ui.button.search')}}
+                      </chp-button>
                     </div>
-                    <div class="form-group " :class="errorClass('endDate')">
-                      <chp-date-picker :hintText="$t('ui.datePicker.endDate')" @input="changeEndday" :minDate = "minEndDate" v-model.lazy="model.endDay"  v-validate="'required'" data-vv-value-path="model.endDay" data-vv-name="endDate" :fullWidth="true" :required="true" data-vv-validate-on="change"/>
-                       <span slot="password" class="error"
-                      v-if="errors.has('endDate:required')">{{errors.first('endDate:required')}}</span>
+                    <div class="btn-wrapper">
+                      <chp-button class="btn btn-danger" @click="toggleDisplayFilterToolbar(false)">
+                        <i class="fa fa-close br-xs"> </i> {{ $t('ui.button.cancel')}}
+                      </chp-button>
                     </div>
-                    <chp-button class="mb-xs mt-xs mr-xs btn btn-primary print-btn" @click="research">
-                      <i class="fa fa-search "></i>
-                    </chp-button>
-                  </form>
-              </div>
-              <div class="col-md-2 hidden-sm hidden-xs">
-                <mu-icon-button @click="toggleDisplayFilterToolbar(false)" class="pull-right">
-                  <i class="fa fa-close "></i>
-               </mu-icon-button>
-              </div>
+                  </div>
+                </form>
             </div>
           </div>
-        
+        </div>
         <!--过滤操作的toolbar end-->
-		<chp-table slot="table" chp-sort="calories" chp-sort-type="desc" @sort="sortRow" >
+        <chp-table slot="table" chp-sort="calories" chp-sort-type="desc" @sort="sortRow" >
           <chp-table-header>
             <chp-table-row>
               <chp-table-head chp-sort-by="order_time">{{ $t('withdrawal.time')}}</chp-table-head>
@@ -59,19 +74,18 @@
               <chp-table-head chp-sort-by="method" width="100px">{{ $t('withdrawal.methods')}}</chp-table-head>
               <chp-table-head chp-sort-by="top_up_amount">{{ $t('withdrawal.amount')}}</chp-table-head>
               <chp-table-head chp-sort-by="currency_type">{{ $t('withdrawal.currency')}}</chp-table-head>
-			</chp-table-row>
+		        </chp-table-row>
           </chp-table-header>
-		  <chp-table-body>
+		      <chp-table-body>
             <chp-table-row v-for="(row, rowIndex) in histories" :key="rowIndex"  :mu-select-fieldion="chpSelection">
-              <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" >
+              <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :class="columnIndex">
               {{column}}
               </chp-table-cell>
             </chp-table-row>
           </chp-table-body>
         </chp-table>
-
       </chp-data-table>
-	    </chp-panel>
+	  </chp-panel>
 	</div>
 </template>
 <script>
@@ -108,23 +122,22 @@
       },
       pageSize:function(val){
         this.fetchDepositeData({
-        pageIndex:this.pageIndex,
-        pageSize:val
-      });
+          pageIndex:this.pageIndex,
+          pageSize:val
+        })
       },
       pageIndex:function(val){
         this.fetchDepositeData({
-        pageIndex:val,
-        pageSize:this.pageSize
-      });
+          pageIndex:val,
+          pageSize:this.pageSize
+        })
       }
     },
     created(){
-      
-    	this.fetchDepositeData({
+      this.fetchDepositeData({
     		pageIndex:this.pageIndex,
     		pageSize:this.pageSize
-    	});
+    	})
     },
     methods : {
       changeEndday(val){
@@ -149,25 +162,24 @@
         }
       },
       async fetchDepositeData(params){
-        this.loadingStatus = true;
+        this.loadingStatus = true
       	let {data,message,success} = await dataTableService.pagingQuery(Object.assign({
       			url:'/deposit'
       		},{
               pageIndex:this.pageIndex,
               pageSize:this.pageSize,
               sort:this.sort
-           },{queryParameter:this.model},params));
+           },{queryParameter:this.model},params))
         this.loadingStatus = false
         if(success){
-            
-      			this.filterFields(data.data)
+            this.filterFields(data.data)
       			this.pageIndex = data.current_page
       			this.rowsTotal = data.total
       			this.pageSize = Number(data.per_page)
       		}
       },
       async research(){
-          let validateResult = await this.$validator.validateAll();
+          let validateResult = await this.$validator.validateAll()
           if(validateResult){
             this.fetchDepositeData()
           }
@@ -177,7 +189,7 @@
       },
       sortRow({name,type}){
           this.sort = (type=="desc" ?"-":"" )+ name
-          this.fetchDepositeData();
+          this.fetchDepositeData()
       },
       pageSizeChange(newSize){
         this.pageSize = newSize
@@ -190,13 +202,50 @@
     }
 }
 </script>
-<style lang="less">
-  .date-picker-wrapper{
-    width:200px;
-  }
+<style lang="less" scoped>
+  @import "~assets/less/variable.less";
   .form-inline{
-    .form-control{
-      width:200px;
+    text-align: right;
+    width:100%;
+    .date{
+      text-align: left;
+      width:140px;
+    }
+    .btn-wrapper{
+      display: inline-block;
+    }
+
+  }
+   @media(max-width:@screen-sm-min){
+    .filter-toolbar{
+      .form-inline{
+        .form-group{
+          display: block;
+          margin-bottom: 15px;
+        }
+        .form-group.search{
+          display: table;
+          width:100%;
+          .btn-wrapper{
+            display: table-cell;
+            width:50%;
+            padding:0px 5px;
+            .btn{
+              width:100%;
+            }
+          }
+        }
+        text-align: left;
+        .date{
+          width:100%;        
+        }
+      }
+    }
+  }
+  .chp-table-head,.chp-table-cell{
+    &.order_time{
+      width:250px;
+      white-space: nowrap;
     }
   }
 </style>

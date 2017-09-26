@@ -2,7 +2,8 @@
 	<p>
 		<span v-if="isHtml" v-html="innerHtml"></span>
 		<span v-else> {{ innerContent }} </span>
-		<chp-tooltip> {{ innerContent }}</chp-tooltip>
+		<chp-tooltip v-if="!isHtml"> {{ content }}</chp-tooltip>
+		<chp-tooltip v-else> {{ innerContent }}</chp-tooltip>
 	</p>
 </template>
 <script>

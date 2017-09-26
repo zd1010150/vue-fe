@@ -2,6 +2,7 @@ export default {
   NETWORK_ERROR: '网络错误',
   SUCCESS: '操作成功',
   SYSTEM_ERROR: '系统错误',
+  NOT_ACTIVE_TRADER_ERROR: '用户未激活',
   INVALID_USER_ERROR: '无效的用户',
   INVALID_PARAMETER_ERROR: '参数错误',
   LOGIN_ERROR: "邮件地址或者密码不对",

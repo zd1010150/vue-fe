@@ -22,8 +22,7 @@
 		},
 		methods:{
 			agentChange(val){
-				console.log("index,",val)
-	      		this.agentId = val
+				this.agentId = val
 	      	}
 		}
 	}
