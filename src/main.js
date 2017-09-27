@@ -4,7 +4,7 @@
 
 import 'es6-shim'
 require('es6-promise').polyfill()
-require('isomorphic-fetch') //polyfill fetch
+
 require('./utils/requestanimationFrame.js' ) //polyfill requestAnimationFrame
 require('mutationobserver-shim') // polyfill mutationobserver
 require('element-dataset') // polyfill dataset
@@ -44,15 +44,16 @@ let initVue = () =>{
     components: { App },
     mounted(){
       changeTheme(this.$store.state.theme)
-      window.onbeforeunload = function () {
+      window.addEventListener('beforeunload',function(){
         vm.$store.commit(SET_PATH,vm.$router.currentRoute.fullPath)
         syncVuexStateAndLocalStorage(vm.$store.state)
+        document.cookie = "test = dandan;"
         return 'Do you want to leave?'
-      }
+      })
     }
   })
   Vue.config.productionTip = false
-};
+}
 
 let checkLogin = async()=>{
   return await AuthenService.checkLogin()

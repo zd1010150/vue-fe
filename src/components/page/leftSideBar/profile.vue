@@ -33,9 +33,9 @@
         }
       },
       methods:{
-        inputFunction(response,success,errors){
-          let {status_code,message,data} = response[0].response
-          if(status_code != HTTP_STATUS_CODE.OK){
+        inputFunction(response,isAllsuccess,errors){
+          let {success,data} = response[0]
+          if(!isAllsuccess){
             this.toastr.error(this.$t("info.UPLOAD_ERROR."+errors[0]))
           }else{
             this.$store.commit(SET_USERINFO,Object.assign({},this.$store.state.userInfo,{avatar:data.url}))
@@ -53,8 +53,7 @@
       border-radius: 50px;
     }
     .widget-summary{
-       .summary-footer{
-
+      .summary-footer{
         border-top:1px solid @blue-color;
       }
     }

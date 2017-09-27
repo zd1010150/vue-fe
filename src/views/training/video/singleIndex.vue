@@ -20,12 +20,11 @@
 						<router-link :to="'?level=3&videoType='+$route.query.videoType+'&videoId='+video.id">
 							<chp-feature-image :src='video.imagepath || video.image_link'/>
 						</router-link>
-						<h5 class="mb-xs mt-md">{{video.title}}</h5>
+						<h5 class="mb-xs mt-md"><chp-one-line :content='video.title' :lens="15"></chp-one-line></h5>
 						<div class="mg-description">
 							<span class="text-muted">{{video.uploader_name}}</span>
 							<small class="text-muted pull-right pt-xs">{{video.upload_date}}</small>
 						</div>
-
 					</div>
 				</div>
 			</div>

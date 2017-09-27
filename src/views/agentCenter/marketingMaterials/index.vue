@@ -12,47 +12,87 @@
 	      			<template slot="content">
 	      			 	<chp-tab-content id="tab1" class="row">
 
-							<div v-for=" (image,index) in images" class="col-lg-3 col-md-3 col-sm-6 col-xs-12" :key="index">
-								<section class="picture">
-									<mu-paper class="pic" :zDepth="2">
-										<img class="img-responsive" :src="image.src" alt="">
-										<div class="mask">
-											<p class="p-sm"> 
-												{{ getImageScript(image) }}
+							<div v-for=" (image,index) in images" class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pt-sm" :key="index">
+								<table class="picture">
+									<tr>
+										<td>
+											<mu-paper class="pic" :zDepth="2">
+												<div class="img-wrapper">
+													<table>
+														<tr>
+															<td><img class="img-responsive" :src="image.src" alt=""></td>
+														</tr>
+													</table>
+												</div>
+												<div class="mask">
+													<div class="mask-text-wrapper">
+														<p class="p-sm"> 
+															{{ getImageScript(image) }}
+														</p>
+													</div>
+												</div>
+											</mu-paper>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<p class="size pt-sm">
+												<chp-one-line :content='image.name' :lens="20"></chp-one-line>
 											</p>
-										</div>
-									</mu-paper>
-									<p class="size pt-sm">{{ image.name }}</p>
-									<p class="copy">
-										<chp-button class="mb-xs mt-xs  btn btn-primary print-btn"  @click="copy(getImageScript(image))">
-											{{ $t('marketingMaterial.copy') }}
-										</chp-button>	
-									</p>
-								</section>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<p class="copy">
+												<chp-button class="mb-xs mt-xs  btn btn-primary print-btn"  @click="copy(getImageScript(image))">
+													{{ $t('marketingMaterial.copy') }}
+												</chp-button>	
+											</p>
+										</td>
+									</tr>
+								</table>
+								
 							</div>
 							
 	                    </chp-tab-content>
 	                    <chp-tab-content id="tab2" class="row">
 							<div v-for=" (video,index) in videos" class="col-lg-4 col-md-4 col-sm-6 col-xs-12" :key="'video'+index">
-								<section class="picture">
-									<mu-paper class="pic" :zDepth="2">
-										<video class="img-responsive" controls="" autoplay="true" >
-  											<source :src="video.src"> 
-  											</video> 
-
-										<div class="mask">
-											<p class="p-sm"> 
-												{{ getVideoScript(video) }}
+								<table class="picture">
+									<tr>
+										<td>
+											<mu-paper class="pic" :zDepth="2">
+												<div class="img-wrapper">
+													<table>
+														<tr>
+															<td>
+																<video  controls="" autoplay="true" >
+  																	<source :src="video.src"> 
+  																</video>
+  															</td>
+														</tr>
+													</table>
+												</div>
+												
+											</mu-paper>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<p class="size pt-sm">
+												<chp-one-line :content='video.name' :lens="20"></chp-one-line>
 											</p>
-										</div>
-									</mu-paper>
-									<p class="size pt-sm">{{ video.name }}</p>
-									<p class="copy">
-										<chp-button class="mb-xs mt-xs  btn btn-primary print-btn" @click="copy(getVideoScript(video))">
-											{{ $t('marketingMaterial.copy') }}
-										</chp-button>	
-									</p>
-								</section>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<p class="copy">
+												<chp-button class="mb-xs mt-xs  btn btn-primary print-btn"  @click="copy(getVideoScript(video))">
+													{{ $t('marketingMaterial.copy') }}
+												</chp-button>	
+											</p>
+										</td>
+									</tr>
+								</table>
 							</div>
 	                    </chp-tab-content>
 					</template>
@@ -90,13 +130,13 @@
 				document.getElementById("#"+id).classList.toggleClass('active')
 			},
 			async fetchImageData(){
-				let { success,data } = await materialService.getMarketingImage()
+				let { success,data } = await materialService.getMarketingImage(this.$store.state.language)
 				if( success ){
 					this.images = data
 				}
 			},
 			async fetchVideoData(){
-				let { success,data } = await materialService.getMarketingVideo()
+				let { success,data } = await materialService.getMarketingVideo(this.$store.state.language)
 				if( success ){
 					this.videos  = data
 
@@ -157,33 +197,53 @@
 	@import "~assets/less/variable.less";
 	@import "~assets/less/transition.less";
 	.picture{
+		width:100%;
 		.pic{
+			width:100%;
 			max-height:300px;
 			height:300px;
-			display: table-cell;
-			vertical-align: middle;
-			position:relative;
-			img{
-
+			position: relative;
+			.img-wrapper{
+				position: absolute;
+				top:0px;
+				left:0px;
+				right:0px;
+				bottom:0px;
+				z-index: 3;
+				table{
+					width:100%;
+					height:100%;
+					img,video{
+						max-height: 300px;
+						max-width: 100%;
+						margin:0 auto;
+						width:100%;	
+					}
+				}
 			}
 			.mask{
-				transparent:0;
 				position:absolute;
 				top:0px;
 				bottom:0px;
 				left:0px;
 				right:0px;
 				width:100%;
-				z-index:4;
+				height:100%;
+				z-index:50;
+				display: table;
 				vertical-align: middle;
 				word-break:break-all;
-				.display(flex);
-				.align-items(center);
-				.justify-content(center);
-				color:transparent;
-				
 				transition:@material-enter;
-
+				.mask-text-wrapper{
+					display: table-cell;
+					vertical-align: middle;
+					width:100%;
+					height:100%;
+				}
+				p{
+					display: table-cell;
+					color:transparent;
+				}
 				&:hover{
 					p{
 						color:@dark-color;
@@ -193,14 +253,6 @@
 				
 			}
 			
-		}
-		.pic img{
-
-			vertical-align: middle;
-			max-width:100%;
-		}
-		.size,.copy{
-			text-align: center;
 		}
 	}
 	html.dark{

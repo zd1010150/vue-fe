@@ -30,7 +30,12 @@
       			if(success){
       				this.toastr.info(this.$t("info.SUCCESS"))
       				this.$emit("submit")
-      			}
+      			}else{
+					if(message == 'TICKET_CLOSED'){
+      					this.$emit('cancel')
+      				}
+          		}
+          		this.$emit('refresh')
           		this.disableSubmit = false
 	  		},
 	  		cancel(){

@@ -5,6 +5,7 @@
 			name="document" 
 			:post-action="postAction" 
 			@input="inputFunction" 
+			:multiple="true"
 			ref="upload"> 
 		file upload
 		</chp-file-upload>
@@ -12,6 +13,7 @@
 	<chp-file-upload 
 		name="document" 
 		drop=".dropFileArea" 
+		:extensions = "['png', 'jpg','jpeg','bmp','pdf','doc','docx']"
 		:dropDirectory="false" 
 		:multiple="true"
 		:post-action="dropPostAction" 
@@ -31,7 +33,7 @@ import { getStore } from "utils/storage.js"
 	 		return {
 	 			files : [],
 	 			postAction : UPLOAD_DOCUMENT_URL+"/bill",
-	 			dropPostAction : UPLOAD_DOCUMENT_URL+"/document",
+	 			dropPostAction : UPLOAD_DOCUMENT_URL+"/bill",
 	 			headers:{
 	 				'Accept': 'application/json',
 	 				'Authorization': 'Bearer '+ this.$store.state.token
@@ -40,13 +42,10 @@ import { getStore } from "utils/storage.js"
 	 	},
 	 	methods:{
 	 		inputFunction(files,isAllsuccess,error){
-	 			console.log("input file:",JSON.stringify(files),isAllsuccess,JSON.stringify(error));
-	 			//this.$refs.upload.upload(this.files);
-	 			this.$refs.upload.active = true;
+	 			console.log("input file:",JSON.stringify(files),isAllsuccess,JSON.stringify(error))
 	 		},
-	 		dropInputFunction(response){
-	 			this.$refs.dropUploads.active = true;
-	 			console.log("input files drop:",JSON.stringify(response));
+	 		dropInputFunction(files,isAllsuccess,error){
+	 			console.log("input file:",JSON.stringify(files),isAllsuccess,JSON.stringify(error))
 	 		}
 	 	}
 	 }

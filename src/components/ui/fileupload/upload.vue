@@ -17,27 +17,23 @@
 						:filter="filter"
 						:value="value"
 						:v-model="files"
-						@input="input"
 						@input-file="inputFile" 
 						ref="upload">
 			<slot></slot>
 		</file-upload>
        <div class="chp-progress-mask loading-overlay " :class=" {'loading-overlay-showing':active }" ref="progressMask">
        		<div class="mask-container">
-	       		<ul class="upload-files">
-					<li v-for="v in progressValue">
-					    <span>{{v.progress}}%</span>
-						<mu-linear-progress mode="determinate" :value="v.progress"/>
-						<!-- <img  v-if="v.response && v.response.data && v.response.data.url" :src="v.response.data.url" class="upload-img-thumb img-thumbnail"/> -->
-
-					</li>
-				</ul>
+	       		<div class="upload-files">
+					<mu-circular-progress :size="60" :color="'#0088cc'" class="upload-icon"/>
+					<h5 class="upload-text pt-lg ">{{ $t("ui.upload.loading") }}</h5>
+				</div>
             </div>
        </div>
 	</div>
 </template>
 <script>
 	import FileUpload from 'vue-upload-component'
+	import { HTTP_STATUS_CODE } from 'src/config/app.config.js'
 	export default {
 		data(){
 			return {
@@ -50,15 +46,17 @@
 	 			isAllSuccess:false,
 	 			isAllDone:false,
 	 			files:[],
-	 			progressMaskEl:null
+	 			progressMaskEl:null,
+	 			responseErrors:[],
+	 			uploadResult:[]
 			}
 		},
 		watch:{
 			active:function(val,oldVal){
 				if(val !== oldVal && val){
-					this.showProgressMask();
+					this.showProgressMask()
 				}else if(val !== oldVal && !val){
-					this.hideProgressMask();
+					this.hideProgressMask()
 				}
 			}
 		},
@@ -145,39 +143,94 @@
 		},
 
 		methods:{
-			input:function(files){
-				if(files.length < 1){ this.active = false; return;}
-				this.$refs.upload.active = true
-				let errors = [],
-					isAllSuccess = true
-				this.progressValue = files.map((file)=>{
-					isAllSuccess = isAllSuccess && file.success && (!file.active);
-					file.error ? errors.push(file.error) :"";
-					return { progress :Number(file.progress),response:file.response}
-				});
-				if(isAllSuccess || errors.length > 0){
-					this.active = false;
-					this.$nextTick(()=>{
-						this.$emit('input',this.progressValue,isAllSuccess ? true : false,errors); //返回上传文件的结果
-					});
-					
-				}else{
-					this.active = true;
+			parseServerResponse(response){//解析服务器返回的结果,只处理了XMLHttpRequest的结果,还有可能iframe的情况，低版本的浏览器不兼容
+				let result = {}
+				try{
+					if(!response){
+						throw Error('')
+					}
+					response = JSON.parse(response)
+					return {
+						success: response.status_code == HTTP_STATUS_CODE.OK,
+						data: response.data,
+						messege: response.message
+					}
+				}catch(ex){
+					console.log("Upload XMLHttprequest parse error")
+					return {
+						success: false,
+						messege: "parse json error",
+						data: {}
+					}
 				}
 			},
-			inputFile:function(file,old){
-				this.$emit('input-file',file,old);
+			inputFile:function(newFile,oldFile){
+				console.log(this.$refs.upload.files.length,newFile,oldFile,"===",this.$refs.upload.uploaded,this.files.length)
+				if (newFile && !oldFile) {
+		        // 添加文件
+				// 自动上传
+		        	if (!this.$refs.upload.active) {
+		          		this.$refs.upload.active = true
+		          		this.responseErrors = []
+		          		this.uploadResult= []
+		          		this.active = true
+		          		this.isAllSuccess = true
+		        	}
+		      	}
+
+		      	if (newFile && oldFile) {
+		        // 更新文件
+
+		        // 开始上传
+			        if (newFile.active !== oldFile.active) {
+			          console.log('Start upload', newFile.active, newFile.progress,newFile)
+			        }
+
+			        // 上传进度
+			        if (newFile.progress !== oldFile.progress) {
+			          console.log('progress', newFile.progress, newFile)
+			        }
+
+			        // 上传错误
+			        if (newFile.error !== oldFile.error) {
+			          console.log('error', newFile.error, newFile)
+			          this.isAllSuccess = this.isAllSuccess && false
+			          this.responseErrors.push(newFile.error)
+			          if(this.$refs.upload.uploaded){
+			          	this.emitInput()
+			          }
+			        }
+
+			        // 上传成功
+			        if (newFile.success !== oldFile.success) {
+			          console.log('success', newFile.success,newFile.progress, newFile)
+			          let { success,data,messege } = this.parseServerResponse(newFile.xhr ? newFile.xhr.response : null)
+			          this.isAllSuccess = this.isAllSuccess && success
+			          if(success){
+						this.uploadResult.push({ success,data })
+			          }else{
+			          	this.responseErrors.push(messege)
+			          }
+			          if(this.$refs.upload.uploaded){
+			          	this.emitInput()
+			          }
+			        }
+		        }
 			},
+			emitInput(){
+				this.active = false
+	          	this.$emit('input',this.uploadResult,this.isAllSuccess,this.responseErrors)
+		    },
 			showProgressMask:function(){
-				this.progressMaskEl = this.$refs.progressMask;
-				document.body.appendChild(this.progressMaskEl);
+				this.progressMaskEl = this.$refs.progressMask
+				document.body.appendChild(this.progressMaskEl)
 				
 			},
 			hideProgressMask:function(){
 				let self = this;
 				setTimeout(()=>{
 					if(self.progressMaskEl && self.$refs.upload && document.body.contains( self.progressMaskEl ) ){
-						self.$refs.upload.clear();//必须要清空控件的文件
+						self.$refs.upload.clear()//必须要清空控件的文件
 						document.body.removeChild(self.progressMaskEl);	
 					}
 					
@@ -191,14 +244,15 @@
 </script>
 <style lang="less">
 .upload-files{
-	list-style: none;
 	width:300px;
-	li{
-		padding:20px;
+	text-align: center;
+	.upload-icon,.upload-text{
+		vertical-align: middle;
 	}
 }
-	.upload-img-thumb{
-		width:80px;
-		height:80px;
-	}
+.upload-img-thumb{
+	width:80px;
+	height:80px;
+}
+
 </style>
