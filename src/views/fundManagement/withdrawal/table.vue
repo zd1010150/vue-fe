@@ -18,14 +18,14 @@
                <form class="form-inline">
                   <div class="form-group" :class="errorClass('startDate')">
                     <chp-date-picker  :hintText="$t('ui.datePicker.startDate')" 
-                                      v-model.lazy="model.startDay" 
+                                      v-model="model.startDay" 
                                       @input="changeStartday" 
                                       :fullWidth="true" 
                                       :required="true"  
                                       v-validate="'required'" 
                                       data-vv-value-path="model.startDay" 
                                       data-vv-name="startDate" 
-                                      data-vv-validate-on="change"
+                                      data-vv-validate-on="input"
                                       class="date" 
                                       :maxDate="maxStartDate"/>
                     <span slot="password" class="error" v-if="errors.has('startDate:required')">
@@ -36,14 +36,14 @@
                     <chp-date-picker  :hintText="$t('ui.datePicker.endDate')" 
                                       @input="changeEndday" 
                                       :minDate = "minEndDate" 
-                                      v-model.lazy="model.endDay"  
+                                      v-model="model.endDay"  
                                       v-validate="'required'" 
                                       data-vv-value-path="model.endDay" 
                                       data-vv-name="endDate" 
                                       :fullWidth="true" 
                                       :required="true"
                                       class="date" 
-                                      data-vv-validate-on="change"/>
+                                      data-vv-validate-on="input"/>
                     <span slot="password" class="error" v-if="errors.has('endDate:required')">
                       {{errors.first('endDate:required')}}
                     </span>

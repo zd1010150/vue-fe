@@ -15,7 +15,7 @@
 											v-validate="'required'" 
 											data-vv-value-path="model.startDay"
 											data-vv-name="startDate"
-											data-vv-validate-on="change" 
+											data-vv-validate-on="input" 
 											:maxDate="maxStartDate"/>
 								<span slot="password" class="error"
 							v-if="errors.has('startDate:required')">{{errors.first('startDate:required')}}</span>
@@ -23,7 +23,7 @@
 						<div class="form-group" :class="errorClass('endDate')">
 							<chp-date-picker :hintText="$t('ui.datePicker.endDate')"
 							class="date"
-							@input="changeEndday" :minDate = "minEndDate" v-model.lazy="model.endDay"  v-validate="'required'" data-vv-value-path="model.endDay" data-vv-name="endDate" :fullWidth="true" :required="true" data-vv-validate-on="change"/>
+							@input="changeEndday" :minDate = "minEndDate" v-model.lazy="model.endDay"  v-validate="'required'" data-vv-value-path="model.endDay" data-vv-name="endDate" :fullWidth="true" :required="true" data-vv-validate-on="input"/>
 								<span slot="password" class="error"
 							v-if="errors.has('endDate:required')">{{errors.first('endDate:required')}}</span>
 							

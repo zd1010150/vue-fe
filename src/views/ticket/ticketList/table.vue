@@ -34,7 +34,7 @@
                                       v-validate="'required'" 
                                       data-vv-value-path="model.start_time" 
                                       data-vv-name="startDate" 
-                                      data-vv-validate-on="change"
+                                      data-vv-validate-on="input"
                                       class="date" 
                                       :maxDate="maxStartDate"/>
                     <span slot="password" class="error" v-if="errors.has('startDate:required')">
@@ -52,7 +52,7 @@
                                       :fullWidth="true" 
                                       :required="true"
                                       class="date" 
-                                      data-vv-validate-on="change"/>
+                                      data-vv-validate-on="input"/>
                     <span slot="password" class="error" v-if="errors.has('endDate:required')">
                       {{errors.first('endDate:required')}}
                     </span>

@@ -29,7 +29,8 @@
     	},
     	methods:{
     		openLandingPage(){
-    			window.open(landingPageURL,'','')
+    			window.open(this.landingPageURL,'','')
+
     		},
     		async getActivityTimes(){
     			let {success,data} = await activityService.getLotteryTimes()
