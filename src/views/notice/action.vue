@@ -2,7 +2,7 @@
 <template>
     <chp-data-table slot="body" :isDisplayFilterToolbar="isDisplayFilterToolbar" :pageSize="pageSize" :rowsTotal="rowsTotal" :pageOptions="pageOptions" :canFilter="false" :canAdd="false" @pageSizeChange="pageSizeChange" @pageNumberChange="pageNumberChange">
         <div slot="toolBar">
-            <mu-select-field :autoWidth="true" class="category-select" @change="searchCategory">
+            <mu-select-field  class="category-select" @change="searchCategory">
                 <mu-menu-item v-for=" (option,index) in categories" :key="index" :value="option.val" :title="$t('notification.'+option.title)">
                 </mu-menu-item>
 
@@ -18,7 +18,7 @@
             </chp-table-header>
             <chp-table-body>
                 <chp-table-row v-for="(row, rowIndex) in noticeList" :key="rowIndex" :mu-select-fieldion="chpSelection">
-                    <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :chp-numeric="columnIndex == 'top_up_amount' ">
+                    <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :class="columnIndex" :chp-numeric="columnIndex == 'top_up_amount' ">
                         <span v-if="columnIndex == 'content'" v-html="column"></span>
                         <span v-else>
                             {{column}}
@@ -134,10 +134,25 @@ export default {
 </script>
 <style lang="less" scoped>
 .category-select {
-    width: 170px;
+    width: 160px;
     float:right;
     text-align: left;
-    margin-top: -6px;
+    margin-top: -2px;
 }
+.chp-table-head,.chp-table-cell{
+        &.content{
+          min-width: 200px;
+          white-space: pre-wrap;
+        }
+        &.date_time{
+            width:200px;
+            white-space: nowrap;
+        }
+        &.category{
+            width:200px;
+            white-space: nowrap;
+        }
+    }
 </style>
+
 
