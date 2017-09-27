@@ -114,7 +114,7 @@
 </script>
 <style scoped>
 .date-picker-wrapper.form-control.date {
-	width:145px;
+	width:120px;
 }
 
 .form-inline .form-group {
