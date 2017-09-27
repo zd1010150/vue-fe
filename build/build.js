@@ -9,6 +9,7 @@ var chalk = require('chalk')
 var webpack = require('webpack')
 var config = require('../config')
 var webpackConfig = require('./webpack.prod.conf')
+var fs = require('fs');
 
 var spinner = ora('building for production...')
 spinner.start()
@@ -25,6 +26,21 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
       chunks: false,
       chunkModules: false
     }) + '\n\n')
+
+    const outputOptions =  {
+      colors: { level: 2, hasBasic: true, has256: true, has16m: false },
+      chunks: true,
+      children: false,
+      performance: true,
+    };
+    const data = JSON.stringify(stats.toJson(outputOptions), null, 2);
+    fs.writeFile(path.join(process.cwd(), './stat.json'), data, function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('write build information to file stat.json');
+      }
+    });
 
     console.log(chalk.cyan('  Build complete.\n'))
     console.log(chalk.yellow(
