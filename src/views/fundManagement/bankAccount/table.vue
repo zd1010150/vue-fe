@@ -5,8 +5,8 @@
         <template slot="panelTitle">{{ $t('bankcard.bankCardRecord') }}</template>
         <chp-data-table slot="body" :isDisplayFilterToolbar="false" :canFilter = "false" :canPaging="false">
         <template slot="addToolbar">
-          <chp-button class=" btn btn-primary mr-xs" @click="add">
-            <i class="fa fa-plus mr-xs"></i>{{ $t('bankcard.newBtnText')}}
+          <chp-button class="btn btn-primary" @click="add">
+            <i class="fa fa-plus mr-xs hidden-xs"></i>{{ $t('bankcard.newBtnText')}}
           </chp-button>
         </template>
           <chp-table slot="table" chp-sort="calories" chp-sort-type="desc">
