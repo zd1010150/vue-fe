@@ -134,8 +134,10 @@ export default {
 </script>
 <style lang="less" scoped>
 .category-select {
-    width: 192px;
+    width: 170px;
+    float:right;
     text-align: left;
+    margin-top: -6px;
 }
 </style>
 
