@@ -1,9 +1,10 @@
+<i18n src="../i18n.yaml"></i18n>
 <template>
 	<section class="pt-lg pb-lg ">
 		<form class="form-horizontal form-bordered form-bordered col-lg-12 col-md-12">
 			<div class="form-group">
 		          <label class="control-label col-md-2">
-		          Attachment
+		          {{ $t('attach') }}
 		          </label>
 		          <div class="col-md-10" >
 		          <transition-group name="chp-fade" mode="out-in">
@@ -23,8 +24,8 @@
 		              @input="dropInputFunction" 
 		              ref="dropUploads" class="form-control dropFileArea">  
 		              <div class="dropFileAreaDiv">
-		                  <h6> Drop File Here or Click to Upload </h6>
-		                  <P>Only Accept: png, jpg,jpeg,bmp</P>
+		                    <h6> {{ $t('ui.upload.tips') }} </h6>
+                			<P>{{ $t('ui.upload.accepts') }} : png, jpg,jpeg,bmp, pdf</P>
 		              </div>
 		            </chp-file-upload> 
 		            </div>
@@ -33,7 +34,7 @@
 		         </div>
 			</div>
 		    <div class="form-group" :class="errorClass('content')">
-		      <label class="control-label col-md-2">Content
+		      <label class="control-label col-md-2">{{ $t('content') }}
 		      <span class="required" aria-required="true">*</span></label>
 		      <div class="col-md-10" >
 		         <mu-text-field 
@@ -44,11 +45,13 @@
 		         v-model="model.content" 
 		         :rows="6" 
 		         :rowsMax="6"
-		         v-validate="'required'" 
+		         v-validate="'required|min:10|max:200'" 
 		         data-vv-value-path="model.content" 
 		         data-vv-name="content"
 		         />
-		         <span slot="required" class="error" v-if="errors.has('content:required')">{{errors.first('content:required')}}</span>
+		        <span class="error" v-if="errors.has('content:required')">{{errors.first('content:required')}}</span>
+         		<span class="error" v-if="errors.has('content:min')">{{errors.first('content:min')}}</span>
+        		<span class="error" v-if="errors.has('content:max')">{{errors.first('content:max')}}</span>
 		      </div>
 		    </div>
 		    <div class="col-lg-9 col-lg-offset-2 col-md-9 col-md-offset-2 ">
@@ -87,19 +90,25 @@
 				}
 			}
 		},
+		activated(){
+			this.resetForm()
+		},
 		methods:{
+			resetForm(){
+				this.$set(this.model,'content','')
+				this.$set(this.model,'attachment','')
+			},
 			deleteDocument(){
       			this.$set(this.model,"attachment","");
     		},
   			dropInputFunction(files,isAllsuccess,error){
 	        	if(isAllsuccess){
-		        	console.log(files[0].data.fileid);
-		          this.$set(this.model,"fileid",files[0].data.fileid);	
-		          this.$set(this.model,"attachment",files[0].data.url);
+		        	this.$set(this.model,"fileid",files[0].data.fileid);	
+		        	this.$set(this.model,"attachment",files[0].data.url);
 		        }else{
-		          this.$set(this.model,"attachment","")
-		          this.$set(this.model,"fileid","")
-		          this.toastr.error(this.$t("info.UPLOAD_ERROR."+error[0]))
+		            this.$set(this.model,"attachment","")
+		            this.$set(this.model,"fileid","")
+		            this.toastr.error(this.$t("info.UPLOAD_ERROR."+error[0]))
 		        }
 	  		},
 	  		async submit(){
@@ -109,9 +118,14 @@
           			let {message,success,data} = await ticketService.replayTicket(this.model)
           			if(success){
           				this.toastr.info(this.$t("info.SUCCESS"))
-          				this.$emit("submit")
+          				this.$emit('submit')
+          			}else{
+          				if(message == 'TICKET_CLOSED'){
+          					this.$emit('cancel')
+          				}
           			}
           		}
+          		this.$emit('refresh')
 		    	this.disableSubmit = false
 	  		},
 	  		cancel(){

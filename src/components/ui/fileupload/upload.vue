@@ -24,7 +24,8 @@
        <div class="chp-progress-mask loading-overlay " :class=" {'loading-overlay-showing':active }" ref="progressMask">
        		<div class="mask-container">
 	       		<div class="upload-files">
-					{{ $t("ui.upload.loading") }}
+					<mu-circular-progress :size="60" :color="'#0088cc'" class="upload-icon"/>
+					<h5 class="upload-text pt-lg ">{{ $t("ui.upload.loading") }}</h5>
 				</div>
             </div>
        </div>
@@ -243,14 +244,15 @@
 </script>
 <style lang="less">
 .upload-files{
-	list-style: none;
 	width:300px;
-	li{
-		padding:20px;
+	text-align: center;
+	.upload-icon,.upload-text{
+		vertical-align: middle;
 	}
 }
-	.upload-img-thumb{
-		width:80px;
-		height:80px;
-	}
+.upload-img-thumb{
+	width:80px;
+	height:80px;
+}
+
 </style>

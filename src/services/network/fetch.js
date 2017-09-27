@@ -16,7 +16,7 @@ export default async(type = 'GET', url = '', data = {}) => {
       'Content-Type': 'application/json'
     },
     mode: "cors",
-    cache: "no-cache"
+    cache: "default" // should set cache to 'no-cache'
   }
   if (store.state.token) {
     requestConfig.headers["Authorization"] = "Bearer " + store.state.token;

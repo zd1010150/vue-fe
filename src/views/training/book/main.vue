@@ -18,7 +18,7 @@
           <div v-for="book in category.children" class="col-sm-6 col-lg-3">
             <div class="thumbnail">              
                 <div class="image-box">
-                  <div class="featured-image" v-bind:style='{backgroundImage:"url(" + book.imagepath +")"}'></div>
+                  <div class="featured-image" v-bind:style='{backgroundImage:"url(" + book.imagepath || book.image_link +")"}'></div>
                   <div class="description">
                     <div class="word-box">
                       <small class="central-word" v-html="book.description"></small>
@@ -35,7 +35,7 @@
                       </a>
                     </li>
                     <li>
-                      <a v-bind:href="book.docpath" class="notification-icon" download>
+                      <a v-bind:href="book.docpath" class="notification-icon"  :download="book.title" target="_blank">
                         <i class="fa fa-download"></i>
                       </a>
                     </li>								

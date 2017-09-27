@@ -43,12 +43,16 @@
       </label>
       <div class="col-md-6">
         <mu-text-field v-model="model.subject" 
-                        v-validate="'required'" 
+                        v-validate="'required|min:5|max:40'" 
                         data-vv-value-path="model.subject" 
                         data-vv-name="subject"  
                         class="form-control" 
                         :fullWidth="true" />
-        <span slot="required" class="error" v-if="errors.has('subject:required')">{{errors.first('subject:required')}}
+        <span class="error" v-if="errors.has('subject:required')">{{errors.first('subject:required')}}
+        </span>
+        <span  class="error" v-if="errors.has('subject:min')">{{errors.first('subject:min')}}
+        </span>
+        <span  class="error" v-if="errors.has('subject:max')">{{errors.first('subject:max')}}
         </span>
       </div>
     </div>
@@ -99,11 +103,13 @@
          v-model="model.content" 
          :rows="6" 
          :rowsMax="6"
-         v-validate="'required'" 
+         v-validate="'required|min:10|max:200'" 
          data-vv-value-path="model.content" 
          data-vv-name="content"
          />
-         <span slot="required" class="error" v-if="errors.has('content:required')">{{errors.first('content:required')}}</span>
+         <span class="error" v-if="errors.has('content:required')">{{errors.first('content:required')}}</span>
+         <span class="error" v-if="errors.has('content:min')">{{errors.first('content:min')}}</span>
+         <span class="error" v-if="errors.has('content:max')">{{errors.first('content:max')}}</span>
       </div>
     </div>
  </form> 

@@ -44,6 +44,7 @@ export default {
   UNDEFINE_ERROR: "Unknown error",
   DEFAULT_ERROR: "Default error",
   MT_CONNECT_ERROR: "Fail to connect MT4",
+  TICKET_CLOSED: "Ticket has been closed,can't replay or close again",
   UPLOAD_ERROR:{
     size:"Too large file size",
     extension : "Invalid file type",

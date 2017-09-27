@@ -19,7 +19,7 @@
           <div v-for="video in category.children" class="col-sm-6 col-lg-3">
             <div class="thumbnail">
               <router-link :to="'?level=3&videoType='+category.code+'&videoId='+video.id">
-                <div class="featured-image" v-bind:style='{backgroundImage:"url(" + video.imagepath +")"}'></div>
+                <div class="featured-image" v-bind:style='{backgroundImage:"url(" + video.imagepath || video.image_link +")"}'></div>
               </router-link>  
                 <div>
                   <h5 class="mb-xs mt-md"><chp-one-line :content='video.title' :lens="15"></chp-one-line></h5>

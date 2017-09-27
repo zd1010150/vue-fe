@@ -4,8 +4,7 @@
     	<div >
     	<section>
     		<header class="row bottom-2px-border pb-sm">
-    			
-                <div class="title col-lg-6 col-md-6 col-sm-12">
+    			<div class="title col-lg-6 col-md-6 col-sm-12">
                     <h4 class="pb-none m-none">{{$t("subject")}}:{{ ticket.subject }}</h4>
                     <p class="pt-sm">
                         {{ $t('ticketForAccount') }}
@@ -34,6 +33,7 @@
                         v-bind:is="currentView" 
                         @submit="submit" 
                         @cancel="cancel"
+                        @refresh="refresh"
                         :ticketId="ticketId"
                         >
                     </component>
@@ -42,15 +42,13 @@
             </div>
 			<ul class="posts pt-lg">
 				<template v-for='(post,index) in posts' >
-                     <ticket-post 
-                     :username = post.username 
-                     :author_id = post.author_id 
-                     :content = post.content
-                     :path = post.path 
-                     :head_logo = post.head_logo 
-                     :post_time = post.post_time>
+                    <ticket-post :username = 'post.username'
+                                 :authorId = 'post.author_id' 
+                                 :content = 'post.content'
+                                 :path = 'post.path'
+                                 :headLogo = 'post.head_logo' 
+                                 :postTime = 'post.post_time'>
                     </ticket-post> 
-                    
                 </template>
 			</ul>
     		
@@ -93,12 +91,10 @@
                 this.currentView = null
             },
             async fetchPosts(){
-                
                 let {success,data} = await ticketService.getTicketDetail(this.ticketId)
                 if(success){
                     this.posts = data && data.posts
                     this.ticket = Object.assign({},this.ticket,data && data.ticket)
-                    console.log("posts",this.posts)
                 }
                 this.$store.commit(SET_CONTENT_LOADING ,false)
                 this.loadingStatus = true
@@ -111,16 +107,16 @@
             },
             closeIssue(){
                 this.currentView = 'ticket-detail-close'
+            },
+            refresh(){
+                this.fetchPosts()
             }
         },
         watch:{
             ticketId:function(){
-                this.fetchPosts();
+                this.fetchPosts()
             }
         },
-        /**created(){
-            this.fetchPosts()
-        },**/
         computed:{
             canReply:function(){
                 return this.ticket && (this.ticket.status == "replied" || this.ticket.status == "pending")

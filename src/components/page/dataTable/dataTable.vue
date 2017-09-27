@@ -5,16 +5,16 @@
     <!--Table header toolbar begin-->
     <chp-toolbar v-show="!isDisplayFilterToolbar">
       <div class="search-row">
-        <div class="col-md-4 col-xs-6 text-left" v-if="canPaging">
+        <div class="col-md-4 col-xs-4 text-left" v-if="canPaging">
           <mu-select-field v-model="innerPageSize" class="pageSelect">
             <mu-menu-item v-for=" (option,index) in pageOptions" :key="index" :value="option" :title="String(option)"></mu-menu-item>
           </mu-select-field>
           <span class="hidden-sm hidden-xs"> {{ $t('perPage') }}</span>
         </div>
-        <div class="col-md-8 col-xs-6 text-right" :class="{'col-md-offset-4':!canPaging,'col-xs-offset-6':!canPaging}">
+        <div class="col-md-8 col-xs-8 text-right" :class="{'col-md-offset-4':!canPaging,'col-xs-offset-6':!canPaging}">
           <slot name="toolBar">
             <chp-button class=" btn btn-primary mr-xs" @click="displayFilter" v-if="canFilter">
-              <i class="fa fa-filter mr-xs"></i>{{ $t('ui.button.search')}}
+              <i class="fa fa-filter mr-xs hidden-xs"></i>{{ $t('ui.button.search')}}
             </chp-button>
             <template v-if="canAdd">
              <slot name="addToolbar">
