@@ -37,9 +37,11 @@
 				this.show = false
 			},
 			detail(id){
-				console.log("detail")
 				this.$emit("close",'list',id)
 			}
+		},
+		activated(){
+			this.$refs.table.refresh()
 		}
 	}
 </script>

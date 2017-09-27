@@ -35,7 +35,7 @@
                   </a>
                 </li>
                 <li>
-                  <a v-bind:href="book.docpath" class="notification-icon" download>
+                  <a v-bind:href="book.docpath" class="notification-icon" download target="_blank">
                     <i class="fa fa-download"></i>
                   </a>
                 </li>

@@ -16,43 +16,63 @@
         @pageNumberChange="pageNumberChange">
         <template slot="addToolbar">
           <chp-button class=" btn btn-primary mr-xs" @click="add">
-            <i class="fa fa-plus mr-xs"></i>{{ $t('addNew')}}
+            <i class="fa fa-plus mr-xs hidden-xs"></i>{{ $t('addNew')}}
           </chp-button>
         </template>
         <!--过滤的toolbar begin-->
           
-          <div slot="filterToolbar" class="data-table-filter-panel">
-          
-            <div class="row" >
-              <div class="col-sm-12 visible-sm visible-xs">
-                <mu-icon-button @click="toggleDisplayFilterToolbar(false)" class="pull-right">
-                  <i class="fa fa-close "></i>
-               </mu-icon-button>
-              </div>
-              <div class="col-md-10 col-sm-12">
-                 <form class="form-inline">
-                    <div class="form-group" :class="errorClass('startDate')">
-                      <chp-date-picker :hintText="$t('ui.datePicker.startDate')" v-model.lazy="model.start_time" @input="changestart_time" :fullWidth="true" :required="true"  v-validate="'required'" data-vv-value-path="model.start_time" data-vv-name="startDate" data-vv-validate-on="change" :maxDate="maxStartDate"/>
-                       <span slot="password" class="error"
-                      v-if="errors.has('startDate:required')">{{errors.first('startDate:required')}}</span>
+           <div slot="filterToolbar" class="data-table-filter-panel">
+          <div class="row" >
+            <div class="col-md-12 col-sm-12">
+               <form class="form-inline">
+                  <div class="form-group" :class="errorClass('startDate')">
+                    <chp-date-picker  :hintText="$t('ui.datePicker.startDate')" 
+                                      v-model.lazy="model.start_time" 
+                                      @input="changestart_time" 
+                                      :fullWidth="true" 
+                                      :required="true"  
+                                      v-validate="'required'" 
+                                      data-vv-value-path="model.start_time" 
+                                      data-vv-name="startDate" 
+                                      data-vv-validate-on="change"
+                                      class="date" 
+                                      :maxDate="maxStartDate"/>
+                    <span slot="password" class="error" v-if="errors.has('startDate:required')">
+                      {{errors.first('startDate:required')}}
+                    </span>
+                  </div>
+                  <div class="form-group" :class="errorClass('endDate')">
+                    <chp-date-picker  :hintText="$t('ui.datePicker.endDate')" 
+                                      @input="changeend_time" 
+                                      :minDate = "minEndDate" 
+                                      v-model.lazy="model.end_time"  
+                                      v-validate="'required'" 
+                                      data-vv-value-path="model.end_time" 
+                                      data-vv-name="endDate" 
+                                      :fullWidth="true" 
+                                      :required="true"
+                                      class="date" 
+                                      data-vv-validate-on="change"/>
+                    <span slot="password" class="error" v-if="errors.has('endDate:required')">
+                      {{errors.first('endDate:required')}}
+                    </span>
+                  </div>
+                  <div class="form-group search">
+                    <div class="btn-wrapper">
+                      <chp-button class="btn btn-primary" @click="research">
+                        <i class="fa fa-search pr-sm"></i>{{ $t('ui.button.search')}}
+                      </chp-button>
                     </div>
-                    <div class="form-group " :class="errorClass('endDate')">
-                      <chp-date-picker :hintText="$t('ui.datePicker.endDate')" @input="changeend_time" :minDate = "minEndDate" v-model.lazy="model.end_time"  v-validate="'required'" data-vv-value-path="model.end_time" data-vv-name="endDate" :fullWidth="true" :required="true" data-vv-validate-on="change"/>
-                       <span slot="password" class="error"
-                      v-if="errors.has('endDate:required')">{{errors.first('endDate:required')}}</span>
+                    <div class="btn-wrapper">
+                      <chp-button class="btn btn-danger" @click="toggleDisplayFilterToolbar(false)">
+                        <i class="fa fa-close br-xs"> </i> {{ $t('ui.button.cancel')}}
+                      </chp-button>
                     </div>
-                    <chp-button class="mb-xs mt-xs mr-xs btn btn-primary print-btn" @click="research">
-                      <i class="fa fa-search "></i>
-                    </chp-button>
-                  </form>
-              </div>
-              <div class="col-md-2 hidden-sm hidden-xs">
-                <mu-icon-button @click="toggleDisplayFilterToolbar(false)" class="pull-right">
-                  <i class="fa fa-close "></i>
-               </mu-icon-button>
-              </div>
+                  </div>
+                </form>
             </div>
           </div>
+        </div>
         
         <!--过滤操作的toolbar end-->
           <chp-table slot="table" chp-sort="calories" chp-sort-type="desc" @sort="sortRow">
@@ -67,10 +87,13 @@
       			  </chp-table-row>
             </chp-table-header>
       		  <chp-table-body>
-              <chp-table-row v-for="(row, rowIndex) in tickets" :key="rowIndex">
-                <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" >
+              <chp-table-row v-for="(row, rowIndex) in tickets" :key="rowIndex" >
+                <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :class="columnIndex">
                   <template v-if="columnIndex == 'status'">
                     {{ $t('statusInfo.'+column) }}
+                  </template>
+                  <template v-else-if="columnIndex == 'subject'">
+                    <chp-one-line :lens="15" :content="column"></chp-one-line>
                   </template>
                   <template v-else-if="columnIndex == 'type'">
                     {{ $t('type.'+column) }}
@@ -137,7 +160,7 @@
       }
     },
     created(){
-      this.fetchData();
+      this.fetchData()
     },
     methods : {
       refresh(){
@@ -211,13 +234,61 @@
   }
 }
 </script>
-<style lang="less">
-  .date-picker-wrapper{
-    width:200px;
-  }
+<style lang="less" scoped>
+   @import "~assets/less/variable.less";
   .form-inline{
-    .form-control{
-      width:200px;
+    text-align: right;
+    width:100%;
+    .date{
+      text-align: left;
+      width:140px;
+    }
+    .btn-wrapper{
+      display: inline-block;
+    }
+
+  }
+   @media(max-width:@screen-sm-min){
+    .filter-toolbar{
+      .form-inline{
+        .form-group{
+          display: block;
+          margin-bottom: 15px;
+        }
+        .form-group.search{
+          display: table;
+          width:100%;
+          .btn-wrapper{
+            display: table-cell;
+            width:50%;
+            padding:0px 5px;
+            .btn{
+              width:100%;
+            }
+          }
+        }
+        text-align: left;
+        .date{
+          width:100%;        
+        }
+      }
+    }
+  }
+.chp-table-head,.chp-table-cell{
+    &.status{
+      width:100px;
+      white-space: nowrap;
+    }
+    &.created_at{
+      width:150px;
+      white-space: nowrap;
+    }
+    &.subject{
+      max-width: 250px;
+      width:250px;
+      overflow: hidden;
+      white-space: nowrap;
+     
     }
   }
 </style>

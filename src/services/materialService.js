@@ -2,10 +2,10 @@
 import { fetchData }  from  './network/getData'
 
 export default {
-  async getMarketingImage(){
-	   return fetchData("GET","/marketing-materials/image")
+  async getMarketingImage(language){
+	   return fetchData("GET","/marketing-materials/image/"+language)
   },
-  async getMarketingVideo(){
-    return fetchData("GET","/marketing-materials/video")
+  async getMarketingVideo(language){
+    return fetchData("GET","/marketing-materials/video/"+language)
   }
 }

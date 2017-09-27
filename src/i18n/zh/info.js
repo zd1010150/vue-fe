@@ -41,6 +41,7 @@ export default {
   UNDEFINE_ERROR: "未知错误",
   DEFAULT_ERROR: "默认错误",
   MT_CONNECT_ERROR: "链接错误",
+  TICKET_CLOSED: "工单已经关闭，不能再回复或者关闭",
   UPLOAD_ERROR:{
     size:"文件太大了",
     extension : "文件类型不对",

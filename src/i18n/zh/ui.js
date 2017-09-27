@@ -40,7 +40,8 @@ export default {
   upload:{
     tips: "点击或者拖动文件到本区域上传",
     accepts : "只接受以下文件类型",
-    attachment : "附件"
+    attachment : "附件",
+    loading: "玩命上传中……"
   },
   timer:{
     over: " 已经过期 "
