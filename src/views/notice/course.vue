@@ -9,7 +9,7 @@
             </chp-table-header>
             <chp-table-body>
                 <chp-table-row v-for="(row, rowIndex) in noticeList" :key="rowIndex" :mu-select-fieldion="chpSelection">
-                    <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :chp-numeric="columnIndex == 'top_up_amount' ">
+                    <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :class="columnIndex" :chp-numeric="columnIndex == 'top_up_amount' ">
                         <span  v-if="columnIndex == 'content'" v-html="column"></span>
                         <span v-else>
                             {{column}}
@@ -109,5 +109,17 @@ export default {
     }
 }
 </script>
+<style lang="less" scoped>
+    .chp-table-head,.chp-table-cell{
+        &.content{
+          min-width: 200px;
+          white-space: pre-wrap;
+        }
+        &.date_time{
+            width:200px;
+            white-space: nowrap;
+        }
+    }
+</style>
 
 

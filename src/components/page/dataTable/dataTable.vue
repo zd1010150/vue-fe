@@ -11,7 +11,7 @@
           </mu-select-field>
           <span class="hidden-sm hidden-xs"> {{ $t('perPage') }}</span>
         </div>
-        <div class="col-md-8 col-xs-8 text-right" :class="{'col-md-offset-4':!canPaging,'col-xs-offset-6':!canPaging}">
+        <div class="col-md-8 col-xs-8 text-right" :class="{'col-md-offset-4':!canPaging,'col-xs-offset-4':!canPaging}">
           <slot name="toolBar">
             <chp-button class=" btn btn-primary mr-xs" @click="displayFilter" v-if="canFilter">
               <i class="fa fa-filter mr-xs hidden-xs"></i>{{ $t('ui.button.search')}}
