@@ -29,8 +29,6 @@
 		},
     methods:{
       methodChange:function(methodCode,name){
-      	console.log(methodCode+" is selected")
-      	
       	this.methodCode = methodCode
         this.methodName = name
       }

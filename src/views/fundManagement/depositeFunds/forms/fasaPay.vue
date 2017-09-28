@@ -1,8 +1,10 @@
 <i18n src="../../i18n.yaml"></i18n>
 <template>
+  <form :method="'post'" target="_blank" id="unionpayForm" :action="action">
+  
   <chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
     <template slot="panelTitle">{{ methodName }}</template>
-     <form slot="body" class="form-horizontal form-bordered " method="POST" target="_blank" ref="fasaPayForm">
+     <div slot="body" class="form-horizontal form-bordered " method="POST" target="_blank" ref="fasaPayForm">
         <input type="hidden" name="language" :value="$store.state.language">
         <paying-dialog ref="dialog" @close="handlerDialogClose"></paying-dialog>
         <div class="form-group" :class="errorClass('MT4')">
@@ -32,19 +34,20 @@
              <mu-text-field v-model="model.fasa_account" :fullWidth="true" name="fasa_account" class="form-control"/>
           </div>
         </div>
-     </form> 
+     </div> 
     <div class="row" slot="footer">
       <div class="col-md-6 col-md-offset-3" >
-          <chp-button class="mb-xs mt-xs mr-xs btn btn-primary print-btn" @click="submit">
+          <button class="mb-xs mt-xs mr-xs btn btn-primary print-btn" @click="toSubmit" type="submit">
             <i class="fa fa-check hidden-sm hidden-xs"></i> {{ $t('ui.button.pay') }}
-          </chp-button>
-          <chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn" @click="cancel">
-           <i class="fa fa-times hidden-sm hidden-xs"></i> {{ $t('ui.button.cancel') }}
-          </chp-button>
+          </button>
+          <button class="mb-xs mt-xs mr-xs btn btn-default print-btn" @click="cancel" type="reset">
+            <i class="fa fa-times hidden-sm hidden-xs"></i> {{ $t('ui.button.cancel') }}
+          </button>
       </div>
     </div>
    
     </chp-panel>
+  </form>
 </template>
 <script>
   import validateMixin from 'mixins/validatemix'
@@ -75,15 +78,21 @@
       },
       methodName:String
     },
+    computed:{
+      action(){
+        return "/api/deposit/submit/"+this.methodCode
+      }
+    },
     methods:{
-      async submit(){
+      async toSubmit(e){
         let validateResult = await this.$validator.validateAll()
-          if(validateResult){
-            this.$refs.dialog.open()
-            let $form = this.$refs.fasaPayForm
-            $form.action = "/api/deposit/submit/"+this.model.gateWayCode
-            $form.submit()
-          }
+        
+        if(validateResult){
+          this.$refs.dialog.open()
+        }else{
+          e.preventDefault()
+        }
+        return validateResult
       },
       cancel(){
         this.$set(this.model,"order_amount","")
