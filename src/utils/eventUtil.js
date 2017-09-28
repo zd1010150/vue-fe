@@ -20,5 +20,18 @@ export default {
 	            document.body.removeChild(textarea);
 	        }
 	    }
+	},
+	dispatch(dom,type){
+		if(dom[type] && dom[type] instanceof Function){
+            dom[type]()
+        }else{
+            try{
+                var evt = document.createEvent('Event')
+                evt.initEvent(type,true,true)
+                dom.dispatchEvent(evt)
+             }catch(e){
+             	console.log(e)
+             }
+        }
 	}
 }

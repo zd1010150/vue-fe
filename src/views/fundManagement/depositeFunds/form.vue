@@ -40,9 +40,6 @@
 			'form-wire-transfer': wireTransfer,
 			'form-bank-transfer': bankTransfer
 		},
-		created(){
-			console.log("form created",this.methodCode);
-		},
 		watch:{
 			methodCode(val){
 				this.innerMethodCode = val
