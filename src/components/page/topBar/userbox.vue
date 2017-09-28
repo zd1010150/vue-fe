@@ -1,62 +1,53 @@
 <i18n src="./i18n.yaml"></i18n>
 <template>
     <div id="userbox" class="userbox" :class="{opened:open}">
-    	<mu-flat-button class="userbox-toggle-btn" 
-                      tag="div"
-                      :rippleOpacity="0"
-                      href="javascript:void(0)" 
-                      @click="toggleOperationPopover"  
-                      ref="toggleBtn" >
-        	<figure class="profile-picture">
-                <!-- <img v-bind:src="$store.state.userInfo.avatar" alt="Joseph Doe" class="img-circle"> -->
-                <mu-avatar :src="$store.state.userInfo.avatar" slot="avatar" :size="35" class="summary-icon bg-primary "/>
-            </figure>
-            <div class="profile-info">
-                <span class="name word-wrap" >{{ $store.state.userInfo.name}}</span>
-            <!--     <span class="role"> 普通用户</span>
-
-             --></div>
-            <i class="fa custom-caret"></i>
+    	<chp-button class="userbox-toggle-btn" @click="toggleOperationPopover" ref="toggleBtn" >
+      	<figure class="profile-picture">
+          <mu-avatar :src="$store.state.userInfo.avatar" slot="avatar" :size="35" class="summary-icon bg-primary "/>
+        </figure>
+        <div class="profile-info">
+          <span class="name word-wrap" >{{ $store.state.userInfo.name}}</span>
+        </div>
+        <i class="fa custom-caret"></i>
         <chp-tooltip chp-direction="bottom">{{ $store.state.userInfo.name}}</chp-tooltip>
-        </mu-flat-button>
-
-        <mu-popover :trigger="trigger" :open="open" @close="handleClose" popoverClass="userbox-dropdown-menu">
-            <ul class="list-unstyled">
-                <li class="divider"></li>
-                <li>
-                    <a role="menuitem" tabindex="-1" href="#/setting">
-                      <i class="fa fa-user"></i>
-                      {{ $t('userbox.myProfile') }}
-                    </a>
-                </li>
-                <li>
-                    <a role="menuitem" tabindex="-1" href="#/changePassword">
-                      <i class="fa fa-lock"></i>
-                      {{ $t('userbox.modifyPassword') }}
-                    </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)" @click="changeTheme('dark')" class="color-item">
-                    <mu-radio name="theme" nativeValue="dark" v-model="theme" slot="left" @change="changeTheme" class="item-icon"/>
-                    <span class="item-title">{{$t('themes.dark')}}</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)" @click="changeTheme('light')" class="color-item">
-                      <mu-radio name="theme" nativeValue="light" v-model="theme" slot="left" @change="changeTheme" class="item-icon"/>
-                      <span class="item-title">{{$t('themes.light')}}</span>
-                  </a>
-                </li>
-                <li>
-                    <a role="menuitem" tabindex="-1" href="javascript:void(0)" class="logout-item" @click="logout">
-                      <i class="fa fa-power-off"></i> 
-                      {{ $t('userbox.logout') }} 
-                    </a>
-                </li>
-                <li class="divider"></li>
-                
-            </ul>
-        </mu-popover>
+      </chp-button>
+      <mu-popover :trigger="trigger" :open="open" @close="handleClose" popoverClass="userbox-dropdown-menu">
+        <ul class="list-unstyled">
+            <li class="divider"></li>
+            <li>
+                <a role="menuitem" tabindex="-1" href="#/setting">
+                  <i class="fa fa-user"></i>
+                  {{ $t('userbox.myProfile') }}
+                </a>
+            </li>
+            <li>
+                <a role="menuitem" tabindex="-1" href="#/changePassword">
+                  <i class="fa fa-lock"></i>
+                  {{ $t('userbox.modifyPassword') }}
+                </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" @click="changeTheme('dark')" class="color-item">
+                <mu-radio name="theme" nativeValue="dark" v-model="theme" slot="left" @change="changeTheme" class="item-icon"/>
+                <span class="item-title">{{$t('themes.dark')}}</span>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" @click="changeTheme('light')" class="color-item">
+                  <mu-radio name="theme" nativeValue="light" v-model="theme" slot="left" @change="changeTheme" class="item-icon"/>
+                  <span class="item-title">{{$t('themes.light')}}</span>
+              </a>
+            </li>
+            <li>
+                <a role="menuitem" tabindex="-1" href="javascript:void(0)" class="logout-item" @click="logout">
+                  <i class="fa fa-power-off"></i> 
+                  {{ $t('userbox.logout') }} 
+                </a>
+            </li>
+            <li class="divider"></li>
+            
+        </ul>
+      </mu-popover>
         <chp-dialog-confirm
           :chp-content-html="$t('logoutDialogHtml')"
           :chp-ok-text="$t('ui.button.confirm')"
@@ -100,14 +91,14 @@ import changeTheme  from 'utils/theme.js'
          }
       },
     	logout(){
-        this.$refs.confirmLogoutDialog.open();
+        this.$refs.confirmLogoutDialog.open()
       },
       changeTheme (theme) {
         this.theme = theme
         changeTheme(theme)
       },
       toggleOperationPopover(){
-      		this.open = !this.open
+        this.open = !this.open
       },
       handleClose(){
           this.open = false
@@ -123,10 +114,6 @@ import changeTheme  from 'utils/theme.js'
 	display: none;
 }
 .userbox{
-  .role{
-    font-size: 13px;
-    line-height: 26px;
-  }
   width:200px;
   i{
 		transition : @arrow-rotate-transition;
@@ -134,41 +121,36 @@ import changeTheme  from 'utils/theme.js'
 	&.opened i{
      transform: rotate(180deg) translate3D(0,0,0);
   }
-   .mu-flat-button-wrapper{
-     width:100%;
-     .display(flex);
-     .justify-content(space-around);
-   }
+  .userbox-toggle-btn{
+    height:57px;
+    padding-left:10px;
+    padding-right: 10px;
+    width:100%;
+    background-color: transparent;
+    &.hover{
+      background-color: transparent;
+    }
+  } 
   .profile-picture{
-    .display(flex);
+    display: inline-block;
     margin:0px 10px 0px;
 
   }
   .profile-info{
-    .flex(1);
     margin:0px;
+    display: inline-block;
+    text-align: left;
     .name{
       .text-line-no-wrap(1,1.3rem,85px);
+      width:50px;
+      max-width: 50px;
     }
   }
   .fa{
     width:10px;
     margin:0px 0px 0px 10px;
   }
-  & > a.hover{
-      bakground-color: transparent;
-    }
-
-  .userbox-toggle-btn{
-    height:57px;
-    padding-left:10px;
-    padding-right: 10px;
-    width:100%;
-    &.hover{
-      background-color: transparent;
-    }
-  }
- }
+}
 .mu-popover.userbox-dropdown-menu{
   padding:10px;
   width:180px;
@@ -196,15 +178,29 @@ import changeTheme  from 'utils/theme.js'
 @media only screen and (max-width: 767px) {
   .userbox{
     width:140px;
+    margin-top: 0px;
+    margin-left: 0px;
     .userbox-toggle-btn{
-      height:37px;
-      padding-left: 0px;
-      padding-right: 0px;
+      padding:5px 0px 0px;
+    }
+    .profile-picture{
+      margin:0px;
+    }
+
+    .fa{
+      display: inline-block;
+      margin:0px;
+    }
+    &:after{
+      height:78px;
+      display: none;
     }
 
   }
   .mu-popover.userbox-dropdown-menu{
-    width:140px;
+    width:135px;
+    margin-left:0px;
+    margin-top: 4px;
     a{
       padding:5px 10px;
     }
@@ -215,8 +211,6 @@ import changeTheme  from 'utils/theme.js'
     .color-item{
       padding:5px 5px;
     }
-
-    padding-right:20px;
     i {
       margin-right: 3px;
     }
