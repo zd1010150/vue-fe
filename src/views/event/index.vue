@@ -3,27 +3,27 @@
 	<div class="fluid-container">
 		<div class="row" v-for="(activity,index) in activities">
 			<div class="col-lg-12 col-md-12" :key="index">
-			<chp-panel :canClose="false" :canCollapse="false">
-	            <template slot="panelTitle">{{ activity.title}}</template>
-	            <div slot="body" class="row p-sm">
-	              <mu-card class="pic col-lg-4 col-md-4 col-sm-12 p-sm">
-	              	<!-- <img class="img-responsive" :src=" activity.imagepath || activity.image_link  " alt=""> -->
-	              	<chp-feature-image :src= "activity.imagepath || activity.image_link "/>
-	              	<div class="mask">
-						<h3><a :href="activity.url" target="_blank">{{ $t("more")}}</a></h3>
-					</div>
-	              </mu-card>
-	              <section class="col-lg-8 col-md-8 col-sm-12 pr-lg pt-lg">
-	              	<p >{{activity.start_time}}-{{activity.end_time}}</p>
-	              	<p v-html="activity.description"></p>
-	              	<p class="more">
-	              		<a class="mb-xs mt-xs  btn btn-primary print-btn" :href="activity.url" target="_blank">
-										{{ $t("more")}}
-						</a>	
-	              	</p>
-	              </section>
-	            </div>
-          </chp-panel>
+				<chp-panel :canClose="false" :canCollapse="false">
+		            <template slot="panelTitle">{{ activity.title}}</template>
+		            <div slot="body" class="table-wrapper">
+		            	<div class="img-wrapper">
+	        				<chp-feature-image :src= "activity.imagepath || activity.image_link "/>
+	        				<div class="mask">
+								<h3><a :href="activity.url" target="_blank">{{ $t("more")}}</a></h3>
+							</div>
+	        			</div>
+		            	<section class="col-lg-8 col-md-8 col-sm-12 pr-lg pt-lg">
+			              	<p >{{activity.start_time}}-{{activity.end_time}}</p>
+			              	<p v-html="activity.description"></p>
+			              	<p class="more">
+			              		<a class="mb-xs mt-xs  btn btn-primary print-btn" :href="activity.url" target="_blank">
+												{{ $t("more")}}
+								</a>	
+			              	</p>
+			              </section>
+		            		
+		            </div>
+		        </chp-panel>
 			</div>
 		</div>
 	</div>

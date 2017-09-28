@@ -30,7 +30,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: "http://api.cloudhubpanellocal.com/v1/",
+        target: "http://api.cloudhubpaneltest.com/v1/",
         changeOrigin: true,
         pathRewrite: {
           '^/api' :''
