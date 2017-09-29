@@ -12,7 +12,10 @@
 								<div class="pull-right">{{video.uploader_name }}  {{video.upload_date}} </div>
 								{{ $t('video.category')}}:
 								<router-link to="?level=1">{{ $t('video.video')}}</router-link> /
-								<router-link :to="'?level=2&videoType='+ $route.query.videoType "> {{ $route.query.videoType | pascalCase }} </router-link><br>
+								<router-link :to="'?level=2&videoCode='+$route.query.videoCode+'&videoType='+ $route.query.videoType "> 
+									{{ $t('video.'+$route.query.videoCode) | pascalCase }} 
+								</router-link>
+								<br>
 							</div>
 						</div>
 						<div class="description" v-html = "video.description"></div>

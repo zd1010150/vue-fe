@@ -4,7 +4,7 @@
 	<div class="container-fluid">
 		<div class="video-header">
 			<h3>
-				<span class="mt-none">{{ $t('video.'+ $route.query.videoType) }}</span>
+				<span class="mt-none">{{ $t('video.'+ $route.query.videoCode) }}</span>
 				<div class="pull-right action">
 					<router-link to="?level=1">
 						<button class="mb-xs mt-xs mr-xs btn btn-sm btn-primary mt-none">{{ $t('video.allVideos')}}</button>
@@ -17,10 +17,10 @@
 			<div class="row mg-files">
 				<div v-for="video in loopList" class="col-sm-6 col-md-4 col-lg-3">
 					<div class="thumbnail">
-						<router-link :to="'?level=3&videoType='+$route.query.videoType+'&videoId='+video.id">
+						<router-link :to="'?level=3&videoCode='+$route.query.videoCode+'&videoType='+$route.query.videoType+'&videoId='+video.id">
 							<chp-feature-image :src='video.imagepath || video.image_link'/>
 						</router-link>
-						<h5 class="mb-xs mt-md"><chp-one-line :content='video.title' :lens="15"></chp-one-line></h5>
+						<h5 class="mb-xs mt-md"><chp-one-line :content='video.title' :lens="25"></chp-one-line></h5>
 						<div class="mg-description">
 							<span class="text-muted">{{video.uploader_name}}</span>
 							<small class="text-muted pull-right pt-xs">{{video.upload_date}}</small>
