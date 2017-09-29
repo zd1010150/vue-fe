@@ -6,9 +6,7 @@
  * Liquid Fill Gauge v1.1
  *
  */
-import * as d3 from "d3"
-
-
+import * as d3 from 'd3'
 export function loadLiquidFillGauge (elementId, value, config){ //el 变为传入HTMLElement,为了兼容Vue
     var gauge = d3.select("#"+elementId);
     var radius = Math.min(parseInt(gauge.style("width")), parseInt(gauge.style("height")))/2;

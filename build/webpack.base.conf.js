@@ -10,8 +10,6 @@ var themePath = "./src/assets/css/stylesheets/sass";
 module.exports = {
   entry: {
     app: './src/main.js',
-    common: ['vue', 'vuex', 'vue-router', 'muse-ui', 'lodash', 'bootstrap', 'isomorphic-fetch'],
-    charts: ['echarts', 'd3'],
   },
   output: {
     path: config.build.assetsRoot,

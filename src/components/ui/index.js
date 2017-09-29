@@ -1,5 +1,4 @@
 import vBar from './vBar'
-import scrollBar from './scrollBar'
 import chpInkRipple from './chpInkRipple/chpInkRipple'
 import button from './button'
 import Panel from './panel'
@@ -35,7 +34,6 @@ export default function install(Vue) {
   Vue.use(DropBack)
   Vue.use(MuseUI)
   Vue.use(vBar)
-  Vue.use(scrollBar)
   Vue.use(Tabs)
   Vue.use(Pagination)
   Vue.use(Datepicker)

@@ -68,6 +68,7 @@
 	import fundsService from 'services/fundsService'
 	import validateMixin from 'mixins/validatemix'
 	import loadingMix from 'mixins/loading'
+	import { SET_ASYNC_LOADING } from 'store/mutation-types'
 	export default{
 		mixins:[validateMixin,loadingMix],
 		data(){
@@ -109,7 +110,9 @@
 		methods:{
 			async submit(){
 				this.disableSubmit = true
+				this.$store.commit(SET_ASYNC_LOADING,true)
 				let validateResult = await this.$validator.validateAll()
+				this.$store.commit(SET_ASYNC_LOADING,false)
 		          if(validateResult){
 		            let {message,success,data} = await fundsService.internalTransferDeposite(this.model)
 		            this.toastr.info(this.$t("info.SUCCESS"))
