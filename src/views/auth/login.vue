@@ -95,7 +95,7 @@
           this.loading = true
           let {message,success} = await this.$store.dispatch('login', this.model)
           if(success){
-            let getUserInfo= await this.$store.dispatch('getUserInfo')
+          let getUserInfo= await this.$store.dispatch('getUserInfo')
             if(getUserInfo.success){
               this.$router.addRoutes(routers)
               this.$router.replace("/main")

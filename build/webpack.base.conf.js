@@ -32,6 +32,11 @@ module.exports = {
       'mixins' : resolve('src/mixins')
     }
   },
+  externals: {
+    echarts: 'echarts',
+    d3: 'd3',
+    lodash: '_',
+  },
   module: {
     rules: [
       {
