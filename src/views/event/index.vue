@@ -6,22 +6,29 @@
 				<chp-panel :canClose="false" :canCollapse="false">
 		            <template slot="panelTitle">{{ activity.title}}</template>
 		            <div slot="body" class="table-wrapper">
-		            	<div class="img-wrapper">
-	        				<chp-feature-image :src= "activity.imagepath || activity.image_link "/>
-	        				<div class="mask">
-								<h3><a :href="activity.url" target="_blank">{{ $t("more")}}</a></h3>
-							</div>
-	        			</div>
-		            	<section class="col-lg-8 col-md-8 col-sm-12 pr-lg pt-lg">
-			              	<p >{{activity.start_time}}-{{activity.end_time}}</p>
-			              	<p v-html="activity.description"></p>
-			              	<p class="more">
-			              		<a class="mb-xs mt-xs  btn btn-primary print-btn" :href="activity.url" target="_blank">
+		            	<div class="table-row-wrapper">
+		            		<div class="img-wrapper">
+		        				<chp-feature-image :src= "activity.imagepath || activity.image_link "/>
+		        				<div class="mask">
+									<table>
+										<tr>
+											<td>
+												<h3><a :href="activity.url" target="_blank">{{ $t("more")}}</a></h3>
+											</td>
+										</tr>
+									</table>
+								</div>
+	        				</div>
+		            		<section class="info-wrapper pl-lg pt-lg">
+	            				<p >{{activity.start_time}}-{{activity.end_time}}</p>
+			              		<p v-html="activity.description"></p>
+			              		<p class="more">
+			              			<a class="mb-xs mt-xs  btn btn-primary print-btn" :href="activity.url" target="_blank">
 												{{ $t("more")}}
-								</a>	
-			              	</p>
-			              </section>
-		            		
+									</a>	
+			              		</p>
+		            		</section>
+		            	</div>
 		            </div>
 		        </chp-panel>
 			</div>
@@ -57,34 +64,35 @@
 <style lang="less" scoped>
 	@import "~assets/less/variable.less";
 	@import "~assets/less/transition.less";
-		.row{
-			.display(flex);
-			.align-items(center);
+		.table-wrapper{
+			display: table;
+			width:100%;
 		}
-		.pic{
+		.table-row-wrapper{
+			display: table-row;
+		}
+		.img-wrapper,.info-wrapper{
 			display: table-cell;
 			vertical-align: middle;
-			position:relative;
-			img{
-				vertical-align: middle;
-				max-width:100%;
-			}
+			width:50%;
+		}
+		.img-wrapper{
+			position: relative;
 			.mask{
-				transparent:0;
 				position:absolute;
 				top:0px;
 				bottom:0px;
 				left:0px;
 				right:0px;
-				width:100%;
-				z-index:4;
-				vertical-align: middle;
-				word-break:break-all;
-				.display(flex);
-				.align-items(center);
-				.justify-content(center);
-				color:transparent;
+				z-index:50;
 				transition:@material-enter;
+				table{
+					width:100%;
+					height:100%;
+					td{
+						text-align: center !important;
+					}
+				}
 				h3 > a{
 					color:transparent;
 				}
@@ -96,14 +104,14 @@
 				}
 				
 			}
-			
 		}
+		
 		.size,.copy{
 			text-align: center;
 		}
 	
 	html.dark{
-			.pic{
+			.img-wrapper{
 				.mask{
 					&:hover{
 						h3 > a{
@@ -117,8 +125,10 @@
 		
 	}
 	@media(max-width:@screen-sm-min){
-		.row{
+		.img-wrapper,.info-wrapper{
 			display: block;
+			vertical-align: middle;
+			width:100%;
 		}
 	}
 </style>
