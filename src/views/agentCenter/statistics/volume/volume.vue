@@ -34,9 +34,6 @@
 	import chart2 from './chart2'
 	import chart3 from './chart3'
 	export default{
-		activated(){
-			this.refresh()
-		},
 		props:{
 			agent:[String,Number],
 			
