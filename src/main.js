@@ -1,7 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 
-
+import { isIE ,showUpdatePage } from 'src/utils/ie'
 import 'es6-shim'
 require('es6-promise').polyfill()
 
@@ -28,11 +28,11 @@ import { SET_USERINFO,SET_PATH,SET_TOKEN} from "./store/mutation-types"
 import AuthenService from "services/authenService"
 import UserService from "services/userService"
 
-Vue.use(Components);
-Vue.use(Validate);
-miniToastr.init();
-Vue.prototype.toastr = miniToastr;
 
+Vue.use(Components)
+Vue.use(Validate)
+miniToastr.init()
+Vue.prototype.toastr = miniToastr
 let initVue = () =>{
   window.vm = new Vue({
     store,
@@ -53,16 +53,12 @@ let initVue = () =>{
     }
   })
   Vue.config.productionTip = false
-}
-
-let checkLogin = async()=>{
+}, checkLogin = async()=>{
   return await AuthenService.checkLogin()
-}
-let getUserInfo = async()=>{
+},getUserInfo = async()=>{
   return await UserService.getUserInfo()
-}
-// 首先从 cookie里面直接发送给服务器验证，是否正确，如果正确了，就获取用户信息，如果用户信息获取成功，就进入之前的页面，否则就进入登录页面
-let init = async()=>{
+},init = async()=>{
+  // 首先从 cookie里面直接发送给服务器验证，是否正确，如果正确了，就获取用户信息，如果用户信息获取成功，就进入之前的页面，否则就进入登录页面
   try{
     let {success,message,data} = await checkLogin()
     if(success){
@@ -90,5 +86,8 @@ let init = async()=>{
   }
 }
 init()
+
+
+
 
  

@@ -41,5 +41,14 @@
  	background-color: rgba(0,0,0,.5);
  }
  }
+ .body-error.error-inside.update-browser-tips{
+  display: table;
+  height:100vh;
+  margin-top: 0px;
+  .center-error{
+    display: table-cell;
+    vertical-align: middle;
 
+  }
+ }
 </style>
