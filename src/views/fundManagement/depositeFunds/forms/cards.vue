@@ -90,11 +90,9 @@
     },
     methods:{
       async toSubmit(e){
-        console.log(this.$validator)
         let validateResult = await this.$validator.validateAll()
         
         if(validateResult){
-          //eventUtil.dispatch(document.querySelector("#submit"),'click')
           this.$refs.dialog.open()
         }else{
           e.preventDefault()
