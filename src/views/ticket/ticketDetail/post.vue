@@ -1,13 +1,13 @@
 <template>
-	<li class="post clearfix " :class="{'right-post' : author_id == $store.state.userInfo.id }">
+	<li class="post clearfix " :class="{'right-post' : authorId == $store.state.userInfo.id }">
 		<div class="avator" >
-			<mu-avatar :src="head_logo"  :size="60" class="summary-icon bg-primary "/>
+			<mu-avatar :src="headLogo"  :size="60" class="summary-icon bg-primary "/>
 		</div>
 		<div class="post-content clearfix">
 			<div class="post-wrapper">
 				<p class="title">
 					 <i class="fa fa-calendar"></i>
-					 {{post_time}}
+					 {{postTime}}
 				</p>
 				<p><i class="fa fa-user" aria-hidden="true"></i>
 					 By
@@ -15,8 +15,11 @@
 					 	{{username}}
 					 </span>
 				</p>
-				<p class="content">
+				<p class="content" v-if="authorId == $store.state.userInfo.id">
 					{{content}}
+				</p>
+				<p class="content" v-else v-html="content">
+					
 				</p>
 				<p class="attachment" v-if=" path && path.length > 0">
 					<img :src="path" alt="" @click="showPreview"/>
@@ -36,11 +39,11 @@
 		},
 		props:{
 			username:"",
-			author_id:"",
+			authorId:"",
 			content:"",
 			path:"",
-			head_logo:"",
-			post_time:""
+			headLogo:"",
+			postTime:""
 		},
 		methods:{
 			closePreview(){

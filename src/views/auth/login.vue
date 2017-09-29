@@ -50,7 +50,7 @@
                   <span class="icon icon-lg">
                     <i class="fa fa-lock"></i>
                   </span>
-							</span>
+              </span>
             </div>
             <span slot="required" class="error" v-if="errors.has('password:required')">
               {{errors.first('password:required')}}
@@ -95,8 +95,8 @@
           this.loading = true
           let {message,success} = await this.$store.dispatch('login', this.model)
           if(success){
-            let {message,success} = await this.$store.dispatch('getUserInfo')
-            if(success){
+          let getUserInfo= await this.$store.dispatch('getUserInfo')
+            if(getUserInfo.success){
               this.$router.addRoutes(routers)
               this.$router.replace("/main")
             }

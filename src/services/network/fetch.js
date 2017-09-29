@@ -3,7 +3,7 @@ import {
 } from '../../config/env.config.js'
 import { MAX_FETCH_TIMEOUT,HTTP_STATUS_CODE } from '../../config/app.config.js'
 import store from "store"
-
+import fetch from 'isomorphic-fetch'
 export default async(type = 'GET', url = '', data = {}) => {
   type = type.toUpperCase();
   url = baseUrl + url;
@@ -16,7 +16,7 @@ export default async(type = 'GET', url = '', data = {}) => {
       'Content-Type': 'application/json'
     },
     mode: "cors",
-    cache: "force-cache"
+    cache: "default" // should set cache to 'no-cache'
   }
   if (store.state.token) {
     requestConfig.headers["Authorization"] = "Bearer " + store.state.token;
@@ -56,10 +56,15 @@ export default async(type = 'GET', url = '', data = {}) => {
     }, timeout)
     return abortable_promise
   }
-  let response
+  let response,contentType
   try {
     response = await _fetch(fetch(url, requestConfig), MAX_FETCH_TIMEOUT)
-    return await response.json()
+    //response = await fetch(url, requestConfig)
+    contentType = response.headers.get("content-type")
+    if(contentType && contentType.includes('application/json')){
+      return await response.json()
+    }
+    throw new TypeError('Oops,we haven\'t get JSON! ')
   } catch (error) {
     return {
       status_code: response.status

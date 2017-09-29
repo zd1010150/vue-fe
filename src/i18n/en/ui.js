@@ -21,7 +21,8 @@ export default {
     resetPwd: "Reset",
     withdraw: "Withdraw",
     detail: "Detail",
-    viewAll: "View All"
+    viewAll: "View All",
+    save: "Save"
   },
   datePicker:{
     startDate:"Start Date",
@@ -39,7 +40,8 @@ export default {
   upload:{
     tips: "Drop File Here or Click to Upload",
     accepts : "Only Accept",
-    attachment : "Attachment"
+    attachment : "Attachment",
+    loading: "Struggle to uploading......"
   },
   timer:{
     over: "Expired "

@@ -21,7 +21,8 @@ export default {
     resetPwd: "重置密码",
     withdraw: "撤销",
     detail: "详情",
-    viewAll: "查看全部"
+    viewAll: "查看全部",
+    save: "保存"
   },
   datePicker:{
     startDate:"开始时间",
@@ -39,7 +40,8 @@ export default {
   upload:{
     tips: "点击或者拖动文件到本区域上传",
     accepts : "只接受以下文件类型",
-    attachment : "附件"
+    attachment : "附件",
+    loading: "玩命上传中……"
   },
   timer:{
     over: " 已经过期 "

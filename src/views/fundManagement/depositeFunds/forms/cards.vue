@@ -1,55 +1,56 @@
 <i18n src="../../i18n.yaml"></i18n>
 <template>
-	<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-    <template slot="panelTitle">{{ methodName }}</template>
-     <form slot="body" class="form-horizontal form-bordered " method="POST" name="unionPay" target="_blank" ref="unionPayForm">
-        <input type="hidden" name="language" :value="$store.state.language">
-        <paying-dialog ref="dialog" @close="handlerDialogClose"></paying-dialog>
-        <div class="form-group" :class="errorClass('MT4')">
-          <label class="control-label col-md-3">MT4 | {{ $t('deposit.balance') }}</label>
-          <div class="col-md-6" >
-            <mu-select-field v-model="model.mt4_id" v-validate="'required'" data-vv-value-path="model.mt4_id" name="mt4_id" >
-              <template v-for="mt4 in MT4">
-                <mu-menu-item :value="mt4.id" :title="mt4.text" key="mt4.id"/>
-              </template>
-            </mu-select-field>
-             <span slot="required" class="error" v-if="errors.has('MT4:required')">{{errors.first('MT4:required')}}</span>
+  <form :method="'post'" target="_blank" id="unionpayForm" :action="action">
+  	<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
+      <template slot="panelTitle">{{ methodName }}</template>
+      <div slot="body" class="form-horizontal form-bordered" >
+          <input type="hidden" name="language" :value="$store.state.language">
+          <paying-dialog ref="dialog" @close="handlerDialogClose"></paying-dialog>
+          <div class="form-group" :class="errorClass('MT4')">
+            <label class="control-label col-md-3">MT4 | {{ $t('deposit.balance') }}</label>
+            <div class="col-md-6" >
+              <mu-select-field v-model="model.mt4_id" v-validate="'required'" data-vv-value-path="model.mt4_id" name="mt4_id" >
+                <template v-for="mt4 in MT4">
+                  <mu-menu-item :value="mt4.id" :title="mt4.text" key="mt4.id"/>
+                </template>
+              </mu-select-field>
+               <span slot="required" class="error" v-if="errors.has('MT4:required')">{{errors.first('MT4:required')}}</span>
+            </div>
           </div>
-        </div>
-        <div class="form-group" :class="errorClass('deposit_pay')">
-          <label class="control-label col-md-3">{{ $t('deposit.amount') }}({{baseCurrency}})</label>
-          <div class="col-md-6">
-            <mu-text-field v-model="model.order_amount"  v-validate="'required|positiveFloatMoney|moneyRange:deposit_pay'" data-vv-value-path="model.order_amount" data-vv-name="deposit_pay" data-vv-validate-on="blur" class="form-control"   :fullWidth="true" name="order_amount" />
-            
-            <span slot="required" class="error" v-if="errors.has('deposit_pay:required')">{{errors.first('deposit_pay:required')}}</span>
-            <span slot="required" class="error" v-if="errors.has('deposit_pay:positiveFloatMoney')">{{errors.first('deposit_pay:positiveFloatMoney')}}</span>
-            <span slot="required" class="error" v-if="errors.has('deposit_pay:moneyRange')">{{errors.first('deposit_pay:moneyRange')}}</span>
+          <div class="form-group" :class="errorClass('deposit_pay')">
+            <label class="control-label col-md-3">{{ $t('deposit.amount') }}({{baseCurrency}})</label>
+            <div class="col-md-6">
+              <mu-text-field v-model="model.order_amount"  v-validate="'required|positiveFloatMoney|moneyRange:deposit_pay'" data-vv-value-path="model.order_amount" data-vv-name="deposit_pay" data-vv-validate-on="blur" class="form-control"   :fullWidth="true" name="order_amount" />
+              
+              <span slot="required" class="error" v-if="errors.has('deposit_pay:required')">{{errors.first('deposit_pay:required')}}</span>
+              <span slot="required" class="error" v-if="errors.has('deposit_pay:positiveFloatMoney')">{{errors.first('deposit_pay:positiveFloatMoney')}}</span>
+              <span slot="required" class="error" v-if="errors.has('deposit_pay:moneyRange')">{{errors.first('deposit_pay:moneyRange')}}</span>
+            </div>
           </div>
-        </div>
-        <div class="form-group" :class="errorClass('bank')">
-          <label class="control-label col-md-3">{{ $t('deposit.bank') }}</label>
-          <div class="col-md-6">
-            <mu-select-field v-model="model.bank_code" v-validate="'required'" data-vv-value-path="model.bank_code" data-vv-name="bank" name="bank_code">
-              <template v-for="(value,key) in banks">
-                <mu-menu-item :value="key" :title="value" key="key"/>
-              </template>
-            </mu-select-field>
-            <span slot="required" class="error" v-if="errors.has('bank:required')">{{errors.first('bank:required')}}</span>
+          <div class="form-group" :class="errorClass('bank')">
+            <label class="control-label col-md-3">{{ $t('deposit.bank') }}</label>
+            <div class="col-md-6">
+              <mu-select-field v-model="model.bank_code" v-validate="'required'" data-vv-value-path="model.bank_code" data-vv-name="bank" name="bank_code">
+                <template v-for="(value,key) in banks">
+                  <mu-menu-item :value="key" :title="value" key="key"/>
+                </template>
+              </mu-select-field>
+              <span slot="required" class="error" v-if="errors.has('bank:required')">{{errors.first('bank:required')}}</span>
+            </div>
           </div>
+       </div> 
+      <div class="row" slot="footer">
+        <div class="col-md-6 col-md-offset-3" >
+            <button class="mb-xs mt-xs mr-xs btn btn-primary print-btn" @click="toSubmit" type="submit">
+              <i class="fa fa-check hidden-sm hidden-xs"></i> {{ $t('ui.button.pay') }}
+            </button>
+            <button class="mb-xs mt-xs mr-xs btn btn-default print-btn" @click="cancel" type="reset">
+             <i class="fa fa-times hidden-sm hidden-xs"></i> {{ $t('ui.button.cancel') }}
+            </button>
         </div>
-     </form> 
-    <div class="row" slot="footer">
-      <div class="col-md-6 col-md-offset-3" >
-          <chp-button class="mb-xs mt-xs mr-xs btn btn-primary print-btn" @click="submit">
-            <i class="fa fa-check hidden-sm hidden-xs"></i> {{ $t('ui.button.pay') }}
-          </chp-button>
-          <chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn" @click="cancel">
-           <i class="fa fa-times hidden-sm hidden-xs"></i> {{ $t('ui.button.cancel') }}
-          </chp-button>
       </div>
-    </div>
-   
     </chp-panel>
+  </form>
 </template>
 <script>
   import mt4Service from "services/mt4Service"
@@ -57,6 +58,7 @@
   import validateMixin from 'mixins/validatemix'
   import payingDialog from './payingDialog'
   import loadingMix from 'mixins/loading'
+  import eventUtil from 'src/utils/eventUtil'
 	export default{
     components:{
       'paying-dialog' : payingDialog
@@ -81,15 +83,21 @@
       },
       methodName:String
     },
+    computed:{
+      action(){
+        return "/api/deposit/submit/"+this.methodCode
+      }
+    },
     methods:{
-      async submit(){
-        let validateResult = await this.$validator.validateAll();
-          if(validateResult){
-            this.$refs.dialog.open()
-            let $form = this.$refs.unionPayForm
-            $form.action = "/api/deposit/submit/"+this.methodCode
-            $form.submit()
-          }
+      async toSubmit(e){
+        let validateResult = await this.$validator.validateAll()
+        
+        if(validateResult){
+          this.$refs.dialog.open()
+        }else{
+          e.preventDefault()
+        }
+        return validateResult
       },
       cancel(){
         this.$set(this.model,"order_amount","")

@@ -26,7 +26,7 @@
               </div>
             </div>
 
-            <h5 class="mb-xs mt-md">{{book.title}}</h5>
+            <h5 class="mb-xs mt-md"><chp-one-line :content='book.title' :lens="15"></chp-one-line></h5>
             <div class="mg-description">
               <ul class="notifications pull-right">
                 <li>
@@ -35,7 +35,7 @@
                   </a>
                 </li>
                 <li>
-                  <a v-bind:href="book.docpath" class="notification-icon" download>
+                  <a v-bind:href="book.docpath" class="notification-icon" download target="_blank">
                     <i class="fa fa-download"></i>
                   </a>
                 </li>

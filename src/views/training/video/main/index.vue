@@ -12,28 +12,28 @@
             </router-link>
           </div>
         </h3>
-		  </div>
+      </div>
 
       <div class="media-gallery">
         <div class="row mg-files">
           <div v-for="video in category.children" class="col-sm-6 col-lg-3">
             <div class="thumbnail">
               <router-link :to="'?level=3&videoType='+category.code+'&videoId='+video.id">
-                <div class="featured-image" v-bind:style='{backgroundImage:"url(" + video.imagepath +")"}'></div>
-              </router-link>	
-                <div>
-                  <h5 class="mb-xs mt-md">{{video.title}}</h5>
-                  <div class="mg-description">
-                    <div class="text-muted">{{video.uploader_name}}</div>
-                    <small class="text-muted pull-right pt-xs">{{video.upload_date}}</small>
-                  </div>
-                </div>						
+                <chp-feature-image :src='video.imagepath || video.image_link'/>
+              </router-link>  
+              <div>
+                <h5 class="mb-xs mt-md"><chp-one-line :content='video.title' :lens="15"></chp-one-line></h5>
+                <div class="mg-description">
+                  <div class="text-muted">{{video.uploader_name}}</div>
+                  <small class="text-muted pull-right pt-xs">{{video.upload_date}}</small>
+                </div>
+              </div>            
             </div>
           </div>
         </div>
       </div>
     </div>
-	</div>
+  </div>
 </template>
 
 <script>
@@ -87,9 +87,9 @@ export default {
 }
 </script>
 <style scoped>
-.video-header {	
-	border-bottom: 1px solid #4C4C4C;
-	margin-bottom: 15px;
+.video-header { 
+  border-bottom: 1px solid #4C4C4C;
+  margin-bottom: 15px;
 }
 
 .video-header .action {
@@ -97,11 +97,11 @@ export default {
 }
 
 .featured-image {
-	width: 100%;
-	height: 0;
-	padding-bottom: 56.25%;
-	background: rgba(0, 0, 0, 0.1) no-repeat center;
-	background-size: 100%; 
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  background: rgba(0, 0, 0, 0.1) no-repeat center;
+  background-size: 100%; 
 }
 </style>
 
