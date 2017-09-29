@@ -7,7 +7,7 @@
         <h3 class="title">
           <span class="mt-none">{{ $t('video.'+category.code) }}</span>
           <div class="pull-right action">
-            <router-link v-bind:to="'?level=2&videoType='+ category.id">
+            <router-link v-bind:to="'?level=2&videoCode='+category.code+'&videoType='+ category.id">
               <button class="mb-xs mt-xs mr-xs btn btn-sm btn-primary"><i class="fa fa-info-circle mr-xs"></i>{{ $t('video.more')}}</button>
             </router-link>
           </div>
@@ -18,11 +18,11 @@
         <div class="row mg-files">
           <div v-for="video in category.children" class="col-sm-6 col-lg-3">
             <div class="thumbnail">
-              <router-link :to="'?level=3&videoType='+category.id+'&videoId='+video.id">
+              <router-link :to="'?level=3&videoCode='+category.code+'&videoType='+category.id+'&videoId='+video.id">
                 <chp-feature-image :src='video.imagepath || video.image_link'/>
               </router-link>  
               <div>
-                <h5 class="mb-xs mt-md"><chp-one-line :content='video.title' :lens="15"></chp-one-line></h5>
+                <h5 class="mb-xs mt-md"><chp-one-line :content='video.title' :lens="25"></chp-one-line></h5>
                 <div class="mg-description">
                   <div class="text-muted">{{video.uploader_name}}</div>
                   <small class="text-muted pull-right pt-xs">{{video.upload_date}}</small>
