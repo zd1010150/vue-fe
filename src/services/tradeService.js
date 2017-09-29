@@ -33,12 +33,6 @@ export default{
     return fetchData('GET','/agent/clients/activation',{mt4_id,start_date,end_date})
   },
   /**
-   * 代理有效账户和净入金折线图和区域图
-   */
-  async getActiveAndNetDeposite({mt4_id,start_date='',end_date=''}){
-    return fetchData('GET','/agent/clients/contribution',{mt4_id,start_date,end_date})
-  },
-  /**
    * 代理的出入金折线图
    */
   async getWithdrawalAndDeposit({mt4_id,start_date='',end_date=''}){
@@ -49,6 +43,12 @@ export default{
    */
   async getCommission({mt4_id,start_date='',end_date=''}){
     return fetchData('GET','/agent/treasury/commissioins',{mt4_id,start_date,end_date})
+  },
+  /**
+   * 代理的有效用户和佣金
+   */
+  async getCommissionAndActiveClient({mt4_id,start_date='',end_date=''}){
+    return fetchData('GET','/agent/treasury/totalcommissioins',{mt4_id,start_date,end_date})
   },
   /**
    * 交易各项产品手数每天的折线图

@@ -109,8 +109,7 @@
 		},
 		methods:{
 			mapData(data){
-				let series = {fx:[],oil:[],metal:[],cfd:[]},
-					yAxis = [{
+				let yAxis = [{
 							name:this.$t('trade.lots'),
 							type:'value'
 						}],

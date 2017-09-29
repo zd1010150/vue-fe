@@ -20,17 +20,15 @@
 		</agent-statistics-time-picker>
 		<agent-statistics-treasury-chart-1 ref="chart1" @totalChange="totalChange"></agent-statistics-treasury-chart-1>
 		<agent-statistics-treasury-chart-2 ref="chart2" ></agent-statistics-treasury-chart-2>
-		
+		<agent-statistics-treasury-chart-3 ref="chart3"></agent-statistics-treasury-chart-3>
 	</div>
 </template>
 <script>
 	import timePicker from '../timePicker'
 	import chart1 from './chart1'
 	import chart2 from './chart2'
+	import chart3 from './chart3'
 	export default{
-		activated(){
-			this.refresh()
-		},
 		props:{
 			agent:[String,Number],
 			
@@ -49,7 +47,8 @@
 		components:{
 			'agent-statistics-time-picker' : timePicker,
 			'agent-statistics-treasury-chart-1' : chart1,
-			'agent-statistics-treasury-chart-2' : chart2
+			'agent-statistics-treasury-chart-2' : chart2,
+			'agent-statistics-treasury-chart-3' : chart3
 		},
 		methods:{
 			refresh(){
@@ -57,6 +56,7 @@
 					let model = { mt4_id:this.agent,start_date:this.start_date,end_date:this.end_date}
 					this.$refs.chart1.research(model)
 					this.$refs.chart2.research(model)
+					this.$refs.chart3.research(model)
 				}
 			},
 			research({start_date,end_date}){
@@ -65,7 +65,6 @@
 				this.refresh()
 			},
 			totalChange(val){
-				console.log("*****",val)
 				this.totalTreasurys = Object.assign({},val)
 			}
 		},
