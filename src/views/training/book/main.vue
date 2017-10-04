@@ -6,7 +6,7 @@
         <h3 class="title">
           <span class="mt-none">{{ $t('book.'+category.code) }}</span>
           <div class="pull-right action">
-            <router-link v-bind:to="'?level=2&bookType='+ category.code">
+            <router-link v-bind:to="'?level=2&bookCode='+category.code+'&bookType='+ category.id">
               <button class="mb-xs mt-xs mr-xs btn btn-sm btn-primary"><i class="fa fa-info-circle mr-xs"></i>{{ $t('video.more')}}</button>
             </router-link>
           </div>
@@ -83,7 +83,7 @@ export default {
           category = data.categories.filter((c)=>{
               return c.id == c_id
           })[0]
-          categories.push({code:category.code,children:c_children})
+          categories.push({code:category.code,children:c_children,id:category.id})
         }
       }
       this.categories = categories

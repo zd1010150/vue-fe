@@ -116,7 +116,7 @@
 		       			percentage:0,
 		       		    nextLevelValue:0
 		       		},
-		       		oil:{
+		       		cfd:{
 		       			level:[0,0,0,0,0,0,0,0,0,0],
 		       			currentValue: 0,
 		       			currentLevel: 0,
@@ -127,7 +127,7 @@
 		       			percentage:0,
 		       			nextLevelValue:0
 		       		},
-		       		cfd:{
+		       		oil:{
 		       			level:[0,0,0,0,0,0,0,0,0,0],
 		       			currentValue: 0,
 		       			currentLevel: 0,

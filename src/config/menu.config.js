@@ -6,29 +6,30 @@ export const common = [{
     routerLink: true,
     to: "/main"
   },
+  // {
+  //   icon: 'money',
+  //   title: 'uiDemo',
+  //   subs: [{
+  //       title: "uiComponent",
+  //       open: false,
+  //       routerLink: true,
+  //       to: "/uiDemo/ui-component"
+  //     },
+  //     {
+  //       title: "formvalidate",
+  //       open: false,
+  //       routerLink: true,
+  //       to: "/uiDemo/form-validate"
+  //     },
+  //     {
+  //       title: "echarts",
+  //       open: false,
+  //       routerLink: true,
+  //       to: "/uiDemo/echarts"
+  //     }
+  //   ]
+  // },
   {
-    icon: 'money',
-    title: 'uiDemo',
-    subs: [{
-        title: "uiComponent",
-        open: false,
-        routerLink: true,
-        to: "/uiDemo/ui-component"
-      },
-      {
-        title: "formvalidate",
-        open: false,
-        routerLink: true,
-        to: "/uiDemo/form-validate"
-      },
-      {
-        title: "echarts",
-        open: false,
-        routerLink: true,
-        to: "/uiDemo/echarts"
-      }
-    ]
-  },{
     icon: 'trademark',
     title: 'accountManagement',
     subs: [{

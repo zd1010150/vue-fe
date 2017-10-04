@@ -4,7 +4,7 @@
   <div class="container-fluid">
     <div class="book-header">
       <h3>
-        <span class="mt-none">{{ $t('book.'+ $route.query.bookType) }}</span>
+        <span class="mt-none">{{ $t('book.'+ $route.query.bookCode) }}</span>
         <div class="pull-right action">
           <router-link to="?level=1">
             <button class="mb-xs mt-xs mr-xs btn btn-sm btn-primary mt-none">{{ $t('book.allBooks')}}</button>
@@ -75,8 +75,7 @@ export default {
   methods: {
     async getCategoryBook() {
       this.$store.commit(SET_CONTENT_LOADING, true)
-      let { success, data } = await trainingService.getCategoryBook(this.language == "zh" ? "mandarin" : "english", 
-                                                                    this.$route.query.bookType)
+      let { success, data } = await trainingService.getCategoryBook(this.language == "zh" ? "mandarin" : "english",this.$route.query.bookType)
       this.$store.commit(SET_CONTENT_LOADING, false)
       if (success) {
         this.loopList = data.paginatedList.data

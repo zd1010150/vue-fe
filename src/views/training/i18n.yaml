@@ -12,7 +12,7 @@ zh:
     enrolledOnlineTraining : "已报名课程"
     content: "培训内容"
     allStatus:
-      end: "已结束"
+      end: "已开课"
       enrolled: "已报名"
       unenrolled: "点击报名"
   video:
@@ -41,7 +41,7 @@ en:
     enrolledOnlineTraining : "Enrolled Online Training"
     content: "Training Content"
     allStatus:
-      end: "Ended"
+      end: "Started"
       enrolled: "Enrolled"
       unenrolled: "Click to enroll"
   video:

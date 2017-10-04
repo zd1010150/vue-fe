@@ -78,27 +78,27 @@
                 <chp-table-head class="name">{{ $t('account.name') }}</chp-table-head>
                 <chp-table-head chp-sort-by="forex" chp-numeric>
                 {{ $t('trade.fx') }}({{ $t('trade.lots') }})
-                </chp-table-head>
-                <chp-table-head chp-sort-by="oil" chp-numeric>
-                {{ $t('trade.oil') }}({{ $t('trade.lots') }})
-                </chp-table-head>
+                </chp-table-head>                
                 <chp-table-head chp-sort-by="metal" chp-numeric>
                 {{ $t('trade.metal') }}({{ $t('trade.lots') }})
                 </chp-table-head>
                 <chp-table-head chp-sort-by="cfd" chp-numeric>
-                {{ $t('trade.cfd') }}{{ $t('trade.lots') }}
+                {{ $t('trade.cfd') }}({{ $t('trade.lots') }})
+                </chp-table-head>
+                <chp-table-head chp-sort-by="oil" chp-numeric>
+                {{ $t('trade.oil') }}({{ $t('trade.lots') }})
                 </chp-table-head>
                 <chp-table-head chp-sort-by="forexComm" chp-numeric>
                 {{ $t('trade.fx') }}{{ $t('trade.com') }}
-                </chp-table-head>
-                <chp-table-head chp-sort-by="oilComm" chp-numeric>
-                {{ $t('trade.oil') }}{{ $t('trade.com') }}
-                </chp-table-head>
+                </chp-table-head>                
                 <chp-table-head chp-sort-by="metalComm" chp-numeric>
                 {{ $t('trade.metal') }}{{ $t('trade.com') }}
                 </chp-table-head>
                 <chp-table-head chp-sort-by="cfdComm" chp-numeric>
                 {{ $t('trade.cfd') }}{{ $t('trade.com') }}
+                </chp-table-head>                
+                <chp-table-head chp-sort-by="oilComm" chp-numeric>
+                {{ $t('trade.oil') }}{{ $t('trade.com') }}
                 </chp-table-head>
                 <chp-table-head chp-sort-by="totalComm" chp-numeric>
                 {{ $t('trade.totalCom') }}{{ $t('trade.com') }}
@@ -186,14 +186,14 @@
             return {
       				mt4_id : row.mt4_id,
               name: row.name,
-              ForexVolume: row.forex,
-              OilVolume:row.oil,
+              ForexVolume: row.forex,              
               MetalsVolume:row.metal,
               CFDsVolume:row.cfd,
+              OilVolume:row.oil,
               ForexComProfit:row.forexComm,
-              OilComProfit:row.oilComm,
               MetalsComProfit:row.metalComm,
               CFDsComProfit:row.cfdComm,
+              OilComProfit:row.oilComm,
               TotalComProfitAgent:row.totalComm
 				    }
       		});
