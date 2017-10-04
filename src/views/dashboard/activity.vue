@@ -97,10 +97,10 @@
 			volumnDataInfo:function(){
 				if(this.dataInfo && this.dataInfo.fx && this.dataInfo.metal && this.dataInfo.cfd && this.dataInfo.oil)
 					return {
-						oil: this.dataInfo.oil,
 						fx: this.dataInfo.fx,
 						metal: this.dataInfo.metal,
-						cfd:this.dataInfo.cfd
+						cfd:this.dataInfo.cfd,
+						oil: this.dataInfo.oil
 					}
 				else return {}
 			}

@@ -37,6 +37,12 @@
 						<td>{{chartData.current.metal}}</td>
 						<td>{{chartData.last.metal}}</td>
 						<td>{{chartData.total.metal}}</td>
+					</tr>					
+					<tr>
+						<td><i class="fa fa-circle chart-orange" aria-hidden="true"></i>{{ $t('trade.cfd') }}</td>
+						<td>{{chartData.current.cfd}}</td>
+						<td>{{chartData.last.cfd}}</td>
+						<td>{{chartData.total.cfd}}</td>
 					</tr>
 					<tr>
 						<td><i class="fa fa-circle chart-green" aria-hidden="true"></i>{{ $t('trade.oil') }}</td>
@@ -44,13 +50,6 @@
 						<td>{{chartData.last.oil}}</td>
 						<td>{{chartData.total.oil}}</td>
 					</tr>
-					<tr>
-						<td><i class="fa fa-circle chart-orange" aria-hidden="true"></i>{{ $t('trade.cfd') }}</td>
-						<td>{{chartData.current.cfd}}</td>
-						<td>{{chartData.last.cfd}}</td>
-						<td>{{chartData.total.cfd}}</td>
-					</tr>
-					
 				</tbody>
 			</table>
 			</div>

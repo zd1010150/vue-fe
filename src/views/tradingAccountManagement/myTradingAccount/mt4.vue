@@ -162,25 +162,23 @@
 				    	name:this.$t('trade.fx'),
 				    	icon:'circle'
 				    },{
-				    	name:this.$t('trade.oil'),
-				    	icon:'circle'
-				    },{
 				    	name:this.$t('trade.metal'),
 				    	icon:'circle'
 				    },{
 				    	name:this.$t('trade.cfd'),
 				    	icon:'circle'
-				    }],
+					},{
+				    	name:this.$t('trade.oil'),
+				    	icon:'circle'
+				    }
+					],
 				    chart = data.chart,
 				    total = [
 				    			{
 					    			name:this.$t('trade.fx'),
 					    			value:data.total.fx
 				    			},
-				    			{
-					    			name:this.$t('trade.oil'),
-					    			value:data.total.oil
-				    			},
+				    			
 				    			{
 					    			name:this.$t('trade.metal'),
 					    			value:data.total.metal
@@ -188,6 +186,10 @@
 				    			{
 					    			name:this.$t('trade.cfd'),
 					    			value:data.total.cfd
+								},
+								{
+					    			name:this.$t('trade.oil'),
+					    			value:data.total.oil
 				    			},
 				    ],
 				    self = this
@@ -221,11 +223,6 @@
 	       					type:'line'
 	       				},
 	       				{
-	       					name: this.$t('trade.oil'),
-	       					data:series.oil,
-	       					type:'line'
-	       				},
-	       				{
 	       					name: this.$t('trade.metal'),
 	       					data:series.metal,
 	       					type:'line'
@@ -233,6 +230,11 @@
 	       				{
 	       					name: this.$t('trade.cfd'),
 	       					data:series.cfd,
+	       					type:'line'
+	       				},
+	       				{
+	       					name: this.$t('trade.oil'),
+	       					data:series.oil,
 	       					type:'line'
 	       				}
 	       			]
