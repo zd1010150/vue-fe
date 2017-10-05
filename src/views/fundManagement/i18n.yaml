@@ -17,6 +17,8 @@ en:
     wireTransfer: "Wire Transfers"
     bankTransfer: "Bank Transfer"
     creditCard: "Credit Card"
+    eWallet: "e-Wallet"
+    cards: "Cards"
   bankcard:
     profile: "Profile"
     editBtnText : "Edit Bank Account"
@@ -107,6 +109,8 @@ zh:
     wireTransfer: "电汇"
     bankTransfer: "银行转账"
     creditCard: "信用卡"
+    eWallet: "电子钱包"
+    cards: "银行卡"
   bankcard:
     profile: "个人信息"
     editBtnText : "编辑账号信息"

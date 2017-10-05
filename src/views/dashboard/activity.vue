@@ -4,6 +4,26 @@
 		<template v-for="(value,key) in volumnDataInfo">
 			<section class="panel volumn-panel col-lg-6 col-xs-12" :class="'volume-'+key">
 					<div class="panel-body">
+						<div v-if="value.hasAward" class="tag">							
+							<div class="tag-box active" @click="getBonus(key)">
+								<div class="border"></div>
+								<div class="word">
+									<span class="level">
+										{{ $t('trade.level') }} {{ value.awardLevel}} <i class="fa fa-caret-right" aria-hidden="true"></i> {{ value.currentLevel}}
+									</span>
+									<span>
+										<i class="fa fa-gift hidden-xs"></i>: {{ value.amount}} ( {{ value.baseCurrency }} )
+									</span>
+									 
+								</div>
+							</div>
+						</div>
+						<div v-else class="tag">							
+							<div class="tag-box">
+								<div class="border"></div>
+								<div class="word"><i class="fa fa-gift hidden-xs"></i> 等级未满</div>
+							</div>
+						</div>
 						<div class="widget-summary">
 							<div class="widget-summary-col info-col">
 								<div class="summary">
@@ -25,7 +45,7 @@
 										:bgClasses="['progress-striped','progress-xxs','mt-xs','mb-xs','light']"
 										/>
 								</div>
-								<template v-if="value.hasAward">
+								<!-- <template v-if="value.hasAward">
 									<div class="summary-footer clearfix">
 										<div class="pull-left">
 											<span>
@@ -46,8 +66,8 @@
 											</chp-button>
 										</div>
 									</div>
-								</template>
-								<template v-else>
+								</template> -->
+								<template>
 									<div class="summary-footer clearfix">
 										<span class="pull-left">
 										{{ $t('trade.level') }}: {{ value.currentLevel}} 
@@ -114,7 +134,46 @@
 	@import "~assets/less/variable.less";
 	.mt4-activity{
 		.panel-body{
-			padding:10px 20px !important;
+			padding:20px 20px 5px !important;
+			position: relative;
+		}
+		.tag {
+			position: absolute;
+			top:12px;
+			right:-1px;
+			box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+			
+			.tag-box {
+				position: relative;
+				.border {
+					position: absolute;
+					top:0;
+					left:-12px;
+					width:0;
+					border-left:12px solid transparent;
+					border-bottom: 12px solid #777;
+					border-top: 12px solid #777;
+				}
+				.word{
+					color:#fff;
+					padding:3px 15px 3px 18px;
+					font-size: 12px;
+					line-height: 18px;
+					background:#777;
+					.level {
+						margin-right: 10px;
+					}
+
+				}			
+			}
+			.tag-box.active {
+				cursor: pointer;
+			}
+			
+		}
+		h4{
+			font-size:20px !important;
+			padding-bottom: 10px !important;
 		}
 		table{
 			width:100%;
@@ -133,7 +192,7 @@
 			.button-content-wrapper{
 				display: inline-block;
 		      	min-width: 30px;
-		      	min-height: 20px;
+		      	
 		      
 			}
 		}
@@ -151,15 +210,43 @@
 			}
 		}
 		.volume-oil{
+			.tag-box.active .border {
+				border-bottom-color: @blue-color;
+				border-top-color: @blue-color;
+			}
+			.tag-box.active .word {
+				background: @blue-color;
+			}
 			.colorMix(@blue-color);
 		}
 		.volume-fx{
+			.tag-box.active .border {
+				border-bottom-color: @theme-red-color;
+				border-top-color: @theme-red-color;
+			}
+			.tag-box.active .word {
+				background: @theme-red-color;
+			}
 			.colorMix(@theme-red-color);
 		}
 		.volume-cfd{
+			.tag-box.active .border {
+				border-bottom-color: @theme-yellow-color;
+				border-top-color: @theme-yellow-color;
+			}
+			.tag-box.active .word {
+				background: @theme-yellow-color;
+			}
 			.colorMix(@theme-yellow-color);
 		}
 		.volume-metal{
+			.tag-box.active .border {
+				border-bottom-color: @theme-green-color;
+				border-top-color: @theme-green-color;
+			}
+			.tag-box.active .word {
+				background: @theme-green-color;
+			}
 			.colorMix(@theme-green-color);
 		}
 	}

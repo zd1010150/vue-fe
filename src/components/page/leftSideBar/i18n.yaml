@@ -46,7 +46,7 @@ zh:
   QQ: "在线QQ"
   commonQuestion: "常见问题"
   menu:
-    dashboard: "Dashboard"
+    dashboard: "首页"
     uiDemo: "UI Demo"
     uiComponent: "UI 组件"
     formvalidate: "表单验证"
