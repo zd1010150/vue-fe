@@ -2,7 +2,7 @@
 <template>
   <div class="col-lg-12 deposite-methods">
     <section class="methods bankTransfer" v-if="Object.keys(gateWays.bankTransfer).length > 0">
-      <h4 class="text-dark">Bank Transfer</h4>
+      <h4 class="text-dark">{{ $t('payMentMethod.bankTransfer')}}</h4>
       <div class="row">
         <template  v-for="(value,key) in gateWays.bankTransfer">
           <div class="methods-wrapper">
@@ -18,7 +18,7 @@
       </div>
     </section>
     <section class="methods cards" v-if="Object.keys(gateWays.cards).length > 0">
-      <h4 class="text-dark">Cards</h4>
+      <h4 class="text-dark">{{ $t('payMentMethod.cards')}}</h4>
       <div class="row">
         <template  v-for="(value,key) in gateWays.cards">
           <div class="methods-wrapper">
@@ -34,7 +34,7 @@
       </div>
     </section>
     <section class="methods e-wallet" v-if="Object.keys(gateWays.eWallet).length > 0">
-      <h4 class="text-dark">e-Wallet</h4>
+      <h4 class="text-dark">{{ $t('payMentMethod.eWallet')}}</h4>
       <div class="row">
         <template  v-for="(value,key) in gateWays.eWallet">
           <div class="methods-wrapper">

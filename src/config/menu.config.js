@@ -30,7 +30,7 @@ export const common = [{
   //   ]
   // },
   {
-    icon: 'trademark',
+    icon: 'user',
     title: 'accountManagement',
     subs: [{
       title: "myTradingAcoount",
