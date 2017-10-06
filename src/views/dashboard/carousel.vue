@@ -1,23 +1,26 @@
 <template>
-	<div class="col-lg-12">
-		<div class="thumbnail">
-			<chp-carousel   :perPage="1" 
-							:autoplay="true" 
-							:autoplayHoverPause="true" 
-							:loop="true" 
-							:paginationPadding="5"
-							:autoplayTimeout="3000"
-							class="dashboard-carousel">
-				<chp-slide v-for="(activity,index) in activities" class="slide-wrapper" :key="index">
-					<!-- <chp-feature-image :src= "activity.imagepath || activity.image_link "/>
-					 --><img class="slide-img" :src= "activity.imagepath || activity.image_link " alt="">
-		      		<div class="mask">
-						<h3><a :href="activity.url" target="_blank">{{ $t("more")}}</a></h3>
-					</div>
-		        </chp-slide>
-		  	</chp-carousel>
-	  	</div>
+	<div>
+		<div class="col-lg-12">
+			<div class="thumbnail">
+				<chp-carousel   :perPage="1" 
+								:autoplay="true" 
+								:autoplayHoverPause="true" 
+								:loop="true" 
+								:paginationPadding="5"
+								:autoplayTimeout="3000"
+								class="dashboard-carousel">
+					<chp-slide v-for="(activity,index) in activities" class="slide-wrapper" :key="index">
+						<!-- <chp-feature-image :src= "activity.imagepath || activity.image_link "/>
+						--><img class="slide-img" :src= "activity.imagepath || activity.image_link " alt="">
+						<div class="mask">
+							<h3><a :href="activity.url" target="_blank">{{ $t("more")}}</a></h3>
+						</div>
+					</chp-slide>
+				</chp-carousel>
+	  		</div>			
+		</div>
 	</div>
+	
 </template>
 <script>
 	import activityService from "services/activityService"
@@ -55,7 +58,6 @@
 	.slide-img{
 		width:100%;
 		height:auto;
-		max-height: 650px;
 	}
 	.slide-wrapper{
 		position:relative;
@@ -106,5 +108,6 @@
 			height:auto;
 			max-height: auto;
 		}
-	}
+	}	
+
 </style>

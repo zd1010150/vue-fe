@@ -13,7 +13,7 @@
 							<td >
 								<chp-one-line :isHtml="true" :content='a.content' :lens="20"></chp-one-line>
 							</td>
-							<td> {{ a.dateTime}} </td>
+							<td width="150px"> {{ a.dateTime}} </td>
 						</tr>
 					</tbody>
 				</table>

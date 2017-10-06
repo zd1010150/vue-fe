@@ -1,21 +1,27 @@
 <template>
-	<div class="container-fluid">
-		<div class="row">
-			<dashboard-carousel></dashboard-carousel>
-		</div>
-		<dashboard-activity></dashboard-activity>
-		<div class="row">
-			<dashboard-mt4></dashboard-mt4>
-			<dashboard-announcement></dashboard-announcement>
-		</div>
-		<div class="row">
-			<dashboard-analysis></dashboard-analysis>
-		</div>
-		<div class="row">
-			<dashboard-videos></dashboard-videos>
-			<dashboard-books></dashboard-books>
-			
-		</div>
+	<div class="container-fluid">		
+			<div class="main-body">
+				<div class="row">
+					<dashboard-carousel></dashboard-carousel>
+				</div>
+				<div class="activity">
+					<dashboard-activity></dashboard-activity>
+				</div>
+				<div class="row">
+					<dashboard-mt4></dashboard-mt4>
+					<dashboard-announcement></dashboard-announcement>
+				</div>
+				<div class="row">
+					<dashboard-analysis></dashboard-analysis>
+				</div>
+				<div class="row">
+					<dashboard-videos></dashboard-videos>
+					<dashboard-books></dashboard-books>
+				</div>
+			</div>
+			<div class="fix-activity">
+				<dashboard-activity></dashboard-activity>
+			</div>
 	</div>
 	
 </template>
@@ -74,4 +80,31 @@
 			}
 		}
 	}
+	.fix-activity {
+		position: fixed;
+		right: 0;
+		top: 0;
+		padding: 130px 15px 15px;
+		width: 20%;
+		box-sizing: border-box;
+		height: 100%;
+		background: rgba(121,121,121,0.1);
+	}
+	@media screen and (min-width:1600px) {
+		.activity {
+			display: none;
+		}
+		.main-body {
+			width:76%;
+		}
+	}
+	@media screen and (max-width:1599px) {
+		.fix-activity {
+			display: none;
+		}
+		.main-body {
+			width:100%;
+		}
+	}
+	
 </style>
