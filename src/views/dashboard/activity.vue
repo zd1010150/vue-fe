@@ -2,14 +2,14 @@
 <template>
 	<div class="row mt4-activity">
 		<template v-for="(value,key) in volumnDataInfo">
-			<section class="panel volumn-panel col-lg-6 col-xs-12" :class="'volume-'+key">
+			<section class="panel volumn-panel col-lg-12 col-md-12 col-xs-12" :class="'volume-'+key">
 					<div class="panel-body">
 						<div v-if="value.hasAward" class="tag">							
 							<div class="tag-box active" @click="getBonus(key)">
 								<div class="border"></div>
 								<div class="word">
 									<span class="level">
-										{{ $t('trade.level') }} {{ value.awardLevel}} <i class="fa fa-caret-right" aria-hidden="true"></i> {{ value.currentLevel}}
+										{{ $t('levelUp') }} {{ value.awardLevel}} <i class="fa fa-caret-right" aria-hidden="true"></i> {{ value.currentLevel}}
 									</span>
 									<span>
 										<i class="fa fa-gift hidden-xs"></i>: {{ value.amount}} ( {{ value.baseCurrency }} )
@@ -156,12 +156,12 @@
 				}
 				.word{
 					color:#fff;
-					padding:3px 15px 3px 18px;
+					padding:3px 10px 3px 15px;
 					font-size: 12px;
 					line-height: 18px;
 					background:#777;
 					.level {
-						margin-right: 10px;
+						margin-right: 8px;
 					}
 
 				}			
@@ -173,7 +173,7 @@
 		}
 		h4{
 			font-size:20px !important;
-			padding-bottom: 10px !important;
+			padding-bottom: 5px !important;
 		}
 		table{
 			width:100%;
