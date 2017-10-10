@@ -22,7 +22,7 @@
                 <chp-feature-image :src='video.imagepath || video.image_link'/>
               </router-link>  
               <div>
-                <h5 class="mb-xs mt-md"><chp-one-line :content='video.title' :lens="25"></chp-one-line></h5>
+                <h5 class="mb-xs mt-md">{{video.title}}</h5>
                 <div class="mg-description">
                   <div class="text-muted">{{video.uploader_name}}</div>
                   <small class="text-muted pull-right pt-xs">{{video.upload_date}}</small>
@@ -103,6 +103,11 @@ export default {
   padding-bottom: 56.25%;
   background: rgba(0, 0, 0, 0.1) no-repeat center;
   background-size: 100%;
+}
+
+.media-gallery h5 {
+	height: 31px;
+	overflow: hidden;
 }
 </style>
 

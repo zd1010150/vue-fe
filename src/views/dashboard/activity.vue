@@ -21,7 +21,7 @@
 						<div v-else class="tag">							
 							<div class="tag-box">
 								<div class="border"></div>
-								<div class="word"><i class="fa fa-gift hidden-xs"></i> 等级未满</div>
+								<div class="word"><i class="fa fa-gift hidden-xs"></i> {{ $t('levelUpGift') }}</div>
 							</div>
 						</div>
 						<div class="widget-summary">

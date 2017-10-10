@@ -20,7 +20,7 @@
 						<router-link :to="'?level=3&videoCode='+$route.query.videoCode+'&videoType='+$route.query.videoType+'&videoId='+video.id">
 							<chp-feature-image :src='video.imagepath || video.image_link'/>
 						</router-link>
-						<h5 class="mb-xs mt-md"><chp-one-line :content='video.title' :lens="25"></chp-one-line></h5>
+						<h5 class="mb-xs mt-md">{{video.title}}</h5>
 						<div class="mg-description">
 							<span class="text-muted">{{video.uploader_name}}</span>
 							<small class="text-muted pull-right pt-xs">{{video.upload_date}}</small>
@@ -71,7 +71,7 @@ export default {
 
 <style scoped>
 .video-header {
-	border-bottom: 1px solid #DADADA;
+	border-bottom: 1px solid #4C4C4C;
 	margin-bottom: 15px;
 }
 
@@ -85,6 +85,11 @@ export default {
 	padding-bottom: 56.25%;
 	background: rgba(0, 0, 0, 0.1) no-repeat center;
 	background-size: 100%;
+}
+
+.media-gallery h5 {
+	height: 31px;
+	overflow: hidden;
 }
 </style>
 
