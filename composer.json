@@ -21,7 +21,7 @@
     "deploy:staging": "vendor/bin/deploy_version.sh",
     "deploy:production": "vendor/bin/deploy_version.sh -e production",
     "assets:rebuild": [
-      "which node || (command -v nvm || (curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash); source ~/.bashrc; nvm install node)",
+      "which node || (command -v nvm || (curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | sh); source ~/.bashrc; nvm install node)",
       "node --version",
       "npm --version",
       "npm install",
