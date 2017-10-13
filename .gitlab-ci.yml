@@ -56,7 +56,7 @@ connect_stage:
   script:
     - ssh -T ci_deployer@$STAGING_SERVER "sudo vpnc my_tunnel"
   only:
-    - /^staging$/
+    - master
   when: on_success
 
 connect_production:
@@ -74,7 +74,7 @@ deploy_stage:
   script:
     - ssh -T ci_deployer@$STAGING_SERVER "export CI_BUILD_REF=\"staging\"; cd $STAGING_PROJECT_ROOT; composer ci:deploy"
   only:
-    - /^staging$/
+    - master
   when: on_success
 
 deploy_production:
@@ -91,7 +91,7 @@ cleanup_stage:
   script:
     - ssh -T ci_deployer@$STAGING_SERVER "sudo vpnc-disconnect"
   only:
-    - /^staging$/
+    - master
   when: always
 
 cleanup_production:
