@@ -8,7 +8,6 @@
           <span class="chart-specification-tip pull-right">
             <i class="fa fa-info-circle" aria-hidden="true"></i>
             <chp-tooltip chp-direction="left">{{ $t('clientListTable.tip') }}</chp-tooltip>
-            <!-- <mu-tooltip :label="$t('clientListTable.tip')" :show="show" :trigger="this." :touch="touch" :verticalPosition="verticalPosition" :horizontalPosition="horizontalPosition"/> -->
           </span>
         </template>
         <chp-data-table slot="body" :isDisplayFilterToolbar="isDisplayFilterToolbar"
