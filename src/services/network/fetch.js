@@ -5,8 +5,8 @@ import { MAX_FETCH_TIMEOUT,HTTP_STATUS_CODE } from '../../config/app.config.js'
 import store from "store"
 import fetch from 'isomorphic-fetch'
 export default async(type = 'GET', url = '', data = {}) => {
-  type = type.toUpperCase();
-  url = baseUrl + url;
+  type = type.toUpperCase()
+  url = baseUrl + url
 
   let requestConfig = {
     credentials: 'include',
@@ -19,17 +19,17 @@ export default async(type = 'GET', url = '', data = {}) => {
     cache: "default" // should set cache to 'no-cache'
   }
   if (store.state.token) {
-    requestConfig.headers["Authorization"] = "Bearer " + store.state.token;
+    requestConfig.headers["Authorization"] = "Bearer " + store.state.token
   }
 
   if (type == 'GET') {
-    let dataStr = ''; //数据拼接字符串
+    let dataStr = '' //数据拼接字符串
     Object.keys(data).forEach(key => {
-      dataStr += key + '=' + data[key] + '&';
+      dataStr += key + '=' + data[key] + '&'
     })
     if (dataStr !== '') {
-      dataStr = dataStr.substr(0, dataStr.lastIndexOf('&'));
-      url = url + '?' + dataStr;
+      dataStr = dataStr.substr(0, dataStr.lastIndexOf('&'))
+      url = url + '?' + dataStr
     }
   }
   if (type == 'POST' || type == 'PUT') {

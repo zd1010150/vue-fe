@@ -24,7 +24,7 @@ export default {
       let childrenCount = children.length;
 
       if (props.href) {
-        return chpListItemLink;
+        return chpListItemLink
       }
 
       while (childrenCount--) {
@@ -36,15 +36,14 @@ export default {
 
             data.scopedSlots = {
               expand: () => expandComponent
-            };
+            }
 
-            children.splice(childrenCount, 1);
+            children.splice(childrenCount, 1)
 
-            return chpListItemExpand;
+            return chpListItemExpand
           } else if (options.tag === 'router-link') {
             children[childrenCount].data.staticClass = 'chp-list-item-container chp-button';
-
-            return chpListItemRouter;
+            return chpListItemRouter
           }
         }
       }
@@ -60,8 +59,8 @@ export default {
       }
 
       return chpListItemDefault;
-    };
+    }
 
-    return createElement(getItemComponent(), { props, ...data }, children);
+    return createElement(getItemComponent(), { props, ...data }, children)
   }
-};
+}
