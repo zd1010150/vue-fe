@@ -68,7 +68,6 @@
       calculateTooltipPosition() {
         let position = this.parentElement.getBoundingClientRect();
         let cssPosition = {};
-
         switch (this.chpDirection) {
           case 'top':
             cssPosition.top = position.top - this.$el.offsetHeight;

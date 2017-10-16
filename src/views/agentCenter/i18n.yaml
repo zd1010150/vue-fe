@@ -9,6 +9,7 @@ en:
   affiliate: "Apply For Affiliate Account"
   clientListTable:
     keywordsHint: "Input MT4 account"
+    tip: "Default display trading volume and Com of all clients in the last 30 days,you can filter data by clicking filter button"
   apply:
     experience: "Agent Experience"
     otherCompanies: "Other Affiliate FX companies"
@@ -71,8 +72,8 @@ en:
       percentageIconTip: "Volume Percentage Comparison of certain period with Last Month and Total Volume to Date"
       productsVolumeIconTip: "Volume Comparison of certain period with last month and Monthly Average "
     clientChart:
-      traderTip: "Clients at a certain period"
-      activeTraderTip : "Active clients at a certain period"
+      traderTip: "New clients at a certain period"
+      activeTraderTip : "New active clients at a certain period"
       activeIconTip: "Daily Active Client Statistics "
       historyActivetraderIconTip: "Active Client Comparision with Total Clients"
       selectedPercentageTip: "Percentage of Active Clients at a certain period "
@@ -88,6 +89,7 @@ zh:
   affiliate: "申请代理账户"
   clientListTable:
     keywordsHint: "请输入MT4账户名"
+    tip: "默认展示近30天交易量和佣金，点击搜索按钮按时间和客户搜索数据"
   apply:
     experience: "代理经验"
     otherCompanies: "代理过的公司"
@@ -150,8 +152,8 @@ zh:
       percentageIconTip: "不同种类产品在特定时间、上个月及开户以来的交易量占比比较"
       productsVolumeIconTip: "不同种类产品在特定时间、上个月及每月平均的交易量"
     clientChart:
-      traderTip: "特定时间内客户数"
-      activeTraderTip : "特定时间内有效客户数"
+      traderTip: "特定时间内新增客户数"
+      activeTraderTip : "特定时间内新增有效客户数"
       activeIconTip: "每日有效客户统计数据"
       historyActivetraderIconTip: "有效客户与总客户占比"
       selectedPercentageTip: "特定时间内的有效客户数占比"

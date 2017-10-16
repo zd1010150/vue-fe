@@ -2,9 +2,7 @@
   <li class="chp-list-item chp-list-item-expand" :class="classes" >
     <div class="chp-list-item-container chp-button">
       <slot></slot>
-
-
-      <i class="fa fa-angle-down" aria-hidden="true"></i>
+      <i class="fa fa-angle-down chp-list-expand-indicator" aria-hidden="true"></i>
     </div>
 
     <chp-button type="button" class="chp-button-ghost" @click="toggleExpandList" :disabled="disabled"></chp-button>

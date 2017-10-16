@@ -3,7 +3,7 @@
 $tooltip-height: 20px;
 
 .chp-tooltip {
-  height: $tooltip-height;
+  /*height: $tooltip-height;*/
   padding: 0 8px;
   position: fixed;
   z-index: 10000;
@@ -20,8 +20,9 @@ $tooltip-height: 20px;
   font-size: 10px;
   line-height: $tooltip-height;
   text-transform: none;
-  white-space: nowrap;
-
+  /*white-space: nowrap;*/
+  max-width: 80%;
+  display:block;
   &.chp-active {
     opacity: 1;
     transition: $swift-ease-in;
@@ -65,10 +66,10 @@ $tooltip-height: 20px;
 
   &.chp-tooltip-left {
     margin-left: -14px;
-    transform: translate(8px, 50%);
+    transform: translate(8px, 0);
 
     &.chp-active {
-      transform: translate(0, 50%);
+      transform: translate(0, 0);
     }
   }
 }

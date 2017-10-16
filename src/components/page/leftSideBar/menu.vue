@@ -13,64 +13,55 @@
     let nodes = [], level = 0, id = 0, _routerArr = [];
     /*渲染一个菜单项*/
     const renderOneItem = (node) => {
-      let children = [], routerLink;
+      let children = [], routerLink
       if (node.icon) {
         children.push(createElement("i", {
           'class': ['fa', 'fa-' + node.icon]
-        }));
+        }))
       }
-      children.push(createElement("span", this.$t("menu."+node.title)));
-      if (node.notice) {
-        children.push(createElement("mu-badge", {
-          props: {
-            content: node.notice + "",
-            primary: true
-          }
-        }));
-      }
+      children.push(createElement("span", this.$t("menu."+node.title)))
       if (node.routerLink && node.to) {
         routerLink = createElement("router-link", {
           props: {
             to: node.to,
             exact: false
           }
-        }, children);
-
+        }, children)
       }
-      return routerLink ? [routerLink] : children;
-    };
+      return routerLink ? [routerLink] : children
+    }
+
     const createChild = (rootNode, level) => {
-
-      let children = [], childrenNodes;
+      let children = [], childrenNodes
       if (rootNode.subs && rootNode.subs.length > 0) {
-
         for (let j = 0, len_j = rootNode.subs.length; j < len_j; j++) {
-          rootNode.subs[j].id = ++id;
-          rootNode.subs[j].index = rootNode.index + "-" + j;
-          children.push(createChild(rootNode.subs[j], level + 1));
+          rootNode.subs[j].id = ++id
+          rootNode.subs[j].index = rootNode.index + "-" + j
+          children.push(createChild(rootNode.subs[j], level + 1))
         }
-        childrenNodes = createElement("chp-list-expand", [createElement("chp-list", children)]);
+        childrenNodes = createElement("chp-list-expand", [createElement("chp-list", children)])
       }
       return createElement('chp-list-item', {
-        'class': [{
-          'chp-inset': !rootNode.icon
-        },
-          'level-' + level + "-menu"],
+        'class': [
+          {
+            'chp-inset': !rootNode.icon
+          },
+          'level-' + level + "-menu"
+          ],
         props: {
           open: rootNode.open
         }
-      }, [renderOneItem(rootNode), childrenNodes ? childrenNodes : []]);
-    };
+      }, [renderOneItem(rootNode), childrenNodes ? childrenNodes : []])
+    }
 
     for (let i = 0, len = this.items.length; i < len; i++) {
-      this.items[i].id = ++id;
-      this.items[i].index = i;
-      nodes.push(createChild(this.items[i], level));
+      this.items[i].id = ++id
+      this.items[i].index = i
+      nodes.push(createChild(this.items[i], level))
     }
-    return createElement("chp-list", nodes);
+    return createElement("chp-list", nodes)
 
   },
-  
   methods: {
     closeAllItems(){
       try{

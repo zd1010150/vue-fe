@@ -26,7 +26,7 @@
                     <li v-for="(notice,index) in notices" :key="index">
                       <a :href="'#/notice?type='+notice.category" class="clearfix">
                         <span class="title">{{ notice.dateTime}}</span>
-                        <span class="message truncate">{{ notice.content }}</span>
+                        <span class="message truncate" v-html="notice.content"></span>
                       </a>
                     </li>
                   </ul>
