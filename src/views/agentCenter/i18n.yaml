@@ -9,6 +9,7 @@ en:
   affiliate: "Apply For Affiliate Account"
   clientListTable:
     keywordsHint: "Input MT4 account"
+    tip: "Default display trading volume and Com of all clients in the last 30 days,you can filter data by clicking filter button"
   apply:
     experience: "Agent Experience"
     otherCompanies: "Other Affiliate FX companies"
@@ -88,6 +89,7 @@ zh:
   affiliate: "申请代理账户"
   clientListTable:
     keywordsHint: "请输入MT4账户名"
+    tip: "默认展示近30天交易量和佣金，点击搜索按钮按时间和客户搜索数据"
   apply:
     experience: "代理经验"
     otherCompanies: "代理过的公司"
