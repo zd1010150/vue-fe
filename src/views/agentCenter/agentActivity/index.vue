@@ -1,8 +1,8 @@
 <template>
 	<div class="container-fluid" >
 		<agent-activity-head @agentChange="agentChange" @totalClients="totalClients"></agent-activity-head>
-		<agent-activity-client :dataInfo="clientDataInfo" :totalClients="totalClientsNumber"></agent-activity-client>
-		<agent-activity-volumn :agent="agent" :dataInfo="volumnDataInfo" @refresh="refresh"></agent-activity-volumn>
+		<agent-activity-client :dataInfo="clientDataInfo" :totalClients="totalClientsNumber" v-if="dataInfo"></agent-activity-client>
+		<agent-activity-volumn :agent="agent" :dataInfo="volumnDataInfo" @refresh="refresh" v-if="dataInfo"></agent-activity-volumn>
 	</div>	
 </template>
 <script>
