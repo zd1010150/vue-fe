@@ -60,45 +60,48 @@
     },
     methods: {
       removeTooltips() {
-        if (this.tooltipElement.parentNode) {
+        if (this.tooltipElement && this.tooltipElement.parentNode) {
           this.tooltipElement.removeEventListener(transitionEndEventName, this.removeTooltips);
           this.tooltipElement.parentNode.removeChild(this.tooltipElement);
         }
       },
       calculateTooltipPosition() {
-        let position = this.parentElement.getBoundingClientRect();
-        let cssPosition = {};
-        switch (this.chpDirection) {
-          case 'top':
-            cssPosition.top = position.top - this.$el.offsetHeight;
-            cssPosition.left = position.left + position.width / 2;
+        if(this.parentElement){
+          let position = this.parentElement.getBoundingClientRect();
+          let cssPosition = {};
+          switch (this.chpDirection) {
+            case 'top':
+              cssPosition.top = position.top - this.$el.offsetHeight;
+              cssPosition.left = position.left + position.width / 2;
 
-            break;
+              break;
 
-          case 'right':
-            cssPosition.top = position.top;
-            cssPosition.left = position.left + position.width;
+            case 'right':
+              cssPosition.top = position.top;
+              cssPosition.left = position.left + position.width;
 
-            break;
+              break;
 
-          case 'bottom':
-            cssPosition.top = position.bottom;
-            cssPosition.left = position.left + position.width / 2;
+            case 'bottom':
+              cssPosition.top = position.bottom;
+              cssPosition.left = position.left + position.width / 2;
 
-            break;
+              break;
 
-          case 'left':
-            cssPosition.top = position.top;
-            cssPosition.left = position.left - this.$el.offsetWidth;
+            case 'left':
+              cssPosition.top = position.top;
+              cssPosition.left = position.left - this.$el.offsetWidth;
 
-            break;
+              break;
 
-          default:
-            console.warn(`Invalid ${this.chpDirection} option to chp-direction option`);
+            default:
+              console.warn(`Invalid ${this.chpDirection} option to chp-direction option`);
+          }
+
+          this.topPosition = cssPosition.top;
+          this.leftPosition = cssPosition.left;
         }
-
-        this.topPosition = cssPosition.top;
-        this.leftPosition = cssPosition.left;
+        
       },
       generateTooltipClasses() {
         let classes = [];
@@ -136,7 +139,7 @@
       this.$nextTick(() => {
 
         this.tooltipElement = this.$el;
-        this.parentElement = this.tooltipElement.parentNode;
+        this.parentElement = this.tooltipElement ? this.tooltipElement.parentNode : null;
         if(this.$el && this.parentElement){
           this.parentElement.removeChild(this.$el);
           this.parentElement.addEventListener('mouseenter', this.open);

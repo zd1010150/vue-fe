@@ -1,7 +1,7 @@
 <i18n src="../../i18n.yaml"></i18n>
 <template>
 	<div class="tab">
-		<agent-statistics-time-picker @research = "research" :agent="agent">
+		<agent-statistics-time-picker @research = "research" :agent="agent" >
 			<ul class="total-info">
 				<li>
 					{{ $t('trade.activeClient') }} : <span class="text-dark info-number"> {{ totalClients.activeClients}} </span>

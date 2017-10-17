@@ -1,6 +1,6 @@
 <template>
-	<div class="container-fluid">		
-			<div class="main-body">
+	<div class="container-fluid dashboard-container">		
+			<div class="main-body" :style="mainBodyWidth">
 				<div class="row">
 					<dashboard-carousel></dashboard-carousel>
 				</div>
@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<div class="fix-activity">
-				<dashboard-activity></dashboard-activity>
+				<dashboard-activity @getActivityData="getActivityData"></dashboard-activity>
 			</div>
 	</div>
 	
@@ -34,6 +34,11 @@
 	import books from './books'
 	import videos from './videos'
 	export default{
+		data(){
+			return {
+				activityData : false
+			}
+		},
 		components:{
 			'dashboard-carousel':carousel,
 			'dashboard-activity':activity,
@@ -42,6 +47,24 @@
 			'dashboard-analysis':analysis,
 			'dashboard-books':books,
 			'dashboard-videos':videos,
+		},
+		methods:{
+			getActivityData(data){
+				this.activityData = data
+			}
+		},
+		computed: {
+			mainBodyWidth () {
+				if(this.activityData) {
+					return {
+						width : '76%'
+					}
+				}else{
+					return {
+						width : '100%'
+					}
+				}
+			}
 		}
 	}
 </script>
@@ -97,13 +120,14 @@
 		.main-body {
 			width:76%;
 		}
+		
 	}
 	@media screen and (max-width:1599px) {
 		.fix-activity {
 			display: none;
 		}
 		.main-body {
-			width:100%;
+			width:100% !important;
 		}
 	}
 	
