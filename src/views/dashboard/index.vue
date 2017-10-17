@@ -19,7 +19,7 @@
 					<dashboard-books></dashboard-books>
 				</div>
 			</div>
-			<div class="fix-activity">
+			<div class="fix-activity" v-show="activityData">
 				<dashboard-activity @getActivityData="getActivityData"></dashboard-activity>
 			</div>
 	</div>
@@ -106,12 +106,11 @@
 	.fix-activity {
 		position: fixed;
 		right: 0;
-		top: 0;
-		padding: 130px 15px 15px;
+		top: 22px;
+		padding: 130px 25px 15px 0px;
 		width: 20%;
 		box-sizing: border-box;
 		height: 100%;
-		background: rgba(121,121,121,0.1);
 	}
 	@media screen and (min-width:1600px) {
 		.activity {
