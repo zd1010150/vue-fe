@@ -31,7 +31,7 @@ en:
     province : "Province"
     city : "City"
     branchName : "BranchName"
-    uploadsBill : "Uploads Bill"
+    uploadsBill : "Uploads Bank Statement"
     attachment : "Attachment"
     status : "Status"
     Action : "Action"
@@ -50,7 +50,7 @@ en:
       Reject : "Reject"
     deleteDialogText : " Are you sure delete this record?"
     methodType :
-      cup : "Bank bill"
+      cup : "Bank Statement"
       doku : "Doku"
       fasa : "Fasa"
       credit : "Credit Card"

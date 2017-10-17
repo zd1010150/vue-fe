@@ -31,7 +31,8 @@
     props: {
       chpAutoSelect: Boolean,
       chpSelection: Boolean,
-      chpItem: Object
+      chpItem: Object,
+      chpCanCustomiseClickEvent : Boolean
     },
     data() {
       return {
@@ -99,11 +100,16 @@
         this.$emit(value ? 'selected' : 'deselected', value);
       },
       autoSelect() {
-        if (this.chpAutoSelect && this.hasSelection) {
-          this.checkbox = !this.checkbox;
-          this.handleSingleSelection(this.checkbox);
-          this.parentTable.emitSelection();
+        if(this.chpCanCustomiseClickEvent){
+          this.$emit("rowClicked",this.chpItem)
+        }else{
+          if (this.chpAutoSelect && this.hasSelection) {
+            this.checkbox = !this.checkbox;
+            this.handleSingleSelection(this.checkbox);
+            this.parentTable.emitSelection();
+          }
         }
+        
       },
       startTableRow() {
         this.parentTable = getClosestVueParent(this.$parent, 'chp-table');

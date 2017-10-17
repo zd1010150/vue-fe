@@ -1,8 +1,9 @@
 <template>
 	<div>
 		<div class="col-lg-12">
-			<div class="thumbnail">
-				<chp-carousel   :perPage="1" 
+			<div class="thumbnail carousel-wrapper">
+				<chp-carousel   :key="carouselKey"
+								:perPage="1" 
 								:autoplay="true" 
 								:autoplayHoverPause="true" 
 								:loop="true" 
@@ -11,7 +12,15 @@
 								class="dashboard-carousel">
 					<chp-slide v-for="(activity,index) in activities" class="slide-wrapper" :key="index">
 						<!-- <chp-feature-image :src= "activity.imagepath || activity.image_link "/>
-						--><img class="slide-img" :src= "activity.imagepath || activity.image_link " alt="">
+						-->
+						<table class="slide-img-wrapper">
+							<tr>
+								<td><img class="slide-img" :src= "activity.imagepath || activity.image_link " alt=""></td>
+							</tr>
+						</table>
+						<!-- <div class="slide-img-wrapper">
+							
+						</div> -->
 						<div class="mask">
 							<h3><a :href="activity.url" target="_blank">{{ $t("more")}}</a></h3>
 						</div>
@@ -27,7 +36,8 @@
 	export default{
 		data(){
 			return {
-				activities:[]
+				activities:[],
+				carouselKey:Math.random()
 			}
 		},
 		created(){
@@ -44,6 +54,9 @@
 		watch:{
 			"$store.state.language":function(){
 				this.fetchData()
+			},
+			"$store.state.leftSideBarStatus":function(){
+				this.carouselKey = Math.random()
 			}
 		}
 	}
@@ -51,22 +64,37 @@
 <style lang="less">
 	@import "~assets/less/variable.less";
 	@import "~assets/less/transition.less";
-	
+	.carousel-wrapper{
+		max-height: 70vh;
+	}
 	.VueCarousel-pagination{
 		float:none !important;
 	}
+	table.slide-img-wrapper{
+		width:100%;
+		height:100%;
+		td:last-child{
+			vertical-align: middle;
+			text-align: center !important;
+		}
+		
+	}
 	.slide-img{
 		width:100%;
+		max-width: 100%;
 		height:auto;
+		max-height: 60vh;
 	}
 	.slide-wrapper{
 		position:relative;
+		overflow: hidden;
 		.featured-image{
 			max-width: 900px;
 			background-color: transparent;
 		}
 		.mask{
 			position:absolute;
+			z-index:10;
 			left:0px;
 			right:0px;
 			top:0px;
