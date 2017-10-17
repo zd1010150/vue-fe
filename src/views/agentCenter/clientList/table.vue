@@ -33,7 +33,8 @@
                                       data-vv-validate-on="change" 
                                       class="date"
                                       :fullWidth="true"
-                                      :maxDate="maxStartDate"/>
+                                      :maxDate="maxStartDate"
+                                      :minDate="minStartDate"/>
                     <span slot="password" class="error" v-if="errors.has('startDate:required')">
                       {{errors.first('startDate:required')}}
                     </span>
@@ -147,6 +148,7 @@
           sort:"",
           minEndDate:"",
           maxStartDate:"",
+          minStartDate:"",
           isDisplayFilterToolbar : false,
           pageIndex:1,
           pageSize:5,
@@ -160,6 +162,7 @@
         if(val){
           this.fetchData()
         }
+        this.setMinStartDate()
       },
       'model.start_date' : function(val){
         this.minEndDate = val
@@ -184,6 +187,7 @@
       let { now,monthAgo } = aMonthDate()
       this.$set(this.model,'start_date',monthAgo)
       this.$set(this.model,'end_date',now)
+      this.setMinStartDate()
     },
     methods : {
       filterFields(originData){
@@ -243,8 +247,13 @@
       },
       pageNumberChange(newIndex){
         this.pageIndex = newIndex
+      },
+      setMinStartDate(){
+        let _agent = this.$store.state.agentAccounts.filter((item)=>{
+              return item.mt4_id == this.agentId
+            })
+        this.minStartDate =  _agent && _agent.length > 0 ? (_agent[0].created_at.split(' ')[0].trim()) : ""
       }
-
     }
 }
 </script>
