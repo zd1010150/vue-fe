@@ -33,6 +33,14 @@
 				}
 				this.ticketId = ticketId+""
 			}
+		},
+		watch:{
+			"$route":function(){
+				console.log("click")
+			}
+		},
+		created(){
+			console.log("created")
 		}
 	}
 </script>

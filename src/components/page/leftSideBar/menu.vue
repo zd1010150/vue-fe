@@ -159,10 +159,9 @@
           languageTmp = language == "zh" ? zh_menu : en_menu,
           agentTmp = hasAgent ? agent : nonAgent
           temp.splice(3,0,...agentTmp)
-          temp.splice(this.items.length-1,0,...languageTmp)
+          temp.splice(4,0,...languageTmp)
       this.items = temp
     }
-
   },
   created(){
     this.filterByLanguageAndRole(this.$store.state.language,this.$store.state.userInfo && this.$store.state.userInfo.hasAgent)
