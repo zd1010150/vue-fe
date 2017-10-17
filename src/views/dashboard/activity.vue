@@ -100,6 +100,8 @@
 				})
 				if(success){
 					this.dataInfo = data 
+					console.log('emit data',data)
+					this.$emit("getActivityData",data)
 				}
 			},
 			async getBonus(type){

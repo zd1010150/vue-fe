@@ -80,11 +80,8 @@
       		'model.end_date':function(val){
         		this.maxStartDate = val
       		},
-      		agent:function(val){
-      			let agent = this.$store.state.agentAccounts.filter((item)=>{
-      				return item.mt4_id == this.agent
-      			})
-      			this.minStartDate = agent && agent.length > 0 ? (agent[0].created_at.split(' ')[0].trim()) : ""
+      		agent(){
+      			this.calculateMinStartDate()
       		}
 		},
 		methods:{
@@ -93,6 +90,12 @@
 		        if(validateResult){
 		          this.$emit('research',this.model)
 		        }
+			},
+			calculateMinStartDate(){
+				let _agent = this.$store.state.agentAccounts.filter((item)=>{
+      				return item.mt4_id == this.agent
+      			})
+      			this.minStartDate =  _agent && _agent.length > 0 ? (_agent[0].created_at.split(' ')[0].trim()) : ""
 			}
 		},
 		mounted(){
@@ -102,6 +105,9 @@
 			this.$emit('research',{
 				start_date :monthAgo,
 				end_date : now})
+		},
+		activated(){
+			this.calculateMinStartDate()
 		}
 	}
 </script>

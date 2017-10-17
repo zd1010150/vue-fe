@@ -11,6 +11,9 @@ en:
   actions: "Actions"
   attach : "Attachment"
   content : "Content"
+  closeTicket: 
+    title: "Are you sure to close this ticket？"
+    prompt: "Please notice that once the subject is closed you cannot replay again!"
   statusInfo:
     pending: "Pending"
     closed: "Closed"
@@ -41,6 +44,9 @@ zh:
   actions: "操作"
   attach : "附件"
   content : "内容"
+  closeTicket: 
+    title: "你确定关闭该工单？"
+    prompt: "请注意你一旦关闭该工单就不能再进行回复!"
   statusInfo:
     pending: "等待"
     closed: "关闭"

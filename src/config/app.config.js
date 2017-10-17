@@ -22,7 +22,11 @@ export const TABLES = {
 	WITHDRAWAL_TABLE :"WITHDRAWAL_TABLE",
 	TICKET_TABLE:"TICKET_TABLE"
 }
-
+//ticket回复时显示的管理员的名字
+export const ACY_ADMIN = {
+	zh : "ACY客服",
+	en : "ACY-Supports"
+}
 //网络请求的code
 export const HTTP_STATUS_CODE = {
 	OK : 200 //成功的status code

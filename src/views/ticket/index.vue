@@ -32,7 +32,24 @@
 					this.currentView = "ticket-list"
 				}
 				this.ticketId = ticketId+""
+			},
+			renderPage(ticketId){
+				if((ticketId+"" == "0" )|| ticketId ){
+					this.currentView = "ticket-detail"
+				}else{
+					this.currentView = "ticket-list"
+				}
+				this.ticketId = ticketId + ""
 			}
+		},
+		watch:{
+			"$route":function(route){
+				console.log("route",route)
+				this.renderPage(route && route.query && route.query.ticketId)
+			}
+		},
+		created(){
+			console.log("created")
 		}
 	}
 </script>

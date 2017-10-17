@@ -3,7 +3,13 @@
   <div class="row">
 		<div class="col-lg-12 col-md-12">
   		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-  	    <template slot="panelTitle">{{ $t('clientList') }}</template>
+  	    <template slot="panelTitle">
+          {{ $t('clientList') }}
+          <span class="chart-specification-tip pull-right">
+            <i class="fa fa-info-circle" aria-hidden="true"></i>
+            <chp-tooltip chp-direction="left">{{ $t('clientListTable.tip') }}</chp-tooltip>
+          </span>
+        </template>
         <chp-data-table slot="body" :isDisplayFilterToolbar="isDisplayFilterToolbar"
                   :pageSize = "pageSize"
                   :rowsTotal = "rowsTotal"
@@ -27,7 +33,8 @@
                                       data-vv-validate-on="change" 
                                       class="date"
                                       :fullWidth="true"
-                                      :maxDate="maxStartDate"/>
+                                      :maxDate="maxStartDate"
+                                      :minDate="minStartDate"/>
                     <span slot="password" class="error" v-if="errors.has('startDate:required')">
                       {{errors.first('startDate:required')}}
                     </span>
@@ -141,6 +148,7 @@
           sort:"",
           minEndDate:"",
           maxStartDate:"",
+          minStartDate:"",
           isDisplayFilterToolbar : false,
           pageIndex:1,
           pageSize:5,
@@ -154,6 +162,7 @@
         if(val){
           this.fetchData()
         }
+        this.setMinStartDate()
       },
       'model.start_date' : function(val){
         this.minEndDate = val
@@ -178,6 +187,7 @@
       let { now,monthAgo } = aMonthDate()
       this.$set(this.model,'start_date',monthAgo)
       this.$set(this.model,'end_date',now)
+      this.setMinStartDate()
     },
     methods : {
       filterFields(originData){
@@ -237,8 +247,13 @@
       },
       pageNumberChange(newIndex){
         this.pageIndex = newIndex
+      },
+      setMinStartDate(){
+        let _agent = this.$store.state.agentAccounts.filter((item)=>{
+              return item.mt4_id == this.agentId
+            })
+        this.minStartDate =  _agent && _agent.length > 0 ? (_agent[0].created_at.split(' ')[0].trim()) : ""
       }
-
     }
 }
 </script>

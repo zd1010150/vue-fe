@@ -66,7 +66,6 @@
 		},
 		computed:{
 			activityInfo:function(){
-				console.log(this.dataInfo,"validclient")
 				return Object.assign(this.defaultData,this.dataInfo)
 			}
 		}
