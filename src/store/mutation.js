@@ -15,7 +15,8 @@ import {
   SET_NOTICE_REFRESH_FLAG,
   SET_TERMS,
   SET_SYNC_TIME,
-  SET_ASYNC_LOADING
+  SET_ASYNC_LOADING,
+  SET_FETCH_PENDING
 } from "./mutation-types"
 
 
@@ -26,7 +27,6 @@ export default{
   },
   [ADD_ERROR_INFO](state,error){
     state.errors.push(error)
-    console.log("systemerror:",state.errors);
   },
   [SET_TOKEN](state,token){
     state.token = token
@@ -72,5 +72,8 @@ export default{
   },
   [SET_ASYNC_LOADING](state,loading){
     state.asyncLoading = loading
+  },
+  [SET_FETCH_PENDING](state,fetchPending){
+    state.fetchPending = fetchPending
   }
 }

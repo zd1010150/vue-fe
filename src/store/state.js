@@ -17,5 +17,6 @@ export default {
   refreshNoticeFlag:false,
   terms:{zh:"",en:""},
   syncTime:getStore("syncTime") || null,
-  asyncLoading:false
+  asyncLoading:false,
+  fetchPending:false
 }
