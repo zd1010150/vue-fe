@@ -103,6 +103,7 @@
                 this.currentView = 'ticket-detail-replay'
             },
             back(){
+                this.$router.push(this.$route.path)
                 this.$emit('close','detail')
             },
             closeIssue(){

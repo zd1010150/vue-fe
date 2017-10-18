@@ -20,7 +20,7 @@ export default {
   event:"活动",
   ticketList: "工单列表",
   ticketDetail:"工单详情",
-  affiliate: "代理账户",
+  affiliate: "合作区",
   onlineTraining: "在线培训",
   video:"视频",
   book:"书刊与杂志",

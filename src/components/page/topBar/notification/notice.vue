@@ -26,7 +26,7 @@
                     <li v-for="(notice,index) in notices" :key="index">
                       <a :href="'#/notice?type='+notice.category" class="clearfix">
                         <span class="title">{{ notice.dateTime}}</span>
-                        <span class="message truncate">{{ notice.content }}</span>
+                        <span class="message truncate" v-html="notice.content"></span>
                       </a>
                     </li>
                   </ul>
@@ -58,7 +58,7 @@
     },
 		methods:{
           async fetchData(){
-            let { success,data } = await notificationService.getUnreadNotice()
+            let { success,data } = await notificationService.getUnreadNotice(this.$store.state.language)
             if(success){
               this.count = data.count
               this.notices = data.notices

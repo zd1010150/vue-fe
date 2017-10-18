@@ -12,7 +12,12 @@
 				<p><i class="fa fa-user" aria-hidden="true"></i>
 					 By
 					 <span class="text-primary">
-					 	{{username}}
+					 	<span v-if="authorId == $store.state.userInfo.id">
+					 		{{username}}
+					 	</span>
+					 	<span v-else>
+					 		{{ admin }}
+					 	</span>
 					 </span>
 				</p>
 				<p class="content" v-if="authorId == $store.state.userInfo.id">
@@ -31,10 +36,12 @@
 	</li>
 </template>
 <script>
+	import { ACY_ADMIN } from "src/config/app.config.js"
 	export default{
 		data(){
 			return {
-				documentOpen:false
+				documentOpen:false,
+				admin: ACY_ADMIN[this.$store.state.language]
 			}
 		},
 		props:{
@@ -51,6 +58,11 @@
 			},
 			showPreview(){
 				this.documentOpen = true
+			}
+		},
+		watch:{
+			"$store.state.language" : function(val){
+				this.admin = ACY_ADMIN[val]
 			}
 		}
 	}

@@ -1,7 +1,8 @@
+<i18n src="../i18n.yaml"></i18n>
 <template>
 	<div class="center-block pb-lg pt-lg">
-		<h4>Are you sure to close this issue</h4>
-		<p>Please notice that once the subject is closed you cannot replay again</p>
+		<h4>{{ $t('closeTicket.title') }}</h4>
+		<p class="text-danger">{{ $t('closeTicket.prompt') }}</p>
 		<p>
 			<chp-button class="mb-xs mt-xs mr-xs btn btn-primary print-btn" @click="submit" :disabled="disableSubmit">
         		<i class="fa fa-check hidden-sm hidden-xs"></i> {{ $t('ui.button.submit') }}

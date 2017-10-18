@@ -18,8 +18,8 @@
                               data-vv-name="email"
                               :hintText="$t('login.placeholderEmail')" 
                               class="form-control input-lg" 
-                              name="email"
-                              type="email" 
+                              name="email" 
+                              type="email"
                               v-model.lazy="model.email"  
                               id="email"/>
               <span class="input-group-addon"><span class="icon icon-lg"> <i class="fa fa-user"></i></span></span>

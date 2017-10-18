@@ -20,10 +20,10 @@ export default {
 			queryParameter: { language, category, startDay, endDay }
 		})
 	},
-	async getUnreadNotice() {
-		return fetchData("GET", "/notice/unread")
+	async getUnreadNotice(language) {
+		return fetchData("GET", "/notice/unread/"+language)
 	},
-	async markReaded(type) {
-		return fetchData("GET", "/notice/" + type + "/check")
+	async markReaded(type,language) {
+		return fetchData("GET", "/notice/" + type + "/check/"+language)
 	}
 }

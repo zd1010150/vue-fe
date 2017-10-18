@@ -72,18 +72,6 @@ export const common = [{
       }
     ]
   },{
-    icon: 'download',
-    title: 'downloadCenter',
-    open: false,
-    routerLink: true,
-    to: "/download-center"
-  },{
-    icon: 'bell-o',
-    title: 'notice',
-    open: false,
-    routerLink: true,
-    to: "/notice"
-  },{
     icon: 'gift',
     title: 'event',
     open: false,
@@ -94,7 +82,20 @@ export const common = [{
     title: 'ticket',
     open: false,
     routerLink: true,
+    notice: "tickets",
     to: "/ticket/ticketList"
+  },{
+    icon: 'bell-o',
+    title: 'notice',
+    open: false,
+    routerLink: true,
+    to: "/notice"
+  },{
+    icon: 'download',
+    title: 'downloadCenter',
+    open: false,
+    routerLink: true,
+    to: "/download-center"
   },{
     icon: 'cog',
     title: 'setting',

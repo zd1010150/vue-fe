@@ -87,7 +87,11 @@
       			  </chp-table-row>
             </chp-table-header>
       		  <chp-table-body>
-              <chp-table-row v-for="(row, rowIndex) in tickets" :key="rowIndex" >
+              <chp-table-row v-for="(row, rowIndex) in tickets" :key="rowIndex" 
+              @rowClicked="detail" 
+              :chpItem="row"
+              :chpCanCustomiseClickEvent="true"
+              >
                 <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :class="columnIndex">
                   <template v-if="columnIndex == 'status'">
                     {{ $t('statusInfo.'+column) }}
@@ -99,9 +103,9 @@
                     {{ $t('type.'+column) }}
                   </template>
                   <template v-else-if="columnIndex =='id'">
-                     <mu-flat-button  @click="detail(column)" :label="$t('ui.button.detail')">
-                      <i aria-hidden="true" class="fa fa-info-circle"></i> 
-                     </mu-flat-button>
+                     <chp-button  @click="detail(column)" class="btn-primary">
+                      <i aria-hidden="true" class="fa fa-info-circle"></i> {{ $t('ui.button.detail') }}
+                     </chp-button>
                   </template>
                   <template v-else>
                     {{column}}
@@ -229,7 +233,13 @@
         this.pageIndex = newIndex
       },
       detail(id){
-        this.$emit("detail",id)
+        id = typeof id == "object" ? id.id : id
+        this.$router.push({
+          path:this.$route.path,
+          query:{
+              ticketId:id
+            }
+          })
       }
   }
 }

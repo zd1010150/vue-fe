@@ -1,30 +1,35 @@
 <i18n src="./i18n.yaml"></i18n>
 <script>
-  import { SET_LEFT_SIDE_BAR_STATUS } from "store/mutation-types"
+  import { SET_LEFT_SIDE_BAR_STATUS,SET_FETCH_PENDING } from "store/mutation-types"
   import { common,agent,nonAgent,zh_menu,en_menu } from "src/config/menu.config.js"
+  import { POLLING_INTERVAL } from "src/config/app.config.js"
+  import pageService from "src/services/pageService"
   export default{
   data(){
     return {
       routerArr: [],
-      items: []
+      items: [],
+      pendingNumber: {},
+      key:Math.random()
     }
   },
   render(createElement){
     let nodes = [], level = 0, id = 0, _routerArr = [];
     /*渲染一个菜单项*/
-    const renderOneItem = (node) => {
-      let children = [], routerLink;
+    const renderOneItem = (node,notice) => {
+      let children = [], routerLink
       if (node.icon) {
         children.push(createElement("i", {
           'class': ['fa', 'fa-' + node.icon]
-        }));
+        }))
       }
-      children.push(createElement("span", this.$t("menu."+node.title)));
-      if (node.notice) {
+      children.push(createElement("span", this.$t("menu."+node.title)))
+       if(notice) {
         children.push(createElement("mu-badge", {
           props: {
-            content: node.notice + "",
-            primary: true
+            content: notice + "",
+            primary: true,
+            color: "#D2312D"
           }
         }));
       }
@@ -34,43 +39,59 @@
             to: node.to,
             exact: false
           }
-        }, children);
-
+        }, children)
       }
-      return routerLink ? [routerLink] : children;
-    };
-    const createChild = (rootNode, level) => {
-
-      let children = [], childrenNodes;
-      if (rootNode.subs && rootNode.subs.length > 0) {
-
-        for (let j = 0, len_j = rootNode.subs.length; j < len_j; j++) {
-          rootNode.subs[j].id = ++id;
-          rootNode.subs[j].index = rootNode.index + "-" + j;
-          children.push(createChild(rootNode.subs[j], level + 1));
-        }
-        childrenNodes = createElement("chp-list-expand", [createElement("chp-list", children)]);
-      }
-      return createElement('chp-list-item', {
-        'class': [{
-          'chp-inset': !rootNode.icon
-        },
-          'level-' + level + "-menu"],
-        props: {
-          open: rootNode.open
-        }
-      }, [renderOneItem(rootNode), childrenNodes ? childrenNodes : []]);
-    };
-
-    for (let i = 0, len = this.items.length; i < len; i++) {
-      this.items[i].id = ++id;
-      this.items[i].index = i;
-      nodes.push(createChild(this.items[i], level));
+      return routerLink ? [routerLink] : children
     }
-    return createElement("chp-list", nodes);
+    const getPendingNumber = (node) => {
+      if(this.pendingNumber && node.notice && this.pendingNumber[node.notice]){
+        return this.pendingNumber && node.notice && this.pendingNumber[node.notice]
+      }else{
+        return 0
+      }
+    }
+    const createChild = (rootNode, level) => {
+      let children = [], childrenNodes ,number = 0
+      if (rootNode.subs && rootNode.subs.length > 0) {
+        for (let j = 0, len_j = rootNode.subs.length; j < len_j; j++) {
+          rootNode.subs[j].id = ++id
+          rootNode.subs[j].index = rootNode.index + "-" + j
+          let {node,_number} = createChild(rootNode.subs[j], level + 1)
+          children.push(node)
+          number += _number
+        }
+        childrenNodes = createElement("chp-list-expand", [createElement("chp-list", children)])
+      }else{
+        number = getPendingNumber(rootNode)
+      }
+      return{ 
+        node : createElement('chp-list-item', {
+              'class': [
+                {
+                  'chp-inset': !rootNode.icon
+                },
+                'level-' + level + "-menu"
+                ],
+              props: {
+                open: rootNode.open
+              }
+            }, [renderOneItem(rootNode,number), childrenNodes ? childrenNodes : []]),
+        _number: number
+      }
+    }
+    
+    for (let i = 0, len = this.items.length; i < len; i++) {
+      this.items[i].id = ++id
+      this.items[i].index = i
+      nodes.push(createChild(this.items[i], level).node)
+    }
+    return createElement("chp-list", {
+          props: {
+            key: this.key
+          }
+        }, nodes)
 
   },
-  
   methods: {
     closeAllItems(){
       try{
@@ -168,17 +189,38 @@
           languageTmp = language == "zh" ? zh_menu : en_menu,
           agentTmp = hasAgent ? agent : nonAgent
           temp.splice(3,0,...agentTmp)
-          temp.splice(this.items.length-1,0,...languageTmp)
+          temp.splice(4,0,...languageTmp)
       this.items = temp
+    },
+    repaintMenu(){
+        this.key = Math.random()
+        this.setItemsOpen(this.$route.path)
+    },
+    async fetchNoticeNumber(){
+      this.pendingNumber = { videos:10,tickets:2,booksandMagazines:11,onlineTraining:12 }
+      let {success,data} = await pageService.fetchPending()
+      if(success){
+        this.pendingNumber = data
+        this.repaintMenu()
+      }
+    },
+    polling(){
+      let poll = ()=>{
+        this.timer = setTimeout(async()=>{
+          await this.fetchNoticeNumber()
+          poll()
+        },POLLING_INTERVAL)
+      }
+      poll()
     }
-
   },
   created(){
     this.filterByLanguageAndRole(this.$store.state.language,this.$store.state.userInfo && this.$store.state.userInfo.hasAgent)
-    
+    this.fetchNoticeNumber()
   },
   mounted(){
     this.setItemsOpen(this.$route.path)
+    this.polling()
   },
   watch: {
     $route(val, oldVal){
@@ -191,6 +233,12 @@
     },
     "$store.state.language":function(val){
       this.filterByLanguageAndRole(val,this.$store.state.userInfo && this.$store.state.userInfo.hasAgent)
+    },
+    "$store.state.fetchPending":function(val){
+      if(val){
+        this.fetchNoticeNumber()
+        this.$commit(SET_FETCH_PENDING,false)
+      }
     }
   }
 }

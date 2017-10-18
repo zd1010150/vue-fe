@@ -22,12 +22,17 @@ export const TABLES = {
 	WITHDRAWAL_TABLE :"WITHDRAWAL_TABLE",
 	TICKET_TABLE:"TICKET_TABLE"
 }
-
+//ticket回复时显示的管理员的名字
+export const ACY_ADMIN = {
+	zh : "ACY客服",
+	en : "ACY-Supports"
+}
 //网络请求的code
 export const HTTP_STATUS_CODE = {
 	OK : 200 //成功的status code
 }
-
+//菜单轮询的时间间隔
+export const POLLING_INTERVAL = 2*60*1000 //毫秒
 //同步后端数据的最大间隔
 export const MAX_SYNC_TIME = 15 //单位min
 
