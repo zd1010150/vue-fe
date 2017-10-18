@@ -44,12 +44,8 @@
 		},
 		watch:{
 			"$route":function(route){
-				console.log("route",route)
 				this.renderPage(route && route.query && route.query.ticketId)
 			}
-		},
-		created(){
-			console.log("created")
 		}
 	}
 </script>

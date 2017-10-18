@@ -197,7 +197,6 @@
         this.setItemsOpen(this.$route.path)
     },
     async fetchNoticeNumber(){
-      this.pendingNumber = { videos:10,tickets:2,booksandMagazines:11,onlineTraining:12 }
       let {success,data} = await pageService.fetchPending()
       if(success){
         this.pendingNumber = data
@@ -237,7 +236,7 @@
     "$store.state.fetchPending":function(val){
       if(val){
         this.fetchNoticeNumber()
-        this.$commit(SET_FETCH_PENDING,false)
+        this.$store.commit(SET_FETCH_PENDING,false)
       }
     }
   }
