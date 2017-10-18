@@ -97,7 +97,7 @@
                     {{ $t('statusInfo.'+column) }}
                   </template>
                   <template v-else-if="columnIndex == 'subject'">
-                    <chp-one-line :lens="15" :content="column"></chp-one-line>
+                    <chp-one-line :lens="15" :content="column" :needTooltip="false"></chp-one-line>
                   </template>
                   <template v-else-if="columnIndex == 'type'">
                     {{ $t('type.'+column) }}
@@ -294,8 +294,8 @@
       white-space: nowrap;
     }
     &.subject{
-      max-width: 250px;
-      width:250px;
+      max-width: 300px;
+      width:300px;
       overflow: hidden;
       white-space: nowrap;
      

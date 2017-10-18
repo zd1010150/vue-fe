@@ -2,8 +2,10 @@
 	<p>
 		<span v-if="isHtml" v-html="innerHtml"></span>
 		<span v-else> {{ innerContent }} </span>
-		<chp-tooltip v-if="!isHtml"> {{ content }}</chp-tooltip>
-		<chp-tooltip v-else> {{ innerContent }}</chp-tooltip>
+		<template v-if="needTooltip">
+			<chp-tooltip v-if="!isHtml"> {{ content }}</chp-tooltip>
+			<chp-tooltip v-else> {{ innerContent }}</chp-tooltip>
+		</template>
 	</p>
 </template>
 <script>
@@ -13,6 +15,7 @@
 			lens:Number,
 			content:String,
 			isHtml:false,
+			needTooltip:true,
 			mark:{
 				type:String,
 				default: '...'
