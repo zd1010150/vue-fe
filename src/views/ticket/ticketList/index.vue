@@ -6,7 +6,7 @@
     		</chp-expand-transition>
     	</div>
     	<div class="row">
-    		<ticket-list-table @add="addNew" @detail="detail" ref="table"></ticket-list-table>
+    		<ticket-list-table @add="addNew"  ref="table"></ticket-list-table>
     	</div>
     </div>
 </template>
@@ -35,9 +35,6 @@
 			},
 			cancel(){
 				this.show = false
-			},
-			detail(id){
-				this.$emit("close",'list',id)
 			}
 		},
 		activated(){

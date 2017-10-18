@@ -58,7 +58,7 @@
     },
 		methods:{
           async fetchData(){
-            let { success,data } = await notificationService.getUnreadNotice()
+            let { success,data } = await notificationService.getUnreadNotice(this.$store.state.language)
             if(success){
               this.count = data.count
               this.notices = data.notices

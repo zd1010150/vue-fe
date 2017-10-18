@@ -56,7 +56,7 @@
 				this.fetchData()
 			},
 			"$store.state.leftSideBarStatus":function(){
-				this.carouselKey = Math.random()
+				this.carouselKey = Math.random() //为了强制重绘该滚动框，以实现自适应
 			}
 		}
 	}

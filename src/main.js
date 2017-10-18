@@ -26,7 +26,7 @@ import { SET_USERINFO,SET_PATH,SET_TOKEN} from "./store/mutation-types"
 
 import AuthenService from "services/authenService"
 import UserService from "services/userService"
-
+import pageService from "services/pageService"
 
 Vue.use(Components)
 Vue.use(Validate)
@@ -52,38 +52,53 @@ let initVue = () =>{
     }
   })
   Vue.config.productionTip = false
-}, checkLogin = async()=>{
+}
+let checkLogin = async()=>{
   return await AuthenService.checkLogin()
-},getUserInfo = async()=>{
+}
+let getUserInfo = async()=>{
   return await UserService.getUserInfo()
-},init = async()=>{
-  // 首先从 cookie里面直接发送给服务器验证，是否正确，如果正确了，就获取用户信息，如果用户信息获取成功，就进入之前的页面，否则就进入登录页面
-  try{
-    let {success,message,data} = await checkLogin()
-    if(success){
-      let {success,message,data} = await getUserInfo()
+}
+let checkIP = async()=>{
+  return await pageService.detectIP()
+}
+let init = async()=>{
+  //检查ip是否合法
+  let {success,data} = await checkIP()
+  console.log(data,"===")
+  if(data.status == "invalid"){
+    initVue()
+    vm.$router.push("/error")
+  }else{
+    // 首先从 cookie里面直接发送给服务器验证，是否正确，如果正确了，就获取用户信息，如果用户信息获取成功，就进入之前的页面，否则就进入登录页面
+    try{
+      let {success,message,data} = await checkLogin()
       if(success){
-        router.addRoutes(routers)
-        store.commit(SET_USERINFO,data)
-        store.commit(SET_TOKEN,getStore("token"))
-        initVue()
-        let path = getStore("path") == "/login" ? "/main" : getStore("path")
-        vm.$router.push(path)
+        let {success,message,data} = await getUserInfo()
+        if(success){
+          router.addRoutes(routers)
+          store.commit(SET_USERINFO,data)
+          store.commit(SET_TOKEN,getStore("token"))
+          initVue()
+          let path = getStore("path") == "/login" ? "/main" : getStore("path")
+          vm.$router.push(path)
+        }else{
+          throw new Error(message)
+        }
       }else{
         throw new Error(message)
       }
-    }else{
-      throw new Error(message)
-    }
-  }catch(error){
-    initVue()
-    if(vm.$route.meta.requiresAuth == false && vm.$route.path != "/404"){
-      vm.$router.push(vm.$route.fullPath)
-    }else {
-      vm.$router.push("/login")
+    }catch(error){
+      initVue()
+      if(vm.$route.meta.requiresAuth == false && vm.$route.path != "/404"){
+        vm.$router.push(vm.$route.fullPath)
+      }else {
+        vm.$router.push("/login")
+      }
     }
   }
 }
+
 init()
 
 

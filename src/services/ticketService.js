@@ -2,7 +2,8 @@
  * Ticket
  */
 import   { fetchData }  from  './network/getData'
-
+import store from "store"
+import { SET_FETCH_PENDING } from 'store/mutation-types'
 export default{
   
   async getQuestionType(){
@@ -10,7 +11,9 @@ export default{
   },
   
   async getTicketDetail(id){
-  	return fetchData('GET','/tickets/display/'+id)
+    let promise = await fetchData('GET','/tickets/display/'+id)
+    store.commit(SET_FETCH_PENDING,true)
+  	return promise
   },
   async getTicketTypes(){
     return fetchData('GET','/tickets/types')
