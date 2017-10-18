@@ -30,7 +30,7 @@
     "ci:deploy": [
       "git fetch --all --tags",
       "git checkout $CI_BUILD_REF",
-      "git pull origin master",
+      "git pull origin $CI_BUILD_REF",
       "rm -rf node_modules",
       "composer install --no-dev",
       "@assets:rebuild"
