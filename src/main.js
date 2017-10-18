@@ -65,7 +65,6 @@ let checkIP = async()=>{
 let init = async()=>{
   //检查ip是否合法
   let {success,data} = await checkIP()
-  console.log(data,"===")
   if(data.status == "invalid"){
     initVue()
     vm.$router.push("/error")
