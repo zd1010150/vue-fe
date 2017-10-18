@@ -27,6 +27,10 @@ export const ACY_ADMIN = {
 	zh : "ACY客服",
 	en : "ACY-Supports"
 }
+export const ACY_BOOK_UPLOADER = {
+	zh : "ACY稀万",
+	en : "ACY"
+}
 //网络请求的code
 export const HTTP_STATUS_CODE = {
 	OK : 200 //成功的status code
