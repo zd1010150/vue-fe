@@ -20,7 +20,7 @@
 												<div class="img-wrapper">
 													<table>
 														<tr>
-															<td><img class="img-responsive" :src="image.src" alt=""></td>
+															<td><img :src="image.src" alt=""></td>
 														</tr>
 													</table>
 												</div>
@@ -61,17 +61,17 @@
 									<tr>
 										<td>
 											<mu-paper class="pic" :zDepth="2">
-												<div class="img-wrapper">
+												<div class="img-wrapper video">
 													<table>
 														<tr>
 															<td>
 																<div class="thumbnail" @click="playVideo(video.id)">
 																	<template v-if="!video.playing">
-																		<img src="https://baikebcs.bdimg.com/adpic/延安革命纪念馆.jpg" alt="">
+																		<img :src="video.thumbnailUrl" alt="">
 																		<i class="fa fa-youtube-play play-btn text-primary" aria-hidden="true"></i>	
 																	</template>
 																	<video  controls="" v-else>
-	  																	<source src="video.src"> 
+	  																	<source :src="video.src"> 
 	  																</video>
 																</div>
 															</td>
@@ -188,18 +188,11 @@
 				})	
 			},
 			playVideo(id){
-				let videos = this.videos.map((video)=>{
+				let _data = this.videos.map((video)=>{
+					console.log(video.id)
 					video.playing = video.id == id
 					return video
 				})
-				this.videos = Object.assign({},videos)
-			},
-			pauseAllVideo(){
-				let videos = this.videos.map((video)=>{
-					video.playing = false
-					return video
-				})
-				this.videos = Object.assign({},videos)
 			}
 		},
 		watch:{
@@ -214,6 +207,8 @@
 			},
 			'$store.state.language'(val){
 				this.orgUrl = ORG_INDEX[val]
+				this.fetchImageData()
+				this.fetchVideoData()
 			}
 		}
 	}
@@ -235,18 +230,31 @@
 				right:0px;
 				bottom:0px;
 				z-index: 3;
+				&.video{
+					table{
+						img{
+							max-height: 300px;
+						max-width: 100%;
+						margin:0 auto;
+						width:100%;	
+						}
+					}
+				}
 				table{
 					width:100%;
 					height:100%;
-					img,video{
+					video{
 						max-height: 300px;
 						max-width: 100%;
 						margin:0 auto;
 						width:100%;	
 					}
-					video{
-						display: none;
-
+					td{
+						text-align: center !important;
+					}
+					img{
+						max-height: 300px;
+						max-width: 100%;
 					}
 					.thumbnail{
 						position: relative;

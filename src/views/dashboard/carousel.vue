@@ -83,7 +83,6 @@
 		width:100%;
 		max-width: 100%;
 		height:auto;
-		max-height: 60vh;
 	}
 	.slide-wrapper{
 		position:relative;
