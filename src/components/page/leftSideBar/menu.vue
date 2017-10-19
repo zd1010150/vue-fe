@@ -194,7 +194,9 @@
     },
     repaintMenu(){
         this.key = Math.random()
-        this.setItemsOpen(this.$route.path)
+        if(this.items){
+          this.setItemsOpen(this.$route.path)
+        }
     },
     async fetchNoticeNumber(){
       let {success,data} = await pageService.fetchPending()

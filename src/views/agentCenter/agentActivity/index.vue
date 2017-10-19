@@ -1,6 +1,7 @@
 <template>
 	<div class="container-fluid" >
 		<agent-activity-head @agentChange="agentChange" @totalClients="totalClients"></agent-activity-head>
+		<agent-activity-agentUrl :agent="agent"></agent-activity-agentUrl>
 		<agent-activity-client :dataInfo="clientDataInfo" :totalClients="totalClientsNumber" v-if="dataInfo"></agent-activity-client>
 		<agent-activity-volumn :agent="agent" :dataInfo="volumnDataInfo" @refresh="refresh" v-if="dataInfo"></agent-activity-volumn>
 	</div>	
@@ -11,6 +12,7 @@
 	import head from '../head.vue'
 	import validClient from './validClient'
 	import volumn from './volumn'
+	import agentUrl from './agentUrl'
 	export default{
 		mixins:[agentRouterMixin],
 		data(){
@@ -22,6 +24,7 @@
 		},
 		components:{
 			'agent-activity-head' : head,
+			'agent-activity-agentUrl' : agentUrl,
 			'agent-activity-client' : validClient,
 			'agent-activity-volumn' : volumn
 		},
