@@ -140,6 +140,9 @@
       min-height: 20px;
     }
   }
+  .text-primary {
+    cursor: pointer;
+  }
   html.dark{
     table{
       tr.marked{
