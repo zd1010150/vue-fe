@@ -64,9 +64,6 @@
 <style lang="less">
 	@import "~assets/less/variable.less";
 	@import "~assets/less/transition.less";
-	.carousel-wrapper{
-		max-height: 70vh;
-	}
 	.VueCarousel-pagination{
 		float:none !important;
 	}
