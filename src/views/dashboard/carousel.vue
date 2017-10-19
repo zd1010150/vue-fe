@@ -1,35 +1,35 @@
+<i18n src="./i18n.yaml"></i18n>
 <template>
-<div class="col-lg-12">
-	<div class="thumbnail carousel-wrapper">
-		<chp-carousel   :key="carouselKey"
-						:perPage="1" 
-						:autoplay="true" 
-						:autoplayHoverPause="true" 
-						:loop="true" 
-						:paginationPadding="5"
-						:autoplayTimeout="3000"
-						class="dashboard-carousel">
-			<chp-slide v-for="(activity,index) in activities" class="slide-wrapper" :key="index">
-				<!-- <chp-feature-image :src= "activity.imagepath || activity.image_link "/>
-				-->
-				<!-- <table class="slide-img-wrapper">
-					<tr>
-						<td></td>
-					</tr>
-				</table> -->
-				<img class="slide-img" :src= "activity.imagepath || activity.image_link " alt="">
-				<!-- <div class="slide-img-wrapper">
-					
-				</div> -->
-				<div class="mask">
-					<h3><a :href="activity.url" target="_blank">{{ $t("more")}}</a></h3>
-				</div>
-			</chp-slide>
-		</chp-carousel>
-	</div>			
-</div>
-
-	
+	<div class="col-lg-12">
+		<div class="thumbnail carousel-wrapper">
+			<chp-carousel   :key="carouselKey"
+							:perPage="1" 
+							:autoplay="true" 
+							:autoplayHoverPause="true" 
+							:loop="true"
+							:speed="2000" 
+							:paginationPadding="5"
+							:autoplayTimeout="6000"
+							class="dashboard-carousel">
+				<chp-slide v-for="(activity,index) in activities" class="slide-wrapper" :key="index">
+					<!-- <chp-feature-image :src= "activity.imagepath || activity.image_link "/>
+					-->
+					<!-- <table class="slide-img-wrapper">
+						<tr>
+							<td></td>
+						</tr>
+					</table> -->
+					<img class="slide-img" :src= "activity.imagepath || activity.image_link " alt="">
+					<!-- <div class="slide-img-wrapper">
+						
+					</div> -->
+					<div class="mask">
+						<h3><a :href="activity.url" target="_blank">{{ $t("more")}}</a></h3>
+					</div>
+				</chp-slide>
+			</chp-carousel>
+		</div>			
+	</div>
 </template>
 <script>
 	import activityService from "services/activityService"
