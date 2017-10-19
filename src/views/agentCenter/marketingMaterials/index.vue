@@ -65,10 +65,16 @@
 													<table>
 														<tr>
 															<td>
-																<video  controls="" autoplay="true" >
-  																	<source :src="video.src"> 
-  																</video>
-  															</td>
+																<div class="thumbnail" @click="playVideo(video.id)">
+																	<template v-if="!video.playing">
+																		<img src="https://baikebcs.bdimg.com/adpic/延安革命纪念馆.jpg" alt="">
+																		<i class="fa fa-youtube-play play-btn text-primary" aria-hidden="true"></i>	
+																	</template>
+																	<video  controls="" v-else>
+	  																	<source src="video.src"> 
+	  																</video>
+																</div>
+															</td>
 														</tr>
 													</table>
 												</div>
@@ -138,8 +144,7 @@
 			async fetchVideoData(){
 				let { success,data } = await materialService.getMarketingVideo(this.$store.state.language)
 				if( success ){
-					this.videos  = data
-
+					this.mapVideoData(data)
 				}
 			},
 			agentChange(agentId){
@@ -175,6 +180,26 @@
 				}else{
 					this.toastr.error(this.$t('marketingMaterial.unsupportCopy'))
 				}
+			},
+			mapVideoData(data){
+				this.videos = data.map((video)=>{
+					video.playing = false
+					return video
+				})	
+			},
+			playVideo(id){
+				let videos = this.videos.map((video)=>{
+					video.playing = video.id == id
+					return video
+				})
+				this.videos = Object.assign({},videos)
+			},
+			pauseAllVideo(){
+				let videos = this.videos.map((video)=>{
+					video.playing = false
+					return video
+				})
+				this.videos = Object.assign({},videos)
 			}
 		},
 		watch:{
@@ -218,6 +243,21 @@
 						max-width: 100%;
 						margin:0 auto;
 						width:100%;	
+					}
+					video{
+						display: none;
+
+					}
+					.thumbnail{
+						position: relative;
+						border:none;
+					}
+					.play-btn{
+						font-size: 30px;
+						padding-left: 5px;
+						position: absolute;
+						bottom:10px;
+						left:10px;
 					}
 				}
 			}
