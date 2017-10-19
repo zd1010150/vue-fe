@@ -20,7 +20,7 @@
 												<div class="img-wrapper">
 													<table>
 														<tr>
-															<td><img class="img-responsive" :src="image.src" alt=""></td>
+															<td><img :src="image.src" alt=""></td>
 														</tr>
 													</table>
 												</div>
@@ -61,14 +61,20 @@
 									<tr>
 										<td>
 											<mu-paper class="pic" :zDepth="2">
-												<div class="img-wrapper">
+												<div class="img-wrapper video">
 													<table>
 														<tr>
 															<td>
-																<video  controls="" autoplay="true" >
-  																	<source :src="video.src"> 
-  																</video>
-  															</td>
+																<div class="thumbnail" @click="playVideo(video.id)">
+																	<template v-if="!video.playing">
+																		<img :src="video.thumbnailUrl" alt="">
+																		<i class="fa fa-youtube-play play-btn text-primary" aria-hidden="true"></i>	
+																	</template>
+																	<video  controls="" v-else>
+	  																	<source :src="video.src"> 
+	  																</video>
+																</div>
+															</td>
 														</tr>
 													</table>
 												</div>
@@ -138,8 +144,7 @@
 			async fetchVideoData(){
 				let { success,data } = await materialService.getMarketingVideo(this.$store.state.language)
 				if( success ){
-					this.videos  = data
-
+					this.mapVideoData(data)
 				}
 			},
 			agentChange(agentId){
@@ -175,6 +180,19 @@
 				}else{
 					this.toastr.error(this.$t('marketingMaterial.unsupportCopy'))
 				}
+			},
+			mapVideoData(data){
+				this.videos = data.map((video)=>{
+					video.playing = false
+					return video
+				})	
+			},
+			playVideo(id){
+				let _data = this.videos.map((video)=>{
+					console.log(video.id)
+					video.playing = video.id == id
+					return video
+				})
 			}
 		},
 		watch:{
@@ -189,6 +207,8 @@
 			},
 			'$store.state.language'(val){
 				this.orgUrl = ORG_INDEX[val]
+				this.fetchImageData()
+				this.fetchVideoData()
 			}
 		}
 	}
@@ -210,14 +230,42 @@
 				right:0px;
 				bottom:0px;
 				z-index: 3;
+				&.video{
+					table{
+						img{
+							max-height: 300px;
+						max-width: 100%;
+						margin:0 auto;
+						width:100%;	
+						}
+					}
+				}
 				table{
 					width:100%;
 					height:100%;
-					img,video{
+					video{
 						max-height: 300px;
 						max-width: 100%;
 						margin:0 auto;
 						width:100%;	
+					}
+					td{
+						text-align: center !important;
+					}
+					img{
+						max-height: 300px;
+						max-width: 100%;
+					}
+					.thumbnail{
+						position: relative;
+						border:none;
+					}
+					.play-btn{
+						font-size: 30px;
+						padding-left: 5px;
+						position: absolute;
+						bottom:10px;
+						left:10px;
 					}
 				}
 			}

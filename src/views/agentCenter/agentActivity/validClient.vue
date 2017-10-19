@@ -1,6 +1,6 @@
 <i18n src="../i18n.yaml"></i18n>
 <template>
-	<div class="row pt-lg">
+	<div class="row">
 		<div class="col-lg-12 col-md-12">
 				<h4 class="pull-left">{{ $t('trade.activeClient')}} {{$t('trade.level')}}</h4>
 				<section class="panel panel-responsive">

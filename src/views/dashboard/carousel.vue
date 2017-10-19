@@ -1,34 +1,34 @@
 <template>
-	<div>
-		<div class="col-lg-12">
-			<div class="thumbnail carousel-wrapper">
-				<chp-carousel   :key="carouselKey"
-								:perPage="1" 
-								:autoplay="true" 
-								:autoplayHoverPause="true" 
-								:loop="true" 
-								:paginationPadding="5"
-								:autoplayTimeout="3000"
-								class="dashboard-carousel">
-					<chp-slide v-for="(activity,index) in activities" class="slide-wrapper" :key="index">
-						<!-- <chp-feature-image :src= "activity.imagepath || activity.image_link "/>
-						-->
-						<table class="slide-img-wrapper">
-							<tr>
-								<td><img class="slide-img" :src= "activity.imagepath || activity.image_link " alt=""></td>
-							</tr>
-						</table>
-						<!-- <div class="slide-img-wrapper">
-							
-						</div> -->
-						<div class="mask">
-							<h3><a :href="activity.url" target="_blank">{{ $t("more")}}</a></h3>
-						</div>
-					</chp-slide>
-				</chp-carousel>
-	  		</div>			
-		</div>
-	</div>
+<div class="col-lg-12">
+	<div class="thumbnail carousel-wrapper">
+		<chp-carousel   :key="carouselKey"
+						:perPage="1" 
+						:autoplay="true" 
+						:autoplayHoverPause="true" 
+						:loop="true" 
+						:paginationPadding="5"
+						:autoplayTimeout="3000"
+						class="dashboard-carousel">
+			<chp-slide v-for="(activity,index) in activities" class="slide-wrapper" :key="index">
+				<!-- <chp-feature-image :src= "activity.imagepath || activity.image_link "/>
+				-->
+				<!-- <table class="slide-img-wrapper">
+					<tr>
+						<td></td>
+					</tr>
+				</table> -->
+				<img class="slide-img" :src= "activity.imagepath || activity.image_link " alt="">
+				<!-- <div class="slide-img-wrapper">
+					
+				</div> -->
+				<div class="mask">
+					<h3><a :href="activity.url" target="_blank">{{ $t("more")}}</a></h3>
+				</div>
+			</chp-slide>
+		</chp-carousel>
+	</div>			
+</div>
+
 	
 </template>
 <script>
@@ -42,6 +42,12 @@
 		},
 		created(){
 			this.fetchData()
+		},
+		mounted(){
+			let self = this
+			setTimeout(()=>{
+				self.carouselKey = Math.random()
+			},500)
 		},
 		methods:{
 			async fetchData(){
@@ -64,9 +70,6 @@
 <style lang="less">
 	@import "~assets/less/variable.less";
 	@import "~assets/less/transition.less";
-	.carousel-wrapper{
-		max-height: 70vh;
-	}
 	.VueCarousel-pagination{
 		float:none !important;
 	}
@@ -83,7 +86,6 @@
 		width:100%;
 		max-width: 100%;
 		height:auto;
-		max-height: 60vh;
 	}
 	.slide-wrapper{
 		position:relative;

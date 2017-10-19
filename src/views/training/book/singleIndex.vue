@@ -40,7 +40,7 @@
                   </a>
                 </li>
               </ul>
-              <div class="text-muted">{{book.uploader_name}}</div>
+              <div class="text-muted">{{ uploader[$store.state.language] }}</div>
               <small class="text-muted">{{book.upload_date}}</small>
             </div>
 
@@ -55,11 +55,13 @@
 import filters from "src/filters"
 import trainingService from "services/trainingService"
 import { SET_CONTENT_LOADING } from 'store/mutation-types'
+import { ACY_BOOK_UPLOADER } from 'src/config/app.config.js'
 export default {
   data() {
     return {
       language: this.$store.state.language,
-      loopList: []
+      loopList: [],
+      uploader: ACY_BOOK_UPLOADER
     }
   },
   filters,
