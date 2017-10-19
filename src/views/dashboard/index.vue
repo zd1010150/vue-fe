@@ -1,5 +1,8 @@
 <template>
-	<div class="container-fluid dashboard-container">		
+	<div class="container-fluid dashboard-container">	
+	<div class="fix-activity" v-show="activityData">
+				<dashboard-activity @getActivityData="getActivityData"></dashboard-activity>
+			</div>	
 			<div class="main-body" :style="mainBodyWidth">
 				<div class="row">
 					<dashboard-carousel></dashboard-carousel>
@@ -19,9 +22,7 @@
 					<dashboard-books></dashboard-books>
 				</div>
 			</div>
-			<div class="fix-activity" v-show="activityData">
-				<dashboard-activity @getActivityData="getActivityData"></dashboard-activity>
-			</div>
+			
 	</div>
 	
 </template>
