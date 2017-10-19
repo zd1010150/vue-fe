@@ -74,6 +74,9 @@
     watch:{
       '$store.state.refreshNoticeFlag' : function(val){
         this.fetchData()
+      },
+      '$store.state.language' : function(){
+        this.fetchData()
       }
     }
 	}
