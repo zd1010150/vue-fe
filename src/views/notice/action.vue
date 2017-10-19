@@ -123,7 +123,7 @@ export default {
                 this.rowsTotal = data.total
                 this.pageSize = Number(data.per_page)
 
-                let { success } = await notificationService.markReaded('action')
+                let { success } = await notificationService.markReaded('action',this.language)
                 if (success) {
                     this.$store.commit(SET_NOTICE_REFRESH_FLAG, "action")
                 }

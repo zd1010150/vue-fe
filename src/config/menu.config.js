@@ -82,6 +82,7 @@ export const common = [{
     title: 'ticket',
     open: false,
     routerLink: true,
+    notice: "tickets",
     to: "/ticket/ticketList"
   },{
     icon: 'bell-o',

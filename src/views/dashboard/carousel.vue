@@ -56,7 +56,7 @@
 				this.fetchData()
 			},
 			"$store.state.leftSideBarStatus":function(){
-				this.carouselKey = Math.random()
+				this.carouselKey = Math.random() //为了强制重绘该滚动框，以实现自适应
 			}
 		}
 	}
@@ -83,7 +83,6 @@
 		width:100%;
 		max-width: 100%;
 		height:auto;
-		max-height: 60vh;
 	}
 	.slide-wrapper{
 		position:relative;

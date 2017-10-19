@@ -1,4 +1,8 @@
 en:
+  agentActivity:
+    agentUrl: "Affiliate URL"
+    copyAgentUrl: "Copy"
+    copySuccess: "Copy Success"
   clientList: "Client List" 
   remainLots : "Number of standard lots required to next level"
   getBonus: "Get Bonus"
@@ -79,6 +83,10 @@ en:
       selectedPercentageTip: "Percentage of Active Clients at a certain period "
       totalPercentageTip: "Percentage of Active Clients to the end of last month"
 zh:
+  agentActivity:
+    agentUrl: "代理链接"
+    copyAgentUrl: "复制"
+    copySuccess: "复制成功"
   clientList: "客户列表" 
   remainLots : "到下一等级还需交易手数"
   getBonus: "点我领奖"
