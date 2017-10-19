@@ -71,7 +71,7 @@
             <chp-table-row>
               <chp-table-head chp-sort-by="order_time">{{ $t('withdrawal.time')}}</chp-table-head>
               <chp-table-head chp-sort-by="mt4_id" width="100px">{{ $t('withdrawal.account')}}</chp-table-head>
-              <chp-table-head chp-sort-by="method" width="100px">{{ $t('withdrawal.methods')}}</chp-table-head>
+              <chp-table-head chp-sort-by="method" width="100px">{{ $t('deposit.methods')}}</chp-table-head>
               <chp-table-head chp-sort-by="top_up_amount">{{ $t('withdrawal.amount')}}</chp-table-head>
               <chp-table-head chp-sort-by="currency_type">{{ $t('withdrawal.currency')}}</chp-table-head>
 		        </chp-table-row>
