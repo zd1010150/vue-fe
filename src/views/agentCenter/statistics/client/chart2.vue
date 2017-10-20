@@ -14,7 +14,7 @@
 		</template>
 		<div slot="body" class="row">
 			<div class="col-lg-3 col-md-3 col-sm-12 pr-none pl-none content-center">
-			    <h5>{{ activeDate | reverseDate }}-{{chartData.all.time}}</h5>
+			    <h5>{{ $t('charts.clientChart.until') }} {{chartData.all.time}}</h5>
 			    <chp-liquid-fill :percentage="allPercentage" 
 							  width="140px" 
 							  height="140px" 
@@ -44,7 +44,7 @@
 				<thead>
 					<tr>
 						<th></th>
-						<th>{{ activeDate| reverseDate  }}-{{chartData.all.time}}</th>
+						<th>{{ $t('charts.clientChart.until')  }} {{chartData.all.time}}</th>
 						<th>{{ chartData.selected.time}}</th>
 					</tr>
 				</thead>
@@ -77,18 +77,9 @@
 		props:{
 			agent:[String,Number]
 		},
-		watch:{
-			agent:function(val){
-				let agent = this.$store.state.agentAccounts.filter((item)=>{
-      				return item.mt4_id == val
-      			})
-      			this.activeDate = agent && agent.length > 0 ? (agent[0].created_at.split(' ')[0].trim()) : ""
-			}
-		},
 		data(){
 			return {
 				chartData:{all:{},selected:{}},
-				activeDate:'',
 				allPercentage:0,
 				selectedPerCentage:0
 			}

@@ -1,7 +1,7 @@
 <i18n src="../i18n.yaml"></i18n>
 <template>
 	<!--teaching 页面的首页-->
-	<div class="container-fluid">
+	<div class="container-fluid " >
 		<div class="video-header">
 			<h3>
 				<span class="mt-none">{{ $t('video.'+ $route.query.videoCode) }}</span>
@@ -12,10 +12,9 @@
 				</div>
 			</h3>
 		</div>
-
-		<div class="media-gallery">
+		<div class="media-gallery infinite-container" ref="scroller" >
 			<div class="row mg-files">
-				<div v-for="video in loopList" class="col-sm-6 col-md-4 col-lg-3">
+				<div v-for="video in loopList" class="col-sm-6 col-md-4 col-lg-3 video">
 					<div class="thumbnail">
 						<router-link :to="'?level=3&videoCode='+$route.query.videoCode+'&videoType='+$route.query.videoType+'&videoId='+video.id">
 							<chp-feature-image :src='video.imagepath || video.image_link'/>
@@ -27,8 +26,13 @@
 						</div>
 					</div>
 				</div>
+				<div class="col-sm-12 col-md-12 col-lg-12 text-dark content-center" v-if="showLoadTip">
+					<h5 v-if="!loading">{{ canLoadMore? $t('video.pullLoadmore') : $t('video.noMore')}}</h5>
+				</div>
+				<mu-infinite-scroll :scroller="scroller" class="text-dark" :loading="loading" @load="loadMore" :loadingText="$t('video.loading')"/>
 			</div>
-		</div>
+    	</div>
+		
 	</div>
 </template>
 
@@ -40,36 +44,67 @@ export default {
 	data() {
 		return {
 			language: this.$store.state.language,
-			loopList: []
+			loopList: [],
+			totalPage: 0,
+			pageSize:8,
+			page:0,
+			scroller:null,
+			loading:false,
+			canLoadMore:true,
+			showLoadTip:false
 		}
 	},
 	filters,
-	watch: {
-			"$store.state.language": function(val) {
-				this.language = val;
-				this.getCategoryVideo();
-			}
+	mounted(){
+		this.scroller = this.$refs.scroller
+	},
+	watch:{
+		"$store.state.language": function(val) {
+			this.language = val;
+			this.getCategoryVideo();
+		}
 	},
 	activated() {
-			console.log("single index activated")
-			this.getCategoryVideo()
+		console.log("single index activated")
+		this.page=0
+		this.loopList=[]
+		this.getCategoryVideo()
 	},
 	methods: {
 		async getCategoryVideo() {
-			this.$store.commit(SET_CONTENT_LOADING, true)
-			let { success, data } = await trainingService.getCategoryVideo(this.language == "zh" ? "mandarin" : "english", this.$route.query.videoType)
-			this.$store.commit(SET_CONTENT_LOADING, false)
+			//this.$store.commit(SET_CONTENT_LOADING, true)
+			this.loading = true
+			let { success, data } = await trainingService.getCategoryVideo(this.language == "zh" ? "mandarin" : "english", this.$route.query.videoType,this.page+1,this.pageSize)
+			//this.$store.commit(SET_CONTENT_LOADING, false)
+			this.loading = false
 			if (success) {
-				this.loopList = data[this.$route.query.videoType];
-				console.log(data[this.$route.query.videoType]);
+				this.filterData(data)
 			}
 		},
-		
+		loadMore(){
+			if(this.canLoadMore){
+				this.getCategoryVideo()
+			}
+		},
+		filterData(data){
+			let _data = data[this.$route.query.videoType]
+			this.loopList.push(..._data.data)
+			this.page = _data.current_page
+			this.totalPage= _data.last_page
+			this.canLoadMore = _data.current_page < _data.last_page
+			this.showLoadTip = _data.total > this.pageSize
+		}
 	}
 }
 </script>
 
 <style scoped>
+
+.infinite-container{
+	height:700px;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}
 .video-header {
 	border-bottom: 1px solid #4C4C4C;
 	margin-bottom: 15px;
@@ -91,6 +126,10 @@ export default {
 	height: 31px;
 	overflow: hidden;
 }
+.row.mg-files{
+	margin:0px;
+}
+
 </style>
 
 
