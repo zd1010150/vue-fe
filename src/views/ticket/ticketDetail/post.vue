@@ -1,7 +1,8 @@
 <template>
 	<li class="post clearfix " :class="{'right-post' : authorId == $store.state.userInfo.id }">
 		<div class="avator" >
-			<mu-avatar :src="headLogo"  :size="60" class="summary-icon bg-primary "/>
+		<mu-avatar :src="authorId == $store.state.userInfo.id ? headLogo : logos[$store.state.language]"  :size="60" class="summary-icon bg-primary "/>
+			
 		</div>
 		<div class="post-content clearfix">
 			<div class="post-wrapper">
@@ -36,12 +37,13 @@
 	</li>
 </template>
 <script>
-	import { ACY_ADMIN } from "src/config/app.config.js"
+	import { ACY_ADMIN,ACY_ADMIN_HEAD_LOGO } from "src/config/app.config.js"
 	export default{
 		data(){
 			return {
 				documentOpen:false,
-				admin: ACY_ADMIN[this.$store.state.language]
+				admin: ACY_ADMIN[this.$store.state.language],
+				logos: ACY_ADMIN_HEAD_LOGO
 			}
 		},
 		props:{
