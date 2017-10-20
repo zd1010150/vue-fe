@@ -6,7 +6,8 @@
 					{{ $t("books") }}
 					<chp-view-all href="#/training/books"></chp-view-all>
 				</template>
-			<chp-carousel   slot="body"
+			<chp-carousel   :key="carouselKey"
+							slot="body"
 							:perPage="1"  
 							:autoplayHoverPause="true" 
 							:paginationPadding="5"
@@ -28,11 +29,16 @@
 		mixins:[loading],
 		data(){
 			return {
-				books:[]
+				books:[],
+				carouselKey:""
 			}
 		},
 		created(){
 			this.fetchData()
+			let self = this
+			setTimeout(()=>{
+				self.carouselKey = Math.random()
+			},500)
 		},
 		methods:{
 			async fetchData(){

@@ -7,6 +7,7 @@
 				<chp-view-all href="#/training/videos"></chp-view-all>
 			</template>
 			<chp-carousel   slot="body"
+							:key="carouselKey"
 							:perPage="1" 
 							:autoplay="false" 
 							:autoplayHoverPause="true" 
@@ -33,11 +34,16 @@
 		mixins:[loading],
 		data(){
 			return {
-				videos:[]
+				videos:[],
+				carouselKey:""
 			}
 		},
 		created(){
 			this.fetchData()
+			let self = this
+			setTimeout(()=>{
+				self.carouselKey = Math.random()
+			},500)
 		},
 		methods:{
 			async fetchData(){

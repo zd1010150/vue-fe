@@ -76,6 +76,7 @@ en:
       percentageIconTip: "Volume Percentage Comparison of certain period with Last Month and Total Volume to Date"
       productsVolumeIconTip: "Volume Comparison of certain period with last month and Monthly Average "
     clientChart:
+      until: "Until"
       traderTip: "New clients at a certain period"
       activeTraderTip : "New active clients at a certain period"
       activeIconTip: "Daily Active Client Statistics "
@@ -160,6 +161,7 @@ zh:
       percentageIconTip: "不同种类产品在特定时间、上个月及开户以来的交易量占比比较"
       productsVolumeIconTip: "不同种类产品在特定时间、上个月及每月平均的交易量"
     clientChart:
+      until: "截止"
       traderTip: "特定时间内新增客户数"
       activeTraderTip : "特定时间内新增有效客户数"
       activeIconTip: "每日有效客户统计数据"

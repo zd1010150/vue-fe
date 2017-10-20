@@ -17,8 +17,8 @@ export default{
   async getVideo(language){
     return fetchData('GET','/training/videos',{language})
   },
-  async getCategoryVideo(language,category=''){
-    return fetchData('GET','/training/videos',{language,category})
+  async getCategoryVideo(language,category='',page,pageSize){
+    return fetchData('GET','/training/videos',{language,category,page,pageSize})
   },
   async getSingleVideo(id){
     return fetchData('GET','/training/videos/display/'+id)

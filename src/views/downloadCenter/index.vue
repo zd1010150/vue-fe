@@ -64,7 +64,7 @@
 								</div>
 								<div class="widget-summary-col padding-10" >
 									<div class="summary">
-										<h4 class="title ">IOS</h4>
+										<h4 class="title ">iOS</h4>
 										<div class="info">
 											{{ $t('ios') }}
 										</div>
@@ -155,6 +155,23 @@
 	}
 	.platform.selected{
 		background-color: @light-component-accent-bg-color;
+	}
+	.summary-icon, .text-primary, .panel-body {
+		transition: all 0.7s;
+	}
+	.panel-body {
+		cursor: pointer;
+	}
+	.panel-body:hover {
+		box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 4px 0 rgba(0,0,0,.14), 0 1px 8px 2px rgba(0,0,0,.12);
+		.summary-icon {
+			background: #0088cc;
+			color:#fff;
+		}
+		.text-primary {
+			color:#fff !important;
+		}
+
 	}
 	html.dark{
 		.platform.selected{

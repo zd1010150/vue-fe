@@ -23,6 +23,9 @@ zh:
     info: "汇市情报局"
     analysis: "视频分析"
     tutorials: "教学视频"
+    pullLoadmore: "下拉加载更多……"
+    noMore: "已经到尽头了，没有更多视频了"
+    loading: "玩命加载中……"
   book:
     articles: "论金月刊"
     books: "教学书籍"
@@ -52,6 +55,9 @@ en:
     info: "Stock"
     analysis: "Analysis"
     tutorials: "Tutorial"
+    pullLoadmore: "Pull to load More……"
+    noMore: "No more videos"
+    loading: "Struggle to load……"
   book:
     articles: "Money Theory"
     books: "Educational Book"

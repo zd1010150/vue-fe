@@ -27,6 +27,11 @@ export const ACY_ADMIN = {
 	zh : "ACY客服",
 	en : "ACY-Supports"
 }
+//ticket回复时管理员的头像 
+export const ACY_ADMIN_HEAD_LOGO={
+	zh : 'static/images/zh_admin_head_logo.jpg',
+	en : 'static/images/en_admin_head_logo.jpg'
+}
 export const ACY_BOOK_UPLOADER = {
 	zh : "ACY稀万",
 	en : "ACY"
