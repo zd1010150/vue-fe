@@ -12,17 +12,7 @@
 							:autoplayTimeout="6000"
 							class="dashboard-carousel">
 				<chp-slide v-for="(activity,index) in activities" class="slide-wrapper" :key="index">
-					<!-- <chp-feature-image :src= "activity.imagepath || activity.image_link "/>
-					-->
-					<!-- <table class="slide-img-wrapper">
-						<tr>
-							<td></td>
-						</tr>
-					</table> -->
 					<img class="slide-img" :src= "activity.imagepath || activity.image_link " alt="">
-					<!-- <div class="slide-img-wrapper">
-						
-					</div> -->
 					<div class="mask">
 						<h3><a :href="activity.url" target="_blank">{{ $t("more")}}</a></h3>
 					</div>
