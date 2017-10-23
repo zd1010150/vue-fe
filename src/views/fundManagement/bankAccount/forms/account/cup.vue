@@ -219,7 +219,6 @@ export default {
         this.$set(this.model,"document","")
       },
       initModel:function(){
-        console.log("cup initModel",this.innerEditObj)
         this.isEdit = this.innerEditObj !=null
         if(this.isEdit){//如果是编辑
           this.editId = this.innerEditObj.id

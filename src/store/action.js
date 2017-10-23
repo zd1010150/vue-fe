@@ -19,7 +19,7 @@ export default {
         commit(type.SET_USERINFO, data)
 
       }
-      return { success }
+      return { success ,data}
     });
   },
   async logout({ commit, state }) {
