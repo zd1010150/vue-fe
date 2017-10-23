@@ -42,7 +42,7 @@ const moneyRangeValidator = {
         min:data['min_'+fieldKey],
         max:data['max_'+fieldKey]
       })
-      validationResult.valid = value >= validationResult.data.min && value<=validationResult.data.max
+      validationResult.valid = value >= Number(validationResult.data.min) && value <= Number(validationResult.data.max)
      }
     return validationResult;
   }
