@@ -26,11 +26,6 @@
                     <chp-date-picker :hintText="$t('ui.datePicker.startDate')" 
                                       v-model.lazy="model.start_date" 
                                       @input="changeStartday" 
-                                      :required="true"  
-                                      v-validate="'required'" 
-                                      data-vv-value-path="model.start_date" 
-                                      data-vv-name="startDate" 
-                                      data-vv-validate-on="change" 
                                       class="date"
                                       :fullWidth="true"
                                       :maxDate="maxStartDate"
@@ -44,13 +39,9 @@
                                       @input="changeEndday" 
                                       :minDate = "minEndDate" 
                                       v-model.lazy="model.end_date"  
-                                      v-validate="'required'" 
-                                      data-vv-value-path="model.end_date" 
-                                      data-vv-name="endDate"
-                                      :required="true" 
                                       class="date"
                                       :fullWidth="true"
-                                      data-vv-validate-on="change"/>
+                                     />
                     <span slot="password" class="error" v-if="errors.has('endDate:required')">
                       {{errors.first('endDate:required')}}
                     </span>
@@ -184,9 +175,6 @@
       }
     },
     created(){
-      let { now,monthAgo } = aMonthDate()
-      this.$set(this.model,'start_date',monthAgo)
-      this.$set(this.model,'end_date',now)
       this.setMinStartDate()
     },
     methods : {
@@ -223,7 +211,8 @@
       		}
       },
       async research(){
-        let validateResult = await this.$validator.validateAll();
+        let validateResult = await this.$validator.validateAll()
+        console.log("research")
         if(validateResult){
           this.fetchData()
         }
@@ -253,6 +242,7 @@
               return item.mt4_id == this.agentId
             })
         this.minStartDate =  _agent && _agent.length > 0 ? (_agent[0].created_at.split(' ')[0].trim()) : ""
+        this.minEndDate = this.minStartDate
       }
     }
 }

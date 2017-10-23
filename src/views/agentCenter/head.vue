@@ -151,7 +151,7 @@
 			td{
 				width:33.333%;
 				text-align:left;
-				padding: 0px 5px;
+				padding: 0px 0px;
 			}
 			.number{
 				td{

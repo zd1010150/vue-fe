@@ -10,6 +10,9 @@
     @input="input" 
     @change = "change" 
     :required='required'
+    :dateTimeFormat="enDateFormat"
+    :okLabel="okLabel" 
+    :cancelLabel="cancelLabel"
     :value='value'/>
     <span class="icon icon-lg icon-calendar">
       <i class="fa fa-calendar"></i>
@@ -17,7 +20,9 @@
  </div>
 </template>
 <script>
- export default{
+  import dataPickerMixin from "./datePickerMixin"
+  export default{
+     mixins:[dataPickerMixin],
      props :{
        fullWidth:{
            type: Boolean,

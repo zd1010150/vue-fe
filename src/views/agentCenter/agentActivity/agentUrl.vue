@@ -1,16 +1,16 @@
 <i18n src="../i18n.yaml"></i18n>
 <template>
-	<div class="row ">
+	<div class="row pb-lg">
 		<div class="col-lg-12 col-md-12" v-if="url">
 			<table>
 				<tr>
 					<td class="title"><h4>{{ $t('agentActivity.agentUrl') }} : </h4></td>
-					<td class="url pt-sm">
+					<td class="url">
 						<span class="text-dark pl-sm">{{url}}</span>
 							
 					</td>
 					<td class="btn-td">
-						<chp-button class=" ml-xs mb-xs  btn btn-primary print-btn"  @click="copy()">
+						<chp-button class=" ml-xs btn btn-primary print-btn"  @click="copy()">
 							{{ $t('agentActivity.copyAgentUrl') }}
 						</chp-button>
 					</td>
@@ -59,16 +59,20 @@
 		}
 	}
 </script>
-<style scoped>
+<style lang="less" scoped>
 	
 		.title{
 			word-wrap: nowrap;
+			h4{
+				padding-bottom: 0px;
+			}
+			
 		}
 		.btn-td{
 			width:60px;
 		}
 		.title,.url{
-			vertical-align: top;
+			vertical-align: middle;
 		}
 	
 </style>

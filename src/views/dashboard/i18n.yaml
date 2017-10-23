@@ -11,6 +11,7 @@ zh:
   watch: "点击观看"
   video: "视频教学"
   books: "电子书"
+  activityTerms: "活动条款及说明"
 en:
   more : "More"
   currentLots: "Current Lots"
@@ -24,3 +25,4 @@ en:
   watch: "Watch Online"
   video: "Video"
   books: "Books and Magazines"
+  activityTerms: "Terms and Conditions"
