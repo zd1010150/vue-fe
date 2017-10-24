@@ -102,7 +102,6 @@
             if(getUserInfo.success){
               this.$router.addRoutes(routers)
               this.$router.replace("/main")
-              console.log("----",getUserInfo,getUserInfo.data.language)
               this.$store.commit(SET_LANGUAGE,getUserInfo.data.language)
               i18n.locale = getUserInfo.data.language
               Validator.setLocale(getUserInfo.data.language)

@@ -209,7 +209,6 @@
       let poll = ()=>{
         return setTimeout(async()=>{
           await this.fetchNoticeNumber()
-          console.log("execute")
           this.timer = poll()
         },POLLING_INTERVAL)
       }
@@ -225,7 +224,6 @@
     this.polling()
   },
   beforeDestroy(){
-    console.log("beforeDestroy")
     clearTimeout(this.timer)
   },
   watch: {
