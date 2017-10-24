@@ -14,8 +14,8 @@ en:
   agnetNo: "Agent No."
   affiliate: "Apply For Affiliate Account"
   clientListTable:
-    keywordsHint: "Input MT4 account"
-    tip: "Default display trading volume and Com of all clients in the last 30 days,you can filter data by clicking filter button"
+    keywordsHint: "Input MT4 account or name"
+    tip: "Default display trading volume and Com of all clients from affiliate active date to now,you can filter data by clicking filter button"
   apply:
     experience: "Agent Experience"
     otherCompanies: "Other Affiliate FX companies"
@@ -101,8 +101,8 @@ zh:
   agnetNo: "代理号"
   affiliate: "申请代理账户"
   clientListTable:
-    keywordsHint: "请输入MT4账户名"
-    tip: "默认展示近30天交易量和佣金，点击搜索按钮按时间和客户搜索数据"
+    keywordsHint: "请输入MT4账号或者账户名"
+    tip: "默认展示成为代理之日起至今的所有客户交易量和佣金，点击搜索按钮按时间和客户搜索数据"
   apply:
     experience: "代理经验"
     otherCompanies: "代理过的公司"
@@ -165,7 +165,7 @@ zh:
       percentageIconTip: "不同种类产品在特定时间、上个月及开户以来的交易量占比比较"
       productsVolumeIconTip: "不同种类产品在特定时间、上个月及每月平均的交易量"
     clientChart:
-      until: "截止"
+      until: "截止至"
       traderTip: "特定时间内新增客户数"
       activeTraderTip : "特定时间内新增有效客户数"
       activeIconTip: "每日有效客户统计数据"

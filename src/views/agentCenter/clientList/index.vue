@@ -18,7 +18,6 @@
 		components:{
 			'agent-client-list-head' : head,
 			'agent-client-list-table' : table
-			
 		},
 		methods:{
 			agentChange(val){
