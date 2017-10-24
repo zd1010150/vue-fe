@@ -1,6 +1,6 @@
 {
   "name": "zerologix/fe_cloudhub_client",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "fe_cloudhub_client project.",
   "keywords": ["vue", "fe_cloudhub_client"],
   "license": "proprietary",
