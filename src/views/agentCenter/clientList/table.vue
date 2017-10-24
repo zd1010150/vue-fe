@@ -108,7 +108,7 @@
                 {{ $t('trade.oil') }}{{ $t('trade.com') }}
                 </chp-table-head>
                 <chp-table-head chp-sort-by="totalComm" chp-numeric>
-                {{ $t('trade.totalCom') }}{{ $t('trade.com') }}
+                {{ $t('trade.totalCom') }}
                 </chp-table-head>
                 
                 <chp-table-head chp-sort-by="balance" chp-numeric>

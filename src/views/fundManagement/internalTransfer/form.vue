@@ -114,10 +114,12 @@
 				let validateResult = await this.$validator.validateAll()
 				
 		          if(validateResult){
-								this.$store.commit(SET_ASYNC_LOADING,true)
+					this.$store.commit(SET_ASYNC_LOADING,true)
 		            let {message,success,data} = await fundsService.internalTransferDeposite(this.model)
-								this.$store.commit(SET_ASYNC_LOADING,false)
-		            this.toastr.info(this.$t("info.SUCCESS"))
+					this.$store.commit(SET_ASYNC_LOADING,false)
+					if(success){
+						this.toastr.info(this.$t("info.SUCCESS"))
+					}
 		          }
 		        this.disableSubmit = false
 			},

@@ -53,6 +53,7 @@
   import validateMixin from 'mixins/validatemix'
   import payingDialog from './payingDialog'
   import loadingMix from 'mixins/loading'
+  import { baseUrl } from "src/config/env.config.js"
   export default{
     components:{
       'paying-dialog' : payingDialog
@@ -80,7 +81,7 @@
     },
     computed:{
       action(){
-        return "/api/deposit/submit/"+this.methodCode
+        return baseUrl+"/deposit/submit/"+this.methodCode
       }
     },
     methods:{
