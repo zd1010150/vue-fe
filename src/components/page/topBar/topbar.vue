@@ -9,9 +9,9 @@
       </div>
       <div class="header-right">
         <chp-top-bar-notification></chp-top-bar-notification>
-        <span class="separator"></span>
+        <!-- <span class="separator"></span>
         <chp-top-bar-language></chp-top-bar-language>
-        <span class="separator no-right-margin"></span>
+        <span class="separator no-right-margin"></span> -->
         <chp-top-bar-userbox></chp-top-bar-userbox>
       </div>
   </div>

@@ -3,7 +3,7 @@
 	<div class="row pt-lg">
 		<div class="col-lg-12 col-md-12">
 			<div class="clearfix col-lg-12 col-md-12 col-xs-12 pl-none">
-				<h4 class="pull-left trade-volume-title">{{ $t('trade.tradeVolumn')}}{{$t('trade.level')}}</h4>
+				<h4 class="pull-left trade-volume-title">{{ $t('agentActivity.tradeVolumnLevel')}}</h4>
 				<a href="javascript:void(0)" @click="showTerms" class="pull-right trade-volume-terms">
 					<i class="fa fa-info-circle" aria-hidden="true"></i>
 					{{$t('activityTerms')}}

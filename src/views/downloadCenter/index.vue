@@ -144,7 +144,7 @@
 		}
 	}
 </script>
-<style lang="less">
+<style lang="less" scoped>
 	@import "~assets/less/variable.less";
 	.download-center-mobile{
 		padding-left: 0px;

@@ -1,9 +1,9 @@
 <i18n src="../i18n.yaml"></i18n>
 <template>
   <div class="row">
-		<div class="col-lg-12 col-md-12">
-  		<chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
-  	    <template slot="panelTitle">
+    <div class="col-lg-12 col-md-12">
+      <chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
+        <template slot="panelTitle">
           {{ $t('clientList') }}
           <span class="chart-specification-tip pull-right">
             <i class="fa fa-info-circle" aria-hidden="true"></i>
@@ -78,7 +78,7 @@
               </div>
             </div>
           </div>
-    	    <chp-table  chp-sort="calories" chp-sort-type="desc" @sort="sortRow" slot="table">
+          <chp-table  chp-sort="calories" chp-sort-type="desc" @sort="sortRow" slot="table">
             <chp-table-header>
               <chp-table-row>
                 <chp-table-head chp-numeric>MT4#</chp-table-head>
@@ -110,9 +110,13 @@
                 <chp-table-head chp-sort-by="totalComm" chp-numeric>
                 {{ $t('trade.totalCom') }}{{ $t('trade.com') }}
                 </chp-table-head>
+                
+                <chp-table-head chp-sort-by="balance" chp-numeric>
+                {{ $t('trade.balance') }}
+                </chp-table-head>
               </chp-table-row>
             </chp-table-header>
-    		    <chp-table-body>
+            <chp-table-body>
               <chp-table-row v-for="(row, rowIndex) in histories" :key="rowIndex" >
                 <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :chp-numeric="columnIndex != 'name' " :class="columnIndex">
                 {{column}}
@@ -122,26 +126,26 @@
           </chp-table>
         </chp-data-table>
       </chp-panel>
-	  </div>
+    </div>
   </div>
 </template>
 <script>
-	import mt4Service from 'services/mt4Service'
+  import mt4Service from 'services/mt4Service'
   import validateMixin from 'mixins/validatemix.js'
   import loadingMix from 'mixins/loading'
   import { Validator } from 'vee-validate'
   import { aMonthDate } from 'utils/dateUtil'
-	export default{
-		mixins: [validateMixin,loadingMix],
-		props:{
+  export default{
+    mixins: [validateMixin,loadingMix],
+    props:{
       agentId:[String,Number]
     },
-		data () {
+    data () {
         return{
           innerAgentId:this.agentId,
           histories: null,
           model:{
-          	keywords:"",
+            keywords:"",
             start_date:"",
             end_date:""
           },
@@ -157,12 +161,12 @@
         }
      },
     watch:{
-    	agentId:function(val){
+      agentId:function(val){
+        this.setMinStartDate()
         this.innerAgentId = val
         if(val){
           this.fetchData()
         }
-        this.setMinStartDate()
       },
       'model.start_date' : function(val){
         this.minEndDate = val
@@ -185,16 +189,14 @@
     },
     created(){
       let { now,monthAgo } = aMonthDate()
-      this.$set(this.model,'start_date',monthAgo)
       this.$set(this.model,'end_date',now)
-      this.setMinStartDate()
     },
     methods : {
       filterFields(originData){
-      	if(originData && originData.length > 0){
+        if(originData && originData.length > 0){
         this.histories = originData.map(function(row,index) {
             return {
-      				mt4_id : row.mt4_id,
+              mt4_id : row.mt4_id,
               name: row.name,
               ForexVolume: row.forex,              
               MetalsVolume:row.metal,
@@ -204,10 +206,11 @@
               MetalsComProfit:row.metalComm,
               CFDsComProfit:row.cfdComm,
               OilComProfit:row.oilComm,
-              TotalComProfitAgent:row.totalComm
-				    }
-      		});
-      	}else{
+              TotalComProfitAgent:row.totalComm,
+              balance:row.balance
+            }
+          });
+        }else{
           this.histories = [];
         }
       },
@@ -220,10 +223,10 @@
             this.pageIndex = data.current_page
             this.rowsTotal = data.total
             this.pageSize = Number(data.per_page)
-      		}
+          }
       },
       async research(){
-        let validateResult = await this.$validator.validateAll();
+        let validateResult = await this.$validator.validateAll()
         if(validateResult){
           this.fetchData()
         }
@@ -251,8 +254,11 @@
       setMinStartDate(){
         let _agent = this.$store.state.agentAccounts.filter((item)=>{
               return item.mt4_id == this.agentId
-            })
-        this.minStartDate =  _agent && _agent.length > 0 ? (_agent[0].created_at.split(' ')[0].trim()) : ""
+            }),date =  _agent && _agent.length > 0 ? (_agent[0].created_at.split(' ')[0].trim()) : ""
+        this.minStartDate = date
+        this.minEndDate = date
+        this.$set(this.model,'start_date',date)
+        return date
       }
     }
 }
@@ -265,7 +271,7 @@
     width:100%;
     .date,.keywords{
       text-align: left;
-      width:140px;
+      width:200px;
     }
     .btn-wrapper{
       display: inline-block;

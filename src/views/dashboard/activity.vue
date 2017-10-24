@@ -1,6 +1,12 @@
 <i18n src="./i18n.yaml"></i18n>
 <template>
 	<div class="row mt4-activity">
+		<div class="col-lg-12 col-md-12 col-sm-12 pb-sm" v-if="volumnDataInfo&&volumnDataInfo.fx">
+			<a href="javascript:void(0)" @click="showTerms" class="pull-left trader-volume-terms">
+					<i class="fa fa-info-circle" aria-hidden="true"></i>
+					{{$t('activityTerms')}}
+			</a>
+		</div>
 		<template v-for="(value,key) in volumnDataInfo">
 			<section class="panel volumn-panel col-lg-12 col-md-12 col-xs-12" :class="'volume-'+key">
 					<div class="panel-body">
@@ -82,6 +88,14 @@
 					</div>
 				</section>
 		</template>
+		
+		<chp-dialog-alert
+	  	:chp-title="$t('activityTerms')"
+	  	:chpContentHtml="terms"
+	  	:chp-ok-text="$t('ui.button.confirm')"
+	  	:scrollable="true"
+	  	ref="termsDailog"/>
+	</div>
 	</div>
 </template>
 <script>
@@ -90,6 +104,7 @@
 	export default{
 		data(){
 			return {
+				terms:"XX",
 				dataInfo:{}
 			}
 		},
@@ -112,6 +127,13 @@
 	    			this.fetchData()
 	    		}
 	    	},
+	    	async showTerms(){
+	    		let {data,message,success} = await activityService.getTraderLevelActivityTerms(this.$store.state.language == "en" ? "en" :"zh")
+	    		if(success){
+	    			this.terms = data
+	    			this.$refs.termsDailog.open()
+	    		}
+	    	}
 		},
 		
 		computed:{

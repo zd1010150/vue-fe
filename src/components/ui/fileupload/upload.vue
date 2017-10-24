@@ -37,11 +37,7 @@
 	export default {
 		data(){
 			return {
-				innerHeaders:{
-	 				'Accept': 'application/json',
-	 				'Authorization': 'Bearer '+ this.$store.state.token
-	 			},
-	 			progressValue:[],//{progress,response}
+				progressValue:[],//{progress,response}
 	 			active:false,
 	 			isAllSuccess:false,
 	 			isAllDone:false,
@@ -114,7 +110,12 @@
 		    },
 		    headers: {
 		      type: Object,
-		      default: this.innerHeaders,
+		      default: function(){
+		      	return {
+	 				'Accept': 'application/json',
+	 				'Authorization': 'Bearer '+ this.$store.state.token
+	 			}
+		      },
 		    },
 
 		    filter: {

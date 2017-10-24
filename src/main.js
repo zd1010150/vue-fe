@@ -19,10 +19,10 @@ import miniToastr from 'mini-toastr'
 import Components from "./components"
 import routers from './router/map/index'
 import Validate from './validate'
-
+import {Validator} from 'vee-validate'
 import { getStore,syncVuexStateAndLocalStorage } from "./utils/storage.js"
 import  changeTheme  from 'utils/theme.js'
-import { SET_USERINFO,SET_PATH,SET_TOKEN} from "./store/mutation-types"
+import { SET_USERINFO,SET_PATH,SET_TOKEN,SET_LANGUAGE} from "./store/mutation-types"
 
 import AuthenService from "services/authenService"
 import UserService from "services/userService"
@@ -46,7 +46,6 @@ let initVue = () =>{
       window.addEventListener('beforeunload',function(){
         vm.$store.commit(SET_PATH,vm.$router.currentRoute.fullPath)
         syncVuexStateAndLocalStorage(vm.$store.state)
-        document.cookie = "test = dandan;"
         return 'Do you want to leave?'
       })
     }
@@ -78,6 +77,9 @@ let init = async()=>{
           router.addRoutes(routers)
           store.commit(SET_USERINFO,data)
           store.commit(SET_TOKEN,getStore("token"))
+          store.commit(SET_LANGUAGE,data.language)
+          i18n.locale = data.language
+          Validator.setLocale(data.language)
           initVue()
           let path = getStore("path") == "/login" ? "/main" : getStore("path")
           vm.$router.push(path)
