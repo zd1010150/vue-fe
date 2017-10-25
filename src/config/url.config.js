@@ -3,6 +3,11 @@ import { baseUrl } from "./env.config.js"
 export let UPLOAD_DOCUMENT_URL = baseUrl+"/file"
 export let UPLOAD_ASSET_URL = baseUrl+"/file/asset"
 
+/* 外部链接,qq,livechat*/
+export const EXTERNAL_URL = {
+	qq: "http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzgwMDA5NzY1MV8zMjQ1ODJfODAwMDk3NjUxXzJf",
+	livechat: "https://secure.livechatinc.com/licence/4905761/open_chat.cgi"
+}
 /*
  * 链接到官网的一些地址
  */
