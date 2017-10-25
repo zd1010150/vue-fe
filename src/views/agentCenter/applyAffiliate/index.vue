@@ -25,7 +25,8 @@
 				            <span class='required' aria-required='true'>*</span>
 				          </label>
 				          <div class='col-md-6' >
-				             <mu-text-field  multiLine 
+				             <mu-text-field  :fullWidth="true" 
+				             				 multiLine 
 								             :rows='3' 
 								             :rowsMax='6' 
 								             class='form-control' 
@@ -86,6 +87,7 @@
 				          <div class='col-md-6' >
 				             <mu-text-field  multiLine 
 								             :rows='3' 
+								             :fullWidth="true"
 								             :rowsMax='6' 
 								             class='form-control' 
 								             v-model='model.exp_comment' 
@@ -106,7 +108,8 @@
 				          <div class='col-md-6' >
 				             <mu-text-field  multiLine 
 								             :rows='3' 
-								             :rowsMax='6' 
+								             :rowsMax='6'
+								             :fullWidth="true" 
 								             class='form-control' 
 								             v-model='model.service_comment' 
 								             v-validate='"required"' 
