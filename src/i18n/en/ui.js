@@ -1,5 +1,6 @@
 export default {
   button : {
+    ok: "OK",
     pay : "Pay",
     close : "Close",
     add : "Add",

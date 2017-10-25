@@ -18,7 +18,7 @@
 					<chp-feature-image :src= "video.imagepath || video.image_link "/>
 		      		<div class="mask">
 						<h3>
-							<a :href="'#/training/videos?level=3&videoType='+video.dummy+'&videoId='+video.id" >
+							<a :href="'#/training/videos?level=3&videoCode='+video.category+'&videoType='+video.category_id+'&videoId='+video.id" >
 							{{ $t("watch")}}</a>
 						</h3>
 					</div>

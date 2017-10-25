@@ -207,12 +207,12 @@
     },
     polling(){
       let poll = ()=>{
-        this.timer = setTimeout(async()=>{
+        return setTimeout(async()=>{
           await this.fetchNoticeNumber()
-          poll()
+          this.timer = poll()
         },POLLING_INTERVAL)
       }
-      poll()
+      this.timer = poll()
     }
   },
   created(){
@@ -222,6 +222,9 @@
   mounted(){
     this.setItemsOpen(this.$route.path)
     this.polling()
+  },
+  beforeDestroy(){
+    clearTimeout(this.timer)
   },
   watch: {
     $route(val, oldVal){

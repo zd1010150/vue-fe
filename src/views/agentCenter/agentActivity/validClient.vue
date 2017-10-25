@@ -2,7 +2,7 @@
 <template>
 	<div class="row">
 		<div class="col-lg-12 col-md-12">
-				<h4 class="pull-left">{{ $t('trade.activeClient')}} {{$t('trade.level')}}</h4>
+				<h4 class="pull-left">{{ $t('agentActivity.activeClientLevel')}}</h4>
 				<section class="panel panel-responsive">
 					<div class="panel-body ">
 						<table class="client-table">

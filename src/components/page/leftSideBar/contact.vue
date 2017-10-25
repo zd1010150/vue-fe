@@ -8,16 +8,16 @@
       <a  v-if="$i18n.locale == 'zh'"
           class="mb-xs mt-xs mr-xs btn btn-default btn-block"
           target="_blank" 
-          href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzgwMDA5NzY1MV8zMjQ1ODJfODAwMDk3NjUxXzJf">
+          :href="externalUrl.qq">
         <i class="fa fa-qq"></i>
         {{ $t('QQ') }}
       </a>
 
       <a  class="mb-xs mt-xs mr-xs btn btn-default btn-block" 
           target="_blank"
-          href="https://secure.livechatinc.com/licence/4905761/open_chat.cgi">
+          :href="externalUrl.livechat">
         <i class="fa fa-comments-o"></i>
-        Live Chat
+        {{ $t('liveChat')}}
       </a>
       <a class="mb-xs mt-xs mr-xs btn btn-default btn-block" 
                   :href="commonQuestion[$i18n.locale]"
@@ -30,14 +30,15 @@
   </div>
 </template>
 <script>
-  import { COMMON_QUESTION } from "src/config/url.config.js"
-export default{
-  data(){
-    return {
-      commonQuestion : COMMON_QUESTION
+  import { COMMON_QUESTION,EXTERNAL_URL } from "src/config/url.config.js"
+  export default{
+    data(){
+      return {
+        commonQuestion : COMMON_QUESTION,
+        externalUrl: EXTERNAL_URL
+      }
     }
   }
-}
 </script>
 <tyle lang="less">
   .leftsidebar-contact{

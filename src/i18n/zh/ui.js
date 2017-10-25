@@ -1,5 +1,6 @@
 export default {
   button : {
+    ok: "确定",
     pay : "支付",
     close : "关闭",
     add : "新增",
