@@ -67,7 +67,16 @@ outer<i18n src="../i18n.yaml"></i18n>
 							<span class="required" aria-required="true">*</span>
 				          </label>
 				          <div class="col-md-6" >
-				            <mu-text-field :hintText="$t('')" multiLine :rows="3" :rowsMax="6" class="form-control" v-model="model.reason" v-validate="'required'" data-vv-value-path="model.reason" name="reason"/>
+				            <mu-text-field :hintText="$t('')" 
+								            multiLine 
+								            :rows="3" 
+								            :rowsMax="6" 
+								            class="form-control" 
+								            v-model="model.reason" 
+								            v-validate="'required'"
+								            :fullWidth="true" 
+								            data-vv-value-path="model.reason" 
+								            name="reason"/>
 				            
 				            <span slot="required" class="error" v-if="errors.has('reason:required')">{{errors.first('reason:required')}}</span>
 				          </div>
