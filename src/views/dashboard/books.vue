@@ -15,7 +15,7 @@
 				<chp-slide v-for="(book,index) in books" class="slide-wrapper" :key="index">
 					<chp-feature-image :src= "book.imagepath || book.image_link "/>
 		      		<div class="mask">
-						<h3><a :href="book.docpath" target="_blank">{{ $t("download")}}</a></h3>
+						<h3><a :href="book.docpath" target="_blank" @click="display(book.id)">{{ $t("download")}}</a></h3>
 					</div>
 		        </chp-slide>
 			</chp-carousel>
@@ -41,6 +41,9 @@
 			},500)
 		},
 		methods:{
+			display(id){
+      			this.$store.dispatch("statisticsBook",id)
+    		},
 			async fetchData(){
 				this.loadingStatus = true
 				let {success,data} = await trainingService.getBook(this.$store.state.language == "zh" ? "mandarin" : "english")
