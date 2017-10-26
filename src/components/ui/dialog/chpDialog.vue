@@ -217,7 +217,7 @@
           return
         }
 
-        let maxDialogContentHeight = window.innerHeight - 2 * 64
+        let maxDialogContentHeight = window.innerHeight - 2 * 10
         const { footer, title, elBody } = this.$refs
         if (footer) maxDialogContentHeight -= footer.offsetHeight
         if (title) maxDialogContentHeight -= title.offsetHeight
