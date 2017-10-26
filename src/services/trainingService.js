@@ -23,6 +23,9 @@ export default{
   async getSingleVideo(id){
     return fetchData('GET','/training/videos/display/'+id)
   },
+  async statisticsBook(id){
+    return  fetchData('GET','/training/books/display/'+id)
+  },
   async getBook(language){
     return fetchData('GET','/training/books/',{language})
   },
