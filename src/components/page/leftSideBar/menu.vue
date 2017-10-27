@@ -199,7 +199,7 @@
         }
     },
     async fetchNoticeNumber(){
-      let {success,data} = await pageService.fetchPending()
+      let {success,data} = await pageService.fetchPending(this.$store.state.language == "zh" ? "mandarin" : "english")
       if(success){
         this.pendingNumber = data
         this.repaintMenu()
