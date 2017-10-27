@@ -115,12 +115,14 @@ export const zh_menu = [{
       title: "booksandMagazines",
       open: false,
       routerLink: true,
-      to:"/training/books"
+      to:"/training/books",
+      notice:"ebooks"
     },{
       title: "videos",
       open: false,
       routerLink: true,
-      to: "/training/videos"
+      to: "/training/videos",
+      notice:"videos"
     }
   ]
 }]
@@ -131,12 +133,14 @@ export const en_menu = [{
       title: "booksandMagazines",
       open: false,
       routerLink: true,
-      to:"/training/books"
+      to:"/training/books",
+      notice:"ebooks"
   },{
       title: "videos",
       open: false,
       routerLink: true,
-      to: "/training/videos"
+      to: "/training/videos",
+      notice:"videos"
     }
   ]
 }]
