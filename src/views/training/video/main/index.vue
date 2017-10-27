@@ -22,9 +22,9 @@
                 <chp-feature-image :src='video.imagepath || video.image_link'/>
               </router-link>  
               <div>
-                <h5 class="mb-xs mt-md">{{video.title}}</h5>
+                <h5 class="mb-xs mt-md video-title">{{video.title}}</h5>
                 <div class="mg-description">
-                  <div class="text-muted">{{video.uploader_name}}</div>
+                  <div class="text-muted">{{uploader[$store.state.language]}}</div>
                   <small class="text-muted pull-right pt-xs">{{video.upload_date}}</small>
                 </div>
               </div>            
@@ -39,11 +39,13 @@
 <script>
 import trainingService from "services/trainingService"
 import { SET_CONTENT_LOADING } from 'store/mutation-types'
+import { ACY_BOOK_UPLOADER } from 'src/config/app.config.js'
 export default {
   data() {
     return {
       language: this.$store.state.language,
-      categories: []
+      categories: [],
+      uploader: ACY_BOOK_UPLOADER
     }
   },
   methods: {
@@ -106,7 +108,8 @@ export default {
 }
 
 .media-gallery h5 {
-	height: 31px;
+	height: 45px;
+  line-height: 22px;
 	overflow: hidden;
 }
 </style>
