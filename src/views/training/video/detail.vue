@@ -9,7 +9,7 @@
 						<div class="general-infor">
 							<h2 class="mg-title text-weight-semibold mt-md mb-xs">{{video.title}}</h2>							
 							<div>
-								<div class="pull-right">{{video.uploader_name }}  {{video.upload_date}} </div>
+								<div class="pull-right">{{uploader[$store.state.language]}}  {{video.upload_date}} </div>
 								{{ $t('video.category')}}:
 								<router-link to="?level=1">{{ $t('video.video')}}</router-link> /
 								<router-link :to="'?level=2&videoCode='+$route.query.videoCode+'&videoType='+ $route.query.videoType "> 
@@ -30,10 +30,12 @@
 import filters from "src/filters"
 import trainingService from "services/trainingService"
 import { SET_CONTENT_LOADING } from 'store/mutation-types'
+import { ACY_BOOK_UPLOADER } from 'src/config/app.config.js'
 export default {
 	data () {
 		return {
 			video:{},
+			uploader: ACY_BOOK_UPLOADER,
 			url:"http://player.youku.com/embed/XMjY5OTE2NzA5Mg"
 		}
 	},
