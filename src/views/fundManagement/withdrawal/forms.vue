@@ -18,23 +18,22 @@
 		      </template>
 			</chp-tabs>
 		    <div class="row" slot="footer">
-		      <div class="col-md-6 col-sm-6 col-xs-6" >
-		          <chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn" @click="previous" v-if="activeStepTab !='tab1'">
-		            <i class="fa fa-angle-left hidden-sm hidden-xs"></i> {{ $t('ui.button.previous') }}
-		          </chp-button>
-		          
-		      </div>
-		       <div class="col-md-6 col-sm-6 col-xs-6" >
-		       	<chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn pull-right" @click="next" v-if="activeStepTab !='tab3'">
-		           {{ $t('ui.button.next') }}
-		           <i class="fa fa-angle-right hidden-sm hidden-xs"></i> 
-		          </chp-button>
-		          <chp-button class="mb-xs mt-xs mr-xs btn btn-primary print-btn pull-right" @click="submit" v-if="activeStepTab =='tab3'" :disabled="hasSubmit">
-		           {{ $t('ui.button.submit') }}
-		           <i class="fa fa-check hidden-sm hidden-xs"></i> 
-		          </chp-button>
-		       </div>
-		    </div>
+		      	<div class="col-md-6 col-sm-6 col-xs-6" >
+		            <chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn" @click="previous" v-if="activeStepTab !='tab1'">
+		            	<i class="fa fa-angle-left hidden-sm hidden-xs"></i> {{ $t('ui.button.previous') }}
+		            </chp-button>
+		        </div>
+		       	<div class="col-md-6 col-sm-6 col-xs-6" >
+		       		<chp-button class="mb-xs mt-xs mr-xs btn btn-default print-btn pull-right" @click="next" v-if="activeStepTab !='tab3'">
+		           		{{ $t('ui.button.next') }}
+		           		<i class="fa fa-angle-right hidden-sm hidden-xs"></i> 
+		          	</chp-button>
+		          	<chp-button class="mb-xs mt-xs mr-xs btn btn-primary print-btn pull-right" @click="submit" v-if="activeStepTab =='tab3'" :disabled="hasSubmit">
+		           		{{ $t('ui.button.submit') }}
+		           		<i class="fa fa-check hidden-sm hidden-xs"></i> 
+		          	</chp-button>
+		        </div>
+	    	</div>
 	   	</chp-panel>
 	</div>
 </template>

@@ -1,4 +1,4 @@
-<i18n src="../../i18n.yaml"></i18n>
+  <i18n src="../../i18n.yaml"></i18n>
 <template lang="html">
 
       <form slot="body" class="form-horizontal form-bordered " method="POST"  target="_blank" ref="accountForm">
@@ -28,6 +28,7 @@
                             name="withdraw_pay"  
                             class="form-control"   
                             :fullWidth="true" />
+            <span v-if="model.method == creditCard "> {{ $t('withdrawal.availableWithdrawRange')}}:{{ creditCardRange.min }} - {{ creditCardRange.max }}</span>
             <br>
             <span slot="required" class="error" v-if="validator.errors.has('withdraw_pay:required')">{{validator.errors.first('withdraw_pay:required')}}</span>
             <span slot="required" class="error" v-if="validator.errors.has('withdraw_pay:positiveFloatMoney')">{{validator.errors.first('withdraw_pay:positiveFloatMoney')}}</span>
@@ -79,7 +80,8 @@
 import validateMixin from 'mixins/validatemix'
 import fundsService from 'services/fundsService' 
 import { Validator } from 'vee-validate'
-   
+import { SET_ASYNC_LOADING } from 'store/mutation-types'
+const CREDIT_CARD = "creditCard"   
 export default {
   mixins:[validateMixin],
   data(){
@@ -90,6 +92,11 @@ export default {
         nullHintText:"",
         fee:null,
         validator:null,
+        creditCardRange:{
+          max: "",
+          min : ""
+        },
+        creditCard : CREDIT_CARD,
         model : {
           mt4_id : "",
           order_amount: "",
@@ -111,7 +118,7 @@ export default {
         this.fetchMethodsAccounts();
       },
       methodsAndAccounts:function(data,oldVal){
-            this.$set(this.model,"method",Object.keys(data)[0])
+        this.$set(this.model,"method",Object.keys(data)[0])
       },
       'model.method':function(method){
           if(this.methodsAndAccounts[method].accounts.length<1){
@@ -121,11 +128,27 @@ export default {
           }
           this.fee = this.methodsAndAccounts[method].fees
           this.validator.detach('withdraw_pay')
-          this.validator.attach('withdraw_pay','required|positiveFloatMoney|moneyRange:'+this.filedKeys[method]+"")
+          if(method == CREDIT_CARD){
+            this.validator.attach('withdraw_pay','required|positiveFloatMoney|between:'+this.creditCardRange.min+","+this.creditCardRange.max)
+          }else{
+            this.validator.attach('withdraw_pay','required|positiveFloatMoney|moneyRange:'+this.filedKeys[method]+"") 
+          }
+      },
+      'model.mt4_id':function(){
+        this.fetchCreditCardRange()
       }
    },
     methods:{
-      
+      async fetchCreditCardRange(){
+        this.$store.commit(SET_ASYNC_LOADING,true)
+        let {success,data} = await fundsService.getCreditcardRange(this.model.mt4_id)
+        this.$store.commit(SET_ASYNC_LOADING,false)
+        if(success){
+          let {min,max} = data
+          this.$set(this.creditCardRange,"min",min)
+          this.$set(this.creditCardRange,"max",max)
+        }
+      },
       async fetchMethodsAccounts(){
         let {success,data} = await fundsService.getWithdrawMethod(this.$store.state.language)
         if(success && data){
@@ -143,16 +166,12 @@ export default {
         this.$set(this.model,"mt4_id",this.defaultMT4 ? Number(this.defaultMT4) : this.MT4[0].id)
       },
       async validate(){
-        console.log(this.model,"validate")
         let validateResult = await this.validator.validateAll({MT4:this.model.mt4_id,withdrawMethod:this.model.method})
             validateResult = validateResult && await this.validateAmount(this.model.order_amount) && await this.validateBankCode(this.model.bank_code)
         if(validateResult){
           this.$emit("submit",this.model)
         }
         return validateResult
-      },
-      submit(){
-
       },
       async amountInput(){
         return await this.validateAmount(this.model.order_amount)
@@ -176,13 +195,13 @@ export default {
       }
     },
     computed:{
-     accounts:function(){
+      accounts:function(){
         return this.model.method && this.methodsAndAccounts && this.methodsAndAccounts[this.model.method] && this.methodsAndAccounts[this.model.method].accounts
       },
       baseCurrency:function(){
         let currency = this.MT4.filter(mt4 => {
           return mt4.id == this.model.mt4_id
-        });
+        })
         return currency && currency[0] && currency[0].baseCurrency
       }
     },
@@ -192,9 +211,9 @@ export default {
       this.defaultMT4 = this.$route.query && this.$route.query.mt4Id ? this.$route.query.mt4Id+"" : ""
       this.fetchMT4()
       let self = this
-      Promise.all([this.fetchMethodsAccounts()]).then(function(){
+      Promise.all([this.fetchMethodsAccounts(),this.fetchCreditCardRange()]).then(function(){
             self.$emit("loading",false)
-      });
+      })
     }
   }
 </script>
