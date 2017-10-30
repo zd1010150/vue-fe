@@ -7,7 +7,7 @@
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6" >
-            <mu-select-field v-model="model.mt4_id" 
+            <mu-select-field v-model="model.mt4_id"
                         name="mt4_id">
               <template v-for="mt4 in MT4">
                 <mu-menu-item :value="mt4.id" :title="mt4.text" key="mt4.id"/>
@@ -17,18 +17,19 @@
           </div>
         </div>
         <div class="form-group" :class="errorClass('withdraw_pay')">
-          <label class="control-label col-md-3"> 
+          <label class="control-label col-md-3">
             {{ $t('withdrawal.amount') }} ({{baseCurrency}})
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6">
-            <mu-text-field  v-model="model.order_amount" 
-                            @input="amountInput" 
-                            @blur="amountInput"  
-                            name="withdraw_pay"  
-                            class="form-control"   
+            <mu-text-field  v-model="model.order_amount"
+                            @input="amountInput"
+                            @blur="amountInput"
+                            name="withdraw_pay"
+                            class="form-control"
                             :fullWidth="true" />
-            <span v-if="model.method == creditCard "> {{ $t('withdrawal.availableWithdrawRange')}}:{{ creditCardRange.min }} - {{ creditCardRange.max }}</span>
+            <span v-if="model.method == creditCard && creditCardRange.min <= creditCardRange.max"> {{ $t('withdrawal.availableWithdrawRange')}}:{{ creditCardRange.min }} - {{ creditCardRange.max }}</span>
+            <span v-if="model.method == creditCard && creditCardRange.min > creditCardRange.max" class="text-danger"> {{ $t('withdrawal.cantWithdrawal') }}</span>
             <br>
             <span slot="required" class="error" v-if="validator.errors.has('withdraw_pay:required')">{{validator.errors.first('withdraw_pay:required')}}</span>
             <span slot="required" class="error" v-if="validator.errors.has('withdraw_pay:positiveFloatMoney')">{{validator.errors.first('withdraw_pay:positiveFloatMoney')}}</span>
@@ -40,8 +41,8 @@
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6" >
-            <mu-select-field v-model="model.method" 
-                        name="withdrawMethod" 
+            <mu-select-field v-model="model.method"
+                        name="withdrawMethod"
                         :hintText="nullHintText">
               <template v-for="(value,key) in methodsAndAccounts">
                 <mu-menu-item :value="key" :title="$t('payMentMethod.'+key)" key="key"/>
@@ -71,17 +72,17 @@
             <mu-text-field v-model="fee" class="form-control"   :fullWidth="true" name="order_amount" :disabled="true"/>
           </div>
         </div>
-      </form> 
+      </form>
 
 </template>
 
 <script>
 
 import validateMixin from 'mixins/validatemix'
-import fundsService from 'services/fundsService' 
+import fundsService from 'services/fundsService'
 import { Validator } from 'vee-validate'
 import { SET_ASYNC_LOADING } from 'store/mutation-types'
-const CREDIT_CARD = "creditCard"   
+const CREDIT_CARD = "creditCard"
 export default {
   mixins:[validateMixin],
   data(){
@@ -131,11 +132,17 @@ export default {
           if(method == CREDIT_CARD){
             this.validator.attach('withdraw_pay','required|positiveFloatMoney|between:'+this.creditCardRange.min+","+this.creditCardRange.max)
           }else{
-            this.validator.attach('withdraw_pay','required|positiveFloatMoney|moneyRange:'+this.filedKeys[method]+"") 
+            this.validator.attach('withdraw_pay','required|positiveFloatMoney|moneyRange:'+this.filedKeys[method]+"")
           }
       },
       'model.mt4_id':function(){
         this.fetchCreditCardRange()
+      },
+      'creditCardRange':function(val){
+        console.log("test")
+        if(val.min > val.max){
+          this.$emit("disableSubmit")
+        }
       }
    },
     methods:{
@@ -145,8 +152,7 @@ export default {
         this.$store.commit(SET_ASYNC_LOADING,false)
         if(success){
           let {min,max} = data
-          this.$set(this.creditCardRange,"min",min)
-          this.$set(this.creditCardRange,"max",max)
+          this.creditCardRange = Object.assign({},this.creditCardRange,data)
         }
       },
       async fetchMethodsAccounts(){

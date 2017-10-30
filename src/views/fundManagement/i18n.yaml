@@ -37,6 +37,8 @@ en:
     uploadBackSide: "Credit Back Photo"
     uploadCreditCardHint : "Please Upload your credit card photo,back and front,we only require to see your first 6 and last 4 digits of your card.And the signatures at the back of your card"
     attachment : "Attachment"
+    frontCreditCard: "Front Credit Photo"
+    backCreditCard: "Back Credit Photo"
     status : "Status"
     Action : "Action"
     creditPreSixNumber: "First Six Card Numbers"
@@ -52,7 +54,8 @@ en:
       Pending : "Pending"
       Approve : "Approve"
       Reject : "Reject"
-    deleteDialogText : " Are you sure delete this record?"
+    deleteDialogText : " Are you sure delete this card?"
+    deleteCreditCardText: "你删的可是信用卡"
     methodType :
       cup : "Bank Statement"
       doku : "Doku"
@@ -65,6 +68,7 @@ en:
     confirm : "Confirm"
     note : "I agree to the terms of service"
     nullAccount : "Please add account in account admin"
+    cantWithdrawal : "You can't withdrawal"
     balance: "Balance"
     amount: "Amount"
     methods: "Methods"
@@ -95,7 +99,7 @@ en:
     wireTransferNote: "Please input your MT4 account number and account name in the comment area when you fill in Wire Transfers .To ensure Wire Transfer credit to your account as soon as possible, please send your receipt to "
     acyAccountDetail: "ACY Bank Account Detail"
     bank: "Bank"
-    dialogNote: "Click this OK button after pay success,<p class='text-danger'>Please note your browser may block the payment web page, you should set the browser to allow to open new page<\/p>"
+    dialogNote: "Click this OK button after pay success,<p class='text-danger'>Please note your browser may block the payment web page, you should set the browser to allow to open new window<\/p>"
 zh:
   internalTransfer:
     note : "注意：有仓位的账户无法进行转出资金，代理账户需激活后才能进行内转"
@@ -135,8 +139,10 @@ zh:
     uploadBackSide: "上传信用卡反面"
     uploadCreditCardHint : "请上传你的信用卡正反面，包括信用卡的前六位和后四位以及你的签名"
     attachment : "账单附件"
+    frontCreditCard: "信用卡正面"
+    backCreditCard: "信用卡反面"
     status : "状态"
-    Action : "操作"  
+    Action : "操作"
     creditPreSixNumber: "信用卡前六位"
     creditAfterFourNumber: "信用卡后四位"
     rejectReason :
@@ -151,6 +157,7 @@ zh:
       Approve : "已认证"
       Reject : "拒绝"
     deleteDialogText: "你确定删除该条记录?"
+    deleteCreditCardText: ""
     methodType :
       cup : "银行账单"
       doku : "Doku"
@@ -163,6 +170,7 @@ zh:
     confirm : "确认"
     note : "我同意该条款"
     nullAccount : "请添加账号"
+    cantWithdrawal : "不满足出金条件,不能出金"
     balance: "余额"
     amount: "金额"
     methods: "出款方式"
@@ -179,7 +187,7 @@ zh:
       Reject : "拒绝"
     availableWithdrawRange: "可取额度"
   deposit:
-    paymentHistory: "入金历史记录"  
+    paymentHistory: "入金历史记录"
     selectCurrency : "选择货币种类"
     balance: "余额"
     amount: "金额"
@@ -193,4 +201,4 @@ zh:
     wireTransferNote: "请在填写汇款表格时,在附言中写下您的MT4账号以及账户名字,为了确保第一时间到账,你可以把汇款收据发送到"
     acyAccountDetail: "ACY 银行账户信息"
     bank: "银行"
-    dialogNote: "请支付成功后，点击本确定按钮,<p class='text-danger'>注意:你的浏览器可能阻止打开新的页面，需要设置你的浏览器打开新的页面</p>"
+    dialogNote: "请支付成功后，点击本确定按钮,<p class='text-danger'>注意:你的浏览器可能阻止本页面打开新的窗口，如果不能正常打开入金页面，请设置你的浏览器允许本页面打开新窗口</p>"

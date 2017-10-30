@@ -36,7 +36,7 @@ export default{
     return fetchData('POST','/withdraw',{mt4_id,order_amount, bank_code,method})
   },
   async getCreditcardRange(mt4_id){
-    return { }
+    return fetchData('GET','/withdraw/credit/limit/'+mt4_id)
   }
 
 }
