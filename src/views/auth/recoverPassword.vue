@@ -28,7 +28,7 @@
                              v-model="model.email"  
                              id="email"/>
                    <span class="input-group-btn">
-                    <button class="btn btn-primary btn-lg" type="submit">{{ $t('ui.button.resetPwd') }}!</button>
+                    <button class="btn btn-primary btn-lg" type="submit" :disabled="cantRecover">{{ $t('ui.button.resetPwd') }}!</button>
                   </span>
             </div>
             <span slot="required" class="error" v-if="errors.has('email:required')">
@@ -58,6 +58,7 @@
     data () {
       return {
         loading:false,
+        cantRecover:false,
         model: {
           email: "",
           domain: ""
@@ -66,19 +67,27 @@
     },
     methods: {
       async checkEmail (e){
-        let validateResult = await this.$validator.validateAll();
-          if(validateResult){
-            this.loading = true;
+        this.cantRecover = true
+        let validateResult = await this.$validator.validateAll()
+        if(validateResult){
+            this.loading = true
             let {message,success} = await pwdService.checkEmail(this.model.email)
-            this.loading = false;
-             if(success){
-               
+            this.loading = false
+            if(success){
               let {message,success,data} = await pwdService.applyResetPwd(this.model.email)
               if(success){
                 this.toastr.info(this.$t("applyResetPwd.success"))
+                this.cantRecover = true
+              }else{
+                this.cantRecover = false
               }    
+            }else{
+              this.cantRecover = false
             }
+          }else{
+            this.cantRecover = false
           }
+          
         }
     }
   }

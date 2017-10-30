@@ -3,8 +3,11 @@ import userService from "../services/userService"
 import pwdService from "../services/pwdService"
 import mt4Service from "../services/mt4Service"
 import configService from "../services/configService"
+import trainingService from "../services/trainingService"
 export default {
-
+  async statisticsBook({ commit },id){
+    return await trainingService.statisticsBook(id)
+  },
   async login({ commit }, form) {
     return await userService.login(form).then(({ data, success, message }) => {
       if (success && data.token) {

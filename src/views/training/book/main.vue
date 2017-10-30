@@ -30,12 +30,12 @@
                 <div class="mg-description">
                   <ul class="notifications pull-right">
                     <li>
-                      <a v-bind:href="book.docpath" class="notification-icon" target="_blank">
+                      <a v-bind:href="book.docpath" class="notification-icon" target="_blank" @click="display(book.id)">
                         <i class="fa fa-play"></i>
                       </a>
                     </li>
                     <li>
-                      <a v-bind:href="book.docpath" class="notification-icon"  :download="book.title" target="_blank">
+                      <a v-bind:href="book.docpath" class="notification-icon"  :download="book.title" target="_blank" @click="display(book.id)">
                         <i class="fa fa-download"></i>
                       </a>
                     </li>								
@@ -66,6 +66,9 @@ export default {
     }
   },
   methods: {
+    display(id){
+      this.$store.dispatch("statisticsBook",id)
+    },
     async fetchBook() {
       this.$store.commit(SET_CONTENT_LOADING, true)
       let { success, data } = await trainingService.getBook(this.language == "zh" ? "mandarin" : "english", "")
