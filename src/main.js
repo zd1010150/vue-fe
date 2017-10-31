@@ -72,7 +72,6 @@ let init = async()=>{
     try{
       //token有没有在localstorage里面
       if(getStore("token") == "null" || !getStore("token")){
-        console.log(getStore("token"))
         throw new Error("no token")
       }else{
         //token是否有效
