@@ -139,7 +139,6 @@ export default {
         this.fetchCreditCardRange()
       },
       'creditCardRange':function(val){
-        console.log("test")
         if(val.min > val.max){
           this.$emit("disableSubmit")
         }

@@ -55,7 +55,7 @@ en:
       Approve : "Approve"
       Reject : "Reject"
     deleteDialogText : " Are you sure delete this card?"
-    deleteCreditCardText: "你删的可是信用卡"
+    deleteCreditCardText: "If you delete this verified credit card, your credit card withdrawal balance will be reset to 0."
     methodType :
       cup : "Bank Statement"
       doku : "Doku"
@@ -157,7 +157,7 @@ zh:
       Approve : "已认证"
       Reject : "拒绝"
     deleteDialogText: "你确定删除该条记录?"
-    deleteCreditCardText: ""
+    deleteCreditCardText: "如果解绑该信用卡，你的信用卡出金额度将会重置归零."
     methodType :
       cup : "银行账单"
       doku : "Doku"
