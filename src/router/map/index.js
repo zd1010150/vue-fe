@@ -12,12 +12,13 @@ import agentCenter from './agentCenter'
 import event from './event'
 import ticket from './ticket'
 import setting from './setting'
+import vps from './vps'
 export default [{
   path: "/",
   redirect:'/main',
   component: Index,
   meta: {
     requiresAuth: true
-  }, 
-  children: _.concat(Dashboard,tradingAccountManagement,uiDemo,training,FundManage,notice,downloadCenter,agentCenter,event,ticket,setting)
+  },
+  children: _.concat(Dashboard,tradingAccountManagement,uiDemo,training,FundManage,notice,downloadCenter,agentCenter,event,ticket,setting,vps)
 }];

@@ -73,6 +73,12 @@ export const common = [{
     ]
   },{
     icon: 'gift',
+    title: 'vps',
+    open: false,
+    routerLink: true,
+    to: "/vps"
+  },{
+    icon: 'gift',
     title: 'event',
     open: false,
     routerLink: true,
