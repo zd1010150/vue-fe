@@ -44,7 +44,6 @@ let initVue = () =>{
     mounted(){
       changeTheme(this.$store.state.theme)
       window.addEventListener('beforeunload',function(){
-        vm.$store.commit(SET_PATH,vm.$router.currentRoute.fullPath)
         syncVuexStateAndLocalStorage(vm.$store.state)
         return 'Do you want to leave?'
       })
@@ -53,7 +52,9 @@ let initVue = () =>{
   Vue.config.productionTip = false
 }
 let checkLogin = async()=>{
-  return await AuthenService.checkLogin()
+
+    return await AuthenService.checkLogin()
+
 }
 let getUserInfo = async()=>{
   return await UserService.getUserInfo()
@@ -68,29 +69,38 @@ let init = async()=>{
     initVue()
     vm.$router.push("/error")
   }else{
-    // 首先从 cookie里面直接发送给服务器验证，是否正确，如果正确了，就获取用户信息，如果用户信息获取成功，就进入之前的页面，否则就进入登录页面
     try{
-      let {success,message,data} = await checkLogin()
-      if(success){
-        let {success,message,data} = await getUserInfo()
+      //token有没有在localstorage里面
+      if(getStore("token") == "null" || !getStore("token")){
+        console.log(getStore("token"))
+        throw new Error("no token")
+      }else{
+        //token是否有效
+        let {success,message,data} = await checkLogin()
+        //token有效，就获取用户个人信息
         if(success){
-          router.addRoutes(routers)
-          store.commit(SET_USERINFO,data)
-          store.commit(SET_TOKEN,getStore("token"))
-          store.commit(SET_LANGUAGE,data.language)
-          i18n.locale = data.language
-          Validator.setLocale(data.language)
-          initVue()
-          let path = getStore("path") == "/login" ? "/main" : getStore("path")
-          vm.$router.push(path)
+          let {success,message,data} = await getUserInfo()
+          if(success){
+            router.addRoutes(routers)
+            store.commit(SET_USERINFO,data)
+            store.commit(SET_TOKEN,getStore("token"))
+            store.commit(SET_LANGUAGE,data.language)
+            i18n.locale = data.language
+            Validator.setLocale(data.language)
+            initVue()
+            //进入页面
+            vm.$router.push(vm.$route.fullPath=="/login"?"/main":vm.$route.fullPath)
+          }else{
+            throw new Error(message)
+          }
         }else{
           throw new Error(message)
         }
-      }else{
-        throw new Error(message)
       }
+
     }catch(error){
       initVue()
+      //用户可以进入不需要验证的页面，
       if(vm.$route.meta.requiresAuth == false && vm.$route.path != "/404"){
         vm.$router.push(vm.$route.fullPath)
       }else {
@@ -101,8 +111,3 @@ let init = async()=>{
 }
 
 init()
-
-
-
-
- 

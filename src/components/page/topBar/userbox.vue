@@ -40,12 +40,12 @@
             </li>
             <li>
                 <a role="menuitem" tabindex="-1" href="javascript:void(0)" class="logout-item" @click="logout">
-                  <i class="fa fa-power-off"></i> 
-                  {{ $t('userbox.logout') }} 
+                  <i class="fa fa-power-off"></i>
+                  {{ $t('userbox.logout') }}
                 </a>
             </li>
             <li class="divider"></li>
-            
+
         </ul>
       </mu-popover>
         <chp-dialog-confirm
@@ -86,7 +86,7 @@ import changeTheme  from 'utils/theme.js'
           this.$store.dispatch("logout").then(() => {
             this.$store.commit(SET_USERINFO, null)
             this.$store.commit(SET_TOKEN,null)
-            this.$router.push("/login")
+            this.$router.replace("/login")
           })
          }
       },
@@ -130,7 +130,7 @@ import changeTheme  from 'utils/theme.js'
     &.hover{
       background-color: transparent;
     }
-  } 
+  }
   .profile-picture{
     display: inline-block;
     margin:0px 10px 0px;
