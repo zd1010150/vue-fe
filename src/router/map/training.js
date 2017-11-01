@@ -23,5 +23,4 @@ export default [{
     requiresAuth: true,
     pageTitle: "video"
   },
-}];
-
+}]
