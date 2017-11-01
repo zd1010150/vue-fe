@@ -64,7 +64,7 @@
       }else{
         number = getPendingNumber(rootNode)
       }
-      return{ 
+      return{
         node : createElement('chp-list-item', {
               'class': [
                 {
@@ -79,7 +79,7 @@
         _number: number
       }
     }
-    
+
     for (let i = 0, len = this.items.length; i < len; i++) {
       this.items[i].id = ++id
       this.items[i].index = i
@@ -149,10 +149,10 @@
             }
           }
         }
-        
+
         return _pathIndex;
       }
-      
+
       let _path = getPathIndex(path)+""
       if(_path.indexOf("-") > -1){
         parentIds = _path.split("-")
@@ -199,17 +199,22 @@
         }
     },
     async fetchNoticeNumber(){
-      let {success,data} = await pageService.fetchPending()
+      let {success,data,message,error} = await pageService.fetchPending(this.$store.state.language == "zh" ? "mandarin" : "english")
       if(success){
         this.pendingNumber = data
         this.repaintMenu()
       }
+      return {success,data,message,error}
     },
     polling(){
       let poll = ()=>{
         return setTimeout(async()=>{
-          await this.fetchNoticeNumber()
-          this.timer = poll()
+          let { success,data,message,error } = await this.fetchNoticeNumber()
+          if(success){
+            this.timer = poll()
+          }else{ // 如果是401 就不再进行请求
+            clearTimeout(this.timer)
+          }
         },POLLING_INTERVAL)
       }
       this.timer = poll()
@@ -248,4 +253,3 @@
 }
 
 </script>
-
