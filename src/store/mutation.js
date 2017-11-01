@@ -1,4 +1,4 @@
-
+import { setStore } from "../utils/storage.js"
 import {
   SET_USERINFO,
   ADD_ERROR_INFO,
@@ -30,6 +30,7 @@ export default{
   },
   [SET_TOKEN](state,token){
     state.token = token
+    setStore("token",token)
   },
   [SET_LANGUAGE](state,language){
     state.language = language
@@ -45,7 +46,7 @@ export default{
   [SET_LEFT_SIDE_BAR_STATUS ](state,status){
     state.leftSideBarStatus = status
   },
-  
+
   [SET_MT4_ACCOUNTS](state,accounts){
     state.mt4Accounts = accounts
   },
