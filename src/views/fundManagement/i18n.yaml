@@ -83,7 +83,7 @@ en:
       Pending : "Pending"
       Approve : "Approve"
       Reject : "Reject"
-    availableWithdrawRange: "Available withdraw "
+    availableWithdrawRange: "Withdrawal Range "
   deposit:
     paymentHistory: "Payment History"
     selectCurrency : "Select Currency"
@@ -185,7 +185,7 @@ zh:
       Pending : "待处理"
       Approve : "已认证"
       Reject : "拒绝"
-    availableWithdrawRange: "可取额度"
+    availableWithdrawRange: "可出金范围"
   deposit:
     paymentHistory: "入金历史记录"
     selectCurrency : "选择货币种类"
