@@ -124,8 +124,8 @@ import { SET_ASYNC_LOADING } from 'store/mutation-types'
 			submitData(model){
 				this.model = model
 			},
-			disableSubmit(){
-				this.hasSubmit = true
+			disableSubmit(disabled){
+				this.hasSubmit = disabled
 			}
 		}
 	}
