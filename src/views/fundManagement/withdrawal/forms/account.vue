@@ -22,7 +22,7 @@
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6">
-            <mu-text-field  :diabled="diabledInputMount"
+            <mu-text-field  :disabled="disbleInputAmount"
                             v-model="model.order_amount"
                             @blur="amountInput"
                             name="withdraw_pay"
@@ -109,7 +109,7 @@ export default {
         },
         avaliableMin: 0 ,
         avaliableMax:0,
-        diableInputAmount: false
+        disbleInputAmount: false
       }
     },
     watch :{
@@ -153,7 +153,7 @@ export default {
    },
     methods:{
       toggleInputAmount(disabled){
-        this.diableInputAmount = disabled
+        this.disbleInputAmount = disabled
         if(disabled){
           this.$set(this.model,"order_amount","")
         }
