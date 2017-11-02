@@ -30,7 +30,7 @@
                             :fullWidth="true" />
             <span v-if="model.method == creditCard && creditCardRange.min > creditCardRange.max" class="text-danger"> {{ $t('withdrawal.cantWithdrawal') }}</span>
             <span v-else>
-                  {{ $t('withdrawal.availableWithdrawRange')}}:{{ avaliableMin }} - {{ avaliableMax }}
+                  {{ $t('withdrawal.availableWithdrawRange')}} : {{ avaliableMin }} - {{ avaliableMax }} {{ baseCurrency }}
             </span>
             <br>
             <span slot="required" class="error" v-if="validator.errors.has('withdraw_pay:required')">{{validator.errors.first('withdraw_pay:required')}}</span>
@@ -70,7 +70,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3">{{ $t('withdrawal.fee') }} ({{baseCurrency}})</label>
+          <label class="control-label col-md-3">{{ $t('withdrawal.fee') }}（{{FIXED_WITHDRAWAL_UNIT}}） </label>
           <div class="col-md-6">
             <mu-text-field v-model="fee" class="form-control"   :fullWidth="true" name="order_amount" :disabled="true"/>
           </div>
@@ -85,7 +85,9 @@ import validateMixin from 'mixins/validatemix'
 import fundsService from 'services/fundsService'
 import { Validator } from 'vee-validate'
 import { SET_ASYNC_LOADING } from 'store/mutation-types'
+import { FIXED_WITHDRAWAL_UNIT } from 'src/config/app.config.js'
 const CREDIT_CARD = "creditCard"
+
 export default {
   mixins:[validateMixin],
   data(){
@@ -109,7 +111,8 @@ export default {
         },
         avaliableMin: 0 ,
         avaliableMax:0,
-        disbleInputAmount: false
+        disbleInputAmount: false,
+        FIXED_WITHDRAWAL_UNIT : FIXED_WITHDRAWAL_UNIT
       }
     },
     watch :{
@@ -128,9 +131,9 @@ export default {
           }
           this.fee = this.methodsAndAccounts[method].fees
           await this.fetchCreditCardRange()
-          this.attachWithdrawPayValidator()
-          this.avaliableMin = this.methodsAndAccounts[method].minWithdraw
-          this.avaliableMax = this.methodsAndAccounts[method].maxWithdraw
+          let {avaliableMin,avaliableMax} = this.attachWithdrawPayValidator()
+          this.avaliableMin = avaliableMin
+          this.avaliableMax = avaliableMax
           if(method != CREDIT_CARD){
             this.toggleInputAmount(false)
           }
@@ -159,16 +162,23 @@ export default {
         }
       },
       attachWithdrawPayValidator(){
-        let method = this.model.method
+        let method = this.model.method,
+            avaliableMin,avaliableMax
         this.validator.detach('withdraw_pay')
         if(method == CREDIT_CARD){
+          avaliableMin = this.creditCardRange.min
+          avaliableMax = this.creditCardRange.max
           this.validator.attach('withdraw_pay','required|positiveFloatMoney|between:'+this.creditCardRange.min+','+this.creditCardRange.max+"")
         }else{
+          avaliableMin = this.methodsAndAccounts[method].minWithdraw
+          avaliableMax = this.methodsAndAccounts[method].maxWithdraw
           this.validator.attach('withdraw_pay','required|positiveFloatMoney|between:'+this.methodsAndAccounts[method].minWithdraw+","+this.methodsAndAccounts[method].maxWithdraw)
           this.$emit("disableSubmit",false)
         }
+        return {avaliableMin,avaliableMax}
       },
       async fetchCreditCardRange(){
+        console.log("mt4:",this.model.mt4_id)
         if(this.model.method == CREDIT_CARD){
           this.$store.commit(SET_ASYNC_LOADING,true)
           let {success,data} = await fundsService.getCreditcardRange(this.model.mt4_id)
@@ -176,6 +186,7 @@ export default {
           if(success){
             let {min,max} = data
             this.creditCardRange = Object.assign({},this.creditCardRange,{min:Number(min),max:Number(max)})
+            console.log("fetchMethodsAccounts===",min,max)
           }
         }
       },
@@ -196,19 +207,18 @@ export default {
         this.$set(this.model,"mt4_id",this.defaultMT4 ? Number(this.defaultMT4) : this.MT4[0].id)
       },
       async validate(){
-      let validateResult = await this.validator.validateAll({MT4:this.model.mt4_id,withdrawMethod:this.model.method})
-          validateResult = validateResult && await this.validateAmount(this.model.order_amount) && await this.validateBankCode(this.model.bank_code)
-      if(validateResult){
-          this.$emit("submit",this.model)
-      }
-        return validateResult
+        let validateResult = await this.validator.validateAll({MT4:this.model.mt4_id,withdrawMethod:this.model.method})
+            validateResult = validateResult && await this.validateAmount(this.model.order_amount) && await this.validateBankCode(this.model.bank_code)
+        if(validateResult){
+            this.$emit("submit",this.model)
+        }
+          return validateResult
       },
       async amountInput(){
         return await this.validateAmount(this.model.order_amount)
       },
       async validateAmount(val){
         let result = await this.validator.validate('withdraw_pay',val)
-        console.log(val,result," amount validate")
         return result
       },
       async validateBankCode(val){
@@ -233,6 +243,7 @@ export default {
         let currency = this.MT4.filter(mt4 => {
           return mt4.id == this.model.mt4_id
         })
+        console.log("baseCurrency",currency && currency[0] && currency[0].baseCurrency)
         return currency && currency[0] && currency[0].baseCurrency
       }
     },
