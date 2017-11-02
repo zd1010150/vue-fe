@@ -4,7 +4,7 @@
 import   { fetchData }  from  './network/getData'
 import dataTableService from './dataTableService'
 export default{
-  
+
   async getMT4Account(type="all"){
     return fetchData('GET','/account/'+type+"/index")
   },
