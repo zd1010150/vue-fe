@@ -1,83 +1,80 @@
   <i18n src="../../i18n.yaml"></i18n>
 <template lang="html">
-
-      <form slot="body" class="form-horizontal form-bordered " method="POST"  target="_blank" ref="accountForm">
-       <div class="form-group" :class="errorClass('MT4')">
-          <label class="control-label col-md-3">MT4 | {{ $t('withdrawal.balance') }}
-            <span class="required" aria-required="true">*</span>
-          </label>
-          <div class="col-md-6" >
-            <mu-select-field v-model="model.mt4_id"
-                        name="mt4_id">
-              <template v-for="mt4 in MT4">
-                <mu-menu-item :value="mt4.id" :title="mt4.text" key="mt4.id"/>
-              </template>
-            </mu-select-field>
-             <span slot="required" class="error" v-if="validator.errors.has('MT4:required')">{{errors.first('MT4:required')}}</span>
-          </div>
+  <form slot="body" class="form-horizontal form-bordered " method="POST"  target="_blank" ref="accountForm">
+     <div class="form-group" :class="errorClass('MT4')">
+        <label class="control-label col-md-3">MT4 | {{ $t('withdrawal.balance') }}
+          <span class="required" aria-required="true">*</span>
+        </label>
+        <div class="col-md-6" >
+          <mu-select-field v-model="model.mt4_id"
+                      name="mt4_id">
+            <template v-for="mt4 in MT4">
+              <mu-menu-item :value="mt4.id" :title="mt4.text" key="mt4.id"/>
+            </template>
+          </mu-select-field>
+           <span slot="required" class="error" v-if="validator.errors.has('MT4:required')">{{errors.first('MT4:required')}}</span>
         </div>
-        <div class="form-group" :class="errorClass('withdraw_pay')">
-          <label class="control-label col-md-3">
-            {{ $t('withdrawal.amount') }} ({{baseCurrency}})
-            <span class="required" aria-required="true">*</span>
-          </label>
-          <div class="col-md-6">
-            <mu-text-field  v-model="model.order_amount"
-                            @input="amountInput"
-                            @blur="amountInput"
-                            name="withdraw_pay"
-                            class="form-control"
-                            :fullWidth="true" />
-            <span v-if="model.method == creditCard && creditCardRange.min <= creditCardRange.max"> {{ $t('withdrawal.availableWithdrawRange')}}:{{ creditCardRange.min }} - {{ creditCardRange.max }}</span>
-            <span v-if="model.method == creditCard && creditCardRange.min > creditCardRange.max" class="text-danger"> {{ $t('withdrawal.cantWithdrawal') }}</span>
-            <br>
-            <span slot="required" class="error" v-if="validator.errors.has('withdraw_pay:required')">{{validator.errors.first('withdraw_pay:required')}}</span>
-            <span slot="required" class="error" v-if="validator.errors.has('withdraw_pay:positiveFloatMoney')">{{validator.errors.first('withdraw_pay:positiveFloatMoney')}}</span>
-            <span slot="required" class="error" v-if="validator.errors.has('withdraw_pay:moneyRange')">{{validator.errors.first('withdraw_pay:moneyRange')}}</span>
-          </div>
+      </div>
+      <div class="form-group" :class="errorClass('withdraw_pay')">
+        <label class="control-label col-md-3">
+          {{ $t('withdrawal.amount') }} ({{baseCurrency}})
+          <span class="required" aria-required="true">*</span>
+        </label>
+        <div class="col-md-6">
+          <mu-text-field  v-model="model.order_amount"
+                          @input="amountInput"
+                          @blur="amountInput"
+                          name="withdraw_pay"
+                          class="form-control"
+                          :fullWidth="true" />
+          <span v-if="model.method == creditCard && creditCardRange.min <= creditCardRange.max"> {{ $t('withdrawal.availableWithdrawRange')}}:{{ creditCardRange.min }} - {{ creditCardRange.max }}</span>
+          <span v-if="model.method == creditCard && creditCardRange.min > creditCardRange.max" class="text-danger"> {{ $t('withdrawal.cantWithdrawal') }}</span>
+          <br>
+          <span slot="required" class="error" v-if="validator.errors.has('withdraw_pay:required')">{{validator.errors.first('withdraw_pay:required')}}</span>
+          <span slot="required" class="error" v-if="validator.errors.has('withdraw_pay:positiveFloatMoney')">{{validator.errors.first('withdraw_pay:positiveFloatMoney')}}</span>
+          <span slot="required" class="error" v-if="validator.errors.has('withdraw_pay:moneyRange')">{{validator.errors.first('withdraw_pay:moneyRange')}}</span>
         </div>
-        <div class="form-group" :class="errorClass('withdrawMethod')">
-          <label class="control-label col-md-3"> {{ $t('withdrawal.methods') }}
-            <span class="required" aria-required="true">*</span>
-          </label>
-          <div class="col-md-6" >
-            <mu-select-field v-model="model.method"
-                        name="withdrawMethod"
-                        :hintText="nullHintText">
-              <template v-for="(value,key) in methodsAndAccounts">
-                <mu-menu-item :value="key" :title="$t('payMentMethod.'+key)" key="key"/>
-              </template>
-            </mu-select-field>
-             <span slot="required" class="error" v-if="validator.errors.has('withdrawMethod:required')">{{validator.errors.first('withdrawMethod:required')}}</span>
-          </div>
+      </div>
+      <div class="form-group" :class="errorClass('withdrawMethod')">
+        <label class="control-label col-md-3"> {{ $t('withdrawal.methods') }}
+          <span class="required" aria-required="true">*</span>
+        </label>
+        <div class="col-md-6" >
+          <mu-select-field v-model="model.method"
+                      name="withdrawMethod"
+                      :hintText="nullHintText">
+            <template v-for="(value,key) in methodsAndAccounts">
+              <mu-menu-item :value="key" :title="$t('payMentMethod.'+key)" key="key"/>
+            </template>
+          </mu-select-field>
+           <span slot="required" class="error" v-if="validator.errors.has('withdrawMethod:required')">{{validator.errors.first('withdrawMethod:required')}}</span>
         </div>
-        <div class="form-group" :class="errorClass('bank_code')">
-          <label class="control-label col-md-3">
-            {{ $t('withdrawal.account') }}
-            <span class="required" aria-required="true">*</span>
-          </label>
-          <div class="col-md-6" >
-           <mu-text-field :hintText="$t('withdrawal.nullAccount')" class="form-control"   :fullWidth="true"  :disabled="true" v-if="accounts.length <1"/>
-           <mu-select-field v-model="model.bank_code"  name="bank_code" v-else>
-              <template  v-for="a in accounts" >
-                <mu-menu-item :value="a.accountId" :title="a.bankName+'|'+a.accountNumber" key="mt4.id"/>
-              </template>
-           </mu-select-field>
-             <span slot="required" class="error" v-if="validator.errors.has('bank_code:required')">{{validator.errors.first('bank_code:required')}}</span>
-          </div>
+      </div>
+      <div class="form-group" :class="errorClass('bank_code')">
+        <label class="control-label col-md-3">
+          {{ $t('withdrawal.account') }}
+          <span class="required" aria-required="true">*</span>
+        </label>
+        <div class="col-md-6" >
+         <mu-text-field :hintText="$t('withdrawal.nullAccount')" class="form-control"   :fullWidth="true"  :disabled="true" v-if="accounts.length <1"/>
+         <mu-select-field v-model="model.bank_code"  name="bank_code" v-else>
+            <template  v-for="a in accounts" >
+              <mu-menu-item :value="a.accountId" :title="a.bankName+'|'+a.accountNumber" key="mt4.id"/>
+            </template>
+         </mu-select-field>
+           <span slot="required" class="error" v-if="validator.errors.has('bank_code:required')">{{validator.errors.first('bank_code:required')}}</span>
         </div>
-        <div class="form-group">
-          <label class="control-label col-md-3">{{ $t('withdrawal.fee') }} ({{baseCurrency}})</label>
-          <div class="col-md-6">
-            <mu-text-field v-model="fee" class="form-control"   :fullWidth="true" name="order_amount" :disabled="true"/>
-          </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-md-3">{{ $t('withdrawal.fee') }} ({{baseCurrency}})</label>
+        <div class="col-md-6">
+          <mu-text-field v-model="fee" class="form-control"   :fullWidth="true" name="order_amount" :disabled="true"/>
         </div>
-      </form>
-
+      </div>
+    </form>
 </template>
 
 <script>
-
 import validateMixin from 'mixins/validatemix'
 import fundsService from 'services/fundsService'
 import { Validator } from 'vee-validate'
