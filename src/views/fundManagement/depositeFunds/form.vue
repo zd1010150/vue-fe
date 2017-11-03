@@ -1,11 +1,11 @@
 <template>
 	<div class="col-lg-12 col-md-12">
-	
+
 		<form-doku v-if="noAccountAndBank.indexOf(methodCode) > -1" :methodCode="innerMethodCode" :methodName="innerMethodName"></form-doku>
 		<form-fasa-pay v-else-if="methodCode == 'fasa'" :methodCode="innerMethodCode" :methodName="innerMethodName"></form-fasa-pay>
 		<form-cards v-else-if="cards.indexOf(methodCode) > -1" :methodCode="innerMethodCode" :methodName="innerMethodName"></form-cards>
 		<form-wire-transfer v-else-if="methodCode == 'bankwire'" :methodName="innerMethodName"></form-wire-transfer>
-		<form-bank-transfer v-else-if="methodCode == 'inlbt'" :methodName="innerMethodName"></form-bank-transfer>	
+		<form-bank-transfer v-else-if="methodCode == 'inlbt'" :methodName="innerMethodName"></form-bank-transfer>
 	</div>
 </template>
 <script>
@@ -20,7 +20,7 @@
 				innerMethodCode: this.methodCode,
 				innerMethodName: this.methodName,
 				noAccountAndBank: ['doku','inskr','invis','inmas'],
-				cards : ["dd","hb","an","hd","zl","azf","hby"]//和unionpay的
+				cards : ["dd","hb","an","hd","zl","azf","hby","rpn"]//和unionpay的
 			}
 		},
 		props:{
@@ -31,7 +31,7 @@
 			methodName:{
 				type:String
 			}
-			
+
 		},
 		components: {
 			'form-doku' : doku,
