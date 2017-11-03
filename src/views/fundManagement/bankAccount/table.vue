@@ -24,19 +24,29 @@
           <chp-table-body>
                 <chp-table-row v-for="(row, rowIndex) in bankCards" :key="rowIndex">
                   <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :class="columnIndex">
-                    <mu-icon-button  @click="previewImage(column)" class="text-primary" v-if="columnIndex == 'document'">
-                      <i class="fa fa-paperclip" aria-hidden="true"></i>
-                    </mu-icon-button>  
+                    <template v-if="columnIndex == 'document'">
+                      <template v-if="row.method == creditMethod && column.front && column.back">
+                        <a @click.prevent="previewImage(column.front)" class="text-primary" >
+                          <i class="fa fa-paperclip" aria-hidden="true"></i> {{ $t('bankcard.frontCreditCard') }}
+                        </a>
+                        <a @click.prevent="previewImage(column.back)" class="text-primary" >
+                          <i class="fa fa-paperclip" aria-hidden="true"></i> {{ $t('bankcard.backCreditCard') }}
+                        </a>
+                      </template>
+                      <a @click.prevent="previewImage(column.front)" class="text-primary" v-else>
+                        <i class="fa fa-paperclip" aria-hidden="true"></i> {{ $t('bankcard.attachment') }}
+                      </a>
+                    </template>
                     <template v-else-if="columnIndex == 'status'">
                       <chp-tooltip chp-direction="bottom" v-if="column == CARD_STATUS.reject">{{ $t("bankcard.rejectReason."+originData[rowIndex].comment)}}</chp-tooltip>
                         {{$t('bankcard.bankStatus.'+column)}}
                     </template>
                     <template v-else-if="columnIndex =='id'">
-                       <mu-icon-button  @click="deleteRow(column)">
-                        <i aria-hidden="true" class="fa fa-trash-o"></i> 
+                       <mu-icon-button  @click="deleteRow(column,row.method)">
+                        <i aria-hidden="true" class="fa fa-trash-o"></i>
                        </mu-icon-button>
                        <mu-icon-button  @click="editRow(column)" v-if="row.status == CARD_STATUS.reject">
-                        <i aria-hidden="true" class="fa fa-pencil"></i> 
+                        <i aria-hidden="true" class="fa fa-pencil"></i>
                        </mu-icon-button>
                     </template>
                     <template v-else>
@@ -50,7 +60,7 @@
       </chp-panel>
     <chp-image-preview :src="documentSrc" :open="documentOpen" @close="closePreview"></chp-image-preview>
     <chp-dialog-confirm :chp-title="$t('ui.dialog.confirm.title')"
-                        :chp-content-html="$t('bankcard.deleteDialogText')"
+                        :chp-content-html="editCardMethod == creditMethod ? $t('bankcard.deleteCreditCardText') : $t('bankcard.deleteDialogText')"
                         :chp-ok-text="$t('ui.button.confirm')"
                         :chp-cancel-text="$t('ui.button.cancel')"
                         @close="closeConfirmDialog"
@@ -64,6 +74,7 @@
       approve: "Approve",
       pending: "Pending"
     }
+    const CREDIT_METHOD = "CREDIT"
     import bankCardService from 'services/bankCardService'
     import validateMixin from 'mixins/validatemix.js'
     import loadingMix from 'mixins/loading'
@@ -79,6 +90,8 @@
           documentOpen : false,
           selected : null,
           editId : null,
+          editCardMethod: null,
+          creditMethod : CREDIT_METHOD,
           CARD_STATUS :{
             reject: "Reject",
             approve: "Approve",
@@ -87,7 +100,6 @@
         }
      },
     created(){
-      
       this.fetchBankcardData()
     },
     methods : {
@@ -99,18 +111,18 @@
       },
       filterFields(originData){
         if(originData && originData.length > 0){
-        this.originData = originData;  
+        this.originData = originData
         this.bankCards = originData.map(function(row,index) {
             return {
               method : row.method,
               bank_name : row.bank_name,
               account : row.account,
               swift : row.swift,
-              document : row.document,
+              document : {front:row.document,back:row.document_2},
               status: row.status,
               id: row.id // 一定要把id放到最后编辑
             }
-          });
+          })
         }else{
           this.bankCards = [];
         }
@@ -123,6 +135,7 @@
         return {data};
       },
       previewImage(src){
+        console.log("it ist trigger",src)
         this.documentSrc = src
         this.documentOpen = true
       },
@@ -136,8 +149,9 @@
         }
         this.fetchBankcardData()
       },
-      deleteRow(id){
-        this.editId = id;
+      deleteRow(id,method){
+        this.editId = id
+        this.editCardMethod = method
         this.$refs.confirmDeleteDailog.open()
       },
       closeConfirmDialog(status){

@@ -48,5 +48,6 @@ export default {
     denied : "文件类型或大小不对"
   },
   RISK_TIP: "高杠杆可能会增加您的交易风险，请谨慎使用!",
-  LEAVE_WEBSIT: "你确定关闭本页面? 如果你离开这个页面，将会丢失页面数据"
+  LEAVE_WEBSIT: "你确定关闭本页面? 如果你离开这个页面，将会丢失页面数据",
+  CREDITCARD_LIMIT_ERROR: "你只能拥有一张信用卡，你可以删除旧的，再添加新的"
 }

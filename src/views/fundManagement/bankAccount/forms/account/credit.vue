@@ -7,9 +7,9 @@
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6" >
-            <mu-select-field  v-model="model.bank_name" 
-                              v-validate="'required'" 
-                              data-vv-value-path="model.bank_name" 
+            <mu-select-field  v-model="model.bank_name"
+                              v-validate="'required'"
+                              data-vv-value-path="model.bank_name"
                               data-vv-name="bankName">
               <mu-menu-item value="Visa" title="Visa" />
               <mu-menu-item value="Master" title="Master" />
@@ -22,14 +22,14 @@
             {{ $t('bankcard.creditPreSixNumber') }}
             <span class="required" aria-required="true">*</span>
           </label>
-          <div class="col-md-6">
-            <mu-text-field  v-model="firstSix"  
-                            v-validate="'required|digits:6'" 
-                            data-vv-value-path="firstSix" 
-                            data-vv-name="firstSix"  
-                            class="form-control"   
+          <div class="col-md-6 col-xs-10">
+            <mu-text-field  v-model="firstSix"
+                            v-validate="'required|digits:6'"
+                            data-vv-value-path="firstSix"
+                            data-vv-name="firstSix"
+                            class="form-control"
                             :fullWidth="true" />
-            
+
             <chp-image-preview src="./static/images/credit-card.jpg" :open="documentOpen" @close="closeImg"/>
             <span class="error" v-if="errors.has('firstSix:required')">
               {{errors.first('firstSix:required')}}
@@ -48,13 +48,13 @@
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6">
-            <mu-text-field  v-model="lastFour"  
-                            v-validate="'required|digits:4'" 
-                            data-vv-value-path="lastFour" 
-                            data-vv-name="lastFour"  
-                            class="form-control"   
+            <mu-text-field  v-model="lastFour"
+                            v-validate="'required|digits:4'"
+                            data-vv-value-path="lastFour"
+                            data-vv-name="lastFour"
+                            class="form-control"
                             :fullWidth="true" />
-            
+
             <span class="error" v-if="errors.has('lastFour:required')">
               {{errors.first('lastFour:required')}}
             </span>
@@ -65,54 +65,94 @@
         </div>
         <div class="form-group" :class="errorClass('bankDocument')">
           <label class="control-label col-md-3">
-            {{ $t('bankcard.uploadsBill') }}
+            {{ $t('bankcard.uploadCreditCard') }}
             <span class="required" aria-required="true">*</span>
           </label>
-          <div class="col-md-6" >
+          <div class="col-md-3 mt-xs">
             <transition-group name="chp-fade" mode="out-in">
               <div v-show="model.document.length > 0" key="attachment">
-                <a :href="model.document"  target="_blank"> {{ $t('bankcard.attachment') }}</a>
+                <a :href="model.document"  target="_blank"> {{ $t('bankcard.uploadFrontSide') }}</a>
                 <mu-icon-button @click.stop="deleteDocument"><i class="fa fa-times" aria-hidden="true"></i></mu-icon-button>
               </div>
               <div v-show="model.document.length <=0 "  key="upload" >
                 <chp-file-upload  :extensions="uploadConfig.bill.extensions"
                                   :size="uploadConfig.bill.size"
-                                  name="document" 
-                                  drop=".dropFileAreaDiv" 
-                                  :dropDirectory="false" 
+                                  name="document"
+                                  drop=".dropFileAreaDiv"
+                                  :dropDirectory="false"
                                   :multiple="false"
-                                  :post-action="dropPostAction" 
-                                  @input="dropInputFunction" 
-                                  ref="dropUploads" 
-                                  class="form-control dropFileArea">  
+                                  :post-action="dropPostAction"
+                                  @input="uploadFrontSide"
+                                  ref="dropUploads"
+                                  class="form-control dropFileArea">
                   <div class="dropFileAreaDiv">
-                      <h6> {{ $t('ui.upload.tips') }} </h6>
-                      <P>{{ $t('bankcard.creditUpload') }}</P>
-                      <P>{{ $t('ui.upload.accepts') }} : png, jpg,jpeg,bmp, pdf</P>
+                      <h6 class="text-muted"> {{ $t('ui.upload.tips') }} </h6>
+                      <h5>{{ $t('bankcard.uploadFrontSide') }}</h5>
+                      <P class="text-muted">{{ $t('ui.upload.accepts') }} : png, jpg,jpeg,bmp, pdf</P>
                   </div>
-                </chp-file-upload> 
+                </chp-file-upload>
               </div>
             </transition-group>
-            <input  type="hidden" 
-                    v-model="model.document" 
-                    v-validate="'required'" 
-                    data-vv-value-path="model.document" 
-                    data-vv-name="bankDocument" >
-            <span slot="required" 
-                 class="error" 
-                 v-if="errors.has('bankDocument:required')">
-                  {{errors.first('bankDocument:required')}}
+            <input  type="hidden"
+                    v-model="model.document"
+                    v-validate="'required'"
+                    data-vv-value-path="model.document"
+                    data-vv-name="frontCreditCard" >
+            <span slot="required"
+                 class="error"
+                 v-if="errors.has('frontCreditCard:required')">
+                  {{errors.first('frontCreditCard:required')}}
             </span>
           </div>
+          <div class="col-md-3 mt-xs">
+            <transition-group name="chp-fade" mode="out-in">
+              <div v-show="model.document_2.length > 0" key="attachment">
+                <a :href="model.document_2"  target="_blank"> {{ $t('bankcard.uploadBackSide') }}</a>
+                <mu-icon-button @click.stop="deleteDocument('back')"><i class="fa fa-times" aria-hidden="true"></i></mu-icon-button>
+              </div>
+              <div v-show="model.document_2.length <=0 "  key="upload" >
+                <chp-file-upload  :extensions="uploadConfig.bill.extensions"
+                                  :size="uploadConfig.bill.size"
+                                  name="document"
+                                  drop=".dropFileAreaDiv"
+                                  :dropDirectory="false"
+                                  :multiple="false"
+                                  :post-action="dropPostAction"
+                                  @input="uploadBackSide"
+                                  ref="dropUploads"
+                                  class="form-control dropFileArea">
+                  <div class="dropFileAreaDiv">
+                      <h6 class="text-muted"> {{ $t('ui.upload.tips') }} </h6>
+                      <h5>{{ $t('bankcard.uploadBackSide') }}</h5>
+                      <P class="text-muted">{{ $t('ui.upload.accepts') }} : png, jpg,jpeg,bmp, pdf</P>
+                  </div>
+                </chp-file-upload>
+              </div>
+            </transition-group>
+            <input  type="hidden"
+                    v-model="model.document_2"
+                    v-validate="'required'"
+                    data-vv-value-path="model.document_2"
+                    data-vv-name="backCreditCard" >
+            <span slot="required"
+                 class="error"
+                 v-if="errors.has('backCreditCard:required')">
+                  {{errors.first('backCreditCard:required')}}
+            </span>
+          </div>
+          <div class="col-md-6 col-md-offset-3 pt-sm text-primary">
+            <i class="fa fa-info-circle" aria-hidden="true"></i>
+            {{ $t('bankcard.uploadCreditCardHint') }}
+          </div>
         </div>
-     </form> 
+     </form>
 </template>
 
 <script>
   import validateMixin from 'mixins/validatemix'
-  import configService from 'services/configService' 
+  import configService from 'services/configService'
   import bankCardService from 'services/bankCardService'
-  import { UPLOAD_DOCUMENT_URL } from "src/config/url.config.js"  
+  import { UPLOAD_DOCUMENT_URL } from "src/config/url.config.js"
   import { UPLOAD_CONFIG } from "src/config/app.config.js"
   import { assignToObject } from "src/utils/objectUtil"
   export default {
@@ -136,7 +176,8 @@
             swift:"",
             bank_name : "Visa",
             method: "",
-            document:""
+            document:"",
+            document_2: ""
           },
           model:{
             province:"",
@@ -146,7 +187,8 @@
             swift:"",
             bank_name : "",
             method: "",
-            document:""
+            document:"",
+            document_2: ""
           }
         }
       },
@@ -155,19 +197,28 @@
         editObj:Object
       },
       methods:{
-      	dropInputFunction(files,isAllsuccess,error){
+      	uploadBackSide(files,isAllsuccess,error){
+          if(isAllsuccess){
+            this.$set(this.model,"document_2",files[0].data.url)
+          }else{
+            this.$set(this.model,"document_2","")
+            this.toastr.error(this.$t("info.UPLOAD_ERROR."+error[0]))
+          }
+          this.$validator.validate("backCreditCard",this.model.document_2)
+        },
+        uploadFrontSide(files,isAllsuccess,error){
           if(isAllsuccess){
             this.$set(this.model,"document",files[0].data.url)
           }else{
             this.$set(this.model,"document","")
             this.toastr.error(this.$t("info.UPLOAD_ERROR."+error[0]))
           }
-          this.$validator.validate("bankDocument",this.model.document)
+          this.$validator.validate("frontCreditCard",this.model.document)
         },
         async submit(){
           let validateResult = await this.$validator.validateAll()
           if(validateResult){
-            let res 
+            let res
             if(this.editId){
               res = await bankCardService.updateBankCard(this.editId,this.model)
             }else{
@@ -180,8 +231,12 @@
             }
           }
         },
-        deleteDocument(){
-          this.$set(this.model,"document","")
+        deleteDocument(type){
+          if(type == 'back'){
+            this.$set(this.model,"document_2","")
+          }else{
+            this.$set(this.model,"document","")
+          }
         },
         initModel:function(){
           this.isEdit = this.innerEditObj !=null
@@ -206,7 +261,7 @@
         closeImg(){
           this.documentOpen = false
         }
-          
+
       },
       mounted(){
         this.initModel()
