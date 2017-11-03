@@ -178,7 +178,6 @@ export default {
         return {avaliableMin,avaliableMax}
       },
       async fetchCreditCardRange(){
-        console.log("mt4:",this.model.mt4_id)
         if(this.model.method == CREDIT_CARD){
           this.$store.commit(SET_ASYNC_LOADING,true)
           let {success,data} = await fundsService.getCreditcardRange(this.model.mt4_id)
@@ -186,7 +185,6 @@ export default {
           if(success){
             let {min,max} = data
             this.creditCardRange = Object.assign({},this.creditCardRange,{min:Number(min),max:Number(max)})
-            console.log("fetchMethodsAccounts===",min,max)
           }
         }
       },
@@ -243,7 +241,6 @@ export default {
         let currency = this.MT4.filter(mt4 => {
           return mt4.id == this.model.mt4_id
         })
-        console.log("baseCurrency",currency && currency[0] && currency[0].baseCurrency)
         return currency && currency[0] && currency[0].baseCurrency
       }
     },
