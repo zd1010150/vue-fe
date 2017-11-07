@@ -7,10 +7,10 @@
       </label>
       <div class="col-md-6" >
          <mu-select-field v-model="innerMethod" @input="methodChange" :disabled="editObj!=null">
-   			<template v-for="m in methods">
-   				<mu-menu-item :value="m.method" :title="$t('bankcard.methodType.'+m.title)" />
-   			</template>
-		   </mu-select-field>
+          <template v-for="m in methods">
+            <mu-menu-item :value="m.method" :title="$t('bankcard.methodType.'+m.title)" />
+          </template>
+		    </mu-select-field>
       </div>
 	</div>
 </template>
@@ -22,20 +22,20 @@ export default {
    		innerMethod :null,
 	   	originMethods :[{
 	   		title:'cup',
-	   		type:["en","zh"],
-	   		method:"CUP"
+	   		type:['en','zh'],
+	   		method:'CUP'
 	   	},{
 	   		title:'doku',
-	   		type:["en"],
-	   		method:"DOKU"
+	   		type:['en'],
+	   		method:'DOKU'
 	   	},{
 	   		title:'fasa',
-	   		type:["en"],
-	   		method:"FASA"
+	   		type:['en'],
+	   		method:'FASA'
 	   	},{
             title:'credit',
-            type:["en"],
-            method:"CREDIT"
+            type:['en'],
+            method:'CREDIT'
          }],
    		methods:[]
    	}
@@ -45,7 +45,7 @@ export default {
       editObj:Object
    },
    watch:{
-   	"$store.state.language":function(val,oldVal){
+   	'$store.state.language':function(val,oldVal){
          this.filterMethodsByLanguage(val)
    	},
       editObj:function(val){
@@ -58,14 +58,14 @@ export default {
    },
    methods:{
    	methodChange(){
-         this.$emit("methodChange",this.innerMethod)
+         this.$emit('methodChange',this.innerMethod)
    	},
       filterMethodsByLanguage(val){
          this.methods = this.originMethods.filter((method)=>{
             return method.type.indexOf(val) > -1
-         });
+         })
          this.innerMethod = this.methods[0].method
-         this.$emit("methodChange",this.innerMethod)
+         this.$emit('methodChange',this.innerMethod)
       },
       initMethods(){
          let isEdit = this.editObj !=null
@@ -73,14 +73,14 @@ export default {
             this.filterMethodsByLanguage(this.$store.state.language)
          }else{
             this.methods = this.originMethods.filter((m)=>{
-               return m.method == this.method
+               return m.method === this.method
             })
             this.innerMethod = this.method
          }
       }
    },
    mounted(){
-      this.initMethods();
+      this.initMethods()
    }
   }
 </script>

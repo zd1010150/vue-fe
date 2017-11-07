@@ -7,28 +7,29 @@
                  :titles="{mainTitle:'login'}" class="panel-sign">
 
         <div slot="panelTitle" class="panel-title-sign mt-xl text-right">
-          <h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i> 
+          <h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i>
             {{ $t("applyResetPwd.title") }}
           </h2>
         </div>
 
         <form slot="body" class="login-form" @submit.prevent="checkEmail">
           <div class="alert alert-info">
-              <p class="m-none text-weight-semibold h6">{{ $t("applyResetPwd.tips") }}</p>
+            <p class="m-none text-weight-semibold h6">{{ $t("applyResetPwd.tips") }}</p>
           </div>
           <div class="form-group mb-lg required-field " :class="errorClass('email')">
             <div class="input-group ">
-              <mu-text-field v-validate="'required|email'" 
-              data-vv-value-path="model.email" 
-              data-vv-name="email"
-                             :hintText="$t('login.placeholderEmail')" 
-                             class="form-control input-lg" 
+              <mu-text-field v-validate="'required|email'"
+                             data-vv-value-path="model.email"
+                             data-vv-name="email"
+                             :hintText="$t('login.placeholderEmail')"
+                             class="form-control input-lg"
                              name="email"
-                             type="email"  
-                             v-model="model.email"  
+                             type="email"
+                             v-model="model.email"
                              id="email"/>
-                   <span class="input-group-btn">
-                    <button class="btn btn-primary btn-lg" type="submit" :disabled="cantRecover">{{ $t('ui.button.resetPwd') }}!</button>
+              <span class="input-group-btn">
+                    <button class="btn btn-primary btn-lg" type="submit"
+                            :disabled="cantRecover">{{ $t('ui.button.resetPwd') }}!</button>
                   </span>
             </div>
             <span slot="required" class="error" v-if="errors.has('email:required')">
@@ -39,7 +40,7 @@
             </span>
           </div>
           <p class="text-center mt-lg">
-            {{ $t("applyResetPwd.remember") }}? 
+            {{ $t("applyResetPwd.remember") }}?
             <router-link to="/login">{{ $t("applyResetPwd.signIn") }}!</router-link>
           </p>
         </form>
@@ -47,48 +48,46 @@
     </chp-log-layout>
   </div>
 </template>
-<script type="text/javascript">
-
+<script>
   import validateMixin from 'mixins/validatemix.js'
   import pwdService from 'services/pwdService'
-  
+
   export default {
-    name: "login",
+    name: 'login',
     mixins: [validateMixin],
     data () {
       return {
-        loading:false,
-        cantRecover:false,
+        loading: false,
+        cantRecover: false,
         model: {
-          email: "",
-          domain: ""
+          email: '',
+          domain: ''
         }
       }
     },
     methods: {
-      async checkEmail (e){
+      async checkEmail (e) {
         this.cantRecover = true
         let validateResult = await this.$validator.validateAll()
-        if(validateResult){
-            this.loading = true
-            let {message,success} = await pwdService.checkEmail(this.model.email)
-            this.loading = false
-            if(success){
-              let {message,success,data} = await pwdService.applyResetPwd(this.model.email)
-              if(success){
-                this.toastr.info(this.$t("applyResetPwd.success"))
-                this.cantRecover = true
-              }else{
-                this.cantRecover = false
-              }    
-            }else{
+        if (validateResult) {
+          this.loading = true
+          let {success} = await pwdService.checkEmail(this.model.email)
+          this.loading = false
+          if (success) {
+            let {success} = await pwdService.applyResetPwd(this.model.email)
+            if (success) {
+              this.toastr.info(this.$t('applyResetPwd.success'))
+              this.cantRecover = true
+            } else {
               this.cantRecover = false
             }
-          }else{
+          } else {
             this.cantRecover = false
           }
-          
+        } else {
+          this.cantRecover = false
         }
+      }
     }
   }
 </script>

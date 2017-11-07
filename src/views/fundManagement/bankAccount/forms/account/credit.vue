@@ -152,68 +152,68 @@
   import validateMixin from 'mixins/validatemix'
   import configService from 'services/configService'
   import bankCardService from 'services/bankCardService'
-  import { UPLOAD_DOCUMENT_URL } from "src/config/url.config.js"
-  import { UPLOAD_CONFIG } from "src/config/app.config.js"
-  import { assignToObject } from "src/utils/objectUtil"
+  import { UPLOAD_DOCUMENT_URL } from 'src/config/url.config.js'
+  import { UPLOAD_CONFIG } from 'src/config/app.config.js'
+  import { assignToObject } from 'src/utils/objectUtil'
   export default {
-    mixins:[validateMixin],
-  	data(){
-        return {
-          innerMethod: this.method,
-          innerEditObj: this.editObj,
-          uploadConfig:UPLOAD_CONFIG,
-          dropPostAction:UPLOAD_DOCUMENT_URL+"/bill",
-          isEdit:false,
-          editId:null,
-          firstSix: "",
-          lastFour: "",
-          documentOpen:false,
-          originModel:{
-            province:"",
-            city : "",
-            address:"",
-            account:"",
-            swift:"",
-            bank_name : "Visa",
-            method: "",
-            document:"",
-            document_2: ""
-          },
-          model:{
-            province:"",
-            city : "",
-            address:"",
-            account:"",
-            swift:"",
-            bank_name : "",
-            method: "",
-            document:"",
-            document_2: ""
-          }
+    mixins: [validateMixin],
+    data () {
+      return {
+        innerMethod: this.method,
+        innerEditObj: this.editObj,
+        uploadConfig: UPLOAD_CONFIG,
+        dropPostAction: UPLOAD_DOCUMENT_URL+'/bill',
+        isEdit: false,
+        editId: null,
+        firstSix: '',
+        lastFour: '',
+        documentOpen: false,
+        originModel: {
+          province: '',
+          city: '',
+          address: '',
+          account: '',
+          swift: '',
+          bank_name: 'Visa',
+          method: '',
+          document: '',
+          document_2: ''
+        },
+        model:{
+          province: '',
+          city: '',
+          address: '',
+          account: '',
+          swift: '',
+          bank_name: '',
+          method: '',
+          document: '',
+          document_2: ''
         }
-      },
-      props:{
-        method:String,
-        editObj:Object
-      },
+      }
+    },
+    props: {
+      method: String,
+      editObj: Object
+    },
       methods:{
       	uploadBackSide(files,isAllsuccess,error){
           if(isAllsuccess){
-            this.$set(this.model,"document_2",files[0].data.url)
+            this.$set(this.model,'document_2',files[0].data.url)
           }else{
-            this.$set(this.model,"document_2","")
-            this.toastr.error(this.$t("info.UPLOAD_ERROR."+error[0]))
+            this.$set(this.model,'document_2','')
+            this.toastr.error(this.$t('info.UPLOAD_ERROR.'+error[0]))
           }
-          this.$validator.validate("backCreditCard",this.model.document_2)
+          this.$validator.validate('backCreditCard',this.model.document_2)
         },
         uploadFrontSide(files,isAllsuccess,error){
           if(isAllsuccess){
-            this.$set(this.model,"document",files[0].data.url)
+            this.$set(this.model,'document',files[0].data.url)
           }else{
-            this.$set(this.model,"document","")
-            this.toastr.error(this.$t("info.UPLOAD_ERROR."+error[0]))
+            this.$set(this.model,'document','')
+            this.toastr.error(this.$t('info.UPLOAD_ERROR.'+error[0]))
           }
-          this.$validator.validate("frontCreditCard",this.model.document)
+          this.$validator.validate('frontCreditCard',this.model.document)
         },
         async submit(){
           let validateResult = await this.$validator.validateAll()
@@ -226,16 +226,16 @@
             }
             let { success } = res
             if(success){
-              this.toastr.info(this.$t("info.SUCCESS"))
+              this.toastr.info(this.$t('info.SUCCESS'))
               this.$emit('refresh')
             }
           }
         },
         deleteDocument(type){
           if(type == 'back'){
-            this.$set(this.model,"document_2","")
+            this.$set(this.model,'document_2','')
           }else{
-            this.$set(this.model,"document","")
+            this.$set(this.model,'document','')
           }
         },
         initModel:function(){
@@ -251,8 +251,8 @@
           }else{
             this.editId = null
             this.model = Object.assign({},this.model,this.originModel,{method:this.innerMethod})
-            this.firstSix = ""
-            this.lastFour = ""
+            this.firstSix = ''
+            this.lastFour = ''
           }
         },
         showImg(){
@@ -280,10 +280,10 @@
           this.initModel()
         },
         firstSix(val){
-          this.model.account = val + "******"+ this.lastFour
+          this.model.account = val + '******'+ this.lastFour
         },
         lastFour(val){
-          this.model.account = this.firstSix + "******" + val
+          this.model.account = this.firstSix + '******' + val
         }
       }
     }
