@@ -8,14 +8,14 @@
 			</template>
 			<chp-carousel   slot="body"
 							:key="carouselKey"
-							:perPage="1" 
-							:autoplay="false" 
-							:autoplayHoverPause="true" 
-							:loop="true" 
+							:perPage="1"
+							:autoplay="false"
+							:autoplayHoverPause="true"
+							:loop="true"
 							:paginationPadding="5"
 							:autoplayTimeout="2000">
 				<chp-slide v-for="(video,index) in videos" class="slide-wrapper" :key="index">
-					<chp-feature-image :src= "video.imagepath || video.image_link "/>
+					<chp-feature-image :src= "video.imagepath || video.image_link"/>
 		      		<div class="mask">
 						<h3>
 							<a :href="'#/training/videos?level=3&videoCode='+video.category+'&videoType='+video.category_id+'&videoId='+video.id" >
@@ -98,15 +98,15 @@
 				h3 > a{
 					color:@dark-color;
 				}
-				background-color: rgba(256,256,256,.6);	
+				background-color: rgba(256,256,256,.6);
 			}
-			
+
 		}
 	}
 	.size,.copy{
 		text-align: center;
 	}
-	
+
 	html.dark{
 		.slide-wrapper{
 			.mask{
@@ -116,7 +116,7 @@
 					}
 					background-color: rgba(0, 0, 0,.6)
 				}
-				
+
 			}
 		}
 	}

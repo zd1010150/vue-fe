@@ -4,14 +4,21 @@
 	</div>
 </template>
 <script>
+  import { shrink } from "src/utils/pictureUtil.js"
 	export default{
 		props:{
-			src:String
+			src:String,
+      isThumbnail : {
+			  default : true
+      },
+      onlyShrinkOnMobile : {
+			  default : false
+      }
 		},
 		computed:{
 			innerStyle(){
-				return {
-					backgroundImage: 'url('+this.src+')'
+			  return {
+					backgroundImage: 'url('+(this.isThumbnail ? shrink(this.src,this.onlyShrinkOnMobile) : this.src) +')'
 				}
 			}
 		}

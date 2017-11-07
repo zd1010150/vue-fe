@@ -18,7 +18,7 @@
         <div v-for="book in loopList" class="col-sm-6 col-md-4 col-lg-3">
           <div class="thumbnail">
             <div class="image-box">
-              <chp-feature-image :src='book.imagepath || book.image_link'/>
+              <chp-feature-image :src="book.imagepath || book.image_link"/>
               <div class="description">
                 <div class="word-box">
                   <small class="central-word" v-html="book.description"></small>
