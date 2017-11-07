@@ -16,9 +16,9 @@
       <div class="media-gallery">
         <div class="row mg-files">
           <div v-for="book in category.children" class="col-sm-6 col-lg-3">
-            <div class="thumbnail">              
+            <div class="thumbnail">
                 <div class="image-box">
-                  <div class="featured-image" v-bind:style='{backgroundImage:"url(" + book.imagepath || book.image_link +")"}'></div>
+                  <chp-feature-image :src="book.imagepath || book.image_link"/>
                   <div class="description">
                     <div class="word-box">
                       <small class="central-word" v-html="book.description"></small>
@@ -38,7 +38,7 @@
                       <a v-bind:href="book.docpath" class="notification-icon"  :download="book.title" target="_blank" @click="display(book.id)">
                         <i class="fa fa-download"></i>
                       </a>
-                    </li>								
+                    </li>
                   </ul>
                   <div class="text-muted">{{uploader[$store.state.language]}}</div>
                   <small class="text-muted">{{book.upload_date}}</small>

@@ -8,12 +8,12 @@
 				</template>
 			<chp-carousel   :key="carouselKey"
 							slot="body"
-							:perPage="1"  
-							:autoplayHoverPause="true" 
+							:perPage="1"
+							:autoplayHoverPause="true"
 							:paginationPadding="5"
 							:autoplayTimeout="15000">
 				<chp-slide v-for="(book,index) in books" class="slide-wrapper" :key="index">
-					<chp-feature-image :src= "book.imagepath || book.image_link "/>
+					<chp-feature-image :src= 'book.imagepath || book.image_link' />
 		      		<div class="mask">
 						<h3><a :href="book.docpath" target="_blank" @click="display(book.id)">{{ $t("download")}}</a></h3>
 					</div>
@@ -96,15 +96,15 @@
 				h3 > a{
 					color:@dark-color;
 				}
-				background-color: rgba(256,256,256,.6);	
+				background-color: rgba(256,256,256,.6);
 			}
-			
+
 		}
 	}
 	.size,.copy{
 		text-align: center;
 	}
-	
+
 	html.dark{
 		.slide-wrapper{
 			.mask{
@@ -114,7 +114,7 @@
 					}
 					background-color: rgba(0, 0, 0,.6)
 				}
-				
+
 			}
 		}
 	}

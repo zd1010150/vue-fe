@@ -17,7 +17,7 @@
 				<div v-for="video in loopList" class="col-sm-6 col-md-4 col-lg-3 video">
 					<div class="thumbnail">
 						<router-link :to="'?level=3&videoCode='+$route.query.videoCode+'&videoType='+$route.query.videoType+'&videoId='+video.id">
-							<chp-feature-image :src='video.imagepath || video.image_link'/>
+							<chp-feature-image :src="video.imagepath || video.image_link"/>
 						</router-link>
 						<h5 class="mb-xs mt-md video-title">{{video.title}}</h5>
 						<div class="mg-description">
@@ -32,7 +32,7 @@
 				<mu-infinite-scroll :scroller="scroller" class="text-dark" :loading="loading" @load="loadMore" :loadingText="$t('video.loading')"/>
 			</div>
     	</div>
-		
+
 	</div>
 </template>
 
