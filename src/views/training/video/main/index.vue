@@ -19,15 +19,15 @@
           <div v-for="video in category.children" class="col-sm-6 col-lg-3">
             <div class="thumbnail">
               <router-link :to="'?level=3&videoCode='+category.code+'&videoType='+category.id+'&videoId='+video.id">
-                <chp-feature-image :src='video.imagepath || video.image_link'/>
-              </router-link>  
+                <chp-feature-image :src="video.imagepath || video.image_link"/>
+              </router-link>
               <div>
                 <h5 class="mb-xs mt-md video-title">{{video.title}}</h5>
                 <div class="mg-description">
                   <div class="text-muted">{{uploader[$store.state.language]}}</div>
                   <small class="text-muted pull-right pt-xs">{{video.upload_date}}</small>
                 </div>
-              </div>            
+              </div>
             </div>
           </div>
         </div>

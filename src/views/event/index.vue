@@ -9,7 +9,7 @@
 				<div class="row">
 					<div class="col-md-5">
 						<chp-slide class="slide-wrapper" :key="index">
-							<img class="slide-img" :src="activity.imagepath || activity.image_link " alt="">
+							<img class="slide-img" :src="shrink(activity.imagepath || activity.image_link)" alt="">
 							<div class="mask">
 								<h3>
 									<a :href="activity.url" target="_blank">{{ $t("more")}}</a>
@@ -67,6 +67,7 @@
 </template>
 <script>
 import activityService from "services/activityService"
+import { shrink } from "src/utils/pictureUtil.js"
 export default {
 	data() {
 		return {
@@ -82,7 +83,8 @@ export default {
 			if (success) {
 				this.activities = data.items
 			}
-		}
+		},
+    shrink
 	},
 	watch: {
 		"$store.state.language": function() {

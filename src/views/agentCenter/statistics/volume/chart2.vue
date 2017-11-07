@@ -1,9 +1,9 @@
 <i18n src="../../i18n.yaml"></i18n>
 <template>
-	<chp-panel  :canCollapse="false" 
-				:canClose="false" 
-	 			:showActionRipple="false"  
-				:isLoading="loadingStatus" 
+	<chp-panel  :canCollapse="false"
+				:canClose="false"
+	 			:showActionRipple="false"
+				:isLoading="loadingStatus"
 				ref="panel">
 		<template slot="panelTitle">
 			{{ $t('charts.percantageVolumeStatistics') }}
@@ -51,8 +51,8 @@
 						<td>{{chartData.last.oil}}</td>
 						<td>{{chartData.total.oil}}</td>
 					</tr>
-					
-					
+
+
 				</tbody>
 			</table>
 			</div>
@@ -66,7 +66,6 @@
 	export default{
 		mixins:[loadingMix],
 		filters,
-		
 		data(){
 			return {
 				chartData:{current:{},last:{},total:{}},
@@ -136,17 +135,17 @@
 			calculateCircleChart(data,type){
 				return [{
 					name: this.$t('trade.fx'),
-					value: data[type].forex 
-					
+					value: data[type].forex
+
 				},{
 					name: this.$t('trade.metal'),
-					value: data[type].metal 
+					value: data[type].metal
 				},{
 					name: this.$t('trade.cfd'),
-					value: data[type].cfd 
+					value: data[type].cfd
 				},{
 					name: this.$t('trade.oil'),
-					value: data[type].oil 
+					value: data[type].oil
 				}]
 			},
 			async fetchData({mt4_id,start_date,end_date}){
@@ -178,7 +177,7 @@
 			}
 		}
 	}
-	
+
 	@media(max-width:@screen-sm-min){
 		table{
 			margin-top: 20px;
