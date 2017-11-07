@@ -3,26 +3,27 @@
 	<div class="col-lg-12">
 		<div class="thumbnail carousel-wrapper">
 			<chp-carousel   :key="carouselKey"
-							:perPage="1" 
-							:autoplay="true" 
-							:autoplayHoverPause="true" 
+							:perPage="1"
+							:autoplay="true"
+							:autoplayHoverPause="true"
 							:loop="true"
-							:speed="2000" 
+							:speed="2000"
 							:paginationPadding="5"
 							:autoplayTimeout="6000"
 							class="dashboard-carousel">
 				<chp-slide v-for="(activity,index) in activities" class="slide-wrapper" :key="index">
-					<img class="slide-img" :src= "activity.imagepath || activity.image_link " alt="">
+					<img class="slide-img" :src= "shrink(activity.imagepath || activity.image_link,true)" alt="">
 					<div class="mask">
 						<h3><a :href="activity.url" target="_blank">{{ $t("more")}}</a></h3>
 					</div>
 				</chp-slide>
 			</chp-carousel>
-		</div>			
+		</div>
 	</div>
 </template>
 <script>
 	import activityService from "services/activityService"
+  import { shrink } from "src/utils/pictureUtil.js"
 	export default{
 		data(){
 			return {
@@ -45,7 +46,8 @@
 				if(success){
 					this.activities = data.items
 				}
-			}
+			},
+      shrink
 		},
 		watch:{
 			"$store.state.language":function(){
@@ -70,7 +72,7 @@
 			vertical-align: middle;
 			text-align: center !important;
 		}
-		
+
 	}
 	.slide-img{
 		width:100%;
@@ -104,9 +106,9 @@
 				h3 > a{
 					color:@dark-color;
 				}
-				background-color: rgba(256,256,256,.6);	
+				background-color: rgba(256,256,256,.6);
 			}
-			
+
 		}
 	}
 	html.dark{
@@ -118,7 +120,7 @@
 					}
 					background-color: rgba(0, 0, 0,.6)
 				}
-				
+
 			}
 		}
 	}
@@ -128,6 +130,6 @@
 			height:auto;
 			max-height: auto;
 		}
-	}	
+	}
 
 </style>
