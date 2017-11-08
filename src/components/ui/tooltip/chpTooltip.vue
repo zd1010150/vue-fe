@@ -7,7 +7,8 @@
 <style lang="scss" src="./chpTooltip.scss"></style>
 
 <script>
-   import transitionEndEventName from '../core/utils/transitionEndEventName';
+  import transitionEndEventName from '../core/utils/transitionEndEventName'
+
   export default {
     name: 'chp-tooltip',
     props: {
@@ -28,7 +29,7 @@
       leftPosition: false
     }),
     computed: {
-      classes() {
+      classes () {
         const cssClasses = {
           'chp-active': this.active,
           'chp-transition-off': this.transitionOff,
@@ -36,108 +37,108 @@
           'chp-tooltip-right': this.chpDirection === 'right',
           'chp-tooltip-bottom': this.chpDirection === 'bottom',
           'chp-tooltip-left': this.chpDirection === 'left'
-        };
-        if (this.parentClass) {
-          cssClasses[this.parentClass] = true;
         }
-        return cssClasses;
+        if (this.parentClass) {
+          cssClasses[this.parentClass] = true
+        }
+        return cssClasses
       },
-      style() {
+      style () {
         return {
           'transition-delay': this.chpDelay + 'ms',
           top: this.topPosition + 'px',
           left: this.leftPosition + 'px'
-        };
+        }
       }
     },
     watch: {
-      chpDirection() {
-        this.calculateTooltipPosition();
+      chpDirection () {
+        this.calculateTooltipPosition()
       }
     },
     methods: {
-      removeTooltips() {
+      removeTooltips () {
         if (this.tooltipElement.parentNode) {
-          this.tooltipElement.removeEventListener(transitionEndEventName, this.removeTooltips);
-          this.tooltipElement.parentNode.removeChild(this.tooltipElement);
+          this.tooltipElement.removeEventListener(transitionEndEventName, this.removeTooltips)
+          this.tooltipElement.parentNode.removeChild(this.tooltipElement)
         }
       },
-      calculateTooltipPosition() {
-        let position = this.parentElement.getBoundingClientRect();
-        let cssPosition = {};
+      calculateTooltipPosition () {
+        let position = this.parentElement.getBoundingClientRect(), cssPosition = {}
         switch (this.chpDirection) {
           case 'top':
-            cssPosition.top = position.top - this.$el.offsetHeight;
-            cssPosition.left = position.left + position.width / 2;
-            break;
+            cssPosition.top = position.top - this.$el.offsetHeight
+            cssPosition.left = position.left + position.width / 2
+            break
           case 'right':
-            cssPosition.top = position.top;
-            cssPosition.left = position.left + position.width;
-            break;
+            cssPosition.top = position.top
+            cssPosition.left = position.left + position.width
+            break
           case 'bottom':
-            cssPosition.top = position.bottom;
-            cssPosition.left = position.left + position.width / 2;
-            break;
+            cssPosition.top = position.bottom
+            cssPosition.left = position.left + position.width / 2
+            break
           case 'left':
-            cssPosition.top = position.top;
-            cssPosition.left = position.left - this.$el.offsetWidth;
-            break;
+            cssPosition.top = position.top
+            cssPosition.left = position.left - this.$el.offsetWidth
+            break
           default:
-            console.warn(`Invalid ${this.chpDirection} option to chp-direction option`);
+            console.warn(`Invalid ${this.chpDirection} option to chp-direction option`)
         }
-        this.topPosition = cssPosition.top;
-        this.leftPosition = cssPosition.left;
+        this.topPosition = cssPosition.top
+        this.leftPosition = cssPosition.left
       },
-      generateTooltipClasses() {
+      generateTooltipClasses () {
         let classes = [];
         [...this.parentElement.classList].forEach((cssClass) => {
           if (cssClass.indexOf('chp-') >= 0 && cssClass !== 'chp-active') {
-            classes.push(cssClass + '-tooltip');
+            classes.push(cssClass + '-tooltip')
           }
-        });
-        this.parentClass = classes.join(' ');
+        })
+        this.parentClass = classes.join(' ')
       },
-      open() {
-        this.removeTooltips();
+      open () {
+        this.removeTooltips()
         this.$nextTick(() => {
-          document.body.appendChild(this.tooltipElement);
-          getComputedStyle(this.tooltipElement).top;
-          this.transitionOff = true;
-          this.generateTooltipClasses();
-          this.calculateTooltipPosition();
+          document.body.appendChild(this.tooltipElement)
+          // getComputedStyle(this.tooltipElement).top
+          this.transitionOff = true
+          this.generateTooltipClasses()
+          this.calculateTooltipPosition()
           window.setTimeout(() => {
-            this.transitionOff = false;
-            this.active = true;
-          }, 10);
-        });
+            this.transitionOff = false
+            this.active = true
+          }, 10)
+        })
       },
-      close() {
-        this.active = false;
-        this.tooltipElement.removeEventListener(transitionEndEventName, this.removeTooltips);
-        this.tooltipElement.addEventListener(transitionEndEventName, this.removeTooltips);
+      close () {
+        this.active = false
+        this.tooltipElement.removeEventListener(transitionEndEventName, this.removeTooltips)
+        this.tooltipElement.addEventListener(transitionEndEventName, this.removeTooltips)
       }
     },
-    mounted() {
+    mounted () {
       this.$nextTick(() => {
-        this.tooltipElement = this.$el;
-        this.parentElement = this.tooltipElement.parentNode;
-        if(this.$el && this.parentElement){
-          this.parentElement.removeChild(this.$el);
-          this.parentElement.addEventListener('mouseenter', this.open);
-          this.parentElement.addEventListener('focus', this.open);
-          this.parentElement.addEventListener('mouseleave', this.close);
-          this.parentElement.addEventListener('blur', this.close);        }
-      });
+        this.tooltipElement = this.$el
+        this.parentElement = this.tooltipElement.parentNode
+        if (this.$el && this.parentElement) {
+          this.parentElement.removeChild(this.$el)
+          this.parentElement.addEventListener('mouseenter', this.open)
+          this.parentElement.addEventListener('focus', this.open)
+          this.parentElement.addEventListener('mouseleave', this.close)
+          this.parentElement.addEventListener('blur', this.close)
+        }
+      })
     },
-    beforeDestroy() {
-      this.active = false;
-      this.removeTooltips();
+    beforeDestroy () {
+      this.active = false
+      this.removeTooltips()
       if (this.parentElement) {
-        this.parentElement.removeEventListener('mouseenter', this.open);
-        this.parentElement.removeEventListener('focus', this.open);
-        this.parentElement.removeEventListener('mouseleave', this.close);
-        this.parentElement.removeEventListener('blur', this.close);
+        this.parentElement.removeEventListener('mouseenter', this.open)
+        this.parentElement.removeEventListener('focus', this.open)
+        this.parentElement.removeEventListener('mouseleave', this.close)
+        this.parentElement.removeEventListener('blur', this.close)
       }
     }
-  };
+  }
 </script>

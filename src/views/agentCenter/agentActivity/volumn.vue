@@ -237,7 +237,7 @@
         }
       },
       async showTerms () {
-        let {data, success} = await activityService.getAgentLevelActivityTerms(this.$store.state.language == 'en' ? 'en' : 'zh')
+        let {data, success} = await activityService.getAgentLevelActivityTerms(this.$store.state.language === 'en' ? 'en' : 'zh')
         if (success) {
           this.terms = data
           this.$refs.termsDailog.open()

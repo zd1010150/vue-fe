@@ -145,114 +145,112 @@ import { UPLOAD_DOCUMENT_URL } from 'src/config/url.config.js'
 import { UPLOAD_CONFIG } from 'src/config/app.config.js'
 import { assignToObject } from 'src/utils/objectUtil'
 export default {
-  mixins:[validateMixin],
-	data(){
-      return {
-        innerMethod: this.method,
-        innerEditObj: this.editObj,
-        uploadConfig:UPLOAD_CONFIG,
-        promotingMsg:'',
-        dropPostAction:UPLOAD_DOCUMENT_URL+'/bill',
-        isEdit:false,
-        editId:null,
-        originModel:{
-          province:'',
-          city : '',
-          address:'',
-          account:'',
-          swift:'',
-          bank_name : '',
-          method: '',
-          document:''
-        },
-        model:{
-          province:'',
-          city : '',
-          address:'',
-          account:'',
-          swift:'',
-          bank_name : '',
-          method: '',
-          document:''
-        }
-      }
-    },
-    props:{
-      method:String,
-      editObj:Object
-    },
-    methods:{
-    	async fetchPromtingMessage(val){
-        this.$emit('loading',true)
-        let key =  'prompting_message_'+(val == 'en' ?'en':'cn'),
-            {success,data} = await configService.getConfigByKey({fields:[key]})
-        this.promotingMsg = data[key]
-        this.$emit('loading',false)
-    	},
-    	dropInputFunction(files,isAllsuccess,error){
-        if(isAllsuccess){
-          this.$set(this.model,'document',files[0].data.url)
-        }else{
-          this.$set(this.model,'document','')
-          this.toastr.error(this.$t('info.UPLOAD_ERROR.'+error[0]))
-        }
-        this.$validator.validate('bankDocument',this.model.document)
+  mixins: [validateMixin],
+  data () {
+    return {
+      innerMethod: this.method,
+      innerEditObj: this.editObj,
+      uploadConfig: UPLOAD_CONFIG,
+      promotingMsg: '',
+      dropPostAction: UPLOAD_DOCUMENT_URL + '/bill',
+      isEdit: false,
+      editId: null,
+      originModel: {
+        province: '',
+        city: '',
+        address: '',
+        account: '',
+        swift: '',
+        bank_name: '',
+        method: '',
+        document: ''
       },
-      async submit(){
-        let validateResult = await this.$validator.validateAll()
-        if(validateResult){
-          let res
-          if(this.editId){
-            res = await bankCardService.updateBankCard(this.editId,this.model)
-          }else{
-            res = await bankCardService.addBankCard(this.model)
-          }
-          let { success } = res
-          if(success){
-            this.toastr.info(this.$t('info.SUCCESS'))
-            this.$emit('refresh')
-          }
-        }
-
-      },
-      deleteDocument(){
-        this.$set(this.model,'document','')
-      },
-      initModel:function(){
-        this.isEdit = this.innerEditObj !=null
-        if(this.isEdit){//如果是编辑
-          this.editId = this.innerEditObj.id
-          this.model = Object.assign({},this.model,assignToObject(this.originModel,this.innerEditObj))
-        }else{
-          this.editId = null
-          this.model = Object.assign({},this.model,this.originModel,{method:this.innerMethod,bank_name:this.innerMethod})
-        }
-      }
-
-    },
-    mounted(){
-      this.initModel()
-    	this.fetchPromtingMessage(this.$store.state.language)
-    },
-    watch :{
-      '$store.state.language'(val,oldVal){
-        if(val == oldVal) return
-        this.fetchPromtingMessage(val)
-      },
-      method(val){
-        this.innerMethod = val
-      },
-      editObj(val){
-        this.innerEditObj = val
-      },
-      innerMethod (val,oldVal){
-       this.initModel()
-      },
-      innerEditObj(val){
-        this.initModel()
+      model: {
+        province: '',
+        city: '',
+        address: '',
+        account: '',
+        swift: '',
+        bank_name: '',
+        method: '',
+        document: ''
       }
     }
+  },
+  props: {
+    method: String,
+    editObj: Object
+  },
+  methods: {
+    async fetchPromtingMessage (val) {
+      this.$emit('loading', true)
+      let key = 'prompting_message_' + (val === 'en' ? 'en' : 'cn'),
+        {data} = await configService.getConfigByKey({fields: [key]})
+      this.promotingMsg = data[key]
+      this.$emit('loading', false)
+    },
+    dropInputFunction (files, isAllsuccess, error) {
+      if (isAllsuccess) {
+        this.$set(this.model, 'document', files[0].data.url)
+      } else {
+        this.$set(this.model, 'document', '')
+        this.toastr.error(this.$t('info.UPLOAD_ERROR.' + error[0]))
+      }
+      this.$validator.validate('bankDocument', this.model.document)
+    },
+    async submit () {
+      let validateResult = await this.$validator.validateAll()
+      if (validateResult) {
+        let res
+        if (this.editId) {
+          res = await bankCardService.updateBankCard(this.editId, this.model)
+        } else {
+          res = await bankCardService.addBankCard(this.model)
+        }
+        let { success } = res
+        if (success) {
+          this.toastr.info(this.$t('info.SUCCESS'))
+          this.$emit('refresh')
+        }
+      }
+    },
+    deleteDocument () {
+      this.$set(this.model, 'document', '')
+    },
+    initModel: function () {
+      this.isEdit = this.innerEditObj !== null
+      if (this.isEdit) { // 如果是编辑
+        this.editId = this.innerEditObj.id
+        this.model = Object.assign({}, this.model, assignToObject(this.originModel, this.innerEditObj))
+      } else {
+        this.editId = null
+        this.model = Object.assign({}, this.model, this.originModel, {method: this.innerMethod, bank_name: this.innerMethod})
+      }
+    }
+
+  },
+  mounted () {
+    this.initModel()
+    this.fetchPromtingMessage(this.$store.state.language)
+  },
+  watch: {
+    '$store.state.language' (val, oldVal) {
+      this.fetchPromtingMessage(val)
+    },
+    method (val) {
+      this.innerMethod = val
+    },
+    editObj (val) {
+      this.innerEditObj = val
+    },
+    innerMethod (val, oldVal) {
+      this.initModel()
+    },
+    innerEditObj (val) {
+      this.initModel()
+    }
   }
+}
 </script>
 
 

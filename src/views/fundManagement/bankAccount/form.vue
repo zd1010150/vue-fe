@@ -46,6 +46,8 @@
   </div>
 </template>
 <script>
+  /* eslint-disable no-extra-boolean-cast */
+
   import account from './forms/account/index'
   import method from './forms/method'
   import bankCardService from 'services/bankCardService'

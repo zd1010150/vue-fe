@@ -1,6 +1,7 @@
 <template>
   <div class="md-tabs" :class="[themeClass, tabClasses]">
-    <md-whiteframe md-tag="nav" class="md-tabs-navigation" :md-elevation="mdElevation" :class="navigationClasses" ref="tabNavigation">
+    <md-whiteframe md-tag="nav" class="md-tabs-navigation" :md-elevation="mdElevation" :class="navigationClasses"
+                   ref="tabNavigation">
       <div class="md-tabs-navigation-container" ref="tabsContainer" @scroll="handleNavigationScroll">
         <div class="md-tabs-navigation-scroll-container">
           <button
@@ -20,7 +21,9 @@
 
               <span v-if="header.label">{{ header.label }}</span>
 
-              <md-tooltip v-if="header.tooltip" :md-direction="header.tooltipDirection" :md-delay="header.tooltipDelay">{{ header.tooltip }}</md-tooltip>
+              <md-tooltip v-if="header.tooltip" :md-direction="header.tooltipDirection" :md-delay="header.tooltipDelay">
+                {{ header.tooltip }}
+              </md-tooltip>
             </div>
           </button>
 
@@ -28,11 +31,13 @@
         </div>
       </div>
 
-      <button v-if="mdNavigation && hasNavigationScroll" @click="navigationScrollLeft" class="md-tab-header-navigation-button md-left" :class="navigationLeftButtonClasses">
+      <button v-if="mdNavigation && hasNavigationScroll" @click="navigationScrollLeft"
+              class="md-tab-header-navigation-button md-left" :class="navigationLeftButtonClasses">
         <md-icon>keyboard_arrow_left</md-icon>
       </button>
 
-      <button v-if="mdNavigation && hasNavigationScroll" @click="navigationScrollRight" class="md-tab-header-navigation-button md-right" :class="navigationRightButtonClasses">
+      <button v-if="mdNavigation && hasNavigationScroll" @click="navigationScrollRight"
+              class="md-tab-header-navigation-button md-right" :class="navigationRightButtonClasses">
         <md-icon>keyboard_arrow_right</md-icon>
       </button>
     </md-whiteframe>
@@ -48,8 +53,10 @@
 <style lang="scss" src="./mdTabs.scss"></style>
 
 <script>
-  import theme from '../../core/components/mdTheme/mixin';
-  import throttle from '../../core/utils/throttle';
+  /* eslint-disable one-var */
+
+  import theme from '../../core/components/mdTheme/mixin'
+  import throttle from '../../core/utils/throttle'
 
   export default {
     name: 'md-tabs',
@@ -86,13 +93,13 @@
       contentWidth: '0px'
     }),
     computed: {
-      tabClasses() {
+      tabClasses () {
         return {
           'md-dynamic-height': this.mdDynamicHeight,
           'md-transition-off': this.transitionOff
-        };
+        }
       },
-      navigationClasses() {
+      navigationClasses () {
         return {
           'md-has-icon': this.hasIcons,
           'md-has-label': this.hasLabel,
@@ -100,199 +107,199 @@
           'md-right': !this.mdCentered && this.mdRight,
           'md-centered': this.mdCentered || this.mdFixed,
           'md-has-navigation-scroll': this.hasNavigationScroll
-        };
+        }
       },
-      indicatorClasses() {
-        let toLeft = this.lastIndicatorNumber > this.activeTabNumber;
+      indicatorClasses () {
+        let toLeft = this.lastIndicatorNumber > this.activeTabNumber
 
-        this.lastIndicatorNumber = this.activeTabNumber;
+        this.lastIndicatorNumber = this.activeTabNumber
 
         return {
           'md-transition-off': this.transitionOff,
           'md-to-right': !toLeft,
           'md-to-left': toLeft
-        };
+        }
       },
-      navigationLeftButtonClasses() {
+      navigationLeftButtonClasses () {
         return {
           'md-disabled': this.isNavigationOnStart
-        };
+        }
       },
-      navigationRightButtonClasses() {
+      navigationRightButtonClasses () {
         return {
           'md-disabled': this.isNavigationOnEnd
-        };
+        }
       }
     },
     methods: {
-      getHeaderClass(header) {
+      getHeaderClass (header) {
         return {
           'md-active': this.activeTab === header.id,
           'md-disabled': header.disabled
-        };
+        }
       },
-      registerTab(tabData) {
-        let hasActive = false;
+      registerTab (tabData) {
+        let hasActive = false
 
         for (let tab of Object.keys(this.tabList)) {
           if (this.tabList[tab].active) {
-            hasActive = true;
-            break;
+            hasActive = true
+            break
           }
         }
 
-        this.$set(this.tabList, tabData.id, tabData);
+        this.$set(this.tabList, tabData.id, tabData)
 
         if (!hasActive) {
-          this.tabList[tabData.id].active = true;
+          this.tabList[tabData.id].active = true
         }
       },
-      unregisterTab(tabData) {
-        this.$delete(this.tabList, tabData.id);
+      unregisterTab (tabData) {
+        this.$delete(this.tabList, tabData.id)
       },
-      updateTab(tabData) {
-        this.registerTab(tabData);
+      updateTab (tabData) {
+        this.registerTab(tabData)
 
         if (tabData.active) {
           if (!tabData.disabled) {
-            this.setActiveTab(tabData);
+            this.setActiveTab(tabData)
           } else if (Object.keys(this.tabList).length) {
-            let tabsIds = Object.keys(this.tabList);
-            let targetIndex = tabsIds.indexOf(tabData.id) + 1;
-            let target = tabsIds[targetIndex];
+            let tabsIds = Object.keys(this.tabList)
+            let targetIndex = tabsIds.indexOf(tabData.id) + 1
+            let target = tabsIds[targetIndex]
 
             if (target) {
-              this.setActiveTab(this.tabList[target]);
+              this.setActiveTab(this.tabList[target])
             } else {
-              this.setActiveTab(this.tabList[0]);
+              this.setActiveTab(this.tabList[0])
             }
           }
         }
       },
-      observeElementChanges() {
-        this.parentObserver = new MutationObserver(throttle(this.calculateOnWatch, 50));
+      observeElementChanges () {
+        this.parentObserver = new MutationObserver(throttle(this.calculateOnWatch, 50))
         this.parentObserver.observe(this.$refs.tabContent, {
           childList: true,
           attributes: true,
           subtree: true
-        });
+        })
       },
-      getTabIndex(id) {
-        const idList = Object.keys(this.tabList);
+      getTabIndex (id) {
+        const idList = Object.keys(this.tabList)
 
-        return idList.indexOf(id);
+        return idList.indexOf(id)
       },
-      calculateIndicatorPos() {
+      calculateIndicatorPos () {
         if (this.$refs.tabHeader && this.$refs.tabHeader[this.activeTabNumber]) {
-          const tabsWidth = this.$el.offsetWidth;
-          const activeTab = this.$refs.tabHeader[this.activeTabNumber];
-          const left = activeTab.offsetLeft - this.$refs.tabsContainer.scrollLeft;
-          const right = tabsWidth - left - activeTab.offsetWidth;
+          const tabsWidth = this.$el.offsetWidth
+          const activeTab = this.$refs.tabHeader[this.activeTabNumber]
+          const left = activeTab.offsetLeft - this.$refs.tabsContainer.scrollLeft
+          const right = tabsWidth - left - activeTab.offsetWidth
 
-          this.$refs.indicator.style.left = left + 'px';
-          this.$refs.indicator.style.right = right + 'px';
+          this.$refs.indicator.style.left = left + 'px'
+          this.$refs.indicator.style.right = right + 'px'
         }
       },
-      calculateTabsWidthAndPosition() {
-        const width = this.$el.offsetWidth;
-        let index = 0;
+      calculateTabsWidthAndPosition () {
+        const width = this.$el.offsetWidth
+        let index = 0
 
-        this.contentWidth = width * this.activeTabNumber + 'px';
+        this.contentWidth = width * this.activeTabNumber + 'px'
 
         for (const tabId in this.tabList) {
-          const tab = this.tabList[tabId];
+          const tab = this.tabList[tabId]
 
-          tab.ref.width = width + 'px';
-          tab.ref.left = width * index + 'px';
-          index++;
+          tab.ref.width = width + 'px'
+          tab.ref.left = width * index + 'px'
+          index++
         }
       },
-      calculateContentHeight() {
+      calculateContentHeight () {
         this.$nextTick(() => {
           if (Object.keys(this.tabList).length) {
-            let height = this.tabList[this.activeTab].ref.$el.offsetHeight;
+            let height = this.tabList[this.activeTab].ref.$el.offsetHeight
 
-            this.contentHeight = height + 'px';
+            this.contentHeight = height + 'px'
           }
-        });
+        })
       },
-      calculatePosition() {
+      calculatePosition () {
         window.requestAnimationFrame(() => {
-          this.calculateIndicatorPos();
-          this.calculateTabsWidthAndPosition();
-          this.calculateContentHeight();
-          this.checkNavigationScroll();
-        });
+          this.calculateIndicatorPos()
+          this.calculateTabsWidthAndPosition()
+          this.calculateContentHeight()
+          this.checkNavigationScroll()
+        })
       },
-      debounceTransition() {
-        window.clearTimeout(this.transitionControl);
+      debounceTransition () {
+        window.clearTimeout(this.transitionControl)
         this.transitionControl = window.setTimeout(() => {
-          this.calculatePosition();
-          this.transitionOff = false;
-        }, 200);
+          this.calculatePosition()
+          this.transitionOff = false
+        }, 200)
       },
-      calculateOnWatch() {
-        this.calculatePosition();
-        this.debounceTransition();
+      calculateOnWatch () {
+        this.calculatePosition()
+        this.debounceTransition()
       },
-      calculateOnResize() {
-        this.transitionOff = true;
-        this.calculateOnWatch();
+      calculateOnResize () {
+        this.transitionOff = true
+        this.calculateOnWatch()
       },
-      calculateScrollPos() {
-        const { scrollLeft, scrollWidth, clientWidth } = this.$refs.tabsContainer;
+      calculateScrollPos () {
+        const {scrollLeft, scrollWidth, clientWidth} = this.$refs.tabsContainer
 
-        this.isNavigationOnStart = scrollLeft < 32;
-        this.isNavigationOnEnd = scrollWidth - scrollLeft - 32 < clientWidth;
+        this.isNavigationOnStart = scrollLeft < 32
+        this.isNavigationOnEnd = scrollWidth - scrollLeft - 32 < clientWidth
       },
-      handleNavigationScroll() {
+      handleNavigationScroll () {
         window.requestAnimationFrame(() => {
-          this.calculateIndicatorPos();
-          this.calculateScrollPos();
-        });
+          this.calculateIndicatorPos()
+          this.calculateScrollPos()
+        })
       },
-      checkNavigationScroll() {
-        const { scrollWidth, clientWidth } = this.$refs.tabsContainer;
+      checkNavigationScroll () {
+        const {scrollWidth, clientWidth} = this.$refs.tabsContainer
 
-        this.hasNavigationScroll = scrollWidth > clientWidth;
+        this.hasNavigationScroll = scrollWidth > clientWidth
       },
-      setActiveTab(tabData) {
-        this.hasIcons = !!tabData.icon || !!tabData.iconset;
-        this.hasLabel = !!tabData.label;
-        this.activeTab = tabData.id;
-        this.activeTabNumber = this.getTabIndex(this.activeTab);
-        this.calculatePosition();
-        this.$emit('change', this.activeTabNumber);
+      setActiveTab (tabData) {
+        this.hasIcons = !!tabData.icon || !!tabData.iconset
+        this.hasLabel = !!tabData.label
+        this.activeTab = tabData.id
+        this.activeTabNumber = this.getTabIndex(this.activeTab)
+        this.calculatePosition()
+        this.$emit('change', this.activeTabNumber)
       },
-      navigationScrollLeft() {
-        const { scrollLeft, clientWidth } = this.$refs.tabsContainer;
+      navigationScrollLeft () {
+        const {scrollLeft, clientWidth} = this.$refs.tabsContainer
 
-        this.$refs.tabsContainer.scrollLeft = Math.max(0, scrollLeft - clientWidth);
+        this.$refs.tabsContainer.scrollLeft = Math.max(0, scrollLeft - clientWidth)
       },
-      navigationScrollRight() {
-        const { scrollLeft, clientWidth, scrollWidth } = this.$refs.tabsContainer;
+      navigationScrollRight () {
+        const {scrollLeft, clientWidth, scrollWidth} = this.$refs.tabsContainer
 
-        this.$refs.tabsContainer.scrollLeft = Math.min(scrollWidth, scrollLeft + clientWidth);
+        this.$refs.tabsContainer.scrollLeft = Math.min(scrollWidth, scrollLeft + clientWidth)
       }
     },
-    mounted() {
+    mounted () {
       this.$nextTick(() => {
-        this.observeElementChanges();
-        window.addEventListener('resize', this.calculateOnResize);
+        this.observeElementChanges()
+        window.addEventListener('resize', this.calculateOnResize)
 
         if (Object.keys(this.tabList).length && !this.activeTab) {
-          let firstTab = Object.keys(this.tabList)[0];
+          let firstTab = Object.keys(this.tabList)[0]
 
-          this.setActiveTab(this.tabList[firstTab]);
+          this.setActiveTab(this.tabList[firstTab])
         }
-      });
+      })
     },
-    beforeDestroy() {
+    beforeDestroy () {
       if (this.parentObserver) {
-        this.parentObserver.disconnect();
+        this.parentObserver.disconnect()
       }
 
-      window.removeEventListener('resize', this.calculateOnResize);
+      window.removeEventListener('resize', this.calculateOnResize)
     }
-  };
+  }
 </script>

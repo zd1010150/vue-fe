@@ -7,25 +7,26 @@
 <style lang="scss" src="./chpInkRipple.scss"></style>
 
 <script>
+  /* eslint-disable one-var */
 
   const addEvent = (target, type, handler) => {
     if (type === 'start') {
-      target.addEventListener('mousedown', handler);
-      target.addEventListener('touchstart', handler);
+      target.addEventListener('mousedown', handler)
+      target.addEventListener('touchstart', handler)
     } else {
-      target.addEventListener('mouseup', handler);
-      target.addEventListener('touchend', handler);
+      target.addEventListener('mouseup', handler)
+      target.addEventListener('touchend', handler)
     }
-  };
+  }
   const removeEvent = (target, type, handler) => {
     if (type === 'start') {
-      target.removeEventListener('mousedown', handler);
-      target.removeEventListener('touchstart', handler);
+      target.removeEventListener('mousedown', handler)
+      target.removeEventListener('touchstart', handler)
     } else {
-      target.removeEventListener('mouseup', handler);
-      target.removeEventListener('touchend', handler);
+      target.removeEventListener('mouseup', handler)
+      target.removeEventListener('touchend', handler)
     }
-  };
+  }
 
   export default {
     name: 'chp-ink-ripple',
@@ -48,180 +49,180 @@
       active: false
     }),
     computed: {
-      classes() {
+      classes () {
         return {
           'chp-fadeout': this.fadeOut,
           'chp-active': this.active
-        };
+        }
       },
-      styles() {
+      styles () {
         return {
           width: this.parentDimensions.width,
           height: this.parentDimensions.height,
           top: this.parentDimensions.top,
           left: this.parentDimensions.left
-        };
+        }
       },
-      disabled() {
-        return this.mdDisabled;
+      disabled () {
+        return this.mdDisabled
       }
     },
     watch: {
-      disabled(disabled) {
+      disabled (disabled) {
         if (!disabled) {
-          this.init();
+          this.init()
         } else {
-          this.destroy();
+          this.destroy()
         }
       }
     },
     methods: {
-      checkAvailablePositions(element) {
-        const availablePositions = ['relative', 'absolute', 'fixed'];
+      checkAvailablePositions (element) {
+        const availablePositions = ['relative', 'absolute', 'fixed']
 
-        return availablePositions.indexOf(getComputedStyle(element).position) > -1;
+        return availablePositions.indexOf(getComputedStyle(element).position) > -1
       },
-      getClosestPositionedParent(element) {
-        const parent = element && element.parentNode;
+      getClosestPositionedParent (element) {
+        const parent = element && element.parentNode
 
         if (!parent || parent.tagName.toLowerCase() === 'body') {
-          return false;
+          return false
         }
 
         if (this.checkAvailablePositions(element)) {
-          return element;
+          return element
         }
 
-        return this.getClosestPositionedParent(parent);
+        return this.getClosestPositionedParent(parent)
       },
-      getParentSize() {
-        const parent = this.parentElement;
+      getParentSize () {
+        const parent = this.parentElement
 
-        return Math.round(Math.max(parent.offsetWidth, parent.offsetHeight)) + 'px';
+        return Math.round(Math.max(parent.offsetWidth, parent.offsetHeight)) + 'px'
       },
-      getClickPosition(event) {
+      getClickPosition (event) {
         if (this.$refs.ripple) {
-          const rect = this.parentElement.getBoundingClientRect();
-          let top = event.pageY;
-          let left = event.pageX;
+          const rect = this.parentElement.getBoundingClientRect()
+          let top = event.pageY
+          let left = event.pageX
 
           if (event.type === 'touchstart') {
-            top = event.changedTouches[0].pageY;
-            left = event.changedTouches[0].pageX;
+            top = event.changedTouches[0].pageY
+            left = event.changedTouches[0].pageX
           }
           return {
             top: top - rect.top - this.$refs.ripple.offsetHeight / 2 - document.body.scrollTop + 'px',
             left: left - rect.left - this.$refs.ripple.offsetWidth / 2 - document.body.scrollLeft + 'px'
-          };
+          }
         }
 
-        return false;
+        return false
       },
-      setDimensions() {
-        const size = this.getParentSize();
-        this.parentDimensions.width = size;
-        this.parentDimensions.height = size;
+      setDimensions () {
+        const size = this.getParentSize()
+        this.parentDimensions.width = size
+        this.parentDimensions.height = size
       },
-      setPositions(event) {
-        const positions = this.getClickPosition(event);
+      setPositions (event) {
+        const positions = this.getClickPosition(event)
         if (positions) {
-          this.parentDimensions.top = positions.top;
-          this.parentDimensions.left = positions.left;
+          this.parentDimensions.top = positions.top
+          this.parentDimensions.left = positions.left
         }
       },
-      clearState() {
-        this.active = false;
-        this.fadeOut = false;
-        this.hasCompleted = false;
-        this.setDimensions();
-        window.clearTimeout(this.awaitingComplete);
-        removeEvent(document.body, 'end', this.endRipple);
+      clearState () {
+        this.active = false
+        this.fadeOut = false
+        this.hasCompleted = false
+        this.setDimensions()
+        window.clearTimeout(this.awaitingComplete)
+        removeEvent(document.body, 'end', this.endRipple)
       },
-      startRipple(event) {
+      startRipple (event) {
         if (event.type === 'touchstart') {
-          this.previous.push('touch');
+          this.previous.push('touch')
         } else {
-          this.previous.push('mouse');
+          this.previous.push('mouse')
         }
 
-        this.previous = this.previous.splice(this.previous.length - 2, this.previous.length);
+        this.previous = this.previous.splice(this.previous.length - 2, this.previous.length)
 
         if (this.previous.length >= 2 && this.previous[1] === 'touch' && this.previous[0] === 'mouse') {
-          return;
+          return
         }
 
-        this.clearState();
+        this.clearState()
         this.awaitingComplete = window.setTimeout(() => {
-          this.hasCompleted = true;
-        }, 400);
+          this.hasCompleted = true
+        }, 400)
 
-        addEvent(document.body, 'end', this.endRipple);
+        addEvent(document.body, 'end', this.endRipple)
 
         this.$nextTick(() => {
-          this.setPositions(event);
-          this.active = true;
-        });
+          this.setPositions(event)
+          this.active = true
+        })
       },
-      endRipple() {
+      endRipple () {
         if (this.hasCompleted) {
-          this.fadeOut = true;
+          this.fadeOut = true
         } else {
           this.awaitingComplete = window.setTimeout(() => {
-            this.fadeOut = true;
-          }, 200);
+            this.fadeOut = true
+          }, 200)
         }
 
-        removeEvent(document.body, 'end', this.endRipple);
+        removeEvent(document.body, 'end', this.endRipple)
       },
-      registerTriggerEvent() {
-        addEvent(this.parentElement, 'start', this.startRipple);
+      registerTriggerEvent () {
+        addEvent(this.parentElement, 'start', this.startRipple)
       },
-      unregisterTriggerEvent() {
+      unregisterTriggerEvent () {
         if (this.parentElement) {
-          removeEvent(this.parentElement, 'start', this.startRipple);
+          removeEvent(this.parentElement, 'start', this.startRipple)
         }
       },
-      init() {
-        this.rippleElement = this.$el;
-        this.parentElement = this.getClosestPositionedParent(this.$el.parentNode);
-        this.previous = ['mouse'];
+      init () {
+        this.rippleElement = this.$el
+        this.parentElement = this.getClosestPositionedParent(this.$el.parentNode)
+        this.previous = ['mouse']
 
         if (this.parentElement) {
-          this.rippleElement.parentNode.removeChild(this.rippleElement);
+          this.rippleElement.parentNode.removeChild(this.rippleElement)
 
           if (this.parentElement.querySelectorAll('.chp-ink-ripple').length > 0) {
-            this.$destroy();
+            this.$destroy()
           } else {
-            this.parentElement.appendChild(this.rippleElement);
-            this.registerTriggerEvent();
-            this.setDimensions();
+            this.parentElement.appendChild(this.rippleElement)
+            this.registerTriggerEvent()
+            this.setDimensions()
           }
         } else {
-          this.$destroy();
+          this.$destroy()
         }
       },
-      destroy() {
+      destroy () {
         if (this.rippleElement && this.rippleElement.parentNode) {
-          this.unregisterTriggerEvent();
-          this.rippleElement.parentNode.removeChild(this.rippleElement);
+          this.unregisterTriggerEvent()
+          this.rippleElement.parentNode.removeChild(this.rippleElement)
         }
       }
     },
-    mounted() {
+    mounted () {
       window.setTimeout(() => {
         if (!this.disabled) {
-          this.init();
+          this.init()
         } else {
-          this.destroy();
+          this.destroy()
         }
 
         this.$nextTick(() => {
-          this.mounted = true;
-        });
-      }, 100);
+          this.mounted = true
+        })
+      }, 100)
     },
-    beforeDestroy() {
-      this.destroy();
+    beforeDestroy () {
+      this.destroy()
     }
-  };
+  }
 </script>

@@ -37,11 +37,11 @@
 </template>
 
 <script>
-import trainingService from "services/trainingService"
+import trainingService from 'services/trainingService'
 import { SET_CONTENT_LOADING } from 'store/mutation-types'
 import { ACY_BOOK_UPLOADER } from 'src/config/app.config.js'
 export default {
-  data() {
+  data () {
     return {
       language: this.$store.state.language,
       categories: [],
@@ -49,42 +49,42 @@ export default {
     }
   },
   methods: {
-    async fetchVideo() {
+    async fetchVideo () {
       this.$store.commit(SET_CONTENT_LOADING, true)
-      let { success, data } = await trainingService.getVideo(this.language == "zh" ? "mandarin" : "english", "")
+      let { success, data } = await trainingService.getVideo(this.language === 'zh' ? 'mandarin' : 'english', '')
       this.$store.commit(SET_CONTENT_LOADING, false)
       if (success) {
-        console.log(data);
+        console.log(data)
         this.mapData(data)
       }
     },
-    mapData(data) {
+    mapData (data) {
       if (!(data && data.categorized && data.categories)) return
       let categories = []
       for (let categorized in data.categorized) {
-        let c_id = categorized,
-          c_children = data.categorized[c_id],
+        let cId = categorized,
+          cChildren = data.categorized[cId],
           category = []
-        if (c_children && c_children.length > 0) {
+        if (cChildren && cChildren.length > 0) {
           category = data.categories.filter((c) => {
-            return c.id == c_id
+            return c.id === cId
           })[0]
-          categories.push({ code: category.code, children: c_children ,id:category.id})
+          categories.push({code: category.code, children: cChildren, id: category.id})
         }
       }
       this.categories = categories
     },
-    refresh() {
+    refresh () {
       this.fetchVideo()
     }
   },
   watch: {
-    "$store.state.language": function(val) {
+    '$store.state.language': function (val) {
       this.language = val
       this.fetchVideo()
     }
   },
-  created() {
+  created () {
     this.fetchVideo()
   }
 }

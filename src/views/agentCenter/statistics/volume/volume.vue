@@ -34,8 +34,7 @@
 
   export default {
     props: {
-      agent: [String, Number],
-
+      agent: [String, Number]
     },
     data () {
       return {
@@ -53,7 +52,7 @@
       'agent-statistics-time-picker': timePicker,
       'agent-statistics-volume-chart-1': chart1,
       'agent-statistics-volume-chart-2': chart2,
-      'agent-statistics-volume-chart-3': chart3,
+      'agent-statistics-volume-chart-3': chart3
     },
     methods: {
       refresh () {

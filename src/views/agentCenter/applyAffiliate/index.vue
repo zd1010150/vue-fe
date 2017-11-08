@@ -156,7 +156,6 @@
 </template>
 <script>
   import validateMixin from 'mixins/validatemix'
-  import configService from 'services/configService'
   import mt4Service from 'services/mt4Service'
   import { TERMS } from 'src/config/url.config.js'
 
@@ -231,7 +230,7 @@
           avg_deposit: 0,
           exp_comment: '',
           service_comment: ''
-        },
+        }
       }
     },
     methods: {

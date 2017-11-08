@@ -17,72 +17,72 @@
 
 <script>
 export default {
-   data(){
-   	return {
-   		innerMethod :null,
-	   	originMethods :[{
-	   		title:'cup',
-	   		type:['en','zh'],
-	   		method:'CUP'
-	   	},{
-	   		title:'doku',
-	   		type:['en'],
-	   		method:'DOKU'
-	   	},{
-	   		title:'fasa',
-	   		type:['en'],
-	   		method:'FASA'
-	   	},{
-            title:'credit',
-            type:['en'],
-            method:'CREDIT'
-         }],
-   		methods:[]
-   	}
-   },
-   props:{
-      method:String,
-      editObj:Object
-   },
-   watch:{
-   	'$store.state.language':function(val,oldVal){
-         this.filterMethodsByLanguage(val)
-   	},
-      editObj:function(val){
-         this.isEdit = val !=null
-         this.initMethods()
-      },
-      editMethod:function(val){
-         this.initMethods()
-      }
-   },
-   methods:{
-   	methodChange(){
-         this.$emit('methodChange',this.innerMethod)
-   	},
-      filterMethodsByLanguage(val){
-         this.methods = this.originMethods.filter((method)=>{
-            return method.type.indexOf(val) > -1
-         })
-         this.innerMethod = this.methods[0].method
-         this.$emit('methodChange',this.innerMethod)
-      },
-      initMethods(){
-         let isEdit = this.editObj !=null
-          if(!isEdit){
-            this.filterMethodsByLanguage(this.$store.state.language)
-         }else{
-            this.methods = this.originMethods.filter((m)=>{
-               return m.method === this.method
-            })
-            this.innerMethod = this.method
-         }
-      }
-   },
-   mounted(){
+  data () {
+    return {
+      innerMethod: null,
+      originMethods: [{
+        title: 'cup',
+        type: ['en', 'zh'],
+        method: 'CUP'
+      }, {
+        title: 'doku',
+        type: ['en'],
+        method: 'DOKU'
+      }, {
+        title: 'fasa',
+        type: ['en'],
+        method: 'FASA'
+      }, {
+        title: 'credit',
+        type: ['en'],
+        method: 'CREDIT'
+      }],
+      methods: []
+    }
+  },
+  props: {
+    method: String,
+    editObj: Object
+  },
+  watch: {
+    '$store.state.language': function (val, oldVal) {
+      this.filterMethodsByLanguage(val)
+    },
+    editObj: function (val) {
+      this.isEdit = val !== null
       this.initMethods()
-   }
+    },
+    editMethod: function (val) {
+      this.initMethods()
+    }
+  },
+  methods: {
+    methodChange () {
+      this.$emit('methodChange', this.innerMethod)
+    },
+    filterMethodsByLanguage (val) {
+      this.methods = this.originMethods.filter((method) => {
+        return method.type.indexOf(val) > -1
+      })
+      this.innerMethod = this.methods[0].method
+      this.$emit('methodChange', this.innerMethod)
+    },
+    initMethods () {
+      let isEdit = this.editObj !== null
+      if (!isEdit) {
+        this.filterMethodsByLanguage(this.$store.state.language)
+      } else {
+        this.methods = this.originMethods.filter((m) => {
+          return m.method === this.method
+        })
+        this.innerMethod = this.method
+      }
+    }
+  },
+  mounted () {
+    this.initMethods()
   }
+}
 </script>
 <style>
    .control-label{

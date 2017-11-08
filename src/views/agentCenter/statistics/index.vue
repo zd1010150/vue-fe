@@ -6,7 +6,6 @@
 </template>
 <script>
   import agentRouterMixin from 'mixins/agentRouterMixin'
-  import activitiService from 'services/activityService'
   import head from '../head.vue'
   import tabs from './tabs.vue'
 

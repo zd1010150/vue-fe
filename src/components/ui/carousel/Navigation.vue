@@ -1,26 +1,26 @@
 <template>
   <div class="VueCarousel-navigation">
     <a href="#"
-      class="VueCarousel-navigation-button VueCarousel-navigation-prev"
-      v-on:click.prevent="triggerPageAdvance('backward')"
-      v-bind:class="{ 'VueCarousel-navigation--disabled': !canAdvanceBackward }"
-      v-bind:style="`padding: ${clickTargetSize}px; margin-right: -${clickTargetSize}px;`"
-      v-html="prevLabel"></a>
+       class="VueCarousel-navigation-button VueCarousel-navigation-prev"
+       v-on:click.prevent="triggerPageAdvance('backward')"
+       v-bind:class="{ 'VueCarousel-navigation--disabled': !canAdvanceBackward }"
+       v-bind:style="`padding: ${clickTargetSize}px; margin-right: -${clickTargetSize}px;`"
+       v-html="prevLabel"></a>
     <a href="#"
-      class="VueCarousel-navigation-button VueCarousel-navigation-next"
-      v-on:click.prevent="triggerPageAdvance()"
-      v-bind:class="{ 'VueCarousel-navigation--disabled': !canAdvanceForward }"
-      v-bind:style="`padding: ${clickTargetSize}px; margin-left: -${clickTargetSize}px;`"
-      v-html="nextLabel"></a>
+       class="VueCarousel-navigation-button VueCarousel-navigation-next"
+       v-on:click.prevent="triggerPageAdvance()"
+       v-bind:class="{ 'VueCarousel-navigation--disabled': !canAdvanceForward }"
+       v-bind:style="`padding: ${clickTargetSize}px; margin-left: -${clickTargetSize}px;`"
+       v-html="nextLabel"></a>
   </div>
 </template>
 
 <script>
   export default {
-    name: "navigation",
-    data() {
+    name: 'navigation',
+    data () {
       return {
-        parentContainer: this.$parent,
+        parentContainer: this.$parent
       }
     },
     props: {
@@ -36,33 +36,33 @@
        */
       nextLabel: {
         type: String,
-        default: "▶"
+        default: '▶'
       },
       /**
        * Text content of the navigation prev button
        */
       prevLabel: {
         type: String,
-        default: "◀"
-      },
+        default: '◀'
+      }
     },
     computed: {
-      canAdvanceForward() {
+      canAdvanceForward () {
         return this.parentContainer.canAdvanceForward || false
       },
-      canAdvanceBackward() {
+      canAdvanceBackward () {
         return this.parentContainer.canAdvanceBackward || false
-      },
+      }
     },
     methods: {
-      triggerPageAdvance(direction) {
+      triggerPageAdvance (direction) {
         if (direction) {
           this.$parent.advancePage(direction)
         } else {
           this.$parent.advancePage()
         }
-      },
-    },
+      }
+    }
   }
 </script>
 

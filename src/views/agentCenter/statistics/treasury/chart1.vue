@@ -22,7 +22,7 @@
 <script>
   import tradeService from 'services/tradeService'
   import loadingMix from 'mixins/loading'
-  import { LINE_OPTION_CONFIG, LINE_MEDIA_CONFIG } from 'src/config/chart.config.js'
+  import { LINE_OPTION_CONFIG } from 'src/config/chart.config.js'
 
   export default {
     mixins: [loadingMix],

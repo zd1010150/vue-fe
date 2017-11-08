@@ -108,6 +108,7 @@
   </div>
 </template>
 <script>
+  /* eslint-disable no-useless-escape */
   import agentRouterMixin from 'mixins/agentRouterMixin'
   import materialService from 'services/materialService'
   import { SET_CONTENT_LOADING } from 'store/mutation-types'

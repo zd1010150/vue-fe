@@ -1,5 +1,5 @@
 <template>
-  <li class="chp-list-item chp-list-item-expand" :class="classes" >
+  <li class="chp-list-item chp-list-item-expand" :class="classes">
     <div class="chp-list-item-container chp-button">
       <slot></slot>
       <i class="fa fa-angle-down chp-list-expand-indicator" aria-hidden="true"></i>
@@ -14,100 +14,100 @@
 </template>
 
 <script>
-  import getClosestVueParent from '../core/utils/getClosestVueParent';
+  import getClosestVueParent from '../core/utils/getClosestVueParent'
 
   export default {
     name: 'chp-list-item',
     props: {
       disabled: Boolean,
       chpExpandMultiple: Boolean,
-      open:Boolean
+      open: Boolean
     },
-    data() {
+    data () {
       return {
         parentList: false,
         active: false,
         height: 0,
         contentObserver: null,
         transitionOff: true
-      };
+      }
     },
     computed: {
-      classes() {
+      classes () {
         return {
           'chp-disabled': this.disabled,
           'chp-active': this.active
-        };
+        }
       },
-      expandClasses() {
+      expandClasses () {
         return {
           'chp-transition-off': this.transitionOff
-        };
+        }
       },
-      expandStyles() {
+      expandStyles () {
         return {
           'margin-bottom': this.height
-        };
+        }
       }
     },
     methods: {
-      resetSiblings() {
+      resetSiblings () {
         this.parentList.$children.forEach((child) => {
           if (child.$el !== this.$el && child.$el.classList.contains('chp-list-item-expand')) {
-            child.active = false;
+            child.active = false
           }
-        });
+        })
       },
-      calculatePadding() {
+      calculatePadding () {
         window.requestAnimationFrame(() => {
-          this.height = -this.$el.scrollHeight + 'px';
+          this.height = -this.$el.scrollHeight + 'px'
 
           window.setTimeout(() => {
-            this.transitionOff = false;
-          });
-        });
+            this.transitionOff = false
+          })
+        })
       },
-      toggleExpandList($event) {
+      toggleExpandList ($event) {
         if (!this.chpExpandMultiple) {
-          this.resetSiblings();
+          this.resetSiblings()
         }
 
-        this.calculatePadding();
-        this.active = !this.active;
-        this.$emit('click', $event);
+        this.calculatePadding()
+        this.active = !this.active
+        this.$emit('click', $event)
       },
-      recalculateAfterChange() {
-        this.transitionOff = true;
-        this.calculatePadding();
+      recalculateAfterChange () {
+        this.transitionOff = true
+        this.calculatePadding()
       },
-      observeChildChanges() {
-        this.contentObserver = new MutationObserver(this.recalculateAfterChange);
+      observeChildChanges () {
+        this.contentObserver = new MutationObserver(this.recalculateAfterChange)
         this.contentObserver.observe(this.$refs.expand, {
           childList: true,
           characterData: true,
           subtree: true
-        });
+        })
       }
     },
-    mounted() {
+    mounted () {
       this.$nextTick(() => {
-        this.parentList = getClosestVueParent(this.$parent, 'chp-list');
-        this.calculatePadding();
-        this.observeChildChanges();
-        window.addEventListener('resize', this.recalculateAfterChange);
-      });
+        this.parentList = getClosestVueParent(this.$parent, 'chp-list')
+        this.calculatePadding()
+        this.observeChildChanges()
+        window.addEventListener('resize', this.recalculateAfterChange)
+      })
     },
-    beforeDestroy() {
+    beforeDestroy () {
       if (this.contentObserver) {
-        this.contentObserver.disconnect();
+        this.contentObserver.disconnect()
       }
 
-      window.removeEventListener('resize', this.recalculateAfterChange);
+      window.removeEventListener('resize', this.recalculateAfterChange)
     },
-    watch:{
-      open (val,oldVal){
-          this.active = val
+    watch: {
+      open (val, oldVal) {
+        this.active = val
       }
     }
-  };
+  }
 </script>

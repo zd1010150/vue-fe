@@ -9,7 +9,8 @@ module.exports = {
   "globals": {
     "_": false,
     "d3": false,
-    "echart" : true
+    "echart" : true,
+    "vm": true
   },
   env: {
     browser: true,

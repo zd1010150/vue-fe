@@ -1,8 +1,8 @@
 export default {
-  methods:{
-    errorClass(key){
+  methods: {
+    errorClass (key) {
       return {
-        'has-error' : this.errors.has(key)
+        'has-error': this.errors.has(key)
       }
     }
   }

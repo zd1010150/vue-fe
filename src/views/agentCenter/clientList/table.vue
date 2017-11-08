@@ -134,7 +134,6 @@
   import mt4Service from 'services/mt4Service'
   import validateMixin from 'mixins/validatemix.js'
   import loadingMix from 'mixins/loading'
-  import { Validator } from 'vee-validate'
   import { aMonthDate } from 'utils/dateUtil'
 
   export default {
@@ -159,7 +158,7 @@
         pageIndex: 1,
         pageSize: 5,
         rowsTotal: 100,
-        pageOptions: [5, 20, 30],
+        pageOptions: [5, 20, 30]
       }
     },
     watch: {

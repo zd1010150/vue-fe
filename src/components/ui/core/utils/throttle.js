@@ -1,16 +1,16 @@
 const debounce = (callback, limit) => {
-  var wait = false;
+  var wait = false
 
   return () => {
     if (!wait) {
-      callback.call();
-      wait = true;
+      callback.call()
+      wait = true
 
       window.setTimeout(() => {
-        wait = false;
-      }, limit);
+        wait = false
+      }, limit)
     }
-  };
-};
+  }
+}
 
-export default debounce;
+export default debounce

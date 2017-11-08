@@ -11,8 +11,8 @@ export default {
     filterList: Function,
     list: {
       type: Array,
-      default() {
-        return [];
+      default () {
+        return []
       }
     },
     minChars: {
@@ -32,27 +32,27 @@ export default {
     required: Boolean
   },
   methods: {
-    onFocus() {
+    onFocus () {
       if (this.parentContainer) {
-        this.parentContainer.isFocused = true;
+        this.parentContainer.isFocused = true
       }
     },
-    onBlur() {
-      this.parentContainer.isFocused = false;
-      this.setParentValue();
+    onBlur () {
+      this.parentContainer.isFocused = false
+      this.setParentValue()
     },
-    verifyProps() {
+    verifyProps () {
       if (!this.parentContainer) {
-        return this.throwErrorDestroy('You should wrap the md-input in a md-input-container');
+        return this.throwErrorDestroy('You should wrap the md-input in a md-input-container')
       } else if (this.listIsEmpty && this.filterList) {
-        return this.throwErrorDestroy('You should use a `filterList` function prop with the `list` prop');
+        return this.throwErrorDestroy('You should use a `filterList` function prop with the `list` prop')
       } else if (!this.fetch && this.listIsEmpty) {
-        return this.throwErrorDestroy('You should use a `fetch` function prop');
+        return this.throwErrorDestroy('You should use a `fetch` function prop')
       }
     },
-    throwErrorDestroy(errorMessage) {
-      this.$destroy();
-      throw new Error(errorMessage);
+    throwErrorDestroy (errorMessage) {
+      this.$destroy()
+      throw new Error(errorMessage)
     }
   }
-};
+}

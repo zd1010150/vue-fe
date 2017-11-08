@@ -1,8 +1,8 @@
 <template>
- <div class="col-lg-12">
-   <vue-form   class="form-horizontal" :state="formstate"  @submit.prevent="onSubmit">
-    <chp-panel :hasFooter="true">
-      <template slot="title">Form Validate</template>
+  <div class="col-lg-12">
+    <vue-form class="form-horizontal" :state="formstate" @submit.prevent="onSubmit">
+      <chp-panel :hasFooter="true">
+        <template slot="title">Form Validate</template>
 
         <div slot="body">
           <div class="form-group">
@@ -16,7 +16,9 @@
           <validate class="form-group required-field" :class="fieldClassName(formstate.email)">
             <label class="col-md-3 control-label">电子邮件:</label>
             <div class="col-md-6">
-              <mu-text-field @input="inputHandler" @focus="inputHandler" @blur="inputHandler" @change="inputHandler" hintText="text email" class="form-control" name="email" type="email" required v-model.lazy="model.email"/>
+              <mu-text-field @input="inputHandler" @focus="inputHandler" @blur="inputHandler" @change="inputHandler"
+                             hintText="text email" class="form-control" name="email" type="email" required
+                             v-model.lazy="model.email"/>
               <field-messages name="email" show="$touched || $submitted">
 
                 <div slot="required" class="error">email is a required field</div>
@@ -25,7 +27,7 @@
           </validate>
 
           <div class="form-group">
-            <label  class="col-md-3 control-label">选择爱好:</label>
+            <label class="col-md-3 control-label">选择爱好:</label>
             <div class="col-md-6">
               <chp-checkbox name="rememberme" v-model="isRememberMe">篮球</chp-checkbox>
               <chp-checkbox name="rememberme" v-model="isRememberMe2">足球</chp-checkbox>
@@ -35,7 +37,7 @@
 
 
           <div class="form-group">
-            <label  class="col-md-3 control-label">选择爱好:</label>
+            <label class="col-md-3 control-label">选择爱好:</label>
             <div class="col-md-6">
               <div class="input-group input-group-icon">
                 <mu-text-field hintText="text email" class="form-control" name="email" type="email"/>
@@ -61,7 +63,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label  class="col-md-3 control-label">选择性别:</label>
+            <label class="col-md-3 control-label">选择性别:</label>
             <div class="col-md-6">
               <chp-radio name="sex" v-model="sex" md-value="male">male</chp-radio>
               <chp-radio name="sex" v-model="sex" md-value="female">female</chp-radio>
@@ -76,46 +78,45 @@
           </div>
         </div>
 
-      <div class="row" slot="footer">
-        <div class="col-sm-9 col-sm-offset-3">
-          <button class="btn btn-primary">Submit</button>
-          <button type="reset" class="btn btn-default">Reset</button>
+        <div class="row" slot="footer">
+          <div class="col-sm-9 col-sm-offset-3">
+            <button class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-default">Reset</button>
+          </div>
         </div>
-      </div>
-    </chp-panel>
-   </vue-form>
- </div>
+      </chp-panel>
+    </vue-form>
+  </div>
 </template>
 <script>
-
-  export default{
-      data(){
-          return {
-            formstate: {},
-            model:{
-              email:""
-            }
-          }
-      },
-      methods:{
-        fieldClassName: function (field) {
-          if(!field) {
-            return '';
-          }
-          if((field.$touched || field.$submitted) && field.$valid) {
-           // return 'has-success';
-          }
-          if((field.$touched || field.$submitted) && field.$invalid) {
-            return 'has-error';
-          }
-        },
-        onSubmit: function() {
-          console.log(this.formstate.$valid);
-        },
-        inputHandler: function(val){
-            console.log("====",val);
+  export default {
+    data () {
+      return {
+        formstate: {},
+        model: {
+          email: ''
         }
       }
+    },
+    methods: {
+      fieldClassName: function (field) {
+        if (!field) {
+          return ''
+        }
+        if ((field.$touched || field.$submitted) && field.$valid) {
+          // return 'has-success';
+        }
+        if ((field.$touched || field.$submitted) && field.$invalid) {
+          return 'has-error'
+        }
+      },
+      onSubmit: function () {
+        console.log(this.formstate.$valid)
+      },
+      inputHandler: function (val) {
+        console.log('====', val)
+      }
+    }
   }
 </script>
 

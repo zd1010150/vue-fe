@@ -115,7 +115,6 @@
 </script>
 <style lang="less">
   @import "~assets/less/variable.less";
-
   .methods-wrapper {
     width: 25%;
     float: left;

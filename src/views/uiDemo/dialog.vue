@@ -31,62 +31,57 @@
       </chp-dialog>
 
       <mu-icon-button id="fab" @click="openDialog('dialog2')">
-          <i class="fa fa-plus"></i>
+        <i class="fa fa-plus"></i>
       </mu-icon-button>
-       <chp-button @click="preview" id="preview">
-          preview image
+      <chp-button @click="preview" id="preview">
+        preview image
       </chp-button>
       <!-- <mu-dialog :open="previewOpen" scrollable @close="previewOpen=false">
         <img src="static/images/1.jpg" class="img-responsive">
       </mu-dialog>  -->
-      <chp-image-preview :src="src" :open="previewOpen"></chp-image-preview> 
+      <chp-image-preview :src="src" :open="previewOpen"></chp-image-preview>
     </div>
 
   </chp-panel>
 
 </template>
 <script>
-
-  export default{
-      data() {
-        return{
-          src : "static/images/1.jpg",
-          previewOpen:false,
-          prompt: {
-           title: 'What\'s your name?',
-              ok:'Done',
-              cancel:'Cancel',
-              id:'name',
-              name:'name',
-              placeholder:'Type your name...',
-              maxlength:30,
-              value:''
-          }
+  export default {
+    data () {
+      return {
+        src: 'static/images/1.jpg',
+        previewOpen: false,
+        prompt: {
+          title: 'What\'s your name?',
+          ok: 'Done',
+          cancel: 'Cancel',
+          id: 'name',
+          name: 'name',
+          placeholder: 'Type your name...',
+          maxlength: 30,
+          value: ''
         }
-      },
-    props:{
-
-    },
-    methods:{
-      openDialog(ref) {
-        this.$refs[ref].open();
-      },
-      closeDialog(ref) {
-        this.$refs[ref].close();
-      },
-      onOpen() {
-        console.log('Opened');
-      },
-      onClose(type) {
-        console.log('Closed', type);
-      },
-      preview(){
-        this.previewOpen = !this.previewOpen;
       }
     },
-    watch: {
-
-    }
+    props: {},
+    methods: {
+      openDialog (ref) {
+        this.$refs[ref].open()
+      },
+      closeDialog (ref) {
+        this.$refs[ref].close()
+      },
+      onOpen () {
+        console.log('Opened')
+      },
+      onClose (type) {
+        console.log('Closed', type)
+      },
+      preview () {
+        this.previewOpen = !this.previewOpen
+      }
+    },
+    watch: {}
   }
 </script>
 

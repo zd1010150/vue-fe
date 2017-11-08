@@ -11,7 +11,7 @@
 </template>
 <script>
   export default {
-    name:"chp-button",
+    name: 'chp-button',
     props: {
       href: String,
       target: String,
@@ -22,41 +22,43 @@
       },
       disabled: {
         type: Boolean,
-        default:false
+        default: false
       },
-      classes:{
-          type: String,
-          default:'btn-sm'
+      classes: {
+        type: String,
+        default: 'btn-sm'
       }
     },
     computed: {
-      newRel() {
+      newRel () {
         if (this.target === '_blank') {
-          return this.rel || 'noopener';
+          return this.rel || 'noopener'
         }
 
-        return this.rel;
+        return this.rel
       }
     },
-    methods:{
-      clickHandler(){
-        this.$emit("click");
+    methods: {
+      clickHandler () {
+        this.$emit('click')
       }
     }
-  };
+  }
 </script>
 <style lang="less">
   @import "~assets/less/variable.less";
-  button.btn-trans{
+
+  button.btn-trans {
     background-color: transparent;
-    &:hover{
-      color:@light-font-bright-color;
+    &:hover {
+      color: @light-font-bright-color;
     }
   }
-  html.dark{
-     button.btn-trans{
-      &:hover{
-        color:@dark-font-bright-color;
+
+  html.dark {
+    button.btn-trans {
+      &:hover {
+        color: @dark-font-bright-color;
       }
     }
   }

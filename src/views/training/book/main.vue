@@ -54,11 +54,11 @@
 </template>
 
 <script>
-import trainingService from "services/trainingService"
+import trainingService from 'services/trainingService'
 import { SET_CONTENT_LOADING } from 'store/mutation-types'
 import { ACY_BOOK_UPLOADER } from 'src/config/app.config.js'
 export default {
-  data() {
+  data () {
     return {
       language: this.$store.state.language,
       categories: [],
@@ -66,49 +66,47 @@ export default {
     }
   },
   methods: {
-    display(id){
-      this.$store.dispatch("statisticsBook",id)
+    display (id) {
+      this.$store.dispatch('statisticsBook', id)
     },
-    async fetchBook() {
+    async fetchBook () {
       this.$store.commit(SET_CONTENT_LOADING, true)
-      let { success, data } = await trainingService.getBook(this.language == "zh" ? "mandarin" : "english", "")
+      let { success, data } = await trainingService.getBook(this.language === 'zh' ? 'mandarin' : 'english', '')
       this.$store.commit(SET_CONTENT_LOADING, false)
       if (success) {
         this.mapData(data)
       }
     },
-    mapData(data){
-      if(! (data && data.categorized && data.categories )) return
+    mapData (data) {
+      if (!(data && data.categorized && data.categories)) return
       let categories = []
-      for (let categorized in data.categorized){
-        let c_id = categorized,
-            c_children = data.categorized[c_id],
-            category =[]
-        if(c_children && c_children.length > 0){
-          category = data.categories.filter((c)=>{
-              return c.id == c_id
+      for (let categorized in data.categorized) {
+        let cId = categorized,
+          cChildren = data.categorized[cId],
+          category = []
+        if (cChildren && cChildren.length > 0) {
+          category = data.categories.filter((c) => {
+            return c.id === cId
           })[0]
-          categories.push({code:category.code,children:c_children,id:category.id})
+          categories.push({code: category.code, children: cChildren, id: category.id})
         }
       }
       this.categories = categories
     },
-    refresh() {
+    refresh () {
       this.fetchBook()
     }
   },
   watch: {
-    "$store.state.language": function(val) {
-      console.log(val);
+    '$store.state.language': function (val) {
       this.language = val
       this.fetchBook()
     }
   },
-  created() {
+  created () {
     this.fetchBook()
   }
 }
-
 </script>
 <style scoped>
 .book-header {

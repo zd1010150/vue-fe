@@ -8,7 +8,8 @@
       v-if="hasSelection"
       class="chp-table-selection">
 
-      <table-checkbox  v-model="checkbox" :nativeValue="chpItem" :disabled="isDisabled" @change="select" @change.native="select"></table-checkbox>
+      <table-checkbox v-model="checkbox" :nativeValue="chpItem" :disabled="isDisabled" @change="select"
+                      @change.native="select"></table-checkbox>
 
 
     </chp-table-cell>
@@ -18,120 +19,119 @@
 </template>
 
 <script>
-  import getClosestVueParent from '../core/utils/getClosestVueParent';
-  import uniqueId from '../core/utils/uniqueId';
+  import getClosestVueParent from '../core/utils/getClosestVueParent'
+  import uniqueId from '../core/utils/uniqueId'
   import checkBox from './chpTableCheckbox'
-  const transitionClass = 'chp-transition-off';
+
+  const transitionClass = 'chp-transition-off'
 
   export default {
-    components :{
-      'table-checkbox' : checkBox
+    components: {
+      'table-checkbox': checkBox
     },
     name: 'chp-table-row',
     props: {
       chpAutoSelect: Boolean,
       chpSelection: Boolean,
       chpItem: Object,
-      chpCanCustomiseClickEvent : Boolean
+      chpCanCustomiseClickEvent: Boolean
     },
-    data() {
+    data () {
       return {
         parentTable: {},
         headRow: false,
         checkbox: false,
         index: 0,
         uuid: `chprow_uuid_${uniqueId()}`
-      };
+      }
     },
     computed: {
-      isDisabled() {
-        return !this.chpSelection && !this.headRow;
+      isDisabled () {
+        return !this.chpSelection && !this.headRow
       },
-      hasSelection() {
-        return this.chpSelection || this.headRow && this.parentTable.hasRowSelection;
+      hasSelection () {
+        return (this.chpSelection || this.headRow) && this.parentTable.hasRowSelection
       },
-      classes() {
+      classes () {
         return {
           'mu-select-fielded': this.checkbox
-        };
+        }
       }
     },
     watch: {
-      chpItem(newValue, oldValue) {
-        this.parentTable.data[this.index] = this.chpItem;
-        this.handleMultipleSelection(newValue === oldValue);
+      chpItem (newValue, oldValue) {
+        this.parentTable.data[this.index] = this.chpItem
+        this.handleMultipleSelection(newValue === oldValue)
       }
     },
     methods: {
-      setRowSelection(value, row) {
-        this.parentTable.setRowSelection(value, row);
+      setRowSelection (value, row) {
+        this.parentTable.setRowSelection(value, row)
       },
-      handleSingleSelection(value) {
-        this.parentTable.setRowSelection(value, this.chpItem);
-        this.parentTable.$children[0].checkbox = this.parentTable.numberOfSelected === this.parentTable.numberOfRows;
+      handleSingleSelection (value) {
+        this.parentTable.setRowSelection(value, this.chpItem)
+        this.parentTable.$children[0].checkbox = this.parentTable.numberOfSelected === this.parentTable.numberOfRows
       },
-      handleMultipleSelection(value) {
+      handleMultipleSelection (value) {
         if (this.parentTable.numberOfRows > 25) {
-          this.parentTable.$el.classList.add(transitionClass);
+          this.parentTable.$el.classList.add(transitionClass)
         }
 
         this.parentTable.$children.forEach((row) => {
-          row.checkbox = value;
-        });
+          row.checkbox = value
+        })
 
-        this.parentTable.setMultipleRowSelection(value);
+        this.parentTable.setMultipleRowSelection(value)
 
-        window.setTimeout(() =>
-          this.parentTable.$el.classList.remove(transitionClass),
-          100);
+        window.setTimeout(() => this.parentTable.$el.classList.remove(transitionClass),
+          100)
       },
-      select(value) {
+      select (value) {
         if (!this.hasSelection) {
-          return;
+          return
         }
 
         if (this.headRow) {
-          this.handleMultipleSelection(value);
+          this.handleMultipleSelection(value)
         } else {
-          this.handleSingleSelection(value);
+          this.handleSingleSelection(value)
         }
 
-        this.parentTable.emitSelection();
-        this.$emit(value ? 'selected' : 'deselected', value);
+        this.parentTable.emitSelection()
+        this.$emit(value ? 'selected' : 'deselected', value)
       },
-      autoSelect() {
-        if(this.chpCanCustomiseClickEvent){
-          this.$emit("rowClicked",this.chpItem)
-        }else{
+      autoSelect () {
+        if (this.chpCanCustomiseClickEvent) {
+          this.$emit('rowClicked', this.chpItem)
+        } else {
           if (this.chpAutoSelect && this.hasSelection) {
-            this.checkbox = !this.checkbox;
-            this.handleSingleSelection(this.checkbox);
-            this.parentTable.emitSelection();
+            this.checkbox = !this.checkbox
+            this.handleSingleSelection(this.checkbox)
+            this.parentTable.emitSelection()
           }
         }
-        
       },
-      startTableRow() {
-        this.parentTable = getClosestVueParent(this.$parent, 'chp-table');
+      startTableRow () {
+        this.parentTable = getClosestVueParent(this.$parent, 'chp-table')
         if (this.$el.parentNode.tagName.toLowerCase() === 'thead') {
-          this.headRow = true;
+          this.headRow = true
         } else {
           if (!this.chpItem && this.chpSelection) {
-            throw new Error('You should set the chp-item property when using chpSelection. Example: <chp-table-row mu-select-fieldion :chp-item="ITEM" ...>');
+            throw new Error('You should set the chp-item property when using chpSelection. Example: <chp-table-row mu-select-fieldion :chp-item="ITEM" ...>')
           }
 
           if (this.chpSelection) {
-            this.parentTable.hasRowSelection = true;
+            this.parentTable.hasRowSelection = true
           }
-          this.parentTable.data.push(this.chpItem);
+          this.parentTable.data.push(this.chpItem)
         }
       }
     },
-    destroyed() {
-      this.parentTable.removeRow(this.chpItem);
+    destroyed () {
+      this.parentTable.removeRow(this.chpItem)
     },
-    mounted() {
-      this.startTableRow();
+    mounted () {
+      this.startTableRow()
     }
-  };
+  }
 </script>

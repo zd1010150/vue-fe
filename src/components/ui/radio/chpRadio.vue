@@ -2,7 +2,7 @@
   <div class="chp-radio" :class="[classes]">
     <div class="chp-radio-container" @click.stop="toggleCheck">
       <input type="radio" :name="name" :id="id" :disabled="disabled" :value="value">
-      <chp-ink-ripple :chp-disabled="disabled" />
+      <chp-ink-ripple :chp-disabled="disabled"/>
     </div>
 
     <label :for="id || name" class="chp-radio-label" v-if="$slots.default" @click="toggleCheck">
@@ -14,8 +14,6 @@
 <style lang="scss" src="./chpRadio.scss"></style>
 
 <script>
-
-
   export default {
     name: 'chp-radio',
     props: {
@@ -29,20 +27,20 @@
       disabled: Boolean
     },
     computed: {
-      classes() {
+      classes () {
         return {
           'chp-checked': typeof this.value !== 'undefined' && this.value !== null && this.chpValue.toString() === this.value.toString(),
           'chp-disabled': this.disabled
-        };
+        }
       }
     },
     methods: {
-      toggleCheck($event) {
+      toggleCheck ($event) {
         if (!this.disabled) {
-          this.$emit('change', this.chpValue, $event);
-          this.$emit('input', this.chpValue, $event);
+          this.$emit('change', this.chpValue, $event)
+          this.$emit('input', this.chpValue, $event)
         }
       }
     }
-  };
+  }
 </script>

@@ -4,7 +4,8 @@
       <slot></slot>
     </div>
 
-    <chp-button type="button" class="chp-button-ghost" @click="$emit('click', $event)" :disabled="disabled"></chp-button>
+    <chp-button type="button" class="chp-button-ghost" @click="$emit('click', $event)"
+                :disabled="disabled"></chp-button>
   </li>
 </template>
 
@@ -15,11 +16,11 @@
       disabled: Boolean
     },
     computed: {
-      classes() {
+      classes () {
         return {
           'chp-disabled': this.disabled
-        };
+        }
       }
     }
-  };
+  }
 </script>

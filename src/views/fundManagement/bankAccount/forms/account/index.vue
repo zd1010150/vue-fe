@@ -32,7 +32,7 @@
       'bank-account-cup': cup,
       'bank-account-credit': credit,
       'bank-account-fasa': fasa,
-      'bank-account-doku': doku,
+      'bank-account-doku': doku
     },
     props: {
       method: String,

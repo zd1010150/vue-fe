@@ -25,9 +25,10 @@ import FeatureImage from './featureImage'
 import ProgressBar from './progressBar'
 import OneLine from './oneLine'
 import ViewAll from './viewAll'
-export default function install(Vue) {
+
+export default function install (Vue) {
   Vue.component('chp-ink-ripple', chpInkRipple)
-  Vue.component('chp-button',button)
+  Vue.component('chp-button', button)
   Vue.use(Panel)
   Vue.use(Checkbox)
   Vue.use(Radio)

@@ -1,3 +1,4 @@
+/* eslint-disable one-var */
 /**
  * 存储localStorage
  */
@@ -27,8 +28,8 @@ export const removeStore = name => {
 
 // 同步vuex的状态到localstorage里面
 export const syncVuexStateAndLocalStorage = (state) => {
-  for(let o in state){
+  for (let o in state) {
     let value = state[o]
-    setStore(o, typeof value == "object" ? JSON.stringify(value) : value)
+    setStore(o, typeof value === 'object' ? JSON.stringify(value) : value)
   }
 }

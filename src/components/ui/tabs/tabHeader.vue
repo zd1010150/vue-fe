@@ -1,4 +1,4 @@
-   <template>
+<template>
   <li :class="classes">
     <a class="text-center" aria-expanded="false" @click="tabClick">
       <slot></slot>
@@ -6,30 +6,29 @@
   </li>
 </template>
 <script>
-  export default{
-      name : "chp-tab",
-
-      watch: {
-        active (href, oldHref) {
-          if (href === oldHref) return
-          if (href) this.$emit('active')
-        }
+  export default {
+    name: 'chp-tab',
+    watch: {
+      active (href, oldHref) {
+        if (href === oldHref) return
+        if (href) this.$emit('active')
+      }
+    },
+    props: {
+      href: {
+        type: String
+      }
+    },
+    computed: {
+      active () {
+        return (!_.isNull(this.href)) && this.$parent.value === this.href
       },
-      props: {
-        href: {
-          type: String
+      classes () {
+        return {
+          'active': this.active
         }
-      },
-      computed:{
-        active () {
-          return (!_.isNull(this.href)) && this.$parent.value === this.href
-        },
-        classes (){
-            return {
-              "active" : this.active
-            }
-        }
-      },
+      }
+    },
 
     methods: {
       tabClick (e) {

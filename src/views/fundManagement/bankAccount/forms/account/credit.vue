@@ -150,7 +150,6 @@
 
 <script>
   import validateMixin from 'mixins/validatemix'
-  import configService from 'services/configService'
   import bankCardService from 'services/bankCardService'
   import { UPLOAD_DOCUMENT_URL } from 'src/config/url.config.js'
   import { UPLOAD_CONFIG } from 'src/config/app.config.js'
@@ -162,7 +161,7 @@
         innerMethod: this.method,
         innerEditObj: this.editObj,
         uploadConfig: UPLOAD_CONFIG,
-        dropPostAction: UPLOAD_DOCUMENT_URL+'/bill',
+        dropPostAction: UPLOAD_DOCUMENT_URL + '/bill',
         isEdit: false,
         editId: null,
         firstSix: '',
@@ -179,7 +178,7 @@
           document: '',
           document_2: ''
         },
-        model:{
+        model: {
           province: '',
           city: '',
           address: '',
@@ -196,97 +195,97 @@
       method: String,
       editObj: Object
     },
-      methods:{
-      	uploadBackSide(files,isAllsuccess,error){
-          if(isAllsuccess){
-            this.$set(this.model,'document_2',files[0].data.url)
-          }else{
-            this.$set(this.model,'document_2','')
-            this.toastr.error(this.$t('info.UPLOAD_ERROR.'+error[0]))
-          }
-          this.$validator.validate('backCreditCard',this.model.document_2)
-        },
-        uploadFrontSide(files,isAllsuccess,error){
-          if(isAllsuccess){
-            this.$set(this.model,'document',files[0].data.url)
-          }else{
-            this.$set(this.model,'document','')
-            this.toastr.error(this.$t('info.UPLOAD_ERROR.'+error[0]))
-          }
-          this.$validator.validate('frontCreditCard',this.model.document)
-        },
-        async submit(){
-          let validateResult = await this.$validator.validateAll()
-          if(validateResult){
-            let res
-            if(this.editId){
-              res = await bankCardService.updateBankCard(this.editId,this.model)
-            }else{
-              res = await bankCardService.addBankCard(this.model)
-            }
-            let { success } = res
-            if(success){
-              this.toastr.info(this.$t('info.SUCCESS'))
-              this.$emit('refresh')
-            }
-          }
-        },
-        deleteDocument(type){
-          if(type == 'back'){
-            this.$set(this.model,'document_2','')
-          }else{
-            this.$set(this.model,'document','')
-          }
-        },
-        initModel:function(){
-          this.isEdit = this.innerEditObj !=null
-          if(this.isEdit){//如果是编辑
-            this.editId = this.innerEditObj.id
-            this.model = Object.assign({},this.model,assignToObject(this.originModel,this.innerEditObj))
-            let arrNumbers = /^(\d{6})(.*?)(\d{4})$/.exec(this.model.account)
-            if(arrNumbers.length > 3 ){
-              this.firstSix = arrNumbers[1]
-              this.lastFour = arrNumbers[3]
-            }
-          }else{
-            this.editId = null
-            this.model = Object.assign({},this.model,this.originModel,{method:this.innerMethod})
-            this.firstSix = ''
-            this.lastFour = ''
-          }
-        },
-        showImg(){
-          this.documentOpen = true
-        },
-        closeImg(){
-          this.documentOpen = false
+    methods: {
+      uploadBackSide (files, isAllsuccess, error) {
+        if (isAllsuccess) {
+          this.$set(this.model, 'document_2', files[0].data.url)
+        } else {
+          this.$set(this.model, 'document_2', '')
+          this.toastr.error(this.$t('info.UPLOAD_ERROR.' + error[0]))
         }
-
+        this.$validator.validate('backCreditCard', this.model.document_2)
       },
-      mounted(){
+      uploadFrontSide (files, isAllsuccess, error) {
+        if (isAllsuccess) {
+          this.$set(this.model, 'document', files[0].data.url)
+        } else {
+          this.$set(this.model, 'document', '')
+          this.toastr.error(this.$t('info.UPLOAD_ERROR.' + error[0]))
+        }
+        this.$validator.validate('frontCreditCard', this.model.document)
+      },
+      async submit () {
+        let validateResult = await this.$validator.validateAll()
+        if (validateResult) {
+          let res
+          if (this.editId) {
+            res = await bankCardService.updateBankCard(this.editId, this.model)
+          } else {
+            res = await bankCardService.addBankCard(this.model)
+          }
+          let { success } = res
+          if (success) {
+            this.toastr.info(this.$t('info.SUCCESS'))
+            this.$emit('refresh')
+          }
+        }
+      },
+      deleteDocument (type) {
+        if (type === 'back') {
+          this.$set(this.model, 'document_2', '')
+        } else {
+          this.$set(this.model, 'document', '')
+        }
+      },
+      initModel: function () {
+        this.isEdit = this.innerEditObj !== null
+        if (this.isEdit) { // 如果是编辑
+          this.editId = this.innerEditObj.id
+          this.model = Object.assign({}, this.model, assignToObject(this.originModel, this.innerEditObj))
+          let arrNumbers = /^(\d{6})(.*?)(\d{4})$/.exec(this.model.account)
+          if (arrNumbers.length > 3) {
+            this.firstSix = arrNumbers[1]
+            this.lastFour = arrNumbers[3]
+          }
+        } else {
+          this.editId = null
+          this.model = Object.assign({}, this.model, this.originModel, {method: this.innerMethod})
+          this.firstSix = ''
+          this.lastFour = ''
+        }
+      },
+      showImg () {
+        this.documentOpen = true
+      },
+      closeImg () {
+        this.documentOpen = false
+      }
+
+    },
+    mounted () {
+      this.initModel()
+    },
+    watch: {
+      method: function (val) {
+        this.innerMethod = val
+      },
+      editObj: function (val) {
+        this.innerEditObj = val
+      },
+      innerMethod: function (val, oldVal) {
         this.initModel()
       },
-      watch :{
-        method:function(val){
-          this.innerMethod = val
-        },
-        editObj:function(val){
-          this.innerEditObj = val
-        },
-        innerMethod : function(val,oldVal){
-         this.initModel()
-        },
-        innerEditObj:function(val){
-          this.initModel()
-        },
-        firstSix(val){
-          this.model.account = val + '******'+ this.lastFour
-        },
-        lastFour(val){
-          this.model.account = this.firstSix + '******' + val
-        }
+      innerEditObj: function (val) {
+        this.initModel()
+      },
+      firstSix (val) {
+        this.model.account = val + '******' + this.lastFour
+      },
+      lastFour (val) {
+        this.model.account = this.firstSix + '******' + val
       }
     }
+  }
 </script>
 
 <style lang="less" scoped>

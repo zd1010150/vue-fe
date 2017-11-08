@@ -219,7 +219,6 @@
             data[key].avgActiveCom = mathUtil.getPercentage(info.activeCom, info.activeClients)
             data[key].avgAllCom = mathUtil.getPercentage(info.allCom, info.allClients)
           }
-
         }
         return data
       },

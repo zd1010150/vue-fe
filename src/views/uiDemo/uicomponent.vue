@@ -1,10 +1,10 @@
 <template lang="html">
   <transition name="fade" mode="out-in">
-    
+
       <div class="row">
         <div class="col-lg-12">
           <chp-panel>
-            <template slot="panelTitle">Text Field</template>
+            <template slot="panelTitle">Text Field </template>
             <template slot="panelSubtitle"> input</template>
             <form slot="body" class="form-horizontal form-bordered">
               <h4>input</h4>
@@ -43,8 +43,6 @@
                   <mu-text-field hintText="多行文本输入，默认 3行，最大6行" multiLine :rows="3" :rowsMax="6" class="form-control"/>
                 </div>
               </div>
-
-
               <h4>large icon input</h4>
               <div class="form-group">
                 <label class="control-label col-md-3">Email</label>
@@ -253,72 +251,63 @@
               <br/>
             </div>
           </chp-panel>
-
-
         </div>
       </div>
-  
   </transition>
-
 </template>
 
 <script>
-
   import uiToolbar from './toolbar.vue'
   import dataTable from './datatable.vue'
   import uiDialog from './dialog.vue'
   import fileUpload from './fileUpload.vue'
   export default {
-    components:{
-      'ui-toolbar' : uiToolbar,
-      'ui-data-table' : dataTable,
-      'ui-dialog' : uiDialog,
-      'ui-file-upload' : fileUpload
+    components: {
+      'ui-toolbar': uiToolbar,
+      'ui-data-table': dataTable,
+      'ui-dialog': uiDialog,
+      'ui-file-upload': fileUpload
     },
-    data(){
+    data () {
       return {
-        radio1: "2",
-        game2: "1",
+        radio1: '2',
+        game2: '1',
         isRememberMe: [],
-        sex:"neutral",
-        activeTab:"tab1",
-        activeStepTab: "tab1",
-
-        pageSizeNumber : 10
+        sex: 'neutral',
+        activeTab: 'tab1',
+        activeStepTab: 'tab1',
+        pageSizeNumber: 10
       }
     },
     computed: {
-      pageSize:{
-        set(val){
-          this.pageSizeNumber = Number(val);
+      pageSize: {
+        set (val) {
+          this.pageSizeNumber = Number(val)
         },
-        get(){
-          return this.pageSizeNumber;
+        get () {
+          return this.pageSizeNumber
         }
-      } ,
-      username (){
+      },
+      username () {
         if (this.$store.state.userInfo) {
-          return this.$store.state.userInfo.name;
+          return this.$store.state.userInfo.name
         } else {
-          return ""
+          return ''
         }
-        ;
       }
     },
-    methods:{
+    methods: {
       handleTabChange (val) {
         this.activeTab = val
       },
-      handleStepTabChange(val) {
+      handleStepTabChange (val) {
         this.activeStepTab = val
       },
-
-      pageSizeChanged(val){
-        this.pageSizeNumber = Number(val);
-        
+      pageSizeChanged (val) {
+        this.pageSizeNumber = Number(val)
       },
-      showToster(type){
-       console.log(this.toastr[type](type + " info"));
+      showToster (type) {
+        console.log(this.toastr[type](type + ' info'))
       }
     }
   }

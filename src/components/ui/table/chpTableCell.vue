@@ -16,17 +16,17 @@
       hasAction: false
     }),
     computed: {
-      classes() {
+      classes () {
         return {
           'chp-numeric': this.chpNumeric,
           'chp-has-action': this.hasAction
-        };
+        }
       }
     },
-    mounted() {
+    mounted () {
       if (this.$children.length > 0) {
-        this.hasAction = true;
+        this.hasAction = true
       }
     }
-  };
+  }
 </script>
