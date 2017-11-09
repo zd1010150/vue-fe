@@ -86,7 +86,7 @@ export default {
           category = []
         if (cChildren && cChildren.length > 0) {
           category = data.categories.filter((c) => {
-            return c.id === cId
+            return (c.id + '') === (cId + '')
           })[0]
           categories.push({code: category.code, children: cChildren, id: category.id})
         }

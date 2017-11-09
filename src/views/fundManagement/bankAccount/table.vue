@@ -132,7 +132,6 @@
         return {data}
       },
       previewImage (src) {
-        console.log('it ist trigger', src)
         this.documentSrc = src
         this.documentOpen = true
       },

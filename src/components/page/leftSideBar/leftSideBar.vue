@@ -47,12 +47,8 @@
       closeRightSidenav () {
         this.$refs.rightSidenav.close()
       },
-      open (ref) {
-        console.log('Opened: ' + ref)
-      },
-      close (ref) {
-        console.log('Closed: ' + ref)
-      },
+      open (ref) {},
+      close (ref) {},
       toggleSidebarStatus (show) {
         let $html = document.querySelector('html')
         $html.classList.toggle('sidebar-left-hidden', !show)

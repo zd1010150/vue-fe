@@ -4,9 +4,9 @@
     <div class="col-lg-12 col-md-12" v-if="url">
       <table>
         <tr>
-          <td class="title"><h4>{{ $t('agentActivity.agentUrl') }} : </h4></td>
-          <td class="url">
-            <span class="text-dark pl-sm">{{url}}</span>
+          <td class="title"><h4>{{ $t('agentActivity.agentUrl') }} :</h4></td>
+          <td class="url pl-sm">
+            <span class="text-dark">{{url}}</span>
           </td>
           <td class="btn-td">
             <chp-button class=" ml-xs btn btn-primary print-btn" @click="copy()">

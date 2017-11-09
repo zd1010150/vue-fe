@@ -69,7 +69,6 @@
       }
     },
     activated () {
-      console.log('single index activated')
       this.page = 0
       this.loopList = []
       this.getCategoryVideo()

@@ -45,9 +45,7 @@
           'chp-large': this.chpLarge
         }
       },
-      realValue () {
-        console.log(this.value)
-      }
+      realValue () {}
     },
     methods: {
       openDialog () {

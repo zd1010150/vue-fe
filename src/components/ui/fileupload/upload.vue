@@ -157,7 +157,6 @@
             messege: response.message
           }
         } catch (ex) {
-          console.log('Upload XMLHttprequest parse error')
           return {
             success: false,
             messege: 'parse json error',
@@ -166,7 +165,6 @@
         }
       },
       inputFile: function (newFile, oldFile) {
-        console.log(this.$refs.upload.files.length, newFile, oldFile, '===', this.$refs.upload.uploaded, this.files.length)
         if (newFile && !oldFile) {
           // 添加文件
           // 自动上传

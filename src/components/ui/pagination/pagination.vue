@@ -164,7 +164,6 @@
         }
         this.$emit('pageSizeChange', val)
         this.$emit('page-size-change', val)
-        console.log('sizechanged totalPageCOunt:', this.totalPageCount)
       },
       total: function (val) {
         // 如果条目总数改变的时候当前页也需要重新计算

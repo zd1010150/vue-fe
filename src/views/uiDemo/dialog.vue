@@ -71,12 +71,8 @@
       closeDialog (ref) {
         this.$refs[ref].close()
       },
-      onOpen () {
-        console.log('Opened')
-      },
-      onClose (type) {
-        console.log('Closed', type)
-      },
+      onOpen () {},
+      onClose (type) {},
       preview () {
         this.previewOpen = !this.previewOpen
       }

@@ -49,9 +49,6 @@
         scriptEle: null
       }
     },
-    created () {
-      console.log('')
-    },
     filters,
     watch: {
       '$store.state.language': function (val) {

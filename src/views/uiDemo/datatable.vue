@@ -160,38 +160,20 @@
       toggleDisplayFilterToolbar (val) {
         this.isDisplayFilterToolbar = val
       },
-      createNewObject () {
-        console.log('createNew')
-      },
-      deleteRows () {
-        console.log('delete these rows', this.selectedRows)
-      },
+      createNewObject () {},
+      deleteRows () {},
       selectRow (val) {
         this.isDisplayFilter = false
         this.selectedRows = val
-        console.log(val, '*****')
       },
-      sortRow ({name, type}) {
-        console.log('sort', name, type)
-      },
+      sortRow ({name, type}) {},
       getData () {
         dataTableService.paginQuery()
       },
-      pageSizeChange (newSize) {
-        console.log(newSize)
-      },
-      pageNumberChange (newIndex) {
-        console.log(newIndex)
-      },
-      pagination (val) {
-        console.log('pagination', val)
-      },
-      updateType (rowIndex) {
-        console.log('before', this.nutrition[rowIndex].type)
-        this.$nextTick(() => {
-          console.log('after', this.nutrition[rowIndex])
-        })
-      }
+      pageSizeChange (newSize) {},
+      pageNumberChange (newIndex) {},
+      pagination (val) {},
+      updateType (rowIndex) {}
 
     },
     mounted () {

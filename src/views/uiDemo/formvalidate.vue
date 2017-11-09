@@ -110,12 +110,8 @@
           return 'has-error'
         }
       },
-      onSubmit: function () {
-        console.log(this.formstate.$valid)
-      },
-      inputHandler: function (val) {
-        console.log('====', val)
-      }
+      onSubmit: function () {},
+      inputHandler: function (val) {}
     }
   }
 </script>
