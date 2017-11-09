@@ -7,15 +7,15 @@
 					<form class="form-inline">
 						<div class="form-group" :class="errorClass('startDate')">
 							<chp-date-picker :hintText="$t('ui.datePicker.startDate')"
-											class="date" 
-											v-model.lazy="model.startDay" 
-											@input="changeStartday" 
-											:fullWidth="true" 
-											:required="true"  
-											v-validate="'required'" 
+											class="date"
+											v-model.lazy="model.startDay"
+											@input="changeStartday"
+											:fullWidth="true"
+											:required="true"
+											v-validate="'required'"
 											data-vv-value-path="model.startDay"
 											data-vv-name="startDate"
-											data-vv-validate-on="input" 
+											data-vv-validate-on="input"
 											:maxDate="maxStartDate"/>
 								<span slot="password" class="error"
 							v-if="errors.has('startDate:required')">{{errors.first('startDate:required')}}</span>
@@ -26,14 +26,14 @@
 							@input="changeEndday" :minDate = "minEndDate" v-model.lazy="model.endDay"  v-validate="'required'" data-vv-value-path="model.endDay" data-vv-name="endDate" :fullWidth="true" :required="true" data-vv-validate-on="input"/>
 								<span slot="password" class="error"
 							v-if="errors.has('endDate:required')">{{errors.first('endDate:required')}}</span>
-							
+
 						</div>
-						
+
 							<chp-button class="btn btn-primary form-group ml-xs" @click="research">
 								<i class="fa fa-search "></i>
 							</chp-button>
-						
-						
+
+
 						<div class="clearfix"></div>
 					</form>
 				</div>
@@ -63,54 +63,52 @@
 	import action from './action.vue'
 	import course from './course.vue'
 	import validateMixin from 'mixins/validatemix.js'
-	
+
 	export default {
-		mixins: [validateMixin],
-		components: {
-			'notice-announcement': announcement,
-			'notice-action': action,
-			'notice-course': course
-		},
-		data() {
-			return {
-				activeTab: "announcement",
-				currentView: "notice-announcement",
-				minEndDate:"",
-        		maxStartDate:"",
-				model:{
-          		startDay:"",
-          		endDay:""
-          },
-			}
-		},
-		methods: {
-			handleTabChange(val) {
-				this.activeTab = val
-			},
-			research(){				
-				this.$refs.signelCategoryNotice.research(this.model)
-			},
-			changeEndday(val){
-      	this.model.endDay = val;
-      }	,
-      changeStartday(val){
-      	this.model.startDay = val;
+  mixins: [validateMixin],
+  components: {
+    'notice-announcement': announcement,
+    'notice-action': action,
+    'notice-course': course
+  },
+  data () {
+    return {
+      activeTab: 'announcement',
+      currentView: 'notice-announcement',
+      minEndDate: '',
+      maxStartDate: '',
+      model: {
+        startDay: '',
+        endDay: ''
       }
-		},
-		watch: {
-			activeTab(val) {
-				this.currentView = 'notice-' + val
-			},
-			'model.startDay' : function(val){
-    		this.minEndDate = val;
-    	},
-      'model.endDay':function(val){
-        this.maxStartDate = val;
-      },
-
-		}
+    }
+  },
+  methods: {
+    handleTabChange (val) {
+      this.activeTab = val
+    },
+    research () {
+      this.$refs.signelCategoryNotice.research(this.model)
+    },
+    changeEndday (val) {
+      this.model.endDay = val
+    },
+    changeStartday (val) {
+      this.model.startDay = val
+    }
+  },
+  watch: {
+    activeTab (val) {
+      this.currentView = 'notice-' + val
+    },
+    'model.startDay': function (val) {
+      this.minEndDate = val
+    },
+    'model.endDay': function (val) {
+      this.maxStartDate = val
+    }
+  }
 	}
-
 </script>
 <style scoped>
 .date-picker-wrapper.form-control.date {

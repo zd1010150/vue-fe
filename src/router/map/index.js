@@ -1,4 +1,4 @@
-import _ from "lodash"
+import _ from 'lodash'
 import Index from 'views/index'
 
 import Dashboard from './dashboard'
@@ -12,12 +12,13 @@ import agentCenter from './agentCenter'
 import event from './event'
 import ticket from './ticket'
 import setting from './setting'
+
 export default [{
-  path: "/",
-  redirect:'/main',
+  path: '/',
+  redirect: '/main',
   component: Index,
   meta: {
     requiresAuth: true
-  }, 
-  children: _.concat(Dashboard,tradingAccountManagement,uiDemo,training,FundManage,notice,downloadCenter,agentCenter,event,ticket,setting)
-}];
+  },
+  children: _.concat(Dashboard, tradingAccountManagement, uiDemo, training, FundManage, notice, downloadCenter, agentCenter, event, ticket, setting)
+}]

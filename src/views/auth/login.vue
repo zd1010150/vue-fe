@@ -6,22 +6,23 @@
                  :titles="{mainTitle:'login'}" class="panel-sign">
 
         <div slot="panelTitle" class="panel-title-sign mt-xl text-right">
-          <h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i>{{ $t("login.signIn") }}</h2>
+          <h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i>{{ $t("login.signIn")
+            }}</h2>
         </div>
 
         <form slot="body" class="login-form" @submit.prevent="login">
           <div class="form-group mb-lg required-field " :class="errorClass('email')">
             <label class="control-label">{{ $t("login.email") }}</label>
             <div class="input-group input-group-icon">
-              <mu-text-field  v-validate="'required|email'" 
-                              data-vv-value-path="model.email" 
-                              data-vv-name="email"
-                              :hintText="$t('login.placeholderEmail')" 
-                              class="form-control input-lg" 
-                              name="email" 
-                              type="email"
-                              v-model.lazy="model.email"  
-                              id="email"/>
+              <mu-text-field v-validate="'required|email'"
+                             data-vv-value-path="model.email"
+                             data-vv-name="email"
+                             :hintText="$t('login.placeholderEmail')"
+                             class="form-control input-lg"
+                             name="email"
+                             type="email"
+                             v-model.lazy="model.email"
+                             id="email"/>
               <span class="input-group-addon"><span class="icon icon-lg"> <i class="fa fa-user"></i></span></span>
             </div>
             <span slot="required" class="error" v-if="errors.has('email:required')">
@@ -37,15 +38,15 @@
               <router-link to="/recoverPassword" class="pull-right">{{ $t("login.lostPassword") }}?</router-link>
             </div>
             <div class="input-group input-group-icon">
-              <mu-text-field  v-validate="'required|min:8'" 
-                              data-vv-value-path="model.password" 
-                              data-vv-name="password"
-                              :hintText="$t('login.placeholderPwd')" 
-                              class="form-control input-lg"
-                              name="password" 
-                              type="password" 
-                              v-model.lazy="model.password" 
-                              id="password"/>
+              <mu-text-field v-validate="'required|min:8'"
+                             data-vv-value-path="model.password"
+                             data-vv-name="password"
+                             :hintText="$t('login.placeholderPwd')"
+                             class="form-control input-lg"
+                             name="password"
+                             type="password"
+                             v-model.lazy="model.password"
+                             id="password"/>
               <span class="input-group-addon">
                   <span class="icon icon-lg">
                     <i class="fa fa-lock"></i>
@@ -61,9 +62,11 @@
           </div>
           <div class="row">
             <div class="col-sm-12 text-right">
-              <chp-button type="submit" class="btn btn-primary hidden-xs" :disabled="loading">{{ $t("login.signIn") }}</chp-button>
+              <chp-button type="submit" class="btn btn-primary hidden-xs" :disabled="loading">{{ $t("login.signIn") }}
+              </chp-button>
               <chp-button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg" :disabled="loading">
-              {{ $t("login.signIn") }}</chp-button>
+                {{ $t("login.signIn") }}
+              </chp-button>
             </div>
           </div>
         </form>
@@ -71,38 +74,37 @@
     </chp-log-layout>
   </div>
 </template>
-<script type="text/javascript">
-
-  import userService from 'services/userService.js'
+<script>
   import validateMixin from 'mixins/validatemix.js'
   import routers from '../../router/map/index'
-  import { SET_LANGUAGE} from "src/store/mutation-types"
-  import {Validator} from 'vee-validate'
-  import i18n from "src/i18n"
+  import { SET_LANGUAGE } from 'src/store/mutation-types'
+  import { Validator } from 'vee-validate'
+  import i18n from 'src/i18n'
+
   export default {
-    name: "login",
+    name: 'login',
     mixins: [validateMixin],
     data () {
       return {
-        loading:false,
+        loading: false,
         model: {
-          email: "",
-          password: ""
+          email: '',
+          password: ''
         }
       }
     },
     methods: {
-      async login (e){
-       let validateResult = await this.$validator.validateAll()
-        if(validateResult){
+      async login (e) {
+        let validateResult = await this.$validator.validateAll()
+        if (validateResult) {
           this.loading = true
-          let {message,success} = await this.$store.dispatch('login', this.model)
-          if(success){
-          let getUserInfo= await this.$store.dispatch('getUserInfo')
-            if(getUserInfo.success){
+          let {success} = await this.$store.dispatch('login', this.model)
+          if (success) {
+            let getUserInfo = await this.$store.dispatch('getUserInfo')
+            if (getUserInfo.success) {
               this.$router.addRoutes(routers)
-              this.$router.replace("/main")
-              this.$store.commit(SET_LANGUAGE,getUserInfo.data.language)
+              this.$router.replace('/main')
+              this.$store.commit(SET_LANGUAGE, getUserInfo.data.language)
               i18n.locale = getUserInfo.data.language
               Validator.setLocale(getUserInfo.data.language)
             }

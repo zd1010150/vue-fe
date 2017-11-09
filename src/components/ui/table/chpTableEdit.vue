@@ -28,52 +28,50 @@
       chpPlaceholder: String,
       chpMaxlength: [Number, String]
     },
-    data() {
+    data () {
       return {
         active: false
-      };
+      }
     },
     computed: {
-      triggerClasses() {
+      triggerClasses () {
         return {
           'chp-edited': this.value
-        };
+        }
       },
-      dialogClasses() {
+      dialogClasses () {
         return {
           'chp-active': this.active,
           'chp-large': this.chpLarge
-        };
+        }
       },
-      realValue() {
-        console.log(this.value);
-      }
+      realValue () {}
     },
     methods: {
-      openDialog() {
-        this.active = true;
-        this.$refs.input.$el.focus();
-        document.addEventListener('click', this.closeDialogOnOffClick);
+      openDialog () {
+        this.active = true
+        this.$refs.input.$el.focus()
+        document.addEventListener('click', this.closeDialogOnOffClick)
       },
-      closeDialog() {
+      closeDialog () {
         if (this.active) {
-          this.active = false;
-          this.$refs.input.$el.blur();
-          document.removeEventListener('click', this.closeDialogOnOffClick);
+          this.active = false
+          this.$refs.input.$el.blur()
+          document.removeEventListener('click', this.closeDialogOnOffClick)
         }
       },
-      closeDialogOnOffClick(event) {
+      closeDialogOnOffClick (event) {
         if (!this.$refs.dialog.contains(event.target)) {
-          this.closeDialog();
+          this.closeDialog()
         }
       },
-      confirmDialog() {
-        let value = this.$refs.input.$el.value;
+      confirmDialog () {
+        let value = this.$refs.input.$el.value
 
-        this.closeDialog();
-        this.$emit('input', value);
-        this.$emit('edited', value);
+        this.closeDialog()
+        this.$emit('input', value)
+        this.$emit('edited', value)
       }
     }
-  };
+  }
 </script>

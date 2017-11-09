@@ -5,9 +5,11 @@
     <!--<mu-select-field v-model="currentSize" chp-menu-class="chp-pagination-select" @change="changeSize" v-if="chpPageOptions !== false">
       <chp-option v-for="amount in chpPageOptions" :key="amount" :value="amount">{{ amount }}</chp-option>
     </mu-select-field>-->
-    <mu-select-field v-model="currentSize" class="chp-pagination-select" @change="changeSize" v-if="chpPageOptions !== false" >
+    <mu-select-field v-model="currentSize" class="chp-pagination-select" @change="changeSize"
+                     v-if="chpPageOptions !== false">
 
-      <mu-menu-item v-for="amount in chpPageOptions" :key="amount" :value="amount" :title="String(amount)"></mu-menu-item>
+      <mu-menu-item v-for="amount in chpPageOptions" :key="amount" :value="amount"
+                    :title="String(amount)"></mu-menu-item>
 
     </mu-select-field>
 
@@ -15,7 +17,7 @@
 
 
     <mu-icon-button @click="previousPage" :disabled="currentPage === 1">
-      <i class="fa fa-angle-double-left" aria-hidden="true" ></i>
+      <i class="fa fa-angle-double-left" aria-hidden="true"></i>
     </mu-icon-button>
     <mu-icon-button @click="nextPage" :disabled="shouldDisable">
       <i class="fa fa-angle-double-right" aria-hidden="true"></i>
@@ -53,87 +55,86 @@
         default: 'of'
       }
     },
-    data() {
+    data () {
       return {
         totalItems: isNaN(this.chpTotal) ? Number.MAX_SAFE_INTEGER : parseInt(this.chpTotal, 10),
         currentPage: 1,
         currentSize: parseInt(this.chpSize, 10)
-      };
+      }
     },
     watch: {
-      chpTotal(val) {
-        const sub = this.currentPage * this.currentSize;
+      chpTotal (val) {
+        const sub = this.currentPage * this.currentSize
 
-        this.subTotal = sub > val ? val : sub;
-        this.totalItems = isNaN(val) ? Number.MAX_SAFE_INTEGER : parseInt(val, 10);
+        this.subTotal = sub > val ? val : sub
+        this.totalItems = isNaN(val) ? Number.MAX_SAFE_INTEGER : parseInt(val, 10)
       },
-      chpSize(val) {
-        this.currentSize = parseInt(val, 10);
+      chpSize (val) {
+        this.currentSize = parseInt(val, 10)
       },
-      chpPage(val) {
-        this.currentPage = parseInt(val, 10);
+      chpPage (val) {
+        this.currentPage = parseInt(val, 10)
       }
     },
     computed: {
-      lastPage() {
-        return false;
+      lastPage () {
+        return false
       },
-      shouldDisable() {
-        return this.currentSize * this.currentPage >= this.totalItems;
+      shouldDisable () {
+        return this.currentSize * this.currentPage >= this.totalItems
       },
-      subTotal() {
-        const sub = this.currentPage * this.currentSize;
+      subTotal () {
+        const sub = this.currentPage * this.currentSize
 
-        return sub > this.chpTotal ? this.chpTotal : sub;
+        return sub > this.chpTotal ? this.chpTotal : sub
       }
     },
     methods: {
-      emitPaginationEvent() {
+      emitPaginationEvent () {
         if (this.canFireEvents) {
           this.$emit('pagination', {
             size: this.currentSize,
             page: this.currentPage
-          });
+          })
         }
       },
-      changeSize() {
+      changeSize () {
         if (this.canFireEvents) {
-          this.$emit('size', this.currentSize);
-          this.emitPaginationEvent();
+          this.$emit('size', this.currentSize)
+          this.emitPaginationEvent()
         }
       },
-      previousPage() {
+      previousPage () {
         if (this.canFireEvents) {
-          this.currentPage--;
-          this.$emit('page', this.currentPage);
-          this.emitPaginationEvent();
+          this.currentPage--
+          this.$emit('page', this.currentPage)
+          this.emitPaginationEvent()
         }
       },
-      nextPage() {
+      nextPage () {
         if (this.canFireEvents) {
-          this.currentPage++;
-          this.$emit('page', this.currentPage);
-          this.emitPaginationEvent();
+          this.currentPage++
+          this.$emit('page', this.currentPage)
+          this.emitPaginationEvent()
         }
       }
     },
-    mounted() {
+    mounted () {
       this.$nextTick(() => {
         if (this.chpPageOptions) {
-          this.currentSize = this.chpPageOptions.includes(this.currentSize) ? this.currentSize : this.chpPageOptions[0];
+          this.currentSize = this.chpPageOptions.includes(this.currentSize) ? this.currentSize : this.chpPageOptions[0]
         } else {
-          this.currentSize = 0;
+          this.currentSize = 0
         }
-        this.canFireEvents = true;
-      });
+        this.canFireEvents = true
+      })
     }
-  };
-
+  }
 </script>
 <style lang="less">
-  .chp-table-pagination{
-    .mu-select-field{
-      width:70px;
+  .chp-table-pagination {
+    .mu-select-field {
+      width: 70px;
     }
   }
 </style>

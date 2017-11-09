@@ -2,7 +2,7 @@
   <div class="chp-checkbox" :class="[classes]">
     <div class="chp-checkbox-container" @click.stop="toggleCheck" tabindex="0">
       <input type="checkbox" :disabled="disabled" :name="name" value="nativeValue" :checked="checked" :id="id">
-      <chp-ink-ripple :chp-disabled="disabled" />
+      <chp-ink-ripple :chp-disabled="disabled"/>
     </div>
 
     <label :for="id || name" class="chp-checkbox-label" v-if="$slots.default" @click.stop="toggleCheck">
@@ -14,8 +14,6 @@
 <style lang="scss" src="./chpCheckbox.scss"></style>
 
 <script>
-
-
   export default {
     props: {
       name: String,
@@ -24,13 +22,13 @@
       disabled: Boolean,
       nativeValue: {}
     },
-    
+
     computed: {
-      classes() {
+      classes () {
         return {
           'chp-checked': this.checked,
           'chp-disabled': this.disabled
-        };
+        }
       }
     },
     data () {
@@ -42,24 +40,24 @@
     watch: {
       value (val) {
         this.checked = val.indexOf(this.nativeValue) > -1
-        this.inputValue = val;
+        this.inputValue = val
       }
-    },    
+    },
     methods: {
-      toggleCheck() {
+      toggleCheck () {
         if (!this.disabled) {
-          this.checked =  !this.checked;
-         
-          if(this.checked){
-             this.inputValue.push(this.nativeValue);
-          }else{
-             let index = this.value.indexOf(this.nativeValue);
-             this.inputValue.splice(index,1);
+          this.checked = !this.checked
+
+          if (this.checked) {
+            this.inputValue.push(this.nativeValue)
+          } else {
+            let index = this.value.indexOf(this.nativeValue)
+            this.inputValue.splice(index, 1)
           }
-          this.$emit('input',this.inputValue);
-          this.$emit('change',this.inputValue);
+          this.$emit('input', this.inputValue)
+          this.$emit('change', this.inputValue)
         }
       }
     }
-  };
+  }
 </script>

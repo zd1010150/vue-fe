@@ -26,15 +26,17 @@
 </template>
 
 <script>
-  import autoplay from "./mixins/autoplay"
-  import debounce from "./utils/debounce"
-  import Navigation from "./Navigation.vue"
-  import Pagination from "./Pagination.vue"
-  import Slide from "./Slide.vue"
+  /* eslint-disable one-var */
+
+  import autoplay from './mixins/autoplay'
+  import debounce from './utils/debounce'
+  import Navigation from './Navigation.vue'
+  import Pagination from './Pagination.vue'
+  import Slide from './Slide.vue'
 
   export default {
-    name: "carousel",
-    beforeUpdate() {
+    name: 'carousel',
+    beforeUpdate () {
       this.computeCarouselWidth()
     },
     components: {
@@ -42,7 +44,7 @@
       Pagination,
       Slide
     },
-    data() {
+    data () {
       return {
         browserWidth: null,
         carouselWidth: null,
@@ -63,7 +65,7 @@
        */
       easing: {
         type: String,
-        default: "ease",
+        default: 'ease'
       },
       /**
        * Minimum distance for the swipe to trigger
@@ -71,14 +73,14 @@
        */
       minSwipeDistance: {
         type: Number,
-        default: 8,
+        default: 8
       },
       /**
        * Amount of padding to apply around the label in pixels
        */
       navigationClickTargetSize: {
         type: Number,
-        default: 8,
+        default: 8
       },
       /**
        * Flag to render the navigation component
@@ -86,21 +88,21 @@
        */
       navigationEnabled: {
         type: Boolean,
-        default: false,
+        default: false
       },
       /**
        * Text content of the navigation next button
        */
       navigationNextLabel: {
         type: String,
-        default: "▶"
+        default: '▶'
       },
       /**
        * Text content of the navigation prev button
        */
       navigationPrevLabel: {
         type: String,
-        default: "◀"
+        default: '◀'
       },
       /**
        * The fill color of the active pagination dot
@@ -108,7 +110,7 @@
        */
       paginationActiveColor: {
         type: String,
-        default: "#000000",
+        default: '#000000'
       },
       /**
        * The fill color of pagination dots
@@ -116,14 +118,14 @@
        */
       paginationColor: {
         type: String,
-        default: "#efefef",
+        default: '#efefef'
       },
       /**
        * Flag to render pagination component
        */
       paginationEnabled: {
         type: Boolean,
-        default: true,
+        default: true
       },
       /**
        * The padding inside each pagination dot
@@ -131,7 +133,7 @@
        */
       paginationPadding: {
         type: Number,
-        default: 10,
+        default: 10
       },
       /**
        * The size of each pagination dot
@@ -139,14 +141,14 @@
        */
       paginationSize: {
         type: Number,
-        default: 10,
+        default: 10
       },
       /**
        * Maximum number of slides displayed on each page
        */
       perPage: {
         type: Number,
-        default: 2,
+        default: 2
       },
       /**
        * Configure the number of visible slides with a particular browser width.
@@ -155,14 +157,14 @@
        * ex. [1199, 4] means if (window <= 1199) then show 4 slides per page
        */
       perPageCustom: {
-        type: Array,
+        type: Array
       },
       /**
        * Scroll per page, not per item
        */
       scrollPerPage: {
         type: Boolean,
-        default: false,
+        default: false
       },
       /**
        * Slide transition speed
@@ -170,15 +172,15 @@
        */
       speed: {
         type: Number,
-        default: 500,
+        default: 500
       },
       /**
        * Flag to make the carousel loop around when it reaches the end
        */
       loop: {
         type: Boolean,
-        default: false,
-      },
+        default: false
+      }
     },
     computed: {
       /**
@@ -186,7 +188,7 @@
        * @param  {Number} width Current viewport width in pixels
        * @return {Number}       Number of slides to display
        */
-      breakpointSlidesPerPage() {
+      breakpointSlidesPerPage () {
         if (!this.perPageCustom) {
           return this.perPage
         }
@@ -209,13 +211,13 @@
       /**
        * @return {Boolean} Can the slider move forward?
        */
-      canAdvanceForward() {
+      canAdvanceForward () {
         return this.loop || (this.currentPage < (this.pageCount - 1))
       },
       /**
        * @return {Boolean} Can the slider move backward?
        */
-      canAdvanceBackward() {
+      canAdvanceBackward () {
         return this.loop || (this.currentPage > 0)
       },
       /**
@@ -223,16 +225,16 @@
        * This is constant unless responsive perPage option is set.
        * @return {Number} The number of slides per page to display
        */
-      currentPerPage() {
+      currentPerPage () {
         return (!this.perPageCustom || this.$isServer)
-        ? this.perPage
-        : this.breakpointSlidesPerPage
+          ? this.perPage
+          : this.breakpointSlidesPerPage
       },
       /**
        * The horizontal distance the inner wrapper is offset while navigating.
        * @return {Number} Pixel value of offset to apply
        */
-      currentOffset() {
+      currentOffset () {
         const page = this.currentPage
         const width = this.slideWidth
         const dragged = this.dragOffset
@@ -243,14 +245,14 @@
 
         return (offset + dragged) * -1
       },
-      isHidden() {
+      isHidden () {
         return (this.carouselWidth <= 0)
       },
       /**
        * Calculate the number of pages of slides
        * @return {Number} Number of pages
        */
-      pageCount() {
+      pageCount () {
         const slideCount = this.slideCount
         const perPage = this.currentPerPage
 
@@ -272,21 +274,21 @@
        * Calculate the width of each slide
        * @return {Number} Slide width
        */
-      slideWidth() {
+      slideWidth () {
         const width = this.carouselWidth
         const perPage = this.currentPerPage
 
         return width / perPage
       },
-      transitionStyle() {
+      transitionStyle () {
         return `${this.speed / 1000}s ${this.easing} transform`
-      },
+      }
     },
     methods: {
-       /**
+      /**
        * @return {Number} The index of the next page
        * */
-      getNextPage() {
+      getNextPage () {
         if (this.currentPage < (this.pageCount - 1)) {
           return this.currentPage + 1
         }
@@ -295,7 +297,7 @@
       /**
        * @return {Number} The index of the previous page
        * */
-      getPreviousPage() {
+      getPreviousPage () {
         if (this.currentPage > 0) {
           return this.currentPage - 1
         }
@@ -305,12 +307,11 @@
        * Increase/decrease the current page value
        * @param  {String} direction (Optional) The direction to advance
        */
-      advancePage(direction) {
-        if (direction && direction === "backward" && this.canAdvanceBackward) {
+      advancePage (direction) {
+        if (direction && direction === 'backward' && this.canAdvanceBackward) {
           this.goToPage(this.getPreviousPage())
         } else if (
-          (!direction || (direction && direction !== "backward"))
-          && this.canAdvanceForward
+          (!direction || (direction && direction !== 'backward')) && this.canAdvanceForward
         ) {
           this.goToPage(this.getNextPage())
         }
@@ -319,13 +320,10 @@
        * A mutation observer is used to detect changes to the containing node
        * in order to keep the magnet container in sync with the height its reference node.
        */
-      attachMutationObserver() {
-        const MutationObserver = window.MutationObserver
-         || window.WebKitMutationObserver
-         || window.MozMutationObserver
-
+      attachMutationObserver () {
+        const MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver
         if (MutationObserver) {
-          const config = { attributes: true, data: true }
+          const config = {attributes: true, data: true}
           this.mutationObserver = new MutationObserver(() => {
             this.$nextTick(() => {
               this.computeCarouselWidth()
@@ -339,7 +337,7 @@
       /**
        * Stop listening to mutation changes
        */
-      detachMutationObserver() {
+      detachMutationObserver () {
         if (this.mutationObserver) {
           this.mutationObserver.disconnect()
         }
@@ -348,7 +346,7 @@
        * Get the current browser viewport width
        * @return {Number} Browser"s width in pixels
        */
-      getBrowserWidth() {
+      getBrowserWidth () {
         this.browserWidth = window.innerWidth
         return this.browserWidth
       },
@@ -356,7 +354,7 @@
        * Get the width of the carousel DOM element
        * @return {Number} Width of the carousel in pixels
        */
-      getCarouselWidth() {
+      getCarouselWidth () {
         this.carouselWidth = (this.$el && this.$el.clientWidth) || 0 // Assign globally
         return this.carouselWidth
       },
@@ -364,14 +362,11 @@
        * Filter slot contents to slide instances and return length
        * @return {Number} The number of slides
        */
-      getSlideCount() {
+      getSlideCount () {
         this.slideCount = (
-             this.$slots
-          && this.$slots.default
-          && this.$slots.default.filter(
+          this.$slots && this.$slots.default && this.$slots.default.filter(
             slot =>
-                 slot.tag
-              && slot.tag.indexOf("slide") > -1
+              slot.tag && slot.tag.indexOf('slide') > -1
           ).length
         ) || 0
       },
@@ -380,10 +375,10 @@
        * This function will only apply the change if the value is within the carousel bounds
        * @param  {Number} page The value of the new page number
        */
-      goToPage(page) {
+      goToPage (page) {
         if ((page >= 0) && (page <= this.pageCount)) {
           this.currentPage = page
-          this.$emit("pageChange", this.currentPage)
+          this.$emit('pageChange', this.currentPage)
         }
       },
       /**
@@ -391,17 +386,17 @@
        * @param  {Object} e The event object
        */
       /* istanbul ignore next */
-      handleMousedown(e) {
+      handleMousedown (e) {
         if (!e.touches) { e.preventDefault() }
 
         this.mousedown = true
-        this.dragStartX = ("ontouchstart" in window) ? e.touches[0].clientX : e.clientX
+        this.dragStartX = ('ontouchstart' in window) ? e.touches[0].clientX : e.clientX
       },
       /**
        * Trigger actions when mouse is released
        * @param  {Object} e The event object
        */
-      handleMouseup() {
+      handleMouseup () {
         this.mousedown = false
         this.dragOffset = 0
       },
@@ -409,12 +404,12 @@
        * Trigger actions when mouse is pressed and then moved (mouse drag)
        * @param  {Object} e The event object
        */
-      handleMousemove(e) {
+      handleMousemove (e) {
         if (!this.mousedown) {
           return
         }
 
-        const eventPosX = ("ontouchstart" in window) ? e.touches[0].clientX : e.clientX
+        const eventPosX = ('ontouchstart' in window) ? e.touches[0].clientX : e.clientX
         const deltaX = (this.dragStartX - eventPosX)
 
         this.dragOffset = deltaX
@@ -424,13 +419,13 @@
           this.advancePage()
         } else if (this.dragOffset < -this.minSwipeDistance) {
           this.handleMouseup()
-          this.advancePage("backward")
+          this.advancePage('backward')
         }
       },
       /**
        * Re-compute the width of the carousel and its slides
        */
-      computeCarouselWidth() {
+      computeCarouselWidth () {
         this.getSlideCount()
         this.getBrowserWidth()
         this.getCarouselWidth()
@@ -439,59 +434,59 @@
       /**
        * When the current page exceeds the carousel bounds, reset it to the maximum allowed
        */
-      setCurrentPageInBounds() {
+      setCurrentPageInBounds () {
         if (!this.canAdvanceForward) {
           const setPage = (this.pageCount - 1)
           this.currentPage = (setPage >= 0) ? setPage : 0
         }
-      },
+      }
     },
-    mounted() {
+    mounted () {
       if (!this.$isServer) {
-        window.addEventListener("resize", debounce(this.computeCarouselWidth, 16))
+        window.addEventListener('resize', debounce(this.computeCarouselWidth, 16))
 
-        if ("ontouchstart" in window) {
-          this.$el.addEventListener("touchstart", this.handleMousedown)
-          this.$el.addEventListener("touchend", this.handleMouseup)
-          this.$el.addEventListener("touchmove", this.handleMousemove)
+        if ('ontouchstart' in window) {
+          this.$el.addEventListener('touchstart', this.handleMousedown)
+          this.$el.addEventListener('touchend', this.handleMouseup)
+          this.$el.addEventListener('touchmove', this.handleMousemove)
         } else {
-          this.$el.addEventListener("mousedown", this.handleMousedown)
-          this.$el.addEventListener("mouseup", this.handleMouseup)
-          this.$el.addEventListener("mousemove", this.handleMousemove)
+          this.$el.addEventListener('mousedown', this.handleMousedown)
+          this.$el.addEventListener('mouseup', this.handleMouseup)
+          this.$el.addEventListener('mousemove', this.handleMousemove)
         }
       }
 
       this.attachMutationObserver()
       this.computeCarouselWidth()
     },
-    destroyed() {
+    destroyed () {
       if (!this.$isServer) {
         this.detachMutationObserver()
-        window.removeEventListener("resize", this.getBrowserWidth)
-        if ("ontouchstart" in window) {
-          this.$el.removeEventListener("touchmove", this.handleMousemove)
+        window.removeEventListener('resize', this.getBrowserWidth)
+        if ('ontouchstart' in window) {
+          this.$el.removeEventListener('touchmove', this.handleMousemove)
         } else {
-          this.$el.removeEventListener("mousemove", this.handleMousemove)
+          this.$el.removeEventListener('mousemove', this.handleMousemove)
         }
       }
-    },
+    }
   }
 </script>
 
 <style>
-.VueCarousel {
-  position: relative;
-}
+  .VueCarousel {
+    position: relative;
+  }
 
-.VueCarousel-wrapper {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-}
+  .VueCarousel-wrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
 
-.VueCarousel-inner {
-  display: flex;
-  flex-direction: row;
-  backface-visibility: hidden;
-}
+  .VueCarousel-inner {
+    display: flex;
+    flex-direction: row;
+    backface-visibility: hidden;
+  }
 </style>

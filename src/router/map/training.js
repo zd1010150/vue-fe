@@ -7,21 +7,20 @@ export default [{
   component: onlineTraining,
   meta: {
     requiresAuth: true,
-    pageTitle: "onlineTraining"
+    pageTitle: 'onlineTraining'
   }
 }, {
   path: 'training/books',
   component: BookIndex,
   meta: {
     requiresAuth: true,
-    pageTitle:"book"
+    pageTitle: 'book'
   }
 }, {
   path: 'training/videos',
   component: VideoIndex,
   meta: {
     requiresAuth: true,
-    pageTitle: "video"
-  },
-}];
-
+    pageTitle: 'video'
+  }
+}]

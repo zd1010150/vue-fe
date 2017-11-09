@@ -1,17 +1,16 @@
-function transitionEndEventName() {
-  const el = document.createElement('span');
-  const transitions = {
+function transitionEndEventName () {
+  const el = document.createElement('span'), transitions = {
     transition: 'transitionend',
     OTransition: 'oTransitionEnd',
     MozTransition: 'transitionend',
     WebkitTransition: 'webkitTransitionEnd'
-  };
+  }
 
   for (let transition in transitions) {
     if (el.style[transition] !== undefined) {
-      return transitions[transition];
+      return transitions[transition]
     }
   }
 }
 
-export default transitionEndEventName();
+export default transitionEndEventName()

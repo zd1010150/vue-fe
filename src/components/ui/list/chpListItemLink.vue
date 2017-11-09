@@ -1,10 +1,11 @@
 <template>
   <li class="chp-list-item" :class="classes">
-    <a class="chp-list-item-container chp-button" :href="href" :target="target" @click="$emit('click', $event)" :disabled="disabled">
-      <slot />
+    <a class="chp-list-item-container chp-button" :href="href" :target="target" @click="$emit('click', $event)"
+       :disabled="disabled">
+      <slot/>
     </a>
 
-    <chp-ink-ripple :disabled="disabled" />
+    <chp-ink-ripple :disabled="disabled"/>
   </li>
 </template>
 
@@ -17,11 +18,11 @@
       disabled: Boolean
     },
     computed: {
-      classes() {
+      classes () {
         return {
           'chp-disabled': this.disabled
-        };
+        }
       }
     }
-  };
+  }
 </script>

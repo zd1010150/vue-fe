@@ -1,6 +1,6 @@
 <template>
   <chp-dialog class="chp-dialog-alert" ref="dialog" @close="fireCloseEvent()" :scrollable="scrollable">
-   
+
     <template v-if="chpTitle" slot="title">
       {{ chpTitle }}
     </template>
@@ -30,34 +30,34 @@
       scrollable: {
         type: Boolean,
         default: false
-      },
+      }
     },
     data: () => ({
       debounce: false
     }),
     methods: {
-      fireCloseEvent() {
+      fireCloseEvent () {
         if (!this.debounce) {
-          this.$emit('close');
+          this.$emit('close')
         }
       },
-      open() {
-        this.$emit('open');
-        this.debounce = false;
-        this.$refs.dialog.open();
+      open () {
+        this.$emit('open')
+        this.debounce = false
+        this.$refs.dialog.open()
       },
-      close() {
-        this.fireCloseEvent();
-        this.debounce = true;
-        this.$refs.dialog.close();
+      close () {
+        this.fireCloseEvent()
+        this.debounce = true
+        this.$refs.dialog.close()
       }
     },
-    mounted() {
-      if ( (this.chpContent && this.chpContent.length >= 0) || (this.chpContentHtml && this.chpContentHtml.length >= 0)) {
-        
-      }else{
+    mounted () {
+      if ((this.chpContent && this.chpContent.length >= 0) || (this.chpContentHtml && this.chpContentHtml.length >= 0)) {
+
+      } else {
         throw new Error('Missing chp-content or chp-content-html attributes')
       }
     }
-  };
+  }
 </script>

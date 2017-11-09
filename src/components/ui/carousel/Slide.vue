@@ -6,10 +6,10 @@
 
 <script>
   export default {
-    name: "slide",
-    data() {
+    name: 'slide',
+    data () {
       return {
-        width: null,
+        width: null
       }
     }
   }

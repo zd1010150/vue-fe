@@ -11,8 +11,7 @@
 </template>
 
 <script>
-
-  import getClosestVueParent from '../core/utils/getClosestVueParent';
+  import getClosestVueParent from '../core/utils/getClosestVueParent'
 
   export default {
     name: 'chp-table-alternate-header',
@@ -22,30 +21,30 @@
         default: 'selected'
       }
     },
-    data() {
+    data () {
       return {
         classes: {},
         tableInstance: {}
-      };
-    },
-    computed: {
-      numberOfSelected() {
-        return this.tableInstance.numberOfSelected || 0;
       }
     },
-    mounted() {
-      this.parentCard = getClosestVueParent(this.$parent, 'chp-table-card');
+    computed: {
+      numberOfSelected () {
+        return this.tableInstance.numberOfSelected || 0
+      }
+    },
+    mounted () {
+      this.parentCard = getClosestVueParent(this.$parent, 'chp-table-card')
 
       this.$nextTick(() => {
-        this.tableInstance = this.parentCard.tableInstance;
+        this.tableInstance = this.parentCard.tableInstance
 
         this.$watch('tableInstance.numberOfSelected', () => {
-          this.$refs.counter.textContent = this.tableInstance.numberOfSelected;
+          this.$refs.counter.textContent = this.tableInstance.numberOfSelected
           this.classes = {
             'chp-active': this.tableInstance.numberOfSelected > 0
-          };
-        });
-      });
+          }
+        })
+      })
     }
-  };
+  }
 </script>

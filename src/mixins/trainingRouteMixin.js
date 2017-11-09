@@ -4,13 +4,13 @@
 import Store from 'store'
 import { ZH_LANGUAGE } from 'src/config/app.config.js'
 
-export default{
-	beforeRouteEnter(to,from,next){
-		let language = Store.state.language 
-		if(language == ZH_LANGUAGE ){
-			next()
-		}else{
-			next({path: "/403"})
-		}
-	}
+export default {
+  beforeRouteEnter (to, from, next) {
+    let language = Store.state.language
+    if (language === ZH_LANGUAGE) {
+      next()
+    } else {
+      next({path: '/403'})
+    }
+  }
 }

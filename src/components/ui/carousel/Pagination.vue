@@ -26,12 +26,12 @@
 
 <script>
   export default {
-    name: "pagination",
-    data() {
+    name: 'pagination',
+    data () {
       return {
-        parentContainer: this.$parent,
+        parentContainer: this.$parent
       }
-    },
+    }
   }
 </script>
 
