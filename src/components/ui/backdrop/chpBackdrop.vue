@@ -6,20 +6,20 @@
 
 <script>
   export default {
-  	data(){
-  		return{
-  			oldOverflow:""
-  		}
-  	},
-    methods: {
-      close() {
-      	// window.document.body.style.over = this.oldOverflow
-        this.$emit('close');
+    data () {
+      return {
+        oldOverflow: ''
       }
     },
-    mounted(){
-    	// this.oldOverflow = window.document.body.style.overflow
-    	// window.document.body.style.overflow = "hidden"
+    methods: {
+      close () {
+        // window.document.body.style.over = this.oldOverflow
+        this.$emit('close')
+      }
+    },
+    mounted () {
+      // this.oldOverflow = window.document.body.style.overflow
+      // window.document.body.style.overflow = "hidden"
     }
-  };
+  }
 </script>

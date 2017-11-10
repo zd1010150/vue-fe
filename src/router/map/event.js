@@ -1,11 +1,10 @@
 import event from 'views/event/index'
 
-
 export default [{
-  path: "/event",
+  path: '/event',
   component: event,
   meta: {
     requiresAuth: true,
-    pageTitle: "event"
+    pageTitle: 'event'
   }
-}];
+}]

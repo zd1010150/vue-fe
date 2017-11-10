@@ -7,82 +7,84 @@
   </div>
 </template>
 <script>
-  export default{
-      props:{
-          isActive :{
-              type:Boolean,
-              default:false
-          },
-          value: {
-              type:String,
-              required:true
-          },
-          bgUrl:{
-              type:String
-          },
-          title:{
-              type:String
-          },
-          type:{
-            typs:String
-          }
+  export default {
+    props: {
+      isActive: {
+        type: Boolean,
+        default: false
       },
-      methods:{
-        chosePaymentMethods(){
-          this.$emit('chosePaymentMethod',this.value,this.type)
-        }
+      value: {
+        type: String,
+        required: true
       },
-      computed:{
-        classes(){
-          return this.isActive ? "mu-paper mu-paper-circle mu-paper-round mu-paper-3" : ""
-        }
+      bgUrl: {
+        type: String
+      },
+      title: {
+        type: String
+      },
+      type: {
+        typs: String
       }
+    },
+    methods: {
+      chosePaymentMethods () {
+        this.$emit('chosePaymentMethod', this.value, this.type)
+      }
+    },
+    computed: {
+      classes () {
+        return this.isActive ? 'mu-paper mu-paper-circle mu-paper-round mu-paper-3' : ''
+      }
+    }
   }
 </script>
 <style lang="less" scoped>
   @import "~assets/less/variable.less";
-  .method{
-    display:table;
-    width:80%;
-    &.active{
-      .method-bg{
+
+  .method {
+    display: table;
+    width: 80%;
+    &.active {
+      .method-bg {
         background-color: @light-component-accent-bg-color;
       }
     }
-      .method-bg{
-        width:70px;
-        height:70px;
-        border-radius: 50%;
-        position:relative;
-        background-color:@light-component-bg-color;
-        display: table-cell;
+    .method-bg {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      position: relative;
+      background-color: @light-component-bg-color;
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      img {
         vertical-align: middle;
-        text-align: center;
-      img{
-        vertical-align: middle;
-        width:50px;
-        
+        width: 50px;
+
       }
     }
-    .method-title{
+    .method-title {
       display: table-cell;
       vertical-align: middle;
       text-align: left;
       padding-left: 10px;
     }
   }
-  html.dark{
-    h5{
-      color:inherit;
+
+  html.dark {
+    h5 {
+      color: inherit;
     }
-    .method{
-      .method-bg{
+    .method {
+      .method-bg {
         background-color: @dark-component-border-color;
       }
-      &.active{
-        .method-bg{
+      &.active {
+        .method-bg {
           background-color: #ffffff;
-         
+
         }
       }
     }

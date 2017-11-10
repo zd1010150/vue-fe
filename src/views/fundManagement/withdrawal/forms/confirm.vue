@@ -3,15 +3,15 @@
 	<div class="row padding-20">
 		<p class="terms" v-html="terms"></p>
     <div class="form-group" :class="errorClass('terms')">
-      	<chp-checkbox  name="terms" 
-                          nativeValue="checkedIterms" 
-                          v-model="checkedIterms" 
-                          data-vv-value-path="checkedIterms" 
-                          v-validate="'required'" 
-                          data-vv-name="terms" 
-                          data-vv-validate-on="input" 
+      	<chp-checkbox  name="terms"
+                          nativeValue="checkedIterms"
+                          v-model="checkedIterms"
+                          data-vv-value-path="checkedIterms"
+                          v-validate="'required'"
+                          data-vv-name="terms"
+                          data-vv-validate-on="input"
                           type="checkbox">
-           {{ $t('withdrawal.note')}} 
+           {{ $t('withdrawal.note')}}
         </chp-checkbox>
 	      <br>
 	      <span slot="required" class="error" v-if="errors.has('terms:required')">{{errors.first('terms:required')}}</span>
@@ -20,44 +20,44 @@
 </template>
 
 <script>
-import configService from 'services/configService' 
+import configService from 'services/configService'
 import validateMixin from 'mixins/validatemix'
 
 export default {
-   mixins:[validateMixin],
-   data(){
-   	return {
-	   	terms:null,
-	   	configKey:"",
-	   	checkedIterms:[]
-   	}
-   },
-   watch :{
-   	"$store.state.language"(val,oldVal){
-   		this.fetchTerms(val)
-   	}
-   },
-   created(){
-   		this.fetchTerms(this.$store.state.language)
-   },
-   methods:{
-   	async fetchTerms(val){
-   		this.$emit("loading",true)
-   		let key =  "withdraw_terms_"+(val == "en" ?"en":"cn"),
-          {success,data} = await configService.getConfigByKey({fields:[key]})
-      if(success && data){
-			  this.terms = data[key]
-      }
-   		this.$emit("loading",false)
-   	},
-   	async validate (){
-   		return await this.$validator.validateAll()
-   	},
-    init(){
-      this.checkedIterms.splice(0,this.checkedIterms.length)
+  mixins: [validateMixin],
+  data () {
+    return {
+      terms: null,
+      configKey: '',
+      checkedIterms: []
     }
-   }
+  },
+  watch: {
+    '$store.state.language' (val, oldVal) {
+      this.fetchTerms(val)
+    }
+  },
+  created () {
+    this.fetchTerms(this.$store.state.language)
+  },
+  methods: {
+    async fetchTerms (val) {
+      this.$emit('loading', true)
+      let key = 'withdraw_terms_' + (val === 'en' ? 'en' : 'cn'),
+        {success, data} = await configService.getConfigByKey({fields: [key]})
+      if (success && data) {
+        this.terms = data[key]
+      }
+      this.$emit('loading', false)
+    },
+    async validate () {
+      return this.$validator.validateAll()
+    },
+    init () {
+      this.checkedIterms.splice(0, this.checkedIterms.length)
+    }
   }
+}
 </script>
 
 

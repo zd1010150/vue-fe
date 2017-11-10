@@ -1,8 +1,8 @@
-import "classlist-polyfill"
+/* eslint-disable import/no-webpack-loader-syntax */
+import 'classlist-polyfill'
 import dark from '!!raw-loader!less-loader!components/ui/museUI/themeDark.less'
 import light from '!!raw-loader!less-loader!components/ui/museUI/themeLight.less'
 
-import echarts from 'echarts'
 let themes = {
     light, dark
   },
@@ -18,9 +18,9 @@ let themes = {
   }
 
 export default (theme) => {
-  let $html = document.querySelector("html");
-  $html.classList.toggle("dark",theme == "dark");
-  $html.classList.toggle( "sidebar-light",theme != "dark");
+  let $html = document.querySelector('html')
+  $html.classList.toggle('dark', theme === 'dark')
+  $html.classList.toggle('sidebar-light', theme !== 'dark')
   const styleEl = getThemeStyle()
   styleEl.innerHTML = themes[theme] || ''
 }

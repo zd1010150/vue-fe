@@ -1,7 +1,7 @@
 <template>
   <li class="chp-list-item" :class="classes" :disabled="disabled">
-    <slot />
-    <chp-ink-ripple :disabled="disabled" />
+    <slot/>
+    <chp-ink-ripple :disabled="disabled"/>
   </li>
 </template>
 
@@ -12,11 +12,11 @@
       disabled: Boolean
     },
     computed: {
-      classes() {
+      classes () {
         return {
           'chp-disabled': this.disabled
-        };
+        }
       }
     }
-  };
+  }
 </script>

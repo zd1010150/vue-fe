@@ -1,10 +1,10 @@
 <template>
   <chp-dialog class="chp-dialog-confirm" ref="dialog" @close="fireCloseEvent('cancel')" :scrollable="scrollable">
-     <template v-if="chpTitle" slot="title">
+    <template v-if="chpTitle" slot="title">
       {{ chpTitle }}
     </template>
 
-    <template v-if="chpContentHtml" >
+    <template v-if="chpContentHtml">
       <div v-html="chpContentHtml" slot="body"></div>
     </template>
     <template v-else slot="body">{{ chpContent }}</template>
@@ -34,32 +34,32 @@
       scrollable: {
         type: Boolean,
         default: false
-      },
+      }
     },
     data: () => ({
       debounce: false
     }),
     methods: {
-      fireCloseEvent(type) {
+      fireCloseEvent (type) {
         if (!this.debounce) {
-          this.$emit('close', type);
+          this.$emit('close', type)
         }
       },
-      open() {
-        this.$emit('open');
-        this.debounce = false;
-        this.$refs.dialog.open();
+      open () {
+        this.$emit('open')
+        this.debounce = false
+        this.$refs.dialog.open()
       },
-      close(type) {
-        this.fireCloseEvent(type);
-        this.debounce = true;
-        this.$refs.dialog.close();
+      close (type) {
+        this.fireCloseEvent(type)
+        this.debounce = true
+        this.$refs.dialog.close()
       }
     },
-    mounted() {
+    mounted () {
       if (!this.chpContent && !this.chpContentHtml) {
-        throw new Error('Missing chp-content or chp-content-html attributes');
+        throw new Error('Missing chp-content or chp-content-html attributes')
       }
     }
-  };
+  }
 </script>

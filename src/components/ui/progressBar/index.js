@@ -1,7 +1,5 @@
-import progressBar from './progressBar.vue';
+import progressBar from './progressBar.vue'
 
-
-export default function install(Vue) {
-  Vue.component('chp-progress-bar', progressBar);
-
+export default function install (Vue) {
+  Vue.component('chp-progress-bar', progressBar)
 }

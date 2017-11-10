@@ -1,7 +1,6 @@
   <i18n src="../../i18n.yaml"></i18n>
 <template lang="html">
-
-      <form slot="body" class="form-horizontal form-bordered " method="POST"  target="_blank" ref="accountForm">
+    <form slot="body" class="form-horizontal form-bordered " method="POST"  target="_blank" ref="accountForm">
        <div class="form-group" :class="errorClass('MT4')">
           <label class="control-label col-md-3">MT4 | {{ $t('withdrawal.balance') }}
             <span class="required" aria-required="true">*</span>
@@ -76,8 +75,7 @@
           </div>
         </div>
       </form>
-
-</template>
+  </template>
 
 <script>
 
@@ -86,173 +84,171 @@ import fundsService from 'services/fundsService'
 import { Validator } from 'vee-validate'
 import { SET_ASYNC_LOADING } from 'store/mutation-types'
 import { FIXED_WITHDRAWAL_UNIT } from 'src/config/app.config.js'
-const CREDIT_CARD = "creditCard"
+const CREDIT_CARD = 'creditCard'
 
 export default {
-  mixins:[validateMixin],
-  data(){
-      return {
-        MT4 : [],
-        defaultMT4:0,
-        methodsAndAccounts: {},
-        nullHintText:"",
-        fee:null,
-        validator:null,
-        creditCardRange:{
-          max: "",
-          min : ""
-        },
-        creditCard : CREDIT_CARD,
-        model : {
-          mt4_id : "",
-          order_amount: "",
-          bank_code:"",
-          method:""
-        },
-        avaliableMin: 0 ,
-        avaliableMax:0,
-        disbleInputAmount: false,
-        FIXED_WITHDRAWAL_UNIT : FIXED_WITHDRAWAL_UNIT
-      }
-    },
-    watch :{
-      "$store.state.language" : function(val,oldVal){
-        if(val == oldVal){ return;}
-        this.fetchMethodsAccounts();
+  mixins: [validateMixin],
+  data () {
+    return {
+      MT4: [],
+      defaultMT4: 0,
+      methodsAndAccounts: {},
+      nullHintText: '',
+      fee: null,
+      validator: null,
+      creditCardRange: {
+        max: '',
+        min: ''
       },
-      methodsAndAccounts:function(data,oldVal){
-        this.$set(this.model,"method",Object.keys(data)[0])
+      creditCard: CREDIT_CARD,
+      model: {
+        mt4_id: '',
+        order_amount: '',
+        bank_code: '',
+        method: ''
       },
-      'model.method':async function(method){
-          if(this.methodsAndAccounts[method].accounts.length<1){
-            this.$set(this.model,"bank_code","")
-          }else{
-            this.$set(this.model,"bank_code",this.methodsAndAccounts[method].accounts[0].accountId)
-          }
-          this.fee = this.methodsAndAccounts[method].fees
-          await this.fetchCreditCardRange()
-          let {avaliableMin,avaliableMax} = this.attachWithdrawPayValidator()
-          this.avaliableMin = avaliableMin
-          this.avaliableMax = avaliableMax
-          if(method != CREDIT_CARD){
-            this.toggleInputAmount(false)
-          }
-      },
-      'model.mt4_id':function(){
-        this.fetchCreditCardRange()
-      },
-      'creditCardRange':function(val){
-        if(val.min > val.max){
-          this.toggleInputAmount(true)
-          this.$emit("disableSubmit",true)
-        }else{
-          this.toggleInputAmount(false)
-          this.$emit("disableSubmit",false)
-          this.avaliableMin = val.min
-          this.avaliableMax = val.max
-        }
-        this.attachWithdrawPayValidator()
-      }
-   },
-    methods:{
-      toggleInputAmount(disabled){
-        this.disbleInputAmount = disabled
-        if(disabled){
-          this.$set(this.model,"order_amount","")
-        }
-      },
-      attachWithdrawPayValidator(){
-        let method = this.model.method,
-            avaliableMin,avaliableMax
-        this.validator.detach('withdraw_pay')
-        if(method == CREDIT_CARD){
-          avaliableMin = this.creditCardRange.min
-          avaliableMax = this.creditCardRange.max
-          this.validator.attach('withdraw_pay','required|positiveFloatMoney|between:'+this.creditCardRange.min+','+this.creditCardRange.max+"")
-        }else{
-          avaliableMin = this.methodsAndAccounts[method].minWithdraw
-          avaliableMax = this.methodsAndAccounts[method].maxWithdraw
-          this.validator.attach('withdraw_pay','required|positiveFloatMoney|between:'+this.methodsAndAccounts[method].minWithdraw+","+this.methodsAndAccounts[method].maxWithdraw)
-          this.$emit("disableSubmit",false)
-        }
-        return {avaliableMin,avaliableMax}
-      },
-      async fetchCreditCardRange(){
-        if(this.model.method == CREDIT_CARD){
-          this.$store.commit(SET_ASYNC_LOADING,true)
-          let {success,data} = await fundsService.getCreditcardRange(this.model.mt4_id)
-          this.$store.commit(SET_ASYNC_LOADING,false)
-          if(success){
-            let {min,max} = data
-            this.creditCardRange = Object.assign({},this.creditCardRange,{min:Number(min),max:Number(max)})
-          }
-        }
-      },
-      async fetchMethodsAccounts(){
-        let {success,data} = await fundsService.getWithdrawMethod(this.$store.state.language)
-        if(success && data){
-          this.methodsAndAccounts = data
-        }
-      },
-      fetchMT4(){
-        this.MT4 = this.$store.state.mt4Accounts.map((mt4)=>{
-          return {
-            id:mt4.mt4_id,
-            text:"#"+mt4.mt4_id+" | "+ mt4.account_type +" | "+mt4.balance,
-            baseCurrency:mt4.base_currency
-          }
-        })
-        this.$set(this.model,"mt4_id",this.defaultMT4 ? Number(this.defaultMT4) : this.MT4[0].id)
-      },
-      async validate(){
-        let validateResult = await this.validator.validateAll({MT4:this.model.mt4_id,withdrawMethod:this.model.method})
-            validateResult = validateResult && await this.validateAmount(this.model.order_amount) && await this.validateBankCode(this.model.bank_code)
-        if(validateResult){
-            this.$emit("submit",this.model)
-        }
-          return validateResult
-      },
-      async amountInput(){
-        return await this.validateAmount(this.model.order_amount)
-      },
-      async validateAmount(val){
-        let result = await this.validator.validate('withdraw_pay',val)
-        return result
-      },
-      async validateBankCode(val){
-        return await this.validator.validate('bank_code',val)
-      },
-      init(){
-        this.$set(this.model,"order_amount","")
-      },
-      initValidator(){
-        this.validator = new Validator()
-        this.validator.attach('bank_code','required')
-        this.validator.attach('withdraw_pay','required|positiveFloatMoney')
-        this.validator.attach('MT4','required')
-        this.validator.attach('withdrawMethod','required')
-      }
-    },
-    computed:{
-      accounts:function(){
-        return this.model.method && this.methodsAndAccounts && this.methodsAndAccounts[this.model.method] && this.methodsAndAccounts[this.model.method].accounts
-      },
-      baseCurrency:function(){
-        let currency = this.MT4.filter(mt4 => {
-          return mt4.id == this.model.mt4_id
-        })
-        return currency && currency[0] && currency[0].baseCurrency
-      }
-    },
-    created(){
-      this.$emit("loading",true)
-      this.initValidator()
-      this.defaultMT4 = this.$route.query && this.$route.query.mt4Id ? this.$route.query.mt4Id+"" : ""
-      this.fetchMT4()
-      let self = this
-      Promise.all([this.fetchMethodsAccounts(),this.fetchCreditCardRange()]).then(function(){
-            self.$emit("loading",false)
-      })
+      avaliableMin: 0,
+      avaliableMax: 0,
+      disbleInputAmount: false,
+      FIXED_WITHDRAWAL_UNIT: FIXED_WITHDRAWAL_UNIT
     }
+  },
+  watch: {
+    '$store.state.language': function (val, oldVal) {
+      this.fetchMethodsAccounts()
+    },
+    methodsAndAccounts: function (data, oldVal) {
+      this.$set(this.model, 'method', Object.keys(data)[0])
+    },
+    'model.method': async function (method) {
+      if (this.methodsAndAccounts[method].accounts.length < 1) {
+        this.$set(this.model, 'bank_code', '')
+      } else {
+        this.$set(this.model, 'bank_code', this.methodsAndAccounts[method].accounts[0].accountId)
+      }
+      this.fee = this.methodsAndAccounts[method].fees
+      await this.fetchCreditCardRange()
+      let {avaliableMin, avaliableMax} = this.attachWithdrawPayValidator()
+      this.avaliableMin = avaliableMin
+      this.avaliableMax = avaliableMax
+      if (method !== CREDIT_CARD) {
+        this.toggleInputAmount(false)
+      }
+    },
+    'model.mt4_id': function () {
+      this.fetchCreditCardRange()
+    },
+    'creditCardRange': function (val) {
+      if (val.min > val.max) {
+        this.toggleInputAmount(true)
+        this.$emit('disableSubmit', true)
+      } else {
+        this.toggleInputAmount(false)
+        this.$emit('disableSubmit', false)
+        this.avaliableMin = val.min
+        this.avaliableMax = val.max
+      }
+      this.attachWithdrawPayValidator()
+    }
+  },
+  methods: {
+    toggleInputAmount (disabled) {
+      this.disbleInputAmount = disabled
+      if (disabled) {
+        this.$set(this.model, 'order_amount', '')
+      }
+    },
+    attachWithdrawPayValidator () {
+      let method = this.model.method, avaliableMin, avaliableMax
+      this.validator.detach('withdraw_pay')
+      if (method === CREDIT_CARD) {
+        avaliableMin = this.creditCardRange.min
+        avaliableMax = this.creditCardRange.max
+        this.validator.attach('withdraw_pay', 'required|positiveFloatMoney|between:' + this.creditCardRange.min + ',' + this.creditCardRange.max + '')
+      } else {
+        avaliableMin = this.methodsAndAccounts[method].minWithdraw
+        avaliableMax = this.methodsAndAccounts[method].maxWithdraw
+        this.validator.attach('withdraw_pay', 'required|positiveFloatMoney|between:' + this.methodsAndAccounts[method].minWithdraw + ',' + this.methodsAndAccounts[method].maxWithdraw)
+        this.$emit('disableSubmit', false)
+      }
+      return {avaliableMin, avaliableMax}
+    },
+    async fetchCreditCardRange () {
+      if (this.model.method === CREDIT_CARD) {
+        this.$store.commit(SET_ASYNC_LOADING, true)
+        let {success, data} = await fundsService.getCreditcardRange(this.model.mt4_id)
+        this.$store.commit(SET_ASYNC_LOADING, false)
+        if (success) {
+          let {min, max} = data
+          this.creditCardRange = Object.assign({}, this.creditCardRange, {min: Number(min), max: Number(max)})
+        }
+      }
+    },
+    async fetchMethodsAccounts () {
+      let {success, data} = await fundsService.getWithdrawMethod(this.$store.state.language)
+      if (success && data) {
+        this.methodsAndAccounts = data
+      }
+    },
+    fetchMT4 () {
+      this.MT4 = this.$store.state.mt4Accounts.map((mt4) => {
+        return {
+          id: mt4.mt4_id,
+          text: '#' + mt4.mt4_id + ' | ' + mt4.account_type + ' | ' + mt4.balance,
+          baseCurrency: mt4.base_currency
+        }
+      })
+      this.$set(this.model, 'mt4_id', this.defaultMT4 ? Number(this.defaultMT4) : this.MT4[0].id)
+    },
+    async validate () {
+      let validateResult = await this.validator.validateAll({MT4: this.model.mt4_id, withdrawMethod: this.model.method})
+      validateResult = validateResult && await this.validateAmount(this.model.order_amount) && await this.validateBankCode(this.model.bank_code)
+      if (validateResult) {
+        this.$emit('submit', this.model)
+      }
+      return validateResult
+    },
+    async amountInput () {
+      return this.validateAmount(this.model.order_amount)
+    },
+    async validateAmount (val) {
+      let result = await this.validator.validate('withdraw_pay', val)
+      return result
+    },
+    async validateBankCode (val) {
+      return this.validator.validate('bank_code', val)
+    },
+    init () {
+      this.$set(this.model, 'order_amount', '')
+    },
+    initValidator () {
+      this.validator = new Validator()
+      this.validator.attach('bank_code', 'required')
+      this.validator.attach('withdraw_pay', 'required|positiveFloatMoney')
+      this.validator.attach('MT4', 'required')
+      this.validator.attach('withdrawMethod', 'required')
+    }
+  },
+  computed: {
+    accounts: function () {
+      return this.model.method && this.methodsAndAccounts && this.methodsAndAccounts[this.model.method] && this.methodsAndAccounts[this.model.method].accounts
+    },
+    baseCurrency: function () {
+      let currency = this.MT4.filter(mt4 => {
+        return mt4.id === this.model.mt4_id
+      })
+      return currency && currency[0] && currency[0].baseCurrency
+    }
+  },
+  created () {
+    this.$emit('loading', true)
+    this.initValidator()
+    this.defaultMT4 = this.$route.query && this.$route.query.mt4Id ? this.$route.query.mt4Id + '' : ''
+    this.fetchMT4()
+    let self = this
+    Promise.all([this.fetchMethodsAccounts(), this.fetchCreditCardRange()]).then(function () {
+      self.$emit('loading', false)
+    })
   }
+}
 </script>

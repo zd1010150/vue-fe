@@ -9,13 +9,13 @@
         <chp-tooltip v-if="chpTooltip">{{ chpTooltip }}</chp-tooltip>
       </div>
 
-      <chp-ink-ripple :chp-disabled="!chpSortBy" />
+      <chp-ink-ripple :chp-disabled="!chpSortBy"/>
     </div>
   </th>
 </template>
 
 <script>
-  import getClosestVueParent from '../core/utils/getClosestVueParent';
+  import getClosestVueParent from '../core/utils/getClosestVueParent'
 
   export default {
     name: 'chp-table-head',
@@ -24,19 +24,19 @@
       chpSortBy: String,
       chpTooltip: String
     },
-    data() {
+    data () {
       return {
         sortType: null,
         sorted: false,
         parentTable: {}
-      };
+      }
     },
     computed: {
-      classes() {
-        const matchSort = this.hasMatchSort();
+      classes () {
+        const matchSort = this.hasMatchSort()
 
         if (!matchSort) {
-          this.sorted = false;
+          this.sorted = false
         }
 
         return {
@@ -44,40 +44,40 @@
           'chp-sortable': this.chpSortBy,
           'chp-sorted': matchSort && this.sorted,
           'chp-sorted-descending': matchSort && this.sortType === 'desc'
-        };
+        }
       }
     },
     methods: {
-      hasMatchSort() {
-        return this.parentTable.sortBy === this.chpSortBy;
+      hasMatchSort () {
+        return this.parentTable.sortBy === this.chpSortBy
       },
-      changeSort() {
+      changeSort () {
         if (this.chpSortBy) {
           if (this.sortType === 'asc' && this.sorted) {
-            this.sortType = 'desc';
+            this.sortType = 'desc'
           } else {
-            this.sortType = 'asc';
+            this.sortType = 'asc'
           }
 
-          this.sorted = true;
+          this.sorted = true
 
-          this.parentTable.sortType = this.sortType;
-          this.parentTable.emitSort(this.chpSortBy);
+          this.parentTable.sortType = this.sortType
+          this.parentTable.emitSort(this.chpSortBy)
         }
       },
-      initSort() {
+      initSort () {
         if (this.hasMatchSort()) {
-          this.sorted = true;
-          this.sortType = this.parentTable.sortType || 'asc';
+          this.sorted = true
+          this.sortType = this.parentTable.sortType || 'asc'
         }
       }
     },
-    mounted() {
-      this.parentTable = getClosestVueParent(this.$parent, 'chp-table');
-      this.initSort();
+    mounted () {
+      this.parentTable = getClosestVueParent(this.$parent, 'chp-table')
+      this.initSort()
       this.parentTable.$on('sortInput', () => {
-        this.initSort();
-      });
+        this.initSort()
+      })
     }
-  };
+  }
 </script>

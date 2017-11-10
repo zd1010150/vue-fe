@@ -1,16 +1,15 @@
 export default {
-beijingZoneTime: function(value) {
+  beijingZoneTime: function (value) {
     let date = new Date(value + (1000 * 60 * 60 * 8)),
-      year, month, day, hour, minute, second
+      year, month, day, hour, minute
     year = date.getUTCFullYear()
     month = date.getUTCMonth() + 1
     day = date.getUTCDate()
     hour = date.getUTCHours()
     minute = date.getUTCMinutes()
-    second = date.getUTCSeconds()
     return (day < 10 ? ('0' + day) : day) + '/' + (month < 10 ? '0' + (month) : month) + '/' + year + ' ' + (hour < 10 ? ('0' + hour) : hour) + ':' + (minute < 10 ? ('0' + minute) : minute)
   },
-  beijingDate: function(value) {
+  beijingDate: function (value) {
     let date = new Date(value + (1000 * 60 * 60 * 8)),
       year,
       month,
@@ -20,31 +19,26 @@ beijingZoneTime: function(value) {
     day = date.getUTCDate()
     return (day < 10 ? ('0' + day) : day) + '/' + (month < 10 ? '0' + (month) : month) + '/' + year
   },
-  beijingTime: function(value) {
-    let date = new Date(value + (1000 * 60 * 60 * 8)),
-      hour,
-      minute,
-      second
+  beijingTime: function (value) {
+    let date = new Date(value + (1000 * 60 * 60 * 8)), hour, minute
     hour = date.getUTCHours()
     minute = date.getUTCMinutes()
-    second = date.getUTCSeconds()
     return (hour < 10 ? ('0' + hour) : hour) + ':' + (minute < 10 ? ('0' + minute) : minute)
   },
   /**
-   * yyyy-mm-dd to dd/mm/yyyy 
+   * yyyy-mm-dd to dd/mm/yyyy
    */
-  reverseDate: function(val) {
-    if (!val) return ""
+  reverseDate: function (val) {
+    if (!val) return ''
     try {
-      return val.split("-").reverse().join("/")
+      return val.split('-').reverse().join('/')
     } catch (e) {
-      return ""
+      return ''
     }
   },
   pascalCase: function (value) {
-        return value.replace (/(?:^\w|[A-Z]|\b\w)/g, function (letter, index) {
-            return letter.toUpperCase();
-        })
-    }
+    return value.replace(/(?:^\w|[A-Z]|\b\w)/g, function (letter, index) {
+      return letter.toUpperCase()
+    })
+  }
 }
-
