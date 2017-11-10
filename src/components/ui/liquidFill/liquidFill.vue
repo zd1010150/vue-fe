@@ -60,7 +60,9 @@
     methods: {
       draw () {
         this.remove()
-        loadLiquidFillGauge(this.elementId, this.innerPercentage, Object.assign(this.defaultConfig, this.innerConfig))
+        if (document.getElementById(this.elementId)) {
+          loadLiquidFillGauge(this.elementId, this.innerPercentage, Object.assign(this.defaultConfig, this.innerConfig))
+        }
       },
       remove () {
         let $parent = document.getElementById(this.elementId)
