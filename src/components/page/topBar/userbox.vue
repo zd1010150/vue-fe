@@ -15,16 +15,24 @@
       <ul class="list-unstyled">
         <li class="divider"></li>
         <li>
-          <a role="menuitem" tabindex="-1" href="#/setting">
+          <!--<a role="menuitem" tabindex="-1" href="#/setting">-->
+            <!--<i class="fa fa-user"></i>-->
+            <!--{{ $t('userbox.myProfile') }}-->
+          <!--</a>-->
+          <router-link to="setting">
             <i class="fa fa-user"></i>
             {{ $t('userbox.myProfile') }}
-          </a>
+          </router-link>
         </li>
         <li>
-          <a role="menuitem" tabindex="-1" href="#/changePassword">
+          <!--<a role="menuitem" tabindex="-1" href="#/changePassword">-->
+            <!--<i class="fa fa-lock"></i>-->
+            <!--{{ $t('userbox.modifyPassword') }}-->
+          <!--</a>-->
+          <router-link to="changePassword">
             <i class="fa fa-lock"></i>
             {{ $t('userbox.modifyPassword') }}
-          </a>
+          </router-link>
         </li>
         <li>
           <a href="javascript:void(0)" @click="changeTheme('dark')" class="color-item">
