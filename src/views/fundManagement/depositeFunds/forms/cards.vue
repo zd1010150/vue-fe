@@ -1,6 +1,6 @@
 <i18n src="../../i18n.yaml"></i18n>
 <template>
-  <form :method="'post'" target="_blank" id="unionpayForm" :action="action">
+  <form :method="'post'" target="_self" id="unionpayForm" :action="action">
     <chp-panel :canCollapse="false" :canClose="false" :isLoading="loadingStatus">
       <template slot="panelTitle">{{ methodName }}</template>
       <div slot="body" class="form-horizontal form-bordered">
