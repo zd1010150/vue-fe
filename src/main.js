@@ -62,8 +62,8 @@ const checkLogin = async () => {
     return pageService.detectIP()
   }, init = async () => {
   // 检查ip是否合法
-    let {data} = await checkIP()
-    if (data.status === 'invalid') {
+    let { data, success } = await checkIP()
+    if (!success || (data && data.status && data.status === 'invalid')) {
       initVue()
       vm.$router.push('/error')
     } else {

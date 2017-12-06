@@ -8,6 +8,7 @@ import fetch from './fetch'
  * @param  {[type]} response [description]
  * @return {[type]}          [description]
  */
+let vm = window.vm
 let handlerFailedResponse = (response) => {
   if (response.status_code === 401) {
     vm.toastr.error(vm.$t('info.Unauthenticated'))
@@ -17,7 +18,11 @@ let handlerFailedResponse = (response) => {
   } else if (response.status_code === 429) {
     vm.toastr.error(vm.$t('info.TOO_MANY_REQUEST'))
   } else if (response.status_code === 404) {
-    vm.$router.replace('/error')
+    if (vm) {
+      vm.$router.replace('/error')
+    } else {
+      return false
+    }
   } else {
     vm.toastr.error(vm.$t('info.' + response.message) ? vm.$t('info.' + response.message) : response.message)
   }
