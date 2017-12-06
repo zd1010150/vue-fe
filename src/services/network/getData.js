@@ -16,6 +16,8 @@ let handlerFailedResponse = (response) => {
     vm.$router.replace('/login')
   } else if (response.status_code === 429) {
     vm.toastr.error(vm.$t('info.TOO_MANY_REQUEST'))
+  } else if (response.status_code === 404) {
+    vm.$router.replace('/error')
   } else {
     vm.toastr.error(vm.$t('info.' + response.message) ? vm.$t('info.' + response.message) : response.message)
   }
