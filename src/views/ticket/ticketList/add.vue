@@ -192,14 +192,14 @@
         this.questionType = data.map((item, index) => {
           return {
             code: item,
-            text: this.$t('type.' + item)
+            text: item
           }
         })
         this.$set(this.model, 'type', this.questionType[0].code)
       },
       async fetchTypes () {
         this.loadingStatus = true
-        let {success, data} = await ticketService.getTicketTypes()
+        let {success, data} = await ticketService.getTicketTypes(this.$store.state.language)
         if (success) {
           this.mapTypes(data)
         }
