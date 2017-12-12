@@ -99,7 +99,9 @@
                 <template v-else-if="columnIndex == 'subject'">
                   <chp-one-line :lens="15" :content="column" :needTooltip="false"></chp-one-line>
                 </template>
-
+                <template v-else-if="columnIndex == 'type'">
+                  {{ $t('type.' + column) }}
+                </template>
                 <template v-else-if="columnIndex =='id'">
                   <chp-button @click="detail(column)" class="btn-primary">
                     <i aria-hidden="true" class="fa fa-info-circle"></i> {{ $t('ui.button.detail') }}
@@ -183,7 +185,7 @@
             return {
               created_at: row.created_at,
               account_no: row.account_no,
-              type: row.question,
+              type: row.type,
               subject: row.subject,
               status: row.status,
               id: row.id
