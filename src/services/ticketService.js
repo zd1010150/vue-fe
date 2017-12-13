@@ -18,6 +18,7 @@ export default {
     return promise
   },
   async getTicketTypes (language) {
+    
     return fetchData('GET', '/tickets/types/' + language)
   },
   async addTicket ({subject, account_no, type, content, attachment, fileid}) {
