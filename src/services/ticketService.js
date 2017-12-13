@@ -17,8 +17,8 @@ export default {
     store.commit(SET_FETCH_PENDING, true)
     return promise
   },
+  /* 修改加入语言 */
   async getTicketTypes (language) {
-    
     return fetchData('GET', '/tickets/types/' + language)
   },
   async addTicket ({subject, account_no, type, content, attachment, fileid}) {
