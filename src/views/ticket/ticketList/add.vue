@@ -199,7 +199,6 @@
       },
       async fetchTypes () {
         this.loadingStatus = true
-        console.log('add ticket', this.$store.state.language)
         let {success, data} = await ticketService.getTicketTypes(this.$store.state.language)
         if (success) {
           this.mapTypes(data)
