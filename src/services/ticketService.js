@@ -19,6 +19,7 @@ export default {
   },
   /* 修改加入语言 */
   async getTicketTypes (language) {
+    console.log('service', language)
     return fetchData('GET', '/tickets/types/' + language)
   },
   async addTicket ({subject, account_no, type, content, attachment, fileid}) {
