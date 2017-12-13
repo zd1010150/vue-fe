@@ -17,8 +17,9 @@ export default {
     store.commit(SET_FETCH_PENDING, true)
     return promise
   },
-  async getTicketTypes () {
-    return fetchData('GET', '/tickets/types')
+  async getTicketTypes (language) {
+    
+    return fetchData('GET', '/tickets/types/' + language)
   },
   async addTicket ({subject, account_no, type, content, attachment, fileid}) {
     return fetchData('POST', '/tickets/save', {subject, account_no, type, content, attachment, fileid})
