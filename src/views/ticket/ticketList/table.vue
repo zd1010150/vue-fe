@@ -93,16 +93,13 @@
                            :chpCanCustomiseClickEvent="true"
             >
               <chp-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :class="columnIndex">
-                <template v-if="columnIndex == 'status'">
+                <template v-if="columnIndex === 'status'">
                   {{ $t('statusInfo.' + column) }}
                 </template>
-                <template v-else-if="columnIndex == 'subject'">
+                <template v-else-if="columnIndex === 'subject'">
                   <chp-one-line :lens="15" :content="column" :needTooltip="false"></chp-one-line>
                 </template>
-                <template v-else-if="columnIndex == 'type'">
-                  {{ $t('type.' + column) }}
-                </template>
-                <template v-else-if="columnIndex =='id'">
+                <template v-else-if="columnIndex === 'id'">
                   <chp-button @click="detail(column)" class="btn-primary">
                     <i aria-hidden="true" class="fa fa-info-circle"></i> {{ $t('ui.button.detail') }}
                   </chp-button>
