@@ -185,7 +185,7 @@
             return {
               created_at: row.created_at,
               account_no: row.account_no,
-              type: row.type,
+              type: row.question,
               subject: row.subject,
               status: row.status,
               id: row.id
