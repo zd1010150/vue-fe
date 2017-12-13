@@ -10,7 +10,7 @@
               {{ $t('ticketForAccount') }}
               <span class="text-primary"> {{ ticket.account_no}} </span>
               {{ $t('about') }}
-              <span class="text-primary">{{ $t("type." + ticket.type)}}</span>
+              <span class="text-primary">{{ ticket.question }}</span>
             </p>
           </div>
           <div class="operate col-lg-6 col-md-6 col-sm-12 text-right" v-if="currentView == null">
