@@ -72,7 +72,7 @@ deploy_stage:
   stage: deploy
   # environment: staging
   script:
-    - ssh -T ci_deployer@$STAGING_SERVER "export CI_BUILD_REF=\"master\"; cd $STAGING_PROJECT_ROOT; composer ci:deploy;"
+    - ssh -T ci_deployer@$STAGING_SERVER "export CI_BUILD_REF=\"staging\"; cd $STAGING_PROJECT_ROOT; composer ci:deploy;"
   only:
     - /^staging$/
   when: on_success
