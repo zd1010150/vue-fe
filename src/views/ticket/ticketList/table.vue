@@ -230,7 +230,6 @@
         this.pageIndex = newIndex
       },
       detail (id) {
-        debugger
         id = typeof id === 'object' ? id.id : id
         this.$router.replace({
           path: this.$route.path,

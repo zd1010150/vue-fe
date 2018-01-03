@@ -36,11 +36,10 @@
     },
     methods: {
       inputFunction (response, isAllsuccess, errors) {
-        let {data} = response[0]
-        if (!isAllsuccess) {
-          this.toastr.error(this.$t('info.UPLOAD_ERROR.' + errors[0]))
+        if (isAllsuccess) {
+          this.$store.commit(SET_USERINFO, Object.assign({}, this.$store.state.userInfo, {avatar: response[0].data.url}))
         } else {
-          this.$store.commit(SET_USERINFO, Object.assign({}, this.$store.state.userInfo, {avatar: data.url}))
+          this.toastr.error(this.$t('info.UPLOAD_ERROR.' + errors[0]))
         }
       }
     }

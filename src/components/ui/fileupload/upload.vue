@@ -163,7 +163,6 @@
         }
       },
       inputFile: function (newFile, oldFile) {
-        debugger
         if (newFile && !oldFile) {
           // 添加文件
           // 自动上传
