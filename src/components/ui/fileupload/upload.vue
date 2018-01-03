@@ -77,9 +77,7 @@
         default: true
       },
 
-      extensions: {
-        default: Array
-      },
+      extensions: [Array, String],
 
       postAction: { // 必传
         type: String
@@ -165,6 +163,7 @@
         }
       },
       inputFile: function (newFile, oldFile) {
+        debugger
         if (newFile && !oldFile) {
           // 添加文件
           // 自动上传
@@ -235,7 +234,6 @@
       }
     },
     mounted () {
-
     }
   }
 </script>

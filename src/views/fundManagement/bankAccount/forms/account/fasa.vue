@@ -49,7 +49,7 @@
             </div>
             <div v-show="model.document.length <=0 "  key="upload" >
               <chp-file-upload
-              :extensions="uploadConfig.bill.extensions"
+              :extensions="uploadConfig.bill.extentions"
               :size="uploadConfig.bill.size"
               name="document"
               drop=".dropFileAreaDiv"

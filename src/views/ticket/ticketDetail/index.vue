@@ -114,11 +114,6 @@
         this.fetchPosts()
       }
     },
-    watch: {
-      ticketId: function () {
-        this.fetchPosts()
-      }
-    },
     computed: {
       canReply: function () {
         return this.ticket && (this.ticket.status === 'replied' || this.ticket.status === 'pending')
