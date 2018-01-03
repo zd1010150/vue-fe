@@ -9,14 +9,14 @@
         <div class="col-md-10">
           <transition-group name="chp-fade" mode="out-in">
             <div v-show="model.attachment.length > 0" key="attachment">
-              <a :href="model.attachment" target="_blank">附件</a>
+              <a :href="model.attachment" target="_blank">{{ $t('attach') }}</a>
               <mu-icon-button @click.stop="deleteDocument"><i class="fa fa-times" aria-hidden="true"></i>
               </mu-icon-button>
             </div>
             <div v-show="model.attachment.length <=0 " key="upload">
               <chp-file-upload
-                :extensions="uploadConfig.img.extensions"
-                :size="uploadConfig.img.size"
+                :extensions="uploadConfig.bill.extentions"
+                :size="uploadConfig.bill.size"
                 name="file"
                 drop=".dropFileAreaDiv"
                 :dropDirectory="false"
