@@ -103,7 +103,6 @@
 
       },
       autoSelect () {
-        console.log(new Date(), '----- click trigger')
         if (this.chpCanCustomiseClickEvent) {
           this.$emit('rowClicked', this.chpItem)
         }
