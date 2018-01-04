@@ -124,7 +124,7 @@
                   <div class="dropFileAreaDiv">
                       <h6 class="text-muted"> {{ $t('ui.upload.tips') }} </h6>
                       <h5>{{ $t('bankcard.uploadBackSide') }}</h5>
-                      <P class="text-muted">{{ $t('ui.upload.accepts') }} : png, jpg,jpeg,bmp, pdf</P>
+                      <P class="text-muted">{{ $t('ui.upload.accepts') }} : {{ uploadConfig.bill.extentions.join(",") }}</P>
                   </div>
                 </chp-file-upload>
               </div>
