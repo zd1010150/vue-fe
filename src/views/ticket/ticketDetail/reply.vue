@@ -15,8 +15,8 @@
             </div>
             <div v-show="model.attachment.length <=0 " key="upload">
               <chp-file-upload
-                :extensions="uploadConfig.bill.extentions"
-                :size="uploadConfig.bill.size"
+                :extensions="uploadConfig.ticket.extentions"
+                :size="uploadConfig.ticket.size"
                 name="file"
                 drop=".dropFileAreaDiv"
                 :dropDirectory="false"
@@ -26,7 +26,7 @@
                 ref="dropUploads" class="form-control dropFileArea">
                 <div class="dropFileAreaDiv">
                   <h6> {{ $t('ui.upload.tips') }} </h6>
-                  <P>{{ $t('ui.upload.accepts') }} : png, jpg,jpeg,bmp, pdf</P>
+                  <P>{{ $t('ui.upload.accepts') }} : {{ uploadConfig.ticket.extentions.join(",") }}</P>
                 </div>
               </chp-file-upload>
             </div>
