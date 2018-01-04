@@ -2,8 +2,7 @@
   <tr
     class="chp-table-row"
     :class="classes"
-    @click="autoSelect"
-    @click.native="autoSelect">
+    @click="autoSelect">
     <chp-table-cell
       v-if="hasSelection"
       class="chp-table-selection">
@@ -100,15 +99,17 @@
         this.parentTable.emitSelection()
         this.$emit(value ? 'selected' : 'deselected', value)
       },
+      nativeSelect () {
+
+      },
       autoSelect () {
         if (this.chpCanCustomiseClickEvent) {
           this.$emit('rowClicked', this.chpItem)
-        } else {
-          if (this.chpAutoSelect && this.hasSelection) {
-            this.checkbox = !this.checkbox
-            this.handleSingleSelection(this.checkbox)
-            this.parentTable.emitSelection()
-          }
+        }
+        if (this.chpAutoSelect && this.hasSelection) {
+          this.checkbox = !this.checkbox
+          this.handleSingleSelection(this.checkbox)
+          this.parentTable.emitSelection()
         }
       },
       startTableRow () {

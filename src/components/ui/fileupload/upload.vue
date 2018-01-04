@@ -77,9 +77,7 @@
         default: true
       },
 
-      extensions: {
-        default: Array
-      },
+      extensions: [Array, String],
 
       postAction: { // 必传
         type: String
@@ -235,7 +233,6 @@
       }
     },
     mounted () {
-
     }
   }
 </script>

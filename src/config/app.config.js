@@ -8,12 +8,16 @@ export const DEFAULT_PAY_GATEWAY = {code: 'bankwire', type: 'bankTransfer'} // �
 export const MAX_FETCH_TIMEOUT = 100 * 1000// 网络请求最大超时时间
 export const FIXED_WITHDRAWAL_UNIT = 'USD' // 取钱的时候fee的单位
 export const UPLOAD_CONFIG = {
-  bill: {// bank account 的上传附件
-    extentions: ['png', 'jpg', 'jpeg', 'bmp', 'pdf', 'doc', 'docx'],
+  ticket: {
+    extentions: ['png', 'jpg', 'jpeg', 'pdf'],
     size: 10 * Math.pow(2, 20)
   },
-  img: { // 在ticket上传文件的时候，对图片进行了限制
-    extentions: ['png', 'jpg', 'jpeg', 'bmp'],
+  bill: {
+    extentions: ['png', 'jpg', 'jpeg'],
+    size: 2 * Math.pow(2, 20)
+  },
+  img: {
+    extentions: ['png', 'jpg', 'jpeg'],
     size: 2 * Math.pow(2, 20)
   }
 }

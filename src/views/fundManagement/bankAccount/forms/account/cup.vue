@@ -111,7 +111,7 @@
             </div>
             <div v-show="model.document.length <=0 "  key="upload" >
               <chp-file-upload
-              :extensions="uploadConfig.bill.extensions"
+              :extensions="uploadConfig.bill.extentions"
               :size="uploadConfig.bill.size"
               name="document"
               drop=".dropFileAreaDiv"
@@ -124,7 +124,7 @@
                 <h6> {{ $t('ui.upload.tips') }} </h6>
                 <P>{{ $t('bankcard.uploadNote') }}</P>
                 <div v-html="promotingMsg"></div>
-                <P>{{ $t('ui.upload.accepts') }} : png, jpg,jpeg,bmp, pdf</P>
+                <P>{{ $t('ui.upload.accepts') }} : {{ uploadConfig.bill.extentions.join(",") }}</P>
               </div>
             </chp-file-upload>
             </div>

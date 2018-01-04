@@ -3,7 +3,10 @@
   <div class="panel-body sidebar-profile">
     <div class="widget-summary widget-summary-xlg">
       <div class="widget-summary-col widget-summary-col-icon">
-        <chp-file-upload name="document" :extensions="['png','bmp','jpg','jpeg']" :post-action="postAction"
+        <chp-file-upload name="document"
+                         :extensions="uploadConfig.img.extentions"
+                         :size="uploadConfig.img.size"
+                         :post-action="postAction"
                          @input="inputFunction">
           <mu-avatar :src="$store.state.userInfo.avatar" :size="100" class="summary-icon bg-primary"
                      imgClass="avatar-img"/>
@@ -26,21 +29,21 @@
 <script>
   import { UPLOAD_DOCUMENT_URL } from 'src/config/url.config'
   import { SET_USERINFO } from 'store/mutation-types'
-
+  import { UPLOAD_CONFIG } from 'src/config/app.config.js'
   export default {
     name: 'leftSideBarProfile',
     data () {
       return {
+        uploadConfig: UPLOAD_CONFIG,
         postAction: UPLOAD_DOCUMENT_URL + '/avatar'
       }
     },
     methods: {
       inputFunction (response, isAllsuccess, errors) {
-        let {data} = response[0]
-        if (!isAllsuccess) {
-          this.toastr.error(this.$t('info.UPLOAD_ERROR.' + errors[0]))
+        if (isAllsuccess) {
+          this.$store.commit(SET_USERINFO, Object.assign({}, this.$store.state.userInfo, {avatar: response[0].data.url}))
         } else {
-          this.$store.commit(SET_USERINFO, Object.assign({}, this.$store.state.userInfo, {avatar: data.url}))
+          this.toastr.error(this.$t('info.UPLOAD_ERROR.' + errors[0]))
         }
       }
     }

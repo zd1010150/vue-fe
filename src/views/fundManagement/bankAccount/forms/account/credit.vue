@@ -75,7 +75,7 @@
                 <mu-icon-button @click.stop="deleteDocument"><i class="fa fa-times" aria-hidden="true"></i></mu-icon-button>
               </div>
               <div v-show="model.document.length <=0 "  key="upload" >
-                <chp-file-upload  :extensions="uploadConfig.bill.extensions"
+                <chp-file-upload  :extensions="uploadConfig.bill.extentions"
                                   :size="uploadConfig.bill.size"
                                   name="document"
                                   drop=".dropFileAreaDiv"
@@ -111,7 +111,7 @@
                 <mu-icon-button @click.stop="deleteDocument('back')"><i class="fa fa-times" aria-hidden="true"></i></mu-icon-button>
               </div>
               <div v-show="model.document_2.length <=0 "  key="upload" >
-                <chp-file-upload  :extensions="uploadConfig.bill.extensions"
+                <chp-file-upload  :extensions="uploadConfig.bill.extentions"
                                   :size="uploadConfig.bill.size"
                                   name="document"
                                   drop=".dropFileAreaDiv"
@@ -124,7 +124,7 @@
                   <div class="dropFileAreaDiv">
                       <h6 class="text-muted"> {{ $t('ui.upload.tips') }} </h6>
                       <h5>{{ $t('bankcard.uploadBackSide') }}</h5>
-                      <P class="text-muted">{{ $t('ui.upload.accepts') }} : png, jpg,jpeg,bmp, pdf</P>
+                      <P class="text-muted">{{ $t('ui.upload.accepts') }} : {{ uploadConfig.bill.extentions.join(",") }}</P>
                   </div>
                 </chp-file-upload>
               </div>

@@ -1,3 +1,4 @@
+<i18n src="../i18n.yaml"></i18n>
 <template>
   <li class="post clearfix " :class="{'right-post' : authorId == $store.state.userInfo.id }">
     <div class="avator">
@@ -28,9 +29,15 @@
         <p class="content" v-else v-html="content">
 
         </p>
+
         <p class="attachment" v-if=" path && path.length > 0">
-          <img :src="path" alt="" @click="showPreview"/>
-          <span class="zoom text-dark" @click="showPreview"><i class="fa fa-search-plus" aria-hidden="true"></i></span>
+          <template v-if="isPdf(path)">
+            <a :href="path" target="_blank"><i class="fa fa-file-pdf-o pr-sm" aria-hidden="true"></i>{{ $t('attach') }}</a>
+          </template>
+          <template v-else>
+            <img :src="path" alt="" @click="showPreview"/>
+            <span class="zoom text-dark" @click="showPreview"><i class="fa fa-search-plus" aria-hidden="true"></i></span>
+          </template>
         </p>
       </div>
     </div>
@@ -39,7 +46,7 @@
 </template>
 <script>
   import { ACY_ADMIN, ACY_ADMIN_HEAD_LOGO } from 'src/config/app.config.js'
-
+  import regex from 'src/utils/regx'
   export default {
     data () {
       return {
@@ -62,6 +69,10 @@
       },
       showPreview () {
         this.documentOpen = true
+      },
+      isPdf (path) {
+        const fileType = regex.fileType.exec(path)[0].toUpperCase()
+        return fileType === 'PDF'
       }
     },
     watch: {

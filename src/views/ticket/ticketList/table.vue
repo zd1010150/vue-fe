@@ -231,7 +231,7 @@
       },
       detail (id) {
         id = typeof id === 'object' ? id.id : id
-        this.$router.push({
+        this.$router.replace({
           path: this.$route.path,
           query: {
             ticketId: id

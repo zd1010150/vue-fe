@@ -62,6 +62,7 @@
         <div class="form-group">
           <label class="control-label col-md-3">
             {{ $t('attach') }}
+
           </label>
           <div class="col-md-6">
             <transition-group name="chp-fade" mode="out-in">
@@ -74,8 +75,8 @@
               </div>
               <div v-show="model.attachment.length <=0 " key="upload">
                 <chp-file-upload
-                  :extensions="uploadConfig.img.extensions"
-                  :size="uploadConfig.img.size"
+                  :extensions="uploadConfig.ticket.extentions"
+                  :size="uploadConfig.ticket.size"
                   name="file"
                   drop=".dropFileAreaDiv"
                   :dropDirectory="false"
@@ -85,7 +86,7 @@
                   ref="dropUploads" class="form-control dropFileArea">
                   <div class="dropFileAreaDiv">
                     <h6> {{ $t('ui.upload.tips') }} </h6>
-                    <P> {{ $t('ui.upload.accepts') }}: png, jpg,jpeg,bmp</P>
+                    <P> {{ $t('ui.upload.accepts') }}: {{ uploadConfig.ticket.extentions.join(",") }}</P>
                   </div>
                 </chp-file-upload>
               </div>
@@ -139,6 +140,7 @@
   export default {
     mixins: [validateMixin, loadingMix],
     data () {
+      console.log(UPLOAD_CONFIG)
       return {
         originMt4: null,
         questionType: [],
