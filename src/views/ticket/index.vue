@@ -16,7 +16,7 @@
   export default {
     data () {
       return {
-        currentView: 'ticket-list',
+        currentView: '',
         ticketId: ''
       }
     },
@@ -34,6 +34,7 @@
         this.ticketId = ticketId + ''
       },
       renderPage (ticketId) {
+        debugger
         if ((ticketId + '' === '0') || ticketId) {
           this.currentView = 'ticket-detail'
         } else {
@@ -46,6 +47,11 @@
       '$route': function (route) {
         this.renderPage(route && route.query && route.query.ticketId)
       }
+    },
+    mounted () {
+      debugger
+      const route = this.$route
+      this.renderPage(route && route.query && route.query.ticketId)
     }
   }
 </script>
