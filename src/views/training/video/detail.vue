@@ -46,7 +46,7 @@
         youkuId: '',
         uploader: ACY_BOOK_UPLOADER,
         url: 'http://player.youku.com/embed/XMjY5OTE2NzA5Mg',
-        scriptEle: null
+        scriptEle: null,
       }
     },
     filters,
@@ -72,6 +72,11 @@
         if (success) {
           this.video = data
         }
+      },
+      getVideoType(){
+        const url = this.video.url;
+        // if(url.indexOf('youtube.com') > -1)
+
       },
       getYoukuVideoId () {
         let youkuId = '', str = this.video.url

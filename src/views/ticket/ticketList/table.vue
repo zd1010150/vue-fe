@@ -190,7 +190,6 @@
         }
       },
       async fetchData (params) {
-        debugger
         this.loadingStatus = true
         let {data, success} = await dataTableService.pagingQuery(Object.assign({
           url: '/tickets'

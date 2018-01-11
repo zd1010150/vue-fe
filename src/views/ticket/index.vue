@@ -34,7 +34,6 @@
         this.ticketId = ticketId + ''
       },
       renderPage (ticketId) {
-        debugger
         if ((ticketId + '' === '0') || ticketId) {
           this.currentView = 'ticket-detail'
         } else {
@@ -49,7 +48,6 @@
       }
     },
     mounted () {
-      debugger
       const route = this.$route
       this.renderPage(route && route.query && route.query.ticketId)
     }
