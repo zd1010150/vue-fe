@@ -100,6 +100,9 @@ en:
     acyAccountDetail: "ACY Bank Account Detail"
     bank: "Bank"
     dialogNote: "Click this OK button after pay success,<p class='text-danger'>Please note your browser may block the payment web page, you should set the browser to allow to open new window<\/p>"
+    noCreditCard:
+      please: "Please verify your credit card in "
+      verifyCreditCard: " page before making deposit"
 zh:
   internalTransfer:
     note : "注意：有仓位的账户无法进行转出资金，代理账户需激活后才能进行内转"
@@ -202,3 +205,7 @@ zh:
     acyAccountDetail: "ACY 银行账户信息"
     bank: "银行"
     dialogNote: "请支付成功后，点击本确定按钮,<p class='text-danger'>注意:你的浏览器可能阻止本页面打开新的窗口，如果不能正常打开入金页面，请设置你的浏览器允许本页面打开新窗口</p>"
+    noCreditCard:
+      please: "请在"
+      verifyCreditCard: "界面中先进行信用卡的认证"
+
