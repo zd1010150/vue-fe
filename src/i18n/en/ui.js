@@ -33,6 +33,9 @@ export default {
     confirm: {
       title: 'Confirm',
       riskTip: 'Risk Tip'
+    },
+    alert: {
+      title: 'Alert'
     }
   },
   textFiled: {

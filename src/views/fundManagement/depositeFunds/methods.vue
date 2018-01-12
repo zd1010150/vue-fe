@@ -49,11 +49,27 @@
         </template>
       </div>
     </section>
+    <chp-dialog
+      ref="noCreditCardDialog"
+    >
+      <p slot="title">{{ $t('ui.dialog.alert.title') }}</p>
+      <p slot="body">
+        {{ $t('deposit.noCreditCard.please')}}
+        <router-link to="/fund-manager/bank-account">
+          {{ $t('pageTitle.bankAccount') }}
+        </router-link>
+        {{ $t('deposit.noCreditCard.verifyCreditCard')}}
+      </p>
+      <template slot="footer">
+        <chp-button class="chp-primary" @click="closeCreditCardDialog">{{ $t('ui.button.close') }}</chp-button>
+      </template>
+    </chp-dialog>
   </div>
 </template>
 <script>
   import method from './method.vue'
   import fundsService from 'services/fundsService'
+  import bankCardService from 'services/bankCardService'
   import { DEFAULT_PAY_GATEWAY as defaultMethod } from 'src/config/app.config.js'
 
   export default {
@@ -71,7 +87,24 @@
       'payment-method': method
     },
     methods: {
-      chosePaymentMethod (code, type) {
+      async fetchCreditCount () {
+        let {success, data} = await bankCardService.getCreditCardCount()
+        if (success) {
+          let count = data.cnt
+          return Number(count)
+        }
+      },
+      closeCreditCardDialog () {
+        this.$refs.noCreditCardDialog.close()
+      },
+      async chosePaymentMethod (code, type) {
+        if (code === 'invis' || code === 'inmas') {
+          let count = await this.fetchCreditCount()
+          if (Number(count) < 1) {
+            this.$refs.noCreditCardDialog.open()
+            return
+          }
+        }
         this.$set(this.gateWays[this.previousMethod.type][this.previousMethod.code], 'isActive', false)
         this.$set(this.gateWays[type][code], 'isActive', true)
 

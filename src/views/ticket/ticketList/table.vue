@@ -160,9 +160,6 @@
         })
       }
     },
-    created () {
-      this.fetchData()
-    },
     methods: {
       refresh () {
         this.fetchData()
