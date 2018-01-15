@@ -6,7 +6,15 @@
         <div class="col-xs-12">
           <div class="thumbnail">
             <!--<iframe v-bind:src="video.url" frameborder="0"></iframe>-->
-            <div id="youkuplayer"></div>
+            <div id="youkuplayer" v-if="video.videoType === videoTypes.YOUKU"></div>
+            <div id="youtubeplayer" v-else-if="video.videoType === videoTypes.YOUTUBE">
+              <iframe width="100%" height="100%" v-bind:src="video.url" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            <div id="otherPlayer" v-else>
+              <video width="100%" height="100%" controls>
+                <source v-bind:src="video.url"/>
+              </video>
+            </div>
             <div class="general-infor">
               <h2 class="mg-title text-weight-semibold mt-md mb-xs">{{video.title}}</h2>
               <div>
@@ -34,7 +42,7 @@
   import filters from 'src/filters'
   import trainingService from 'services/trainingService'
   import { SET_CONTENT_LOADING } from 'store/mutation-types'
-  import { ACY_BOOK_UPLOADER } from 'src/config/app.config.js'
+  import { ACY_BOOK_UPLOADER, TRAINING_VIDEO_TYPES } from 'src/config/app.config.js'
   import regxUtil from 'src/utils/regx.js'
 
   const YOUKU_SCRIPT = '//player.youku.com/jsapi'
@@ -46,7 +54,8 @@
         youkuId: '',
         uploader: ACY_BOOK_UPLOADER,
         url: 'http://player.youku.com/embed/XMjY5OTE2NzA5Mg',
-        scriptEle: null
+        scriptEle: null,
+        videoTypes: TRAINING_VIDEO_TYPES
       }
     },
     filters,
@@ -58,11 +67,16 @@
     },
     async activated () {
       await this.getSingleVideo()
-      let youkuId = this.getYoukuVideoId()
-      this.addYoukuScript(youkuId)
+      this.getVideoType()
+      if (this.video.videoType === TRAINING_VIDEO_TYPES.YOUKU) {
+        let youkuId = this.getYoukuVideoId()
+        this.addYoukuScript(youkuId)
+      }
     },
     deactivated () {
-      this.removeYoukuScript()
+      if (this.video.videoType === TRAINING_VIDEO_TYPES.YOUKU) {
+        this.removeYoukuScript()
+      }
     },
     methods: {
       async getSingleVideo () {
@@ -72,6 +86,18 @@
         if (success) {
           this.video = data
         }
+      },
+      getVideoType () { // get the video type
+        const url = this.video.url
+        let videoType = ''
+        if (url.indexOf('youtube.com') > -1) {
+          videoType = TRAINING_VIDEO_TYPES.YOUTUBE
+        } else if (url.indexOf('youku.com') > -1) {
+          videoType = TRAINING_VIDEO_TYPES.YOUKU
+        } else {
+          videoType = TRAINING_VIDEO_TYPES.OTHER
+        }
+        this.video = Object.assign({}, this.video, {videoType})
       },
       getYoukuVideoId () {
         let youkuId = '', str = this.video.url
@@ -114,11 +140,10 @@
   }
 </script>
 <style scoped>
-  #youkuplayer {
+  #youkuplayer, #youtubeplayer, #otherPlayer {
     width: 100%;
     height: 35vw;
   }
-
   .general-infor {
     padding-bottom: 10px;
     border-bottom: 1px solid #DADADA;

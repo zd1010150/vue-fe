@@ -16,7 +16,7 @@
   export default {
     data () {
       return {
-        currentView: 'ticket-list',
+        currentView: '',
         ticketId: ''
       }
     },
@@ -46,6 +46,10 @@
       '$route': function (route) {
         this.renderPage(route && route.query && route.query.ticketId)
       }
+    },
+    mounted () {
+      const route = this.$route
+      this.renderPage(route && route.query && route.query.ticketId)
     }
   }
 </script>

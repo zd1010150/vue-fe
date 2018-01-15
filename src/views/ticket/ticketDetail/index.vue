@@ -46,7 +46,6 @@
                          :authorId='post.author_id'
                          :content='post.content'
                          :path='post.path'
-                         :headLogo='post.head_logo'
                          :postTime='post.post_time'>
             </ticket-post>
           </template>

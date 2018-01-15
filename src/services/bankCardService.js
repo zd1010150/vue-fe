@@ -4,7 +4,9 @@
 import { fetchData } from './network/getData'
 
 export default {
-
+  async getCreditCardCount () {
+    return fetchData('GET', '/bank-card/credit/count')
+  },
   async getBankCard () {
     return fetchData('GET', '/bank-card')
   },

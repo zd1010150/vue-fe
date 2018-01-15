@@ -2,7 +2,7 @@
 <template>
   <li class="post clearfix " :class="{'right-post' : authorId == $store.state.userInfo.id }">
     <div class="avator">
-      <mu-avatar :src="authorId == $store.state.userInfo.id ? headLogo : logos[$store.state.language]" :size="60"
+      <mu-avatar :src="authorId == $store.state.userInfo.id ? clientAvator : logos[$store.state.language]" :size="60"
                  class="summary-icon bg-primary "/>
 
     </div>
@@ -52,7 +52,8 @@
       return {
         documentOpen: false,
         admin: ACY_ADMIN[this.$store.state.language],
-        logos: ACY_ADMIN_HEAD_LOGO
+        logos: ACY_ADMIN_HEAD_LOGO,
+        clientAvator: this.$store.state.userInfo.avatar
       }
     },
     props: {
@@ -78,6 +79,9 @@
     watch: {
       '$store.state.language': function (val) {
         this.admin = ACY_ADMIN[val]
+      },
+      '$store.state.userInfo.avatar': function (val) {
+        this.clientAvator = val
       }
     }
   }

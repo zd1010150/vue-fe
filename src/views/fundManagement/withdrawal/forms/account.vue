@@ -14,7 +14,7 @@
             </mu-select-field>
              <span slot="required" class="error" v-if="validator.errors.has('MT4:required')">{{errors.first('MT4:required')}}</span>
           </div>
-        </div>
+       </div>
         <div class="form-group" :class="errorClass('withdraw_pay')">
           <label class="control-label col-md-3">
             {{ $t('withdrawal.amount') }} ({{baseCurrency}})
@@ -35,8 +35,7 @@
             <span slot="required" class="error" v-if="validator.errors.has('withdraw_pay:required')">{{validator.errors.first('withdraw_pay:required')}}</span>
             <span slot="required" class="error" v-if="validator.errors.has('withdraw_pay:positiveFloatMoney')">{{validator.errors.first('withdraw_pay:positiveFloatMoney')}}</span>
             <span slot="required" class="error" v-if="validator.errors.has('withdraw_pay:between')">{{validator.errors.first('withdraw_pay:between')}}</span>
-
-          </div>
+           </div>
         </div>
         <div class="form-group" :class="errorClass('withdrawMethod')">
           <label class="control-label col-md-3"> {{ $t('withdrawal.methods') }}

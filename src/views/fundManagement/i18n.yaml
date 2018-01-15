@@ -68,7 +68,7 @@ en:
     confirm : "Confirm"
     note : "I agree to the terms of service"
     nullAccount : "Please add account in account admin"
-    cantWithdrawal : "You can't withdrawal"
+    cantWithdrawal : "You only can use Credit Card withdrawal when you have funded your accounts using Credit Card within 30 days"
     balance: "Balance"
     amount: "Amount"
     methods: "Methods"
@@ -100,6 +100,9 @@ en:
     acyAccountDetail: "ACY Bank Account Detail"
     bank: "Bank"
     dialogNote: "Click this OK button after pay success,<p class='text-danger'>Please note your browser may block the payment web page, you should set the browser to allow to open new window<\/p>"
+    noCreditCard:
+      please: "Please verify your credit card in "
+      verifyCreditCard: " page before making deposit"
 zh:
   internalTransfer:
     note : "注意：有仓位的账户无法进行转出资金，代理账户需激活后才能进行内转"
@@ -170,7 +173,7 @@ zh:
     confirm : "确认"
     note : "我同意该条款"
     nullAccount : "请添加账号"
-    cantWithdrawal : "不满足出金条件,不能出金"
+    cantWithdrawal : "只有在30天内选择使用信用卡入金才能使用信用卡出金"
     balance: "余额"
     amount: "金额"
     methods: "出款方式"
@@ -202,3 +205,7 @@ zh:
     acyAccountDetail: "ACY 银行账户信息"
     bank: "银行"
     dialogNote: "请支付成功后，点击本确定按钮,<p class='text-danger'>注意:你的浏览器可能阻止本页面打开新的窗口，如果不能正常打开入金页面，请设置你的浏览器允许本页面打开新窗口</p>"
+    noCreditCard:
+      please: "请在"
+      verifyCreditCard: "界面中先进行信用卡的认证"
+
