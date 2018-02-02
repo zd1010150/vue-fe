@@ -29,7 +29,7 @@ export const TERMS = {
 }
 // 官网的抽奖地址
 export const PRIZE_LANDING_PAGE = {
-  zh: 'https://cn.acy.com/landingpage/annuallottery',
+  zh: 'https://cn.acy.com/landingpage/2018annuallottery',
   en: 'https://www.acy.com/landingpage/monthlydraw'
 }
 // 常见问题的链接地址
