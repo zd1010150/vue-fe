@@ -148,7 +148,7 @@ export default {
     },
     'model.mt4_id': async function () {
       await this.fetchCreditCardRange()
-      await this.fetchCreditCardRange()
+      await this.fetchSKrillWithdrawalRange()
     },
     'creditCardRange': function (val) {
       if (val.min > val.max) {
