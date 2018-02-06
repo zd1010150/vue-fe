@@ -1,8 +1,8 @@
 <i18n src="../i18n.yaml"></i18n>
 <template>
   <div class="row pb-lg">
-    <div class="col-lg-12 col-md-12" v-if="url">
-      <table>
+    <div class="col-lg-5 col-md-5" v-if="url">
+      <table >
         <tr>
           <td class="title"><h4>{{ $t('agentActivity.agentUrl') }} :</h4></td>
           <td class="url pl-sm">
@@ -12,16 +12,28 @@
             <chp-button class=" ml-xs btn btn-primary print-btn" @click="copy()">
               {{ $t('agentActivity.copyAgentUrl') }}
             </chp-button>
+
           </td>
         </tr>
       </table>
+    </div>
+    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 img-container">
+      <vue-qr  :logoSrc="$store.state.userInfo.avatar"
+               :text="url"
+               :logoMargin="5"
+               :size="140"
+               :margin="0"
+               class="qrimage-wrapper"
+               :dotScale="1"></vue-qr>
     </div>
   </div>
 </template>
 <script>
   import eventUtil from 'src/utils/eventUtil'
+  import VueQr from 'vue-qr'
 
   export default {
+    components: {VueQr},
     props: {
       agent: {
         type: [String, Number]
@@ -73,5 +85,18 @@
   .title, .url {
     vertical-align: middle;
   }
+  @media only screen and (max-width: 767px) {
+    .img-container{
+      display: flex;
+      justify-content: center;
+    }
+  }
 
+  .qrimage-wrapper{
+
+    width: 160px;
+    height: 160px;;
+    padding: 10px;
+    background-color: #fff;
+  }
 </style>

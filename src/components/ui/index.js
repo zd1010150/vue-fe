@@ -25,6 +25,7 @@ import FeatureImage from './featureImage'
 import ProgressBar from './progressBar'
 import OneLine from './oneLine'
 import ViewAll from './viewAll'
+import qrCode from './qrCode'
 
 export default function install (Vue) {
   Vue.component('chp-ink-ripple', chpInkRipple)
@@ -54,4 +55,5 @@ export default function install (Vue) {
   Vue.use(ProgressBar)
   Vue.use(OneLine)
   Vue.use(ViewAll)
+  Vue.use(qrCode)
 }

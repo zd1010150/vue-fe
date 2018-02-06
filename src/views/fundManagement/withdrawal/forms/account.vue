@@ -28,6 +28,7 @@
                             class="form-control"
                             :fullWidth="true" />
             <span v-if="model.method == creditCard && creditCardRange.min > creditCardRange.max" class="text-danger"> {{ $t('withdrawal.cantWithdrawal') }}</span>
+            <span v-else-if="model.method == skrill && avaliableMax === 0" class="text-danger"> {{ $t('withdrawal.cantWithdrawalByskrill') }}</span>
             <span v-else>
                   {{ $t('withdrawal.availableWithdrawRange')}} : {{ avaliableMin }} - {{ avaliableMax }} {{ baseCurrency }}
             </span>
@@ -83,7 +84,8 @@ import fundsService from 'services/fundsService'
 import { Validator } from 'vee-validate'
 import { SET_ASYNC_LOADING } from 'store/mutation-types'
 import { FIXED_WITHDRAWAL_UNIT } from 'src/config/app.config.js'
-const CREDIT_CARD = 'creditCard'
+
+const CREDIT_CARD = 'creditCard', SKRILL = 'skrill'
 
 export default {
   mixins: [validateMixin],
@@ -99,6 +101,7 @@ export default {
         max: '',
         min: ''
       },
+      skrill: SKRILL,
       creditCard: CREDIT_CARD,
       model: {
         mt4_id: '',
@@ -165,8 +168,8 @@ export default {
         avaliableMax = this.creditCardRange.max
         this.validator.attach('withdraw_pay', 'required|positiveFloatMoney|between:' + this.creditCardRange.min + ',' + this.creditCardRange.max + '')
       } else {
-        avaliableMin = this.methodsAndAccounts[method].minWithdraw
-        avaliableMax = this.methodsAndAccounts[method].maxWithdraw
+        avaliableMin = Number(this.methodsAndAccounts[method].minWithdraw)
+        avaliableMax = Number(this.methodsAndAccounts[method].maxWithdraw)
         this.validator.attach('withdraw_pay', 'required|positiveFloatMoney|between:' + this.methodsAndAccounts[method].minWithdraw + ',' + this.methodsAndAccounts[method].maxWithdraw)
         this.$emit('disableSubmit', false)
       }
