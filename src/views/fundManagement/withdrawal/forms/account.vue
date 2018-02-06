@@ -28,7 +28,7 @@
                             class="form-control"
                             :fullWidth="true" />
             <span v-if="model.method == creditCard && creditCardRange.min > creditCardRange.max" class="text-danger"> {{ $t('withdrawal.cantWithdrawal') }}</span>
-            <span v-else-if="model.method == skrill && avaliableMax === 0" class="text-danger"> {{ $t('withdrawal.cantWithdrawalByskrill') }}</span>
+            <span v-else-if="model.method == skrill && skillCardRange.min > skillCardRange.max" class="text-danger"> {{ $t('withdrawal.cantWithdrawalByskrill') }}</span>
             <span v-else>
                   {{ $t('withdrawal.availableWithdrawRange')}} : {{ avaliableMin }} - {{ avaliableMax }} {{ baseCurrency }}
             </span>
@@ -101,6 +101,10 @@ export default {
         max: '',
         min: ''
       },
+      skillCardRange: {
+        max: '',
+        min: ''
+      },
       skrill: SKRILL,
       creditCard: CREDIT_CARD,
       model: {
@@ -129,18 +133,36 @@ export default {
         this.$set(this.model, 'bank_code', this.methodsAndAccounts[method].accounts[0].accountId)
       }
       this.fee = this.methodsAndAccounts[method].fees
-      await this.fetchCreditCardRange()
+      if (method === CREDIT_CARD) {
+        await this.fetchCreditCardRange()
+      }
+      if (method === SKRILL) {
+        await this.fetchSKrillWithdrawalRange()
+      }
       let {avaliableMin, avaliableMax} = this.attachWithdrawPayValidator()
       this.avaliableMin = avaliableMin
       this.avaliableMax = avaliableMax
-      if (method !== CREDIT_CARD) {
+      if (method !== CREDIT_CARD && method !== SKRILL) {
         this.toggleInputAmount(false)
       }
     },
-    'model.mt4_id': function () {
-      this.fetchCreditCardRange()
+    'model.mt4_id': async function () {
+      await this.fetchCreditCardRange()
+      await this.fetchCreditCardRange()
     },
     'creditCardRange': function (val) {
+      if (val.min > val.max) {
+        this.toggleInputAmount(true)
+        this.$emit('disableSubmit', true)
+      } else {
+        this.toggleInputAmount(false)
+        this.$emit('disableSubmit', false)
+        this.avaliableMin = val.min
+        this.avaliableMax = val.max
+      }
+      this.attachWithdrawPayValidator()
+    },
+    'skillCardRange': function (val) {
       if (val.min > val.max) {
         this.toggleInputAmount(true)
         this.$emit('disableSubmit', true)
@@ -167,6 +189,10 @@ export default {
         avaliableMin = this.creditCardRange.min
         avaliableMax = this.creditCardRange.max
         this.validator.attach('withdraw_pay', 'required|positiveFloatMoney|between:' + this.creditCardRange.min + ',' + this.creditCardRange.max + '')
+      } else if (method === SKRILL) {
+        avaliableMin = this.skillCardRange.min
+        avaliableMax = this.skillCardRange.max
+        this.validator.attach('withdraw_pay', 'required|positiveFloatMoney|between:' + this.skillCardRange.min + ',' + this.skillCardRange.max + '')
       } else {
         avaliableMin = Number(this.methodsAndAccounts[method].minWithdraw)
         avaliableMax = Number(this.methodsAndAccounts[method].maxWithdraw)
@@ -183,6 +209,17 @@ export default {
         if (success) {
           let {min, max} = data
           this.creditCardRange = Object.assign({}, this.creditCardRange, {min: Number(min), max: Number(max)})
+        }
+      }
+    },
+    async fetchSKrillWithdrawalRange () {
+      if (this.model.method === SKRILL) {
+        this.$store.commit(SET_ASYNC_LOADING, true)
+        let {success, data} = await fundsService.getSkrillWithdrawalRange(this.model.mt4_id)
+        this.$store.commit(SET_ASYNC_LOADING, false)
+        if (success) {
+          let {min, max} = data
+          this.skillCardRange = Object.assign({}, this.skillCardRange, {min: Number(min), max: Number(max)})
         }
       }
     },
