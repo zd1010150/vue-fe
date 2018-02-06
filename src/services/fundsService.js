@@ -37,6 +37,9 @@ export default {
   },
   async getCreditcardRange (mt4Id) {
     return fetchData('GET', '/withdraw/credit/limit/' + mt4Id)
+  },
+  async getSkrillWithdrawalRange (mt4Id) {
+    return fetchData('GET', '/withdraw/skrill/limit/' + mt4Id)
   }
 
 }
