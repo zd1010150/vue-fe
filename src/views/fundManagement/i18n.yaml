@@ -19,6 +19,7 @@ en:
     creditCard: "Credit Card"
     eWallet: "e-Wallet"
     cards: "Cards"
+    skrill: "Skrill"
   bankcard:
     profile: "Profile"
     editBtnText : "Edit Bank Account"
@@ -57,7 +58,7 @@ en:
     deleteDialogText : " Are you sure delete this card?"
     deleteCreditCardText: "If you delete this verified credit card, your credit card withdrawal balance will be reset to 0."
     methodType :
-      cup : "Bank Statement"
+      cup : "Bank Statement(China Union Pay, Skrill , Bank Wire) "
       doku : "Doku"
       fasa : "Fasa"
       credit : "Credit Card"
@@ -69,6 +70,7 @@ en:
     note : "I agree to the terms of service"
     nullAccount : "Please add account in account admin"
     cantWithdrawal : "You only can use Credit Card withdrawal when you have funded your accounts using Credit Card within 30 days"
+    cantWithdrawalByskrill: "You required to deposit via Skrill to activate Skrill Withdrawal"
     balance: "Balance"
     amount: "Amount"
     methods: "Methods"
@@ -124,6 +126,7 @@ zh:
     creditCard: "信用卡"
     eWallet: "电子钱包"
     cards: "银行卡"
+    skrill: "Skrill"
   bankcard:
     profile: "个人信息"
     editBtnText : "编辑账号信息"
@@ -162,7 +165,7 @@ zh:
     deleteDialogText: "你确定删除该条记录?"
     deleteCreditCardText: "如果解绑该信用卡，你的信用卡出金额度将会重置归零."
     methodType :
-      cup : "银行账单"
+      cup : "银行账单 (银联，Skrill ，电汇）"
       doku : "Doku"
       fasa : "Fasa"
       credit : "信用卡"
@@ -174,6 +177,7 @@ zh:
     note : "我同意该条款"
     nullAccount : "请添加账号"
     cantWithdrawal : "只有在30天内选择使用信用卡入金才能使用信用卡出金"
+    cantWithdrawalByskrill: "必须Skrill 存入资金后方可Skrill 提取资金"
     balance: "余额"
     amount: "金额"
     methods: "出款方式"
