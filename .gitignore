@@ -10,3 +10,4 @@ test/e2e/reports
 selenium-debug.log
 stat.json
 env.js
+package-lock.json
