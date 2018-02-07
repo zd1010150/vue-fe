@@ -156,11 +156,11 @@
       },
       getImageScript (image) {
         let obj = Object.assign(this.agent, {src: image.src, wp_url: this.orgUrl})
-        return `<a href="${obj.wp_url}${obj.agent_url}" target="_blank"><img src="${obj.src}"/></a>`
+        return `<a href="${obj.agent_url}" target="_blank"><img src="${obj.src}"/></a>`
       },
       getVideoScript (video) {
         let obj = Object.assign(this.agent, {src: video.src, wp_url: this.orgUrl})
-        return `<video width="260" height="150" controls="" autoplay="" onended="_acy_direct(this)" data-url="${obj.wp_url}${obj.agent_url}"><source src="${obj.src}"></video>\<script type="text/javascript"\>function _acy_direct ( dom ){window.open ( dom.getAttribute ( "data-url" ) );}\<\/script\>`
+        return `<video width="260" height="150" controls="" autoplay="" onended="_acy_direct(this)" data-url="${obj.agent_url}"><source src="${obj.src}"></video>\<script type="text/javascript"\>function _acy_direct ( dom ){window.open ( dom.getAttribute ( "data-url" ) );}\<\/script\>`
       },
       copy (txt) {
         if (eventUtil.copy(txt)) {
