@@ -24,7 +24,7 @@
         innerMethodCode: this.methodCode,
         innerMethodName: this.methodName,
         noAccountAndBank: ['doku', 'inskr', 'invis', 'inmas'],
-        cards: ['dd', 'hb', 'an', 'hd', 'zl', 'azf', 'hby', 'rpn']// 和unionpay的
+        cards: ['dd', 'hb', 'an', 'hd', 'zl', 'azf', 'hby', 'rpn', 'ps']// 和unionpay的
       }
     },
     props: {
