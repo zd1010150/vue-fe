@@ -1,7 +1,7 @@
 <i18n src="../i18n.yaml"></i18n>
 <template>
   <div class="row pb-lg">
-    <div class="col-lg-5 col-md-5" v-if="url">
+    <div class="col-lg-12 col-md-12 col-sm-12" v-if="url">
       <table >
         <tr>
           <td class="title"><h4>{{ $t('agentActivity.agentUrl') }} :</h4></td>
@@ -9,23 +9,43 @@
             <span class="text-dark">{{url}}</span>
           </td>
           <td class="btn-td">
-            <chp-button class=" ml-xs btn btn-primary print-btn" @click="copy()">
+            <chp-button class=" ml-xs btn btn-primary print-btn hidden-sm hidden-xs" @click="copy()">
               {{ $t('agentActivity.copyAgentUrl') }}
             </chp-button>
-
+          </td>
+          <td>
+            <chp-button class="ml-xs btn btn-primary show-qr-btn hidden-sm hidden-xs" @click="showQrCode()">
+              {{ $t('agentActivity.showQRCode') }}
+            </chp-button>
           </td>
         </tr>
       </table>
     </div>
-    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 img-container">
-      <vue-qr  :logoSrc="$store.state.userInfo.avatar"
-               :text="url"
-               :logoMargin="5"
-               :size="140"
-               :margin="0"
-               class="qrimage-wrapper"
-               :dotScale="1"></vue-qr>
+    <div class="col-sm-12 pt-sm">
+      <chp-button class=" btn btn-primary print-btn visible-sm-inline-block visible-xs-inline-block" @click="copy()">
+        {{ $t('agentActivity.copyAgentUrl') }}
+      </chp-button>
+      <chp-button class=" ml-xs btn btn-primary show-qr-btn visible-sm-inline-block visible-xs-inline-block" @click="showQrCode()">
+        {{ $t('agentActivity.showQRCode') }}
+      </chp-button>
     </div>
+    <mu-dialog :open="qrIsShow"  @close='hideQrCode' :dialogClass="'qr-image-preview-dialog'">
+      <div class="title-wrapper" slot="title">
+        <mu-icon-button @click='hideQrCode' class="close-btn">
+          <i class="fa fa-times"></i>
+        </mu-icon-button>
+      </div>
+      <div class="content" slot="default">
+          <vue-qr  :logoSrc="$store.state.userInfo.avatar"
+                   :text="url"
+                   slog="body"
+                   :logoMargin="5"
+                   :size="240"
+                   :margin="0"
+                   class="qrimage-wrapper mfp-img img-responsive"
+                   :dotScale="1" />
+      </div>
+    </mu-dialog>
   </div>
 </template>
 <script>
@@ -41,7 +61,8 @@
     },
     data () {
       return {
-        url: ''
+        url: '',
+        qrIsShow: false
       }
     },
     created () {
@@ -60,6 +81,12 @@
           return mt4.mt4_id === id
         })
         this.url = tmp && tmp.length > 0 ? tmp[0].agent_url : ''
+      },
+      showQrCode () {
+        this.qrIsShow = true
+      },
+      hideQrCode () {
+        this.qrIsShow = false
       }
     },
     watch: {
@@ -70,18 +97,16 @@
   }
 </script>
 <style lang="less" scoped>
+  @import "~assets/less/variable.less";
 
   .title {
     h4 {
       padding-bottom: 0px;
+      padding-top: 0px;
+      white-space: nowrap;
     }
 
   }
-
-  .btn-td {
-    width: 60px;
-  }
-
   .title, .url {
     vertical-align: middle;
   }
@@ -92,10 +117,11 @@
     }
   }
 
+
   .qrimage-wrapper{
 
-    width: 160px;
-    height: 160px;;
+    width:260px;
+    height: 260px;;
     padding: 10px;
     background-color: #fff;
   }

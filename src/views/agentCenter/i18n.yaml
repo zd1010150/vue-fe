@@ -2,10 +2,11 @@ en:
   agentActivity:
     agentUrl: "Affiliate URL"
     copyAgentUrl: "Copy"
+    showQRCode: "Show QR Code"
     copySuccess: "Copy Success"
     tradeVolumnLevel: "Trading Volume Level"
     activeClientLevel: "Active Clients Level"
-  clientList: "Client List" 
+  clientList: "Client List"
   remainLots : "Number of standard lots required to next level"
   getBonus: "Get Bonus"
   activityTerms: "Terms and Conditions"
@@ -92,7 +93,8 @@ zh:
     copySuccess: "复制成功"
     tradeVolumnLevel: "交易量等级"
     activeClientLevel: "有效客户等级"
-  clientList: "客户列表" 
+    showQRCode: "展示二维码"
+  clientList: "客户列表"
   remainLots : "到下一等级还需交易手数"
   getBonus: "点我领奖"
   activityTerms: "活动条款和细则"
@@ -113,7 +115,7 @@ zh:
     comments: "描述您的服务/营销策略"
     unit:
       year: "年"
-      lots: "标准手"  
+      lots: "标准手"
       money: "USD"
     terms: "《条款和条件》"
     iAgree: "我同意"
@@ -173,6 +175,5 @@ zh:
       selectedPercentageTip: "特定时间内的有效客户数占比"
       totalPercentageTip: "截止至上个月末的有效客户数占比"
 
-  
 
-  
+

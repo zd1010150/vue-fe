@@ -1,7 +1,6 @@
 <template>
   <div class="container-fluid">
     <template v-for="(mt4,index) in $store.state.mt4Accounts">
-      {{ 'mt4'+index }}
       <mt4 :account="mt4" :key="index" :ref="'mt4'+index" :order="index" @collapsePanel="collapsePanel"></mt4>
     </template>
   </div>
