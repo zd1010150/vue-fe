@@ -17,9 +17,10 @@
       <div class="media-gallery">
         <div class="row mg-files">
           <div v-for="video in category.children" class="col-sm-6 col-lg-3">
+          <span v-if="video.isNew" class="new-book-mark">New</span>
             <div class="thumbnail">
-              <router-link :to="'?level=3&videoCode='+category.code+'&videoType='+category.id+'&videoId='+video.id">
-                <chp-feature-image :src="video.imagepath || video.image_link"/>
+            <router-link :to="'?level=3&videoCode='+category.code+'&videoType='+category.id+'&videoId='+video.id">
+              <chp-feature-image :src="video.imagepath || video.image_link"/>
               </router-link>
               <div>
                 <h5 class="mb-xs mt-md video-title">{{video.title}}</h5>
@@ -111,6 +112,10 @@ export default {
   line-height: 22px;
 	overflow: hidden;
 }
+  .new-book-mark{
+    z-index: 20;
+    position: absolute;
+  }
 </style>
 
 

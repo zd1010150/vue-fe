@@ -15,6 +15,8 @@
     <div class="media-gallery infinite-container" ref="scroller">
       <div class="row mg-files">
         <div v-for="video in loopList" class="col-sm-6 col-md-4 col-lg-3 video">
+          <span v-if="video.isNew+'' === 'true'" class="new-book-mark">New</span>
+
           <div class="thumbnail">
             <router-link
               :to="'?level=3&videoCode='+$route.query.videoCode+'&videoType='+$route.query.videoType+'&videoId='+video.id">
@@ -133,7 +135,10 @@
   .row.mg-files {
     margin: 0px;
   }
-
+  .new-book-mark{
+    z-index: 20;
+    position: absolute;
+  }
 </style>
 
 
