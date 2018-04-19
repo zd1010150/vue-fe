@@ -158,7 +158,6 @@
         const cityName = _city[0].name
         const bankName = this.banks.filter(b => b.id === this.selected.bank_id)[0].name
         const branchName = this.branches.filter(b => b.id === this.selected.branch_id)[0].name
-        debugger
         return Object.assign({}, this.selected, {
           provinceName,
           cityName,
@@ -167,11 +166,11 @@
         })
       },
       async search () {
-        this.loadingStatus = true
         const { province_id, city_id, bank_id } = this.selected
         if (_.isEmpty(`${province_id}`) || _.isEmpty(`${city_id}`) || _.isEmpty(`${bank_id}`)) {
           return
         }
+        this.loadingStatus = true
         let {success, data} = await bankCardService.searchBranch({
           provinceId: this.selected.province_id,
           cityId: this.selected.city_id,
@@ -215,10 +214,9 @@
         this.loadingStatus = true
         await this.fetchProvince()
         await this.fetchBanks()
+        await this.search()
         this.loadingStatus = false
         if (!!this.editObj) {
-          debugger
-          await this.search()
           const {province_id, city_id, bank_id, branch_id} = this.editObj
           this.selected = Object.assign({}, this.selected, {province_id, city_id, bank_id, branch_id})
         }
