@@ -1,4 +1,4 @@
-<i18n src="../../../i18n.yaml"></i18n>
+<i18n src="../../../../i18n.yaml"></i18n>
 <template lang="html">
 
       <form slot="body" class="form-horizontal form-bordered " method="POST"  target="_blank" ref="accountForm">
@@ -66,8 +66,7 @@
               </div>
             </chp-file-upload>
             </div>
-
-          </transition-group>
+           </transition-group>
          <input type="hidden" v-model="model.document" v-validate="'required'" data-vv-value-path="model.document" data-vv-name="bankDocument"  >
          <span slot="required" class="error" v-if="errors.has('bankDocument:required')">{{errors.first('bankDocument:required')}}</span>
           </div>
@@ -166,6 +165,7 @@ export default {
         this.model = Object.assign({}, this.model, this.originModel, {method: this.innerMethod, bank_name: this.innerMethod})
       }
     }
+
   },
   mounted () {
     this.initModel()
@@ -173,6 +173,7 @@ export default {
   },
   watch: {
     '$store.state.language': function (val, oldVal) {
+      if (val === oldVal) return
       this.fetchPromtingMessage(val)
     },
     method: function (val) {

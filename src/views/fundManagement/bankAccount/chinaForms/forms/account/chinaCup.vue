@@ -1,4 +1,4 @@
-<i18n src="../../../i18n.yaml"></i18n>
+<i18n src="../../../../i18n.yaml"></i18n>
 <template lang="html">
 
       <form slot="body" class="form-horizontal form-bordered " method="POST"  target="_blank" ref="accountForm">
@@ -8,16 +8,82 @@
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6" >
-            <mu-text-field  v-model="model.bank_name"
-                            :disabled="true"
+            <mu-text-field  v-model="branchObj.bankName"
                             v-validate="'required'"
-                            data-vv-value-path="model.bank_name"
+                            data-vv-value-path="branchObj.bank_id"
                             data-vv-name="bankName"
                             class="form-control"
+                            disabled
                             :fullWidth="true" />
             <span slot="required" class="error" v-if="errors.has('bankName:required')">{{errors.first('bankName:required')}}</span>
           </div>
         </div>
+        <div class="form-group" :class="errorClass('bankProvince')" >
+          <label class="control-label col-md-3">
+            {{ $t('bankcard.province') }}
+            <span class="required" aria-required="true">*</span>
+          </label>
+          <div class="col-md-6">
+            <mu-text-field  v-model="branchObj.provinceName"
+                            v-validate="'required'"
+                            data-vv-value-path="branchObj.province_id"
+                            data-vv-name="bankProvince"
+                            class="form-control"
+                            disabled
+                            :fullWidth="true" />
+
+            <span slot="required" class="error" v-if="errors.has('bankProvince:required')">{{errors.first('bankProvince:required')}}</span>
+          </div>
+        </div>
+        <div class="form-group" :class="errorClass('bankCity')" >
+          <label class="control-label col-md-3">
+            {{ $t('bankcard.city') }}
+            <span class="required" aria-required="true">*</span>
+          </label>
+          <div class="col-md-6">
+            <mu-text-field  v-model="branchObj.cityName"
+                            v-validate="'required'"
+                            data-vv-value-path="branchObj.city_id"
+                            data-vv-name="bankCity"
+                            class="form-control"
+                            disabled
+                            :fullWidth="true" />
+
+            <span slot="required" class="error" v-if="errors.has('bankCity:required')">{{errors.first('bankCity:required')}}</span>
+          </div>
+        </div>
+        <div class="form-group" :class="errorClass('branchName')" >
+          <label class="control-label col-md-3">
+            {{ $t('bankcard.branchName') }}
+            <span class="required" aria-required="true">*</span>
+          </label>
+          <div class="col-md-6">
+            <mu-text-field  v-model="branchObj.branchName"
+                            v-validate="'required'"
+                            data-vv-value-path="branchObj.branch_id"
+                            data-vv-name="branchName"
+                            class="form-control"
+                            disabled
+                            :fullWidth="true" />
+
+            <span slot="required" class="error" v-if="errors.has('branchName:required')">{{errors.first('branchName:required')}}</span>
+          </div>
+        </div>
+        <div class="form-group" :class="errorClass('phone')">
+        <label class="control-label col-md-3">{{ $t('bankcard.phone') }}
+          <span class="required" aria-required="true">*</span>
+        </label>
+        <div class="col-md-6">
+          <mu-text-field  v-model="model.phone"
+                          v-validate="'required'"
+                          data-vv-value-path="model.phone"
+                          data-vv-name="phone"
+                          class="form-control"
+                          :fullWidth="true" />
+          <span class="error"> * {{ $t('bankcard.phoneTip') }}</span>
+          <div slot="required" class="error" v-if="errors.has('phone:required')">{{errors.first('phone:required')}}</div>
+        </div>
+      </div>
         <div class="form-group" :class="errorClass('bankAccount')">
           <label class="control-label col-md-3">
             {{ $t('bankcard.account') }}
@@ -34,6 +100,21 @@
             <span slot="required" class="error" v-if="errors.has('bankAccount:required')">
               {{errors.first('bankAccount:required')}}
             </span>
+          </div>
+        </div>
+        <div class="form-group" :class="errorClass('swift')">
+          <label class="control-label col-md-3">Swift
+            <span class="required" aria-required="true">*</span>
+          </label>
+          <div class="col-md-6">
+            <mu-text-field  v-model="model.swift"
+                            v-validate="'required'"
+                            data-vv-value-path="model.swift"
+                            data-vv-name="swift"
+                            class="form-control"
+                            :fullWidth="true" />
+
+            <span slot="required" class="error" v-if="errors.has('swift:required')">{{errors.first('swift:required')}}</span>
           </div>
         </div>
         <div class="form-group" :class="errorClass('bankDocument')">
@@ -66,7 +147,7 @@
               </div>
             </chp-file-upload>
             </div>
-           </transition-group>
+          </transition-group>
          <input type="hidden" v-model="model.document" v-validate="'required'" data-vv-value-path="model.document" data-vv-name="bankDocument"  >
          <span slot="required" class="error" v-if="errors.has('bankDocument:required')">{{errors.first('bankDocument:required')}}</span>
           </div>
@@ -75,13 +156,13 @@
 </template>
 
 <script>
+
 import validateMixin from 'mixins/validatemix'
 import configService from 'services/configService'
 import bankCardService from 'services/bankCardService'
 import { UPLOAD_DOCUMENT_URL } from 'src/config/url.config.js'
 import { UPLOAD_CONFIG } from 'src/config/app.config.js'
 import { assignToObject } from 'src/utils/objectUtil'
-
 export default {
   mixins: [validateMixin],
   data () {
@@ -94,30 +175,25 @@ export default {
       isEdit: false,
       editId: null,
       originModel: {
-        province: '',
-        city: '',
-        address: '',
         account: '',
         swift: '',
-        bank_name: '',
         method: '',
-        document: ''
+        document: '',
+        phone: ''
       },
       model: {
-        province: '',
-        city: '',
-        address: '',
         account: '',
         swift: '',
-        bank_name: '',
         method: '',
-        document: ''
+        document: '',
+        phone: ''
       }
     }
   },
   props: {
     method: String,
-    editObj: Object
+    editObj: Object,
+    branchObj: Object
   },
   methods: {
     async fetchPromtingMessage (val) {
@@ -138,12 +214,14 @@ export default {
     },
     async submit () {
       let validateResult = await this.$validator.validateAll()
+      const { bank_id, province_id, city_id, branch_id } = this.branchObj,
+        formData = Object.assign({}, this.model, { bank_id, province_id, city_id, branch_id })
       if (validateResult) {
         let res
         if (this.editId) {
-          res = await bankCardService.updateBankCard(this.editId, this.model)
+          res = await bankCardService.updateChinaBankCard(this.editId, formData)
         } else {
-          res = await bankCardService.addBankCard(this.model)
+          res = await bankCardService.addChinaBankCard(formData)
         }
         let { success } = res
         if (success) {
@@ -172,20 +250,19 @@ export default {
     this.fetchPromtingMessage(this.$store.state.language)
   },
   watch: {
-    '$store.state.language': function (val, oldVal) {
-      if (val === oldVal) return
+    '$store.state.language' (val, oldVal) {
       this.fetchPromtingMessage(val)
     },
-    method: function (val) {
+    method (val) {
       this.innerMethod = val
     },
-    editObj: function (val) {
+    editObj (val) {
       this.innerEditObj = val
     },
-    innerMethod: function (val, oldVal) {
+    innerMethod (val, oldVal) {
       this.initModel()
     },
-    innerEditObj: function (val) {
+    innerEditObj (val) {
       this.initModel()
     }
   }

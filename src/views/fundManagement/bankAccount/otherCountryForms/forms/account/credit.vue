@@ -1,4 +1,4 @@
-<i18n src="../../../i18n.yaml"></i18n>
+<i18n src="../../../../i18n.yaml"></i18n>
 <template lang="html">
     <form slot="body" class="form-horizontal form-bordered " method="POST"  target="_blank" ref="accountForm">
        <div class="form-group" :class="errorClass('bankName')">
