@@ -21,6 +21,13 @@ en:
     cards: "Cards"
     skrill: "Skrill"
   bankcard:
+    branchBank: "Select Branch"
+    selectProvince: "Select Province"
+    selectCity: "Select City"
+    branchKey: "Keywords for Branch"
+    searchBranch: "Search Branch"
+    phone: "Account Binding Phone"
+    phoneTip: "Please input the bank account binding phone number.Otherwise the withdrawal will be denied"
     profile: "Profile"
     editBtnText : "Edit Bank Account"
     newBtnText : "Add Bank Account"
@@ -58,6 +65,7 @@ en:
     deleteDialogText : " Are you sure delete this card?"
     deleteCreditCardText: "If you delete this verified credit card, your credit card withdrawal balance will be reset to 0."
     methodType :
+      chinaCup: "Bank Statement(China Union Pay, Bank Wire)"
       cup : "Bank Statement(China Union Pay, Skrill , Bank Wire) "
       doku : "Doku"
       fasa : "Fasa"
@@ -128,6 +136,13 @@ zh:
     cards: "银行卡"
     skrill: "Skrill"
   bankcard:
+    branchBank: "选择支行"
+    selectProvince: "选择省份"
+    selectCity: "选择城市"
+    branchKey: "支行信息关键字"
+    searchBranch: "搜索支行"
+    phoneTip: "请填写银行绑定电话，否则提款有可能被拒绝"
+    phone: "银行预留电话"
     profile: "个人信息"
     editBtnText : "编辑账号信息"
     newBtnText : "新增账号"
@@ -165,6 +180,7 @@ zh:
     deleteDialogText: "你确定删除该条记录?"
     deleteCreditCardText: "如果解绑该信用卡，你的信用卡出金额度将会重置归零."
     methodType :
+      chinaCup: "银行账单 (银联,电汇)"
       cup : "银行账单 (银联，Skrill ，电汇）"
       doku : "Doku"
       fasa : "Fasa"

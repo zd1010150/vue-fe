@@ -20,13 +20,13 @@
                      :ref="ALL_METHODS.DOKU"
                      @refresh="refresh"/>
 
+
 </template>
 <script>
   import cup from './cup'
   import credit from './credit'
   import fasa from './fasa'
   import doku from './doku'
-
   export default {
     components: {
       'bank-account-cup': cup,

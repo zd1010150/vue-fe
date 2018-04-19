@@ -13,6 +13,15 @@ export default {
   async deleteBankCard (id) {
     return fetchData('DELETE', '/bank-card/' + id)
   },
+  async fetchProvince () {
+    return fetchData('GET', '/union/cities_info')
+  },
+  async getBanks () {
+    return fetchData('GET', '/union/banks')
+  },
+  async searchBranch ({bankId, provinceId, cityId, keywords}) {
+    return fetchData('GET', `/union/bank/${bankId}/province/${provinceId}/cities/${cityId}/branches`, { keywords })
+  },
   async addBankCard ({province, city, address, account, swift, bank_name, method, document, document_2}) {
     return fetchData('POST', '/bank-card', {
       province,
@@ -24,6 +33,32 @@ export default {
       method,
       document,
       document_2
+    })
+  },
+  async addChinaBankCard ({province_id, city_id, branch_id, phone, account, swift, bank_id, method, document}) {
+    return fetchData('POST', '/bank-card/v2', {
+      province_id,
+      city_id,
+      branch_id,
+      phone,
+      account,
+      swift,
+      bank_id,
+      method,
+      document
+    })
+  },
+  async updateChinaBankCard (id, {province_id, city_id, branch_id, phone, account, swift, bank_id, method, document}) {
+    return fetchData('PUT', `/bank-card/v2/${id}`, {
+      province_id,
+      city_id,
+      branch_id,
+      phone,
+      account,
+      swift,
+      bank_id,
+      method,
+      document
     })
   },
   async getBankCardById (id) {

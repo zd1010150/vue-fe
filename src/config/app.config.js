@@ -58,3 +58,4 @@ export const TRAINING_VIDEO_TYPES = {
   YOUKU: 'YOUKU',
   OTHER: 'OTHER'
 }
+export const CHINA_COUNTRY_CODE = ['china', 'cn']
