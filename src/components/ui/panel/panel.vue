@@ -1,6 +1,6 @@
 <template>
   <section class="panel" :class="classes">
-    <header class="panel-heading" :class="headerClasses">
+    <header class="panel-heading" :class="headerClasses" v-if="isShowHeader">
       <div class="panel-actions">
         <a href="javascript:void(0)"
            class="panel-action panel-action-toggle"
@@ -130,6 +130,10 @@
         default: ''
       },
       showActionRipple: {
+        type: Boolean,
+        default: true
+      },
+      isShowHeader: {
         type: Boolean,
         default: true
       }
