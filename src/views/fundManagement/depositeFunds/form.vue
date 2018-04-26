@@ -23,8 +23,8 @@
       return {
         innerMethodCode: this.methodCode,
         innerMethodName: this.methodName,
-        noAccountAndBank: ['doku', 'inskr', 'invis', 'inmas', 'incup'],
-        cards: ['dd', 'hb', 'an', 'hd', 'zl', 'azf', 'hby', 'rpn', 'ps', 'pc']// 和unionpay的
+        noAccountAndBank: ['doku', 'inskr', 'invis', 'inmas', 'incup', 'yzh'],
+        cards: ['dd', 'hb', 'an', 'hd', 'zl', 'azf', 'hby', 'rpn', 'ps', 'pc', 'sd']// 和unionpay的
       }
     },
     props: {
