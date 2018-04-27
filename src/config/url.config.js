@@ -14,26 +14,26 @@ export const EXTERNAL_URL = {
  */
 // 官网的首页
 export const ORG_INDEX = {
-  zh: 'https://cn.acy.com',
-  en: 'https://www.acy.com'
+  zh: 'https://cn.acyfxasia.com',
+  en: 'https://www.acyfxasia.com'
 }
 // 下载中心的web mt4 地址
 export const MT4_WEB_PLATFORM = {
-  zh: 'https://cn.acy.com/acy-webtrader',
-  en: 'https://www.acy.com/acy-webtrader'
+  zh: 'https://cn.acyfxasia.com/acy-webtrader',
+  en: 'https://www.acyfxasia.com/acy-webtrader'
 }
 // 开通合作账户的条款地址
 export const TERMS = {
-  zh: 'https://cn.acy.com/why-acy/terms-and-conditions',
-  en: 'https://www.acy.com/why-acy/terms-and-conditions'
+  zh: 'https://cn.acyfxasia.com/why-acy/terms-and-conditions',
+  en: 'https://www.acyfxasia.com/why-acy/terms-and-conditions'
 }
 // 官网的抽奖地址
 export const PRIZE_LANDING_PAGE = {
-  zh: 'https://cn.acy.com/landingpage/2018annuallottery',
-  en: 'https://www.acy.com/landingpage/2018annuallottery'
+  zh: 'https://cn.acyfxasia.com/landingpage/2018annuallottery',
+  en: 'https://www.acyfxasia.com/landingpage/2018annuallottery'
 }
 // 常见问题的链接地址
 export const COMMON_QUESTION = {
-  zh: 'https://cn.acy.com/why-acy/faq',
-  en: 'https://www.acy.com/why-acy/faq'
+  zh: 'https://cn.acyfxasia.com/why-acy/faq',
+  en: 'https://www.acyfxasia.com/why-acy/faq'
 }
