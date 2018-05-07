@@ -224,7 +224,7 @@ export default {
         this.model = Object.assign({}, this.model, assignToObject(this.originModel, this.innerEditObj))
       } else {
         this.editId = null
-        this.model = Object.assign({}, this.model, this.originModel, {method: this.innerMethod, bank_name: this.innerMethod})
+        this.model = Object.assign({}, this.model, this.originModel, { method: this.innerMethod, bank_name: this.innerMethod === 'CUP' ? '' : this.innerMethod })
       }
     }
 
