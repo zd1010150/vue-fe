@@ -59,7 +59,13 @@
             <span class="required" aria-required="true">*</span>
           </label>
           <div class="col-md-6" >
-           <mu-text-field :hintText="$t('withdrawal.nullAccount')" class="form-control"   :fullWidth="true"  :disabled="true" v-if="accounts.length <1"/>
+           <div class="mu-text-field form-control disabled full-width" v-if="accounts.length <1">
+             <div class="mu-text-field-content">
+               <div class="mu-text-field-hint show">
+                 {{ $t('withdrawal.first') }}<router-link to="/fund-manager/bank-account">{{ $t('withdrawal.nullAccount') }}</router-link>
+                </div>
+             </div>
+           </div>
            <mu-select-field v-model="model.bank_code"  name="bank_code" v-else>
               <template  v-for="a in accounts" >
                 <mu-menu-item :value="a.accountId" :title="a.bankName+'|'+a.accountNumber" key="mt4.id"/>
