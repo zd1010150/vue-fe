@@ -84,6 +84,7 @@ import fundsService from 'services/fundsService'
 import { Validator } from 'vee-validate'
 import { SET_ASYNC_LOADING } from 'store/mutation-types'
 import { FIXED_WITHDRAWAL_UNIT } from 'src/config/app.config.js'
+import mathUtil from 'utils/mathUtil'
 
 const CREDIT_CARD = 'creditCard', SKRILL = 'skrill'
 
@@ -233,7 +234,7 @@ export default {
       this.MT4 = this.$store.state.mt4Accounts.map((mt4) => {
         return {
           id: mt4.mt4_id,
-          text: '#' + mt4.mt4_id + ' | ' + mt4.account_type + ' | ' + mt4.balance,
+          text: '#' + mt4.mt4_id + ' | ' + mt4.account_type + ' | ' + mathUtil.getFormatMoney(mt4.balance),
           baseCurrency: mt4.base_currency
         }
       })

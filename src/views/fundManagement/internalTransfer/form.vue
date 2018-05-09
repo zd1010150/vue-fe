@@ -78,6 +78,7 @@
   import validateMixin from 'mixins/validatemix'
   import loadingMix from 'mixins/loading'
   import { SET_ASYNC_LOADING } from 'store/mutation-types'
+  import mathUtil from 'utils/mathUtil'
 
   export default {
     mixins: [validateMixin, loadingMix],
@@ -138,14 +139,14 @@
           this.originSrcMT4 = this.originMt4 = this.$store.state.mt4Accounts.map((mt4) => {
             return {
               id: mt4.mt4_id,
-              text: '#' + mt4.mt4_id + ' | ' + mt4.balance,
+              text: '#' + mt4.mt4_id + ' | ' + mathUtil.getFormatMoney(mt4.balance),
               baseCurrency: mt4.base_currency
             }
           })
           this.originTargetMT4 = this.targetMt4 = this.$store.state.traderAccounts.map((mt4) => {
             return {
               id: mt4.mt4_id,
-              text: '#' + mt4.mt4_id + ' | ' + mt4.balance,
+              text: '#' + mt4.mt4_id + ' | ' + mathUtil.getFormatMoney(mt4.balance),
               baseCurrency: mt4.base_currency
             }
           })
