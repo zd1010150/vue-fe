@@ -43,7 +43,7 @@
           >
             <dl slot="panelSubtitle" class="subtitle clearfix big-screen">
               <dt class="info-title">{{ $t('trade.balance') }}</dt>
-              <dd class="amount info-number text-dark">{{ mt4.balance}}</dd>
+              <dd class="amount info-number text-dark"><chp-money :money="mt4.balance"/></dd>
               <dt class="info-title">{{ $t('trade.currency') }}</dt>
               <dd class="amount info-number text-dark">{{ mt4.base_currency}}</dd>
               <dt class="info-title" v-if="mt4.account_type != 'Agent'">{{ $t('trade.leverage') }}</dt>

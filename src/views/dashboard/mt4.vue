@@ -28,7 +28,7 @@
           <tr v-for="(t,index) in accounts" :key="index">
             <td>{{ t.mt4_id }}</td>
             <td>{{ t.account_type }}</td>
-            <td>{{ t.balance }}</td>
+            <td> <chp-money :money="t.balance"/></td>
           </tr>
           </tbody>
         </table>
