@@ -26,6 +26,7 @@ import ProgressBar from './progressBar'
 import OneLine from './oneLine'
 import ViewAll from './viewAll'
 import qrCode from './qrCode'
+import Money from './money'
 
 export default function install (Vue) {
   Vue.component('chp-ink-ripple', chpInkRipple)
@@ -56,4 +57,5 @@ export default function install (Vue) {
   Vue.use(OneLine)
   Vue.use(ViewAll)
   Vue.use(qrCode)
+  Vue.use(Money)
 }

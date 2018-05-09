@@ -21,16 +21,16 @@
         <table class="total-table ">
           <tr>
             <td> {{ $t('availabelCommissions') }}：</td>
-            <td>{{ $t('totalClientBalance') }}：</td>
+            <td> {{ $t('totalClientBalance') }}：</td>
             <td>{{ $t('trade.totalClient') }}：</td>
           </tr>
           <tr class="number">
             <td>
-              <strong class="lead text-dark">{{model.balance}}</strong>
+              <strong class="lead text-dark"><chp-money :money="model.balance"/></strong>
               <span>{{model.baseCurrency}}</span>
             </td>
             <td>
-              <strong class="lead text-dark">{{ model.totalBalance}} </strong>
+              <strong class="lead text-dark"><chp-money :money="model.totalBalance"/></strong>
             </td>
             <td>
               <strong class="lead text-dark">{{ model.totalClient }}</strong>

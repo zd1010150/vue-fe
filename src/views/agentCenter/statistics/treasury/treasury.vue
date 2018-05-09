@@ -4,17 +4,17 @@
     <agent-statistics-time-picker @research="research" :agent="agent">
       <ul class="total-info">
         <li>
-          {{ $t('trade.deposit') }} : <span class="text-dark info-number"> {{ totalTreasurys.total_clients_deposit
-          }} </span>
+          {{ $t('trade.deposit') }} : <span class="text-dark info-number">
+            <chp-money :money = "totalTreasurys.total_clients_deposit" />
+          </span>
           <chp-tooltip chp-direction="bottom">{{ $t('charts.treasuryChart.depositTip') }}</chp-tooltip>
         </li>
         <li>
-          {{ $t('trade.withdrawal') }} : <span class="text-dark info-number"> {{ totalTreasurys.total_clients_withdraw
-          }}  </span>
+          {{ $t('trade.withdrawal') }} : <span class="text-dark info-number"> <chp-money :money = "totalTreasurys.total_clients_withdraw" />  </span>
           <chp-tooltip chp-direction="bottom">{{ $t('charts.treasuryChart.withdrawalTip') }}</chp-tooltip>
         </li>
         <li>
-          {{ $t('trade.withdrawaledCom') }} : <span class="text-dark info-number"> {{ totalTreasurys.total_withdraw || 0}}  </span>
+          {{ $t('trade.withdrawaledCom') }} : <span class="text-dark info-number"> <chp-money :money = "totalTreasurys.total_withdraw || 0" />  </span>
           <chp-tooltip chp-direction="bottom">{{ $t('charts.treasuryChart.comTip') }}</chp-tooltip>
         </li>
 
