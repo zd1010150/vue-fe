@@ -36,7 +36,7 @@ export default {
     state.language = ZH_LANGEUAGES.indexOf(language) > -1 ? ZH_LANGUAGE : EN_LANGUAGE
   },
   [SET_I18N_LANGUAGE] (state, language) {
-    state.i18nLanguage = language.replace(/-/g, '')
+    state.i18nLanguage = language
   },
   [SET_THEME] (state, theme) {
     state.theme = theme
