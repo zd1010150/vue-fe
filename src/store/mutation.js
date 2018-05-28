@@ -1,10 +1,12 @@
 import { setStore } from '../utils/storage.js'
+import { ZH_LANGEUAGES, ZH_LANGUAGE, EN_LANGUAGE } from 'src/config/app.config'
 import {
   ADD_ERROR_INFO,
   SET_ASYNC_LOADING,
   SET_CONTENT_LOADING,
   SET_FETCH_PENDING,
   SET_LANGUAGE,
+  SET_I18N_LANGUAGE,
   SET_LEFT_SIDE_BAR_STATUS,
   SET_LEVERAGE,
   SET_MT4_ACCOUNTS,
@@ -31,7 +33,10 @@ export default {
     setStore('token', token)
   },
   [SET_LANGUAGE] (state, language) {
-    state.language = language
+    state.language = ZH_LANGEUAGES.indexOf(language) > -1 ? ZH_LANGUAGE : EN_LANGUAGE
+  },
+  [SET_I18N_LANGUAGE] (state, language) {
+    state.i18nLanguage = language.replace(/-/g, '')
   },
   [SET_THEME] (state, theme) {
     state.theme = theme

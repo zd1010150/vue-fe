@@ -28,3 +28,18 @@ zh:
   account: "账户"
   detail: "详情"
   close: "关闭"
+zh-Hant:
+  applicationSubaccount:
+    agreenTerms: "我同意<<條款和須知>>"
+    registerSubAccount : "申請交易子賬戶"
+  platForm: "交易平台 "
+  accountType: "賬戶類型"
+  leverage: "交易槓桿"
+  basecurrency: "基礎貨幣"
+  reason: "申請理由"
+  modifyPwdNotification: "請查收重置密碼郵件"
+  changePwd: "重置密碼"
+  type: "類型"
+  account: "賬戶"
+  detail: "詳情"
+  close: "關閉"

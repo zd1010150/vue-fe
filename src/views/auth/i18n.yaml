@@ -40,3 +40,24 @@ zh:
       title: "重置密码"
       remember: "记起密码"
       signIn: "登录"
+zh-Hant:
+    login:
+      email: "電子郵件"
+      placeholderEmail: "請輸入電子郵件地址"
+      placeholderPwd: "請輸入密碼"
+      password: "密碼"
+      signIn: "登錄"
+      lostPassword: "忘記密碼"
+    pwd:
+      placeHolderCurrentPwd: "請輸入當前密碼"
+      placeHolderNewPwd: "請輸入新密碼"
+      placeHolderConfirmPwd: "再次輸入新密碼"
+    resetPwd:
+      resetPwdTitle: "更改密碼"
+      success: "修改密碼成功"
+    applyResetPwd:
+      tips: "輸入你註冊的郵箱，我們會給你發送重置密碼郵件"
+      success: "修改密碼鏈接已經發送到你的郵箱,該鏈接會在60分鐘之後失效，請盡快修改密碼"
+      title: "重置密碼"
+      remember: "記起密碼"
+      signIn: "登錄"

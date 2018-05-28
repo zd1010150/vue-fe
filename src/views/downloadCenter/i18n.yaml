@@ -8,7 +8,17 @@ zh:
   web: "基于浏览器的跨平台应用"
   ios : "iPhone版"
   android: "安卓版"
-en: 
+zh-Hant:
+  pcPlatform: "MT4 桌面版"
+  webPlatform: "MT4 瀏覽器版"
+  mobilePlatform: "MT4 移動應用"
+  windowsDesktop: "windows應用"
+  pc: "基於windows操作系統"
+  webpagePlatform: "網頁交易平台"
+  web: "基於瀏覽器的跨平台應用"
+  ios : "iPhone版"
+  android: "安卓版"
+en:
   pcPlatform: "PC Platform"
   webPlatform: "Web Platform"
   mobilePlatform: "Mobile Platform"

@@ -14,3 +14,11 @@ zh:
   dormant_trader: "交易者教学邮件"
   dormant_agent: "代理教学邮件"
   systemEmail: "系统邮件"
+zh-Hant:
+  subscribeAndUnsubscribe: "訂閱/退訂郵件"
+  companyInformation: "公司信息"
+  active_trader: "交易者郵件"
+  active_agent: "代理郵件"
+  dormant_trader: "交易者教學郵件"
+  dormant_agent: "代理教學郵件"
+  systemEmail: "系統郵件"
