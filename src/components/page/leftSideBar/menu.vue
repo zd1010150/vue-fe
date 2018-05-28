@@ -26,8 +26,6 @@
             'class': ['fa', 'fa-' + node.icon]
           }))
         }
-        debugger
-        console.log('dadnan', this.$t)
         children.push(createElement('span', this.$t('menu.' + node.title)))
         if (notice) {
           children.push(createElement('mu-badge', {
