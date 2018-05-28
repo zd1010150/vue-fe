@@ -129,7 +129,7 @@
         this.$emit('chosePaymentMethod', defaultMethod.code, this.gateWays[defaultMethod.type][defaultMethod.code].name)
       },
       async fetchPaymentMethods () {
-        let {data, success} = await fundsService.getDepositeMethod(this.$store.state.language)
+        let {data, success} = await fundsService.getDepositeMethod(this.$store.state.i18nLanguage)
         if (success) {
           this.mapData(data)
           this.setDefaultMethod()
@@ -140,7 +140,7 @@
       this.fetchPaymentMethods()
     },
     watch: {
-      '$store.state.language': function (val) {
+      '$store.state.i18nLanguage': function (val) {
         this.fetchPaymentMethods()
       }
     }

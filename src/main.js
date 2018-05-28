@@ -19,7 +19,7 @@ import Validate from './validate'
 import { Validator } from 'vee-validate'
 import { getStore, syncVuexStateAndLocalStorage } from './utils/storage.js'
 import changeTheme from 'utils/theme.js'
-import { SET_LANGUAGE, SET_TOKEN, SET_USERINFO } from './store/mutation-types'
+import { SET_LANGUAGE, SET_TOKEN, SET_USERINFO, SET_I18N_LANGUAGE } from './store/mutation-types'
 
 import AuthenService from 'services/authenService'
 import UserService from 'services/userService'
@@ -82,6 +82,7 @@ const checkLogin = async () => {
               store.commit(SET_USERINFO, data)
               store.commit(SET_TOKEN, getStore('token'))
               store.commit(SET_LANGUAGE, data.language)
+              store.commit(SET_I18N_LANGUAGE, data.language)
               i18n.locale = data.language
               Validator.setLocale(data.language)
               initVue()

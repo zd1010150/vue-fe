@@ -11,7 +11,7 @@ en:
   actions: "Actions"
   attach : "Attachment"
   content : "Content"
-  closeTicket: 
+  closeTicket:
     title: "Are you sure to close this ticket？"
     prompt: "Please notice that once the subject is closed you cannot replay again!"
   statusInfo:
@@ -44,7 +44,7 @@ zh:
   actions: "操作"
   attach : "附件"
   content : "内容"
-  closeTicket: 
+  closeTicket:
     title: "你确定关闭该工单？"
     prompt: "请注意你一旦关闭该工单就不能再进行回复!"
   statusInfo:
@@ -64,3 +64,36 @@ zh:
     bonus: "交易等级活动"
     feedbacks: "意见"
     other: "其他问题"
+zh-Hant:
+  about: "關於"
+  ticketForAccount : "賬號"
+  addNew: "新增工單"
+  tickList: "工單列表"
+  time: "時間"
+  account: "賬戶"
+  questionType: "問題類別"
+  subject: "主題"
+  status: "狀態"
+  actions: "操作"
+  attach : "附件"
+  content : "內容"
+  closeTicket:
+    title: "你確定關閉該工單？"
+    prompt: "請注意你一旦關閉該工單就不能再進行回复!"
+  statusInfo:
+    pending: "等待"
+    closed: "關閉"
+    replied: "已回复"
+  type:
+    platform: "交易平台"
+    account: "交易賬戶"
+    order: "交易訂單"
+    deposit: "入金或出金"
+    promotion: "參加活動"
+    refer: "參加朋友推薦計劃"
+    ib: "代理賬戶或返佣"
+    mam: "申請MAM"
+    rebalance: "賬戶清零"
+    bonus: "交易等級活動"
+    feedbacks: "意見"
+    other: "其他問題"

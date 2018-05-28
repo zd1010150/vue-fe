@@ -46,6 +46,7 @@ export default {
   },
   watch: {
     '$store.state.language': function (val, oldVal) {
+      debugger
       this.filterMethodsByLanguage(val)
     },
     editObj: function (val) {
