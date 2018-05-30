@@ -46,5 +46,29 @@ zh:
       tooManyTimes: "每15分钟只能刷新一次"
       hintMsg: '点击同步MT4信息'
       prompMsg: '你已经成功同步服务器的MT4的信息，点击‘确定’立刻刷新当前页面获取最新信息（会丢失当前页面状态），点击‘取消’稍后刷新页面'
+zh-Hant:
+  theme: "主題"
+  language: "多語言"
+  changeLanguage: "更改語言"
+  changeTheme: "更改主題"
+  languages:
+    english: "英語"
+    chinese: "普通話"
+  themes:
+    dark: "深色主題"
+    light: "淺色主題"
+  logout: "退出"
+  logoutDialogHtml : "確認退出？"
+  userbox:
+    myProfile: "個人資料"
+    modifyPassword: "修改密碼"
+    logout: "退出"
+  notification:
+    youHaveChance : '你有'
+    opportunity : '次抽獎機會'
+    syncProfile:
+      tooManyTimes: "每15分鐘只能刷新一次"
+      hintMsg: '點擊同步MT4信息'
+      prompMsg: '你已經成功同步服務器的MT4的信息，點擊‘確定’立刻刷新當前頁面獲取最新信息（會丟失當前頁面狀態），點擊‘取消’稍後刷新頁面'
 
-    
+

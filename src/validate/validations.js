@@ -7,8 +7,8 @@ import configService from 'services/configService'
 const passwordValidator = {
   messages: {
     en: message.en.password,
-    zh: message.zh.password
-
+    zh: message.zh.password,
+    'zh-Hant': message.zhHant.password
   },
   validate (value) {
     return reg.password.test(value)
@@ -17,7 +17,8 @@ const passwordValidator = {
 const positiveFloatMoneyValidator = {
   messages: {
     en: message.en.positiveFloatMoney,
-    zh: message.zh.positiveFloatMoney
+    zh: message.zh.positiveFloatMoney,
+    'zh-Hant': message.zhHant.positiveFloatMoney
   },
   validate (value) {
     return reg.positiveFloatMoney.test(value)
@@ -26,7 +27,8 @@ const positiveFloatMoneyValidator = {
 const moneyRangeValidator = {
   messages: {
     en: message.en.moneyRange,
-    zh: message.zh.moneyRange
+    zh: message.zh.moneyRange,
+    'zh-Hant': message.zhHant.moneyRange
   },
   async validate (value, fieldKey) {
     let fields = ['max_' + fieldKey, 'min_' + fieldKey],

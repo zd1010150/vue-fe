@@ -10,6 +10,17 @@ export default {
       }
     }
   },
+  zhHant: {
+    password: (field) => `${field}必須包括8個字符，包括數字，大寫字母和小寫字母`,
+    positiveFloatMoney: (field) => `${field}格式不對，小數點之後最多兩位`,
+    moneyRange: (field, params, {min, max}) => {
+      if (min && max) {
+        return `最大${field}金額${max},最小${field}金額${min}`
+      } else {
+        return `校驗異步出錯`
+      }
+    }
+  },
   en: {
     password: (field) => `${field} at least 8 characters including number ,lower capital and upper capitals`,
     positiveFloatMoney: (field) => `${field} is error.There is at most two digitals after decimal`,

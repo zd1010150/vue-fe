@@ -7,6 +7,13 @@ export default {
       }
     }
   },
+  'zh-Hant': {
+    custom: {
+      terms: {
+        required: '請閱讀並同意條款'
+      }
+    }
+  },
   en: {
     custom: {
       terms: {

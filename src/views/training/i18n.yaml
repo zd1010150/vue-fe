@@ -30,6 +30,38 @@ zh:
     articles: "论金月刊"
     books: "教学书籍"
     allBooks: "所有书籍"
+zh-Hant:
+  onlineTraining:
+    timer: "倒計時"
+    onlineTrainingList: "在線培訓課程列表"
+    subject: "主題"
+    presenter: "主講人"
+    date: "講課日期"
+    time: "講課時間"
+    status: "課程狀態"
+    bjTime: "北京時間"
+    withdrawDialogText: "你確定撤銷報名？"
+    enrolledOnlineTraining : "已報名課程"
+    content: "培訓內容"
+    allStatus:
+      end: "已開課"
+      enrolled: "已報名"
+      unenrolled: "點擊報名"
+  video:
+    more: "更多"
+    allVideos: "所有視頻"
+    category: "分類"
+    video: "視頻"
+    info: "匯市情報局"
+    analysis: "每日分析"
+    tutorials: "教學視頻"
+    pullLoadmore: "下拉加載更多……"
+    noMore: "已經到盡頭了，沒有更多視頻了"
+    loading: "玩命加載中……"
+  book:
+    articles: "論金月刊"
+    books: "教學書籍"
+    allBooks: "所有書籍"
 en:
   onlineTraining:
     timer: "Timer"
