@@ -23,7 +23,7 @@
       return {
         innerMethodCode: this.methodCode,
         innerMethodName: this.methodName,
-        noAccountAndBank: ['doku', 'inskr', 'invis', 'inmas', 'incup', 'yzh'],
+        noAccountAndBank: ['doku', 'inskr', 'invis', 'inmas', 'incup', 'yzh', 'ap'],
         cards: ['dd', 'hb', 'an', 'hd', 'zl', 'azf', 'hby', 'rpn', 'ps', 'pc', 'sd']// 和unionpay的
       }
     },
