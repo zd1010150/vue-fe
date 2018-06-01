@@ -77,7 +77,7 @@
 <script>
   import validateMixin from 'mixins/validatemix.js'
   import routers from '../../router/map/index'
-  import { SET_LANGUAGE } from 'src/store/mutation-types'
+  import { SET_LANGUAGE, SET_I18N_LANGUAGE } from 'src/store/mutation-types'
   import { Validator } from 'vee-validate'
   import i18n from 'src/i18n'
 
@@ -105,6 +105,7 @@
               this.$router.addRoutes(routers)
               this.$router.replace('/main')
               this.$store.commit(SET_LANGUAGE, getUserInfo.data.language)
+              this.$store.commit(SET_I18N_LANGUAGE, getUserInfo.data.language)
               i18n.locale = getUserInfo.data.language
               Validator.setLocale(getUserInfo.data.language)
             }
