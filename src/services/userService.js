@@ -15,5 +15,8 @@ export default {
   },
   async syncProfile () {
     return fetchData('GET', '/profile/sync')
+  },
+  async fetchIfNeedVideoAuth () {
+    return fetchData('GET', '')
   }
 }

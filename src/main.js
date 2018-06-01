@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+/* eslint-disable no-undef,no-unused-vars */
 /**/
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
@@ -87,7 +87,19 @@ const checkLogin = async () => {
               Validator.setLocale(data.language)
               initVue()
               // 进入页面
-              vm.$router.push(vm.$route.fullPath === '/login' ? '/main' : vm.$route.fullPath)
+              debugger
+              let videoAuth = await store.dispatch('getIfNeedVideoAuth')
+              if (videoAuth.success) {
+                if (videoAuth.data.ifNeedVideoAuth) {
+                  vm.$router.replace('/videoAuth')
+                } else {
+                  if (vm.$route.fullPath === '/videoAuth') {
+                    vm.$router.replace('/main')
+                  } else {
+                    vm.$router.push(vm.$route.fullPath === '/login' ? '/main' : vm.$route.fullPath)
+                  }
+                }
+              }
             } else {
               throw new Error(message)
             }

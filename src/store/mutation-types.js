@@ -17,3 +17,4 @@ export const SET_TERMS = 'SET_TERMS'
 export const SET_SYNC_TIME = 'SET_SYNC_TIME'
 export const SET_ASYNC_LOADING = 'SET_ASYNC_LOADING' // 异步请求数据时的loading，会遮盖菜单，整个页面都不能交互
 export const SET_FETCH_PENDING = 'SET_FETCH_PENDING'
+export const SET_NEED_VIDEO_AUTHEN = 'SET_NEED_VIDEO_AUTHEN' //  设置是否需要视频认证
