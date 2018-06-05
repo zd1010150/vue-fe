@@ -132,7 +132,8 @@ const AetherUpload = {
         _this.progressBarDom.css("width", "100%");
         _this.savedPath = rst.savedPath;
         _this.savedPathDom.val(_this.savedPath);
-        _this.fileDom.attr("disabled", "disabled");
+        // comment out to allow user keep upload different videos, otherwise users have to refresh the page after upload
+        // _this.fileDom.attr("disabled", "disabled");
         _this.outputDom.text(_this.messages.status_instant_completion_success);
         typeof(_this.callback) !== "undefined" ? _this.callback() : null;
       }
@@ -178,7 +179,8 @@ const AetherUpload = {
           clearInterval(_this.uploadChunkInterval);
           _this.savedPath = rst.savedPath;
           _this.savedPathDom.val(_this.savedPath);
-          _this.fileDom.attr("disabled", "disabled");
+          // comment out to allow user keep upload different videos, otherwise users have to refresh the page after upload
+          // _this.fileDom.attr("disabled", "disabled");
           _this.outputDom.html(_this.messages.status_upload_success + '<span style="color:#3c87c7;margin-left: 5px;border: 1px solid #3c87c7;border-radius: 50%;" class="glyphicon glyphicon-ok"></span>');
           typeof(_this.callback) !== "undefined" ? _this.callback(rst) : null;
         }
