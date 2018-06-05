@@ -1,21 +1,24 @@
 /* eslint-disable */
 import $ from 'jquery'
-import { UPLOAD_DOCUMENT_URL } from 'src/config/url.config'
+import { UPLOAD_DOCUMENT_URL, VIDEO_BASE_URL } from 'src/config/url.config'
 import SparkMD5 from 'spark-md5'
 import { getStore } from 'src/utils/storage'
 
 const postUrl = UPLOAD_DOCUMENT_URL + '/avatar'
 const exampleUrl = "/aetherupload/preprocess"
 const exampleUploadUrl = "/aetherupload/uploading"
+const preprocessUrl = `${VIDEO_BASE_URL}/aetherupload/preprocess`
+const uploadUrl = `${VIDEO_BASE_URL}/aetherupload/uploading`
 
 const AetherUpload = {
   upload: function () {
     $.ajaxSetup({
-        headers: {
-          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + getStore('token')
-        }
+      crossDomain: true,
+      headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + getStore('token')
+      }
     });
 
     this.fileDom = this.wrapperDom.find("#file"),
@@ -69,120 +72,71 @@ const AetherUpload = {
   },
 
   calculateHash: function () { //计算hash
+    var _this = this,
+        chunkSize = 2000000,
+        chunks = Math.ceil(_this.file.size / chunkSize),
+        currentChunk = 0,
+        spark = new SparkMD5.ArrayBuffer(),
+        fileReader = new FileReader();
 
-      var _this = this,
-
-          chunkSize = 2000000,
-
-          chunks = Math.ceil(_this.file.size / chunkSize),
-
-          currentChunk = 0,
-
-          spark = new SparkMD5.ArrayBuffer(),
-
-          fileReader = new FileReader();
-
-      fileReader.onload = function (e) {
-
-          spark.append(e.target.result);
-
-          ++currentChunk;
-
-          _this.outputDom.text(_this.messages.status_hashing + ' ' + parseInt(currentChunk / chunks * 100) + "%");
-
-          if (currentChunk < chunks) {
-
-              loadNext();
-
-          } else {
-
-              _this.fileHash = spark.end();
-
-              _this.preprocess();
-
-          }
-      };
-
-      fileReader.onerror = function () {
-
-          _this.preprocess();
-
-      };
-
-      function loadNext() {
-
-          var start = currentChunk * chunkSize,
-
-              end = start + chunkSize >= _this.file.size ? _this.file.size : start + chunkSize;
-
-          fileReader.readAsArrayBuffer(_this.blobSlice.call(_this.file, start, end));
-
+    fileReader.onload = function (e) {
+      spark.append(e.target.result);
+      ++currentChunk;
+      _this.outputDom.text(_this.messages.status_hashing + ' ' + parseInt(currentChunk / chunks * 100) + "%");
+      if (currentChunk < chunks) {
+        loadNext();
+      } else {
+        _this.fileHash = spark.end();
+        _this.preprocess();
       }
+    };
 
-      loadNext();
+    fileReader.onerror = function () {
+      _this.preprocess();
+    };
 
+    function loadNext() {
+      var start = currentChunk * chunkSize,
+          end = start + chunkSize >= _this.file.size ? _this.file.size : start + chunkSize;
+      fileReader.readAsArrayBuffer(_this.blobSlice.call(_this.file, start, end));
+    }
+
+    loadNext();
   },
 
   preprocess: function () { //预处理
+    var _this = this;
 
-      var _this = this;
+    $.post(preprocessUrl, {
+      file_name: _this.fileName,
+      file_size: _this.fileSize,
+      file_hash: _this.fileHash,
+      locale: _this.locale,
+      group: _this.group
 
-      $.post(postUrl, {
+    }, function (rst) {
+      if (rst.error) {
+        _this.outputDom.text(rst.error);
+        return;
+      }
+      _this.uploadBaseName = rst.uploadBaseName;
+      _this.uploadExt = rst.uploadExt;
+      _this.chunkSize = rst.chunkSize;
+      _this.chunkCount = Math.ceil(_this.fileSize / _this.chunkSize);
+      _this.subDir = rst.subDir;
 
-          file_name: _this.fileName,
-
-          file_size: _this.fileSize,
-
-          file_hash: _this.fileHash,
-
-          locale: _this.locale,
-
-          group: _this.group
-
-      }, function (rst) {
-
-          if (rst.error) {
-
-              _this.outputDom.text(rst.error);
-
-              return;
-
-          }
-
-          _this.uploadBaseName = rst.uploadBaseName;
-
-          _this.uploadExt = rst.uploadExt;
-
-          _this.chunkSize = rst.chunkSize;
-
-          _this.chunkCount = Math.ceil(_this.fileSize / _this.chunkSize);
-
-          _this.subDir = rst.subDir;
-
-          if (rst.savedPath.length === 0) {
-
-              _this.outputDom.text(_this.messages.status_uploading + " 0%");
-
-              _this.uploadChunkInterval = setInterval($.proxy(_this.uploadChunk, _this), 0);
-
-          } else {
-
-              _this.progressBarDom.css("width", "100%");
-
-              _this.savedPath = rst.savedPath;
-
-              _this.savedPathDom.val(_this.savedPath);
-
-              _this.fileDom.attr("disabled", "disabled");
-
-              _this.outputDom.text(_this.messages.status_instant_completion_success);
-
-              typeof(_this.callback) !== "undefined" ? _this.callback() : null;
-
-          }
-
-      }, "json");
-
+      if (rst.savedPath.length === 0) {
+        _this.outputDom.text(_this.messages.status_uploading + " 0%");
+        _this.uploadChunkInterval = setInterval($.proxy(_this.uploadChunk, _this), 0);
+      } else {
+        _this.progressBarDom.css("width", "100%");
+        _this.savedPath = rst.savedPath;
+        _this.savedPathDom.val(_this.savedPath);
+        _this.fileDom.attr("disabled", "disabled");
+        _this.outputDom.text(_this.messages.status_instant_completion_success);
+        typeof(_this.callback) !== "undefined" ? _this.callback() : null;
+      }
+    }, "json");
   },
 
   uploadChunk: function () {
@@ -192,24 +146,17 @@ const AetherUpload = {
         form = new FormData();
 
     form.append("file", this.file.slice(start, end));
-
     form.append("upload_ext", this.uploadExt);
-
     form.append("chunk_total", this.chunkCount);
-
     form.append("chunk_index", this.i + 1);
-
     form.append("upload_basename", this.uploadBaseName);
-
     form.append("group", this.group);
-
     form.append("sub_dir", this.subDir);
-
     form.append("locale", this.locale);
 
     $.ajax({
       // url: "/aetherupload/uploading",
-      url: postUrl,
+      url: uploadUrl,
       type: "POST",
       data: form,
       dataType: "json",
@@ -224,24 +171,16 @@ const AetherUpload = {
         }
 
         var percent = parseInt((_this.i + 1) / _this.chunkCount * 100);
-
         _this.progressBarDom.css("width", percent + "%");
-
         _this.outputDom.text(_this.messages.status_uploading + " " + percent + "%");
 
         if (_this.i + 1 === _this.chunkCount) {
-
           clearInterval(_this.uploadChunkInterval);
-
           _this.savedPath = rst.savedPath;
-
           _this.savedPathDom.val(_this.savedPath);
-
           _this.fileDom.attr("disabled", "disabled");
-
-          _this.outputDom.text(_this.messages.status_upload_success);
-
-          typeof(_this.callback) !== "undefined" ? _this.callback() : null;
+          _this.outputDom.html(_this.messages.status_upload_success + '<span style="color:#3c87c7;margin-left: 5px;border: 1px solid #3c87c7;border-radius: 50%;" class="glyphicon glyphicon-ok"></span>');
+          typeof(_this.callback) !== "undefined" ? _this.callback(rst) : null;
         }
         ++_this.i;
       },
@@ -280,31 +219,31 @@ const AetherUpload = {
           return this.text[this.locale];
       }
     }
-    this.locale = "en";
+    this.locale = "zh";
     return this.text[this.locale];
   },
 
   text: {
-      en: {
-          status_upload_begin: "upload begin",
-          error_unsupported_browser: "Error: unsupported browser",
-          status_hashing: "hashing",
-          status_instant_completion_success: "upload success (instant completion) ",
-          status_uploading: "uploading",
-          status_upload_success: "upload success",
-          status_retrying: "network problem, retrying...",
-          error_upload_fail: "Error: upload failed"
-      },
-      zh: {
-          status_upload_begin: "开始上传",
-          error_unsupported_browser: "错误：上传组件不被此浏览器支持",
-          status_hashing: "正在哈希",
-          status_instant_completion_success: "上传成功（秒传）",
-          status_uploading: "正在上传",
-          status_upload_success: "上传成功",
-          status_retrying: "网络故障，正在重试……",
-          error_upload_fail: "错误：上传失败"
-      }
+    en: {
+      status_upload_begin: "开始上传",
+      error_unsupported_browser: "错误：上传组件不被此浏览器支持",
+      status_hashing: "正在哈希",
+      status_instant_completion_success: "上传成功（秒传）",
+      status_uploading: "正在上传视频分块",
+      status_upload_success: "缓存视频分块成功",
+      status_retrying: "网络故障，正在重试……",
+      error_upload_fail: "错误：上传失败"
+    },
+    zh: {
+      status_upload_begin: "开始上传",
+      error_unsupported_browser: "错误：上传组件不被此浏览器支持",
+      status_hashing: "正在哈希",
+      status_instant_completion_success: "上传成功（秒传）",
+      status_uploading: "正在上传视频分块",
+      status_upload_success: "缓存视频分块成功",
+      status_retrying: "网络故障，正在重试……",
+      error_upload_fail: "错误：上传失败"
+    }
   }
 };
 

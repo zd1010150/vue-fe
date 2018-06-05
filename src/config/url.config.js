@@ -37,3 +37,6 @@ export const COMMON_QUESTION = {
   zh: 'https://cn.acyfxasia.com/why-acy/faq',
   en: 'https://www.acyfxasia.com/why-acy/faq'
 }
+
+// Verification/Big Video Upload Url
+export const VIDEO_BASE_URL = 'http://resource.zerologixtest.com'
