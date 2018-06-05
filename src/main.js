@@ -88,7 +88,7 @@ const checkLogin = async () => {
               Validator.setLocale(userInfo.data.language)
               initVue()
               // 进入页面
-              debugger
+
               // TODO: not sure if this way is correct or not, because use dispatch before
               //       Now, I just simply replace it with service
               // let videoAuth = await store.$dispatch('getIfNeedVideoAuth')
