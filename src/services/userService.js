@@ -17,6 +17,6 @@ export default {
     return fetchData('GET', '/profile/sync')
   },
   async fetchIfNeedVideoAuth () {
-    return fetchData('GET', '')
+    return fetchData('GET', '/video_cert/need_to_be_certified')
   }
 }

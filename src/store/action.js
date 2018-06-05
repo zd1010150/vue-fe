@@ -70,9 +70,9 @@ export default {
   },
   // 获取是否需要视频认证
   async getIfNeedVideoAuth ({commit}) {
-    // let {data, success, message} = await userService.fetchIfNeedVideoAuth()
+    // let { data, success, message } = await userService.fetchIfNeedVideoAuth()
     // if (success) {
-    commit(type.SET_NEED_VIDEO_AUTHEN, true) // mock 是否需要验证，只有true 或者 FALSE
+    //   commit(type.SET_NEED_VIDEO_AUTHEN, true) // mock 是否需要验证，只有true 或者 FALSE
     // }
     return {
       data: { ifNeedVideoAuth: true }, // mock

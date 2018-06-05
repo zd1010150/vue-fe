@@ -8,14 +8,16 @@
           <a
             class="mb-xs mt-xs mr-xs btn btn-default"
             target="_blank"
-            :href="externalUrl.qq">
+            :href="externalUrl.qq"
+          >
             <i class="fa fa-qq"></i>
             在线QQ
           </a>
           <a
             class="mb-xs mt-xs mr-xs btn btn-default"
             target="_blank"
-            :href="externalUrl.livechat">
+            :href="externalUrl.livechat"
+          >
             <i class="fa fa-comments-o"></i>
             在线聊天
           </a>
