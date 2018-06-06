@@ -2,7 +2,7 @@ import Login from 'views/auth/login'
 import changePassword from 'views/auth/changePassword'
 import recoverPassword from 'views/auth/recoverPassword'
 import resetPassword from 'views/auth/resetPassword'
-
+import VideoAuth from 'views/auth/videoAuth'
 export default [{
   path: '/login',
   component: Login,
@@ -13,6 +13,13 @@ export default [{
 }, {
   path: '/changePassword',
   component: changePassword,
+  meta: {
+    requiresAuth: true
+  }
+},
+{
+  path: '/videoAuth',
+  component: VideoAuth,
   meta: {
     requiresAuth: true
   }

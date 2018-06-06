@@ -18,7 +18,8 @@ import {
   SET_TERMS,
   SET_THEME,
   SET_TOKEN,
-  SET_USERINFO
+  SET_USERINFO,
+  SET_NEED_VIDEO_AUTHEN
 } from './mutation-types'
 
 export default {
@@ -40,6 +41,9 @@ export default {
   },
   [SET_THEME] (state, theme) {
     state.theme = theme
+  },
+  [SET_NEED_VIDEO_AUTHEN] (state, ifNeed) {
+    state.needVideoAuthen = ifNeed
   },
   [SET_PATH] (state, path) {
     state.path = path

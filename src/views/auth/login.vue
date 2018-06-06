@@ -103,7 +103,14 @@
             let getUserInfo = await this.$store.dispatch('getUserInfo')
             if (getUserInfo.success) {
               this.$router.addRoutes(routers)
-              this.$router.replace('/main')
+              let {data, success} = await this.$store.dispatch('getIfNeedVideoAuth')
+              if (success) {
+                if (data.ifNeedVideoAuth) {
+                  this.$router.replace('/videoAuth')
+                } else {
+                  this.$router.replace('/main')
+                }
+              }
               this.$store.commit(SET_LANGUAGE, getUserInfo.data.language)
               this.$store.commit(SET_I18N_LANGUAGE, getUserInfo.data.language)
               i18n.locale = getUserInfo.data.language
