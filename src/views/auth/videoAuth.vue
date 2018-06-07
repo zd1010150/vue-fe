@@ -1,4 +1,4 @@
-<i18n src="./i18n.yaml"></i18n>
+<i18n src="../../components/page/topBar/i18n.yaml"></i18n>
 <template>
   <chp-log-layout class="verificationWrapper">
     <div slot="content" class="content">
@@ -21,6 +21,37 @@
             <i class="fa fa-comments-o"></i>
             在线聊天
           </a>
+          <div id="userbox" class="userbox" :class="{opened:open}">
+            <chp-button class="userbox-toggle-btn" @click="toggleOperationPopover" ref="toggleBtn">
+              <figure class="profile-picture">
+                <mu-avatar :src="$store.state.userInfo.avatar" slot="avatar" :size="35" class="summary-icon bg-primary "/>
+              </figure>
+              <div class="profile-info">
+                <span class="name word-wrap">{{ $store.state.userInfo.name}}</span>
+              </div>
+              <i class="fa custom-caret"></i>
+              <chp-tooltip chp-direction="bottom">{{ $store.state.userInfo.name}}</chp-tooltip>
+            </chp-button>
+            <mu-popover :trigger="trigger" :open="open" @close="handleClose" popoverClass="userbox-dropdown-menu">
+              <ul class="list-unstyled">
+                <li class="divider"></li>
+                <li>
+                  <a role="menuitem" tabindex="-1" href="javascript:void(0)" class="logout-item" @click="logout">
+                    <i class="fa fa-power-off"></i>
+                    {{ $t('userbox.logout') }}
+                  </a>
+                </li>
+                <li class="divider"></li>
+              </ul>
+            </mu-popover>
+            <chp-dialog-confirm
+              :chp-content-html="$t('logoutDialogHtml')"
+              :chp-ok-text="$t('ui.button.confirm')"
+              :chp-cancel-text="$t('ui.button.cancel')"
+              @close="confirmLogout"
+              ref="confirmLogoutDialog">
+            </chp-dialog-confirm>
+          </div>
         </div>
       </h4>
       <div class="verfBody">
@@ -72,7 +103,7 @@
                 <p>e. 本人愿意承担在出金过程中，通过银行及支付公司转账出现的任何法律风险</p>
               </div>        
             </div>
-            <form method="post" action="" @submit.prevent="onSubmit">
+            <form method="post" action="" @submit.prevent="onSubmit" style="overflow:auto">
               <div class="form-group " id="aetherupload-wrapper" ><!--组件最外部需要有一个名为aetherupload-wrapper的id，用以包装组件-->
                 <div class="controls" >                  
                   <div class="uploader">
@@ -85,6 +116,20 @@
                   <span style="font-size:12px;color:#aaa;" id="output"></span><!--需要有一个名为output的id，用以标识提示信息-->
                   <input type="hidden" name="file1" id="savedpath" ><!--需要有一个名为savedpath的id，用以标识文件保存路径的表单字段，还需要一个任意名称的name-->
                   <div class="formatTip">* 视频文件不能超过 300MB; 文件形式：MP4, AVI, WMV, MPG, MOV</div>
+                  <div
+                    v-if="invalidExt"
+                    class="formatTip"
+                    style="color:red"
+                  >
+                    * 视频格式有误，请重新上传
+                  </div>
+                  <div
+                    v-if="invalidSize"
+                    class="formatTip"
+                    style="color:red"
+                  >
+                    * 视频超出规定大小，请压缩您的视频
+                  </div>                  
                 </div>
               </div>
               <button type="submit" class="btn btn-primary" :disabled="hashedVideoId == -1">
@@ -103,13 +148,18 @@
   import { aetherupload } from 'src/utils/bigFileUploadUtils'
   import { EXTERNAL_URL } from 'src/config/url.config.js'
   import videoServices from 'services/videoServices'
+  import { SET_TOKEN, SET_USERINFO } from 'store/mutation-types.js'
 
   export default {
     data () {
       return {
         externalUrl: EXTERNAL_URL,
         videos: [],
-        hashedVideoId: -1
+        hashedVideoId: -1,
+        open: false,
+        trigger: null,
+        invalidExt: false,
+        invalidSize: false
       }
     },
     mounted: function () {
@@ -119,6 +169,15 @@
         // entire view has been rendered
         $('#file').change(function () {
           console.log('file changed')
+          const isExtValid = me.isFileExtValid(this),
+            isSizeValid = me.isSizeValid(this)
+          me.invalidExt = !isExtValid
+          me.invalidSize = !isSizeValid
+          if (!isExtValid || !isSizeValid) {
+            me.hashedVideoId = -1
+            return
+          }
+
           aetherupload(this, 'file').success(function (res) {
             console.log('upload success')
             const { id, status } = res
@@ -126,12 +185,31 @@
           }).upload()
         })
       })
+      this.trigger = this.$refs.toggleBtn.$el
     },
     watch: {},
     created () {
       this.fetchVideosList()
     },
     methods: {
+      confirmLogout (val) {
+        if (val === 'ok') {
+          this.$store.dispatch('logout').then(() => {
+            this.$store.commit(SET_USERINFO, null)
+            this.$store.commit(SET_TOKEN, null)
+            this.$router.replace('/login')
+          })
+        }
+      },
+      logout () {
+        this.$refs.confirmLogoutDialog.open()
+      },
+      handleClose () {
+        this.open = false
+      },
+      toggleOperationPopover () {
+        this.open = !this.open
+      },
       async fetchVideosList () {
         this.loadingStatus = true
         let response = await videoServices.getUploadedVideos()
@@ -179,6 +257,19 @@
           // refetch video list
           this.fetchVideosList()
         }
+      },
+      isFileExtValid (file) {
+        const validExts = ['mp4', 'avi', 'wmv', 'mpg', 'mov'],
+          fileExt = file.value.replace(/^.*\./, '')
+        return validExts.indexOf(fileExt.toLowerCase()) > -1
+      },
+      isSizeValid (file) {
+        // conversion rate from Megabyte to bytes
+        const rate = 1048576,
+          totalBytes = file.files[0].size,
+          totalMb = totalBytes / rate
+        console.log(totalMb)
+        return totalMb <= 300
       }
     }
   }

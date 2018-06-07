@@ -21,7 +21,8 @@ var webpackConfig = merge(baseConfig, {
   plugins: [
     new webpack.DefinePlugin({
       'NODE_ENV': require('../config/test.env').NODE_ENV,
-      '__API_URL__':apiUrl.API_URL
+      '__API_URL__': "'" + apiUrl.API_URL + "'",
+      '__VIDEO_URL__': "'" + apiUrl.VIDEO_URL + "'",
     })
   ]
 })
