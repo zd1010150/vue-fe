@@ -39,4 +39,4 @@ export const COMMON_QUESTION = {
 }
 
 // Verification/Big Video Upload Url
-export const VIDEO_BASE_URL = 'http://resource.zerologixtest.com'
+export const VIDEO_BASE_URL = 'https://rsc.cloudhubpanel.com'
