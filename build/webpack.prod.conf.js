@@ -34,6 +34,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"',
       '__API_URL__':"'"+apiUrl.API_URL+"'",
+      '__VIDEO_URL__': "'" + apiUrl.VIDEO_URL + "'",
       '__PRO__':true,
       '__DEV__':false
     }),
