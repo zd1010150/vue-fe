@@ -68,7 +68,7 @@
                 <p>a. 本人同意并且接受ACY官网上面风险提示页面里面的所有风险</p>
                 <p>b. 本人对自己的个人行为负责，在自愿和完全了解风险的前提下入金进行外汇保证金交易</p>
                 <p>c. 本人使用自己的银行账户在自己授权的前提下入金进行外汇保证金交易</p>
-                <p>d. 现申请吧账户资金提取到本人的XXX银行（哪家银行）卡，尾号是XXXX（出金卡最后四位数），请ACY稀万予以审核</p>
+                <p>d. 现申请把账户资金提取到本人的XXX银行（哪家银行）卡，尾号是XXXX（出金卡最后四位数），请ACY稀万予以审核</p>
                 <p>e. 本人愿意承担在出金过程中，通过银行及支付公司转账出现的任何法律风险</p>
               </div>        
             </div>
@@ -84,7 +84,7 @@
                   </div>     
                   <span style="font-size:12px;color:#aaa;" id="output"></span><!--需要有一个名为output的id，用以标识提示信息-->
                   <input type="hidden" name="file1" id="savedpath" ><!--需要有一个名为savedpath的id，用以标识文件保存路径的表单字段，还需要一个任意名称的name-->
-                  <div class="formatTip">* 视频文件不能超过 100MB; 文件形式：MP4, AVI, WMV, MPG, MOV</div>
+                  <div class="formatTip">* 视频文件不能超过 300MB; 文件形式：MP4, AVI, WMV, MPG, MOV</div>
                 </div>
               </div>
               <button type="submit" class="btn btn-primary" :disabled="hashedVideoId == -1">
