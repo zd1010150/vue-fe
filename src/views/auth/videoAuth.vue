@@ -103,7 +103,7 @@
                 <p>e. 本人愿意承担在出金过程中，通过银行及支付公司转账出现的任何法律风险</p>
               </div>        
             </div>
-            <form method="post" action="" @submit.prevent="onSubmit">
+            <form method="post" action="" @submit.prevent="onSubmit" style="overflow:auto">
               <div class="form-group " id="aetherupload-wrapper" ><!--组件最外部需要有一个名为aetherupload-wrapper的id，用以包装组件-->
                 <div class="controls" >                  
                   <div class="uploader">
@@ -116,6 +116,20 @@
                   <span style="font-size:12px;color:#aaa;" id="output"></span><!--需要有一个名为output的id，用以标识提示信息-->
                   <input type="hidden" name="file1" id="savedpath" ><!--需要有一个名为savedpath的id，用以标识文件保存路径的表单字段，还需要一个任意名称的name-->
                   <div class="formatTip">* 视频文件不能超过 100MB; 文件形式：MP4, AVI, WMV, MPG, MOV</div>
+                  <div
+                    v-if="invalidExt"
+                    class="formatTip"
+                    style="color:red"
+                  >
+                    * 视频格式有误，请重新上传
+                  </div>
+                  <div
+                    v-if="invalidSize"
+                    class="formatTip"
+                    style="color:red"
+                  >
+                    * 视频超出规定大小，请压缩您的视频
+                  </div>
                 </div>
               </div>
               <button type="submit" class="btn btn-primary" :disabled="hashedVideoId == -1">
@@ -143,7 +157,9 @@
         videos: [],
         hashedVideoId: -1,
         open: false,
-        trigger: null
+        trigger: null,
+        invalidExt: false,
+        invalidSize: false
       }
     },
     mounted: function () {
@@ -153,6 +169,15 @@
         // entire view has been rendered
         $('#file').change(function () {
           console.log('file changed')
+          const isExtValid = me.isFileExtValid(this),
+            isSizeValid = me.isSizeValid(this)
+          me.invalidExt = !isExtValid
+          me.invalidSize = !isSizeValid
+          if (!isExtValid || !isSizeValid) {
+            me.hashedVideoId = -1
+            return
+          }
+
           aetherupload(this, 'file').success(function (res) {
             console.log('upload success')
             const { id, status } = res
@@ -232,6 +257,19 @@
           // refetch video list
           this.fetchVideosList()
         }
+      },
+      isFileExtValid (file) {
+        const validExts = ['mp4', 'avi', 'wmv', 'mpg', 'mov'],
+          fileExt = file.value.replace(/^.*\./, '')
+        return validExts.indexOf(fileExt.toLowerCase()) > -1
+      },
+      isSizeValid (file) {
+        // conversion rate from Megabyte to bytes
+        const rate = 1048576,
+          totalBytes = file.files[0].size,
+          totalMb = totalBytes / rate
+        console.log(totalMb)
+        return totalMb <= 300
       }
     }
   }
