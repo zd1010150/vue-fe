@@ -124,7 +124,7 @@ const AetherUpload = {
       _this.chunkSize = rst.chunkSize;
       _this.chunkCount = Math.ceil(_this.fileSize / _this.chunkSize);
       _this.subDir = rst.subDir;
-
+      
       if (rst.savedPath.length === 0) {
         _this.outputDom.text(_this.messages.status_uploading + " 0%");
         _this.uploadChunkInterval = setInterval($.proxy(_this.uploadChunk, _this), 0);
@@ -156,7 +156,6 @@ const AetherUpload = {
     form.append("locale", this.locale);
 
     $.ajax({
-      // url: "/aetherupload/uploading",
       url: uploadUrl,
       type: "POST",
       data: form,
