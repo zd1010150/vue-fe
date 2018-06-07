@@ -6,7 +6,7 @@ var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 var apiUrl = require('../env.js')
-console.log(apiUrl.API_URL,"****")
+
 // add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
   baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
@@ -20,8 +20,10 @@ module.exports = merge(baseWebpackConfig, {
   devtool: '#cheap-module-eval-source-map',
   plugins: [
     new webpack.DefinePlugin({
+      // The value has to be in actual quotes, more info see the notes in -> https://webpack.js.org/plugins/define-plugin/
       'process.env.NODE_ENV': '"development"',
-      '__API_URL__':"'"+apiUrl.API_URL+"'",
+      '__API_URL__': "'" + apiUrl.API_URL + "'",
+      '__VIDEO_URL__': "'" + apiUrl.VIDEO_URL + "'",
       '__PRO__':false,
       '__DEV__':true
     }),

@@ -1,5 +1,5 @@
 /* eslint-disable one-var */
-import { baseUrl } from './env.config.js'
+import { baseUrl, videoBaseUrl } from './env.config.js'
 
 export let UPLOAD_DOCUMENT_URL = baseUrl + '/file'
 export let UPLOAD_ASSET_URL = baseUrl + '/file/asset'
@@ -39,4 +39,4 @@ export const COMMON_QUESTION = {
 }
 
 // Verification/Big Video Upload Url
-export const VIDEO_BASE_URL = 'https://rsc.cloudhubpanel.com'
+export const VIDEO_BASE_URL = videoBaseUrl
