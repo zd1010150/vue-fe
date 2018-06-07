@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+/* eslint-disable no-undef,no-unused-vars */
 /**/
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
@@ -19,7 +19,7 @@ import Validate from './validate'
 import { Validator } from 'vee-validate'
 import { getStore, syncVuexStateAndLocalStorage } from './utils/storage.js'
 import changeTheme from 'utils/theme.js'
-import { SET_LANGUAGE, SET_TOKEN, SET_USERINFO, SET_I18N_LANGUAGE } from './store/mutation-types'
+import { SET_LANGUAGE, SET_TOKEN, SET_USERINFO, SET_I18N_LANGUAGE, SET_NEED_VIDEO_AUTHEN } from './store/mutation-types'
 
 import AuthenService from 'services/authenService'
 import UserService from 'services/userService'
@@ -73,26 +73,42 @@ const checkLogin = async () => {
           throw new Error('no token')
         } else {
           // token是否有效
-          let {success, message} = await checkLogin()
+          let loginInfo = await checkLogin()
           // token有效，就获取用户个人信息
-          if (success) {
-            let {success, message, data} = await getUserInfo()
-            if (success) {
+          if (loginInfo.success) {
+            let userInfo = await getUserInfo()
+            if (userInfo.success) {
               router.addRoutes(routers)
-              store.commit(SET_USERINFO, data)
+              store.commit(SET_USERINFO, userInfo.data)
               store.commit(SET_TOKEN, getStore('token'))
-              store.commit(SET_LANGUAGE, data.language)
-              store.commit(SET_I18N_LANGUAGE, data.language)
-              i18n.locale = data.language
-              Validator.setLocale(data.language)
+              store.commit(SET_LANGUAGE, userInfo.data.language)
+              store.commit(SET_I18N_LANGUAGE, userInfo.data.language)
+              store.commit(SET_NEED_VIDEO_AUTHEN, userInfo.data.need_certified)
+              i18n.locale = userInfo.data.language
+              Validator.setLocale(userInfo.data.language)
               initVue()
               // 进入页面
-              vm.$router.push(vm.$route.fullPath === '/login' ? '/main' : vm.$route.fullPath)
+
+              // TODO: not sure if this way is correct or not, because use dispatch before
+              //       Now, I just simply replace it with service
+              // let videoAuth = await store.$dispatch('getIfNeedVideoAuth')
+
+              // Check video verification necessity
+              if (userInfo.data.need_certified) {
+                vm.$router.replace('/videoAuth')
+              } else {
+                if (vm.$route.fullPath === '/videoAuth') {
+                  console.log('need to redirect to main')
+                  vm.$router.replace({ path: 'main' })
+                } else {
+                  vm.$router.push(vm.$route.fullPath === '/login' ? '/main' : vm.$route.fullPath)
+                }
+              }
             } else {
-              throw new Error(message)
+              throw new Error(userInfo.message)
             }
           } else {
-            throw new Error(message)
+            throw new Error(loginInfo.message)
           }
         }
       } catch (error) {
