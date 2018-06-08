@@ -77,7 +77,7 @@
 <script>
   import validateMixin from 'mixins/validatemix.js'
   import routers from '../../router/map/index'
-  import { SET_LANGUAGE, SET_I18N_LANGUAGE } from 'src/store/mutation-types'
+  import { SET_LANGUAGE, SET_I18N_LANGUAGE, SET_NEED_VIDEO_AUTHEN } from 'src/store/mutation-types'
   import { Validator } from 'vee-validate'
   import i18n from 'src/i18n'
 
@@ -103,13 +103,11 @@
             let getUserInfo = await this.$store.dispatch('getUserInfo')
             if (getUserInfo.success) {
               this.$router.addRoutes(routers)
-              let {data, success} = await this.$store.dispatch('getIfNeedVideoAuth')
-              if (success) {
-                if (data.ifNeedVideoAuth) {
-                  this.$router.replace('/videoAuth')
-                } else {
-                  this.$router.replace('/main')
-                }
+              this.$store.commit(SET_NEED_VIDEO_AUTHEN, getUserInfo.data.need_certified)
+              if (getUserInfo.data.need_certified) {
+                this.$router.replace('/videoAuth')
+              } else {
+                this.$router.replace('/main')
               }
               this.$store.commit(SET_LANGUAGE, getUserInfo.data.language)
               this.$store.commit(SET_I18N_LANGUAGE, getUserInfo.data.language)
