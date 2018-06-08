@@ -63,7 +63,7 @@ const checkLogin = async () => {
   }, init = async () => {
   // 检查ip是否合法
     let { data, success } = await checkIP()
-    if (!success || (data && data.status && data.status === 'invalid')) {
+    if (data && data.status && data.status === 'invalid') {
       initVue()
       vm.$router.push('/error')
     } else {
@@ -78,6 +78,7 @@ const checkLogin = async () => {
           if (loginInfo.success) {
             let userInfo = await getUserInfo()
             if (userInfo.success) {
+              console.log(userInfo.data.need_certified)
               router.addRoutes(routers)
               store.commit(SET_USERINFO, userInfo.data)
               store.commit(SET_TOKEN, getStore('token'))
