@@ -1,7 +1,21 @@
 <i18n src="../../components/page/topBar/i18n.yaml"></i18n>
-<template>
+<template>  
   <chp-log-layout class="verificationWrapper">
     <div slot="content" class="content">
+      <div style="color:red">Component Version</div>
+      <!-- Top bar -->
+      <!-- List panel -->
+        <AuthPanel
+          title="已上传视频审核状态"
+        >
+          
+        </AuthPanel>
+        <AuthPanel
+          title="认证需求"
+        >
+          
+        </AuthPanel>
+      <div style="color:red">Component Version Ends</div>
       <h4>
         账户认证
         <div style="float: right;">
@@ -57,7 +71,7 @@
       <div class="verfBody">
         <p class="tip">根据最新的法律法规，我们需要您在账户开通后进行视频认证，您可以录制好视频后进行上传。</p>
         <div class="contentWrapper">
-          <h4>已上传视频审核状态</h4>
+          <h4>已上传视频审核状态old</h4>          
           <div class="mainContent">
             <div style="margin-bottom: 20px;">
               <i class="fa fa-info-circle"></i>
@@ -150,7 +164,13 @@
   import videoServices from 'services/videoServices'
   import { SET_TOKEN, SET_USERINFO } from 'store/mutation-types.js'
 
+  // test components
+  import Panel from './VideoAuth/Panel.vue'
+
   export default {
+    components: {
+      'AuthPanel': Panel
+    },
     data () {
       return {
         externalUrl: EXTERNAL_URL,
