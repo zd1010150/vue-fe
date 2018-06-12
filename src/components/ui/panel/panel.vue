@@ -48,9 +48,6 @@
         hasfooter: true,
         hasTitle: true,
         isOpen: true,
-        headerClasses: {
-          'panel-heading-transparent': this.isHeaderTransparent
-        },
         headerCollapseClasses: this.collapsePanelText || this.expandPanelText ? 'action-text' : '',
         headerCloseClasses: this.closeText ? 'action-text' : ''
       }
@@ -60,6 +57,10 @@
         return {
           'panel-collapsed': !(this.isOpen)
         }
+      },
+      headerClasses () {
+        const trasparentCls = this.isHeaderTransparent ? 'panel-heading-transparent' : ''
+        return `${trasparentCls} ${this.headerCls}`
       }
     },
     mounted () {
@@ -136,6 +137,10 @@
       isShowHeader: {
         type: Boolean,
         default: true
+      },
+      headerCls: {
+        type: String,
+        default: ''
       }
     }
   }

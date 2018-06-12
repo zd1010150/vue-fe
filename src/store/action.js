@@ -4,6 +4,8 @@ import pwdService from '../services/pwdService'
 import mt4Service from '../services/mt4Service'
 import configService from '../services/configService'
 import trainingService from '../services/trainingService'
+import videoServices from 'services/videoServices'
+import { mapStatusIdToName } from 'utils/dataUtils'
 
 export default {
   async statisticsBook ({commit}, id) {
@@ -18,6 +20,7 @@ export default {
     })
   },
   async getUserInfo ({commit}) {
+    console.dir(commit)
     return userService.getUserInfo().then(({data, success, message}) => {
       if (success) {
         commit(type.SET_USERINFO, data)
@@ -78,6 +81,21 @@ export default {
       data: { ifNeedVideoAuth: true }, // mock
       success: true
     }
+  },
+  // Fetch personal auth videos list
+  async fetchAuthVideosList ({ commit }) {
+    let response = await videoServices.getUploadedVideos(),
+      authVideos = []
+    if (response.message === 'SUCCESS' && response.data) {
+      authVideos = response.data.map((v) => ({
+        id: v.id,
+        vid: v.video_id,
+        name: v.name,
+        statusId: v.status,
+        status: mapStatusIdToName(v.status),
+        createdAt: v.created_at
+      }))
+    }
+    return commit(type.SET_AUTH_VIDEOS, authVideos)
   }
-
 }

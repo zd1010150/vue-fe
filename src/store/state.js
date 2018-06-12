@@ -20,5 +20,6 @@ export default {
   terms: {zh: '', en: ''},
   syncTime: getStore('syncTime') || null,
   asyncLoading: false,
-  fetchPending: false
+  fetchPending: false,
+  authVideos: []
 }
