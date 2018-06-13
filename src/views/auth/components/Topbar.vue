@@ -1,8 +1,8 @@
 <i18n src="../../../components/page/topBar/i18n.yaml"></i18n>
 <template>  
   <div class="topbar row">
-    <div class="title responsive col-sm-6">账户认证</div>
-    <div class="btns responsive col-sm-6 text-right clearfix">
+    <div class="title responsive col-sm-3">账户认证</div>
+    <div class="btns responsive col-sm-9 text-right clearfix">
       <div class="mobileTitle">账户认证</div>
       <a
         class="mr-sm btn btn-default externalBtn responsive"

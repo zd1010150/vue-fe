@@ -158,7 +158,7 @@
   @media (max-width: @screen-sm-min) {
     #aetherupload-wrapper {
       .uploader {
-        padding: 1em 1.5em;
+        padding: 1em 0;
         background: @dark-bg-color;
       }
     }
