@@ -31,14 +31,6 @@
   export default {
     components: {
       'BigFileUploader': BigFileUploader
-    },
-    data () {
-      return {
-      }
-    },
-    methods: {
-      async fetchVideosList () {
-      }
     }
   }
 </script>

@@ -13,17 +13,17 @@
       <table class="table darkTheme responsive">
         <thead>
           <tr>
-            <th class="col col-md">创建时间</th>
+            <th>创建时间</th>
             <th>文件名</th>
-            <th class="col-md">状态</th>
-            <th class="col-sm">操作</th>
+            <th>状态</th>
+            <th>操作</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(a, i) in authVideos" :key="a.id">
-            <td> {{ a.createdAt }} </td>
-            <td> {{ a.name }} </td>
-            <td> {{ a.status }} </td>
+            <td>{{ a.createdAt }}</td>
+            <td>{{ a.name }}</td>
+            <td>{{ a.status }}</td>
             <td>
               <mu-icon-button
                 @click="deleteVideo(a)"
@@ -63,7 +63,7 @@
         let result = await videoServices.deleteVideoById(vid)
         if (result.message === 'SUCCESS') {
           // refetch video list after delete
-          this.fetchVideosList()
+          this.fetchAuthVideosList()
         }
       }
     }

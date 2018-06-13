@@ -1,10 +1,11 @@
 <template>  
   <form method="post" action="" @submit.prevent="onSubmit" style="overflow:auto">
-    <div class="form-group " id="aetherupload-wrapper" ><!--组件最外部需要有一个名为aetherupload-wrapper的id，用以包装组件-->
+    <!--组件最外部需要有一个名为aetherupload-wrapper的id，用以包装组件-->
+    <div class="form-group " id="aetherupload-wrapper" >
       <div class="controls" >                  
         <div class="uploader">
           <!--需要有一个名为file的id，用以标识上传的文件，aetherupload(file,group)中第二个参数为分组名，success方法可用于声名上传成功后的回调方法名-->
-          <input type="file" id="file" />
+          <input type="file" id="file" :disabled="inputDisabled"/>
           <div class="progress mt-sm mb-none ">
             <div id="progressbar"></div><!--需要有一个名为progressbar的id，用以标识进度条-->
           </div>
@@ -41,9 +42,15 @@
   export default {
     data () {
       return {
+        authVideos: [],
         hashedVideoId: -1,
         invalidExt: false,
         invalidSize: false
+      }
+    },
+    computed: {
+      inputDisabled: function () {
+        return this.authVideos.length > 1
       }
     },
     mounted: function () {
@@ -70,8 +77,14 @@
         })
       })
     },
+    watch: {
+      '$store.state.authVideos' () {
+        this.authVideos = this.$store.state.authVideos
+      }
+    },
     methods: {
-      async fetchVideosList () {
+      async fetchAuthVideosList () {
+        return this.$store.dispatch('fetchAuthVideosList')
       },
       async onSubmit () {
         let result = await videoServices.uploadedNewVideo(this.hashedVideoId)
@@ -79,7 +92,7 @@
           // reset vid
           this.hashedVideoId = -1
           // refetch video list
-          this.fetchVideosList()
+          this.fetchAuthVideosList()
         }
       },
       isFileExtValid (file) {
@@ -112,7 +125,7 @@
       height: 10px;
       width: 100%;
 
-      .progressbar {
+      #progressbar {
         background: #3c87c7;
         height: 10px;
         width: 0;
