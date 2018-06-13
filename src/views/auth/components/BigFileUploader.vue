@@ -5,7 +5,7 @@
         <div class="uploader">
           <!--需要有一个名为file的id，用以标识上传的文件，aetherupload(file,group)中第二个参数为分组名，success方法可用于声名上传成功后的回调方法名-->
           <input type="file" id="file" />
-          <div class="progress mt-md mb-none ">
+          <div class="progress mt-sm mb-none ">
             <div id="progressbar"></div><!--需要有一个名为progressbar的id，用以标识进度条-->
           </div>
         </div>     

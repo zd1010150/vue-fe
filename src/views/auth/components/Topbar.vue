@@ -1,27 +1,29 @@
+<i18n src="../../../components/page/topBar/i18n.yaml"></i18n>
 <template>  
   <div class="topbar row">
-    <div class="title col-sm-6">账户认证</div>
-    <div class="col-sm-6 text-right">
+    <div class="title responsive col-sm-6">账户认证</div>
+    <div class="btns responsive col-sm-6 text-right clearfix">
+      <div class="mobileTitle">账户认证</div>
       <a
-        class="mb-xs mt-xs mr-xs btn btn-default"
+        class="mr-sm btn btn-default externalBtn responsive"
         target="_blank"
         :href="externalUrl.qq"
       >
         <i class="fa fa-qq"></i>
-        在线QQ
+        <span>在线QQ</span>
       </a>
       <a
-        class="mb-xs mt-xs mr-xs btn btn-default"
+        class="btn btn-default externalBtn responsive"
         target="_blank"
         :href="externalUrl.livechat"
       >
         <i class="fa fa-comments-o"></i>
-        在线聊天
+        <span>在线聊天</span>
       </a>
-      <div id="userbox" class="userbox" :class="{opened:open}">
+      <div id="userbox" class="userbox responsive" :class="{opened:open}">
         <chp-button class="userbox-toggle-btn" @click="toggleOperationPopover" ref="toggleBtn">
           <figure class="profile-picture">
-            <mu-avatar :src="$store.state.userInfo.avatar" slot="avatar" :size="35" class="summary-icon bg-primary "/>
+            <mu-avatar :src="$store.state.userInfo.avatar" slot="avatar" :size="30" class="summary-icon bg-primary "/>
           </figure>
           <div class="profile-info">
             <span class="name word-wrap">{{ $store.state.userInfo.name}}</span>
@@ -55,7 +57,7 @@
 <script>
   import { EXTERNAL_URL } from 'src/config/url.config.js'
   import { SET_TOKEN, SET_USERINFO } from 'store/mutation-types.js'
-  
+
   export default {
     data () {
       return {
@@ -89,6 +91,68 @@
     }
   }
 </script>
+<style lang="less">
+  @import "~assets/less/variable.less";
+
+  .mobileTitle {
+    font-size: 1.4em;
+    color: #fff;
+    display: none;
+    position: absolute;
+    left: 50%;
+    margin-left: -35px;
+    top: 15px;
+  }
+
+  @media (max-width: @screen-sm-min) {
+    .title.responsive {
+      display: none;
+    }
+    
+    .btns.responsive {
+      padding: 1em 2em;
+      position: relative;
+
+      .mobileTitle {
+        display: block;
+      }
+
+      .externalBtn.responsive,
+      .externalBtn.responsive:active {
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        padding: 3px 0 0;
+        border-color: #fff;
+
+        > span {
+          display: none;
+        }
+      }
+
+      .userbox {
+        .userbox-toggle-btn {
+          height: 30px;
+          padding: 0;
+          text-align: left;
+        }
+
+        .profile-picture {
+          margin-right: 5px;
+          height: 100%;
+
+          img {
+            width: 100%;
+          }
+        }
+
+        .custom-caret {
+          vertical-align: middle;
+        }
+      }
+    }    
+  }
+</style>
 <style lang="less" scoped>
   @import "~assets/less/variable.less";
   
@@ -106,6 +170,6 @@
   @media (max-width: @screen-sm-min) {
     .panel {
       font-size: 1.1rem;
-    }
+    }    
   }
 </style>
