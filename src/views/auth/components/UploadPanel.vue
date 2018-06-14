@@ -5,7 +5,7 @@
     headerCls='compactHeader'
   >
     <template slot="panelTitle">
-      <img class="lightOn" src="https://image.ibb.co/gEL8DT/light_on.png" />
+      <i class="fa fa-lightbulb-o lightOn" aria-hidden="true"></i>
       认证需求
     </template>
     <div slot="body">
@@ -37,8 +37,17 @@
 <style lang="less" scoped>
   @import "~assets/less/variable.less";
   
-  .panel {
-    color: #fff;
+  // For Themes
+  html {
+    .panel {
+      color: @light-font-color;
+    }  
+
+    &.dark {
+      .panel {
+        color: @light-color;
+      }  
+    }    
   }  
 
   @media (max-width: @screen-sm-min) {
@@ -64,7 +73,7 @@
 
       .panel-title {
         .lightOn {
-          width: 24px;
+          margin-right: 5px;
         }
       }
     } 

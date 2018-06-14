@@ -25,6 +25,8 @@ const AetherUpload = {
 
     this.outputDom = this.wrapperDom.find("#output"),
 
+    this.progressWrapper = this.wrapperDom.find(".progress"),
+
     this.progressBarDom = this.wrapperDom.find("#progressbar"),
 
     this.savedPathDom = this.wrapperDom.find("#savedpath"),
@@ -125,6 +127,7 @@ const AetherUpload = {
       _this.chunkCount = Math.ceil(_this.fileSize / _this.chunkSize);
       _this.subDir = rst.subDir;
       
+      _this.progressWrapper.show();
       if (rst.savedPath.length === 0) {
         _this.outputDom.text(_this.messages.status_uploading + " 0%");
         _this.uploadChunkInterval = setInterval($.proxy(_this.uploadChunk, _this), 0);
