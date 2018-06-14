@@ -19,7 +19,8 @@ import {
   SET_THEME,
   SET_TOKEN,
   SET_USERINFO,
-  SET_NEED_VIDEO_AUTHEN
+  SET_NEED_VIDEO_AUTHEN,
+  SET_AUTH_VIDEOS
 } from './mutation-types'
 
 export default {
@@ -80,5 +81,8 @@ export default {
   },
   [SET_FETCH_PENDING] (state, fetchPending) {
     state.fetchPending = fetchPending
+  },
+  [SET_AUTH_VIDEOS] (state, authVideos) {
+    state.authVideos = authVideos
   }
 }

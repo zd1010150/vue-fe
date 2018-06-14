@@ -228,7 +228,7 @@ const AetherUpload = {
     en: {
       status_upload_begin: "开始上传",
       error_unsupported_browser: "错误：上传组件不被此浏览器支持",
-      status_hashing: "正在哈希",
+      status_hashing: "正在计算",
       status_instant_completion_success: "上传成功（秒传）",
       status_uploading: "正在上传视频分块",
       status_upload_success: "缓存视频分块成功",
@@ -238,7 +238,7 @@ const AetherUpload = {
     zh: {
       status_upload_begin: "开始上传",
       error_unsupported_browser: "错误：上传组件不被此浏览器支持",
-      status_hashing: "正在哈希",
+      status_hashing: "正在计算",
       status_instant_completion_success: "上传成功（秒传）",
       status_uploading: "正在上传视频分块",
       status_upload_success: "缓存视频分块成功",
