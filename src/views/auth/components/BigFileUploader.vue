@@ -1,10 +1,9 @@
 <template>  
   <form method="post" action="" @submit.prevent="onSubmit">
     <!--组件最外部需要有一个名为aetherupload-wrapper的id，用以包装组件-->
-    <div class="row">
-    <div class="form-group col-sm-6 " id="aetherupload-wrapper" >
+    <div class="form-group " id="aetherupload-wrapper" >
       <div class="controls">
-        <div class="uploader clearfix">
+        <div class="uploader row clearfix">
           <!--需要有一个名为file的id，用以标识上传的文件，aetherupload(file,group)中第二个参数为分组名，success方法可用于声名上传成功后的回调方法名-->
           <div class="col-sm-6">
             <input type="file" id="file" :disabled="inputDisabled"/>
@@ -32,12 +31,11 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-6">
+    <div class="">
       <button type="submit" class="btn btn-primary" :disabled="hashedVideoId == -1">
         <i class="fa fa-upload" aria-hidden="true"></i>
         确认上传
       </button>
-    </div>
     </div>
   </form>
 </template>
@@ -57,7 +55,11 @@
     },
     computed: {
       inputDisabled: function () {
-        return this.authVideos.length > 1
+        // Enable rules
+        // 1. authVideos.length == 0
+        // 2. authVideos.length == 1 && status != pending
+        return !(this.authVideos.length < 1 ||
+                (this.authVideos.length === 1 && this.authVideos[0].statusId !== 0))
       }
     },
     mounted: function () {
@@ -100,6 +102,9 @@
           this.hashedVideoId = -1
           // refetch video list
           this.fetchAuthVideosList()
+          const wrapperDom = $('#aetherupload-wrapper')
+          wrapperDom.find('.progress').hide()
+          wrapperDom.find('#output').text('')
         }
       },
       isFileExtValid (file) {
@@ -121,10 +126,39 @@
 <style lang="less">
   @import "~assets/less/variable.less";
   
+  // For Themes
+  html {
+    #aetherupload-wrapper {
+      .uploader {
+        background: @light-hover-color;
+        border: 1px solid #e4e4e4;
+      }
+
+      .progress {
+        background: #d6d6d6;
+      }
+    }
+
+    &.dark {
+      #aetherupload-wrapper {
+        .uploader {
+          background: @dark-bg-color;
+          border: none;
+        }
+
+        .progress {
+          background: #5c5f64;
+        }
+      }
+    }
+  }
+
   #aetherupload-wrapper {
     .uploader {
-      padding: .5em;
-      background: @dark-bg-color;
+      padding: .5em 0;
+      margin-left: 0;
+      margin-right: 0;
+      max-width: 500px;      
 
       input[type="file"] {
         max-width: 100%;
@@ -132,10 +166,11 @@
     }
 
     .progress {
-      background: #5c5f64;
+      display: none;
       height: 10px;
       width: 100%;
       margin-top: 7px;
+      box-shadow: none;
 
       #progressbar {
         background: #3c87c7;

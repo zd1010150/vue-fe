@@ -24,6 +24,22 @@
 <style lang="less">
   @import "~assets/less/variable.less";
   
+  .authPage {
+    min-height: 100vh;
+  }
+  // For Themes
+  html {
+    .authPageBody {
+      color: @light-font-color
+    }
+
+    &.dark {
+      .authPageBody {
+        color: @light-color
+      }
+    }    
+  }
+
   .authPageBody {
     padding: 0 20px 20px;
     font-size: 1.3rem;

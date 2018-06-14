@@ -7,10 +7,10 @@
     <template slot="panelTitle">已上传视频审核状态</template>
     <div slot="body">
       <div class="mb-sm">
-        <i class="fa fa-info-circle"></i>
+        <i class="fa fa-info-circle"></i>        
         我们会在两个工作日内进行审核，如有任何疑问，请随时联系我们的客服。
       </div>
-      <table class="table darkTheme responsive">
+      <table class="table responsive">
         <thead>
           <tr>
             <th>创建时间</th>
@@ -72,9 +72,18 @@
 <style lang="less" scoped>
   @import "~assets/less/variable.less";
   
-  table.darkTheme {
-    background: @dark-bg-color;
-  }
+  // For Themes
+  html {
+    table {
+      background: @light-bg-color;
+    }
+
+    &.dark {
+      table {
+        background: @dark-bg-color;
+      }
+    }    
+  }  
 
   table.responsive {
     th,

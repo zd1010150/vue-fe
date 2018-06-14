@@ -94,9 +94,20 @@
 <style lang="less">
   @import "~assets/less/variable.less";
 
+  html {
+    .mobileTitle {
+      color: @light-font-bright-color
+    }
+
+    &.dark {
+      .mobileTitle {
+        color: @light-color
+      }
+    }    
+  }
+
   .mobileTitle {
     font-size: 1.4em;
-    color: #fff;
     display: none;
     position: absolute;
     left: 50%;
@@ -156,14 +167,27 @@
 <style lang="less" scoped>
   @import "~assets/less/variable.less";
   
-  .topbar {
-    border-bottom: 2px solid #303138;
-  }
+  html {
+    .title {
+      color: @light-font-bright-color
+    }
+    .topbar {
+      border-bottom: 2px solid #dadada;
+    }
+
+    &.dark {
+      .title {
+        color: @light-color
+      }
+      .topbar {
+        border-bottom: 2px solid #303138;
+      }
+    }    
+  }  
 
   .title {
     font-size: 2rem;
     line-height: 56px;
-    color: #fff;
     padding-left: 35px;
   }
 
