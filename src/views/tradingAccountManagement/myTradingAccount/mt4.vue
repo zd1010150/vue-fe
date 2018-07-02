@@ -8,20 +8,30 @@
             <span class="mt4-title">MT4 {{ $t('account') }}:</span>
             <strong class="amount mt4 text-dark">{{ mt4.mt4_id}}</strong>
             <span class="text-primary pl-sm">({{ $t('type') }} :{{ mt4.account_type }})</span>
+            <span v-if="mt4.disabled" class="error big-screen disabled-tip">
+              <i18n path="disabledTip" tag="label" for="sendTicket">
+                <a href="#/ticket/ticketList?addTicket=true" target="_blank" class="error" style="text-decoration: underline">{{ $t('sendTicket') }}</a>
+              </i18n>
+            </span>
           </div>
-          <operate-trading-account :mt4Id="mt4.mt4_id" v-if="mt4.account_type != 'Agent'"></operate-trading-account>
+          <p v-if="mt4.disabled" class="error small-screen disabled-tip">
+            <i18n path="disabledTip" tag="label" for="sendTicket">
+              <a href="#/ticket/ticketList?addTicket=true" target="_blank" class="error" style="text-decoration: underline">{{ $t('sendTicket') }}</a>
+            </i18n>
+          </p>
+          <operate-trading-account :mt4Id="mt4.mt4_id" v-if="mt4.account_type != 'Agent'" :disabled="!!mt4.disabled"></operate-trading-account>
         </header>
         <div class="charts pt-lg">
           <table class="subtitle small-screen">
             <tr>
               <td>{{ $t('trade.balance') }}:</td>
               <td>{{ $t('trade.currency') }}:</td>
-              <td v-if="mt4.account_type != 'Agent'">{{ $t('trade.leverage') }}:</td>
+              <td v-if="mt4.account_type != 'Agent' && (!mt4.disabled) ">{{ $t('trade.leverage') }}:</td>
             </tr>
             <tr>
               <td class="info-number text-dark">{{ mt4.balance}}</td>
               <td class="info-number text-dark">{{ mt4.base_currency}}</td>
-              <td class="info-number text-dark select" v-if="mt4.account_type != 'Agent'">
+              <td class="info-number text-dark select" v-if="mt4.account_type != 'Agent' && (!mt4.disabled)">
                 <mu-select-field v-model="mt4.leverage" class="leverage" @change="confirmModifyLeverage">
                   <template v-for="(l,index) in leverages" slot="default">
                     <mu-menu-item :value="Number(l.val)" :title="l.title" :key="Math.random()"/>
@@ -30,7 +40,7 @@
               </td>
             </tr>
           </table>
-          <chp-panel :canCollapse="true"
+          <chp-panel :canCollapse="!mt4.disabled"
                      :canClose="false"
                      :collapsePanelText="$t('detail')"
                      :expandPanelText="$t('close')"
@@ -46,8 +56,8 @@
               <dd class="amount info-number text-dark"><chp-money :money="mt4.balance"/></dd>
               <dt class="info-title">{{ $t('trade.currency') }}</dt>
               <dd class="amount info-number text-dark">{{ mt4.base_currency}}</dd>
-              <dt class="info-title" v-if="mt4.account_type != 'Agent'">{{ $t('trade.leverage') }}</dt>
-              <dd class="amount info-number text-dark leverage" v-if="mt4.account_type != 'Agent'">
+              <dt class="info-title" v-if="mt4.account_type != 'Agent' && (!mt4.disabled)">{{ $t('trade.leverage') }}</dt>
+              <dd class="amount info-number text-dark leverage" v-if="mt4.account_type != 'Agent' && (!mt4.disabled) ">
                 <mu-select-field v-model="mt4.leverage" @change="confirmModifyLeverage">
                   <mu-menu-item v-for="(l,index) in leverages" :value="Number(l.val)" :title="l.title"
                                 :key="Math.random()"/>
@@ -297,6 +307,11 @@
         }
       }
     }
+    .disabled-tip{
+      &.small-screen{
+        display: none;
+      }
+    }
     .subtitle {
       &.big-screen {
         margin: 0px;
@@ -348,6 +363,9 @@
         }
         .panel-actions {
           padding: 0px 10px;
+          &.panel-actions-none{
+            padding: 0px;
+          }
           background-color: @light-component-bg-color;
           border-top: 3px solid #0088CC;
           top: 0px;
@@ -392,6 +410,14 @@
           text-align: left;
         }
       }
+      .disabled-tip{
+        &.small-screen{
+          display: block;
+        }
+        &.big-screen{
+          display: none;
+        }
+      }
       .subtitle.small-screen {
         display: table;
         font-size: 1.3rem;
@@ -427,7 +453,7 @@
           display: none;
         }
         .panel-heading {
-          .panel-actions {
+          .panel-actions{
 
             left: 0;
             right: auto !important;

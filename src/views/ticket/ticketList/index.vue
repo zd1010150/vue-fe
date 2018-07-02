@@ -18,8 +18,11 @@
   export default {
     data () {
       return {
-        show: false
+        show: this.addTicket
       }
+    },
+    props: {
+      addTicket: Boolean
     },
     components: {
       'ticket-list-table': tableList,

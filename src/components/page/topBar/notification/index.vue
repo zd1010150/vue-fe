@@ -1,7 +1,7 @@
 <i18n src="../i18n.yaml"></i18n>
 <template>
   <ul class="notifications">
-    <!--<notification-sync-profile></notification-sync-profile>-->
+    <notification-sync-profile></notification-sync-profile>
     <notification-lottery-activity></notification-lottery-activity>
     <notification-notice></notification-notice>
   </ul>

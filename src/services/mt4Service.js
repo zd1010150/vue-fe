@@ -9,6 +9,9 @@ export default {
   async getMT4Account (type = 'all') {
     return fetchData('GET', '/account/' + type + '/index')
   },
+  async getAllDiabledAccount () {
+    return fetchData('GET', '/account/disable/index')
+  },
   /**
    * 申请mt4账号
    * @param  {[type]} options.plat_form     [description]
