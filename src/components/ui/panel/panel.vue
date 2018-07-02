@@ -1,7 +1,7 @@
 <template>
   <section class="panel" :class="classes">
     <header class="panel-heading" :class="headerClasses" v-if="isShowHeader">
-      <div class="panel-actions">
+      <div class="panel-actions" :class="{ 'panel-actions-none': !canCollapse && !canClose }">
         <a href="javascript:void(0)"
            class="panel-action panel-action-toggle"
            :class="headerCollapseClasses"
