@@ -5,6 +5,7 @@
         v-bind:is="currentView"
         @close="close"
         :ticketId="ticketId"
+        :addTicket="addTicket"
       ></component>
     </keep-alive>
   </transition>
@@ -17,7 +18,8 @@
     data () {
       return {
         currentView: '',
-        ticketId: ''
+        ticketId: '',
+        addTicket: false
       }
     },
     components: {
@@ -33,13 +35,14 @@
         }
         this.ticketId = ticketId + ''
       },
-      renderPage (ticketId) {
+      renderPage (ticketId, addTicket) {
         if ((ticketId + '' === '0') || ticketId) {
           this.currentView = 'ticket-detail'
         } else {
           this.currentView = 'ticket-list'
         }
         this.ticketId = ticketId + ''
+        this.addTicket = addTicket
       }
     },
     watch: {
@@ -49,7 +52,7 @@
     },
     mounted () {
       const route = this.$route
-      this.renderPage(route && route.query && route.query.ticketId)
+      this.renderPage(route && route.query && route.query.ticketId, route && route.query && Boolean(route.query.addTicket))
     }
   }
 </script>

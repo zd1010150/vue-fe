@@ -13,6 +13,8 @@ en:
   account: "Account"
   detail: "Detail"
   close: "Close"
+  disabledTip: "Account has been disabled, Please {0} to get more information"
+  sendTicket: "send ticket"
 zh:
   applicationSubaccount:
     agreenTerms: "我同意<<条款和须知>>"
@@ -28,6 +30,8 @@ zh:
   account: "账户"
   detail: "详情"
   close: "关闭"
+  disabledTip: "因该账户长期未使用，已经归档无法进行查询，请{0}获取更多的信息"
+  sendTicket: "递交工单"
 zh-Hant:
   applicationSubaccount:
     agreenTerms: "我同意<<條款和須知>>"
@@ -43,3 +47,5 @@ zh-Hant:
   account: "賬戶"
   detail: "詳情"
   close: "關閉"
+  disabledTip: "因該賬戶長期未使用，已經歸檔無法進行查詢，請{0}獲取更多的信息"
+  sendTicket: "遞交工單"

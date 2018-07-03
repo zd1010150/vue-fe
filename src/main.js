@@ -78,7 +78,6 @@ const checkLogin = async () => {
           if (loginInfo.success) {
             let userInfo = await getUserInfo()
             if (userInfo.success) {
-              console.log(userInfo.data.need_certified)
               router.addRoutes(routers)
               store.commit(SET_USERINFO, userInfo.data)
               store.commit(SET_TOKEN, getStore('token'))

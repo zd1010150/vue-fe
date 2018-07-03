@@ -1,13 +1,13 @@
 <i18n src="../i18n.yaml"></i18n>
 <template>
   <div class="col-lg-6 col-md-6 col-xs-12 text-right p-none operate">
-    <chp-button class="mb-xs mt-xs  btn btn-primary print-btn" @click="modifyPwd">
+    <chp-button class="mb-xs mt-xs  btn btn-primary print-btn" :disabled="disabled" @click="modifyPwd">
       {{ $t('changePwd') }}
     </chp-button>
-    <chp-button class="mb-xs mt-xs  btn btn-primary print-btn" @click="withdrawal">
+    <chp-button class="mb-xs mt-xs  btn btn-primary print-btn" :disabled="disabled" @click="withdrawal">
       {{ $t('fund.withdraw') }}
     </chp-button>
-    <chp-button class="mb-xs mt-xs  btn btn-primary print-btn" @click="deposite">
+    <chp-button class="mb-xs mt-xs  btn btn-primary print-btn" :disabled="disabled" @click="deposite">
       {{ $t('fund.deposit') }}
     </chp-button>
   </div>
@@ -19,7 +19,8 @@
 
   export default {
     props: {
-      mt4Id: [String, Number]
+      mt4Id: [String, Number],
+      disabled: Boolean
     },
     methods: {
       async modifyPwd () {

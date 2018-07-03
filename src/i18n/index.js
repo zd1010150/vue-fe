@@ -14,7 +14,6 @@ let messages = {
   zh,
   'zh-Hant': zhHant
 }
-console.log('dandan', Store.state.i18nLanguage)
 export default new VueI18n({
   locale: Store.state.i18nLanguage,
   messages: messages,
