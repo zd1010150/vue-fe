@@ -24,6 +24,9 @@ export default {
   async applyMT4Account ({plat_form, account_type, lever, base_currency, reason}) {
     return fetchData('POST', '/account', {plat_form, account_type, lever, base_currency, reason})
   },
+  async getAllMt4Account () {
+    return fetchData('GET', '/account/all_with_disable/index')
+  },
   /**
    * 传入所有的accounts,然后{traderAccounts:[],agentAccounts:[]}
    * @param  {[type]} accounts [description]
