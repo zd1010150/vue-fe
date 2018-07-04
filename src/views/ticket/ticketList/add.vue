@@ -131,6 +131,7 @@
   </div>
 </template>
 <script>
+  import mt4Service from 'services/mt4Service'
   import validateMixin from 'mixins/validatemix'
   import loadingMix from 'mixins/loading'
   import { UPLOAD_ASSET_URL } from 'src/config/url.config.js'
@@ -178,13 +179,18 @@
       cancel () {
         this.$emit('cancel')
       },
-      fetchMT4 () {
-        this.originMt4 = this.$store.state.mt4Accounts.map((mt4) => {
-          return {
-            id: mt4.mt4_id,
-            text: '#' + mt4.mt4_id
-          }
-        })
+      async fetchMT4 () {
+        this.loadingStatus = true
+        let {success, data} = await mt4Service.getAllMt4Account()
+        this.loadingStatus = false
+        if (success) {
+          this.originMt4 = data.map((mt4) => {
+            return {
+              id: mt4.mt4_id,
+              text: '#' + mt4.mt4_id
+            }
+          })
+        }
         this.$set(this.model, 'account_no', this.originMt4[0].id)
       },
       deleteDocument () {
