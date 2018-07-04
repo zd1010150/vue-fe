@@ -82,7 +82,8 @@ export default {
         name: v.name,
         statusId: v.status,
         status: mapStatusIdToName(v.status),
-        createdAt: v.created_at
+        createdAt: v.created_at,
+        comment: v.comment
       }))
     }
     return commit(type.SET_AUTH_VIDEOS, authVideos)
