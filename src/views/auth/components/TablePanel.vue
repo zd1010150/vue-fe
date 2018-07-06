@@ -1,4 +1,4 @@
-<template>  
+<template>
   <chp-panel
     :canCollapse='false'
     :canClose='false'
@@ -7,7 +7,7 @@
     <template slot="panelTitle">已上传视频审核状态</template>
     <div slot="body">
       <div class="mb-sm">
-        <i class="fa fa-info-circle"></i>        
+        <i class="fa fa-info-circle"></i>
         我们会在两个工作日内进行审核，如有任何疑问，请随时联系我们的客服。
       </div>
       <table class="table responsive" style="table-layout: fixed;">
@@ -27,7 +27,7 @@
             <td>{{ a.status }}</td>
             <td class="comment truncate">
               <span :title="a.comment">{{ a.comment }}</span>
-              <a :data-id="a.id" href="javascript:void(0)" @click="showComment">查看</a>
+              <a v-if="a.comment" :data-id="a.id" href="javascript:void(0)" @click="showComment">查看</a>
             </td>
             <td>
               <mu-icon-button
@@ -88,7 +88,7 @@
 </script>
 <style lang="less" scoped>
   @import "~assets/less/variable.less";
-  
+
   // For Themes
   html {
     table {
@@ -99,8 +99,8 @@
       table {
         background: @dark-bg-color;
       }
-    }    
-  }  
+    }
+  }
 
   table.responsive {
     th,
@@ -165,8 +165,8 @@
       .panel-actions,
       .panel-subtitle {
         display: none;
-      }      
-    }      
+      }
+    }
   }
 
   @media (max-width: @screen-sm-min) {
