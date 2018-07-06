@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 import trainingService from 'services/trainingService'
 import { SET_CONTENT_LOADING } from 'store/mutation-types'
 import { ACY_BOOK_UPLOADER } from 'src/config/app.config.js'
@@ -61,15 +62,10 @@ export default {
     mapData (data) {
       if (!(data && data.categorized && data.categories)) return
       let categories = []
-      for (let categorized in data.categorized) {
-        let cId = categorized,
-          cChildren = data.categorized[cId],
-          category = []
-        if (cChildren && cChildren.length > 0) {
-          category = data.categories.filter((c) => {
-            return (c.id + '') === (cId + '')
-          })[0]
-          categories.push({code: category.code, children: cChildren, id: category.id})
+      for (let category of data.categories) {
+        let cId = category.id
+        if (!_.isEmpty(data.categorized[cId])) {
+          categories.push({code: category.code, children: data.categorized[cId], id: category.id})
         }
       }
       this.categories = categories
