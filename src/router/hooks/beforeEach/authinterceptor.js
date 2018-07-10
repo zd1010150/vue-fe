@@ -1,5 +1,6 @@
 /* eslint-disable brace-style */
 import store from 'src/store'
+import i18n from 'src/i18n/index'
 
 const authInterceptor = (router) => (to, from, next) => {
   let userInfo = store.state.userInfo
@@ -15,7 +16,10 @@ const authInterceptor = (router) => (to, from, next) => {
   if (!userInfo && requiresAuth) {
     next({path: '/login'})
   } else if (forbidAuthen && userInfo) {
-    alert('你已经登录，不能再次访问登录页面')
+    // debugger
+    // console.log('dandan', i18n.t('loginAndPassword.login.reLoginError'))
+    alert(i18n.t('loginAndPassword.login.reLoginError'))
+    // alert('你已经登录，不能再次访问登录页面')
     next(false)
   } else if (requiresAuth && userInfo && store.state.needVideoAuthen) {
     next({path: '/videoAuth'})
