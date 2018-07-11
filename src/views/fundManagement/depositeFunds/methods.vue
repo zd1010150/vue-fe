@@ -70,7 +70,6 @@
   import method from './method.vue'
   import fundsService from 'services/fundsService'
   import bankCardService from 'services/bankCardService'
-  import { DEFAULT_PAY_GATEWAY as defaultMethod } from 'src/config/app.config.js'
 
   export default {
     data () {
@@ -113,20 +112,25 @@
         this.$emit('chosePaymentMethod', code, this.gateWays[type][code].name)
       },
       mapData (data) {
-        for (let key in data) {
+        Reflect.ownKeys(data).sort().forEach((key, outerIndex) => {
           let methods = data[key]
-          Object.keys(methods).forEach((innerKey) => {
+          Object.keys(methods).forEach((innerKey, innerIndex) => {
             Object.assign(methods[innerKey], {
-              isActive: innerKey === defaultMethod.code,
+              isActive: innerIndex === 0 && outerIndex === 0,
               code: innerKey
             })
+            if (innerIndex === 0 && outerIndex === 0) {
+              this.previousMethod = {
+                code: innerKey,
+                type: methods[innerKey].type
+              }
+            }
           })
           this.$set(this.gateWays, key, methods)
-        }
+        })
       },
       setDefaultMethod () {
-        this.previousMethod = defaultMethod
-        this.$emit('chosePaymentMethod', defaultMethod.code, this.gateWays[defaultMethod.type][defaultMethod.code].name)
+        this.$emit('chosePaymentMethod', this.previousMethod.code, this.gateWays[this.previousMethod.type][this.previousMethod.code].name)
       },
       async fetchPaymentMethods () {
         let {data, success} = await fundsService.getDepositeMethod(this.$store.state.i18nLanguage)
