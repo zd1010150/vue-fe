@@ -67,6 +67,7 @@
   </div>
 </template>
 <script>
+  import _ from 'lodash'
   import method from './method.vue'
   import fundsService from 'services/fundsService'
   import bankCardService from 'services/bankCardService'
@@ -111,26 +112,33 @@
 
         this.$emit('chosePaymentMethod', code, this.gateWays[type][code].name)
       },
-      mapData (data) {
-        Reflect.ownKeys(data).sort().forEach((key, outerIndex) => {
-          let methods = data[key]
-          Object.keys(methods).forEach((innerKey, innerIndex) => {
-            Object.assign(methods[innerKey], {
-              isActive: innerIndex === 0 && outerIndex === 0,
-              code: innerKey
-            })
-            if (innerIndex === 0 && outerIndex === 0) {
-              this.previousMethod = {
-                code: innerKey,
-                type: methods[innerKey].type
+      mapData (responseData) {
+        let invalidKeys = Reflect.ownKeys(responseData).filter(key => {
+          return Object.keys(responseData[key]).length > 0
+        })
+        invalidKeys.sort().forEach((key, outerIndex) => {
+          let methods = responseData[key]
+          if (Object.keys(methods).length > 0) {
+            Object.keys(methods).forEach((innerKey, innerIndex) => {
+              Object.assign(methods[innerKey], {
+                isActive: innerIndex === 0 && outerIndex === 0,
+                code: innerKey
+              })
+              if (innerIndex === 0 && outerIndex === 0) {
+                this.previousMethod = {
+                  code: innerKey,
+                  type: methods[innerKey].type
+                }
               }
-            }
-          })
-          this.$set(this.gateWays, key, methods)
+            })
+            this.$set(this.gateWays, key, methods)
+          }
         })
       },
       setDefaultMethod () {
-        this.$emit('chosePaymentMethod', this.previousMethod.code, this.gateWays[this.previousMethod.type][this.previousMethod.code].name)
+        if (!_.isEmpty(this.previousMethod)) {
+          this.$emit('chosePaymentMethod', this.previousMethod.code, this.gateWays[this.previousMethod.type][this.previousMethod.code].name)
+        }
       },
       async fetchPaymentMethods () {
         let {data, success} = await fundsService.getDepositeMethod(this.$store.state.i18nLanguage)
