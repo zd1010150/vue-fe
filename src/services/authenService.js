@@ -6,5 +6,8 @@ export default {
    */
   async checkLogin () {
     return fetchData('GET', '/validate-token')
+  },
+  async getVideoAuthTerm () {
+    return fetchData('GET', '/video_cert/terms')
   }
 }
